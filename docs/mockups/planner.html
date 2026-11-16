@@ -9,7 +9,8 @@
   .day-tabs .chip { flex: none; }
   .meal { display: flex; gap: 10px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); }
   .meal:first-of-type { border-top: 0; }
-  .meal .acts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .meal .acts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+  .day-tabs .chip { min-width: 72px; }
   .plan-table .h { font-size: .78rem; font-weight: 800; text-align: center; padding: 6px 0; }
   .plan-table .h.today { background: var(--accent); color: var(--on-accent); border-radius: 10px; }
   .plan-table .slot { font-size: .78rem; font-weight: 750; color: var(--muted); padding-top: 10px; }

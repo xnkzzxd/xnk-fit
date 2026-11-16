@@ -5,10 +5,11 @@
 <title>Makan · XNK Fit mockup</title>
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
 <style>
-  .opt3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .opt3 > button { min-height: 88px; padding: 10px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; font-size: .82rem; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 4px; }
+  .opt3 { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .opt3 > button { min-height: 56px; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; font-size: .82rem; text-align: left; cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; }
   .opt3 > button.on { border-color: var(--accent); background: var(--tint); }
-  .opt3 b { font-size: .88rem; line-height: 1.25; }
+  .opt3 b { font-size: .9rem; line-height: 1.25; }
+  .opt3 .muted { white-space: nowrap; flex: none; }
   .log-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: .9rem; min-height: 44px; align-items: center; }
 </style>
 </head>
@@ -55,7 +56,7 @@
               </div>
             </div>
             <p class="small" data-st="m:over" hidden style="margin-top:10px">Satu hari di atas target tidak mengubah tren. Besok mulai lagi seperti biasa.</p>
-            <div class="spread small muted" style="margin-top:10px"><span><i data-i="run"></i> Aktivitas 160 kkal</span><span>tidak ditambahkan ke target</span></div>
+            <div class="note" style="margin-top:12px"><i data-i="run"></i><span>Aktivitas hari ini 160 kkal. Ditampilkan saja, tidak ditambahkan ke target.</span></div>
           </div>
 
           <!-- Meal options: 3 per meal (M-3) -->

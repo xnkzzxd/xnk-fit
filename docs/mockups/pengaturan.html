@@ -12,6 +12,7 @@
     .set-nav { display: block; position: sticky; top: 16px; }
     .set-home .list { display: none; }
   }
+  .dot-c { width: 16px; height: 16px; border-radius: 50%; flex: none; box-shadow: 0 0 0 1.5px var(--surface); }
   .swatch { width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--surface); box-shadow: 0 0 0 1.5px var(--line); cursor: pointer; }
   .swatch.on { box-shadow: 0 0 0 3px var(--fg); }
 </style>
@@ -94,16 +95,16 @@
         <section data-st="p:tampil" hidden class="stack">
           <h2>Tampilan</h2>
           <div class="card stack">
-            <div><div class="field"><span>Tema</span></div><div class="seg" data-radio><button>Terang</button><button>Gelap</button><button class="on">Ikuti sistem</button></div></div>
+            <div><div class="field"><span>Tema</span></div><div class="seg" data-radio><button>Terang</button><button>Gelap</button><button class="on">Sistem</button></div></div>
             <div><div class="field"><span>Warna aksen</span></div>
               <div class="chips" data-radio>
-                <button class="swatch on" style="background:#0b0b0b" aria-label="Hitam" onclick="go('pengaturan.html?state=p:tampil')"></button>
-                <button class="swatch" style="background:#1d4ed8" aria-label="Biru" onclick="location.search='state=p:tampil&accent=biru&theme='+document.documentElement.dataset.theme"></button>
-                <button class="swatch" style="background:#15803d" aria-label="Hijau" onclick="location.search='state=p:tampil&accent=hijau&theme='+document.documentElement.dataset.theme"></button>
-                <button class="swatch" style="background:#0f766e" aria-label="Toska" onclick="location.search='state=p:tampil&accent=toska&theme='+document.documentElement.dataset.theme"></button>
-                <button class="swatch" style="background:#6d28d9" aria-label="Ungu" onclick="location.search='state=p:tampil&accent=ungu&theme='+document.documentElement.dataset.theme"></button>
-                <button class="swatch" style="background:#be185d" aria-label="Pink" onclick="location.search='state=p:tampil&accent=pink&theme='+document.documentElement.dataset.theme"></button>
-                <button class="swatch" style="background:#c2410c" aria-label="Oranye" onclick="location.search='state=p:tampil&accent=oranye&theme='+document.documentElement.dataset.theme"></button>
+                <button class="chip on" onclick="location.search='state=p:tampil&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#0b0b0b"></span>Hitam</button>
+                <button class="chip" onclick="location.search='state=p:tampil&accent=biru&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#1d4ed8"></span>Biru</button>
+                <button class="chip" onclick="location.search='state=p:tampil&accent=hijau&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#15803d"></span>Hijau</button>
+                <button class="chip" onclick="location.search='state=p:tampil&accent=toska&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#0f766e"></span>Toska</button>
+                <button class="chip" onclick="location.search='state=p:tampil&accent=ungu&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#6d28d9"></span>Ungu</button>
+                <button class="chip" onclick="location.search='state=p:tampil&accent=pink&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#be185d"></span>Pink</button>
+                <button class="chip" onclick="location.search='state=p:tampil&accent=oranye&theme='+document.documentElement.dataset.theme"><span class="dot-c" style="background:#c2410c"></span>Oranye</button>
               </div><p class="xs muted" style="margin-top:6px">Contoh warna di sini satu-satunya warna tetap di mockup; di aplikasi menjadi token.</p></div>
             <label class="spread"><span>Teks besar</span><span class="switch"><input type="checkbox" onchange="document.documentElement.classList.toggle('big', this.checked)"><i></i></span></label>
           </div>

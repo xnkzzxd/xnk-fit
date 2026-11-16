@@ -221,7 +221,8 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 
 - **Theme:** Material 3 color roles mapped from seven accents (D-1). Light and dark both supported. Colors are tokens, never literals in screens.
 - **Red** is used for nothing except errors (PR-4). No red for calories over target or for weight gain.
-- **Type:** system font. Sizes scale with the user's font setting (D-1 big text). Layout must stay usable at 200 % font scale.
+- **Type:** Inter (bundled with the app, same as the XNK coaching app; owner decision in the D-05 review, 2026-11-16), weights 400–900, headings tight (−0.02 to −0.03 em). Sizes scale with the user's font setting (D-1 big text). Layout must stay usable at 200 % font scale.
+- **Shapes:** buttons and choice chips are rounded rectangles (12 dp), not pills. Choice rows and lone buttons fill the full width; no half-empty rows (owner, D-05 review).
 - **Touch:** 44 dp minimum (D-2). Logger inputs use the numeric keyboard; steppers ＋ / − beside each number field.
 - **Layout:** 360–430 dp phones, tablets ≥ 600 dp with the rail. No horizontal scrolling except the week planner swipe (M-10) and the food-list carousel.
 - **Motion:** respects the system "remove animations" setting; the rest timer and charts are the only animated parts.
