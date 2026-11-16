@@ -283,4 +283,4 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 | --- | --- | --- |
 | 1 | Exact reference phone model | Chosen in S-05; budgets fixed here |
 | 2 | Content update host | GitHub Pages of the project, checksummed (decide in S-06) |
-| 3 | Whether the figure is drawn with Compose Canvas or a static SVG asset | Static SVG per pose, drawn at load (decide in D-05 mockup) |
+| 3 | Whether the figure is drawn with Compose Canvas or a static SVG asset | Decided in D-06 (2026-11-17): reuse the XNK app's figures, the muscle map (`figure.min.json`, react-muscle-highlighter shapes, MIT, credits kept) and the animated exercise rig (`rig.min.json`, XNK's own work); new rigs only for lifts XNK lacks. |

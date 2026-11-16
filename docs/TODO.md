@@ -19,7 +19,7 @@ Status keys: `[ ]` open · `[~]` in progress · `[x]` done · `[-]` deferred or 
 | D-03 | Rules (`docs/Rules.md`) with every number sourced or ⚠ | D-01 | Opus 5.5 | [x] (first draft; sources ⚠ to close, see S-07) |
 | D-04 | Content (`docs/Content.md`): exercise split, patterns, food sources, badges | D-01, D-03 | Sonnet 5.5 | [x] (first draft; counts are targets) |
 | D-05 | Clickable mockups for every screen in PRD §5/Design §5, phone and tablet, light and dark, sent to the owner for approval | D-02, D-04 | Opus 5.5 | [x] (`docs/mockups/`, 15 screens; screen list for D-06 in `docs/mockups/README.md`) |
-| D-06 | Owner approval of D-05 (decision, not code) | D-05 | — (owner) | [ ] |
+| D-06 | Owner approval of D-05 (decision, not code) | D-05 | — (owner) | [x] (2026-11-17: all 15 screens approved; English cues, reuse XNK figures, logger mode chosen with no preselect, screening text final in S-07) |
 
 ## Phase S — Setup and checks (outside the code)
 
@@ -47,7 +47,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
 | C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [ ] |
 | C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [ ] |
-| C-08 | Exercise figure poses: about 25 base poses with sourced joint angles | C-01, D-05 | Opus 5.5 | [ ] |
+| C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [ ] |
 | C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
 | C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [ ] |
 | C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [ ] |
@@ -97,4 +97,5 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-17 | D-06 approved by the owner; decisions recorded in PRD L-6 and §14, Design §16, Content §5, mockups README. |
 | 2026-11-16 | D-05 mockups in `docs/mockups/` (static HTML, phone and tablet, light and dark); D-06 approval list in its README. Local commit only; push still blocked. |

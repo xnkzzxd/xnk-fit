@@ -111,7 +111,7 @@ The owner wants one new product instead: an app **for people without a coach**, 
 | L-3 | A movement pattern with no possible exercise for the user's equipment is told plainly ("Butuh palang atau karet untuk gerakan tarik"), never filled with a wrong pattern. |
 | L-4 | Progression is automatic and explained. A periodic review proposes changes with a one-line reason; the user accepts or declines. |
 | L-5 | The user always wins: a routine the user edits becomes "own" and is never overwritten; auto-programming can be turned off. |
-| L-6 | Logger with two first-class modes, chosen at the first workout: **Dipandu** (one exercise, one set at a time) and **Bebas** (table). |
+| L-6 | Logger with two first-class modes, chosen at the first workout with neither preselected (owner, D-06): **Dipandu** (one exercise, one set at a time) and **Bebas** (table). |
 | L-7 | Logger features: set kinds, supersets, rest timer, swap exercise mid-workout, weight suggestions, previous numbers. No warm-up sets in programs or the logger. |
 | L-8 | The rest timer notifies when it ends, even with the screen off or the app killed. |
 | L-9 | Own routines, empty workout, and a small Jelajahi shelf: full body 3x, upper / lower, home bodyweight, dumbbell-only. |
@@ -240,7 +240,7 @@ Barcode scan · share-editor tools and video · Hevy / Strong import · vegetari
 | --- | --- | --- |
 | 1 | Name checks (store, trademark, domain) | Do early in S-01; every later asset uses the name. |
 | 2 | ~150 own exercise figures | The largest content job (each pattern needs sourced joint angles). Start on day one; it sets the launch date. |
-| 3 | English exercise cues for Indonesian beginners | Owner chose English; judge again on the mockups (D-05). |
+| 3 | English exercise cues for Indonesian beginners | Decided in D-06 (2026-11-17): English cues and names stay. |
 | 4 | Google OAuth verification (Drive app folder) and the Play Health Connect / health-apps declarations | Both take review time; start early (S-03, S-04). |
 | 5 | Household measures coverage | First set sourced from PMK 41/2014; "centong" and cooked dishes are our own flagged estimates until verified (C-05). |
 | 6 | Bought and regional meal numbers | Stay flagged estimates and listed. |
