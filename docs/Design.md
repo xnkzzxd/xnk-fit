@@ -14,7 +14,7 @@ Every requirement ID (G-, PR-, O-, N-, H-, L-, M-, P-, R-, B-, D-, S-, PV-, NF-)
 | --- | --- | --- |
 | App type | Native Android app, Kotlin, Jetpack Compose | Android first (PRD §2). Compose is the platform default and keeps the APK small. |
 | Min SDK | Android 8.0 (API 26) | PRD NF-4. Covers almost all low-end phones still in use. |
-| Target SDK | Latest stable Play requirement at release time | Play rule; checked in S-02. |
+| Target SDK | API 36 (Android 16) | Checked 2026-11-17 (S-02). New apps and updates must target API 36+ since 2026-08-31 ([Play Help](https://support.google.com/googleplay/android-developer/answer/11926878), [Android docs](https://developer.android.com/google/play/requirements/target-sdk)); existing apps need API 35+ to stay visible to new users on newer Android. The extension to 2026-11-01 is past. Next raise: date not published by Google, belum bisa dicek; the [policy](https://support.google.com/googleplay/android-developer/answer/11917020) says target within one year of the latest Android release, so API 37 is likely around 2027-08-31 (inference, not official). Re-check at release. Min SDK 26: no Play minSdk rule on any of these pages, so API 26 is allowed. |
 | Local database | Room over SQLite, one file `xnkfit.db` | PR-1, offline. Room gives migrations and tests (NF-5). |
 | Key-value settings | Preferences DataStore | Small flags only; no data that needs relations. |
 | Background work | WorkManager for reminders scheduling and the Drive backup that runs on open (B-2) | No foreground service, no background daemon (B-2). |
