@@ -4,23 +4,31 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Formulir kesehatan · XNK Fit mockup</title>
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
-<style>.q { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-top: 1px solid var(--line); } .q:first-child { border-top: 0; } </style>
+<style>
+  .q { display: flex; flex-direction: column; gap: 10px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .q:first-of-type { border-top: 0; padding-top: 0; }
+  .q > span { font-weight: 700; }
+</style>
 </head>
 <body class="full">
-<div class="topbar"><button class="icon-btn" data-back="onboarding.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Formulir kesehatan</b></div>
 <div class="mock-states"><b>Keadaan:</b><button data-sw="sc:form" class="on">Formulir</button><button data-sw="sc:ok">Hasil: aman</button><button data-sw="sc:risk">Hasil: ada risiko (S-1)</button><button data-sw="sc:ed">Riwayat gangguan makan (S-6)</button><button data-sw="sc:teen">Di bawah 18 (S-2)</button></div>
-<main class="page stack" style="max-width:760px;margin:12px auto 0">
+<header class="head">
+  <div class="head-top"><button class="icon-btn" data-back="onboarding.html" aria-label="Kembali"><i data-i="back"></i></button><span class="grow">Kesehatan</span></div>
+</header>
+<main class="page stack" style="max-width:860px">
   <section class="stack" data-st="sc:form">
-    <p class="small muted">Tetap di HP ini. Bukan diagnosis.</p>
+    <div class="card ink geo"><span class="label">7 pertanyaan</span><h2 style="font-size:1.6rem;margin-top:8px">Program aman</h2><p class="muted small" style="margin-top:4px">Tetap di HP ini</p></div>
     <div class="cols">
-      <div class="list">
+      <div class="card">
+        <div class="card-title"><h3>Jantung dan cedera</h3></div>
         <div class="q"><span>Masalah jantung atau darah tinggi?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
-        <div class="q"><span>Nyeri dada atau hampir pingsan saat aktivitas?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
-        <div class="q"><span>Cedera atau nyeri yang masih terasa?</span><div class="seg" data-radio><button class="on">Ya</button><button>Tidak</button></div></div>
-        <div class="q"><span>Kondisi lain yang sedang diobati?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
+        <div class="q"><span>Nyeri dada saat aktivitas?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
+        <div class="q"><span>Cedera yang masih terasa?</span><div class="seg" data-radio><button class="on">Ya</button><button>Tidak</button></div></div>
+        <div class="q"><span>Kondisi lain yang diobati?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
       </div>
-      <div class="list">
-        <div class="q"><span>Sedang hamil atau menyusui?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button><button>—</button></div></div>
+      <div class="card">
+        <div class="card-title"><h3>Makan dan lainnya</h3></div>
+        <div class="q"><span>Hamil atau menyusui?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button><button>—</button></div></div>
         <div class="q"><span>Pernah ada gangguan makan?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
         <div class="q"><span>Ada batasan dari dokter?</span><div class="seg" data-radio><button>Ya</button><button class="on">Tidak</button></div></div>
       </div>
@@ -30,27 +38,25 @@
   </section>
 
   <section class="stack" data-st="sc:ok" hidden>
-    <div class="card"><span class="label">Hasil</span><h2 style="margin-top:4px">Siap membuat program</h2></div>
-    <a class="btn pri block lg" href="latihan.html?state=l:setup">Lanjut ke profil latihan</a>
+    <div class="card ink geo"><span class="label">Hasil</span><h2 style="font-size:1.6rem;margin-top:8px">Siap buat program</h2><p class="muted small" style="margin-top:4px">Tidak ada yang perlu diperhatikan</p></div>
+    <a class="btn pri block lg" href="latihan.html?state=l:setup">Lanjut</a>
   </section>
 
   <section class="stack" data-st="sc:risk" hidden>
-    <div class="card"><span class="label">Hasil</span><h2 style="margin-top:4px">Program dibuat lebih ringan</h2>
-      <p class="small" style="margin-top:6px">Beban ringan, kenaikan pelan.</p>
-      <div class="note" style="margin-top:12px"><i data-i="info"></i><span>Sebaiknya tanya dokter dulu.</span></div></div>
+    <div class="card ink geo"><span class="label">Hasil</span><h2 style="font-size:1.6rem;margin-top:8px">Program lebih ringan</h2><p class="muted small" style="margin-top:4px">Beban ringan, naik pelan</p></div>
+    <div class="card"><div class="row-flex"><i data-i="heart"></i><b class="grow">Sebaiknya tanya dokter dulu</b></div></div>
     <a class="btn pri block lg" href="latihan.html?state=l:setup">Lanjut</a>
   </section>
 
   <section class="stack" data-st="sc:ed" hidden>
-    <div class="card"><span class="label">Hasil</span><h2 style="margin-top:4px">Fokus pada makan teratur</h2>
-      <p class="small" style="margin-top:6px">Tanpa defisit. Kalori disembunyikan.</p>
-      <div class="note" style="margin-top:12px"><i data-i="heart"></i><span>Dokter atau psikolog bisa membantu.</span></div></div>
+    <div class="card ink geo"><span class="label">Hasil</span><h2 style="font-size:1.6rem;margin-top:8px">Makan teratur dulu</h2><p class="muted small" style="margin-top:4px">Tanpa defisit, tanpa angka kalori</p></div>
+    <div class="card"><div class="row-flex"><i data-i="heart"></i><b class="grow">Dokter atau psikolog bisa membantu</b></div></div>
     <a class="btn pri block lg" href="makan.html?state=m:nonum">Lanjut</a>
   </section>
 
   <section class="stack" data-st="sc:teen" hidden>
-    <div class="card"><span class="label">Usia 16 tahun</span><h2 style="margin-top:4px">Teknik dulu</h2>
-      <p class="small" style="margin-top:6px">Mode ringan, tanpa defisit. Latihan ditemani orang dewasa.</p></div>
+    <div class="card ink geo"><span class="label">Usia 16</span><h2 style="font-size:1.6rem;margin-top:8px">Teknik dulu</h2><p class="muted small" style="margin-top:4px">Mode ringan, tanpa defisit</p></div>
+    <div class="card"><div class="row-flex"><i data-i="user"></i><b class="grow">Latihan ditemani orang dewasa</b></div></div>
     <a class="btn pri block lg" href="latihan.html?state=l:setup">Lanjut</a>
   </section>
 </main>

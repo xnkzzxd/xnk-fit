@@ -6,31 +6,34 @@
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
 </head>
 <body class="full">
-<div class="topbar"><button class="icon-btn" data-back="planner.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Daftar belanja</b><button class="icon-btn" aria-label="Bagikan" data-toast="(Bagikan sebagai teks)"><i data-i="share"></i></button></div>
-<main class="page stack" style="max-width:900px;margin:12px auto 0">
-  <div class="seg" data-radio><button class="on">Sisa minggu ini</button><button>3 hari ke depan</button></div>
-  <p class="small muted">Dari rencana minggu</p>
+<header class="head">
+  <div class="head-top"><button class="icon-btn" data-back="planner.html" aria-label="Kembali"><i data-i="back"></i></button><span class="grow">Belanja</span><button class="icon-btn" aria-label="Bagikan" data-toast="(Bagikan sebagai teks)"><i data-i="share"></i></button></div>
+</header>
+<main class="page stack" style="max-width:900px">
+  <section class="card ink geo">
+    <span class="label">Dari rencana minggu</span>
+    <div style="margin-top:8px"><span class="hero-num">8</span> <span class="muted">barang lagi</span></div>
+    <div class="seg" data-radio style="margin-top:16px;background:color-mix(in srgb, var(--on-band) 12%, transparent)"><button class="on">Sisa minggu</button><button>3 hari</button></div>
+  </section>
   <div class="cols">
-    <div class="stack">
-      <div class="label">Lauk</div>
-      <div class="list">
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Ayam (paha) <span class="muted">· 3 potong, ±450 g</span></span></div>
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Telur ayam <span class="muted">· 6 butir</span></span></div>
-        <div class="li done" data-row><button class="check on" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Tempe <span class="muted">· 1 papan</span></span></div>
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Ikan kembung <span class="muted">· 2 ekor</span></span></div>
-      </div>
+    <div class="card">
+      <div class="card-title"><h3>Lauk</h3><span class="small muted"><b>1</b>/4</span></div>
+      <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Ayam paha</b></span><span class="small muted">3 potong</span></div>
+      <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Telur ayam</b></span><span class="small muted">6 butir</span></div>
+      <div class="li done" style="padding-inline:0" data-row><button class="check on" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Tempe</b></span><span class="small muted">1 papan</span></div>
+      <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Ikan kembung</b></span><span class="small muted">2 ekor</span></div>
     </div>
     <div class="stack">
-      <div class="label">Sayur dan buah</div>
-      <div class="list">
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Kangkung <span class="muted">· 1 ikat</span></span></div>
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Timun, kemangi (lalapan)</span></div>
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Pisang <span class="muted">· 4 buah</span></span></div>
+      <div class="card">
+        <div class="card-title"><h3>Sayur dan buah</h3><span class="small muted"><b>0</b>/3</span></div>
+        <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Kangkung</b></span><span class="small muted">1 ikat</span></div>
+        <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Timun, kemangi</b></span><span class="small muted">lalapan</span></div>
+        <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Pisang</b></span><span class="small muted">4 buah</span></div>
       </div>
-      <div class="label">Pokok</div>
-      <div class="list">
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Beras <span class="muted">· ±1 kg</span></span></div>
-        <div class="li" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow">Oat <span class="muted">· ±200 g</span></span></div>
+      <div class="card">
+        <div class="card-title"><h3>Pokok</h3><span class="small muted"><b>0</b>/2</span></div>
+        <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Beras</b></span><span class="small muted">±1 kg</span></div>
+        <div class="li" style="padding-inline:0" data-row><button class="check" aria-label="Sudah dibeli"><i data-i="check"></i></button><span class="grow"><b>Oat</b></span><span class="small muted">±200 g</span></div>
       </div>
     </div>
   </div>

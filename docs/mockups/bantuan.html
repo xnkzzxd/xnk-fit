@@ -4,62 +4,83 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bantuan · XNK Fit mockup</title>
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
-<style>
-  details { border-top: 1px solid var(--line); } details:first-child { border-top: 0; }
-  summary { min-height: 56px; padding: 14px 16px; cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-  summary::-webkit-details-marker { display: none; }
-  details > div { padding: 0 16px 16px; font-size: .92rem; }
-  dl { margin: 0; } dt { font-weight: 800; margin-top: 10px; } dd { margin: 2px 0 0; color: var(--muted); }
-</style>
+<style>.card .li { padding-inline: 0; } .step-n { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: .8125rem; flex: none; }</style>
 </head>
 <body data-tab="saya">
+<div class="mock-states"><b>Bagian:</b><button data-sw="b:home" class="on">Daftar</button><button data-sw="b:target">Cara target dihitung</button><button data-sw="b:istilah">Istilah</button><button data-sw="b:privasi">Privasi</button></div>
 <div class="app">
-  <div class="topbar"><button class="icon-btn" data-back="pengaturan.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Bantuan dan tentang</b></div>
-  <div class="mock-states"><b>Bagian:</b><button data-sw="b:home" class="on">Daftar</button><button data-sw="b:target">Cara target dihitung</button><button data-sw="b:istilah">Istilah</button><button data-sw="b:privasi">Privasi</button></div>
-  <main class="page stack" style="margin-top:12px;max-width:980px">
-    <section data-st="b:home" class="cols">
-      <div class="list">
-        <button class="li" data-sw="b:target"><span class="ic"><i data-i="flame"></i></span><span class="grow">Cara target dihitung<br><span class="xs muted">Kalori, protein, aktivitas, dengan sumber</span></span><i data-i="chev"></i></button>
-        <div class="li" style="display:block;padding:0"><details><summary>Panduan singkat <i data-i="down"></i></summary><div><ol style="margin:0;padding-left:18px">
-          <li>Isi profil latihan, program dibuat otomatis.</li><li>Tekan ＋ → Mulai latihan; setiap ketukan langsung tersimpan.</li><li>Catat makan dengan ukuran rumah tangga (centong, potong, sdm).</li><li>Nyalakan cadangan Google Drive di Pengaturan → Data.</li></ol></div></details></div>
-        <button class="li" data-sw="b:istilah"><span class="ic"><i data-i="list"></i></span><span class="grow">Istilah<br><span class="xs muted">RIR, superset, jenis set, makro</span></span><i data-i="chev"></i></button>
-        <button class="li" data-toast="Kartu sambutan akan muncul lagi"><span class="ic"><i data-i="star"></i></span><span class="grow">Tampilkan lagi kartu sambutan</span></button>
+  <header class="head">
+    <div class="head-top"><button class="icon-btn" data-back="pengaturan.html" aria-label="Kembali"><i data-i="back"></i></button><span class="grow">Bantuan</span></div>
+  </header>
+  <main class="page stack" style="max-width:980px">
+    <section data-st="b:home" class="stack">
+      <div class="card ink geo"><span class="label">XNK Fit 1.0 · 13+</span><h2 style="font-size:1.6rem;margin-top:8px">Bukan nasihat medis</h2><p class="muted small" style="margin-top:4px">Semua angka punya sumber</p></div>
+      <div class="tiles">
+        <button class="tile" data-sw="b:target"><i data-i="flame"></i><b>Cara hitung</b><span>Kalori, protein</span></button>
+        <button class="tile" data-sw="b:istilah"><i data-i="list"></i><b>Istilah</b><span>RIR, superset</span></button>
+        <button class="tile" data-sw="b:privasi"><i data-i="lock"></i><b>Privasi</b><span>Data di HP</span></button>
+        <button class="tile" data-sw="b:target"><i data-i="info"></i><b>Sumber</b><span>Rujukan aturan</span></button>
+        <button class="tile" data-toast="Kartu sambutan muncul lagi"><i data-i="star"></i><b>Kartu sambutan</b><span>Tampilkan lagi</span></button>
+        <button class="tile" data-toast="(Formulir di browser)"><i data-i="edit"></i><b>Masukan</b><span>Formulir</span></button>
       </div>
-      <div class="list">
-        <button class="li" data-sw="b:privasi"><span class="ic"><i data-i="lock"></i></span><span class="grow">Privasi</span><i data-i="chev"></i></button>
-        <button class="li" data-sw="b:target"><span class="ic"><i data-i="info"></i></span><span class="grow">Sumber angka<br><span class="xs muted">Daftar rujukan setiap aturan</span></span><i data-i="chev"></i></button>
-        <button class="li" data-toast="(Membuka formulir masukan di browser)"><span class="ic"><i data-i="edit"></i></span><span class="grow">Kirim masukan<br><span class="xs muted">Formulir di browser</span></span><i data-i="chev"></i></button>
-        <div class="li"><span class="ic"><i data-i="phone"></i></span><span class="grow">XNK Fit 1.0<br><span class="xs muted">Untuk usia 13+. Bukan nasihat medis.</span></span></div>
+      <div class="card">
+        <div class="card-title"><h3>Panduan singkat</h3></div>
+        <div class="li"><span class="step-n">1</span><span class="grow">Isi profil latihan</span></div>
+        <div class="li"><span class="step-n">2</span><span class="grow">＋ → Mulai latihan</span></div>
+        <div class="li"><span class="step-n">3</span><span class="grow">Catat makan pakai centong, potong, sdm</span></div>
+        <div class="li"><span class="step-n">4</span><span class="grow">Nyalakan cadangan Drive</span></div>
       </div>
     </section>
 
     <section data-st="b:target" hidden class="stack">
+      <div class="card ink geo"><span class="label">Target kalori</span><div style="margin-top:8px"><span class="hero-num">1.750</span> <span class="muted">kkal</span></div>
+        <div class="kv" style="margin-top:16px"><div><b>1.340</b><span>BMR</span></div><div><b>× 1,375</b><span>Aktivitas</span></div><div><b>1.840</b><span>Kebutuhan</span></div></div></div>
       <div class="cols">
-        <div class="card stack"><h2>Kalori harian</h2>
-          <div class="kv"><div><b>1.340</b><span>BMR</span></div><div><b>× 1,375</b><span>Aktivitas ringan</span></div><div><b>1.840</b><span>Kebutuhan</span></div><div><b>1.750</b><span>Target</span></div></div>
-          <p class="small">BMR dihitung dengan rumus Mifflin–St Jeor dari berat, tinggi, usia dan jenis kelamin. Lalu dikali faktor aktivitas (perkiraan), lalu disesuaikan dengan tujuan.</p>
-          <p class="small">Batas bawah: tidak pernah di bawah 1.200 kkal (perempuan) / 1.500 kkal (laki-laki) dan tidak di bawah BMR. Batas ini kehati-hatian pemilik aplikasi.</p>
-          <p class="small">Kalori aktivitas ditampilkan tetapi tidak ditambahkan ke target.</p>
-          <p class="xs muted">Sumber: Mifflin MD dkk. (1990); faktor aktivitas ⚠ sedang diperiksa.</p></div>
-        <div class="card stack"><h2>Protein dan lainnya</h2>
-          <p class="small">Protein 1,6 g per kg berat badan (rentang 1,4–2,0). Lemak 25 % dari kalori. Karbo sisa kalori.</p>
-          <p class="small">Aktivitas: menit × MET dari Compendium of Physical Activities (Ainsworth dkk. 2011). Target mingguan 150–300 menit dari WHO.</p>
-          <div class="note"><i data-i="info"></i><span>Bukan pengganti dokter / ahli gizi. Angka bertanda ⚠ masih sementara.</span></div></div>
+        <div class="card">
+          <div class="card-title"><h3>Cara hitung</h3></div>
+          <div class="li"><span class="step-n">1</span><span class="grow">BMR: Mifflin–St Jeor</span></div>
+          <div class="li"><span class="step-n">2</span><span class="grow">× faktor aktivitas <span class="est">⚠</span></span></div>
+          <div class="li"><span class="step-n">3</span><span class="grow">Sesuai tujuan</span></div>
+          <div class="li"><span class="step-n">4</span><span class="grow">Batas bawah 1.200 / 1.500 kkal</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><h3>Lainnya</h3></div>
+          <div class="li"><span class="grow">Protein</span><b>1,6 g/kg</b></div>
+          <div class="li"><span class="grow">Lemak</span><b>25 %</b></div>
+          <div class="li"><span class="grow">Aktivitas</span><b>MET</b></div>
+          <div class="li"><span class="grow">Target mingguan</span><b>150 mnt</b></div>
+        </div>
+      </div>
+      <div class="card"><div class="card-title"><h3>Sumber</h3></div>
+        <p class="small">Mifflin dkk. 1990 · Compendium of Physical Activities 2011 · WHO 2020 · TKPI 2020</p></div>
+    </section>
+
+    <section data-st="b:istilah" hidden class="cols">
+      <div class="card">
+        <div class="card-title"><h3>Latihan</h3></div>
+        <div class="li"><b class="grow">Set kerja</b><span class="small muted">Set yang dihitung</span></div>
+        <div class="li"><b class="grow">RIR</b><span class="small muted">Sisa repetisi</span></div>
+        <div class="li"><b class="grow">Superset</b><span class="small muted">2 gerakan bergantian</span></div>
+        <div class="li"><b class="grow">Drop set</b><span class="small muted">Beban turun, lanjut</span></div>
+        <div class="li"><b class="grow">Rapi / Ragu</b><span class="small muted">Nilai teknik sendiri</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><h3>Makan</h3></div>
+        <div class="li"><b class="grow">Makro</b><span class="small muted">Protein, karbo, lemak</span></div>
+        <div class="li"><b class="grow">BMR</b><span class="small muted">Energi saat diam</span></div>
+        <div class="li"><b class="grow">MET</b><span class="small muted">Berat aktivitas</span></div>
+        <div class="li"><b class="grow">1RM</b><span class="small muted">Beban maks. 1 rep</span></div>
       </div>
     </section>
 
-    <section data-st="b:istilah" hidden class="card">
-      <h2>Istilah</h2>
-      <dl class="cols">
-        <div><dt>Set kerja</dt><dd>Set yang dihitung untuk kemajuan.</dd><dt>RIR</dt><dd>Repetisi tersisa: berapa repetisi lagi yang sebenarnya masih sanggup.</dd><dt>Superset</dt><dd>Dua gerakan bergantian tanpa istirahat di antaranya.</dd><dt>Drop set</dt><dd>Beban diturunkan lalu lanjut tanpa istirahat.</dd></div>
-        <div><dt>Rapi / Ragu</dt><dd>Penilaian sendiri soal teknik. "Ragu" menahan kenaikan beban.</dd><dt>Makro</dt><dd>Protein, karbohidrat, lemak.</dd><dt>MET</dt><dd>Angka beratnya aktivitas dibanding duduk diam.</dd><dt>1RM</dt><dd>Perkiraan beban maksimal untuk satu repetisi.</dd></div>
-      </dl>
-    </section>
-
-    <section data-st="b:privasi" hidden class="card stack">
-      <h2>Privasi</h2>
-      <p><b>Data di HP Anda. Cadangan di Google Drive Anda.</b></p>
-      <ul class="small" style="margin:0;padding-left:18px"><li>Tidak ada akun, iklan, atau pelacak.</li><li>Pembaruan konten hanya mengunduh file; tidak ada data Anda yang dikirim.</li><li>Foto tidak pernah keluar dari HP kecuali cadangan foto dinyalakan.</li><li>Laporan kerusakan hanya dari Play Console, tanpa data pribadi.</li></ul>
+    <section data-st="b:privasi" hidden class="stack">
+      <div class="card ink geo"><span class="label">Janji kami</span><h2 style="font-size:1.6rem;margin-top:8px">Data di HP Anda</h2><p class="muted small" style="margin-top:4px">Cadangan di Google Drive Anda</p></div>
+      <div class="card">
+        <div class="li done"><span class="todo"><i data-i="check"></i></span><b class="grow">Tanpa akun</b></div>
+        <div class="li done"><span class="todo"><i data-i="check"></i></span><b class="grow">Tanpa iklan dan pelacak</b></div>
+        <div class="li done"><span class="todo"><i data-i="check"></i></span><b class="grow">Foto tetap di HP</b></div>
+        <div class="li done"><span class="todo"><i data-i="check"></i></span><b class="grow">Pembaruan konten tanpa data Anda</b></div>
+      </div>
     </section>
   </main>
 </div>

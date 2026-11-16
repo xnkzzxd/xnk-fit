@@ -4,43 +4,72 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kartu saya · XNK Fit mockup</title>
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
-<style>.gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; } .gal .share-card { max-height: 260px; padding: 14px; font-size: .8rem; } @media (min-width: 600px) { .gal { grid-template-columns: repeat(4, 1fr); } }</style>
+<style>
+  .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gal .share-card { max-height: none; width: 100%; padding: 14px; font: inherit; text-align: left; cursor: pointer; border: 0; }
+  .share-card b.t { font-size: 1.25rem; letter-spacing: -0.02em; margin-top: 6px; line-height: 1.15; }
+  .share-card .lbl { font-size: .6875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+  .editor { background: var(--band); color: var(--on-band); min-height: 100vh; }
+  .editor .preview { padding: 8px var(--pad) 16px; }
+  .editor .preview .share-card { max-height: 52vh; box-shadow: 0 20px 50px -20px rgba(0,0,0,.6); }
+  .editor .card { background: var(--band-card); color: var(--on-band); border-color: color-mix(in srgb, var(--on-band) 10%, transparent); }
+  .editor .card .muted, .editor .label { color: var(--on-band-muted); }
+  .editor .chip { background: transparent; color: var(--on-band); border-color: color-mix(in srgb, var(--on-band) 22%, transparent); }
+  .editor .chip.on { background: var(--on-band); color: var(--band); border-color: var(--on-band); }
+  .editor .seg { background: color-mix(in srgb, var(--on-band) 12%, transparent); }
+  .editor .li { border-color: color-mix(in srgb, var(--on-band) 10%, transparent); }
+  .editor .btn.pri { background: var(--on-band); color: var(--band); }
+  .editor .card-title h3::before { background: var(--on-band); }
+  .editor .chips { display: grid; grid-template-columns: 1fr 1fr; }
+  .editor .preview .share-card:not(.light):not(.acc) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--on-band) 18%, transparent), 0 20px 50px -20px rgba(0,0,0,.6); }
+  .sc-kv { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .sc-kv div { border-radius: 12px; padding: 10px; background: color-mix(in srgb, currentColor 12%, transparent); }
+  .sc-kv b { display: block; font-size: 1.25rem; letter-spacing: -0.03em; }
+  .sc-kv span { font-size: .75rem; opacity: .7; }
+  @media (min-width: 600px) { .gal { grid-template-columns: repeat(4, 1fr); } .ed-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; max-width: 980px; margin: 0 auto; padding: 0 var(--pad); } .editor .preview { padding: 16px 0; } }
+</style>
 </head>
 <body class="full">
-<div class="topbar"><button class="icon-btn" data-back="saya.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Kartu saya</b></div>
 <div class="mock-states"><b>Keadaan:</b><button data-sw="k:gal" class="on">Galeri</button><button data-sw="k:edit">Editor (P-6)</button></div>
-<main class="page stack" style="margin-top:12px;max-width:980px">
-  <section data-st="k:gal" class="stack">
-    
-    <div class="gal">
-      <button class="share-card" style="border:0;font:inherit;text-align:left;cursor:pointer" data-sw="k:edit"><span class="label" style="color:inherit;opacity:.7">Latihan</span><b style="font-size:1.1rem;margin-top:6px">Full Body B</b><span style="margin-top:auto">2 rekor · 52 mnt</span></button>
-      <button class="share-card acc" style="border:0;font:inherit;text-align:left;cursor:pointer" data-sw="k:edit"><span class="label" style="color:inherit;opacity:.7">Konsistensi</span><b style="font-size:1.1rem;margin-top:6px">5 minggu</b><span style="margin-top:auto">Level 4</span></button>
-      <button class="share-card light" style="font:inherit;text-align:left;cursor:pointer" data-sw="k:edit"><span class="label">Kemajuan</span><b style="font-size:1.1rem;margin-top:6px">Pinggang −2 cm</b><span style="margin-top:auto" class="muted">tanpa kg</span></button>
-      <button class="share-card" style="border:0;font:inherit;text-align:left;cursor:pointer" data-sw="k:edit"><span class="label" style="color:inherit;opacity:.7">Makan</span><b style="font-size:1.1rem;margin-top:6px">7 hari catat</b><span style="margin-top:auto">Sesuai rencana</span></button>
-    </div>
-  </section>
 
-  <section data-st="k:edit" hidden>
-    <div class="cols">
+<section data-st="k:gal">
+  <header class="head">
+    <div class="head-top"><button class="icon-btn" data-back="saya.html" aria-label="Kembali"><i data-i="back"></i></button><span class="grow">Kartu saya</span></div>
+  </header>
+  <main class="page stack" style="max-width:980px">
+    <div class="card ink geo"><span class="label">Dibuat di HP</span><h2 style="font-size:1.6rem;margin-top:8px">4 kartu siap</h2><p class="muted small" style="margin-top:4px">Ketuk untuk ubah dan bagikan</p></div>
+    <div class="gal">
+      <button class="share-card" data-sw="k:edit"><span class="lbl">Latihan</span><b class="t">Full Body B</b><span style="margin-top:auto" class="small">2 rekor</span></button>
+      <button class="share-card acc" data-sw="k:edit"><span class="lbl">Konsistensi</span><b class="t">5 minggu</b><span style="margin-top:auto" class="small">Level 4</span></button>
+      <button class="share-card light" data-sw="k:edit"><span class="lbl">Kemajuan</span><b class="t">Pinggang −2 cm</b><span style="margin-top:auto" class="small">Tanpa kg</span></button>
+      <button class="share-card" data-sw="k:edit"><span class="lbl">Makan</span><b class="t">7 hari</b><span style="margin-top:auto" class="small">Tercatat</span></button>
+    </div>
+  </main>
+</section>
+
+<section data-st="k:edit" hidden class="editor">
+  <div class="topbar"><button class="icon-btn" data-sw="k:gal" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Bagikan</b></div>
+  <div class="ed-grid">
+    <div class="preview">
       <div class="share-card" id="sc">
-        <div class="spread"><span class="label" style="color:inherit;opacity:.7">Latihan · 19 Nov</span><i data-i="trophy"></i></div>
-        <b style="font-size:2rem;line-height:1.05;margin-top:16px">Full Body B</b>
-        <div class="kv" style="margin-top:16px"><div style="background:rgba(127,127,127,.18)"><b>52 mnt</b><span style="color:inherit;opacity:.7">Durasi</span></div><div style="background:rgba(127,127,127,.18)"><b>2</b><span style="color:inherit;opacity:.7">Rekor</span></div></div>
-        <p style="margin-top:12px">Goblet Squat 16 kg × 12</p>
+        <div class="spread"><span class="lbl">Latihan · 19 Nov</span><i data-i="trophy"></i></div>
+        <b style="font-size:2rem;line-height:1.05;letter-spacing:-0.03em;margin-top:16px">Full Body B</b>
+        <div class="sc-kv"><div><b>52</b><span>Menit</span></div><div><b>2</b><span>Rekor</span></div></div>
+        <p style="margin-top:12px;font-weight:600">Goblet Squat 16 kg × 12</p>
         <div class="spread" style="margin-top:auto"><b>XNK Fit</b><span class="qr" aria-label="Kode QR"></span></div>
       </div>
-      <div class="stack">
-        <div><div class="field"><span>Kartu</span></div><div class="chips" data-radio><button class="chip on">Latihan + rekor</button><button class="chip">Kemajuan</button><button class="chip">Konsistensi + level</button><button class="chip">Makan</button></div></div>
-        <div><div class="field"><span>Gaya</span></div><div class="seg" data-radio><button class="on" onclick="sc.className='share-card'">Gelap</button><button onclick="sc.className='share-card light'">Terang</button><button onclick="sc.className='share-card acc'">Aksen</button></div></div>
-        <div class="list">
-          <label class="li"><span class="grow">Nama aplikasi dan QR</span><span class="switch"><input type="checkbox" checked><i></i></span></label>
-          <label class="li"><span class="grow">Tanpa kg <span class="xs muted">(kartu foto)</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
-          <label class="li"><span class="grow">Samarkan wajah <span class="xs muted">(kartu foto)</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
-        </div>
-        <button class="btn pri block lg" data-toast="(Lembar bagikan Android)"><i data-i="share"></i>Bagikan</button>
-      </div>
     </div>
-  </section>
-</main>
+    <div class="stack" style="padding:0 var(--pad) 24px">
+      <div class="card"><div class="card-title"><h3>Kartu</h3></div><div class="chips" data-radio><button class="chip on">Latihan</button><button class="chip">Kemajuan</button><button class="chip">Konsistensi</button><button class="chip">Makan</button></div></div>
+      <div class="card"><div class="card-title"><h3>Gaya</h3></div><div class="seg" data-radio><button class="on" onclick="sc.className='share-card'">Gelap</button><button onclick="sc.className='share-card light'">Terang</button><button onclick="sc.className='share-card acc'">Aksen</button></div></div>
+      <div class="card" style="padding-block:6px">
+        <label class="li" style="padding-inline:0"><b class="grow">Nama + QR</b><span class="switch"><input type="checkbox" checked><i></i></span></label>
+        <label class="li" style="padding-inline:0"><b class="grow">Tanpa kg</b><span class="switch"><input type="checkbox" checked><i></i></span></label>
+        <label class="li" style="padding-inline:0"><b class="grow">Samarkan wajah</b><span class="switch"><input type="checkbox" checked><i></i></span></label>
+      </div>
+      <button class="btn pri block lg" data-toast="(Lembar bagikan Android)"><i data-i="share"></i>Bagikan</button>
+    </div>
+  </div>
+</section>
 </body>
 </html>

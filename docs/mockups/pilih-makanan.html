@@ -4,63 +4,72 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pilih makanan · XNK Fit mockup</title>
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
+<style>
+  .food .add { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: var(--on-accent); display: inline-flex; align-items: center; justify-content: center; flex: none; }
+  .food .kcal { font-weight: 800; font-variant-numeric: tabular-nums; flex: none; }
+</style>
 </head>
 <body class="full">
-<div class="topbar"><button class="icon-btn" data-back="makan.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Catat makan · Malam</b><button class="icon-btn" data-open="sheet-quick" aria-label="Kalori cepat"><i data-i="flame"></i></button></div>
 <div class="mock-states"><b>Keadaan:</b><button data-sw="f:recent" class="on">Terakhir</button><button data-sw="f:search">Hasil cari</button><button data-open="sheet-portion">Porsi</button><button data-sw="f:own">Buat makanan sendiri</button></div>
-<main class="page stack" style="max-width:900px;margin:12px auto 0">
-  <div data-st="f:recent f:search" class="stack">
-    <div class="search"><i data-i="search"></i><input placeholder="Cari: nasi, tempe, mie…" aria-label="Cari makanan" value=""></div>
-    <div class="chips scroll" data-radio><button class="chip on" data-sw="f:recent">Terakhir</button><button class="chip">Favorit</button><button class="chip">Semua (TKPI)</button><button class="chip">Kemasan</button><button class="chip">Warung</button><button class="chip" data-sw="f:own">Milik saya</button></div>
+<header class="head">
+  <div class="head-top"><button class="icon-btn" data-back="makan.html" aria-label="Kembali"><i data-i="back"></i></button><span class="grow">Catat makan</span></div>
+  <div class="seg" data-radio style="background:color-mix(in srgb, var(--on-band) 12%, transparent)"><button>Pagi</button><button>Siang</button><button class="on">Malam</button><button>Camilan</button></div>
+</header>
+<main class="page stack" style="max-width:900px">
+  <div class="card stack" data-st="f:recent f:search">
+    <div class="search"><i data-i="search"></i><input placeholder="Cari: nasi, tempe, mie" aria-label="Cari makanan"></div>
+    <div class="chips scroll" data-radio><button class="chip on" data-sw="f:recent">Terakhir</button><button class="chip">Favorit</button><button class="chip">TKPI</button><button class="chip">Kemasan</button><button class="chip">Warung</button><button class="chip" data-sw="f:own">Milik saya</button></div>
   </div>
 
   <section data-st="f:recent" class="stack">
-    <div class="btn-row"><button class="btn sm" data-toast="Siang kemarin disalin"><i data-i="copy"></i>Salin makan kemarin</button><button class="btn sm" data-open="sheet-quick"><i data-i="flame"></i>Kalori cepat</button></div>
-    <div class="list">
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Nasi putih</b><br><span class="small muted">1 centong (±100 g) · 180 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Tempe goreng</b><br><span class="small muted">1 potong (±25 g) · 88 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Sayur asem</b> <span class="est">perkiraan</span><br><span class="small muted">1 mangkuk (±200 g) · 80 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Telur ayam rebus</b> <i data-i="star"></i><br><span class="small muted">1 butir (±55 g) · 85 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Mie instan kuah</b><br><span class="small muted">1 bungkus (±75 g) · 350 kkal · label kemasan</span></span><i data-i="plus"></i></button>
+    <div class="btn-row"><button class="btn" data-toast="Malam kemarin disalin"><i data-i="copy"></i>Kemarin</button><button class="btn" data-open="sheet-quick"><i data-i="flame"></i>Kalori cepat</button></div>
+    <div class="card food">
+      <div class="card-title"><h3>Terakhir</h3></div>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Nasi putih</b><br><span class="xs muted">1 centong ±100 g</span></span><span class="kcal">180</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Tempe goreng</b><br><span class="xs muted">1 potong ±25 g</span></span><span class="kcal">88</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Sayur asem</b> <span class="est">±</span><br><span class="xs muted">1 mangkuk ±200 g</span></span><span class="kcal">80</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Telur rebus</b><br><span class="xs muted">1 butir ±55 g</span></span><span class="kcal">85</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Mie instan kuah</b><br><span class="xs muted">1 bungkus · kemasan</span></span><span class="kcal">350</span><span class="add"><i data-i="plus"></i></span></button>
     </div>
   </section>
 
   <section data-st="f:search" hidden class="stack">
-    <p class="small muted">"tempe" · 9 hasil</p>
-    <div class="list">
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Tempe kedelai murni, mentah</b><br><span class="small muted">TKPI · 1 potong (±25 g) · 50 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Tempe goreng</b><br><span class="small muted">TKPI · 1 potong (±25 g) · 88 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Tempe bacem</b> <span class="est">perkiraan</span><br><span class="small muted">Warung · 1 potong (±30 g) · 75 kkal</span></span><i data-i="plus"></i></button>
-      <button class="li" data-open="sheet-portion"><span class="grow"><b>Orek tempe</b> <span class="est">perkiraan</span><br><span class="small muted">Resep · 2 sdm (±40 g) · 90 kkal</span></span><i data-i="plus"></i></button>
+    <div class="card food">
+      <div class="card-title"><h3>"tempe"</h3><span class="small muted"><b>9</b> hasil</span></div>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Tempe mentah</b><br><span class="xs muted">TKPI · 1 potong ±25 g</span></span><span class="kcal">50</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Tempe goreng</b><br><span class="xs muted">TKPI · 1 potong ±25 g</span></span><span class="kcal">88</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Tempe bacem</b> <span class="est">±</span><br><span class="xs muted">Warung · 1 potong ±30 g</span></span><span class="kcal">75</span><span class="add"><i data-i="plus"></i></span></button>
+      <button class="li" style="padding-inline:0" data-open="sheet-portion"><span class="grow"><b>Orek tempe</b> <span class="est">±</span><br><span class="xs muted">Resep · 2 sdm ±40 g</span></span><span class="kcal">90</span><span class="add"><i data-i="plus"></i></span></button>
     </div>
-    <button class="btn block" data-sw="f:own">Tidak ketemu? Buat makanan sendiri</button>
+    <button class="btn block" data-sw="f:own"><i data-i="plus"></i>Buat makanan sendiri</button>
   </section>
 
   <section data-st="f:own" hidden class="stack">
-    <div class="card stack"><h2>Makanan sendiri</h2>
+    <div class="card ink geo"><span class="label">Milik saya</span><h2 style="font-size:1.6rem;margin-top:8px">Makanan baru</h2><p class="muted small" style="margin-top:4px">Tersimpan di HP ini</p></div>
+    <div class="card stack">
       <label class="field"><span>Nama</span><input class="input" value="Nasi bakar ibu"></label>
-      <div class="seg" data-radio><button class="on">Per porsi</button><button>Per 100 g</button><button>Resep dari bahan</button></div>
-      <div class="cols"><label class="field"><span>Kalori (kkal)</span><input class="input" inputmode="numeric" value="420"></label><label class="field"><span>Berat porsi (g, opsional)</span><input class="input" inputmode="numeric" value="250"></label></div>
-      <div class="cols-3"><label class="field"><span>Protein (g)</span><input class="input" inputmode="decimal" value="14"></label><label class="field"><span>Karbo (g)</span><input class="input" inputmode="decimal" value="60"></label><label class="field"><span>Lemak (g)</span><input class="input" inputmode="decimal" value="13"></label></div>
-      <button class="btn pri block lg" data-sw="f:recent" data-toast="Tersimpan di Milik saya">Simpan</button></div>
+      <div class="seg" data-radio><button class="on">Per porsi</button><button>Per 100 g</button><button>Resep</button></div>
+      <div class="cols"><label class="field"><span>Kalori</span><input class="input" inputmode="numeric" value="420"></label><label class="field"><span>Berat porsi (g)</span><input class="input" inputmode="numeric" value="250"></label></div>
+      <div class="cols-3"><label class="field"><span>Protein g</span><input class="input" inputmode="decimal" value="14"></label><label class="field"><span>Karbo g</span><input class="input" inputmode="decimal" value="60"></label><label class="field"><span>Lemak g</span><input class="input" inputmode="decimal" value="13"></label></div>
+    </div>
+    <div class="btn-row"><button class="btn lg" data-sw="f:recent">Batal</button><button class="btn pri lg" data-sw="f:recent" data-toast="Tersimpan">Simpan</button></div>
   </section>
 </main>
 
 <div class="sheet" id="sheet-portion" role="dialog" aria-label="Porsi"><div class="grab"></div>
   <div class="sheet-head"><h2>Tempe goreng</h2><button class="icon-btn" aria-label="Favorit" data-toast="Ditambah ke favorit"><i data-i="star"></i></button><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
   <div class="stack">
-    <div><div class="field"><span>Ukuran rumah tangga</span></div><div class="chips" data-radio><button class="chip on">1 potong</button><button class="chip">1 sdm</button><button class="chip">Gram</button></div></div>
-    <div class="spread"><div class="stepper" style="width:200px"><button data-step="-0.5">−</button><input inputmode="decimal" value="2" aria-label="Jumlah"><button data-step="0.5">+</button></div><span class="muted">±50 g</span></div>
-    <div class="kv"><div><b>176</b><span>kkal</span></div><div><b>10 g</b><span>Protein</span></div><div><b>6 g</b><span>Karbo</span></div><div><b>11 g</b><span>Lemak</span></div></div>
-    <p class="xs muted">TKPI 2020 · ukuran ±</p>
-    <div class="seg" data-radio><button>Pagi</button><button>Siang</button><button class="on">Malam</button><button>Camilan</button></div>
-    <button class="btn pri block lg" data-close data-toast="Tempe goreng dicatat">Catat</button>
+    <div class="chips" data-radio><button class="chip on">Potong</button><button class="chip">Sdm</button><button class="chip">Gram</button></div>
+    <div class="stepper big"><button data-step="-0.5">−</button><input inputmode="decimal" value="2" aria-label="Jumlah"><button data-step="0.5">+</button></div>
+    <div class="kv"><div><b>176</b><span>kkal</span></div><div><b>10</b><span>Protein g</span></div><div><b>6</b><span>Karbo g</span></div><div><b>11</b><span>Lemak g</span></div></div>
+    <p class="xs muted">±50 g · TKPI 2020</p>
+    <button class="btn pri block lg" data-close data-toast="Dicatat">Catat</button>
   </div>
 </div>
 
 <div class="sheet" id="sheet-quick" role="dialog" aria-label="Kalori cepat"><div class="grab"></div>
   <div class="sheet-head"><h2>Kalori cepat</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
-  <div class="stack"><label class="field"><span>Kalori (kkal)</span><input class="input" inputmode="numeric" value="150"></label>
+  <div class="stack"><div class="stepper big"><button data-step="-10">−</button><input inputmode="numeric" value="150" aria-label="Kalori"><button data-step="10">+</button></div>
     <button class="btn pri block lg" data-close data-toast="Tersimpan">Simpan</button></div>
 </div>
 </body>
