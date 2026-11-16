@@ -6,93 +6,84 @@
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
 <style>
   .opt3 { display: grid; grid-template-columns: 1fr; gap: 8px; }
-  .opt3 > button { min-height: 56px; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; font-size: .82rem; text-align: left; cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; }
-  .opt3 > button.on { border-color: var(--accent); background: var(--tint); }
-  .opt3 b { font-size: .9rem; line-height: 1.25; }
-  .opt3 .muted { white-space: nowrap; flex: none; }
-  .log-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: .9rem; min-height: 44px; align-items: center; }
+  .opt3 > button { min-height: 56px; padding: 10px 14px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .opt3 > button.on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .opt3 b { font-size: .9375rem; line-height: 1.25; }
+  .opt3 .muted { white-space: nowrap; flex: none; font-size: .8125rem; }
+  .log-row { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); font-size: .9375rem; min-height: 44px; align-items: center; }
+  .log-row b { font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body data-tab="makan">
+<div class="mock-states"><b>Keadaan:</b><button data-sw="m:normal" class="on">Biasa</button><button data-sw="m:over">Lebih dari target</button><button data-sw="m:nonum">Mode tanpa angka (S-6)</button><button data-sw="m:setup">Preferensi pertama (O-4)</button></div>
 <div class="app">
   <header class="head">
-    <div class="head-top"><span class="grow">Makan · Kamis</span><a class="icon-btn" href="planner.html" aria-label="Rencana minggu"><i data-i="cal"></i>Minggu</a><a class="icon-btn" href="belanja.html" aria-label="Daftar belanja"><i data-i="cart"></i></a></div>
-    <h1 data-st="m:normal m:over">1.120 / 1.750 kkal</h1><h1 data-st="m:nonum" hidden>Makan hari ini</h1>
-    <p class="sub" data-st="m:normal m:over">Sisa 630 kkal</p><p class="sub" data-st="m:nonum" hidden>2 dari 4 waktu makan sudah dicentang</p>
+    <div class="head-top"><span class="grow">Makan</span><a class="icon-btn" href="planner.html" aria-label="Rencana minggu"><i data-i="cal"></i></a><a class="icon-btn" href="belanja.html" aria-label="Daftar belanja"><i data-i="cart"></i></a></div>
   </header>
-  <div class="mock-states"><b>Keadaan:</b><button data-sw="m:normal" class="on">Biasa</button><button data-sw="m:over">Lebih dari target</button><button data-sw="m:nonum">Mode tanpa angka (S-6)</button><button data-sw="m:setup">Preferensi pertama (O-4)</button></div>
 
-  <main class="page stack" style="margin-top:12px">
-    <!-- Food preferences, asked on first open (O-4, M-9) -->
+  <main class="page stack">
+    <!-- Food preferences on first open (O-4, M-9) -->
     <section class="stack" data-st="m:setup" hidden>
-      <div class="card stack"><span class="label">Preferensi makan</span>
-        <div><h3>Alergi atau pantangan</h3><div class="chips" data-multi style="margin-top:8px"><button class="chip">Telur</button><button class="chip">Seafood</button><button class="chip">Kacang</button><button class="chip">Susu</button><button class="chip">Laktosa</button></div>
-          <p class="xs muted" style="margin-top:6px">Semua makanan bawaan halal.</p></div>
-        <div><h3>Anggaran</h3><div class="seg" data-radio style="margin-top:8px"><button>Hemat</button><button class="on">Standar</button><button>Bebas</button></div></div>
-        <div><h3>Sering beli makan di luar?</h3><div class="seg" data-radio style="margin-top:8px"><button class="on">Ya</button><button>Kadang</button><button>Jarang</button></div>
-          <p class="xs muted" style="margin-top:6px">Jika ya, setiap waktu makan punya satu pilihan beli jadi atau tanpa masak.</p></div>
-      </div>
-      <div class="card"><span class="label">Target harian</span><div class="kv" style="margin-top:8px"><div><b>1.750</b><span>kkal</span></div><div><b>110 g</b><span>Protein</span></div><div><b>205 g</b><span>Karbo</span></div><div><b>49 g</b><span>Lemak</span></div></div>
-        <p class="xs muted" style="margin-top:8px">Dihitung dari data tubuh dan tujuan (Mifflin–St Jeor). Bukan pengganti dokter / ahli gizi.</p>
-        <a class="btn sm" style="margin-top:8px" href="bantuan.html?state=b:target">Cara hitung</a></div>
-      <button class="btn pri block lg" data-sw="m:normal">Simpan</button>
+      <div class="card ink geo"><span class="label">Target harian</span><div style="margin-top:8px"><span class="hero-num">1.750</span> <span class="muted">kkal</span></div>
+        <p class="muted small" style="margin-top:6px">Protein 110 g · Karbo 205 g · Lemak 49 g</p></div>
+      <div class="card"><div class="card-title"><h3>Alergi</h3></div><div class="chips" data-multi><button class="chip">Telur</button><button class="chip">Seafood</button><button class="chip">Kacang</button><button class="chip">Susu</button><button class="chip">Laktosa</button></div></div>
+      <div class="card"><div class="card-title"><h3>Anggaran</h3></div><div class="seg" data-radio><button>Hemat</button><button class="on">Standar</button><button>Bebas</button></div></div>
+      <div class="card"><div class="card-title"><h3>Sering beli di luar?</h3></div><div class="seg" data-radio><button class="on">Sering</button><button>Kadang</button><button>Jarang</button></div></div>
+      <div class="btn-row"><a class="btn lg" href="bantuan.html?state=b:target">Cara hitung</a><button class="btn pri lg" data-sw="m:normal">Simpan</button></div>
     </section>
 
     <section class="stack" data-st="m:normal m:over m:nonum">
-      <div class="card tint" data-st="m:normal"><div class="spread"><span class="small"><b>Berat turun 3 kg sejak target dihitung.</b> Hitung ulang target?</span></div>
-        <div class="btn-row" style="margin-top:10px"><button class="btn pri sm" data-toast="Target diperbarui">Hitung ulang</button><button class="btn sm">Pertahankan</button></div></div>
-
       <div class="cols">
         <div class="stack">
-          <div class="card" data-st="m:normal m:over">
-            <div class="row-flex" style="gap:18px">
+          <!-- Target hero -->
+          <div class="card ink" data-st="m:normal m:over">
+            <div class="row-flex" style="gap:16px">
               <div class="ring"><svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="50" stroke-width="12" fill="none"/><circle class="fill" cx="60" cy="60" r="50" stroke-width="12" fill="none" stroke-dasharray="314" stroke-dashoffset="110" data-st="m:normal"/><circle class="fill" cx="60" cy="60" r="50" stroke-width="12" fill="none" stroke-dasharray="314" stroke-dashoffset="0" data-st="m:over" hidden/></svg>
-                <div class="mid" data-st="m:normal"><span class="num" style="font-size:1.4rem">630</span><span class="xs muted">kkal lagi</span></div>
-                <div class="mid" data-st="m:over" hidden><span class="num" style="font-size:1.4rem">+120</span><span class="xs muted">di atas target</span></div></div>
-              <div class="grow stack-s small">
-                <div class="spread"><span>Protein</span><b>62 / 110 g</b></div><div class="bar"><i style="width:56%"></i></div>
-                <div class="spread"><span>Karbo</span><b>140 / 205 g</b></div><div class="bar"><i style="width:68%"></i></div>
-                <div class="spread"><span>Lemak</span><b>30 / 49 g</b></div><div class="bar"><i style="width:61%"></i></div>
-              </div>
+                <div class="mid"><span class="num" style="font-size:1.6rem" data-st="m:normal">1.120</span><span class="num" style="font-size:1.6rem" data-st="m:over" hidden>1.870</span><span class="xs muted">dari 1.750</span></div></div>
+              <div class="grow"><span class="label">Hari ini</span><h2 style="margin-top:4px" data-st="m:normal">Sisa 630 kkal</h2><h2 style="margin-top:4px" data-st="m:over" hidden>+120 kkal</h2>
+                <p class="xs muted" style="margin-top:4px" data-st="m:normal">Aktivitas 160 kkal (terpisah)</p><p class="xs muted" style="margin-top:4px" data-st="m:over" hidden>Besok mulai lagi</p></div>
             </div>
-            <p class="small" data-st="m:over" hidden style="margin-top:10px">Satu hari di atas target tidak mengubah tren. Besok mulai lagi seperti biasa.</p>
-            <div class="note" style="margin-top:12px"><i data-i="run"></i><span>Aktivitas hari ini 160 kkal. Ditampilkan saja, tidak ditambahkan ke target.</span></div>
+            <div class="stack-s small" style="margin-top:16px">
+              <div class="spread"><span>Protein</span><b>62/110 g</b></div><div class="bar"><i style="width:56%"></i></div>
+              <div class="spread"><span>Karbo</span><b>140/205 g</b></div><div class="bar"><i style="width:68%"></i></div>
+              <div class="spread"><span>Lemak</span><b>30/49 g</b></div><div class="bar"><i style="width:61%"></i></div>
+            </div>
           </div>
+          <div class="card ink geo" data-st="m:nonum" hidden><span class="label">Hari ini</span><h2 style="font-size:1.6rem;margin-top:8px">2 dari 4 makan</h2><p class="muted small" style="margin-top:4px">Tanpa angka</p></div>
 
-          <!-- Meal options: 3 per meal (M-3) -->
-          <div class="section-title" style="margin-top:4px"><h2>Rencana hari ini</h2><a class="link small" href="planner.html">Minggu</a></div>
+          <div class="card" data-st="m:normal"><div class="spread"><span class="grow"><b>Berat turun 3 kg.</b> Hitung ulang target?</span></div>
+            <div class="btn-row" style="margin-top:12px"><button class="btn pri sm" data-toast="Target diperbarui">Hitung ulang</button><button class="btn sm">Pertahankan</button></div></div>
+
+          <div class="sec"><h2>Rencana hari ini</h2><a class="link" href="planner.html">Minggu</a></div>
           <div class="card stack">
-            <div><div class="spread"><h3>Pagi</h3><span class="small muted" data-st="m:normal m:over">± 420 kkal</span></div>
-              <div class="opt3" data-radio style="margin-top:8px"><button class="on"><b>Nasi uduk telur dadar</b><span class="muted">Jawa</span></button><button><b>Roti gandum, telur rebus</b><span class="muted">Tanpa masak</span></button><button><b>Bubur ayam</b><span class="muted">Beli <span class="est">±</span></span></button></div>
-              <button class="btn block sm" style="margin-top:8px" data-toast="Dicatat: Nasi uduk telur dadar"><i data-i="check"></i>Sudah makan ini</button></div>
-            <div><div class="spread"><h3>Siang</h3><span class="small muted" data-st="m:normal m:over">± 560 kkal</span></div>
-              <div class="opt3" data-radio style="margin-top:8px"><button><b>Nasi, sayur asem, tempe bacem</b><span class="muted">Sunda</span></button><button class="on"><b>Nasi, ayam bakar, lalapan</b><span class="muted">Masak</span></button><button><b>Warteg: nasi, sayur, telur</b><span class="muted">Beli <span class="est">±</span></span></button></div>
-              <p class="xs muted" style="margin-top:6px">Minggu ini santan sudah 3 kali, jadi pilihan otomatis tanpa santan dulu.</p></div>
-            <div><div class="spread"><h3>Malam</h3><span class="small muted" data-st="m:normal m:over">± 520 kkal</span></div>
-              <div class="opt3" data-radio style="margin-top:8px"><button class="on"><b>Nasi, pepes ikan, tumis kangkung</b><span class="muted">Sunda</span></button><button><b>Mie rebus telur sayur</b><span class="muted">Anak kos</span></button><button><b>Bakso kuah</b><span class="muted">Beli <span class="est">±</span></span></button></div></div>
+            <div><div class="card-title" style="margin-bottom:8px"><h3>Pagi</h3><span class="small muted" data-st="m:normal m:over">±420 kkal</span></div>
+              <div class="opt3" data-radio><button class="on"><b>Nasi uduk telur dadar</b><span class="muted">Jawa</span></button><button><b>Roti, telur rebus</b><span class="muted">Tanpa masak</span></button><button><b>Bubur ayam</b><span class="muted">Beli ±</span></button></div></div>
+            <div><div class="card-title" style="margin-bottom:8px"><h3>Siang</h3><span class="small muted" data-st="m:normal m:over">±560 kkal</span></div>
+              <div class="opt3" data-radio><button><b>Sayur asem, tempe bacem</b><span class="muted">Sunda</span></button><button class="on"><b>Ayam bakar, lalapan</b><span class="muted">Masak</span></button><button><b>Warteg</b><span class="muted">Beli ±</span></button></div>
+              <p class="xs muted" style="margin-top:8px">Santan sudah 3× minggu ini.</p></div>
+            <div><div class="card-title" style="margin-bottom:8px"><h3>Malam</h3><span class="small muted" data-st="m:normal m:over">±520 kkal</span></div>
+              <div class="opt3" data-radio><button class="on"><b>Pepes ikan, kangkung</b><span class="muted">Sunda</span></button><button><b>Mie rebus telur</b><span class="muted">Anak kos</span></button><button><b>Bakso kuah</b><span class="muted">Beli ±</span></button></div></div>
           </div>
         </div>
 
         <div class="stack">
-          <div class="section-title" style="margin-top:4px"><h2>Catatan makan</h2><a class="btn pri sm" href="pilih-makanan.html"><i data-i="plus"></i>Catat</a></div>
+          <div class="sec"><h2>Buku harian</h2><button class="link" data-toast="Kemarin disalin">Salin kemarin</button></div>
           <div class="card">
-            <div class="spread"><h3>Pagi</h3><span class="small" data-st="m:normal m:over">420 kkal</span><button class="check on" data-st="m:nonum" hidden aria-label="Sudah"><i data-i="check"></i></button></div>
-            <div class="log-row"><span>Nasi uduk · 1 centong <span class="muted">(±100 g)</span></span><span data-st="m:normal m:over">175</span></div>
-            <div class="log-row"><span>Telur dadar · 1 butir</span><span data-st="m:normal m:over">153</span></div>
-            <div class="log-row"><span>Teh manis · 1 gelas</span><span data-st="m:normal m:over">92</span></div>
+            <div class="card-title"><h3>Pagi</h3><span class="small muted" data-st="m:normal m:over"><b>420</b> kkal</span><button class="check on" data-st="m:nonum" hidden aria-label="Sudah"><i data-i="check"></i></button></div>
+            <div class="log-row"><span>Nasi uduk · 1 centong</span><b data-st="m:normal m:over">175</b></div>
+            <div class="log-row"><span>Telur dadar · 1 butir</span><b data-st="m:normal m:over">153</b></div>
+            <div class="log-row"><span>Teh manis · 1 gelas</span><b data-st="m:normal m:over">92</b></div>
           </div>
           <div class="card">
-            <div class="spread"><h3>Siang</h3><span class="small" data-st="m:normal m:over">700 kkal</span><button class="check on" data-st="m:nonum" hidden aria-label="Sudah"><i data-i="check"></i></button></div>
-            <div class="log-row"><span>Nasi putih · 1½ centong <span class="muted">(±150 g)</span></span><span data-st="m:normal m:over">270</span></div>
-            <div class="log-row"><span>Ayam bakar · 1 potong paha <span class="est">±</span></span><span data-st="m:normal m:over">300</span></div>
-            <div class="log-row"><span>Kalori cepat</span><span data-st="m:normal m:over">130</span></div>
+            <div class="card-title"><h3>Siang</h3><span class="small muted" data-st="m:normal m:over"><b>700</b> kkal</span><button class="check on" data-st="m:nonum" hidden aria-label="Sudah"><i data-i="check"></i></button></div>
+            <div class="log-row"><span>Nasi putih · 1½ centong</span><b data-st="m:normal m:over">270</b></div>
+            <div class="log-row"><span>Ayam bakar · 1 paha <span class="est">±</span></span><b data-st="m:normal m:over">300</b></div>
+            <div class="log-row"><span>Kalori cepat</span><b data-st="m:normal m:over">130</b></div>
           </div>
-          <div class="card dash"><div class="spread"><h3>Malam</h3><button class="check" data-st="m:nonum" hidden aria-label="Sudah"><i data-i="check"></i></button></div>
-            <p class="small muted" style="margin-top:4px">Belum ada catatan.</p>
-            <div class="btn-row" style="margin-top:8px"><a class="btn sm" href="pilih-makanan.html">Cari makanan</a><button class="btn sm" data-toast="Malam kemarin disalin">Salin kemarin</button></div></div>
-          <div class="card dash"><div class="spread"><h3>Camilan</h3></div>
-            <div class="btn-row" style="margin-top:8px"><a class="btn sm" href="pilih-makanan.html">Cari makanan</a><button class="btn sm" data-open="sheet-quick" data-st="m:normal m:over">Kalori cepat</button></div></div>
-          <p class="xs muted" data-st="m:nonum" hidden>Mode tanpa angka aktif. Angka kalori disembunyikan. Ubah di Pengaturan → Makan.</p>
+          <div class="card"><div class="card-title" style="margin-bottom:10px"><h3>Malam</h3><button class="check" data-st="m:nonum" hidden aria-label="Sudah"><i data-i="check"></i></button></div>
+            <a class="btn" href="pilih-makanan.html"><i data-i="plus"></i>Tambah</a></div>
+          <div class="card"><div class="card-title" style="margin-bottom:10px"><h3>Camilan</h3></div>
+            <div class="btn-row"><a class="btn" href="pilih-makanan.html"><i data-i="plus"></i>Tambah</a><button class="btn" data-open="sheet-quick" data-st="m:normal m:over">Kalori cepat</button></div></div>
         </div>
       </div>
     </section>
@@ -102,7 +93,7 @@
 <div class="sheet" id="sheet-quick" role="dialog" aria-label="Kalori cepat"><div class="grab"></div>
   <div class="sheet-head"><h2>Kalori cepat</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
   <div class="stack"><label class="field"><span>Kalori (kkal)</span><input class="input" inputmode="numeric" value="150"></label>
-    <label class="field"><span>Nama (opsional)</span><input class="input" placeholder="Gorengan di kantor"></label>
+    <label class="field"><span>Nama (opsional)</span><input class="input" placeholder="Gorengan"></label>
     <div class="seg" data-radio><button>Pagi</button><button>Siang</button><button>Malam</button><button class="on">Camilan</button></div>
     <button class="btn pri block lg" data-close data-toast="Tersimpan">Simpan</button></div>
 </div>

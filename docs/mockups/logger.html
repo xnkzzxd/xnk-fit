@@ -26,9 +26,9 @@
 <main class="page" style="margin-top:12px">
   <!-- Mode choice at first workout (L-6) -->
   <section class="stack guided" data-st="lg:mode" hidden>
-    <h2>Cara mencatat</h2><p class="muted small">Dipilih sekali. Bisa diganti di Pengaturan → Latihan atau dari menu ⋯.</p>
-    <button class="opt on" data-sw="lg:dipandu"><span class="ic"><i data-i="play"></i></span><span class="grow"><b>Dipandu</b><br><span class="small muted">Satu gerakan, satu set setiap kali. Angka besar, cocok untuk pemula.</span></span></button>
-    <button class="opt" data-sw="lg:bebas"><span class="ic"><i data-i="list"></i></span><span class="grow"><b>Bebas</b><br><span class="small muted">Tabel semua set. Cepat untuk yang sudah terbiasa.</span></span></button>
+    <h2>Cara mencatat</h2>
+    <button class="opt on" data-sw="lg:dipandu"><span class="ic"><i data-i="play"></i></span><span class="grow"><b>Dipandu</b><br><span class="small muted">Satu set setiap kali</span></span></button>
+    <button class="opt" data-sw="lg:bebas"><span class="ic"><i data-i="list"></i></span><span class="grow"><b>Bebas</b><br><span class="small muted">Tabel semua set</span></span></button>
   </section>
 
   <!-- Dipandu -->
@@ -38,14 +38,13 @@
     <div class="set-pills" aria-label="Set 2 dari 3"><i class="on"></i><i class="on"></i><i></i></div>
     <div class="card stack">
       <div class="spread"><h3>Set 2 dari 3</h3><button class="chip" data-open="sheet-kind">Normal ▾</button></div>
-      <div class="note"><i data-i="star"></i><span>Saran: <b>16 kg × 10–12</b>. Sebelumnya 14 kg × 12, 12, 12 dengan rapi.</span></div>
+      <div class="note"><i data-i="star"></i><span>Saran <b>16 kg × 10–12</b> · lalu 14 × 12</span></div>
       <label class="field"><span>Beban (kg)</span><div class="stepper big"><button data-step="-2">−</button><input inputmode="decimal" value="16"><button data-step="2">+</button></div></label>
       <label class="field"><span>Repetisi</span><div class="stepper big"><button data-step="-1">−</button><input inputmode="numeric" value="10"><button data-step="1">+</button></div></label>
       <div><div class="field"><span>Gerakan terasa</span></div><div class="seg" data-radio><button class="on">Rapi</button><button>Ragu</button></div>
-        <p class="xs muted" style="margin-top:6px">"Ragu" menahan beban sampai dua kali "Rapi" berturut-turut.</p></div>
+        </div>
       <button class="btn pri block lg" onclick="startRest(120)">Selesai set</button>
     </div>
-    <div class="note"><i data-i="help"></i><span><b>Kenapa gerakan ini:</b> pola jongkok dasar untuk paha dan bokong. Hold the dumbbell at your chest.</span></div>
   </section>
 
   <!-- Bebas -->
@@ -71,7 +70,7 @@
       <table class="set-table"><thead><tr><th>SET</th><th>SEBELUMNYA</th><th>LEVEL</th><th>REP</th><th>✓</th></tr></thead><tbody>
         <tr><td><button class="set-no">1</button></td><td class="small muted">Hijau × 15</td><td><select class="cell" aria-label="Level karet"><option>Kuning</option><option>Merah muda</option><option selected>Hijau</option><option>Biru</option><option>Hitam</option></select></td><td><input class="cell" inputmode="numeric" placeholder="15"></td><td><button class="check" data-rest aria-label="Set selesai"><i data-i="check"></i></button></td></tr>
       </tbody></table>
-      <p class="xs muted" style="margin-top:6px">Karet dicatat sebagai level dan repetisi, bukan kg.</p>
+      
     </div>
     <button class="btn block lg" data-open="sheet-swap">+ Tambah gerakan</button>
   </section>
@@ -81,12 +80,12 @@
 <div class="rest card ink" id="rest" hidden>
   <div class="spread"><div><span class="label">Istirahat</span><div class="timer-big" data-rest-left>1:30</div></div>
     <div class="btn-row" style="flex-direction:column;gap:6px"><button class="btn sm" onclick="restAdd(15)">+15 dtk</button><button class="btn pri sm" onclick="restSkip()">Lewati</button></div></div>
-  <p class="xs muted" style="margin-top:6px">Notifikasi tetap muncul walau layar mati.</p>
+  
 </div>
 
 <div class="sheet" id="sheet-swap" role="dialog" aria-label="Ganti gerakan"><div class="grab"></div>
   <div class="sheet-head"><h2>Ganti gerakan</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
-  <p class="small muted">Pola yang sama (jongkok), sesuai alat yang ada.</p>
+  <p class="small muted">Pola jongkok, alat yang ada</p>
   <div class="search" style="margin-top:10px"><i data-i="search"></i><input placeholder="Cari gerakan" aria-label="Cari gerakan"></div>
   <div class="list" style="margin-top:10px">
     <button class="li" data-close data-toast="Diganti untuk latihan ini"><span class="grow"><b>Leg Press</b><br><span class="xs muted">Quads · Glutes · mesin</span></span></button>
@@ -104,7 +103,7 @@
     <button class="li" data-close><span class="ic"><b>F</b></span><span class="grow"><b>Sampai batas</b><br><span class="xs muted">Tidak sanggup satu repetisi lagi dengan rapi</span></span></button>
     <button class="li" data-close><span class="ic"><i data-i="trash"></i></span><span class="grow"><b>Hapus set</b></span></button>
   </div>
-  <p class="xs muted" style="margin-top:8px">Tidak ada set pemanasan di program (L-7).</p>
+  
 </div>
 
 <div class="sheet" id="sheet-ex-more" role="dialog" aria-label="Menu gerakan"><div class="grab"></div>
@@ -138,7 +137,7 @@
 
 <div class="sheet" id="sheet-finish" role="dialog" aria-label="Selesai latihan"><div class="grab"></div>
   <div class="sheet-head"><h2>Selesai latihan?</h2></div>
-  <p>8 dari 14 set tercatat. Set yang kosong tidak disimpan.</p>
+  <p><b>8 / 14</b> set tercatat</p>
   <div class="btn-row" style="margin-top:16px"><a class="btn pri lg" href="ringkasan.html">Selesai</a><button class="btn lg" data-close>Lanjut latihan</button></div>
 </div>
 </body>

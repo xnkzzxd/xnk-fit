@@ -115,18 +115,18 @@
   var SHARED_SHEETS =
   '<div class="sheet" id="sheet-plus" role="dialog" aria-label="Tambah"><div class="grab"></div>' +
   '<div class="sheet-head"><h2>Tambah</h2><button class="icon-btn" data-close aria-label="Tutup">' + icon('close') + '</button></div>' +
-  '<div class="list">' +
-  '<a class="li" href="logger.html"><span class="ic">' + icon('play') + '</span><span class="grow"><b>Mulai latihan</b><br><span class="small muted">Full Body B · sekitar 45 menit</span></span>' + icon('chev') + '</a>' +
-  '<a class="li" href="pilih-makanan.html"><span class="ic">' + icon('food') + '</span><span class="grow"><b>Catat makan</b><br><span class="small muted">Cari makanan atau tambah kalori cepat</span></span>' + icon('chev') + '</a>' +
-  '<button class="li" data-open="sheet-berat"><span class="ic">' + icon('scale') + '</span><span class="grow"><b>Catat berat</b><br><span class="small muted">Berat dan lingkar pinggang</span></span>' + icon('chev') + '</button>' +
-  '<button class="li" data-open="sheet-aktivitas"><span class="ic">' + icon('run') + '</span><span class="grow"><b>Catat aktivitas</b><br><span class="small muted">Jalan, sepeda, renang, olahraga lain</span></span>' + icon('chev') + '</button>' +
+  '<div class="tiles" style="grid-template-columns:repeat(2,minmax(0,1fr))">' +
+  '<a class="tile" href="logger.html">' + icon('play') + '<b>Mulai latihan</b><span>Full Body B</span></a>' +
+  '<a class="tile" href="pilih-makanan.html">' + icon('food') + '<b>Catat makan</b><span>Cari atau kalori cepat</span></a>' +
+  '<button class="tile" data-open="sheet-berat">' + icon('scale') + '<b>Catat berat</b><span>Berat, pinggang</span></button>' +
+  '<button class="tile" data-open="sheet-aktivitas">' + icon('run') + '<b>Catat aktivitas</b><span>Jalan, sepeda, renang</span></button>' +
   '</div></div>' +
 
   '<div class="sheet" id="sheet-berat" role="dialog" aria-label="Catat berat"><div class="grab"></div>' +
   '<div class="sheet-head"><button class="icon-btn" data-open="sheet-plus" aria-label="Kembali">' + icon('back') + '</button><h2>Catat berat</h2><button class="icon-btn" data-close aria-label="Tutup">' + icon('close') + '</button></div>' +
   '<div class="stack"><label class="field"><span>Berat (kg)</span><div class="stepper big"><button data-step="-0.1" aria-label="Kurangi">−</button><input inputmode="decimal" value="68,4" aria-label="Berat"><button data-step="0.1" aria-label="Tambah">+</button></div></label>' +
   '<label class="field"><span>Lingkar pinggang (cm) · opsional</span><div class="stepper"><button data-step="-0.5">−</button><input inputmode="decimal" value="82" aria-label="Pinggang"><button data-step="0.5">+</button></div></label>' +
-  '<p class="small muted">Tren lebih berarti dari satu angka. Timbang di jam yang sama, misalnya Minggu pagi.</p>' +
+  '' +
   '<button class="btn pri block lg" data-close data-toast="Berat tersimpan">Simpan</button></div></div>' +
 
   '<div class="sheet" id="sheet-aktivitas" role="dialog" aria-label="Catat aktivitas"><div class="grab"></div>' +
@@ -135,8 +135,8 @@
   ['Jalan cepat', 'Lari', 'Sepeda', 'Renang', 'Senam', 'Bulu tangkis', 'Sepak bola', 'Lainnya'].map(function (a, i) { return '<button class="chip' + (i ? '' : ' on') + '">' + a + '</button>'; }).join('') +
   '</div><label class="field"><span>Lama (menit)</span><div class="stepper"><button data-step="-5">−</button><input inputmode="numeric" value="30" aria-label="Menit"><button data-step="5">+</button></div></label>' +
   '<div><div class="field"><span>Seberapa berat?</span></div><div class="seg" data-radio><button>Ringan</button><button class="on">Sedang</button><button>Berat</button></div>' +
-  '<p class="xs muted" style="margin-top:6px">Berat = napas terengah, sulit bicara. Menit "berat" dihitung dua kali untuk target mingguan.</p></div>' +
-  '<div class="note">' + icon('flame') + '<span>Sekitar <b>150 kkal</b> (MET × berat × jam). Ditampilkan saja, tidak ditambahkan ke target makan.</span></div>' +
+  '</div>' +
+  '<div class="note">' + icon('flame') + '<span><b>±150 kkal</b> · tidak ditambah ke target</span></div>' +
   '<button class="btn pri block lg" data-close data-toast="Aktivitas tersimpan · +3 poin">Simpan</button></div></div>' +
 
   '<div class="scrim" data-close></div>' +
@@ -222,6 +222,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    // Mockup state switcher sits above the app so the first card can hang over the black band.
+    var ms = document.querySelector('.mock-states'); if (ms) document.body.prepend(ms);
     if (!document.body.classList.contains('full')) shell();
     else document.body.insertAdjacentHTML('beforeend', SHARED_SHEETS);
     document.querySelectorAll('[data-i]').forEach(function (el) { el.outerHTML = icon(el.dataset.i); });

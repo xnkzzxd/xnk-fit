@@ -25,6 +25,7 @@
 | Light and dark, 7 accents, big text (D-1) | Tokens in `mock.css`; no colour literals in screens except the accent swatches in Tampilan. |
 | Phone 360–430, tablet ≥ 600 with rail (N-4) | One layout per screen, switches at 600 px. |
 | XNK look (owner review 1) | Inter font, 12 px rounded buttons and chips (no pills), choice rows and lone buttons fill the width, text wraps inside its box (checked: no text wider than its button, chip, row or card). Inter loads from Google Fonts; offline the page falls back to the system font. |
+| Phase X look (owner review 2) | Tokens and components copied from the XNK portal (parts/theme 01-awal, 05-portal-x): black band with contour lines, first card hanging over it, black hero card with rings, bar-marked card titles, to-do rows, tiles, floating black tab dock, black segmented bars and sheet heads. Text cut to one short line per item. Two buttons side by side are always the same width (checked). |
 
 ## Screen list for owner approval (D-06)
 
