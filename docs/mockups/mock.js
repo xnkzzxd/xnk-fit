@@ -83,9 +83,62 @@
       el.classList.add('mm'); el.innerHTML = mmFig(lv, el.dataset.sex || 'f');
     });
   }
-  function fig() {
-    return '<svg viewBox="0 0 200 150" aria-label="Figur gerakan (sementara)"><circle cx="100" cy="28" r="14"/>' +
-      '<path d="M100 42v50M100 92l-22 44M100 92l22 44"/><path class="acc arm" d="M100 70l-34 4"/><path class="acc arm" d="M100 70l34 4" style="transform-origin:100px 70px"/></svg>';
+  // Exercise figure: the XNK app's own animated rig (rig-data.js; port of rigSvg in XNK parts/app/08-buka-tutup.part).
+  // <div data-fig="goblet-squat"> animates; add data-still for a still thumbnail (last frame).
+  var rigSeq = 0;
+  function rigSvg(pat, anim, sex) {
+    var R = window.XF_RIG, P = R && R.pats[pat];
+    if (!P) return '';
+    var front = P.view === 'front', WS = front && R.wf ? R.wf : R.w;
+    var W = WS[sex] || WS.m, L = R.len, f = P.frames, n = f.length, fr = f[n - 1];
+    var order = P.order || ['thigh', 'shin', 'foot', 'torso', 'head', 'ua', 'fa'];
+    var base = function (sg) { return sg.replace(/[LR]$/, ''); };
+    var lv = {};
+    P.muscles[1].forEach(function (m) { lv[m] = 1; });
+    P.muscles[0].forEach(function (m) { lv[m] = 2; });
+    var r1 = function (v) { return Math.round(v * 10) / 10; };
+    var tf = function (s) { return 'translate(' + s[0] + ' ' + s[1] + ') rotate(' + s[2] + ')' + (s[3] != null ? ' scale(' + s[3] + ' 1)' : ''); };
+    var css = function (s) { return 'translate(' + s[0] + 'px,' + s[1] + 'px) rotate(' + s[2] + 'deg) scale(' + (s[3] != null ? s[3] : 1) + ',1)'; };
+    var id = 'rg' + (++rigSeq), cabIx = [], ci = 0, style = '';
+    P.eq.forEach(function (e, k) { cabIx[k] = e.cable ? ci++ : -1; });
+    if (anim) {
+      var kf = function (name, get) { return '@keyframes ' + id + name + '{' + f.map(function (x, i) { return r1(i / (n - 1) * 100) + '%{transform:' + get(x) + '}'; }).join('') + '}' +
+        '.' + id + ' .rg' + name + '{animation:' + id + name + ' 1.7s ease-in-out infinite alternate}'; };
+      order.forEach(function (sg) { style += kf('-' + sg, function (x) { return css(x.s[sg]); }); });
+      P.eq.forEach(function (e, k) {
+        if (e.cable) style += kf('-e' + k, function (x) { var c = x.c[cabIx[k]]; return 'translate(' + c[0] + 'px,' + c[1] + 'px) rotate(' + c[2] + 'deg) scale(' + c[3] + ',1)'; });
+        else if (e.f) style += kf('-e' + k, function (x) { var p = x.p[e.f]; return 'translate(' + p[0] + 'px,' + p[1] + 'px) rotate(' + (e.rot || 0) + 'deg) scale(1,1)'; });
+      });
+    }
+    var cap = function (len, w) { var r = w / 2; return 'M0 ' + (-r) + 'H' + len + 'A' + r + ' ' + r + ' 0 0 1 ' + len + ' ' + r + 'H0A' + r + ' ' + r + ' 0 0 1 0 ' + (-r) + 'Z'; };
+    var mus = function (sg) {
+      var b = base(sg), wd = W[b];
+      var list = front ? (P.fm || []).filter(function (m) { return m[0] === sg && lv[m[1]]; }) : R.muscles.filter(function (m) { return m[0] === b && lv[m[1]]; });
+      return list.map(function (m) {
+        var cy = m[3] * (front ? 1 : (b === 'torso' ? 1 : -1)) * wd * 0.28;
+        return '<ellipse class="mmf ' + (lv[m[1]] === 2 ? 'on' : 'half') + '" cx="' + r1(m[2] * L[b]) + '" cy="' + r1(cy) + '" rx="' + m[4] + '" ry="' + Math.min(m[5], r1(wd * 0.42)) + '"/>';
+      }).join('');
+    };
+    var seg = function (sg) {
+      var b = base(sg);
+      var body = b === 'head' ? '<circle class="mmf-body" cx="' + L.head + '" cy="0" r="' + W.head + '"/>' : '<path class="mmf-body" d="' + cap(L[b], W[b]) + '"/>' + mus(sg);
+      return '<g class="rg-' + sg + '" transform="' + tf(fr.s[sg]) + '">' + body + '</g>';
+    };
+    var eq = P.eq.map(function (e, k) {
+      if (e.cable) { var c = fr.c[cabIx[k]]; return '<g class="rg-e' + k + '" transform="translate(' + c[0] + ' ' + c[1] + ') rotate(' + c[2] + ') scale(' + c[3] + ' 1)"><path class="rg-cab' + (e.thick ? ' thick' : '') + '" d="M0 0H1"/></g>'; }
+      var shape = '<path class="' + (e.line ? 'rg-eq-l' : 'rg-eq' + (e.soft ? ' soft' : '')) + '" d="' + e.d + '"/>';
+      if (!e.f) return shape;
+      var p = fr.p[e.f];
+      return '<g class="rg-e' + k + '" transform="translate(' + p[0] + ' ' + p[1] + ') rotate(' + (e.rot || 0) + ')">' + shape + '</g>';
+    }).join('');
+    return '<svg class="rig ' + id + (anim ? ' anim' : '') + '" viewBox="0 0 200 200" role="img" aria-label="' + P.name + '">' +
+      (style ? '<style>' + style + '</style>' : '') + eq + order.map(seg).join('') + '</svg>';
+  }
+  function drawRigs() {
+    document.querySelectorAll('[data-fig]').forEach(function (el) {
+      var still = el.hasAttribute('data-still');
+      el.classList.add(still ? 'rig-th' : 'fig'); el.innerHTML = rigSvg(el.dataset.fig || 'goblet-squat', !still, el.dataset.sex || 'f');
+    });
   }
 
   var TABS = [['hari-ini', 'Hari ini', 'home'], ['latihan', 'Latihan', 'dumbbell'], ['+', 'Tambah', 'plus'], ['makan', 'Makan', 'food'], ['saya', 'Saya', 'user']];
@@ -228,10 +281,13 @@
     if (document.querySelector('[data-mm]')) {
       var fs = document.createElement('script'); fs.src = 'figure-data.js'; fs.onload = drawMuscleMaps; document.head.appendChild(fs);
     }
-    document.querySelectorAll('[data-fig]').forEach(function (el) { el.classList.add('fig'); el.innerHTML = fig(); });
+    if (document.querySelector('[data-fig]')) {
+      var rs = document.createElement('script'); rs.src = 'rig-data.js'; rs.onload = drawRigs; document.head.appendChild(rs);
+    }
     document.querySelectorAll('a[href]').forEach(function (a) { a.setAttribute('href', keep(a.getAttribute('href'))); });
     var st = P.get('state'); if (st) setState(st);
     else document.querySelectorAll('[data-sw].on').forEach(function (b) { setState(b.dataset.sw); });
+    if (P.get('open')) openSheet(P.get('open'));  // review links: ?open=sheet-ex
     if (!P.get('embed')) mockBar();
   });
 })();

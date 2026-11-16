@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
 <style>
   .ex-head { display: flex; align-items: center; gap: 10px; }
-  .ex-thumb { width: 52px; height: 52px; border-radius: 12px; background: var(--surface-2); flex: none; display: flex; align-items: center; justify-content: center; }
+  .ex-thumb { width: 56px; height: 56px; border-radius: 14px; flex: none; }
   .guided { max-width: 560px; margin: 0 auto; }
   .set-pills { display: flex; gap: 6px; }
   .set-pills i { flex: 1; height: 6px; border-radius: 9px; background: var(--line); }
@@ -34,7 +34,7 @@
   <!-- Dipandu -->
   <section class="stack guided" data-st="lg:dipandu">
     <div class="spread small muted"><span>Gerakan 1 dari 5</span><button class="link small" data-open="sheet-list">Daftar</button></div>
-    <div class="ex-head"><div class="ex-thumb"><i data-i="dumbbell"></i></div><div class="grow"><h2>Goblet Squat</h2><span class="small muted">3 × 8–12 · istirahat 2 mnt</span></div><button class="icon-btn" data-open="sheet-swap" aria-label="Ganti gerakan"><i data-i="swap"></i></button></div>
+    <div class="ex-head"><div class="ex-thumb" data-fig="goblet-squat" data-still></div><div class="grow"><h2>Goblet Squat</h2><span class="small muted">3 × 8–12 · istirahat 2 mnt</span></div><button class="icon-btn" data-open="sheet-swap" aria-label="Ganti gerakan"><i data-i="swap"></i></button></div>
     <div class="set-pills" aria-label="Set 2 dari 3"><i class="on"></i><i class="on"></i><i></i></div>
     <div class="card stack">
       <div class="spread"><h3>Set 2 dari 3</h3><button class="chip" data-open="sheet-kind">Normal ▾</button></div>
@@ -50,7 +50,7 @@
   <!-- Bebas -->
   <section class="bebas-grid" data-st="lg:bebas" hidden>
     <div class="card">
-      <div class="ex-head"><div class="ex-thumb"><i data-i="dumbbell"></i></div><div class="grow"><h3>Goblet Squat</h3><span class="xs muted">8–12 rep · 2 mnt</span></div><button class="icon-btn" data-open="sheet-ex-more" aria-label="Menu gerakan"><i data-i="more"></i></button></div>
+      <div class="ex-head"><div class="ex-thumb" data-fig="goblet-squat" data-still></div><div class="grow"><h3>Goblet Squat</h3><span class="xs muted">8–12 rep · 2 mnt</span></div><button class="icon-btn" data-open="sheet-ex-more" aria-label="Menu gerakan"><i data-i="more"></i></button></div>
       <p class="xs muted" style="margin:8px 0 2px">Saran: 16 kg</p>
       <table class="set-table"><thead><tr><th>SET</th><th>SEBELUMNYA</th><th>KG</th><th>REP</th><th>✓</th></tr></thead><tbody>
         <tr class="done"><td><button class="set-no" data-open="sheet-kind">1</button></td><td class="small muted">14 × 12</td><td><input class="cell" inputmode="decimal" value="16"></td><td><input class="cell" inputmode="numeric" value="12"></td><td><button class="check on" data-rest aria-label="Set selesai"><i data-i="check"></i></button></td></tr>
@@ -62,11 +62,11 @@
 
     <div class="card ss">
       <span class="label">Superset A</span>
-      <div class="ex-head" style="margin-top:8px"><div class="ex-thumb"><i data-i="dumbbell"></i></div><div class="grow"><h3>Dumbbell Bench Press</h3><span class="xs muted">8–12 rep</span></div></div>
+      <div class="ex-head" style="margin-top:8px"><div class="ex-thumb" data-fig="db-bench-press" data-still></div><div class="grow"><h3>Dumbbell Bench Press</h3><span class="xs muted">8–12 rep</span></div></div>
       <table class="set-table"><thead><tr><th>SET</th><th>SEBELUMNYA</th><th>KG</th><th>REP</th><th>✓</th></tr></thead><tbody>
         <tr><td><button class="set-no">1</button></td><td class="small muted">10 × 10</td><td><input class="cell" inputmode="decimal" value="10"></td><td><input class="cell" inputmode="numeric" placeholder="10"></td><td><button class="check" aria-label="Set selesai"><i data-i="check"></i></button></td></tr>
       </tbody></table>
-      <div class="ex-head" style="margin-top:12px"><div class="ex-thumb"><i data-i="dumbbell"></i></div><div class="grow"><h3>Band Row</h3><span class="xs muted">12–15 rep · level karet</span></div></div>
+      <div class="ex-head" style="margin-top:12px"><div class="ex-thumb" data-fig="seated-cable-row" data-still></div><div class="grow"><h3>Band Row</h3><span class="xs muted">12–15 rep · level karet</span></div></div>
       <table class="set-table"><thead><tr><th>SET</th><th>SEBELUMNYA</th><th>LEVEL</th><th>REP</th><th>✓</th></tr></thead><tbody>
         <tr><td><button class="set-no">1</button></td><td class="small muted">Hijau × 15</td><td><select class="cell" aria-label="Level karet"><option>Kuning</option><option>Merah muda</option><option selected>Hijau</option><option>Biru</option><option>Hitam</option></select></td><td><input class="cell" inputmode="numeric" placeholder="15"></td><td><button class="check" data-rest aria-label="Set selesai"><i data-i="check"></i></button></td></tr>
       </tbody></table>

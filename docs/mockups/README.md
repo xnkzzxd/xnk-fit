@@ -52,16 +52,16 @@ Tick each row, or write the change wanted in "Catatan". A row is approved when i
 ## Questions for the owner (decide in D-06)
 
 1. **English exercise cues** (PRD §14 item 3): shown in Latihan → Detail gerakan and the Dipandu hint. Keep English, or Indonesian cues with English names?
-2. **Figure drawing** (Design §16 item 3): the figure and muscle map here are placeholders. Static SVG per pose (default) is assumed.
+2. **Figure drawing** (Design §16 item 3): the mockups reuse the XNK app's figures: the muscle map (react-muscle-highlighter shapes, MIT) and the animated exercise rig (XNK's own work, 21 patterns). Reuse both in XNK Fit, and draw new rigs only for lifts XNK lacks?
 3. **Logger mode**: chosen at the first workout (L-6). Is Dipandu the right preselected choice?
 4. **Screening questions**: the wording in the mockup is an example; the final list and its source go into Rules (S-07).
 
 ## Not in these mockups
 
-- Muscle maps use the XNK app's own figure (`figure-data.js`, shapes from react-muscle-highlighter, MIT, credits in `FIGURE-CREDITS.md`). The animated exercise figure is still a stick placeholder (C-08). Food numbers (C-03…C-07) are examples.
+- Muscle maps use the XNK app's own figure (`figure-data.js`, shapes from react-muscle-highlighter, MIT, credits in `FIGURE-CREDITS.md`). Exercise animations use the XNK rig (`rig-data.js`, 21 patterns; lifts without one, such as Band Row, borrow the closest pattern in the mockup). Food numbers (C-03…C-07) are examples.
 - Android system dialogs (permissions, share sheet, file picker) are shown as a short toast.
 - Notifications are shown only as sample text (Pengaturan → Pengingat, rest timer toast).
 
 ## Files
 
-`mock.css` (tokens and components), `figure-data.js` + `FIGURE-CREDITS.md` (muscle map shapes), `mock.js` (shell: tabs / rail, ＋ sheet, sheets, states, steppers, rest timer, icons, muscle map placeholder), one HTML file per screen, `index.html` (review page). Mockup code is thrown away when B-01 starts the Compose app.
+`mock.css` (tokens and components), `figure-data.js` + `FIGURE-CREDITS.md` (muscle map shapes), `rig-data.js` (exercise animations), `mock.js` (shell: tabs / rail, ＋ sheet, sheets, states, steppers, rest timer, icons, muscle map and rig renderers; `?open=<sheet id>` opens a sheet), one HTML file per screen, `index.html` (review page). Mockup code is thrown away when B-01 starts the Compose app.

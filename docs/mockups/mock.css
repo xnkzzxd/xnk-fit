@@ -252,11 +252,21 @@ body.sheet-on .scrim { display: block; }
 .legend { display: flex; gap: 14px; justify-content: center; font-size: .8125rem; font-weight: 600; }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
 .legend .l1 { background: var(--accent); } .legend .l2 { background: color-mix(in srgb, var(--accent) 55%, var(--surface)); }
-.fig { background: var(--surface-2); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; }
-.fig svg { width: 60%; height: 80%; stroke: var(--fg); stroke-width: 6; stroke-linecap: round; fill: none; }
-.fig .acc { stroke: var(--accent); }
-@media (prefers-reduced-motion: no-preference) { .fig .arm { animation: lift 2.4s ease-in-out infinite; transform-origin: 100px 70px; } }
-@keyframes lift { 50% { transform: rotate(-35deg); } }
+.fig { background: var(--surface-2); border-radius: var(--r-md); display: grid; place-items: center; border: 1px solid var(--line); }
+.fig .rig { width: min(100%, 280px); height: auto; aspect-ratio: 1; }
+.rig-th { overflow: hidden; background: var(--surface-3); }
+.rig-th .rig { display: block; width: 100%; height: 100%; transform: scale(1.35); transform-origin: 55% 60%; }
+.ex-th { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+.rig g { transform-box: view-box; transform-origin: 0 0; }
+.rig .mmf-body { stroke-width: 1.4; fill: color-mix(in srgb, var(--fg) 7%, var(--surface)); stroke: color-mix(in srgb, var(--fg) 38%, transparent); }
+.rig .mmf.half { fill: color-mix(in srgb, var(--accent) 50%, transparent); }
+.rig .mmf.on { fill: var(--accent); }
+.rig .rg-eq { fill: color-mix(in srgb, var(--fg) 20%, transparent); }
+.rig .rg-eq.soft { fill: none; }
+.rig .rg-eq-l { fill: none; stroke: color-mix(in srgb, var(--fg) 28%, transparent); stroke-width: 2.5; }
+.rig .rg-cab { stroke: color-mix(in srgb, var(--fg) 40%, transparent); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.rig .rg-cab.thick { stroke-width: 5; }
+@media (prefers-reduced-motion: reduce) { .rig.anim g { animation: none !important; } }
 
 /* Logger */
 .set-table { width: 100%; border-collapse: collapse; }
