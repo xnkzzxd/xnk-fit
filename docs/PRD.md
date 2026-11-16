@@ -6,7 +6,7 @@
 | Owner | xnkzzxd |
 | Status | Draft, 2026-11-16 (task D-01) |
 | Source | Owner plan "XNK Fit" (24 rounds of owner answers, 2026-11-16) |
-| Related | Design.md (D-02) · Rules.md (D-03) · Content.md (D-04) · TODO.md · mockups (D-05). None of these exist yet. |
+| Related | Design.md (D-02) · Rules.md (D-03) · Content.md (D-04) · TODO.md · mockups (D-05, `docs/mockups/`). |
 
 Requirement IDs (G-, U-, O-, …) are stable. Later docs and tasks cite them; never renumber, only add.
 

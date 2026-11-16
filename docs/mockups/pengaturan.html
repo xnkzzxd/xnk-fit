@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pengaturan · XNK Fit mockup</title>
+<link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
+<style>
+  .set-layout { display: block; }
+  .set-nav { display: none; }
+  @media (min-width: 600px) {
+    .set-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 20px; align-items: start; }
+    .set-nav { display: block; position: sticky; top: 16px; }
+    .set-home .list { display: none; }
+  }
+  .swatch { width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--surface); box-shadow: 0 0 0 1.5px var(--line); cursor: pointer; }
+  .swatch.on { box-shadow: 0 0 0 3px var(--fg); }
+</style>
+</head>
+<body data-tab="saya">
+<div class="app">
+  <div class="topbar"><button class="icon-btn" data-back="saya.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Pengaturan</b></div>
+  <div class="mock-states"><b>Bagian:</b><button data-sw="p:home" class="on">Daftar</button><button data-sw="p:profil">Profil</button><button data-sw="p:latihan">Latihan</button><button data-sw="p:makan">Makan</button><button data-sw="p:ingat">Pengingat</button><button data-sw="p:tampil">Tampilan</button><button data-sw="p:data">Data</button></div>
+  <main class="page" style="margin-top:12px">
+    <div class="set-layout">
+      <!-- Order fixed by P-7 -->
+      <nav class="set-nav list" aria-label="Bagian pengaturan">
+        <button class="li" data-sw="p:profil"><span class="ic"><i data-i="user"></i></span>Profil</button>
+        <button class="li" data-sw="p:latihan"><span class="ic"><i data-i="dumbbell"></i></span>Latihan</button>
+        <button class="li" data-sw="p:makan"><span class="ic"><i data-i="food"></i></span>Makan</button>
+        <button class="li" data-sw="p:ingat"><span class="ic"><i data-i="bell"></i></span>Pengingat</button>
+        <button class="li" data-sw="p:tampil"><span class="ic"><i data-i="sun"></i></span>Tampilan</button>
+        <button class="li" data-sw="p:data"><span class="ic"><i data-i="cloud"></i></span>Data</button>
+        <a class="li" href="bantuan.html"><span class="ic"><i data-i="help"></i></span>Bantuan</a>
+      </nav>
+      <div>
+        <section data-st="p:home" class="set-home">
+          <div class="list">
+            <button class="li" data-sw="p:profil"><span class="ic"><i data-i="user"></i></span><span class="grow">Profil<br><span class="xs muted">Data tubuh, tujuan, formulir kesehatan</span></span><i data-i="chev"></i></button>
+            <button class="li" data-sw="p:latihan"><span class="ic"><i data-i="dumbbell"></i></span><span class="grow">Latihan<br><span class="xs muted">Alat, program otomatis, mode pencatat</span></span><i data-i="chev"></i></button>
+            <button class="li" data-sw="p:makan"><span class="ic"><i data-i="food"></i></span><span class="grow">Makan<br><span class="xs muted">Alergi, anggaran, mode tanpa angka</span></span><i data-i="chev"></i></button>
+            <button class="li" data-sw="p:ingat"><span class="ic"><i data-i="bell"></i></span><span class="grow">Pengingat<br><span class="xs muted">Latihan, makan, timbang</span></span><i data-i="chev"></i></button>
+            <button class="li" data-sw="p:tampil"><span class="ic"><i data-i="sun"></i></span><span class="grow">Tampilan<br><span class="xs muted">Tema, aksen, teks besar</span></span><i data-i="chev"></i></button>
+            <button class="li" data-sw="p:data"><span class="ic"><i data-i="cloud"></i></span><span class="grow">Data<br><span class="xs muted">Cadangan, ekspor, hapus</span></span><i data-i="chev"></i></button>
+            <a class="li" href="bantuan.html"><span class="ic"><i data-i="help"></i></span><span class="grow">Bantuan<br><span class="xs muted">Cara hitung, panduan, istilah, privasi</span></span><i data-i="chev"></i></a>
+          </div>
+          <p class="xs muted" style="margin:12px 4px">XNK Fit 1.0 · Data di HP Anda. Cadangan di Google Drive Anda.</p>
+        </section>
+
+        <section data-st="p:profil" hidden class="stack">
+          <h2>Profil</h2>
+          <div class="list">
+            <div class="li"><span class="grow">Nama panggilan</span><span class="muted">Dita</span></div>
+            <div class="li"><span class="grow">Tujuan</span><span class="muted">Menjaga berat</span><i data-i="chev"></i></div>
+            <div class="li"><span class="grow">Jenis kelamin · tahun lahir</span><span class="muted">P · 1998</span></div>
+            <div class="li"><span class="grow">Tinggi</span><span class="muted">158 cm</span></div>
+            <div class="li"><span class="grow">Aktivitas mingguan</span><span class="muted">Ringan (perkiraan)</span></div>
+            <a class="li" href="screening.html"><span class="grow">Formulir kesehatan<br><span class="xs muted">Diisi 12 Okt</span></span><i data-i="chev"></i></a>
+          </div>
+        </section>
+
+        <section data-st="p:latihan" hidden class="stack">
+          <h2>Latihan</h2>
+          <div class="list">
+            <button class="li" data-go="latihan.html?state=l:setup"><span class="grow">Tempat dan alat<br><span class="xs muted">Gym lengkap</span></span><i data-i="chev"></i></button>
+            <label class="li"><span class="grow">Program otomatis<br><span class="xs muted">Naik otomatis dan tinjauan tiap 4 minggu</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
+            <div class="li"><span class="grow">Mode pencatat</span><div class="seg" data-radio style="width:200px"><button class="on">Dipandu</button><button>Bebas</button></div></div>
+            <div class="li"><span class="grow">Istirahat bawaan</span><span class="muted">Sesuai gerakan</span></div>
+            <label class="li"><span class="grow">Langkah dari Health Connect</span><span class="switch"><input type="checkbox" checked><i></i></span></label>
+          </div>
+        </section>
+
+        <section data-st="p:makan" hidden class="stack">
+          <h2>Makan</h2>
+          <div class="list">
+            <div class="li"><span class="grow">Alergi<br><div class="chips" data-multi style="margin-top:6px"><button class="chip">Telur</button><button class="chip on">Seafood</button><button class="chip">Kacang</button><button class="chip">Susu</button><button class="chip">Laktosa</button></div></span></div>
+            <div class="li"><span class="grow">Anggaran</span><div class="seg" data-radio style="width:240px"><button>Hemat</button><button class="on">Standar</button><button>Bebas</button></div></div>
+            <label class="li"><span class="grow">Sering beli makan di luar</span><span class="switch"><input type="checkbox" checked><i></i></span></label>
+            <label class="li"><span class="grow">Mode tanpa angka<br><span class="xs muted">Sembunyikan kalori; hanya rencana dan centang</span></span><span class="switch"><input type="checkbox"><i></i></span></label>
+            <a class="li" href="bantuan.html?state=b:target"><span class="grow">Target kalori<br><span class="xs muted">1.750 kkal · cara hitung</span></span><i data-i="chev"></i></a>
+          </div>
+        </section>
+
+        <section data-st="p:ingat" hidden class="stack">
+          <h2>Pengingat</h2>
+          <p class="small muted">Paling banyak 3 sehari. Tidak dikirim bila sudah dikerjakan.</p>
+          <div class="list">
+            <label class="li"><span class="grow">Latihan<br><span class="xs muted">Hari latihan · 17.00</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
+            <label class="li"><span class="grow">Catat makan<br><span class="xs muted">07.00 · 12.00 · 18.00</span></span><span class="switch"><input type="checkbox" checked><i></i></span></label>
+            <label class="li"><span class="grow">Timbang<br><span class="xs muted">Minggu · 07.00</span></span><span class="switch"><input type="checkbox"><i></i></span></label>
+          </div>
+          <div class="card"><span class="label">Contoh notifikasi</span><p style="margin-top:6px">Latihan hari ini: Full Body A, sekitar 45 menit.</p></div>
+        </section>
+
+        <section data-st="p:tampil" hidden class="stack">
+          <h2>Tampilan</h2>
+          <div class="card stack">
+            <div><div class="field"><span>Tema</span></div><div class="seg" data-radio><button>Terang</button><button>Gelap</button><button class="on">Ikuti sistem</button></div></div>
+            <div><div class="field"><span>Warna aksen</span></div>
+              <div class="chips" data-radio>
+                <button class="swatch on" style="background:#0b0b0b" aria-label="Hitam" onclick="go('pengaturan.html?state=p:tampil')"></button>
+                <button class="swatch" style="background:#1d4ed8" aria-label="Biru" onclick="location.search='state=p:tampil&accent=biru&theme='+document.documentElement.dataset.theme"></button>
+                <button class="swatch" style="background:#15803d" aria-label="Hijau" onclick="location.search='state=p:tampil&accent=hijau&theme='+document.documentElement.dataset.theme"></button>
+                <button class="swatch" style="background:#0f766e" aria-label="Toska" onclick="location.search='state=p:tampil&accent=toska&theme='+document.documentElement.dataset.theme"></button>
+                <button class="swatch" style="background:#6d28d9" aria-label="Ungu" onclick="location.search='state=p:tampil&accent=ungu&theme='+document.documentElement.dataset.theme"></button>
+                <button class="swatch" style="background:#be185d" aria-label="Pink" onclick="location.search='state=p:tampil&accent=pink&theme='+document.documentElement.dataset.theme"></button>
+                <button class="swatch" style="background:#c2410c" aria-label="Oranye" onclick="location.search='state=p:tampil&accent=oranye&theme='+document.documentElement.dataset.theme"></button>
+              </div><p class="xs muted" style="margin-top:6px">Contoh warna di sini satu-satunya warna tetap di mockup; di aplikasi menjadi token.</p></div>
+            <label class="spread"><span>Teks besar</span><span class="switch"><input type="checkbox" onchange="document.documentElement.classList.toggle('big', this.checked)"><i></i></span></label>
+          </div>
+        </section>
+
+        <section data-st="p:data" hidden class="stack">
+          <h2>Data</h2>
+          <div class="card stack">
+            <div class="row-flex"><i data-i="cloud"></i><div class="grow"><b>Cadangan Google Drive</b><br><span class="small muted">dita•••@gmail.com · folder aplikasi tersembunyi</span></div></div>
+            <div class="kv"><div><b>Kemarin 20.14</b><span>Cadangan terakhir</span></div><div><b>3</b><span>Disimpan</span></div></div>
+            <p class="xs muted">Otomatis saat aplikasi dibuka, lewat Wi-Fi, bila cadangan terakhir lebih dari sehari.</p>
+            <button class="btn pri block" data-toast="Cadangan dibuat">Cadangkan sekarang</button>
+          </div>
+          <div class="list">
+            <label class="li"><span class="grow">Ikutkan foto kemajuan<br><span class="xs muted">Bawaan mati; foto tetap di HP</span></span><span class="switch"><input type="checkbox"><i></i></span></label>
+            <button class="li" data-open="sheet-restore"><span class="ic"><i data-i="download"></i></span><span class="grow">Pulihkan dari Drive</span><i data-i="chev"></i></button>
+            <button class="li" data-open="sheet-other"><span class="ic"><i data-i="phone"></i></span><span class="grow">Contoh: cadangan dari HP lain</span><i data-i="chev"></i></button>
+            <button class="li" data-open="sheet-newer"><span class="ic"><i data-i="info"></i></span><span class="grow">Contoh: cadangan versi lebih baru</span><i data-i="chev"></i></button>
+            <button class="li" data-toast="(Pilih tempat simpan zip)"><span class="ic"><i data-i="share"></i></span><span class="grow">Ekspor (zip + CSV)</span><i data-i="chev"></i></button>
+            <button class="li" data-toast="(Pilih file zip)"><span class="ic"><i data-i="download"></i></span><span class="grow">Impor dari file</span><i data-i="chev"></i></button>
+            <button class="li" data-open="sheet-delete"><span class="ic"><i data-i="trash"></i></span><span class="grow"><b>Hapus semua data</b></span><i data-i="chev"></i></button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="sheet" id="sheet-restore" role="dialog" aria-label="Pulihkan"><div class="grab"></div>
+  <div class="sheet-head"><h2>Pulihkan cadangan?</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <div class="stack">
+    <div class="seg" data-radio><button class="on">Kemarin 20.14</button><button>14 Nov</button><button>12 Nov</button></div>
+    <div class="kv"><div><b>17</b><span>Latihan</span></div><div><b>412</b><span>Catatan makan</span></div><div><b>9</b><span>Ukuran</span></div></div>
+    <div class="note"><i data-i="info"></i><span><b>Semua data di HP ini akan diganti</b> dengan isi cadangan. Tidak digabung. Ini tidak bisa dibatalkan.</span></div>
+    <label class="field"><span>Ketik PULIHKAN untuk lanjut</span><input class="input" placeholder="PULIHKAN" autocapitalize="characters"></label>
+    <div class="btn-row"><button class="btn lg" data-close>Batal</button><button class="btn pri lg" data-close data-toast="Dipulihkan">Pulihkan</button></div>
+  </div>
+</div>
+<div class="sheet" id="sheet-other" role="dialog" aria-label="Cadangan dari HP lain"><div class="grab"></div>
+  <div class="sheet-head"><h2>Cadangan dari HP lain</h2></div>
+  <p>Cadangan ini dibuat di HP lain (Redmi 9A, 10 Nov). Ganti semua data di HP ini dengan cadangan itu?</p>
+  <div class="btn-row" style="margin-top:16px"><button class="btn lg" data-close>Batal</button><button class="btn pri lg" data-open="sheet-restore">Lanjut</button></div>
+</div>
+<div class="sheet" id="sheet-newer" role="dialog" aria-label="Versi lebih baru"><div class="grab"></div>
+  <div class="sheet-head"><h2>Tidak bisa dipulihkan</h2></div>
+  <div class="note err"><i data-i="info"></i><span>Cadangan ini dari versi aplikasi yang lebih baru. Perbarui aplikasi dulu, lalu coba lagi.</span></div>
+  <button class="btn block lg" style="margin-top:16px" data-close>Tutup</button>
+</div>
+<div class="sheet" id="sheet-delete" role="dialog" aria-label="Hapus semua data"><div class="grab"></div>
+  <div class="sheet-head"><h2>Hapus semua data?</h2></div>
+  <div class="stack">
+    <p>Semua latihan, catatan makan, ukuran, foto dan pengaturan di HP ini dihapus, lalu aplikasi mulai dari awal. Cadangan di Google Drive tidak ikut terhapus.</p>
+    <label class="field"><span>Ketik HAPUS untuk lanjut</span><input class="input" placeholder="HAPUS" autocapitalize="characters"></label>
+    <div class="btn-row"><button class="btn lg" data-close>Batal</button><button class="btn pri lg" data-go="onboarding.html">Hapus semua</button></div>
+  </div>
+</div>
+</body>
+</html>

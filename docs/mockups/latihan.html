@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latihan · XNK Fit mockup</title>
+<link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
+</head>
+<body data-tab="latihan">
+<div class="app">
+  <header class="head">
+    <div class="head-top"><span class="grow">Latihan</span><button class="icon-btn" data-open="sheet-equip" aria-label="Alat"><i data-i="dumbbell"></i>Gym</button></div>
+    <h1>Program otomatis</h1><p class="sub">Full body 3× seminggu · gym lengkap · minggu 3</p>
+  </header>
+  <div class="mock-states"><b>Keadaan:</b>
+    <button data-sw="l:prog" class="on">Program</button><button data-sw="l:setup">Profil latihan pertama (O-4)</button>
+    <button data-sw="l:home">Rumah tanpa alat (L-3)</button><button data-open="sheet-review">Usulan tinjauan (L-4)</button><button data-open="sheet-ex">Detail gerakan</button>
+  </div>
+
+  <main class="page stack" style="margin-top:12px">
+    <!-- Training profile, asked when Latihan is first opened (O-4) -->
+    <section class="stack" data-st="l:setup" hidden>
+      <div class="card"><span class="label">Profil latihan · 1 dari 3</span><h2 style="margin-top:4px">Di mana latihan?</h2>
+        <div data-radio style="margin-top:12px">
+          <button class="opt on"><span class="ic"><i data-i="dumbbell"></i></span><span class="grow"><b>Gym lengkap</b><br><span class="small muted">Mesin, barbel, kabel, dumbel</span></span></button>
+          <button class="opt"><span class="ic"><i data-i="home"></i></span><span class="grow"><b>Rumah tanpa alat</b><br><span class="small muted">Lantai, dinding, kursi, tangga</span></span></button>
+          <button class="opt"><span class="ic"><i data-i="dumbbell"></i></span><span class="grow"><b>Rumah dengan dumbel / karet</b><br><span class="small muted">Palang pull-up opsional</span></span></button>
+          <button class="opt" data-open="sheet-equip"><span class="ic"><i data-i="list"></i></span><span class="grow"><b>Pilih alat sendiri</b><br><span class="small muted">Centang alat yang ada</span></span></button>
+        </div></div>
+      <div class="cols">
+        <div class="card"><span class="label">2 dari 3</span><h3 style="margin-top:4px">Berapa hari seminggu?</h3><div class="chips" data-radio style="margin-top:10px"><button class="chip">2</button><button class="chip on">3</button><button class="chip">4</button></div>
+          <h3 style="margin-top:14px">Durasi</h3><div class="chips" data-radio style="margin-top:10px"><button class="chip">30 mnt</button><button class="chip on">45 mnt</button><button class="chip">60 mnt</button></div></div>
+        <div class="card"><span class="label">3 dari 3</span><h3 style="margin-top:4px">Pengalaman latihan beban</h3><div data-radio style="margin-top:10px">
+          <button class="opt on"><span class="grow"><b>Baru mulai</b><br><span class="small muted">Belum pernah atau sudah lama berhenti</span></span></button>
+          <button class="opt"><span class="grow"><b>Beberapa bulan</b></span></button><button class="opt"><span class="grow"><b>Lebih dari setahun</b></span></button></div></div>
+      </div>
+      <button class="btn pri block lg" data-sw="l:prog" data-toast="Program dibuat">Buat program</button>
+    </section>
+
+    <section class="stack" data-st="l:prog l:home">
+      <!-- Review proposal banner (L-4) -->
+      <button class="card tint" style="text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer" data-open="sheet-review" data-st="l:prog">
+        <div class="spread"><div><span class="label">Tinjauan 4 minggu</span><h3 style="margin-top:2px">2 usulan perubahan</h3><p class="small">Goblet Squat sudah ringan. Ganti ke Back Squat?</p></div><i data-i="chev"></i></div>
+      </button>
+
+      <div class="cols">
+        <div class="stack">
+          <div class="section-title" style="margin-top:4px"><h2>Program</h2><span class="pill">Otomatis</span></div>
+          <div class="list" data-st="l:prog">
+            <a class="li on" href="logger.html"><span class="ic"><b>B</b></span><span class="grow"><b>Full Body B</b> <span class="pill acc">Berikutnya</span><br><span class="small muted">5 gerakan · ±45 mnt</span></span><i data-i="play"></i></a>
+            <button class="li" data-open="sheet-day"><span class="ic"><b>C</b></span><span class="grow"><b>Full Body C</b><br><span class="small muted">5 gerakan · ±45 mnt</span></span><i data-i="chev"></i></button>
+            <button class="li" data-open="sheet-day"><span class="ic"><b>A</b></span><span class="grow"><b>Full Body A</b><br><span class="small muted">Selesai Senin · 2 rekor</span></span><i data-i="chev"></i></button>
+          </div>
+          <div class="list" data-st="l:home" hidden>
+            <a class="li on" href="logger.html"><span class="ic"><b>A</b></span><span class="grow"><b>Seluruh Tubuh A</b> <span class="pill acc">Berikutnya</span><br><span class="small muted">Bodyweight Squat · Push-Up · Glute Bridge · Dead Bug</span></span><i data-i="play"></i></a>
+          </div>
+          <div class="note" data-st="l:home" hidden><i data-i="info"></i><span><b>Butuh palang atau karet untuk gerakan tarik.</b> Gerakan tarik belum ada di program. Tambahkan alat di Pengaturan → Latihan bila ada.</span></div>
+          <p class="xs muted">Program naik otomatis. Rutinitas yang diubah menjadi milik Anda dan tidak ditimpa.</p>
+          <a class="btn sm" href="pengaturan.html?state=p:latihan">Matikan program otomatis</a>
+
+          <div class="section-title"><h2>Rutinitas saya</h2><button class="link small" data-toast="Rutinitas baru">Buat</button></div>
+          <div class="list">
+            <a class="li" href="logger.html"><span class="ic"><i data-i="dumbbell"></i></span><span class="grow"><b>Lengan Sabtu</b><br><span class="small muted">4 gerakan · milik Anda</span></span><i data-i="chev"></i></a>
+            <a class="li" href="logger.html?state=lg:bebas"><span class="ic"><i data-i="plus"></i></span><span class="grow"><b>Latihan kosong</b><br><span class="small muted">Tambah gerakan sambil jalan</span></span><i data-i="chev"></i></a>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="section-title" style="margin-top:4px"><h2>Otot minggu ini</h2><span class="small muted">Set kerja</span></div>
+          <div class="card"><div data-mm="QUADS:1,GLUTES:1,CHEST:1,LATS:1,HAMS:2,FRONT_DELT:2,TRICEPS:2,BICEPS:2,ABS:2"></div>
+            <div class="legend" style="margin-top:6px"><span><i class="l1"></i>Banyak (≥ 6 set)</span><span><i class="l2"></i>Sedikit</span></div>
+            <p class="small" style="margin-top:8px">Paha depan 9 set · Dada 6 · Punggung lebar 6 · Paha belakang 3 · Bahu 3</p></div>
+
+          <div class="section-title"><h2>Aktivitas</h2><button class="link small" data-open="sheet-aktivitas">Catat</button></div>
+          <div class="card"><div class="spread"><div><span class="big-num">95</span> <span class="muted">/ 150 menit</span></div><span class="pill">Minggu ini</span></div>
+            <div class="bar" style="margin-top:10px"><i style="width:63%"></i></div>
+            <div class="list" style="margin-top:12px"><div class="li"><span class="ic"><i data-i="run"></i></span><span class="grow">Jalan cepat · 40 mnt · sedang<br><span class="xs muted">Rabu · ±160 kkal (tidak ditambahkan ke target)</span></span></div>
+              <div class="li"><span class="ic"><i data-i="steps"></i></span><span class="grow">6.420 langkah hari ini<br><span class="xs muted">Rata-rata 5.900 · Health Connect · tanpa poin</span></span></div></div></div>
+        </div>
+      </div>
+
+      <div class="section-title"><h2>Jelajahi</h2></div>
+      <div class="shelf">
+        <button class="card" style="text-align:left;font:inherit;color:inherit" data-open="sheet-day"><span class="label">3× seminggu</span><h3 style="margin-top:4px">Full Body</h3><p class="small muted">Pemula · gym</p></button>
+        <button class="card" style="text-align:left;font:inherit;color:inherit" data-open="sheet-day"><span class="label">4× seminggu</span><h3 style="margin-top:4px">Upper / Lower</h3><p class="small muted">Gym</p></button>
+        <button class="card" style="text-align:left;font:inherit;color:inherit" data-open="sheet-day"><span class="label">3× seminggu</span><h3 style="margin-top:4px">Rumah tanpa alat</h3><p class="small muted">Bodyweight</p></button>
+        <button class="card" style="text-align:left;font:inherit;color:inherit" data-open="sheet-day"><span class="label">3× seminggu</span><h3 style="margin-top:4px">Dumbel saja</h3><p class="small muted">Rumah</p></button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="sheet" id="sheet-day" role="dialog" aria-label="Full Body C"><div class="grab"></div>
+  <div class="sheet-head"><h2>Full Body C</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <div class="list">
+    <button class="li" data-open="sheet-ex"><span class="grow"><b>Leg Press</b><br><span class="small muted">3 × 8–12 · istirahat 2 mnt</span></span><i data-i="info"></i></button>
+    <button class="li" data-open="sheet-ex"><span class="grow"><b>Incline Dumbbell Press</b><br><span class="small muted">3 × 8–12</span></span><i data-i="info"></i></button>
+    <button class="li" data-open="sheet-ex"><span class="grow"><b>Lat Pulldown</b><br><span class="small muted">3 × 8–12</span></span><i data-i="info"></i></button>
+    <button class="li" data-open="sheet-ex"><span class="grow"><b>Hip Thrust</b><br><span class="small muted">3 × 8–12</span></span><i data-i="info"></i></button>
+    <button class="li" data-open="sheet-ex"><span class="grow"><b>Dead Bug</b><br><span class="small muted">2 × 10–15</span></span><i data-i="info"></i></button>
+  </div>
+  <div class="btn-row" style="margin-top:14px"><a class="btn pri lg" href="logger.html">Mulai</a><button class="btn lg" data-toast="Disalin ke Rutinitas saya">Ubah (jadi milik saya)</button></div>
+</div>
+
+<div class="sheet" id="sheet-ex" role="dialog" aria-label="Goblet Squat"><div class="grab"></div>
+  <div class="sheet-head"><h2>Goblet Squat</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <div class="stack">
+    <div data-fig></div>
+    <p class="xs muted">Figur dan peta otot di mockup ini gambar sementara. Gambar asli dibuat di C-08.</p>
+    <div class="cols">
+      <div><div data-mm="QUADS:1,GLUTES:1,HAMS:2,ABS:2"></div><div class="legend"><span><i class="l1"></i>Utama</span><span><i class="l2"></i>Pembantu</span></div></div>
+      <div class="stack-s"><span class="label">Cues</span><p>Hold the dumbbell at your chest.</p><p>Sit down between your heels, chest up.</p><p>Push the floor away to stand.</p></div>
+    </div>
+    <div class="note"><i data-i="help"></i><span><b>Kenapa gerakan ini:</b> jongkok dengan beban di depan membantu badan tetap tegak, cocok untuk belajar pola squat.</span></div>
+    <div class="spread small"><span class="muted">Rekor</span><b>16 kg × 12</b></div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet-review" role="dialog" aria-label="Tinjauan program"><div class="grab"></div>
+  <div class="sheet-head"><h2>Tinjauan 4 minggu</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <p class="small muted">Setiap usulan bisa diterima atau ditolak sendiri-sendiri.</p>
+  <div class="stack" style="margin-top:12px">
+    <div class="card"><div class="row-flex"><span class="grow"><b>Goblet Squat → Back Squat</b><br><span class="small muted">Semua set mencapai 12 repetisi dengan rapi tiga kali berturut-turut.</span></span></div>
+      <div class="btn-row" style="margin-top:10px"><button class="btn pri sm" data-toast="Diterima">Terima</button><button class="btn sm" data-toast="Ditolak">Tolak</button></div></div>
+    <div class="card"><div class="row-flex"><span class="grow"><b>Plank: 2 → 3 set</b><br><span class="small muted">Waktu tahan sudah di batas atas rentang.</span></span></div>
+      <div class="btn-row" style="margin-top:10px"><button class="btn pri sm" data-toast="Diterima">Terima</button><button class="btn sm" data-toast="Ditolak">Tolak</button></div></div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet-equip" role="dialog" aria-label="Alat"><div class="grab"></div>
+  <div class="sheet-head"><h2>Alat yang ada</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <div class="seg" data-radio><button class="on">Gym</button><button>Tanpa alat</button><button>Dumbel / karet</button><button>Pilih sendiri</button></div>
+  <div class="chips" data-multi style="margin-top:14px">
+    <button class="chip on">Dumbel</button><button class="chip on">Barbel</button><button class="chip on">Bangku</button><button class="chip on">Kabel</button><button class="chip on">Mesin kaki</button>
+    <button class="chip">Karet (band)</button><button class="chip">Palang pull-up</button><button class="chip">Kettlebell</button><button class="chip on">Treadmill</button><button class="chip">Sepeda statis</button>
+  </div>
+  <button class="btn pri block lg" style="margin-top:16px" data-close data-toast="Program disesuaikan">Simpan</button>
+</div>
+</body>
+</html>

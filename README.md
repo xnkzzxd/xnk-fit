@@ -8,4 +8,5 @@ A free, offline-first workout and meal app for people without a coach. Android f
 - [docs/Design.md](docs/Design.md): how it is built (D-02)
 - [docs/Rules.md](docs/Rules.md): every number and its source (D-03)
 - [docs/Content.md](docs/Content.md): exercises, food, badges, content updates (D-04)
+- [docs/mockups/](docs/mockups/README.md): clickable mockups, open `docs/mockups/index.html` (D-05)
 - [docs/TODO.md](docs/TODO.md): task list with the recommended model per task

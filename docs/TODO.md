@@ -18,7 +18,7 @@ Status keys: `[ ]` open · `[~]` in progress · `[x]` done · `[-]` deferred or 
 | D-02 | Design (`docs/Design.md`) | D-01 | Opus 5.5 | [x] (first draft, owner review pending) |
 | D-03 | Rules (`docs/Rules.md`) with every number sourced or ⚠ | D-01 | Opus 5.5 | [x] (first draft; sources ⚠ to close, see S-07) |
 | D-04 | Content (`docs/Content.md`): exercise split, patterns, food sources, badges | D-01, D-03 | Sonnet 5.5 | [x] (first draft; counts are targets) |
-| D-05 | Clickable mockups for every screen in PRD §5/Design §5, phone and tablet, light and dark, sent to the owner for approval | D-02, D-04 | Opus 5.5 | [ ] |
+| D-05 | Clickable mockups for every screen in PRD §5/Design §5, phone and tablet, light and dark, sent to the owner for approval | D-02, D-04 | Opus 5.5 | [x] (`docs/mockups/`, 15 screens; screen list for D-06 in `docs/mockups/README.md`) |
 | D-06 | Owner approval of D-05 (decision, not code) | D-05 | — (owner) | [ ] |
 
 ## Phase S — Setup and checks (outside the code)
@@ -97,3 +97,4 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-16 | D-05 mockups in `docs/mockups/` (static HTML, phone and tablet, light and dark); D-06 approval list in its README. Local commit only; push still blocked. |

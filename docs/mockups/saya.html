@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saya · XNK Fit mockup</title>
+<link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
+<style>
+  .athlete { position: relative; overflow: hidden; }
+  .athlete .big { font-size: 2.6rem; font-weight: 900; line-height: .95; letter-spacing: -.02em; }
+  .chart { width: 100%; height: 140px; }
+  .chart .ln { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .chart .avg { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .chart .pt { fill: var(--accent); }
+  .chart .grid { stroke: var(--line); }
+  .moment { display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .moment:first-child { border-top: 0; }
+  .moment .ic { width: 40px; height: 40px; border-radius: 12px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; flex: none; }
+</style>
+</head>
+<body data-tab="saya">
+<div class="app">
+  <header class="head">
+    <div class="head-top"><span class="grow">Saya</span><a class="icon-btn" href="kartu.html" aria-label="Kartu saya"><i data-i="share"></i></a><a class="icon-btn" href="pengaturan.html" aria-label="Pengaturan"><i data-i="gear"></i></a></div>
+    <h1>Dita</h1><p class="sub">Mulai 12 Okt · level 4</p>
+  </header>
+  <div class="mock-states"><b>Keadaan:</b><button data-sw="s:show" class="on">Berat tampil</button><button data-sw="s:hide">Berat disembunyikan</button></div>
+  <main class="page stack" style="margin-top:12px">
+    <div class="cols">
+      <div class="stack">
+        <!-- Athlete card -->
+        <section class="card ink athlete">
+          <span class="label">Kartu atlet</span>
+          <div class="big" style="margin-top:8px">DITA</div>
+          <p class="muted small">"Pelan tapi jalan."</p>
+          <div class="kv" style="margin-top:14px"><div><b>4</b><span>Level</span></div><div><b id="streak">5 mgg</b><span>Streak</span></div><div><b>17</b><span>Latihan</span></div><div><b>6</b><span>Rekor</span></div></div>
+          <div class="bar" style="margin-top:12px"><i style="width:28%"></i></div>
+          <p class="xs muted" style="margin-top:6px">520 poin · 180 lagi ke level 5 · level tidak pernah turun</p>
+        </section>
+
+        <section class="card">
+          <div class="card-title"><h3>Berat</h3><button class="icon-btn" data-sw="s:hide" data-st="s:show" aria-label="Sembunyikan berat"><i data-i="eyeoff"></i></button><button class="icon-btn" data-sw="s:show" data-st="s:hide" hidden aria-label="Tampilkan berat"><i data-i="eye"></i></button></div>
+          <div data-st="s:show">
+            <div class="spread"><div><span class="big-num">68,4</span> <span class="muted">kg</span></div><span class="small muted">Tren 4 minggu: turun 1,6 kg</span></div>
+            <svg class="chart" viewBox="0 0 300 140" aria-label="Grafik berat 8 minggu"><line class="grid" x1="0" y1="35" x2="300" y2="35"/><line class="grid" x1="0" y1="70" x2="300" y2="70"/><line class="grid" x1="0" y1="105" x2="300" y2="105"/>
+              <polyline class="avg" points="10,40 300,95"/><polyline class="ln" points="10,38 50,30 90,52 130,58 170,50 210,72 250,80 290,90"/><circle class="pt" cx="290" cy="90" r="5"/></svg>
+            <p class="xs muted">Garis putus-putus = tren. Naik turun harian itu biasa.</p>
+          </div>
+          <div data-st="s:hide" hidden class="note"><i data-i="eyeoff"></i><span>Angka berat disembunyikan. Tetap tercatat, hanya tidak ditampilkan.</span></div>
+          <div class="btn-row" style="margin-top:10px"><button class="btn" data-open="sheet-berat"><i data-i="plus"></i>Catat berat</button></div>
+        </section>
+
+        <section class="card">
+          <div class="card-title"><h3>Lingkar pinggang</h3><button class="link small" data-toast="Enam ukuran lain bisa dinyalakan">+ Ukuran lain</button></div>
+          <div class="spread"><div><span class="big-num">82</span> <span class="muted">cm</span></div><span class="small muted">4 minggu lalu 84 cm</span></div>
+        </section>
+
+        <section class="card">
+          <div class="card-title"><h3>Foto kemajuan</h3><span class="pill"><i data-i="lock"></i>Hanya di HP ini</span></div>
+          <div class="grid3"><div class="photo"><i data-i="user"></i></div><div class="photo"><i data-i="user"></i></div><button class="photo" style="border:1.5px dashed var(--line);font:inherit;cursor:pointer" aria-label="Ambil foto"><i data-i="camera"></i></button></div>
+          <p class="xs muted" style="margin-top:8px">Tidak ikut cadangan kecuali dinyalakan di Pengaturan → Data.</p>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="card">
+          <div class="card-title"><h3>Perjalanan</h3></div>
+          <div class="moment"><span class="ic"><i data-i="trophy"></i></span><div><b>Rekor Goblet Squat 16 kg × 12</b><br><span class="xs muted">Kamis</span></div></div>
+          <div class="moment"><span class="ic"><i data-i="flame"></i></span><div><b>Lima minggu berturut-turut aktif</b><br><span class="xs muted">Minggu</span></div></div>
+          <div class="moment"><span class="ic"><i data-i="food"></i></span><div><b>Tujuh hari catat makan</b><br><span class="xs muted">2 Nov</span></div></div>
+          <div class="moment"><span class="ic"><i data-i="star"></i></span><div><b>Latihan pertama</b><br><span class="xs muted">12 Okt</span></div></div>
+        </section>
+
+        <section class="card" id="streak-card">
+          <div class="card-title"><h3>Streak</h3><b>5 minggu</b></div>
+          <p class="small">Satu minggu dihitung bila ada 2 hari aktif (latihan, aktivitas, atau makan tercatat). Satu minggu kosong dari setiap empat tidak memutus streak.</p>
+          <div class="week" style="margin-top:10px"><div class="d act"><span class="dot">✓</span>M1</div><div class="d act"><span class="dot">✓</span>M2</div><div class="d"><span class="dot">·</span>M3</div><div class="d act"><span class="dot">✓</span>M4</div><div class="d act"><span class="dot">✓</span>M5</div><div class="d act today"><span class="dot">✓</span>M6</div><div class="d"><span class="dot"></span></div></div>
+        </section>
+
+        <section class="card">
+          <div class="card-title"><h3>Lencana</h3><span class="small muted">6 / 18</span></div>
+          <div class="badges">
+            <div class="bdg"><div class="b"><i data-i="star"></i></div>Latihan pertama</div><div class="bdg"><div class="b"><i data-i="medal"></i></div>Lima kali latihan</div>
+            <div class="bdg"><div class="b"><i data-i="trophy"></i></div>Rekor pertama</div><div class="bdg"><div class="b"><i data-i="food"></i></div>Tujuh hari catat</div>
+            <div class="bdg"><div class="b"><i data-i="flame"></i></div>Empat minggu</div><div class="bdg"><div class="b"><i data-i="run"></i></div>150 menit</div>
+            <div class="bdg lock"><div class="b"><i data-i="lock"></i></div>Dua puluh latihan</div><div class="bdg lock"><div class="b"><i data-i="lock"></i></div>Sepuluh rekor</div>
+            <div class="bdg lock"><div class="b"><i data-i="lock"></i></div>Foto pertama</div><div class="bdg lock"><div class="b"><i data-i="lock"></i></div>Rencana seminggu</div>
+          </div>
+        </section>
+
+        <div class="list">
+          <a class="li" href="kartu.html"><span class="ic"><i data-i="share"></i></span><span class="grow">Kartu saya</span><i data-i="chev"></i></a>
+          <a class="li" href="pengaturan.html"><span class="ic"><i data-i="gear"></i></span><span class="grow">Pengaturan</span><i data-i="chev"></i></a>
+          <a class="li" href="bantuan.html"><span class="ic"><i data-i="help"></i></span><span class="grow">Bantuan dan tentang</span><i data-i="chev"></i></a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

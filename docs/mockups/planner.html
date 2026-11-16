@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rencana minggu · XNK Fit mockup</title>
+<link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
+<style>
+  .day-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .day-tabs .chip { flex: none; }
+  .meal { display: flex; gap: 10px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); }
+  .meal:first-of-type { border-top: 0; }
+  .meal .acts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .plan-table .h { font-size: .78rem; font-weight: 800; text-align: center; padding: 6px 0; }
+  .plan-table .h.today { background: var(--accent); color: var(--on-accent); border-radius: 10px; }
+  .plan-table .slot { font-size: .78rem; font-weight: 750; color: var(--muted); padding-top: 10px; }
+  .meal-cell { font: inherit; font-size: .85rem; color: inherit; text-align: left; cursor: pointer; display: block; }
+  .meal-cell b { display: block; line-height: 1.25; margin-bottom: 4px; }
+  .meal-cell .tag { font-size: .7rem; color: var(--muted); }
+</style>
+</head>
+<body class="full">
+<div class="topbar"><button class="icon-btn" data-back="makan.html" aria-label="Kembali"><i data-i="back"></i></button><b class="grow">Rencana minggu · 16–22 Nov</b><a class="icon-btn" href="belanja.html" aria-label="Daftar belanja"><i data-i="cart"></i></a></div>
+<main class="page stack" style="margin-top:12px">
+  <div class="note"><i data-i="info"></i><span>Minggu ini santan sudah 3 kali. Pilihan otomatis berikutnya tanpa santan, pilihan sendiri tetap bebas.</span></div>
+
+  <!-- Phone: one day per screen, swipe between days (M-10) -->
+  <div class="day-tabs only-phone" role="tablist"><button class="chip">Sen 16</button><button class="chip">Sel 17</button><button class="chip">Rab 18</button><button class="chip on">Kam 19</button><button class="chip">Jum 20</button><button class="chip">Sab 21</button><button class="chip">Min 22</button></div>
+  <div class="days" aria-label="Geser untuk ganti hari">
+    <section class="card">
+      <div class="spread"><h2>Kamis 19</h2><span class="small muted">± 1.700 kkal</span></div>
+      <div class="meal"><div class="grow"><span class="label">Pagi</span><b style="display:block">Nasi uduk telur dadar</b><span class="small muted">Jawa · ± 420 kkal</span>
+        <div class="acts chips" data-multi><button class="chip" data-open="sheet-swap"><i data-i="swap"></i>Ganti</button><button class="chip on"><i data-i="lock"></i>Terkunci</button><button class="chip">Masak sekali</button><button class="chip">Makan di luar</button></div></div></div>
+      <div class="meal"><div class="grow"><span class="label">Siang</span><b style="display:block">Nasi, ayam bakar, lalapan</b><span class="small muted">Masak sekali (Rab–Jum) · ± 560 kkal</span>
+        <div class="acts chips" data-multi><button class="chip" data-open="sheet-swap"><i data-i="swap"></i>Ganti</button><button class="chip"><i data-i="lock"></i>Kunci</button><button class="chip on">Masak sekali</button><button class="chip">Makan di luar</button></div></div></div>
+      <div class="meal"><div class="grow"><span class="label">Malam</span><b style="display:block">Makan di luar: padang (nasi, rendang, sayur)</b><span class="small muted">Perkiraan <span class="est">±</span> · ± 720 kkal</span>
+        <div class="acts chips" data-multi><button class="chip" data-open="sheet-swap"><i data-i="swap"></i>Ganti</button><button class="chip"><i data-i="lock"></i>Kunci</button><button class="chip">Masak sekali</button><button class="chip on">Makan di luar</button></div></div></div>
+    </section>
+    <section class="card"><div class="spread"><h2>Jumat 20</h2><span class="small muted">± 1.740 kkal</span></div><p class="small muted" style="margin-top:8px">Geser untuk melihat hari lain.</p></section>
+  </div>
+
+  <!-- Tablet: 7-column table (M-10) -->
+  <div class="plan-table" aria-label="Rencana 7 hari">
+    <div></div><div class="h">Sen 16</div><div class="h">Sel 17</div><div class="h">Rab 18</div><div class="h today">Kam 19</div><div class="h">Jum 20</div><div class="h">Sab 21</div><div class="h">Min 22</div>
+    <div class="slot">Pagi</div>
+    <button class="meal-cell" data-open="sheet-swap"><b>Bubur ayam</b><span class="tag">Beli ±</span></button><button class="meal-cell" data-open="sheet-swap"><b>Roti, telur rebus</b><span class="tag">Tanpa masak</span></button><button class="meal-cell" data-open="sheet-swap"><b>Nasi goreng telur</b><span class="tag">Masak</span></button>
+    <button class="meal-cell lock" data-open="sheet-swap"><b>Nasi uduk telur dadar</b><span class="tag">Terkunci</span></button><button class="meal-cell" data-open="sheet-swap"><b>Lontong sayur</b><span class="tag">Santan</span></button><button class="meal-cell" data-open="sheet-swap"><b>Oatmeal pisang</b><span class="tag">Tanpa masak</span></button><button class="meal-cell" data-open="sheet-swap"><b>Nasi kuning</b><span class="tag">Beli ±</span></button>
+    <div class="slot">Siang</div>
+    <button class="meal-cell" data-open="sheet-swap"><b>Nasi, sayur asem, tempe</b><span class="tag">Sunda</span></button><button class="meal-cell" data-open="sheet-swap"><b>Warteg</b><span class="tag">Beli ±</span></button><button class="meal-cell" data-open="sheet-swap"><b>Ayam bakar, lalapan</b><span class="tag">Masak sekali</span></button>
+    <button class="meal-cell" data-open="sheet-swap"><b>Ayam bakar, lalapan</b><span class="tag">Masak sekali</span></button><button class="meal-cell" data-open="sheet-swap"><b>Ayam bakar, lalapan</b><span class="tag">Masak sekali</span></button><button class="meal-cell" data-open="sheet-swap"><b>Gado-gado</b><span class="tag">Beli ±</span></button><button class="meal-cell" data-open="sheet-swap"><b>Soto ayam</b><span class="tag">Masak</span></button>
+    <div class="slot">Malam</div>
+    <button class="meal-cell" data-open="sheet-swap"><b>Pepes ikan, kangkung</b><span class="tag">Sunda</span></button><button class="meal-cell" data-open="sheet-swap"><b>Mie rebus telur</b><span class="tag">Anak kos</span></button><button class="meal-cell" data-open="sheet-swap"><b>Sayur lodeh, tahu</b><span class="tag">Santan</span></button>
+    <button class="meal-cell" data-open="sheet-swap"><b>Padang</b><span class="tag">Makan di luar ±</span></button><button class="meal-cell" data-open="sheet-swap"><b>Ikan bakar, sambal</b><span class="tag">Masak</span></button><button class="meal-cell" data-open="sheet-swap"><b>Bakso kuah</b><span class="tag">Beli ±</span></button><button class="meal-cell" data-open="sheet-swap"><b>Opor ayam</b><span class="tag">Santan</span></button>
+  </div>
+
+  <div class="btn-row"><a class="btn lg" href="belanja.html"><i data-i="cart"></i>Daftar belanja</a><button class="btn lg" data-toast="Hari yang tidak terkunci diisi ulang">Isi ulang otomatis</button></div>
+</main>
+
+<div class="sheet" id="sheet-swap" role="dialog" aria-label="Ganti menu"><div class="grab"></div>
+  <div class="sheet-head"><h2>Ganti pagi, Kamis</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <div class="list">
+    <button class="li" data-close><span class="grow"><b>Roti gandum, telur rebus</b><br><span class="small muted">Tanpa masak · ± 380 kkal</span></span></button>
+    <button class="li" data-close><span class="grow"><b>Bubur ayam</b> <span class="est">±</span><br><span class="small muted">Beli · ± 400 kkal</span></span></button>
+    <button class="li" data-close><span class="grow"><b>Lontong sayur</b><br><span class="small muted">Santan · minggu ini santan sudah 3 kali</span></span></button>
+    <button class="li" data-close><span class="grow"><b>Menu saya: oatmeal pisang</b><br><span class="small muted">Milik saya · ± 350 kkal</span></span></button>
+  </div>
+  <p class="xs muted" style="margin-top:8px">Pilihan sendiri tidak pernah diblokir.</p>
+</div>
+</body>
+</html>

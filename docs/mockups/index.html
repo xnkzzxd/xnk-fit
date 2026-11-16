@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XNK Fit mockups</title>
+<style>
+  :root { --bg: #f4f4f2; --fg: #111; --muted: #5c5c58; --line: #ddd; --card: #fff; color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111; --fg: #eee; --muted: #a6a6a1; --line: #333; --card: #1b1b1b; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 system-ui, sans-serif; }
+  header { padding: 20px 16px 8px; max-width: 1400px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 1.5rem; }
+  p { margin: 4px 0; }
+  .muted { color: var(--muted); }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 0 16px 40px; display: grid; gap: 16px; }
+  @media (min-width: 1000px) { .wrap { grid-template-columns: 360px 1fr; align-items: start; } .list { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; } }
+  .list { background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+  .scr { display: block; width: 100%; text-align: left; padding: 12px 14px; min-height: 44px; border: 0; border-top: 1px solid var(--line); background: none; color: inherit; font: inherit; cursor: pointer; }
+  .scr:first-child { border-top: 0; }
+  .scr.on { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+  .scr small { display: block; color: var(--muted); }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .bar a, .bar button, .bar select { min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: inherit; font: inherit; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+  .frames { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+  .frame { display: flex; flex-direction: column; gap: 6px; font-size: .8rem; font-weight: 700; }
+  .box { overflow: hidden; border-radius: 22px; border: 6px solid #222; background: #000; }
+  .box iframe { border: 0; transform-origin: 0 0; display: block; }
+</style>
+</head>
+<body>
+<header>
+  <h1>XNK Fit · mockup (D-05)</h1>
+  <p class="muted">HTML statis, tanpa server. Pilih layar di kiri: tampil sebagai phone (390 dp) dan tablet (900 dp), terang dan gelap. "Buka" membuka layar penuh; ubah lebar jendela untuk 360–430 dp atau ≥ 600 dp. Bilah kuning dan kotak "Keadaan" hanya kontrol mockup.</p>
+  <p class="muted">Daftar persetujuan untuk owner (D-06): <a href="README.md">docs/mockups/README.md</a>.</p>
+</header>
+<div class="wrap">
+  <nav class="list" id="list" aria-label="Daftar layar"></nav>
+  <section>
+    <div class="bar"><b id="title"></b><a id="open" href="#">Buka</a>
+      <select id="state" aria-label="Keadaan"></select>
+      <select id="accent" aria-label="Aksen"><option value="">Aksen hitam</option><option>biru</option><option>hijau</option><option>toska</option><option>ungu</option><option>pink</option><option>oranye</option></select></div>
+    <div class="frames" id="frames"></div>
+  </section>
+</div>
+<script>
+// Screens of Design §5 (+ the sub-screens they open). [file, title, PRD refs, states]
+var S = [
+  ['onboarding', 'Onboarding', 'O-1…O-6', ['ob:1', 'ob:2', 'ob:3', 'ob:4', 'ob:5', 'ob:6', 'ob:7', 'ob:u13']],
+  ['screening', 'Formulir kesehatan', 'S-1, S-2, S-6, O-2', ['sc:form', 'sc:ok', 'sc:risk', 'sc:ed', 'sc:teen']],
+  ['hari-ini', 'Hari ini', 'H-1…H-3, M-2, N-1, N-2', ['h:lift', 'h:rest', 'h:act', 'h:empty']],
+  ['latihan', 'Latihan', 'L-1…L-5, L-9…L-11, L-14, L-15, O-4', ['l:prog', 'l:setup', 'l:home']],
+  ['logger', 'Logger', 'L-6…L-8, L-12, L-2', ['lg:dipandu', 'lg:bebas', 'lg:mode']],
+  ['ringkasan', 'Ringkasan latihan', 'L-13', []],
+  ['makan', 'Makan', 'M-1…M-5, M-9, S-6, O-4', ['m:normal', 'm:over', 'm:nonum', 'm:setup']],
+  ['pilih-makanan', 'Makan → Pilih makanan', 'M-6, M-7', ['f:recent', 'f:search', 'f:own']],
+  ['planner', 'Rencana minggu', 'M-3, M-4, M-10', []],
+  ['belanja', 'Daftar belanja', 'M-8', []],
+  ['saya', 'Saya', 'P-1…P-5', ['s:show', 's:hide']],
+  ['kartu', 'Kartu saya / bagikan', 'P-2, P-6', ['k:gal', 'k:edit']],
+  ['pengaturan', 'Pengaturan', 'P-7, B-1…B-7, D-1, R-1', ['p:home', 'p:profil', 'p:latihan', 'p:makan', 'p:ingat', 'p:tampil', 'p:data']],
+  ['bantuan', 'Bantuan', 'P-8, PV-1…PV-3', ['b:home', 'b:target', 'b:istilah', 'b:privasi']]
+];
+var cur = 0, list = document.getElementById('list'), frames = document.getElementById('frames');
+S.forEach(function (s, i) {
+  var b = document.createElement('button'); b.className = 'scr'; b.innerHTML = '<b>' + s[1] + '</b><small>' + s[0] + '.html · ' + s[2] + '</small>';
+  b.onclick = function () { cur = i; location.hash = s[0]; draw(); }; list.appendChild(b);
+});
+var h = location.hash.slice(1); S.forEach(function (s, i) { if (s[0] === h) cur = i; });
+document.getElementById('state').onchange = render; document.getElementById('accent').onchange = render;
+function draw() {
+  Array.prototype.forEach.call(list.children, function (b, i) { b.classList.toggle('on', i === cur); });
+  var s = S[cur], sel = document.getElementById('state');
+  document.getElementById('title').textContent = s[1];
+  sel.innerHTML = s[3].length ? s[3].map(function (k) { return '<option>' + k + '</option>'; }).join('') : '<option value="">(satu keadaan)</option>';
+  render();
+}
+function render() {
+  var s = S[cur], st = document.getElementById('state').value, ac = document.getElementById('accent').value;
+  var q = function (theme, embed) { return s[0] + '.html?theme=' + theme + (st ? '&state=' + st : '') + (ac ? '&accent=' + ac : '') + (embed ? '&embed=1' : ''); };
+  document.getElementById('open').href = q('light');
+  var F = [['Phone · terang', 390, 844, 'light', .62], ['Phone · gelap', 390, 844, 'dark', .62], ['Tablet · terang', 900, 1200, 'light', .44], ['Tablet · gelap', 900, 1200, 'dark', .44]];
+  frames.innerHTML = F.map(function (f) {
+    return '<div class="frame">' + f[0] + ' (' + f[1] + ' dp)<div class="box" style="width:' + Math.round(f[1] * f[4]) + 'px;height:' + Math.round(f[2] * f[4]) + 'px">' +
+      '<iframe title="' + s[1] + ' ' + f[0] + '" src="' + q(f[3], 1) + '" style="width:' + f[1] + 'px;height:' + f[2] + 'px;transform:scale(' + f[4] + ')"></iframe></div><a href="' + q(f[3]) + '">Buka</a></div>';
+  }).join('');
+}
+draw();
+</script>
+</body>
+</html>

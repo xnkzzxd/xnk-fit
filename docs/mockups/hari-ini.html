@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hari ini · XNK Fit mockup</title>
+<link rel="stylesheet" href="mock.css"><script src="mock.js"></script>
+</head>
+<body data-tab="hari-ini">
+<div class="app">
+  <header class="head">
+    <div class="head-top"><span class="grow">Senin, 16 Nov</span>
+      <a class="icon-btn" href="saya.html#streak" aria-label="Streak 5 minggu"><i data-i="flame"></i><b>5</b></a>
+      <a class="icon-btn" href="pengaturan.html" aria-label="Pengaturan"><i data-i="gear"></i></a></div>
+    <h1>Halo, Dita</h1>
+    <p class="sub">Minggu ini 2 dari 3 latihan.</p>
+  </header>
+
+  <div class="mock-states"><b>Keadaan:</b>
+    <button data-sw="h:lift" class="on">Angkat beban</button>
+    <button data-sw="h:rest">Hari istirahat</button>
+    <button data-sw="h:act">Tidak angkat beban (H-2)</button>
+    <button data-sw="h:empty">Baru mulai (H-3)</button>
+    <button data-open="sheet-resume">Lanjutkan latihan?</button>
+    <button data-open="sheet-recalc">Hitung ulang target (M-2)</button>
+  </div>
+
+  <main class="page stack" style="margin-top:12px">
+    <!-- Welcome card: shown once per tab (P-8) -->
+    <div class="card tint welcome" id="welcome" data-st="h:lift h:empty">
+      <div class="spread"><h3>Selamat datang di Hari ini</h3><button class="icon-btn" data-toggle="welcome" aria-label="Tutup kartu">✕</button></div>
+      <p class="small" style="margin-top:4px">Di sini ada latihan berikutnya, target makan dan minggu Anda. Semua tersimpan di HP ini.</p>
+    </div>
+
+    <div class="cols">
+      <div class="stack">
+        <!-- H-1: next workout -->
+        <section class="card ink" data-st="h:lift">
+          <div class="card-title"><span class="label">Latihan berikutnya · hari ini</span><span class="pill">±45 mnt</span></div>
+          <h2 style="font-size:1.5rem">Full Body B</h2>
+          <p class="muted small" style="margin-top:4px">Goblet Squat · Dumbbell Bench Press · Seated Cable Row · Romanian Deadlift · Plank</p>
+          <div class="btn-row" style="margin-top:14px"><a class="btn pri lg" href="logger.html"><i data-i="play"></i>Mulai latihan</a><a class="btn lg" href="latihan.html">Lihat</a></div>
+        </section>
+
+        <section class="card ink" data-st="h:rest" hidden>
+          <span class="label">Hari istirahat</span>
+          <h2 style="margin-top:6px">Otot tumbuh saat istirahat</h2>
+          <p class="muted small" style="margin-top:4px">Latihan berikutnya: Full Body C, Rabu. Jalan santai tetap dihitung sebagai aktivitas.</p>
+          <div class="btn-row" style="margin-top:14px"><button class="btn" data-open="sheet-aktivitas"><i data-i="run"></i>Catat aktivitas</button></div>
+        </section>
+
+        <!-- H-2: activity target instead of workout card -->
+        <section class="card ink" data-st="h:act" hidden>
+          <div class="card-title"><span class="label">Aktivitas minggu ini</span><span class="pill">WHO 150–300 mnt</span></div>
+          <div class="row-flex"><span class="big-num">95</span><span class="muted">/ 150 menit</span></div>
+          <div class="bar" style="margin-top:10px"><i style="width:63%"></i></div>
+          <p class="muted small" style="margin-top:8px">Sisa 55 menit. Jalan cepat 20 menit tiga kali sudah cukup. Menit berat dihitung dua kali.</p>
+          <div class="row-flex" style="margin-top:12px"><i data-i="steps"></i><span class="small">6.420 langkah hari ini · rata-rata 5.900 <span class="muted">(Health Connect)</span></span></div>
+          <div class="btn-row" style="margin-top:14px"><button class="btn pri" data-open="sheet-aktivitas"><i data-i="plus"></i>Catat aktivitas</button></div>
+        </section>
+
+        <!-- H-3: empty states, no sample data -->
+        <section class="card dash" data-st="h:empty" hidden>
+          <span class="label">Latihan</span>
+          <p style="margin-top:6px">Program dibuat setelah profil latihan dan formulir kesehatan diisi.</p>
+          <a class="btn pri" style="margin-top:12px" href="latihan.html?state=l:setup">Buat program</a>
+        </section>
+
+        <!-- Calorie ring -->
+        <section class="card" data-st="h:lift h:rest h:act">
+          <div class="card-title"><h3>Makan hari ini</h3><a class="link small" href="makan.html">Buka</a></div>
+          <div class="row-flex" style="gap:18px">
+            <div class="ring"><svg viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="50" stroke-width="12" fill="none"/><circle class="fill" cx="60" cy="60" r="50" stroke-width="12" fill="none" stroke-dasharray="314" stroke-dashoffset="110"/></svg>
+              <div class="mid"><span class="num" style="font-size:1.5rem">1.120</span><span class="xs muted">dari 1.750 kkal</span></div></div>
+            <div class="grow stack-s small">
+              <div class="spread"><span>Protein</span><b>62 / 110 g</b></div><div class="bar"><i style="width:56%"></i></div>
+              <div class="spread"><span>Karbo</span><b>140 / 205 g</b></div><div class="bar"><i style="width:68%"></i></div>
+              <div class="spread"><span>Lemak</span><b>30 / 49 g</b></div><div class="bar"><i style="width:61%"></i></div>
+            </div>
+          </div>
+          <a class="btn block" style="margin-top:12px" href="pilih-makanan.html"><i data-i="plus"></i>Catat makan</a>
+        </section>
+        <section class="card dash" data-st="h:empty" hidden>
+          <span class="label">Makan</span>
+          <p style="margin-top:6px">Target kalori muncul setelah data tubuh dan formulir kesehatan lengkap.</p>
+          <a class="btn" style="margin-top:12px" href="makan.html?state=m:setup">Atur makan</a>
+        </section>
+
+      </div>
+
+      <div class="stack">
+        <!-- Week strip -->
+        <section class="card" data-st="h:lift h:rest h:act">
+          <div class="card-title"><h3>Minggu ini</h3><span class="small muted">3 hari aktif</span></div>
+          <div class="week">
+            <div class="d act"><span class="dot">✓</span>Sen</div><div class="d"><span class="dot">17</span>Sel</div><div class="d act"><span class="dot">✓</span>Rab</div>
+            <div class="d act today"><span class="dot">✓</span>Kam</div><div class="d"><span class="dot">20</span>Jum</div><div class="d"><span class="dot">21</span>Sab</div><div class="d"><span class="dot">22</span>Min</div>
+          </div>
+        </section>
+        <section class="card dash" data-st="h:empty" hidden>
+          <span class="label">Minggu ini</span>
+          <p style="margin-top:6px">Hari terisi saat ada latihan, aktivitas, atau makan tercatat.</p>
+          <button class="btn" style="margin-top:12px" data-open="sheet-aktivitas">Catat aktivitas</button>
+        </section>
+        <!-- Level and streak (P-3, P-4) -->
+        <section class="card" data-st="h:lift h:rest h:act">
+          <div class="spread"><div><span class="label">Level 4</span><h3 style="margin-top:2px">520 poin</h3></div>
+            <div class="row-flex"><i data-i="flame"></i><b>5 minggu</b></div></div>
+          <div class="bar" style="margin-top:10px"><i style="width:28%"></i></div>
+          <p class="xs muted" style="margin-top:6px">180 poin lagi ke level 5. Level tidak pernah turun.</p>
+        </section>
+        <section class="card dash" data-st="h:empty" hidden>
+          <span class="label">Level</span>
+          <p style="margin-top:6px">Poin datang dari latihan, aktivitas dan hari makan tercatat. Mulai dari level 1.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="sheet" id="sheet-resume" role="dialog" aria-label="Lanjutkan latihan"><div class="grab"></div>
+  <div class="sheet-head"><h2>Lanjutkan latihan?</h2></div>
+  <p>Full Body B dimulai kemarin 18.05 dan belum selesai. 7 set sudah tersimpan.</p>
+  <div class="btn-row" style="margin-top:16px"><a class="btn pri lg" href="logger.html?state=lg:bebas">Lanjutkan</a><button class="btn lg" data-close data-toast="Latihan ditutup dengan set terakhir">Tutup latihan</button></div>
+</div>
+
+<div class="sheet" id="sheet-recalc" role="dialog" aria-label="Hitung ulang target"><div class="grab"></div>
+  <div class="sheet-head"><h2>Hitung ulang target?</h2><button class="icon-btn" data-close aria-label="Tutup"><i data-i="close"></i></button></div>
+  <p>Berat turun 3 kg sejak target dihitung. Hitung ulang target?</p>
+  <div class="kv" style="margin-top:12px"><div><b>1.750</b><span>Target sekarang</span></div><div><b>1.690</b><span>Target baru</span></div></div>
+  <div class="btn-row" style="margin-top:16px"><button class="btn pri lg" data-close data-toast="Target diperbarui">Hitung ulang target</button><button class="btn lg" data-close>Pertahankan</button></div>
+</div>
+</body>
+</html>
