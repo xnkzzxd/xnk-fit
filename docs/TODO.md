@@ -27,7 +27,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| S-01 | Name checks: store search (Play, App Store), PDKI trademark (classes 9, 41, 44), domain xnkfit.com (PRD §12). Write results in PRD §12 | — | Sonnet 5.5 | [ ] |
+| S-01 | Name checks: store search (Play, App Store), PDKI trademark (classes 9, 41, 44), domain xnkfit.com (PRD §12). Write results in PRD §12 | — | Sonnet 5.5 | [~] Play, App Store, domain done 2026-11-17; PDKI not checkable by tool, owner searches by hand |
 | S-02 | Play target SDK rule at release time; record in Design §1 | D-02 | Sonnet 5.5 | [ ] |
 | S-03 | Google OAuth verification for the Drive app folder: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [ ] |
 | S-04 | Play Health Connect and health-apps declarations: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [ ] |

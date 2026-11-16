@@ -221,11 +221,11 @@ Barcode scan · share-editor tools and video · Hevy / Strong import · vegetari
 
 | Check | Status |
 | --- | --- |
-| xnkfit.com | Free on 2026-11-16 (registry check). Not registered yet; owner registers if wanted. |
-| Play Store search | Not done (task S-01). |
-| App Store search | Not done (S-01). |
-| Indonesian trademark register (PDKI, classes 9 and 41 / 44) | Not done (S-01). |
-| Fit beside "XNK Coach", the brand kept for the paused coaching product | To judge in S-01. |
+| xnkfit.com | Free on 2026-11-17: the .com registry (RDAP) answers "not found" (404). Still not registered; owner registers if wanted. |
+| Play Store search | Checked 2026-11-17 (public search page "XNK Fit" and "XNK"). No app named XNK Fit or XNK. Similar names, all fitness: XC Fit, X-Fit, XFIT, XOfit, xForFit, Fitxlink, Smartix Fit X, FIT X GYM, Knit Fit. None identical; X-Fit / XFIT are the closest in sound. Search shows only the first results, so this is not a full listing. |
+| App Store search | Checked 2026-11-17 (Apple search API, "XNK Fit" and "XNK", Indonesia store). No app named XNK Fit. Similar names: XN2FIT (Health & Fitness, Ex Nihilo Nihil Fit LLC), NK Fitness App, XFIT, X-Fit, Xplicit Fit, XWEAR. "XNK" alone only finds "Thuận Lợi XNK" (Business): in Vietnamese XNK abbreviates xuất nhập khẩu (import-export), unrelated to fitness. |
+| Indonesian trademark register (PDKI, classes 9 and 41 / 44) | **Not checked, cannot be checked.** pdki-indonesia.dgip.go.id loads results with JavaScript and returned an empty page to the fetch tool; web search found no trademark records. Owner or an IP consultant must search "XNK Fit" and "XNK" (classes 9, 41, 44) on PDKI by hand before filing. No conclusion either way. |
+| Fit beside "XNK Coach", the brand kept for the paused coaching product | To judge in S-01. Not a name-availability matter; left for the owner. |
 
 ## 13. Success criteria for v1
 
