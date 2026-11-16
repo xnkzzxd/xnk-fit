@@ -62,28 +62,26 @@
   function icon(n) { return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="' + (I[n] || I.info) + '"/></svg>'; }
   window.icon = icon;
 
-  // Muscle map placeholder (Content §5: 16 groups, front/back; own drawing comes in C-08).
-  var MM = {
-    f: { FRONT_DELT: [['e',30,40,7,6],['e',70,40,7,6]], SIDE_DELT: [['e',23,43,3,6],['e',77,43,3,6]], CHEST: [['e',41,49,9,7],['e',59,49,9,7]],
-         BICEPS: [['e',25,63,5,9],['e',75,63,5,9]], FOREARM: [['e',21,86,4,11],['e',79,86,4,11]], ABS: [['r',43,58,14,30]],
-         OBLIQUES: [['e',37,74,4,10],['e',63,74,4,10]], QUADS: [['e',41,120,7,20],['e',59,120,7,20]] },
-    b: { TRAPS: [['e',50,37,14,7]], REAR_DELT: [['e',30,42,6,5],['e',70,42,6,5]], SIDE_DELT: [['e',23,43,3,6],['e',77,43,3,6]],
-         LATS: [['e',40,60,8,13],['e',60,60,8,13]], TRICEPS: [['e',25,62,5,9],['e',75,62,5,9]], FOREARM: [['e',21,86,4,11],['e',79,86,4,11]],
-         LOWER_BACK: [['r',44,74,12,14]], GLUTES: [['e',42,99,9,9],['e',58,99,9,9]], HAMS: [['e',41,126,7,16],['e',59,126,7,16]], CALVES: [['e',41,159,6,12],['e',59,159,6,12]] }
-  };
-  var BODY = '<circle class="base" cx="50" cy="14" r="10"/><rect class="base" x="30" y="30" width="40" height="64" rx="12"/>' +
-    '<rect class="base" x="17" y="36" width="12" height="62" rx="6"/><rect class="base" x="71" y="36" width="12" height="62" rx="6"/>' +
-    '<rect class="base" x="32" y="92" width="17" height="86" rx="8"/><rect class="base" x="51" y="92" width="17" height="86" rx="8"/>';
-  function mmSvg(side, lv) {
-    var s = '<svg viewBox="0 0 100 186" role="img" aria-label="' + (side === 'f' ? 'Depan' : 'Belakang') + '">' + BODY;
-    Object.keys(MM[side]).forEach(function (k) {
-      if (!lv[k]) return;
-      MM[side][k].forEach(function (g) {
-        s += g[0] === 'e' ? '<ellipse class="m' + lv[k] + '" cx="' + g[1] + '" cy="' + g[2] + '" rx="' + g[3] + '" ry="' + g[4] + '"/>'
-                          : '<rect class="m' + lv[k] + '" x="' + g[1] + '" y="' + g[2] + '" width="' + g[3] + '" height="' + g[4] + '" rx="3"/>';
-      });
+  // Muscle map: the XNK app's own figure (figure-data.js, shapes from react-muscle-highlighter, MIT; FIGURE-CREDITS.md).
+  // Content §5 muscle codes map onto its 16 regions. Level 1 = main muscle (accent), 2 = helper (tint).
+  var MM_MAP = { CHEST: ['pectorals'], FRONT_DELT: ['delts'], SIDE_DELT: ['delts'], REAR_DELT: ['delts'], BICEPS: ['biceps'], TRICEPS: ['triceps'],
+    LATS: ['lats', 'upper back'], TRAPS: ['traps'], QUADS: ['quads', 'adductors'], HAMS: ['hamstrings'], GLUTES: ['glutes', 'abductors'], CALVES: ['calves'],
+    ABS: ['abs'], OBLIQUES: ['abs'], LOWER_BACK: ['spine'], FOREARM: ['forearms'] };
+  function mmFig(codes, sex) {
+    var F = window.XF_FIG, v = F && F.views[sex] || F.views.f, lv = {};
+    Object.keys(codes).forEach(function (c) { (MM_MAP[c] || []).forEach(function (r) { if (!lv[r] || codes[c] < lv[r]) lv[r] = codes[c]; }); });
+    function side(s, label) {
+      return '<svg viewBox="' + s.vb + '" role="img" aria-label="' + label + '"><path class="mmf-body" d="' + s.outline + '"/>' +
+        s.base.map(function (d) { return '<path class="mmf-base" d="' + d + '"/>'; }).join('') +
+        Object.keys(s.parts).map(function (r) { var c = lv[r] === 1 ? ' on' : (lv[r] === 2 ? ' half' : ''); return s.parts[r].map(function (d) { return '<path class="mmf' + c + '" d="' + d + '"/>'; }).join(''); }).join('') + '</svg>';
+    }
+    return side(v.front, 'Depan') + side(v.back, 'Belakang');
+  }
+  function drawMuscleMaps() {
+    document.querySelectorAll('[data-mm]').forEach(function (el) {
+      var lv = {}; el.dataset.mm.split(',').forEach(function (p) { var kv = p.split(':'); if (kv[0]) lv[kv[0]] = +kv[1] || 1; });
+      el.classList.add('mm'); el.innerHTML = mmFig(lv, el.dataset.sex || 'f');
     });
-    return s + '</svg>';
   }
   function fig() {
     return '<svg viewBox="0 0 200 150" aria-label="Figur gerakan (sementara)"><circle cx="100" cy="28" r="14"/>' +
@@ -227,10 +225,9 @@
     if (!document.body.classList.contains('full')) shell();
     else document.body.insertAdjacentHTML('beforeend', SHARED_SHEETS);
     document.querySelectorAll('[data-i]').forEach(function (el) { el.outerHTML = icon(el.dataset.i); });
-    document.querySelectorAll('[data-mm]').forEach(function (el) {
-      var lv = {}; el.dataset.mm.split(',').forEach(function (p) { var kv = p.split(':'); if (kv[0]) lv[kv[0]] = +kv[1] || 1; });
-      el.classList.add('mm'); el.innerHTML = mmSvg('f', lv) + mmSvg('b', lv);
-    });
+    if (document.querySelector('[data-mm]')) {
+      var fs = document.createElement('script'); fs.src = 'figure-data.js'; fs.onload = drawMuscleMaps; document.head.appendChild(fs);
+    }
     document.querySelectorAll('[data-fig]').forEach(function (el) { el.classList.add('fig'); el.innerHTML = fig(); });
     document.querySelectorAll('a[href]').forEach(function (a) { a.setAttribute('href', keep(a.getAttribute('href'))); });
     var st = P.get('state'); if (st) setState(st);

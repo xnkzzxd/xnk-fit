@@ -58,10 +58,10 @@ Tick each row, or write the change wanted in "Catatan". A row is approved when i
 
 ## Not in these mockups
 
-- Real exercise figures and muscle map shapes (C-08), real food numbers (C-03…C-07): all numbers shown are examples.
+- Muscle maps use the XNK app's own figure (`figure-data.js`, shapes from react-muscle-highlighter, MIT, credits in `FIGURE-CREDITS.md`). The animated exercise figure is still a stick placeholder (C-08). Food numbers (C-03…C-07) are examples.
 - Android system dialogs (permissions, share sheet, file picker) are shown as a short toast.
 - Notifications are shown only as sample text (Pengaturan → Pengingat, rest timer toast).
 
 ## Files
 
-`mock.css` (tokens and components), `mock.js` (shell: tabs / rail, ＋ sheet, sheets, states, steppers, rest timer, icons, muscle map placeholder), one HTML file per screen, `index.html` (review page). Mockup code is thrown away when B-01 starts the Compose app.
+`mock.css` (tokens and components), `figure-data.js` + `FIGURE-CREDITS.md` (muscle map shapes), `mock.js` (shell: tabs / rail, ＋ sheet, sheets, states, steppers, rest timer, icons, muscle map placeholder), one HTML file per screen, `index.html` (review page). Mockup code is thrown away when B-01 starts the Compose app.

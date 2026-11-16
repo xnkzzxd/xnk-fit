@@ -235,17 +235,23 @@ body.sheet-on .scrim { display: block; }
 .sheet > .grab + :not(.sheet-head) { margin-top: 28px; }
 
 /* Muscle map & figure (placeholders for the own vector drawings, Content §5) */
-.mm { display: flex; gap: 6px; justify-content: center; }
-.mm svg { width: 92px; height: 170px; }
-.mm .base { fill: var(--surface-3); }
-.mm .m1 { fill: var(--accent); }
-.mm .m2 { fill: color-mix(in srgb, var(--accent) 40%, var(--surface-3)); }
-.card.ink .mm .base { fill: color-mix(in srgb, var(--on-band) 14%, transparent); }
-.card.ink .mm .m1 { fill: var(--accent-on-band); }
-.card.ink .mm .m2 { fill: color-mix(in srgb, var(--accent-on-band) 45%, transparent); }
+.mm { display: flex; gap: 4px; justify-content: center; }
+.mm svg { width: 46%; max-width: 150px; height: auto; aspect-ratio: 1 / 2; }
+.mm .mmf-body { fill: color-mix(in srgb, var(--fg) 5%, transparent); stroke: color-mix(in srgb, var(--fg) 22%, transparent); stroke-width: 3; }
+.mm .mmf-base { fill: color-mix(in srgb, var(--fg) 9%, transparent); }
+.mm .mmf { fill: color-mix(in srgb, var(--fg) 8%, transparent); stroke: var(--surface); stroke-width: 2; }
+.mm .mmf.half { fill: color-mix(in srgb, var(--accent) 55%, var(--surface)); }
+.mm .mmf.on { fill: var(--accent); }
+@media (prefers-reduced-motion: no-preference) { .mm .mmf.on { animation: mmf-pulse 2.4s ease-in-out infinite; } }
+@keyframes mmf-pulse { 50% { opacity: .78; } }
+.card.ink .mm .mmf-body { fill: color-mix(in srgb, var(--on-band) 6%, transparent); stroke: color-mix(in srgb, var(--on-band) 25%, transparent); }
+.card.ink .mm .mmf-base { fill: color-mix(in srgb, var(--on-band) 10%, transparent); }
+.card.ink .mm .mmf { fill: color-mix(in srgb, var(--on-band) 16%, transparent); stroke: var(--band-card); }
+.card.ink .mm .mmf.half { fill: color-mix(in srgb, var(--accent-on-band) 45%, var(--band-card)); }
+.card.ink .mm .mmf.on { fill: var(--accent-on-band); }
 .legend { display: flex; gap: 14px; justify-content: center; font-size: .8125rem; font-weight: 600; }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
-.legend .l1 { background: var(--accent); } .legend .l2 { background: color-mix(in srgb, var(--accent) 40%, var(--surface-3)); }
+.legend .l1 { background: var(--accent); } .legend .l2 { background: color-mix(in srgb, var(--accent) 55%, var(--surface)); }
 .fig { background: var(--surface-2); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; }
 .fig svg { width: 60%; height: 80%; stroke: var(--fg); stroke-width: 6; stroke-linecap: round; fill: none; }
 .fig .acc { stroke: var(--accent); }
@@ -339,6 +345,5 @@ html.embed .mock-bar, html.embed .mock-states { display: none; }
   .days { display: none; }
   .plan-table { display: grid; grid-template-columns: 72px repeat(7, minmax(0, 1fr)); gap: 6px; }
   .rest { left: auto; width: 380px; }
-  .mm svg { width: 110px; height: 200px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
