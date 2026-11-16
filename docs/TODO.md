@@ -1,0 +1,99 @@
+# TODO — XNK Fit
+
+| | |
+| --- | --- |
+| Status | Draft, 2026-11-16 |
+| Process | Docs → clickable mockups (owner approves) → code. No app code before D-05 is approved. |
+| Working rule | One task per session. Take the lowest-numbered open task whose dependencies are done. Mark `[~]` when you start, `[x]` when done (same commit). |
+| Model column | Recommended model for that task's session. Opus 5.5 for design and rules judgement, Sonnet 5.5 for code and normal writing, Haiku 5.5 for mechanical or repetitive work. |
+| Orchestrator | Owner. Each row becomes its own session with the model shown. |
+
+Status keys: `[ ]` open · `[~]` in progress · `[x]` done · `[-]` deferred or dropped.
+
+## Phase D — Docs and mockups
+
+| ID | Task | Depends | Model | Status |
+| --- | --- | --- | --- | --- |
+| D-01 | PRD (`docs/PRD.md`) | — | Opus 5.5 | [x] (commit on `claude/d-01-prd`; push blocked, see below) |
+| D-02 | Design (`docs/Design.md`) | D-01 | Opus 5.5 | [x] (first draft, owner review pending) |
+| D-03 | Rules (`docs/Rules.md`) with every number sourced or ⚠ | D-01 | Opus 5.5 | [x] (first draft; sources ⚠ to close, see S-07) |
+| D-04 | Content (`docs/Content.md`): exercise split, patterns, food sources, badges | D-01, D-03 | Sonnet 5.5 | [x] (first draft; counts are targets) |
+| D-05 | Clickable mockups for every screen in PRD §5/Design §5, phone and tablet, light and dark, sent to the owner for approval | D-02, D-04 | Opus 5.5 | [ ] |
+| D-06 | Owner approval of D-05 (decision, not code) | D-05 | — (owner) | [ ] |
+
+## Phase S — Setup and checks (outside the code)
+
+Some items are the owner's to do (accounts, forms). Claude prepares the text and checklists only.
+
+| ID | Task | Depends | Model | Status |
+| --- | --- | --- | --- | --- |
+| S-01 | Name checks: store search (Play, App Store), PDKI trademark (classes 9, 41, 44), domain xnkfit.com (PRD §12). Write results in PRD §12 | — | Sonnet 5.5 | [ ] |
+| S-02 | Play target SDK rule at release time; record in Design §1 | D-02 | Sonnet 5.5 | [ ] |
+| S-03 | Google OAuth verification for the Drive app folder: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [ ] |
+| S-04 | Play Health Connect and health-apps declarations: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [ ] |
+| S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [ ] |
+| S-06 | Content update host choice (Design §16 item 2) | D-02 | Sonnet 5.5 | [ ] |
+| S-07 | Close ⚠ sources: read each source in Rules §13 and write the exact figure and page; then fix G1–G8 in Rules §10 | D-03 | Opus 5.5 | [ ] |
+| S-08 | Play developer account: owner creates it (not Claude). Claude only writes the checklist | — | — (owner) | [ ] |
+
+## Phase C — Content (may run in parallel with D-05)
+
+| ID | Task | Depends | Model | Status |
+| --- | --- | --- | --- | --- |
+| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [ ] |
+| C-02 | Movement pattern check: each pattern has ≥ 3 choices per setting (Content §2) | C-01 | Haiku 5.5 | [ ] |
+| C-03 | Food table from TKPI 2020 (about 1,100 rows) with parser and checks | D-04 | Sonnet 5.5 | [ ] |
+| C-04 | Warung and bought-meal estimates, each flagged | D-04 | Sonnet 5.5 | [ ] |
+| C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
+| C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [ ] |
+| C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [ ] |
+| C-08 | Exercise figure poses: about 25 base poses with sourced joint angles | C-01, D-05 | Opus 5.5 | [ ] |
+| C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
+| C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [ ] |
+| C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [ ] |
+
+## Phase B — Build (after D-06 approval)
+
+Code tasks. Each one ends with its tests passing (Design §13).
+
+| ID | Task | Depends | Model | Status |
+| --- | --- | --- | --- | --- |
+| B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [ ] |
+| B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [ ] |
+| B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [ ] |
+| B-04 | Content loader and checksummed content update (PV-2) | B-03, C-01, C-03 | Sonnet 5.5 | [ ] |
+| B-05 | Onboarding and screening (O-1…O-6, S-1…S-6), under-13 stop | B-02, D-06 | Sonnet 5.5 | [ ] |
+| B-06 | Program generator and progression (Design §6; L-1…L-5, L-12, L-16) with golden tests | B-02, B-04, C-02 | Opus 5.5 | [ ] |
+| B-07 | Logger, Dipandu and Bebas, crash safety, rest timer with exact alarm (L-6…L-8, NF-2) | B-03, B-06 | Opus 5.5 | [ ] |
+| B-08 | Latihan screen, own routines, Jelajahi, muscle map, activity log (L-9, L-11, L-13, L-14) | B-07 | Sonnet 5.5 | [ ] |
+| B-09 | Health Connect steps, hidden when missing (L-15) | B-08 | Sonnet 5.5 | [ ] |
+| B-10 | Food log, meal options, week planner, shopping list, household measures (M-1…M-10) | B-04, C-11 | Opus 5.5 (planner rules), Sonnet 5.5 (rest) | [ ] |
+| B-11 | Hari ini screen and targets card, recalculation prompt (H-1…H-3, M-2) | B-02, B-10 | Sonnet 5.5 | [ ] |
+| B-12 | Saya: progress, photos on phone, journey, level, streak, badges (P-1…P-5) | B-03, C-10 | Sonnet 5.5 | [ ] |
+| B-13 | Share cards and Kartu saya, editor, QR on, no-kg switch (P-6) | B-12 | Sonnet 5.5 | [ ] |
+| B-14 | Settings, Bantuan, welcome cards, glossary, privacy (P-7, P-8, PV-4) | B-11 | Sonnet 5.5 | [ ] |
+| B-15 | Reminders: local notifications, rotation text, three-per-day cap (R-1, R-2) | B-08, B-10 | Sonnet 5.5 | [ ] |
+| B-16 | Backup and restore: zip format, Drive appdata, last three, warnings, device check (B-1…B-7) | B-03 | Opus 5.5 | [ ] |
+| B-17 | Tablet layout: rail and two columns (N-4) and 360–430 dp checks (D-2) | B-08…B-14 | Sonnet 5.5 | [ ] |
+| B-18 | Kill and crash tests (NF-2), screen tests phone and tablet, light and dark (NF-5) | B-07, B-17 | Sonnet 5.5 | [ ] |
+| B-19 | Speed budget: Macrobenchmark, baseline profiles, CI gate (NF-1) | B-17 | Opus 5.5 | [ ] |
+| B-20 | Play closed test prep: data safety form, privacy policy text, store listing (PV-4, S-08) | B-18 | Sonnet 5.5 | [ ] |
+
+## Phase R — Release
+
+| ID | Task | Depends | Model | Status |
+| --- | --- | --- | --- | --- |
+| R-01 | Closed test: 12 testers for 14 days (owner runs it) | B-20 | — (owner) | [ ] |
+| R-02 | Release checklist (PRD §13) and production submission | R-01 | Opus 5.5 | [ ] |
+
+## Owner notes
+
+- Git: `claude/d-01-prd` holds the D-01 commit locally. Pushing it failed: both logged-in GitHub accounts (`xnk-zan`, `jiz-dan`) have read-only access to `xnkzzxd/xnk-fit`. The owner needs to give push access or push the branch.
+- Working tree of this repo lives at `C:\Users\erlan\xnk-fit`.
+- The XNK coaching repo's plans (exercise figures, program rules) are separate; this repo does not depend on them.
+
+## Changes log
+
+| Date | Change |
+| --- | --- |
+| 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
