@@ -60,7 +60,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | --- | --- | --- | --- | --- |
 | B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [x] (verified in sandbox: `testDebugUnitTest`, `lintRelease`, `assembleRelease` green; size and permission checks pass; CI workflow written but not yet run on GitHub; not run on a device or emulator, no emulator in sandbox) |
 | B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [ ] |
-| B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [ ] |
+| B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [x] (`data/db`, `app/schemas/.../1.json`; 28 tests green, 1 ignored example migration; JVM/Robolectric only, nothing run on a device; see Design §3) |
 | B-04 | Content loader and checksummed content update (PV-2) | B-03, C-01, C-03 | Sonnet 5.5 | [ ] |
 | B-05 | Onboarding and screening (O-1…O-6, S-1…S-6), under-13 stop | B-02, D-06 | Sonnet 5.5 | [ ] |
 | B-06 | Program generator and progression (Design §6; L-1…L-5, L-12, L-16) with golden tests | B-02, B-04, C-02 | Opus 5.5 | [ ] |
@@ -96,6 +96,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 | Date | Change |
 | --- | --- |
+| 2026-11-18 | B-03 done: Room schema v1, DAOs, FTS4 food search, migration harness, schema JSON committed. |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
 | 2026-11-18 | C-01 done: exercise library draft, checker. |
 | 2026-11-18 | C-02 done: pattern check passes on the 149 entries. |

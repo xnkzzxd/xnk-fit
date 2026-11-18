@@ -83,6 +83,15 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 
 Indexes: `food_log(day)`, `workout(startedAt)`, `workout_set(workoutId)`, `measure(type, takenAt)`.
 
+Implementation (B-03, `app.xnkfit.data.db`): the schema is version 1, 21 tables plus the FTS4 table `food_fts` (§10). Deviations and choices, all inside this text:
+
+- Every table has `id`, `createdAt`, `updatedAt`. Singletons use a fixed id (`profile` = `me`, `backup_meta` = `backup`, `schema_meta` = `schema`); `badge.id` is the badge code, so a badge is earned once. `recipe.ownOrBundled` is the column `origin`.
+- Lists (muscles, equipment items, household measures, allergens, ingredients, reminder days, Drive file ids) are JSON text columns named `...Json`; no query looks inside them.
+- Foreign keys exist only where children must die with the parent: `program_day` → `program`, `program_item` → `program_day`, `workout_set` → `workout` (cascade). `workout.programDayId`, `program_item.exerciseId`, `food_log.foodId`, `food_log.recipeId` and `journey_moment.photoId` have no foreign key, so regenerating a program, a content update or deleting an own food never alters history.
+- Unique keys: `(workoutId, position)` on `workout_set`, `(programId, position)` on `program_day`, `(dayId, position)` on `program_item`, `(weekStart, day, slot)` on `meal_plan` (a new row for the same slot replaces the old one).
+- `workout.restEndsAt` holds the rest-timer end time (§4). A set write is one transaction: the set row plus the workout's `updatedAt` and `restEndsAt`. The set DAO does update-then-insert, not Room `@Upsert`, because `@Upsert` swallows a unique-key clash and would drop a tapped set without an error.
+- `schema_meta` is written once when the file is created.
+
 Migrations: Room `Migration` objects, each tested with the schema JSON exported per release (NF-5 "migration tests from every released schema"). Rule: append columns or add tables only; never drop a column in v1.x.
 
 ## 4. Logging, saving and crash safety
@@ -245,6 +254,8 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | Google Sign-In + Drive REST via Ktor/OkHttp | Backup (B-1) | Keep to one HTTP client |
 | kotlinx.serialization | Backup JSON | Small |
 | JUnit, Robolectric, Compose UI test, Macrobenchmark | Tests (NF-5) | Test only |
+| `androidx.room:room-testing` | `MigrationTestHelper` for the migration tests (§13), same version as Room (added in B-03) | Test only |
+| `androidx.test:core` | `ApplicationProvider` for Robolectric database tests (B-03) | Test only |
 
 Anything else needs a row here first.
 
@@ -254,7 +265,7 @@ Anything else needs a row here first.
 | --- | --- | --- |
 | Domain rules | JUnit, pure JVM; every rule ID has at least one test | Every PR |
 | Generator | JUnit with golden programs per equipment setting | Every PR |
-| Migrations | Room migration tests from each exported schema | Every PR |
+| Migrations | Room migration tests from each exported schema (`MigrationTestHelper`, Robolectric; JSON in `app/schemas/`, committed, never edited after release). `MigrationTest.everyReleasedVersionMigratesToLatest` finds every `N.json` by itself. Today only v1 exists: the test runs v1 → v1, and one example migration is kept as an ignored pattern. CI fails when a build changes a committed schema file (see CI). | Every PR |
 | Backup round trip | Unit: export → import equals source | Every PR |
 | Kill test | Instrumented: kill at each logger step | Nightly |
 | Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR |

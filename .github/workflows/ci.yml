@@ -36,6 +36,10 @@ jobs:
 
       - name: Unit tests
         run: ./gradlew --no-daemon testDebugUnitTest
+      # The build rewrites app/schemas/ from the entities. A changed or new file means the schema moved
+      # without a version bump and a committed JSON; commit it on purpose (Design §3) or fix the entities.
+      - name: Schema JSON is committed and unchanged
+        run: git diff --exit-code -- app/schemas && test -z "$(git ls-files --others --exclude-standard app/schemas)"
       - name: Lint
         run: ./gradlew --no-daemon lintRelease
       - name: Build release (R8 on)
