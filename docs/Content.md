@@ -109,6 +109,35 @@ File: `content/foods-tkpi.json`. Built by `node tools/build-tkpi.mjs <tkpi.pdf>`
 
 **Known limits (kendala):** blank cells and the "1,480" cell above; typos and unit slips printed in the table itself (flags above); fibre in TKPI is a mix of total fibre and dietary fibre (PDF note to Table 3), so fibre is only comparable within a row, not across foods; zinc in wheat flour is adjusted for fortification but not in foods made from it (PDF §2.6); vitamin C uses an old titration method; the file does not know which values are imputed (colour only).
 
+### 4.3 Meal packages (C-11)
+
+File: `content/meal-packages.json`. Built by `node tools/build-meal-packages.mjs` (the package definitions are in that script: foodId + grams only), checked by `node tools/check-meal-packages.mjs`. Totals are never typed; the builder computes them from `foods-tkpi.json` and `foods-estimates.json` (per 100 g x gram).
+
+- **72 packages** = 6 profiles x 4 slots (pagi, siang, malam, camilan) x 3 options. Profiles: region `jawa`, `sunda`, `padang`, `umum`; `beli` (warung and warteg, every package `mode = beli`); `kos` (anak kos: hemat, minim alat, `equipment` lists at most 3 of tanpa, rice-cooker, kompor, panci, wajan). **Milik sendiri** is a hook (`own`: no bundled package; the planner accepts the user's own recipes and foods in all four slots, kcal and macros computed from the table when the user builds it).
+- **Per package:** `items` (foodId, grams, `household` {code, label, qty} when the grams equal a whole or half household measure in the table, `main` on the item that counts as the main protein or dish), `kcal`, `protein`, `carb`, `fat`, `fibre` (`fibreComplete = false` when a TKPI fibre cell is empty), `budget`, `halal`, `allergens`, `lactose`, `isEstimate`, `mode`, and `tags` for the planner limits: `santan` (R_LIMIT_SANTAN), `goreng` (a fried main, R_LIMIT_GORENG), `mainProtein` (R_LIMIT_MAIN). Slot kcal here are plain table sums at the listed grams; scaling to the user's target is B-10.
+- **Household measures:** only estimate rows carry them (one `porsi`). TKPI rows have none until C-05, so TKPI items show grams only.
+- **Budget label (R_BUDGET):** the highest ordinal tier among the items, from `foodTier` in the file (1 Hemat, 2 Standar, 3 Bebas). The tiers are a judgement about relative cost, **not a price and not sourced** ⚠. Rice, tempe, tahu, egg, oncom, vegetables, local fruit, simple gorengan = Hemat; chicken, fish, soto, bakso, sate, dairy = Standar; rendang, nasi padang, beef (rawon), shrimp, avocado, cheese, martabak, boba and sweet iced coffee drinks = Bebas. Result: 46 Hemat, 23 Standar, 3 Bebas. Every `kos` package is Hemat or Standar.
+- **Halal (R_HALAL):** no item name or recipe has pork or alcohol words; all 72 are halal.
+- **Allergens (R_LIMIT_ALLERGY):** union over the items of the row's `allergens`, a keyword scan of name and recipe, and the TKPI group (H egg, G fish and seafood, J milk). `nuts` means peanut, peanut sauce, melinjo and emping (not mung bean or soy). `lactose` is true for milk, cheese, yoghurt and cream items. Conservative choices: **bread (`TKPI_AP024`) counts as egg and milk** because the table does not list the recipe; **mie kuning counts as egg**. Coconut milk (santan) is not milk.
+- **Names:** plain everyday Indonesian, no health claim and no brand. The checker rejects claim words and digits in names.
+- **Rules kept (checker):** every foodId exists and the name matches; kcal and macros equal the recomputed values; kcal is within 25 % of 4/4/9 from the macros; no package above 900 kcal; three options per slot per profile; the main items differ between the three options and no two options share more than half of their foods (Jaccard <= 0.5); the cheapest possible day (lowest option in each slot) is at least **1,500 kcal** in every profile, which is the higher of R_FLOOR_F and R_FLOOR_M (PR-5); no flagged TKPI row is used. Cheapest and dearest day per profile: jawa 1,756-1,988; sunda 1,569-1,942; padang 1,766-2,064; umum 1,637-1,870; beli 1,665-1,977; kos 1,657-1,936. The user's own target decides the real amount; the app never goes below the floor (R_GATE_FLOOR).
+- **Estimates (R_EST):** 61 of 72 packages contain at least one estimate row and show as "perkiraan". Estimate rows are not yet recomputed from TKPI (§4.1).
+- **Assumption ⚠:** a TKPI "segar" or "mentah" row is used by weight for foods eaten boiled or steamed without added fat (bihun, egg, vegetables where a "rebus" or "kukus" row exists is used instead). Weights are as eaten for rice and cooked dishes (estimate rows) and as printed for TKPI rows; the table's raw/cooked state is in its row name.
+
+**Rows needed (butuh baris baru; none invented, packages avoid them):**
+
+| Needed | Why |
+| --- | --- |
+| Oats / havermut; tauge; selada and lalapan as a prepared mix | Common anak kos and Sunda items, not in TKPI 2020 as eaten |
+| Telur rebus (cooked, 1 butir); telur ceplok | Only raw (HR002) and dadar exist; boiled egg is the most common kos item |
+| Ikan lele, nila, kembung, tongkol, ayam dada and paha **cooked plain** (rebus, kukus, bakar) | TKPI has them raw or only as named masakan; planner needs cooked weights |
+| Daging sapi cooked, tanpa kulit ayam | Same reason |
+| Mie instan (kuah and goreng), 1 bungkus | In C-06 (packaged); anak kos staple, left out until label values exist |
+| Sambal, tempe bacem, pepes (ikan, tahu, oncom), nasi timbel, nasi merah as a portion | Missing as portions with household measure (C-05, C-07) |
+| Susu kedelai without a source flag | `TKPI_CP060` carries a flag, so it is not used |
+
+**Rows to fix in `foods-estimates.json` (not edited here; another session owns it):** `W_LELE_GORENG` has `allergens = []` although it is fish (the builder adds `seafood`); `W_MIE_AYAM` has no egg although mie kuning usually has it (the builder adds `egg`). If C-04 or C-07 corrects the rows, rerun the builder; nothing else changes.
+
 ## 5. Muscles and figure
 
 Muscle groups (16 for the muscle map, L-11):
@@ -265,6 +294,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | C-08 | Figures reused from XNK (§5.1): 20 exercises with a rig, 129 with a written reason; every exercise has the muscle map. XNK commit `6dc57b3` | Done 2026-11-18; rest in C-08b |
 | C-08b | Rigs still to draw with sourced joint angles: 67 `derive`, 55 `new`; owner to confirm 7 cardio `map-only` and `PUSHV_DB` seated rig; read XNK `Gerak.md` for the 20 reused rigs; split delts and obliques in the XNK figure build (§5.2) | Needs XNK repo access and a joint-angle source per rig |
 | C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
+| C-11 | Meal packages built (§4.3): 72 packages, own hook, 7 row needs and 2 row fixes listed there; budget tiers ⚠ | Owner may reorder tiers in `foodTier` (builder) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
 
 ## 9. Sources for exercises and figures
@@ -298,6 +328,7 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | --- | --- |
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
 | 2026-11-18 | C-04: 66 warung and bought-meal estimates added (§4.1, §8). |
+| 2026-11-18 | C-11: `content/meal-packages.json` (72 packages, 6 profiles, own hook), `tools/build-meal-packages.mjs`, `tools/check-meal-packages.mjs` (§4.3). |
 | 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
 | 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
 | 2026-11-18 | C-01 muscle review (Opus): sources per entry, 21 muscle changes, 1 hint change, statuses `verified` / `analog` / `unverified`, file version 2026-11-18.2 (§12). |
