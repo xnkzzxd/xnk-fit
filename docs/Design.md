@@ -262,7 +262,7 @@ Anything else needs a row here first.
 | Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
 | APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
 | Permissions | `tools/check_permissions.sh`: the built APK may declare only the §14 list plus the WorkManager and AndroidX extras named there | Every PR |
-| Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks are off (they go stale and would turn CI red with no code change) | Every PR |
+| Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks and `OldTargetApi` are off: they go stale, and would turn CI red with no code change (first CI run failed on `OldTargetApi` because the runner had a newer platform than our target 36). Target SDK is raised on purpose, per §1 | Every PR |
 
 Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_ACT, R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07.
 

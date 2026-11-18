@@ -46,6 +46,9 @@ android {
         // "Newer version available" checks go stale by themselves and would turn CI red with no code change.
         // Version bumps are done on purpose, one dependency at a time, with a row in Design §12.
         disable += setOf("GradleDependency", "NewerVersionAvailable", "AndroidGradlePluginVersion")
+        // Same family: it fires as soon as the CI runner has a newer platform than our target (it did, API 37).
+        // targetSdk is a recorded decision in Design §1 (S-02), raised on purpose at release time, not by a lint date.
+        disable += "OldTargetApi"
     }
 
     packaging {
