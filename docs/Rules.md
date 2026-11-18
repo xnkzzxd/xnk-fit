@@ -146,7 +146,7 @@ Product rules (👤). Numbers can change before release; each change is recorded
 | R_PTS_FOOD | Points per day with food logged for ≥ 3 slots | 2 |
 | R_PTS_MEASURE | Points per weight measure taken on the scheduled day (weekly) | 2 |
 | R_PTS_STREAK | Points per streak week | 5 |
-| R_PTS_TARGET | Points per week the logged average is within ±10 % of target | 5 |
+| R_PTS_TARGET | Points per week with food logged on at least 5 days (the amounts are never judged). Was "logged average within ±10 % of target"; changed 2026-11-18 by Claude to match the `LOGWEEK_1` badge, so no points or badge depend on a calorie number (PR-5). Owner can reverse | 5 |
 | R_PTS_NOWEIGHT | Weight change never gives or takes points (PRD P-3) | — |
 | R_LEVEL | Level thresholds (cumulative points): 0, 100, 250, 450, 700, 1,000, 1,400, 1,900, 2,500, then +600 per level | ⚠ tuning (not a source gap; owner decision §12 #3) |
 | R_LEVEL_NOLOSE | Level never drops (PRD P-3) | — |
