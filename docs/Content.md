@@ -186,7 +186,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | C-04 | Warung and bought-meal estimates: 66 rows built in `content/foods-estimates.json` (see §4.1) | Done; 10 rows ⚠ |
 | C-07 | Bought and regional meal numbers (wider set; replace estimates where a label or official site exists) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
 | C-01 | Muscle review done 2026-11-18 (§12): 57 entries `verified`, 65 `analog`, 27 `unverified` (praktik umum ⚠). 21 entries had muscles changed | Remaining ⚠ need a study or owner decision |
-| C-01b | 35 entries still `review.muscles = "uncertain"` ⚠, each with its reason in `review.note` (§12.3). Owner decisions: `LEGISO_ADD` (adductors not in the 16 muscles; QUADS is wrong) and `PULLV_DB_PULLOVER` pattern (now CHEST main, still `PULL_V`) | Owner; later research |
+| C-01b | 34 entries still `review.muscles = "uncertain"` ⚠, each with its reason in `review.note` (§12.3). Owner decided 2026-11-18: `LEGISO_ADD` keeps QUADS as a stand-in; `PULLV_DB_PULLOVER` stays `PULL_V` | Later research |
 | C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
 | C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
@@ -196,7 +196,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | Item | Source | Status |
 | --- | --- | --- |
 | Pattern list (§3) | Standard resistance-training pattern classes, ACSM Position Stand 2009 (Rules S14) | ✅ class list; exercise picks ⚠ review |
-| Main and helper muscles per exercise | `source.muscles_cues` per entry: EMG studies, biomechanics studies or an anatomy text (list in §12.4) | ✅ 57 verified, ✅/⚠ 65 analog, ⚠ 27 unverified; 35 uncertain (§12.3) |
+| Main and helper muscles per exercise | `source.muscles_cues` per entry: EMG studies, biomechanics studies or an anatomy text (list in §12.4) | ✅ 57 verified, ✅/⚠ 65 analog, ⚠ 27 unverified; 34 uncertain (§12.3) |
 | Joint angles per pose | Standard range-of-motion descriptions, cited per pose | ⚠ to fill per pose |
 | Calories per food | TKPI 2020 (Rules S9) | ✅ source; per-row check when built |
 
@@ -225,6 +225,7 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
 | 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
 | 2026-11-18 | C-01 muscle review (Opus): sources per entry, 21 muscle changes, 1 hint change, statuses `verified` / `analog` / `unverified`, file version 2026-11-18.2 (§12). |
+| 2026-11-18 | Owner decisions: `LEGISO_ADD` keeps QUADS (stand-in for adductors); `PULLV_DB_PULLOVER` stays `PULL_V`. |
 
 ## 12. Muscle review (C-01, 2026-11-18)
 
@@ -234,7 +235,7 @@ Scope: main and helper muscles, pattern, equipment and settings of all 149 entri
 - `source.status`: `verified` (a study or anatomy text covers this exercise), `analog` (a study of the closely related parent exercise; same joint actions, different load or setup), `unverified` (praktik umum ⚠).
 - `review.muscles`: `reviewed`, or `uncertain` ⚠ with the reason in `review.note`; `review.date`.
 
-Result: 57 verified, 65 analog, 27 unverified. 114 reviewed, 35 uncertain ⚠. Of the 23 entries flagged in the draft, 7 are resolved and 16 stay ⚠; 19 more entries were marked ⚠ because no study was found. Pattern, equipment and settings: no errors found; `node tools/check-exercises.mjs` passes with the same counts per pattern and setting.
+Result: 57 verified, 65 analog, 27 unverified. 115 reviewed, 34 uncertain ⚠. Of the 23 entries flagged in the draft, 8 are resolved (one by owner decision) and 15 stay ⚠; 19 more entries were marked ⚠ because no study was found. Pattern, equipment and settings: no errors found; `node tools/check-exercises.mjs` passes with the same counts per pattern and setting.
 
 ### 12.1 Muscle changes (21 entries)
 
@@ -250,7 +251,7 @@ Result: 57 verified, 65 analog, 27 unverified. 114 reviewed, 35 uncertain ⚠. O
 | `PUSHV_LAT_CBL` | SIDE_DELT / – | SIDE_DELT / FRONT_DELT, REAR_DELT, TRAPS | As dumbbell lateral raise |
 | `PUSHV_LAT_BAND` | SIDE_DELT / – | SIDE_DELT / FRONT_DELT, REAR_DELT, TRAPS | As dumbbell lateral raise |
 | `PULLH_SA_CBL` | LATS / BICEPS, TRAPS | LATS / BICEPS, TRAPS, OBLIQUES | Fenwick 2009: one-arm cable row challenges trunk twist |
-| `PULLV_DB_PULLOVER` | LATS, CHEST / TRICEPS | CHEST / LATS, TRICEPS | Marchetti 2011: pectoralis major EMG significantly larger than latissimus; Di Fonza 2026 review agrees. Pattern left as `PULL_V` (owner) |
+| `PULLV_DB_PULLOVER` | LATS, CHEST / TRICEPS | CHEST / LATS, TRICEPS | Marchetti 2011: pectoralis major EMG significantly larger than latissimus; Di Fonza 2026 review agrees. Pattern stays `PULL_V` (owner decision 2026-11-18) |
 | `CARRY_FARMER_DB` | FOREARM, TRAPS / ABS, OBLIQUES, GLUTES | FOREARM, TRAPS / OBLIQUES, LOWER_BACK, GLUTES | McGill 2009 Table 2: rectus abdominis 13–21 %, lumbar erector spinae 106–144 % MVC |
 | `CARRY_TRAP` | FOREARM, TRAPS / ABS, GLUTES | FOREARM, TRAPS / OBLIQUES, LOWER_BACK, GLUTES | As farmer's walk |
 | `CARRY_SUIT_DB` | OBLIQUES, FOREARM / ABS, TRAPS | OBLIQUES, FOREARM / LOWER_BACK, GLUTES, TRAPS | McGill 2009 Table 2: opposite-side external oblique 65 %, lumbar erector spinae 97 %, gluteus medius 57–64 %, rectus abdominis 6–21 % |
@@ -264,15 +265,14 @@ Result: 57 verified, 65 analog, 27 unverified. 114 reviewed, 35 uncertain ⚠. O
 
 Other change: `SQUAT_FRONT` `hint_id` "…dan menekan paha depan" → "…; otot yang bekerja sama dengan squat biasa." (the old line contradicted Gullett 2009). Main bench, push-up and press splits were checked against Welsch 2005, Muyor 2023, Campos 2020 and Calatayud 2015 and left as they were.
 
-### 12.2 Draft flags resolved (7)
+### 12.2 Draft flags resolved (8)
 
-`SQUAT_PISTOL` (DiStefano 2009 single-limb squat), `HINGE_SWING_KB`, `PULLV_DB_PULLOVER`, `CARRY_SUIT_DB`, `CARRY_KB`, `CORE_SIDEPLANK`, `CARDIO_BIKE`.
+`SQUAT_PISTOL` (DiStefano 2009 single-limb squat), `HINGE_SWING_KB`, `PULLV_DB_PULLOVER`, `CARRY_SUIT_DB`, `CARRY_KB`, `CORE_SIDEPLANK`, `CARDIO_BIKE`, and `LEGISO_ADD` by owner decision 2026-11-18: QUADS kept as a stand-in (adductors are not in the 16 muscles; source status stays `unverified`).
 
-### 12.3 Still ⚠ (35, reason in `review.note`)
+### 12.3 Still ⚠ (34, reason in `review.note`)
 
 | Reason | IDs |
 | --- | --- |
-| Owner decision: no correct code in the 16 muscles | `LEGISO_ADD` (adductors; QUADS is wrong. Drop with `active=false` or add a muscle) |
 | Main muscles not measured (grip, trapezius) | `CARRY_FARMER_DB`, `CARRY_TRAP`, `CARRY_FRONT_KB` |
 | Muscles confirmed active, but no main/helper ranking in the source | `CARDIO_TREAD`, `CARDIO_WALK`, `CARDIO_WALK_BW`, `CARDIO_JOG` (Cappellini 2006), `CARDIO_ROWER` (Turpin 2011) |
 | No EMG study found (praktik umum) | `SQUAT_WALLSIT`, `SQUAT_HACK`, `SQUAT_JUMP`, `HINGE_BACKEXT`, `HINGE_PULLTHRU`, `HINGE_BAND_PT`, `HINGE_SUPERMAN`, `PUSHV_PIKE`, `PUSHV_PIKE_KNEE`, `PUSHV_HSPU_WALL`, `PULLH_FACEPULL`, `PULLH_BAND_FACE`, `PULLH_REVFLY_MC`, `PULLH_REVFLY_DB`, `PULLH_BAND_REV`, `PULLH_TOWEL`, `TRI_DIPMC`, `TRI_BENCHDIP`, `TRI_BWEXT`, `CORE_DEADBUG`, `CORE_HOLLOW`, `CORE_PALLOF`, `CORE_PALLOF_BAND`, `CARDIO_ROPE` |
