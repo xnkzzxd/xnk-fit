@@ -241,7 +241,7 @@ Barcode scan · share-editor tools and video · Hevy / Strong import · vegetari
 | 1 | Name checks (store, trademark, domain) | Do early in S-01; every later asset uses the name. |
 | 2 | ~150 own exercise figures | The largest content job (each pattern needs sourced joint angles). Start on day one; it sets the launch date. |
 | 3 | English exercise cues for Indonesian beginners | Decided in D-06 (2026-11-17): English cues and names stay. |
-| 4 | Google OAuth verification (Drive app folder) and the Play Health Connect / health-apps declarations | Both take review time; start early (S-03, S-04). |
+| 4 | Google OAuth verification (Drive app folder) and the Play Health Connect / health-apps declarations | The Health Connect / health-apps declarations take review time; start early (S-04). Google sign-in for `drive.appdata` is a non-sensitive scope, so no sensitive-scope review is expected; checklist in [Google-OAuth.md](Google-OAuth.md) (S-03). |
 | 5 | Household measures coverage | First set sourced from PMK 41/2014; "centong" and cooked dishes are our own flagged estimates until verified (C-05). |
 | 6 | Bought and regional meal numbers | Stay flagged estimates and listed. |
 | 7 | Unsourced rules | Carried into Rules.md (D-03) with ⚠ until closed. |

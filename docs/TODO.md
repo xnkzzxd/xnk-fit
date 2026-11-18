@@ -29,7 +29,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | --- | --- | --- | --- | --- |
 | S-01 | Name checks: store search (Play, App Store), PDKI trademark (classes 9, 41, 44), domain xnkfit.com (PRD §12). Write results in PRD §12 | — | Sonnet 5.5 | [~] Play, App Store, domain done 2026-11-17; PDKI not checkable by tool, owner searches by hand |
 | S-02 | Play target SDK rule at release time; record in Design §1. Remaining: official date for next raise (API 37) not published as of 2026-11-17; re-check before release | D-02 | Sonnet 5.5 | [~] |
-| S-03 | Google OAuth verification for the Drive app folder: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [ ] |
+| S-03 | Google OAuth verification for the Drive app folder: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [x] (`docs/Google-OAuth.md`: `drive.appdata` is non-sensitive, no review expected; owner does the console steps; three ⚠ items inside) |
 | S-04 | Play Health Connect and health-apps declarations: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [ ] |
 | S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [ ] |
 | S-06 | Content update host choice (Design §16 item 2) | D-02 | Sonnet 5.5 | [ ] |
@@ -88,7 +88,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 ## Owner notes
 
-- Git: `claude/d-01-prd` holds the D-01 commit locally. Pushing it failed: both logged-in GitHub accounts (`xnk-zan`, `jiz-dan`) have read-only access to `xnkzzxd/xnk-fit`. The owner needs to give push access or push the branch.
+- Git: `claude/d-01-prd` holds the D-01 commit locally. The branch is now on GitHub (checked 2026-11-18).
 - Working tree of this repo lives at `C:\Users\erlan\xnk-fit`.
 - The XNK coaching repo's plans (exercise figures, program rules) are separate; this repo does not depend on them.
 
@@ -97,5 +97,6 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-18 | S-03 done: Google-OAuth.md; PRD §14 item 4 corrected. |
 | 2026-11-17 | D-06 approved by the owner; decisions recorded in PRD L-6 and §14, Design §16, Content §5, mockups README. |
 | 2026-11-16 | D-05 mockups in `docs/mockups/` (static HTML, phone and tablet, light and dark); D-06 approval list in its README. Local commit only; push still blocked. |
