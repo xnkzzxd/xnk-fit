@@ -1,0 +1,212 @@
+package app.xnkfit.data.db
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Update
+import androidx.room.Upsert
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface ProfileDao {
+    @Upsert suspend fun upsert(profile: ProfileEntity)
+
+    @Query("SELECT * FROM profile WHERE id = 'me'")
+    fun observe(): Flow<ProfileEntity?>
+
+    @Query("SELECT * FROM profile WHERE id = 'me'")
+    suspend fun get(): ProfileEntity?
+
+    @Upsert suspend fun upsertMeasure(measure: MeasureEntity)
+
+    @Query("SELECT * FROM measure WHERE type = :type ORDER BY takenAt")
+    fun observeMeasures(type: String): Flow<List<MeasureEntity>>
+
+    @Upsert suspend fun upsertPhoto(photo: PhotoEntity)
+
+    @Query("SELECT * FROM photo ORDER BY takenAt DESC")
+    fun observePhotos(): Flow<List<PhotoEntity>>
+
+    @Upsert suspend fun upsertEquipment(equipment: EquipmentEntity)
+
+    @Query("SELECT * FROM equipment")
+    suspend fun equipment(): List<EquipmentEntity>
+}
+
+@Dao
+interface ProgramDao {
+    @Upsert suspend fun upsertExercises(rows: List<ExerciseEntity>)
+
+    @Query("SELECT * FROM exercise WHERE pattern = :pattern ORDER BY nameId")
+    suspend fun exercisesByPattern(pattern: String): List<ExerciseEntity>
+
+    @Insert suspend fun insertProgram(program: ProgramEntity)
+
+    @Insert suspend fun insertDays(rows: List<ProgramDayEntity>)
+
+    @Insert suspend fun insertItems(rows: List<ProgramItemEntity>)
+
+    @Query("SELECT * FROM program WHERE isActive = 1 LIMIT 1")
+    fun observeActive(): Flow<ProgramEntity?>
+
+    @Query("SELECT * FROM program_day WHERE programId = :programId ORDER BY position")
+    suspend fun days(programId: String): List<ProgramDayEntity>
+
+    @Query("SELECT * FROM program_item WHERE dayId = :dayId ORDER BY position")
+    suspend fun items(dayId: String): List<ProgramItemEntity>
+
+    /** `auto` programs are regenerated; `own` ones are never touched (L-5). Days and items cascade. */
+    @Query("DELETE FROM program WHERE source = 'auto'")
+    suspend fun deleteAutoPrograms()
+
+    @Query("UPDATE program SET isActive = 0, updatedAt = :now WHERE isActive = 1")
+    suspend fun deactivateAll(now: Long)
+}
+
+/**
+ * Logger path (PR-2, NF-2). Every call is one small write; the 50 ms budget (Design §10) applies to
+ * [saveSet] and [startWorkout]. No call here queues or batches anything.
+ */
+@Dao
+interface WorkoutDao {
+    @Insert suspend fun startWorkout(workout: WorkoutEntity)
+
+    /** Update by id; returns the rows changed (0 when the set is new). Throws on a (workoutId, position) clash. */
+    @Update suspend fun updateSetRow(set: WorkoutSetEntity): Int
+
+    /** Throws on a (workoutId, position) clash. */
+    @Insert suspend fun insertSetRow(set: WorkoutSetEntity)
+
+    @Query("UPDATE workout SET updatedAt = :now, restEndsAt = :restEndsAt WHERE id = :workoutId")
+    suspend fun touch(workoutId: String, now: Long, restEndsAt: Long?)
+
+    /** Set write and the workout's `updatedAt`/rest end in one transaction (Design §4 step 2). */
+    @Transaction
+    suspend fun saveSet(set: WorkoutSetEntity, now: Long, restEndsAt: Long? = null) {
+        // Not @Upsert: Room's upsert swallows a unique-key clash and drops the write. A set must never vanish silently.
+        if (updateSetRow(set) == 0) insertSetRow(set)
+        touch(set.workoutId, now, restEndsAt)
+    }
+
+    @Query("SELECT * FROM workout_set WHERE workoutId = :workoutId ORDER BY position")
+    fun observeSets(workoutId: String): Flow<List<WorkoutSetEntity>>
+
+    @Query("SELECT * FROM workout_set WHERE workoutId = :workoutId ORDER BY position")
+    suspend fun sets(workoutId: String): List<WorkoutSetEntity>
+
+    @Query("UPDATE workout SET endedAt = :endedAt, feeling = :feeling, note = :note, restEndsAt = NULL, updatedAt = :endedAt WHERE id = :workoutId")
+    suspend fun finish(workoutId: String, endedAt: Long, feeling: Int?, note: String?)
+
+    @Query("SELECT * FROM workout WHERE id = :workoutId")
+    suspend fun workout(workoutId: String): WorkoutEntity?
+
+    /** Unfinished workouts started at or after [since]: "Lanjutkan latihan?" (Design §4 step 4). */
+    @Query("SELECT * FROM workout WHERE endedAt IS NULL AND startedAt >= :since ORDER BY startedAt DESC")
+    suspend fun unfinishedSince(since: Long): List<WorkoutEntity>
+
+    /** Older unfinished workouts, to be closed with their last set and a neutral note. */
+    @Query("SELECT * FROM workout WHERE endedAt IS NULL AND startedAt < :before")
+    suspend fun staleUnfinished(before: Long): List<WorkoutEntity>
+
+    @Query("SELECT MAX(doneAt) FROM workout_set WHERE workoutId = :workoutId AND done = 1")
+    suspend fun lastDoneAt(workoutId: String): Long?
+
+    @Query("SELECT * FROM workout WHERE endedAt IS NOT NULL ORDER BY startedAt DESC LIMIT :limit")
+    fun observeFinished(limit: Int): Flow<List<WorkoutEntity>>
+
+    @Upsert suspend fun upsertActivity(activity: ActivityEntity)
+
+    @Query("SELECT * FROM activity WHERE at >= :from AND at < :to ORDER BY at")
+    suspend fun activitiesBetween(from: Long, to: Long): List<ActivityEntity>
+}
+
+@Dao
+interface FoodDao {
+    @Upsert suspend fun upsertFoods(rows: List<FoodEntity>)
+
+    @Query("SELECT * FROM food WHERE id = :id")
+    suspend fun food(id: String): FoodEntity?
+
+    /**
+     * Prefix search over the FTS4 index. [match] is an FTS4 MATCH expression, for example `ayam* goreng*`;
+     * build it with [FoodSearch.toMatch], which also strips characters that are FTS syntax.
+     */
+    @Query(
+        "SELECT food.* FROM food JOIN food_fts ON food.rowid = food_fts.rowid " +
+            "WHERE food_fts MATCH :match ORDER BY food.nameId LIMIT :limit",
+    )
+    suspend fun search(match: String, limit: Int): List<FoodEntity>
+
+    @Upsert suspend fun upsertRecipe(recipe: RecipeEntity)
+
+    @Query("SELECT * FROM recipe ORDER BY name")
+    fun observeRecipes(): Flow<List<RecipeEntity>>
+
+    @Upsert suspend fun upsertLog(row: FoodLogEntity)
+
+    @Query("DELETE FROM food_log WHERE id = :id")
+    suspend fun deleteLog(id: String)
+
+    @Query("SELECT * FROM food_log WHERE day = :day ORDER BY createdAt")
+    fun observeDay(day: String): Flow<List<FoodLogEntity>>
+
+    @Query("SELECT COALESCE(SUM(COALESCE(quickKcal, kcal)), 0) FROM food_log WHERE day = :day")
+    fun observeDayKcal(day: String): Flow<Double>
+
+    /** One option per week, day and slot: a new row for the same slot replaces the old one (M-3). */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertPlan(row: MealPlanEntity)
+
+    @Query("SELECT * FROM meal_plan WHERE weekStart = :weekStart ORDER BY day, slot")
+    suspend fun plan(weekStart: String): List<MealPlanEntity>
+}
+
+@Dao
+interface ProgressDao {
+    @Upsert suspend fun upsertReminder(row: ReminderEntity)
+
+    @Query("SELECT * FROM reminder")
+    suspend fun reminders(): List<ReminderEntity>
+
+    @Insert suspend fun addPoints(row: PointsEventEntity)
+
+    @Query("SELECT COALESCE(SUM(points), 0) FROM points_event")
+    fun observeTotalPoints(): Flow<Int>
+
+    /** Ignored when the badge is already earned. Returns the row id, or -1 when it was a repeat. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun earnBadge(row: BadgeEntity): Long
+
+    @Query("SELECT * FROM badge ORDER BY earnedAt")
+    fun observeBadges(): Flow<List<BadgeEntity>>
+
+    @Upsert suspend fun upsertMoment(row: JourneyMomentEntity)
+
+    @Query("SELECT * FROM journey_moment ORDER BY at DESC")
+    fun observeMoments(): Flow<List<JourneyMomentEntity>>
+}
+
+@Dao
+interface MetaDao {
+    @Upsert suspend fun upsertBackupMeta(row: BackupMetaEntity)
+
+    @Query("SELECT * FROM backup_meta WHERE id = 'backup'")
+    suspend fun backupMeta(): BackupMetaEntity?
+
+    @Upsert suspend fun upsertSchemaMeta(row: SchemaMetaEntity)
+
+    @Query("SELECT * FROM schema_meta WHERE id = 'schema'")
+    suspend fun schemaMeta(): SchemaMetaEntity?
+}
+
+/** Turns what the user typed into an FTS4 prefix query. Pure, so it is testable on the JVM. */
+object FoodSearch {
+    /** Returns null when nothing searchable was typed. Only letters and digits survive (they cannot form FTS syntax). */
+    fun toMatch(input: String): String? {
+        val words = input.split(Regex("[^\\p{L}\\p{N}]+")).filter { it.isNotEmpty() }
+        if (words.isEmpty()) return null
+        return words.joinToString(" ") { "$it*" }
+    }
+}

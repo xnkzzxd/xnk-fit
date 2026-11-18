@@ -122,6 +122,7 @@ The owner wants one new product instead: an app **for people without a coach**, 
 | L-14 | Activity log: type + minutes + effort, calories from published MET values. Any logged activity counts toward 150–300 minutes a week; vigorous effort counts double. |
 | L-15 | Steps from Health Connect, shown (today, weekly average) but adding no calories and no level points. The feature hides itself where Health Connect is missing. |
 | L-16 | Coming back after weeks: quiet restart, no "streak lost" banner, and the first workout is eased by the return-after-absence rule. |
+| L-17 | Weekly sets per muscle group: the program reaches a minimum per group for the level (Rules R_TRN_VOL) and the weekly muscle map shows sets against it. A group the equipment cannot reach is told plainly (as L-3). |
 
 ### 7.5 Makan
 
@@ -183,7 +184,7 @@ The owner wants one new product instead: an app **for people without a coach**, 
 | --- | --- |
 | S-1 | Full health screening before the first program. Risk answers give a lighter program and text advising a doctor. |
 | S-2 | Under 18: light mode, technique first, text advising training with an adult, **no calorie deficit**. |
-| S-3 | Pregnancy: **no calorie deficit**. |
+| S-3 | Pregnancy or breastfeeding (one screening question): **no calorie deficit**. |
 | S-4 | Calorie floor: never below 1,200 kcal (women) / 1,500 kcal (men), and never below BMR (owner's own caution, stated as such). |
 | S-5 | Goal "turun" is not offered below BMI 18.5. |
 | S-6 | A history of eating disorder gives a maintain target and a **no-numbers mode** (meal plan and ticks only, calories hidden), with a gentle note to talk to a doctor. |
@@ -224,7 +225,7 @@ Barcode scan · share-editor tools and video · Hevy / Strong import · vegetari
 | xnkfit.com | Free on 2026-11-17: the .com registry (RDAP) answers "not found" (404). Still not registered; owner registers if wanted. |
 | Play Store search | Checked 2026-11-17 (public search page "XNK Fit" and "XNK"). No app named XNK Fit or XNK. Similar names, all fitness: XC Fit, X-Fit, XFIT, XOfit, xForFit, Fitxlink, Smartix Fit X, FIT X GYM, Knit Fit. None identical; X-Fit / XFIT are the closest in sound. Search shows only the first results, so this is not a full listing. |
 | App Store search | Checked 2026-11-17 (Apple search API, "XNK Fit" and "XNK", Indonesia store). No app named XNK Fit. Similar names: XN2FIT (Health & Fitness, Ex Nihilo Nihil Fit LLC), NK Fitness App, XFIT, X-Fit, Xplicit Fit, XWEAR. "XNK" alone only finds "Thuận Lợi XNK" (Business): in Vietnamese XNK abbreviates xuất nhập khẩu (import-export), unrelated to fitness. |
-| Indonesian trademark register (PDKI, classes 9 and 41 / 44) | **Not checked, cannot be checked.** pdki-indonesia.dgip.go.id loads results with JavaScript and returned an empty page to the fetch tool; web search found no trademark records. Owner or an IP consultant must search "XNK Fit" and "XNK" (classes 9, 41, 44) on PDKI by hand before filing. No conclusion either way. |
+| Indonesian trademark register (PDKI, classes 9 and 41 / 44) | **Not checked, cannot be checked.** pdki-indonesia.dgip.go.id loads results with JavaScript and returned an empty page to the fetch tool; web search found no trademark records. Owner or an IP consultant must search "XNK Fit" and "XNK" (classes 9, 41, 44) on PDKI by hand before filing. No conclusion from tools. **Owner statement 2026-11-18: the name "XNK Fit" is safe to use** (not a register check; filing a trademark is a separate owner decision). |
 | Fit beside "XNK Coach", the brand kept for the paused coaching product | To judge in S-01. Not a name-availability matter; left for the owner. |
 
 ## 13. Success criteria for v1

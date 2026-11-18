@@ -1,0 +1,4138 @@
+{
+ "schema": 1,
+ "version": 1,
+ "source": "warung-est",
+ "note": "Semua baris perkiraan (isEstimate=true). Sodium null: belum ada dasar. Angka per 100 g dan per porsi diturunkan dari makro porsi.",
+ "foods": [
+  {
+   "id": "W_NASI_PUTIH",
+   "source": "warung-est",
+   "name_id": "Nasi putih",
+   "name_en": "Steamed white rice",
+   "group": "warung",
+   "kcalPer100": 123,
+   "protein": 2.2,
+   "carb": 28,
+   "fat": 0.2,
+   "fibre": 0.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 200,
+    "spreadPct": 15,
+    "kcal": 245,
+    "kcalRange": [
+     210,
+     280
+    ],
+    "protein": 4.4,
+    "carb": 56,
+    "fat": 0.4,
+    "fibre": 0.8,
+    "range": {
+     "protein": [
+      3.7,
+      5.1
+     ],
+     "carb": [
+      47.6,
+      64.4
+     ],
+     "fat": [
+      0.3,
+      0.5
+     ]
+    }
+   },
+   "recipe": [
+    "beras giling matang 200"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_NASI_UDUK",
+   "source": "warung-est",
+   "name_id": "Nasi uduk",
+   "name_en": "Coconut rice",
+   "group": "warung",
+   "kcalPer100": 140,
+   "protein": 2,
+   "carb": 24,
+   "fat": 4,
+   "fibre": 0.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 200,
+    "spreadPct": 25,
+    "kcal": 280,
+    "kcalRange": [
+     210,
+     350
+    ],
+    "protein": 4,
+    "carb": 48,
+    "fat": 8,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      3,
+      5
+     ],
+     "carb": [
+      36,
+      60
+     ],
+     "fat": [
+      6,
+      10
+     ]
+    }
+   },
+   "recipe": [
+    "beras 90 mentah",
+    "santan 40",
+    "daun salam, serai"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_NASI_KUNING",
+   "source": "warung-est",
+   "name_id": "Nasi kuning",
+   "name_en": "Turmeric coconut rice",
+   "group": "warung",
+   "kcalPer100": 142,
+   "protein": 2.4,
+   "carb": 24,
+   "fat": 4,
+   "fibre": 0.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 250,
+    "spreadPct": 25,
+    "kcal": 355,
+    "kcalRange": [
+     265,
+     445
+    ],
+    "protein": 6,
+    "carb": 60,
+    "fat": 10,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      4.5,
+      7.5
+     ],
+     "carb": [
+      45,
+      75
+     ],
+     "fat": [
+      7.5,
+      12.5
+     ]
+    }
+   },
+   "recipe": [
+    "beras 110 mentah",
+    "santan 50",
+    "kunyit",
+    "sedikit lauk pelengkap (kering tempe, telur iris)"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_NASI_GORENG",
+   "source": "warung-est",
+   "name_id": "Nasi goreng",
+   "name_en": "Fried rice",
+   "group": "warung",
+   "kcalPer100": 164,
+   "protein": 4.8,
+   "carb": 22,
+   "fat": 6.4,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 250,
+    "spreadPct": 25,
+    "kcal": 410,
+    "kcalRange": [
+     310,
+     515
+    ],
+    "protein": 12,
+    "carb": 55,
+    "fat": 16,
+    "fibre": 2,
+    "range": {
+     "protein": [
+      9,
+      15
+     ],
+     "carb": [
+      41.3,
+      68.8
+     ],
+     "fat": [
+      12,
+      20
+     ]
+    }
+   },
+   "recipe": [
+    "nasi 200",
+    "minyak 12",
+    "telur 30",
+    "ayam suwir 20",
+    "bumbu, kecap"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_MIE_GORENG",
+   "source": "warung-est",
+   "name_id": "Mie goreng",
+   "name_en": "Fried noodles",
+   "group": "warung",
+   "kcalPer100": 176,
+   "protein": 4,
+   "carb": 24.8,
+   "fat": 6.8,
+   "fibre": 1.2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 250,
+    "spreadPct": 25,
+    "kcal": 440,
+    "kcalRange": [
+     330,
+     550
+    ],
+    "protein": 10,
+    "carb": 62,
+    "fat": 17,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      7.5,
+      12.5
+     ],
+     "carb": [
+      46.5,
+      77.5
+     ],
+     "fat": [
+      12.8,
+      21.3
+     ]
+    }
+   },
+   "recipe": [
+    "mie basah matang 200",
+    "minyak 12",
+    "telur 25",
+    "sayur 30",
+    "kecap"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_KWETIAU_GORENG",
+   "source": "warung-est",
+   "name_id": "Kwetiau goreng",
+   "name_en": "Fried flat rice noodles",
+   "group": "warung",
+   "kcalPer100": 172,
+   "protein": 4.4,
+   "carb": 23.2,
+   "fat": 6.8,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg",
+    "seafood"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 250,
+    "spreadPct": 30,
+    "kcal": 430,
+    "kcalRange": [
+     300,
+     560
+    ],
+    "protein": 11,
+    "carb": 58,
+    "fat": 17,
+    "fibre": 2,
+    "range": {
+     "protein": [
+      7.7,
+      14.3
+     ],
+     "carb": [
+      40.6,
+      75.4
+     ],
+     "fat": [
+      11.9,
+      22.1
+     ]
+    }
+   },
+   "recipe": [
+    "kwetiau matang 200",
+    "minyak 12",
+    "telur 25",
+    "udang/bakso 25",
+    "sayur"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_AYAM_GORENG",
+   "source": "warung-est",
+   "name_id": "Ayam goreng (paha), 1 potong",
+   "name_en": "Fried chicken thigh",
+   "group": "warung",
+   "kcalPer100": 275,
+   "protein": 25,
+   "carb": 5,
+   "fat": 17.5,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong",
+     "grams": 80,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 potong",
+    "grams": 80,
+    "spreadPct": 25,
+    "kcal": 220,
+    "kcalRange": [
+     165,
+     275
+    ],
+    "protein": 20,
+    "carb": 4,
+    "fat": 14,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      15,
+      25
+     ],
+     "carb": [
+      3,
+      5
+     ],
+     "fat": [
+      10.5,
+      17.5
+     ]
+    }
+   },
+   "recipe": [
+    "paha ayam bagian dimakan 70",
+    "tepung bumbu 5",
+    "minyak terserap 8"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_AYAM_BAKAR",
+   "source": "warung-est",
+   "name_id": "Ayam bakar, 1 potong",
+   "name_en": "Grilled chicken with sweet soy",
+   "group": "warung",
+   "kcalPer100": 194,
+   "protein": 23.3,
+   "carb": 3.3,
+   "fat": 10,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong",
+     "grams": 90,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 potong",
+    "grams": 90,
+    "spreadPct": 25,
+    "kcal": 175,
+    "kcalRange": [
+     130,
+     220
+    ],
+    "protein": 21,
+    "carb": 3,
+    "fat": 9,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      15.8,
+      26.3
+     ],
+     "carb": [
+      2.3,
+      3.8
+     ],
+     "fat": [
+      6.8,
+      11.3
+     ]
+    }
+   },
+   "recipe": [
+    "paha/dada ayam 90",
+    "kecap, margarin olesan 5"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_AYAM_GEPREK",
+   "source": "warung-est",
+   "name_id": "Ayam geprek dengan sambal",
+   "name_en": "Smashed fried chicken with chilli",
+   "group": "warung",
+   "kcalPer100": 227,
+   "protein": 14.7,
+   "carb": 9.3,
+   "fat": 14.7,
+   "fibre": 0.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 340,
+    "kcalRange": [
+     240,
+     440
+    ],
+    "protein": 22,
+    "carb": 14,
+    "fat": 22,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      15.4,
+      28.6
+     ],
+     "carb": [
+      9.8,
+      18.2
+     ],
+     "fat": [
+      15.4,
+      28.6
+     ]
+    }
+   },
+   "recipe": [
+    "ayam goreng tepung 100",
+    "sambal bawit 40 (cabai, bawang, minyak 8)"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_OPOR_AYAM",
+   "source": "warung-est",
+   "name_id": "Opor ayam, 1 potong dengan kuah",
+   "name_en": "Chicken in coconut-milk sauce",
+   "group": "warung",
+   "kcalPer100": 153,
+   "protein": 11.3,
+   "carb": 2.7,
+   "fat": 10.7,
+   "fibre": 0.3,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong + kuah",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 potong + kuah",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 230,
+    "kcalRange": [
+     160,
+     300
+    ],
+    "protein": 17,
+    "carb": 4,
+    "fat": 16,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      11.9,
+      22.1
+     ],
+     "carb": [
+      2.8,
+      5.2
+     ],
+     "fat": [
+      11.2,
+      20.8
+     ]
+    }
+   },
+   "recipe": [
+    "ayam 80",
+    "santan 60",
+    "bumbu 10"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_GULAI_AYAM",
+   "source": "warung-est",
+   "name_id": "Gulai ayam, 1 potong dengan kuah",
+   "name_en": "Chicken gulai",
+   "group": "warung",
+   "kcalPer100": 143,
+   "protein": 10.7,
+   "carb": 2.7,
+   "fat": 10,
+   "fibre": 0.3,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong + kuah",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 potong + kuah",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 215,
+    "kcalRange": [
+     150,
+     280
+    ],
+    "protein": 16,
+    "carb": 4,
+    "fat": 15,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      11.2,
+      20.8
+     ],
+     "carb": [
+      2.8,
+      5.2
+     ],
+     "fat": [
+      10.5,
+      19.5
+     ]
+    }
+   },
+   "recipe": [
+    "ayam 80",
+    "santan 60",
+    "bumbu 10"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_RENDANG",
+   "source": "warung-est",
+   "name_id": "Rendang sapi, 1 potong",
+   "name_en": "Beef rendang",
+   "group": "warung",
+   "kcalPer100": 342,
+   "protein": 28.3,
+   "carb": 5,
+   "fat": 23.3,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong",
+     "grams": 60,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 potong",
+    "grams": 60,
+    "spreadPct": 30,
+    "kcal": 205,
+    "kcalRange": [
+     145,
+     265
+    ],
+    "protein": 17,
+    "carb": 3,
+    "fat": 14,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      11.9,
+      22.1
+     ],
+     "carb": [
+      2.1,
+      3.9
+     ],
+     "fat": [
+      9.8,
+      18.2
+     ]
+    }
+   },
+   "recipe": [
+    "daging sapi 45",
+    "santan, kelapa sangrai, bumbu 15"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_LELE_GORENG",
+   "source": "warung-est",
+   "name_id": "Ikan lele goreng, 1 ekor",
+   "name_en": "Fried catfish",
+   "group": "warung",
+   "kcalPer100": 190,
+   "protein": 18,
+   "carb": 3,
+   "fat": 12,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 ekor",
+     "grams": 100,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 ekor",
+    "grams": 100,
+    "spreadPct": 30,
+    "kcal": 190,
+    "kcalRange": [
+     135,
+     245
+    ],
+    "protein": 18,
+    "carb": 3,
+    "fat": 12,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      12.6,
+      23.4
+     ],
+     "carb": [
+      2.1,
+      3.9
+     ],
+     "fat": [
+      8.4,
+      15.6
+     ]
+    }
+   },
+   "recipe": [
+    "lele 100 bagian dimakan",
+    "tepung 3",
+    "minyak terserap 8"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_TEMPE_GORENG",
+   "source": "warung-est",
+   "name_id": "Tempe goreng, 2 potong",
+   "name_en": "Fried tempeh",
+   "group": "warung",
+   "kcalPer100": 260,
+   "protein": 18,
+   "carb": 10,
+   "fat": 16,
+   "fibre": 2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "2 potong",
+     "grams": 50,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "2 potong",
+    "grams": 50,
+    "spreadPct": 25,
+    "kcal": 130,
+    "kcalRange": [
+     100,
+     165
+    ],
+    "protein": 9,
+    "carb": 5,
+    "fat": 8,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      6.8,
+      11.3
+     ],
+     "carb": [
+      3.8,
+      6.3
+     ],
+     "fat": [
+      6,
+      10
+     ]
+    }
+   },
+   "recipe": [
+    "tempe 40",
+    "minyak terserap 6",
+    "bumbu"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_TAHU_GORENG",
+   "source": "warung-est",
+   "name_id": "Tahu goreng, 2 potong",
+   "name_en": "Fried tofu",
+   "group": "warung",
+   "kcalPer100": 183,
+   "protein": 10,
+   "carb": 5,
+   "fat": 13.3,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "2 potong",
+     "grams": 60,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "2 potong",
+    "grams": 60,
+    "spreadPct": 25,
+    "kcal": 110,
+    "kcalRange": [
+     85,
+     140
+    ],
+    "protein": 6,
+    "carb": 3,
+    "fat": 8,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      4.5,
+      7.5
+     ],
+     "carb": [
+      2.3,
+      3.8
+     ],
+     "fat": [
+      6,
+      10
+     ]
+    }
+   },
+   "recipe": [
+    "tahu 55",
+    "minyak terserap 7"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_TELUR_DADAR",
+   "source": "warung-est",
+   "name_id": "Telur dadar",
+   "name_en": "Omelette",
+   "group": "warung",
+   "kcalPer100": 200,
+   "protein": 11.7,
+   "carb": 1.7,
+   "fat": 16.7,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 butir",
+     "grams": 60,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 butir",
+    "grams": 60,
+    "spreadPct": 20,
+    "kcal": 120,
+    "kcalRange": [
+     95,
+     145
+    ],
+    "protein": 7,
+    "carb": 1,
+    "fat": 10,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      5.6,
+      8.4
+     ],
+     "carb": [
+      0.8,
+      1.2
+     ],
+     "fat": [
+      8,
+      12
+     ]
+    }
+   },
+   "recipe": [
+    "telur 55",
+    "minyak 5",
+    "bawang"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_TELUR_BALADO",
+   "source": "warung-est",
+   "name_id": "Telur balado",
+   "name_en": "Eggs in chilli sauce",
+   "group": "warung",
+   "kcalPer100": 207,
+   "protein": 10,
+   "carb": 7.1,
+   "fat": 15.7,
+   "fibre": 0.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 butir",
+     "grams": 70,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 butir",
+    "grams": 70,
+    "spreadPct": 30,
+    "kcal": 145,
+    "kcalRange": [
+     100,
+     190
+    ],
+    "protein": 7,
+    "carb": 5,
+    "fat": 11,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      4.9,
+      9.1
+     ],
+     "carb": [
+      3.5,
+      6.5
+     ],
+     "fat": [
+      7.7,
+      14.3
+     ]
+    }
+   },
+   "recipe": [
+    "telur rebus goreng 55",
+    "sambal balado 15 (cabai, minyak, tomat)"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_PERKEDEL",
+   "source": "warung-est",
+   "name_id": "Perkedel kentang",
+   "name_en": "Potato fritter",
+   "group": "warung",
+   "kcalPer100": 180,
+   "protein": 4,
+   "carb": 18,
+   "fat": 10,
+   "fibre": 1.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 50,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 50,
+    "spreadPct": 25,
+    "kcal": 90,
+    "kcalRange": [
+     70,
+     115
+    ],
+    "protein": 2,
+    "carb": 9,
+    "fat": 5,
+    "fibre": 0.7,
+    "range": {
+     "protein": [
+      1.5,
+      2.5
+     ],
+     "carb": [
+      6.8,
+      11.3
+     ],
+     "fat": [
+      3.8,
+      6.3
+     ]
+    }
+   },
+   "recipe": [
+    "kentang 40",
+    "telur 5",
+    "minyak terserap 4"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_OREK_TEMPE",
+   "source": "warung-est",
+   "name_id": "Orek tempe",
+   "name_en": "Sweet stir-fried tempeh",
+   "group": "warung",
+   "kcalPer100": 230,
+   "protein": 12,
+   "carb": 18,
+   "fat": 12,
+   "fibre": 3,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "3 sdm",
+     "grams": 50,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "3 sdm",
+    "grams": 50,
+    "spreadPct": 30,
+    "kcal": 115,
+    "kcalRange": [
+     80,
+     150
+    ],
+    "protein": 6,
+    "carb": 9,
+    "fat": 6,
+    "fibre": 1.5,
+    "range": {
+     "protein": [
+      4.2,
+      7.8
+     ],
+     "carb": [
+      6.3,
+      11.7
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "tempe 40",
+    "kecap, gula 5",
+    "minyak 4"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SAYUR_LODEH",
+   "source": "warung-est",
+   "name_id": "Sayur lodeh",
+   "name_en": "Vegetables in coconut milk",
+   "group": "warung",
+   "kcalPer100": 67,
+   "protein": 2,
+   "carb": 5.3,
+   "fat": 4,
+   "fibre": 1.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 100,
+    "kcalRange": [
+     70,
+     130
+    ],
+    "protein": 3,
+    "carb": 8,
+    "fat": 6,
+    "fibre": 2.5,
+    "range": {
+     "protein": [
+      2.1,
+      3.9
+     ],
+     "carb": [
+      5.6,
+      10.4
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "labu siam, kacang panjang, terong 100",
+    "santan 40",
+    "bumbu"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SAYUR_ASEM",
+   "source": "warung-est",
+   "name_id": "Sayur asem",
+   "name_en": "Tamarind vegetable soup",
+   "group": "warung",
+   "kcalPer100": 28,
+   "protein": 1,
+   "carb": 5,
+   "fat": 0.5,
+   "fibre": 1.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 200,
+    "spreadPct": 30,
+    "kcal": 55,
+    "kcalRange": [
+     40,
+     70
+    ],
+    "protein": 2,
+    "carb": 10,
+    "fat": 1,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      1.4,
+      2.6
+     ],
+     "carb": [
+      7,
+      13
+     ],
+     "fat": [
+      0.7,
+      1.3
+     ]
+    }
+   },
+   "recipe": [
+    "jagung, labu siam, kacang tanah, melinjo 100",
+    "air asam",
+    "gula"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SAYUR_BENING",
+   "source": "warung-est",
+   "name_id": "Sayur bening bayam",
+   "name_en": "Spinach clear soup",
+   "group": "warung",
+   "kcalPer100": 20,
+   "protein": 1.5,
+   "carb": 3,
+   "fat": 0.3,
+   "fibre": 1.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 200,
+    "spreadPct": 30,
+    "kcal": 40,
+    "kcalRange": [
+     30,
+     50
+    ],
+    "protein": 3,
+    "carb": 6,
+    "fat": 0.5,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      2.1,
+      3.9
+     ],
+     "carb": [
+      4.2,
+      7.8
+     ],
+     "fat": [
+      0.4,
+      0.7
+     ]
+    }
+   },
+   "recipe": [
+    "bayam 100",
+    "jagung 20",
+    "bawang"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_TUMIS_KANGKUNG",
+   "source": "warung-est",
+   "name_id": "Tumis kangkung",
+   "name_en": "Stir-fried water spinach",
+   "group": "warung",
+   "kcalPer100": 75,
+   "protein": 3,
+   "carb": 5,
+   "fat": 5,
+   "fibre": 2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 100,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 100,
+    "spreadPct": 30,
+    "kcal": 75,
+    "kcalRange": [
+     55,
+     100
+    ],
+    "protein": 3,
+    "carb": 5,
+    "fat": 5,
+    "fibre": 2,
+    "range": {
+     "protein": [
+      2.1,
+      3.9
+     ],
+     "carb": [
+      3.5,
+      6.5
+     ],
+     "fat": [
+      3.5,
+      6.5
+     ]
+    }
+   },
+   "recipe": [
+    "kangkung 100",
+    "minyak 5",
+    "bawang, terasi sedikit"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_CAPCAY",
+   "source": "warung-est",
+   "name_id": "Capcay",
+   "name_en": "Mixed vegetable stir-fry",
+   "group": "warung",
+   "kcalPer100": 77,
+   "protein": 4,
+   "carb": 6,
+   "fat": 4,
+   "fibre": 2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 115,
+    "kcalRange": [
+     80,
+     150
+    ],
+    "protein": 6,
+    "carb": 9,
+    "fat": 6,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      4.2,
+      7.8
+     ],
+     "carb": [
+      6.3,
+      11.7
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "sayur campur 110",
+    "minyak 6",
+    "udang/ayam 15",
+    "saus"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_GADO_GADO",
+   "source": "warung-est",
+   "name_id": "Gado-gado",
+   "name_en": "Vegetables with peanut sauce",
+   "group": "warung",
+   "kcalPer100": 113,
+   "protein": 5,
+   "carb": 10,
+   "fat": 6,
+   "fibre": 2.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts",
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 300,
+    "spreadPct": 30,
+    "kcal": 340,
+    "kcalRange": [
+     240,
+     440
+    ],
+    "protein": 15,
+    "carb": 30,
+    "fat": 18,
+    "fibre": 8,
+    "range": {
+     "protein": [
+      10.5,
+      19.5
+     ],
+     "carb": [
+      21,
+      39
+     ],
+     "fat": [
+      12.6,
+      23.4
+     ]
+    }
+   },
+   "recipe": [
+    "sayur rebus 150",
+    "lontong/kentang 60",
+    "tahu, tempe 40",
+    "telur 25",
+    "bumbu kacang 40"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_PECEL",
+   "source": "warung-est",
+   "name_id": "Pecel (sayur dan bumbu kacang)",
+   "name_en": "Vegetables with spicy peanut sauce",
+   "group": "warung",
+   "kcalPer100": 94,
+   "protein": 4,
+   "carb": 8.8,
+   "fat": 4.8,
+   "fibre": 2.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 250,
+    "spreadPct": 30,
+    "kcal": 235,
+    "kcalRange": [
+     165,
+     305
+    ],
+    "protein": 10,
+    "carb": 22,
+    "fat": 12,
+    "fibre": 7,
+    "range": {
+     "protein": [
+      7,
+      13
+     ],
+     "carb": [
+      15.4,
+      28.6
+     ],
+     "fat": [
+      8.4,
+      15.6
+     ]
+    }
+   },
+   "recipe": [
+    "sayur rebus 180",
+    "bumbu kacang 40",
+    "rempeyek 10"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_NASI_CAMPUR",
+   "source": "warung-est",
+   "name_id": "Nasi campur warung",
+   "name_en": "Mixed rice plate",
+   "group": "warung",
+   "kcalPer100": 145,
+   "protein": 6.3,
+   "carb": 18.8,
+   "fat": 5,
+   "fibre": 1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 400,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 400,
+    "spreadPct": 30,
+    "kcal": 580,
+    "kcalRange": [
+     405,
+     755
+    ],
+    "protein": 25,
+    "carb": 75,
+    "fat": 20,
+    "fibre": 4,
+    "range": {
+     "protein": [
+      17.5,
+      32.5
+     ],
+     "carb": [
+      52.5,
+      97.5
+     ],
+     "fat": [
+      14,
+      26
+     ]
+    }
+   },
+   "recipe": [
+    "nasi 200",
+    "ayam/telur 70",
+    "tempe 30",
+    "sayur 60",
+    "sambal, minyak"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_NASI_PADANG_RENDANG",
+   "source": "warung-est",
+   "name_id": "Nasi padang dengan rendang",
+   "name_en": "Padang rice with rendang",
+   "group": "warung",
+   "kcalPer100": 166,
+   "protein": 7.1,
+   "carb": 17.8,
+   "fat": 7.3,
+   "fibre": 0.9,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 bungkus",
+     "grams": 450,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 bungkus",
+    "grams": 450,
+    "spreadPct": 30,
+    "kcal": 745,
+    "kcalRange": [
+     520,
+     970
+    ],
+    "protein": 32,
+    "carb": 80,
+    "fat": 33,
+    "fibre": 4,
+    "range": {
+     "protein": [
+      22.4,
+      41.6
+     ],
+     "carb": [
+      56,
+      104
+     ],
+     "fat": [
+      23.1,
+      42.9
+     ]
+    }
+   },
+   "recipe": [
+    "nasi 250",
+    "rendang 60",
+    "daun singkong 40",
+    "sambal hijau 20",
+    "kuah gulai 50"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_NASI_PADANG_AYAM",
+   "source": "warung-est",
+   "name_id": "Nasi padang ayam bakar/pop",
+   "name_en": "Padang rice with chicken",
+   "group": "warung",
+   "kcalPer100": 148,
+   "protein": 7.1,
+   "carb": 17.3,
+   "fat": 5.6,
+   "fibre": 0.9,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 bungkus",
+     "grams": 450,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 bungkus",
+    "grams": 450,
+    "spreadPct": 30,
+    "kcal": 665,
+    "kcalRange": [
+     465,
+     865
+    ],
+    "protein": 32,
+    "carb": 78,
+    "fat": 25,
+    "fibre": 4,
+    "range": {
+     "protein": [
+      22.4,
+      41.6
+     ],
+     "carb": [
+      54.6,
+      101.4
+     ],
+     "fat": [
+      17.5,
+      32.5
+     ]
+    }
+   },
+   "recipe": [
+    "nasi 250",
+    "ayam 90",
+    "daun singkong 40",
+    "sambal 20",
+    "kuah 50"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_GULAI_NANGKA",
+   "source": "warung-est",
+   "name_id": "Gulai nangka muda",
+   "name_en": "Young jackfruit gulai",
+   "group": "warung",
+   "kcalPer100": 115,
+   "protein": 2,
+   "carb": 9,
+   "fat": 8,
+   "fibre": 3,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 100,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 100,
+    "spreadPct": 35,
+    "kcal": 115,
+    "kcalRange": [
+     75,
+     155
+    ],
+    "protein": 2,
+    "carb": 9,
+    "fat": 8,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      1.3,
+      2.7
+     ],
+     "carb": [
+      5.9,
+      12.2
+     ],
+     "fat": [
+      5.2,
+      10.8
+     ]
+    }
+   },
+   "recipe": [
+    "nangka muda 70",
+    "santan 30",
+    "bumbu"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_DAUN_SINGKONG",
+   "source": "warung-est",
+   "name_id": "Daun singkong rebus",
+   "name_en": "Boiled cassava leaves",
+   "group": "warung",
+   "kcalPer100": 60,
+   "protein": 5,
+   "carb": 8,
+   "fat": 0.7,
+   "fibre": 3,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 100,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 100,
+    "spreadPct": 30,
+    "kcal": 60,
+    "kcalRange": [
+     40,
+     80
+    ],
+    "protein": 5,
+    "carb": 8,
+    "fat": 0.7,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      3.5,
+      6.5
+     ],
+     "carb": [
+      5.6,
+      10.4
+     ],
+     "fat": [
+      0.5,
+      0.9
+     ]
+    }
+   },
+   "recipe": [
+    "daun singkong rebus 100"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SOTO_AYAM",
+   "source": "warung-est",
+   "name_id": "Soto ayam (tanpa nasi)",
+   "name_en": "Chicken soto, no rice",
+   "group": "warung",
+   "kcalPer100": 53,
+   "protein": 5.1,
+   "carb": 2.9,
+   "fat": 2.3,
+   "fibre": 0.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 350,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 350,
+    "spreadPct": 30,
+    "kcal": 185,
+    "kcalRange": [
+     130,
+     240
+    ],
+    "protein": 18,
+    "carb": 10,
+    "fat": 8,
+    "fibre": 1.5,
+    "range": {
+     "protein": [
+      12.6,
+      23.4
+     ],
+     "carb": [
+      7,
+      13
+     ],
+     "fat": [
+      5.6,
+      10.4
+     ]
+    }
+   },
+   "recipe": [
+    "kaldu 250",
+    "ayam suwir 40",
+    "soun 20",
+    "telur 20",
+    "tauge, bumbu"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SOTO_BETAWI",
+   "source": "warung-est",
+   "name_id": "Soto betawi (tanpa nasi)",
+   "name_en": "Betawi beef soto, no rice",
+   "group": "warung",
+   "kcalPer100": 78,
+   "protein": 4.5,
+   "carb": 2.5,
+   "fat": 5.5,
+   "fibre": 0.3,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 400,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 400,
+    "spreadPct": 30,
+    "kcal": 310,
+    "kcalRange": [
+     215,
+     405
+    ],
+    "protein": 18,
+    "carb": 10,
+    "fat": 22,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      12.6,
+      23.4
+     ],
+     "carb": [
+      7,
+      13
+     ],
+     "fat": [
+      15.4,
+      28.6
+     ]
+    }
+   },
+   "recipe": [
+    "kuah santan/susu 250",
+    "daging sapi 50",
+    "kentang, tomat 40",
+    "emping, bawang goreng"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_RAWON",
+   "source": "warung-est",
+   "name_id": "Rawon (tanpa nasi)",
+   "name_en": "Black beef soup, no rice",
+   "group": "warung",
+   "kcalPer100": 66,
+   "protein": 6.3,
+   "carb": 2.3,
+   "fat": 3.4,
+   "fibre": 0.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 350,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 350,
+    "spreadPct": 30,
+    "kcal": 230,
+    "kcalRange": [
+     160,
+     300
+    ],
+    "protein": 22,
+    "carb": 8,
+    "fat": 12,
+    "fibre": 1.5,
+    "range": {
+     "protein": [
+      15.4,
+      28.6
+     ],
+     "carb": [
+      5.6,
+      10.4
+     ],
+     "fat": [
+      8.4,
+      15.6
+     ]
+    }
+   },
+   "recipe": [
+    "kuah kluwek 250",
+    "daging sapi 70",
+    "tauge 20"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SOP_AYAM",
+   "source": "warung-est",
+   "name_id": "Sop ayam",
+   "name_en": "Chicken vegetable soup",
+   "group": "warung",
+   "kcalPer100": 46,
+   "protein": 4.3,
+   "carb": 3.4,
+   "fat": 1.7,
+   "fibre": 0.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 350,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 350,
+    "spreadPct": 30,
+    "kcal": 160,
+    "kcalRange": [
+     110,
+     210
+    ],
+    "protein": 15,
+    "carb": 12,
+    "fat": 6,
+    "fibre": 2.5,
+    "range": {
+     "protein": [
+      10.5,
+      19.5
+     ],
+     "carb": [
+      8.4,
+      15.6
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "kaldu 250",
+    "ayam 50",
+    "wortel, kentang, soun 50"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_BAKSO",
+   "source": "warung-est",
+   "name_id": "Bakso kuah dengan mie",
+   "name_en": "Meatball noodle soup",
+   "group": "warung",
+   "kcalPer100": 85,
+   "protein": 4.5,
+   "carb": 10,
+   "fat": 3,
+   "fibre": 0.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 400,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 400,
+    "spreadPct": 30,
+    "kcal": 340,
+    "kcalRange": [
+     240,
+     440
+    ],
+    "protein": 18,
+    "carb": 40,
+    "fat": 12,
+    "fibre": 2,
+    "range": {
+     "protein": [
+      12.6,
+      23.4
+     ],
+     "carb": [
+      28,
+      52
+     ],
+     "fat": [
+      8.4,
+      15.6
+     ]
+    }
+   },
+   "recipe": [
+    "bakso 5 buah 120",
+    "mie kuning 100",
+    "kuah 150",
+    "bawang goreng, sambal"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_MIE_AYAM",
+   "source": "warung-est",
+   "name_id": "Mie ayam",
+   "name_en": "Chicken noodle",
+   "group": "warung",
+   "kcalPer100": 121,
+   "protein": 4.3,
+   "carb": 17.1,
+   "fat": 4,
+   "fibre": 0.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 350,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 350,
+    "spreadPct": 30,
+    "kcal": 425,
+    "kcalRange": [
+     300,
+     555
+    ],
+    "protein": 15,
+    "carb": 60,
+    "fat": 14,
+    "fibre": 2.5,
+    "range": {
+     "protein": [
+      10.5,
+      19.5
+     ],
+     "carb": [
+      42,
+      78
+     ],
+     "fat": [
+      9.8,
+      18.2
+     ]
+    }
+   },
+   "recipe": [
+    "mie 180",
+    "ayam kecap 50",
+    "minyak ayam 10",
+    "sawi 20",
+    "kuah terpisah 60"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_MIE_AYAM_BAKSO",
+   "source": "warung-est",
+   "name_id": "Mie ayam bakso",
+   "name_en": "Chicken noodle with meatballs",
+   "group": "warung",
+   "kcalPer100": 110,
+   "protein": 4.9,
+   "carb": 14.2,
+   "fat": 3.8,
+   "fibre": 0.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 450,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 450,
+    "spreadPct": 30,
+    "kcal": 495,
+    "kcalRange": [
+     345,
+     645
+    ],
+    "protein": 22,
+    "carb": 64,
+    "fat": 17,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      15.4,
+      28.6
+     ],
+     "carb": [
+      44.8,
+      83.2
+     ],
+     "fat": [
+      11.9,
+      22.1
+     ]
+    }
+   },
+   "recipe": [
+    "mie ayam 350",
+    "bakso 3 buah 70",
+    "kuah 30"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_LONTONG_SAYUR",
+   "source": "warung-est",
+   "name_id": "Lontong sayur",
+   "name_en": "Rice cake in vegetable coconut soup",
+   "group": "warung",
+   "kcalPer100": 90,
+   "protein": 2,
+   "carb": 12.5,
+   "fat": 3.5,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 400,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 400,
+    "spreadPct": 30,
+    "kcal": 360,
+    "kcalRange": [
+     250,
+     470
+    ],
+    "protein": 8,
+    "carb": 50,
+    "fat": 14,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      5.6,
+      10.4
+     ],
+     "carb": [
+      35,
+      65
+     ],
+     "fat": [
+      9.8,
+      18.2
+     ]
+    }
+   },
+   "recipe": [
+    "lontong 150",
+    "sayur labu siam 100",
+    "santan 80",
+    "telur 25",
+    "kerupuk 10"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_BUBUR_AYAM",
+   "source": "warung-est",
+   "name_id": "Bubur ayam",
+   "name_en": "Chicken rice porridge",
+   "group": "warung",
+   "kcalPer100": 80,
+   "protein": 3.4,
+   "carb": 11.4,
+   "fat": 2.3,
+   "fibre": 0.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 350,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 350,
+    "spreadPct": 30,
+    "kcal": 280,
+    "kcalRange": [
+     195,
+     365
+    ],
+    "protein": 12,
+    "carb": 40,
+    "fat": 8,
+    "fibre": 1.5,
+    "range": {
+     "protein": [
+      8.4,
+      15.6
+     ],
+     "carb": [
+      28,
+      52
+     ],
+     "fat": [
+      5.6,
+      10.4
+     ]
+    }
+   },
+   "recipe": [
+    "bubur nasi 250",
+    "ayam suwir 30",
+    "cakwe 15",
+    "kerupuk 10",
+    "kuah kuning 40"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_GUDEG_NASI",
+   "source": "warung-est",
+   "name_id": "Nasi gudeg komplit",
+   "name_en": "Gudeg with rice, egg, chicken",
+   "group": "warung",
+   "kcalPer100": 147,
+   "protein": 5.1,
+   "carb": 20,
+   "fat": 5.1,
+   "fibre": 1.1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 piring",
+     "grams": 350,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 piring",
+    "grams": 350,
+    "spreadPct": 40,
+    "kcal": 515,
+    "kcalRange": [
+     310,
+     720
+    ],
+    "protein": 18,
+    "carb": 70,
+    "fat": 18,
+    "fibre": 4,
+    "range": {
+     "protein": [
+      10.8,
+      25.2
+     ],
+     "carb": [
+      42,
+      98
+     ],
+     "fat": [
+      10.8,
+      25.2
+     ]
+    }
+   },
+   "recipe": [
+    "nasi 180",
+    "gudeg nangka 80",
+    "ayam opor 50",
+    "telur pindang 20",
+    "krecek"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Gudeg memakai santan dan gula merah; kadar sangat bervariasi antar penjual."
+  },
+  {
+   "id": "W_SATE_AYAM",
+   "source": "warung-est",
+   "name_id": "Sate ayam bumbu kacang, 10 tusuk",
+   "name_en": "Chicken satay, 10 sticks",
+   "group": "warung",
+   "kcalPer100": 227,
+   "protein": 18.7,
+   "carb": 8,
+   "fat": 13.3,
+   "fibre": 1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "10 tusuk",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "10 tusuk",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 340,
+    "kcalRange": [
+     240,
+     440
+    ],
+    "protein": 28,
+    "carb": 12,
+    "fat": 20,
+    "fibre": 1.5,
+    "range": {
+     "protein": [
+      19.6,
+      36.4
+     ],
+     "carb": [
+      8.4,
+      15.6
+     ],
+     "fat": [
+      14,
+      26
+     ]
+    }
+   },
+   "recipe": [
+    "daging ayam 90",
+    "bumbu kacang 40",
+    "kecap 15",
+    "minyak, bumbu 5"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_SIOMAY",
+   "source": "warung-est",
+   "name_id": "Siomay bumbu kacang",
+   "name_en": "Fish dumplings with peanut sauce",
+   "group": "warung",
+   "kcalPer100": 132,
+   "protein": 6.4,
+   "carb": 16,
+   "fat": 4.8,
+   "fibre": 1.6,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "seafood",
+    "nuts",
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 250,
+    "spreadPct": 35,
+    "kcal": 330,
+    "kcalRange": [
+     215,
+     445
+    ],
+    "protein": 16,
+    "carb": 40,
+    "fat": 12,
+    "fibre": 4,
+    "range": {
+     "protein": [
+      10.4,
+      21.6
+     ],
+     "carb": [
+      26,
+      54
+     ],
+     "fat": [
+      7.8,
+      16.2
+     ]
+    }
+   },
+   "recipe": [
+    "siomay ikan 4 buah 100",
+    "kentang, kol, tahu 80",
+    "bumbu kacang 40",
+    "telur 15"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_BATAGOR",
+   "source": "warung-est",
+   "name_id": "Batagor bumbu kacang",
+   "name_en": "Fried fish tofu with peanut sauce",
+   "group": "warung",
+   "kcalPer100": 168,
+   "protein": 6.8,
+   "carb": 15.2,
+   "fat": 8.8,
+   "fibre": 1.2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "seafood",
+    "nuts",
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 250,
+    "spreadPct": 35,
+    "kcal": 420,
+    "kcalRange": [
+     275,
+     565
+    ],
+    "protein": 17,
+    "carb": 38,
+    "fat": 22,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      11.1,
+      23
+     ],
+     "carb": [
+      24.7,
+      51.3
+     ],
+     "fat": [
+      14.3,
+      29.7
+     ]
+    }
+   },
+   "recipe": [
+    "batagor goreng 160 (tahu, ikan, tepung)",
+    "bumbu kacang 60",
+    "kecap"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_PEMPEK",
+   "source": "warung-est",
+   "name_id": "Pempek kapal selam dengan cuko",
+   "name_en": "Pempek with vinegar sauce",
+   "group": "warung",
+   "kcalPer100": 187,
+   "protein": 8,
+   "carb": 30,
+   "fat": 4,
+   "fibre": 0.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 150,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "seafood",
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 150,
+    "spreadPct": 30,
+    "kcal": 280,
+    "kcalRange": [
+     195,
+     365
+    ],
+    "protein": 12,
+    "carb": 45,
+    "fat": 6,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      8.4,
+      15.6
+     ],
+     "carb": [
+      31.5,
+      58.5
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "ikan tenggiri + sagu 110",
+    "telur 25",
+    "cuko (gula merah, cuka) 20"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_BAKWAN",
+   "source": "warung-est",
+   "name_id": "Bakwan sayur",
+   "name_en": "Vegetable fritter",
+   "group": "warung",
+   "kcalPer100": 250,
+   "protein": 3.8,
+   "carb": 25,
+   "fat": 15,
+   "fibre": 2.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 40,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 40,
+    "spreadPct": 30,
+    "kcal": 100,
+    "kcalRange": [
+     70,
+     130
+    ],
+    "protein": 1.5,
+    "carb": 10,
+    "fat": 6,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      1,
+      2
+     ],
+     "carb": [
+      7,
+      13
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "tepung 15",
+    "sayur 15",
+    "minyak terserap 5"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_PISANG_GORENG",
+   "source": "warung-est",
+   "name_id": "Pisang goreng",
+   "name_en": "Fried banana",
+   "group": "warung",
+   "kcalPer100": 275,
+   "protein": 1.7,
+   "carb": 40,
+   "fat": 11.7,
+   "fibre": 2.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 60,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 60,
+    "spreadPct": 30,
+    "kcal": 165,
+    "kcalRange": [
+     115,
+     215
+    ],
+    "protein": 1,
+    "carb": 24,
+    "fat": 7,
+    "fibre": 1.5,
+    "range": {
+     "protein": [
+      0.7,
+      1.3
+     ],
+     "carb": [
+      16.8,
+      31.2
+     ],
+     "fat": [
+      4.9,
+      9.1
+     ]
+    }
+   },
+   "recipe": [
+    "pisang 40",
+    "tepung 10",
+    "minyak 6"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_TAHU_ISI",
+   "source": "warung-est",
+   "name_id": "Tahu isi",
+   "name_en": "Stuffed fried tofu",
+   "group": "warung",
+   "kcalPer100": 200,
+   "protein": 6,
+   "carb": 12,
+   "fat": 14,
+   "fibre": 2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 50,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 50,
+    "spreadPct": 30,
+    "kcal": 100,
+    "kcalRange": [
+     70,
+     130
+    ],
+    "protein": 3,
+    "carb": 6,
+    "fat": 7,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      2.1,
+      3.9
+     ],
+     "carb": [
+      4.2,
+      7.8
+     ],
+     "fat": [
+      4.9,
+      9.1
+     ]
+    }
+   },
+   "recipe": [
+    "tahu 25",
+    "isi sayur 10",
+    "tepung 5",
+    "minyak 6"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_MENDOAN",
+   "source": "warung-est",
+   "name_id": "Tempe mendoan",
+   "name_en": "Battered tempeh",
+   "group": "warung",
+   "kcalPer100": 250,
+   "protein": 12.5,
+   "carb": 17.5,
+   "fat": 15,
+   "fibre": 2.5,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 40,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 40,
+    "spreadPct": 30,
+    "kcal": 100,
+    "kcalRange": [
+     70,
+     130
+    ],
+    "protein": 5,
+    "carb": 7,
+    "fat": 6,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      3.5,
+      6.5
+     ],
+     "carb": [
+      4.9,
+      9.1
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "tempe 25",
+    "tepung 10",
+    "minyak terserap 5"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_RISOLES",
+   "source": "warung-est",
+   "name_id": "Risoles isi ragout",
+   "name_en": "Ragout filled risole",
+   "group": "warung",
+   "kcalPer100": 221,
+   "protein": 5.7,
+   "carb": 21.4,
+   "fat": 12.9,
+   "fibre": 1.4,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 70,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg",
+    "milk"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 buah",
+    "grams": 70,
+    "spreadPct": 35,
+    "kcal": 155,
+    "kcalRange": [
+     100,
+     210
+    ],
+    "protein": 4,
+    "carb": 15,
+    "fat": 9,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      2.6,
+      5.4
+     ],
+     "carb": [
+      9.8,
+      20.3
+     ],
+     "fat": [
+      5.9,
+      12.2
+     ]
+    }
+   },
+   "recipe": [
+    "kulit 30",
+    "isi ayam sayur susu 30",
+    "tepung roti",
+    "minyak"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_LEMPER",
+   "source": "warung-est",
+   "name_id": "Lemper ayam",
+   "name_en": "Chicken sticky rice roll",
+   "group": "warung",
+   "kcalPer100": 217,
+   "protein": 5,
+   "carb": 33.3,
+   "fat": 6.7,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 60,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 buah",
+    "grams": 60,
+    "spreadPct": 30,
+    "kcal": 130,
+    "kcalRange": [
+     90,
+     170
+    ],
+    "protein": 3,
+    "carb": 20,
+    "fat": 4,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      2.1,
+      3.9
+     ],
+     "carb": [
+      14,
+      26
+     ],
+     "fat": [
+      2.8,
+      5.2
+     ]
+    }
+   },
+   "recipe": [
+    "ketan 40",
+    "santan 10",
+    "ayam suwir 10"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_CIRENG",
+   "source": "warung-est",
+   "name_id": "Cireng, 5 buah",
+   "name_en": "Fried tapioca",
+   "group": "warung",
+   "kcalPer100": 350,
+   "protein": 2,
+   "carb": 50,
+   "fat": 16,
+   "fibre": 1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "5 buah",
+     "grams": 50,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "5 buah",
+    "grams": 50,
+    "spreadPct": 35,
+    "kcal": 175,
+    "kcalRange": [
+     115,
+     235
+    ],
+    "protein": 1,
+    "carb": 25,
+    "fat": 8,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      0.7,
+      1.4
+     ],
+     "carb": [
+      16.3,
+      33.8
+     ],
+     "fat": [
+      5.2,
+      10.8
+     ]
+    }
+   },
+   "recipe": [
+    "aci 30",
+    "tepung 5",
+    "minyak terserap 6"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_MARTABAK_MANIS",
+   "source": "warung-est",
+   "name_id": "Martabak manis, 1 potong",
+   "name_en": "Sweet martabak, 1 slice",
+   "group": "warung",
+   "kcalPer100": 370,
+   "protein": 6,
+   "carb": 50,
+   "fat": 16,
+   "fibre": 1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong (1/8)",
+     "grams": 100,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg",
+    "milk",
+    "nuts"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 potong (1/8)",
+    "grams": 100,
+    "spreadPct": 40,
+    "kcal": 370,
+    "kcalRange": [
+     220,
+     520
+    ],
+    "protein": 6,
+    "carb": 50,
+    "fat": 16,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      3.6,
+      8.4
+     ],
+     "carb": [
+      30,
+      70
+     ],
+     "fat": [
+      9.6,
+      22.4
+     ]
+    }
+   },
+   "recipe": [
+    "adonan 50",
+    "margarin 8",
+    "gula 12",
+    "cokelat/keju/kacang 25"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Topping dan margarin sangat bervariasi; belum ada sumber resmi."
+  },
+  {
+   "id": "W_MARTABAK_TELUR",
+   "source": "warung-est",
+   "name_id": "Martabak telur, 1 potong",
+   "name_en": "Savoury egg martabak, 1 slice",
+   "group": "warung",
+   "kcalPer100": 200,
+   "protein": 8.3,
+   "carb": 15,
+   "fat": 11.7,
+   "fibre": 0.8,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 potong (1/6)",
+     "grams": 120,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "portion": {
+    "label": "1 potong (1/6)",
+    "grams": 120,
+    "spreadPct": 35,
+    "kcal": 240,
+    "kcalRange": [
+     155,
+     325
+    ],
+    "protein": 10,
+    "carb": 18,
+    "fat": 14,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      6.5,
+      13.5
+     ],
+     "carb": [
+      11.7,
+      24.3
+     ],
+     "fat": [
+      9.1,
+      18.9
+     ]
+    }
+   },
+   "recipe": [
+    "kulit 30",
+    "telur 45",
+    "daging cincang 25",
+    "daun bawang",
+    "minyak 8"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_BUBUR_KACANG_IJO",
+   "source": "warung-est",
+   "name_id": "Bubur kacang hijau",
+   "name_en": "Mung bean porridge",
+   "group": "warung",
+   "kcalPer100": 108,
+   "protein": 2.5,
+   "carb": 17.5,
+   "fat": 3,
+   "fibre": 2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 200,
+    "spreadPct": 30,
+    "kcal": 215,
+    "kcalRange": [
+     150,
+     280
+    ],
+    "protein": 5,
+    "carb": 35,
+    "fat": 6,
+    "fibre": 4,
+    "range": {
+     "protein": [
+      3.5,
+      6.5
+     ],
+     "carb": [
+      24.5,
+      45.5
+     ],
+     "fat": [
+      4.2,
+      7.8
+     ]
+    }
+   },
+   "recipe": [
+    "kacang hijau 35",
+    "santan 40",
+    "gula 15"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_KOLAK_PISANG",
+   "source": "warung-est",
+   "name_id": "Kolak pisang",
+   "name_en": "Banana in palm-sugar coconut milk",
+   "group": "warung",
+   "kcalPer100": 100,
+   "protein": 0.5,
+   "carb": 19,
+   "fat": 2.5,
+   "fibre": 1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 200,
+    "spreadPct": 30,
+    "kcal": 200,
+    "kcalRange": [
+     140,
+     260
+    ],
+    "protein": 1,
+    "carb": 38,
+    "fat": 5,
+    "fibre": 2,
+    "range": {
+     "protein": [
+      0.7,
+      1.3
+     ],
+     "carb": [
+      26.6,
+      49.4
+     ],
+     "fat": [
+      3.5,
+      6.5
+     ]
+    }
+   },
+   "recipe": [
+    "pisang 80",
+    "santan 40",
+    "gula merah 20"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_ES_TEH_MANIS",
+   "source": "warung-est",
+   "name_id": "Es teh manis",
+   "name_en": "Sweet iced tea",
+   "group": "warung",
+   "kcalPer100": 32,
+   "protein": 0,
+   "carb": 8,
+   "fat": 0,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (250 ml)",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 gelas (250 ml)",
+    "grams": 250,
+    "spreadPct": 50,
+    "kcal": 80,
+    "kcalRange": [
+     40,
+     120
+    ],
+    "protein": 0,
+    "carb": 20,
+    "fat": 0,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      0,
+      0
+     ],
+     "carb": [
+      10,
+      30
+     ],
+     "fat": [
+      0,
+      0
+     ]
+    }
+   },
+   "recipe": [
+    "teh seduh 200",
+    "gula 15-25 (bervariasi)"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Gula 10–30 g tergantung penjual; rentang lebar."
+  },
+  {
+   "id": "W_TEH_MANIS_HANGAT",
+   "source": "warung-est",
+   "name_id": "Teh manis hangat",
+   "name_en": "Sweet hot tea",
+   "group": "warung",
+   "kcalPer100": 30,
+   "protein": 0,
+   "carb": 7.5,
+   "fat": 0,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (200 ml)",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 gelas (200 ml)",
+    "grams": 200,
+    "spreadPct": 50,
+    "kcal": 60,
+    "kcalRange": [
+     30,
+     90
+    ],
+    "protein": 0,
+    "carb": 15,
+    "fat": 0,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      0,
+      0
+     ],
+     "carb": [
+      7.5,
+      22.5
+     ],
+     "fat": [
+      0,
+      0
+     ]
+    }
+   },
+   "recipe": [
+    "teh seduh 180",
+    "gula 10-20"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Gula bervariasi."
+  },
+  {
+   "id": "W_ES_JERUK",
+   "source": "warung-est",
+   "name_id": "Es jeruk peras",
+   "name_en": "Iced orange juice",
+   "group": "warung",
+   "kcalPer100": 38,
+   "protein": 0.4,
+   "carb": 8.8,
+   "fat": 0.1,
+   "fibre": 0.1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (250 ml)",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 gelas (250 ml)",
+    "grams": 250,
+    "spreadPct": 40,
+    "kcal": 95,
+    "kcalRange": [
+     55,
+     135
+    ],
+    "protein": 1,
+    "carb": 22,
+    "fat": 0.2,
+    "fibre": 0.3,
+    "range": {
+     "protein": [
+      0.6,
+      1.4
+     ],
+     "carb": [
+      13.2,
+      30.8
+     ],
+     "fat": [
+      0.1,
+      0.3
+     ]
+    }
+   },
+   "recipe": [
+    "jeruk peras 120",
+    "gula 8",
+    "es, air"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Rasio jeruk, gula, es berbeda antar penjual."
+  },
+  {
+   "id": "W_KOPI_TUBRUK_GULA",
+   "source": "warung-est",
+   "name_id": "Kopi tubruk bergula",
+   "name_en": "Black coffee with sugar",
+   "group": "warung",
+   "kcalPer100": 25,
+   "protein": 0.3,
+   "carb": 6,
+   "fat": 0,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (200 ml)",
+     "grams": 200,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "portion": {
+    "label": "1 gelas (200 ml)",
+    "grams": 200,
+    "spreadPct": 40,
+    "kcal": 50,
+    "kcalRange": [
+     30,
+     70
+    ],
+    "protein": 0.5,
+    "carb": 12,
+    "fat": 0,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      0.3,
+      0.7
+     ],
+     "carb": [
+      7.2,
+      16.8
+     ],
+     "fat": [
+      0,
+      0
+     ]
+    }
+   },
+   "recipe": [
+    "kopi 10",
+    "gula 10",
+    "air"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  },
+  {
+   "id": "W_ES_KOPI_SUSU",
+   "source": "warung-est",
+   "name_id": "Es kopi susu gula aren",
+   "name_en": "Iced milk coffee with palm sugar",
+   "group": "warung",
+   "kcalPer100": 62,
+   "protein": 1.2,
+   "carb": 10,
+   "fat": 2,
+   "fibre": 0,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (250 ml)",
+     "grams": 250,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 gelas (250 ml)",
+    "grams": 250,
+    "spreadPct": 40,
+    "kcal": 155,
+    "kcalRange": [
+     95,
+     215
+    ],
+    "protein": 3,
+    "carb": 25,
+    "fat": 5,
+    "fibre": 0,
+    "range": {
+     "protein": [
+      1.8,
+      4.2
+     ],
+     "carb": [
+      15,
+      35
+     ],
+     "fat": [
+      3,
+      7
+     ]
+    }
+   },
+   "recipe": [
+    "susu 100",
+    "kopi",
+    "gula aren 15",
+    "es"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Takaran susu dan gula berbeda antar gerai."
+  },
+  {
+   "id": "W_BOBA_MILK_TEA",
+   "source": "warung-est",
+   "name_id": "Boba milk tea",
+   "name_en": "Bubble milk tea",
+   "group": "warung",
+   "kcalPer100": 65,
+   "protein": 0.6,
+   "carb": 13,
+   "fat": 1.2,
+   "fibre": 0.1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (500 ml)",
+     "grams": 500,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 gelas (500 ml)",
+    "grams": 500,
+    "spreadPct": 40,
+    "kcal": 325,
+    "kcalRange": [
+     195,
+     455
+    ],
+    "protein": 3,
+    "carb": 65,
+    "fat": 6,
+    "fibre": 0.5,
+    "range": {
+     "protein": [
+      1.8,
+      4.2
+     ],
+     "carb": [
+      39,
+      91
+     ],
+     "fat": [
+      3.6,
+      8.4
+     ]
+    }
+   },
+   "recipe": [
+    "teh 200",
+    "creamer/susu 80",
+    "gula 20",
+    "boba 70"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Ukuran gelas, gula, topping bervariasi."
+  },
+  {
+   "id": "W_ES_CAMPUR",
+   "source": "warung-est",
+   "name_id": "Es campur / es teler",
+   "name_en": "Mixed shaved ice dessert",
+   "group": "warung",
+   "kcalPer100": 107,
+   "protein": 1,
+   "carb": 18.3,
+   "fat": 3.3,
+   "fibre": 1,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 mangkuk",
+     "grams": 300,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 mangkuk",
+    "grams": 300,
+    "spreadPct": 40,
+    "kcal": 320,
+    "kcalRange": [
+     190,
+     450
+    ],
+    "protein": 3,
+    "carb": 55,
+    "fat": 10,
+    "fibre": 3,
+    "range": {
+     "protein": [
+      1.8,
+      4.2
+     ],
+     "carb": [
+      33,
+      77
+     ],
+     "fat": [
+      6,
+      14
+     ]
+    }
+   },
+   "recipe": [
+    "alpukat, kelapa, nangka 100",
+    "sirup 20",
+    "susu kental manis 20",
+    "es"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Isi tidak baku."
+  },
+  {
+   "id": "W_JUS_ALPUKAT",
+   "source": "warung-est",
+   "name_id": "Jus alpukat",
+   "name_en": "Avocado juice",
+   "group": "warung",
+   "kcalPer100": 100,
+   "protein": 1,
+   "carb": 13.3,
+   "fat": 4.7,
+   "fibre": 1.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 gelas (300 ml)",
+     "grams": 300,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 gelas (300 ml)",
+    "grams": 300,
+    "spreadPct": 40,
+    "kcal": 300,
+    "kcalRange": [
+     180,
+     420
+    ],
+    "protein": 3,
+    "carb": 40,
+    "fat": 14,
+    "fibre": 5,
+    "range": {
+     "protein": [
+      1.8,
+      4.2
+     ],
+     "carb": [
+      24,
+      56
+     ],
+     "fat": [
+      8.4,
+      19.6
+     ]
+    }
+   },
+   "recipe": [
+    "alpukat 100",
+    "susu kental manis 20",
+    "gula 10",
+    "air/es"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Takaran alpukat dan susu kental manis bervariasi."
+  },
+  {
+   "id": "W_ROTI_BAKAR",
+   "source": "warung-est",
+   "name_id": "Roti bakar cokelat keju",
+   "name_en": "Toast with chocolate and cheese",
+   "group": "warung",
+   "kcalPer100": 283,
+   "protein": 6.7,
+   "carb": 37.5,
+   "fat": 11.7,
+   "fibre": 1.7,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 120,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk",
+    "egg"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 porsi",
+    "grams": 120,
+    "spreadPct": 35,
+    "kcal": 340,
+    "kcalRange": [
+     220,
+     460
+    ],
+    "protein": 8,
+    "carb": 45,
+    "fat": 14,
+    "fibre": 2,
+    "range": {
+     "protein": [
+      5.2,
+      10.8
+     ],
+     "carb": [
+      29.3,
+      60.8
+     ],
+     "fat": [
+      9.1,
+      18.9
+     ]
+    }
+   },
+   "recipe": [
+    "roti tawar 2 lembar 60",
+    "margarin 8",
+    "cokelat meses 15",
+    "keju 10"
+   ],
+   "basis": "tanpa dasar kuat: rentang lebar, perkiraan umum",
+   "flag": "⚠",
+   "note": "Jumlah olesan bervariasi."
+  },
+  {
+   "id": "W_DADAR_GULUNG",
+   "source": "warung-est",
+   "name_id": "Dadar gulung isi kelapa",
+   "name_en": "Coconut pancake roll",
+   "group": "warung",
+   "kcalPer100": 220,
+   "protein": 4,
+   "carb": 34,
+   "fat": 8,
+   "fibre": 2,
+   "sodium": null,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 buah",
+     "grams": 50,
+     "source": "estimate"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg",
+    "milk"
+   ],
+   "lactose": true,
+   "portion": {
+    "label": "1 buah",
+    "grams": 50,
+    "spreadPct": 30,
+    "kcal": 110,
+    "kcalRange": [
+     75,
+     145
+    ],
+    "protein": 2,
+    "carb": 17,
+    "fat": 4,
+    "fibre": 1,
+    "range": {
+     "protein": [
+      1.4,
+      2.6
+     ],
+     "carb": [
+      11.9,
+      22.1
+     ],
+     "fat": [
+      2.8,
+      5.2
+     ]
+    }
+   },
+   "recipe": [
+    "kulit 30",
+    "kelapa gula merah 20"
+   ],
+   "basis": "Dihitung dari bahan dan gram resep umum (tertulis di recipe). Belum dihitung dari TKPI 2020 (C-03 menunggu PDF); angka tengah dibulatkan dari bahan.",
+   "flag": null,
+   "note": null
+  }
+ ]
+}
