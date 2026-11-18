@@ -1,0 +1,53 @@
+{
+ "schema": 1,
+ "version": 1,
+ "source": "packaged",
+ "read": "2026-11-18",
+ "note": "Nilai kemasan (C-06). Hanya angka yang tertulis di sumber yang dibaca; tidak ada yang dikarang. Dua baris ini berasal dari situs pihak ketiga (bukan produsen), jadi isEstimate = true dan diberi ⚠. Produk yang labelnya tidak ditemukan dicatat di Content.md §4.3, bukan diisi. Halal tidak tertulis di sumber, sehingga null.",
+ "foods": [
+  {
+   "id": "PK_ULTRA_FULLCREAM_250",
+   "source": "packaged",
+   "brand": "Ultra Milk",
+   "product": "Susu UHT full cream",
+   "name_id": "Susu UHT full cream, 1 kotak 250 ml",
+   "name_en": null,
+   "serving": { "label": "1 kotak (250 ml)", "grams": null, "ml": 250 },
+   "perServing": { "kcal": 150, "protein": 8, "fat": 8, "carb": 12, "sugar": null, "fibre": null, "sodium": 50 },
+   "per100g": null,
+   "sourceType": "third-party",
+   "sourceUrl": "https://carbmanager.com/food-detail/md:7fab2ebe0b6871218eea3c0dd0c49e1e/ultra-milk-full-cream",
+   "readDate": "2026-11-18",
+   "isEstimate": true,
+   "flag": "⚠",
+   "halal": null,
+   "allergens": ["milk"],
+   "lactose": true,
+   "household": [
+    { "code": "kotak", "label": "1 kotak", "grams": null, "ml": 250, "source": "label-third-party" }
+   ],
+   "note": "Ukuran 250 ml di sumber (bukan 200 ml). Gula dan serat tidak tertulis ('-'). Ditulis apa adanya; belum dicocokkan dengan label Indonesia."
+  },
+  {
+   "id": "PK_OREO_ORIGINAL_27G",
+   "source": "packaged",
+   "brand": "Oreo",
+   "product": "Biskuit sandwich Oreo Original (vanila)",
+   "name_id": "Biskuit Oreo Original, 27,6 g",
+   "name_en": null,
+   "serving": { "label": "27,6 g", "grams": 27.6, "ml": null },
+   "perServing": { "kcal": 130, "protein": 1, "fat": 6, "carb": 20, "sugar": 11, "fibre": 1, "sodium": 140 },
+   "per100g": { "kcal": 471, "protein": 3.6, "fat": 21.7, "carb": 72.5, "sugar": 39.9, "fibre": 3.6, "sodium": 507 },
+   "sourceType": "third-party",
+   "sourceUrl": "https://world.openfoodfacts.org/product/8992760221028/oreo",
+   "readDate": "2026-11-18",
+   "isEstimate": true,
+   "flag": "⚠",
+   "halal": null,
+   "allergens": null,
+   "lactose": null,
+   "household": [],
+   "note": "Sumber menulis nama 'Oreo Original (Vanilla) – BABYMONSTER OREO', 123 g, dijual di India, Indonesia, Singapura. Tabel gizi di sumber berupa gambar yang tidak terbaca; angka di atas adalah angka yang ditampilkan halaman. Ukuran keping (jumlah keping per sajian) belum tercatat dari sumber Indonesia, sehingga household kosong."
+  }
+ ]
+}

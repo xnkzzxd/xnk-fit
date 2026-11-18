@@ -51,6 +51,17 @@ android {
         disable += "OldTargetApi"
     }
 
+    testOptions {
+        // Robolectric needs merged resources and the manifest (Design §12).
+        unitTests.isIncludeAndroidResources = true
+    }
+
+    sourceSets {
+        // MigrationTestHelper reads the exported schema JSON as assets under Robolectric (Design §13).
+        // Debug only: the release APK does not carry the schemas.
+        getByName("debug").assets.srcDir("$projectDir/schemas")
+    }
+
     packaging {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
@@ -80,4 +91,7 @@ dependencies {
     implementation(libs.work.runtime)
 
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.test.core)
+    testImplementation(libs.room.testing)
 }
