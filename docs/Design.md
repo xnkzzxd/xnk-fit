@@ -264,7 +264,7 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 ## 14. Security and privacy in code
 
 - No network call except: Drive (user-chosen), content update (`GET` of static files with checksum), Health Connect (local). The app has no backend to call.
-- Content update (PV-2): downloads a manifest and files over HTTPS from the project's static host; checksum verified; no request body; no user data.
+- Content update (PV-2): downloads a manifest and files over HTTPS from the project's static host (GitHub Pages, [Content-Update.md](Content-Update.md)); checksum and manifest signature verified; no request body; no user data.
 - Google sign-in tokens live in the system account store, not in app files.
 - Photos are excluded from backup unless B-3 is on; their rows set `hiddenFromBackup`.
 - Release builds strip `Log` calls with R8 so no user value reaches logcat.
@@ -283,5 +283,5 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 | # | Question | Default until decided |
 | --- | --- | --- |
 | 1 | Exact reference phone model | Proposed Redmi 9A in §10 (S-05); owner confirms, then budgets are measured on it |
-| 2 | Content update host | GitHub Pages of the project, checksummed (decide in S-06) |
+| 2 | Content update host | Decided in S-06 (proposed, owner confirms): GitHub Pages of a project content repo, per-file SHA-256 and a signed manifest; details in [Content-Update.md](Content-Update.md) |
 | 3 | Whether the figure is drawn with Compose Canvas or a static SVG asset | Decided in D-06 (2026-11-17): reuse the XNK app's figures, the muscle map (`figure.min.json`, react-muscle-highlighter shapes, MIT, credits kept) and the animated exercise rig (`rig.min.json`, XNK's own work); new rigs only for lifts XNK lacks. |

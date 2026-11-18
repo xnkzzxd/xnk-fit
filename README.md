@@ -11,4 +11,5 @@ A free, offline-first workout and meal app for people without a coach. Android f
 - [docs/mockups/](docs/mockups/README.md): clickable mockups, open `docs/mockups/index.html` (D-05)
 - [docs/Google-OAuth.md](docs/Google-OAuth.md): Google sign-in checklist (S-03)
 - [docs/Play-Health.md](docs/Play-Health.md): Play health declarations (S-04)
+- [docs/Content-Update.md](docs/Content-Update.md): content update host (S-06)
 - [docs/TODO.md](docs/TODO.md): task list with the recommended model per task
