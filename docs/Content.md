@@ -67,6 +67,17 @@ Every exercise also has: `level` (1–3), `variantOf` (easier variant link), `cu
 | `bought` | Bought meals for "makan di luar" (warteg, padang, bakso, nasi goreng) | about 30 | `isEstimate = true` |
 | `own` | User's foods and recipes | unlimited | user-entered |
 
+### 4.1 Warung and bought-meal estimates (C-04)
+
+File: `content/foods-estimates.json`, checked by `node tools/check-foods-estimates.mjs`.
+
+- **66 rows**, all `source = warung-est`, `isEstimate = true`, halal, shown as "perkiraan" (R_EST). Warung dishes and bought meals share one file; the bought-meal set is widened in C-07.
+- **Method:** each row lists its ingredients with grams (`recipe`) and one common portion (`portion`, also copied to `household` as code `porsi`, source `estimate`). Macros per portion are estimated from those ingredients and the common recipe; kcal = 4/4/9 of the macros, rounded to 5. Per-100 g values come from the portion. Each row carries a spread (`spreadPct`, 15–50 %) and a `kcalRange`. The TKPI 2020 table is not in the repo yet (C-03), so the ingredient values are **not yet computed from TKPI**; that recalculation is a later step.
+- **No label or official-site values are used.** No brand numbers are in the file.
+- **Sodium is `null` in every row**: no basis yet. Filled when computed from TKPI or a label.
+- **⚠ rows** (wide range, no firm basis): `W_GUDEG_NASI`, `W_MARTABAK_MANIS`, `W_ES_TEH_MANIS`, `W_TEH_MANIS_HANGAT`, `W_ES_JERUK`, `W_ES_KOPI_SUSU`, `W_BOBA_MILK_TEA`, `W_ES_CAMPUR`, `W_JUS_ALPUKAT`, `W_ROTI_BAKAR`. Cause: sugar, milk, margarine or topping amounts differ by seller.
+- Rows without ⚠ are still estimates; their spread (15–35 %) is in the row.
+
 Halal by default (R_HALAL): no pork or alcohol in any bundled item. Each food row carries `allergens` (egg, seafood, nuts, milk) and `lactose` (bool) for the filters (R_LIMIT_ALLERGY).
 
 Household measures (M-6): each food may have a list `household = [{code, label, grams, source}]`. Example codes: `centong` (cooking spoon), `piring`, `potong`, `sdm`, `sdt`, `gelas`, `butir`, `buah`, `iris`. PMK 41/2014 (Rules S17) gives a first set; cooked dishes and centong weights are **our own estimates**, flagged `±` and listed in §8.
@@ -117,7 +128,13 @@ Decision D-06 (2026-11-17): start from the XNK app's muscle map (`figure.min.jso
 | 17 | `LEVEL_3` | Level 3 | Reached level 3 |
 | 18 | `PLAN_WEEK` | Rencana seminggu | Week planner full for 7 days |
 
-Titles, messages and condition checks live in the badge table (Design §3); the messages are kind and never mention weight loss.
+Built in C-10 (2026-11-18): [`content/badges.json`](../content/badges.json) holds the 18 codes (stable IDs, stored in `badge.code`), Indonesian titles, machine-readable conditions, one celebration message each, and an icon name from the mockup set. Checked by `node tools/check-badges.mjs` (exactly 18, no duplicate code, title or order, required fields, tone rules).
+
+- **Conditions** use eleven named metrics defined once in the file (for example `finishedWorkouts`, `personalRecords`, `streakWeeks`, `activityMinutesWeek`), each computed from Room tables in Design §3: `workout`, `workout_set`, `activity`, `food_log`, `points_event`, `measure`, `photo`, `meal_plan`. They are deterministic and can be unit-tested from fixture rows.
+- **Personal record** (not a table in Design §3): derived from `workout_set`. A done set beats every earlier set of the same exercise by load, or by reps at equal load, or by reps for bodyweight. The first set of an exercise is a baseline. One record per exercise per workout.
+- **Earned once, never lost.** Badges never depend on weight, calories eaten below target, or very low intake. The activity badges stop at 300 minutes a week (WHO upper range, S13); there is no volume badge above it (PRD PR-5). `TARGET_WEEK` counts weeks within ±10 % of target on either side and its message does not mention food amounts. `MEASURE_4` counts measuring, never the value.
+- **Messages**: Indonesian, neutral, no "kamu" or "Kak", at most one emoji, at most 110 characters, no weight or calorie words (Rules R_TONE, R_TONE_WORDS). Titles follow the table above; the Saya mockup uses shorter labels as placeholders and the app uses `title_id`.
+- **Icons** (names only, no assets): star, medal, trophy, flame, run, food, check, ruler, camera, heart, cal. The grey locked state is drawn by the app, not a badge icon.
 
 ## 7. Activities and MET (L-14)
 
@@ -141,7 +158,8 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | --- | --- | --- |
 | C-05 | Household measures for cooked dishes and centong weights (estimates until verified) | Research task after D-04 |
 | C-06 | Packaged food label values (about 80) | Collect from label photos or product sheets; owner or task |
-| C-07 | Bought and regional meal numbers (warung, bought) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
+| C-04 | Warung and bought-meal estimates: 66 rows built in `content/foods-estimates.json` (see §4.1) | Done; 10 rows ⚠ |
+| C-07 | Bought and regional meal numbers (wider set; replace estimates where a label or official site exists) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
 | C-01 | Muscle review done 2026-11-18 (§12): 57 entries `verified`, 65 `analog`, 27 `unverified` (praktik umum ⚠). 21 entries had muscles changed | Remaining ⚠ need a study or owner decision |
 | C-01b | 35 entries still `review.muscles = "uncertain"` ⚠, each with its reason in `review.note` (§12.3). Owner decisions: `LEGISO_ADD` (adductors not in the 16 muscles; QUADS is wrong) and `PULLV_DB_PULLOVER` pattern (now CHEST main, still `PULL_V`) | Owner; later research |
 | C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
@@ -178,6 +196,7 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
+| 2026-11-18 | C-04: 66 warung and bought-meal estimates added (§4.1, §8). |
 | 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
 | 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
 | 2026-11-18 | C-01 muscle review (Opus): sources per entry, 21 muscle changes, 1 hint change, statuses `verified` / `analog` / `unverified`, file version 2026-11-18.2 (§12). |
