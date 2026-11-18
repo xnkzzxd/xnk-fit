@@ -16,7 +16,7 @@ Sources are listed in §13. Where a source is cited by short code (for example `
 | --- | --- | --- | --- | --- |
 | R_MSJ_M | BMR men (kcal/day) | 10·kg + 6.25·cm − 5·age + 5 | S1 | ✅ |
 | R_MSJ_F | BMR women (kcal/day) | 10·kg + 6.25·cm − 5·age − 161 | S1 | ✅ |
-| R_ACT | Activity factor from weekly activity (PRD L-14) | Sedentary 1.2 · light (1–2 days) 1.375 · moderate (3–4) 1.55 · active (5–6) 1.725 · very active (7) 1.9 Not in S2: S2 uses PAL bands 1.40–1.69 / 1.70–1.99 / 2.00–2.40 (§13). No primary source found for this five-step set | ⚠ G1, owner choice §12 #4 |
+| R_ACT | Activity factor (PAL) from weekly activity (PRD L-14) | Jarang bergerak 1.40 · ringan (1–2 days) 1.55 · sedang (3–4) 1.70 · aktif (5–6) 1.85 · sangat aktif (7 days or physical work) 2.00. Was 1.2 / 1.375 / 1.55 / 1.725 / 1.9 (no primary source). Screen says "perkiraan" | Values inside S2 Table 5.3 PAL bands (1.40–1.69 / 1.70–1.99 / 2.00–2.40); 1.40 is S2's lower limit (§5.3.2: 1.21 "too low"). Mapping to days per week is a product rule. Check against S8: AKG energy for the reference adult ÷ Mifflin BMR ≈ 1.73 (men 19–29) and 1.79 (women 19–29) | ✅ values (S2), 👤 mapping (owner approved 2026-11-18) |
 | R_TDEE | Maintenance = BMR × activity factor. Shown; the target uses it, activity calories are **not** added on top (M-1) | — | product rule (M-1) | 👤 |
 | R_AGE | Age from birth year: current year − birth year | — | product rule | ✅ |
 | R_BMI | BMI = kg / m² | — | S3 | ✅ |
@@ -182,7 +182,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 
 | # | Gap | Result of S-07 | Status | Effect until closed |
 | --- | --- | --- | --- | --- |
-| G1 | Exact activity-factor cut-offs (R_ACT) | S2 does not contain the 1.2 / 1.375 / 1.55 / 1.725 / 1.9 set. S2 gives PAL bands 1.40–1.69, 1.70–1.99, 2.00–2.40 (Table 5.3) with no cut-offs by days per week. No primary source found for the five-step set (it is a common convention). AKG 2019 itself uses a single factor 1.26 for ages 4–64 (Tabel 1 note 2, p. 8) | ⚠ open, owner choice §12 #4 | Use the labelled ranges; screen says "perkiraan" |
+| G1 | Activity factor (R_ACT) | No Indonesia-specific individual factor found: S8 uses one fixed factor 1.26 (ages 4–64, Tabel 1 note 2, p. 8) and does not name its BMR equation; Kemenkes activity classes (ringan / sedang / berat) give no multiplier; no validation of BMR equations in Indonesian adults found. Owner chose S2 PAL values (§1), which sit closer to the AKG reference (≈ 1.73–1.79 on Mifflin BMR) than the old 1.2 | ✅ closed 2026-11-18 | — |
 | G2 | Deficit and surplus (R_GOAL_*) | −500 kcal is the low end of S5 (500–1,000 kcal/day, p. 26). +300 kcal is inside S19's 10–20 % surplus for maintenance 1,500–3,000 kcal. Pace R_PACE matches S18 (0.5–1 %/week) | ✅ closed | — |
 | G3 | Fat share (R_FAT) and fibre (R_FIBRE) | Fat 25 % matches AKG 2019 adult rows (24.7–26.0 %); floor 0.8 g/kg inside S19 0.5–1.5 g/kg. Fibre: AKG 2019 is 20–37 g by sex and age, not a fixed 30 g; value changed to the AKG table (§2) | ✅ closed; fibre change approved 2026-11-18 | — |
 | G4 | Clinical source for R_GATE_ED | S20 added (calorie-tracker harm reported by patients). No guideline prescribes a no-numbers mode; the gate stays an owner safe-side rule | ✅ closed (support found) | — |
@@ -198,6 +198,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | --- | --- |
 | 2026-11-16 | First draft (D-03). |
 | 2026-11-18 | S-07: sources opened; exact figures and pages written in §13. Closed G2–G6. Values changed (owner to confirm, §12): R_FIBRE 30 g → AKG table by sex and age (30 g fitted only two groups); R_TRN_SETS "3–4 after 4 weeks" → 3–4 from level 2 (S14 novice is 1–3 sets); R_TRN_REPS 3–5 strength range moved to level 2 and up (S14 novice is 8–12 RM). Open: G1, G7, G8, G9. S5 re-cited to the NHLBI Practical Guide (Donnelly 2009 gives no pace number); S18–S20 added; S15 title corrected. No safety limit loosened. |
+| 2026-11-18 | Owner decision §12 #4: R_ACT changed to S2 PAL values 1.40 / 1.55 / 1.70 / 1.85 / 2.00 (maintenance about 7–17 % higher at low activity); G1 closed. Floors, BMR floor and pace check unchanged. |
 | 2026-11-18 | Owner decisions on §12 #5–#8: R_FIBRE and R_TRN_SETS / R_TRN_REPS approved; added R_TRN_VOL, R_TRN_VOL_COUNT, R_TRN_VOL_SCOPE, R_TRN_VOL_FILL (weekly sets per muscle group) and R_TRN_PROG_STEP (10 % step limit); R_GATE_PREG now covers breastfeeding. Sources S21–S23 added. |
 
 ## 12. Owner decisions still open
@@ -207,9 +208,8 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | 1 | Under-18 gate: adjust goal or block the goal | Goal changed to "jaga", note shown |
 | 2 | Calorie floor values (1,200 / 1,500) | As PRD S-4 (supported by S5, see §2) |
 | 3 | Level thresholds (R_LEVEL) | As listed above |
-| 4 | Activity factor (G1): keep the 1.2–1.9 convention (no primary source) or switch to S2 PAL bands (1.40–1.69 / 1.70–1.99 / 2.00–2.40), which give higher maintenance for low activity | Keep 1.2–1.9, ⚠, "perkiraan" |
 
-Decided 2026-11-18 (owner): #5 fibre from the AKG table (approved); #6 sets and reps by level (approved), plus weekly sets per muscle group (R_TRN_VOL); #7 load step limited to 10 % (R_TRN_PROG_STEP); #8 left to Claude: breastfeeding shares the pregnancy gate, no deficit (R_GATE_PREG).
+Decided 2026-11-18 (owner): #5 fibre from the AKG table (approved); #6 sets and reps by level (approved), plus weekly sets per muscle group (R_TRN_VOL); #7 load step limited to 10 % (R_TRN_PROG_STEP); #8 left to Claude: breastfeeding shares the pregnancy gate, no deficit (R_GATE_PREG). #4 activity factor: S2 PAL values 1.40 / 1.55 / 1.70 / 1.85 / 2.00 (R_ACT).
 
 ## 13. Sources
 
@@ -218,7 +218,7 @@ Checked 2026-11-18 (S-07). "p." is the printed page of the document. "Abstract o
 | Code | Source | Exact figure and page | Used for |
 | --- | --- | --- | --- |
 | S1 | Mifflin MD, St Jeor ST, et al. (1990). A new predictive equation for resting energy expenditure in healthy individuals. *Am J Clin Nutr* 51(2):241–247. | Abstract, p. 241: men 10 × kg + 6.25 × cm − 5 × age + 5; women … − 161. | BMR |
-| S2 | FAO/WHO/UNU (2004). *Human energy requirements*. Food and Nutrition Technical Report Series 1. | §5.3.1, Table 5.3: sedentary or light 1.40–1.69; active or moderately active 1.70–1.99; vigorous 2.00–2.40 (> 2.40 hard to keep up). §5.3.2: 1.21 "too low". Does **not** contain the R_ACT factors. | Activity factor (G1) |
+| S2 | FAO/WHO/UNU (2004). *Human energy requirements*. Food and Nutrition Technical Report Series 1. | §5.3.1, Table 5.3: sedentary or light 1.40–1.69; active or moderately active 1.70–1.99; vigorous 2.00–2.40 (> 2.40 hard to keep up). §5.3.2: 1.21 "too low". Basis of R_ACT since 2026-11-18 (the earlier 1.2–1.9 set is not in S2). Note: S2 applies PAL to BMR from the Schofield equations; the app uses Mifflin (S1), about 4 % lower for the AKG reference man. | Activity factor (R_ACT) |
 | S3 | WHO Expert Consultation (2004). Appropriate body-mass index for Asian populations and its implications for policy and intervention strategies. *Lancet* 363:157–163. | Abstract, p. 157: WHO cut-offs "retained as international classifications" (underweight < 18.5); action points 23.0, 27.5, 32.5, 37.5. Full text behind a paywall (HTTP 403); table page not opened. | BMI cut-offs |
 | S4 | Ashwell M, Hsieh SD (2005). Six reasons why the waist-to-height ratio is a rapid and effective global indicator for health risks of obesity … *Int J Food Sci Nutr* 56(5):303–307. | Abstract, p. 303: "A boundary value of WHTR = 0.5 indicates increased risk for men and women" and for different ethnic groups. | WHtR |
 | S5 | NHLBI Obesity Education Initiative (2000). *The Practical Guide: Identification, Evaluation, and Treatment of Overweight and Obesity in Adults*. NIH Pub. No. 00-4084. | p. 26: deficit 500–1,000 kcal/day for 1–2 lb per week; "1,000 to 1,200 kcal/day … for most women; … between 1,200 kcal/day and 1,600 kcal/day … for men". p. 27, Table 4 note 1 (same deficit). p. 19: "for individuals who are overweight, a deficit of 300 to 500 kcal/day "may be more appropriate". Formerly also cited Donnelly JE et al. (2009) ACSM Position Stand, *Med Sci Sports Exerc* 41:459–471: abstract checked, it gives activity minutes (150–250, > 250 min/week), **no** pace figure, so it is no longer used for R_PACE. | Deficit, floors (G2) |

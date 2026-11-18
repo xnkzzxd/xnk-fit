@@ -260,7 +260,7 @@ Anything else needs a row here first.
 | Speed | Macrobenchmark budgets (§10) | Nightly and before release |
 | Text literals | Lint rule: no string literal in `ui.*` (NF-3) | Every PR |
 
-Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_ACT (G1), R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07.
+Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_ACT, R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07.
 
 ## 14. Security and privacy in code
 
