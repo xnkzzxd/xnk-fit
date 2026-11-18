@@ -33,7 +33,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | S-04 | Play Health Connect and health-apps declarations: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [x] (`docs/Play-Health.md`: form is required for every app; steps only; draft answers; review time not published, three ⚠) |
 | S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [~] Proposed Redmi 9A (2 GB, Helio G25, Android 10: not 8–9, and listed out of stock). Owner confirms model and availability before buying |
 | S-06 | Content update host choice (Design §16 item 2) | D-02 | Sonnet 5.5 | [x] (`docs/Content-Update.md`: GitHub Pages, signed manifest; owner confirms repo name; Cloudflare bandwidth terms ⚠) |
-| S-07 | Close ⚠ sources: read each source in Rules §13 and write the exact figure and page; then fix G1–G8 in Rules §10 | D-03 | Opus 5.5 | [ ] |
+| S-07 | Close ⚠ sources: read each source in Rules §13 and write the exact figure and page; then fix G1–G8 in Rules §10 | D-03 | Opus 5.5 | [~] 2026-11-18: G2–G6 closed, figures and pages in Rules §13. Open: G1 (no primary source for R_ACT factors, owner choice Rules §12 #4), G7 (C-05), G8 (C-07), G9 (R_TRN_RETURN, no source). Value changes await owner: R_FIBRE, R_TRN_SETS, R_TRN_REPS (Rules §12 #5–#6) |
 | S-08 | Play developer account: owner creates it (not Claude). Claude only writes the checklist | — | — (owner) | [ ] |
 
 ## Phase C — Content (may run in parallel with D-05)
@@ -97,6 +97,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-18 | S-07 partly done: Rules §2/§3/§5 sources checked, §10 G1–G9 updated, §13 has exact figures and pages; G1, G7, G8, G9 still ⚠; three value changes for the owner. |
 | 2026-11-18 | S-06 done: Content-Update.md. |
 | 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |
