@@ -51,7 +51,7 @@ Packages:
 | `data.content` | Loader for bundled content and the checksummed content update |
 | `data.backup` | Zip writer/reader, manifest, Drive upload/download |
 | `ui.*` | One package per tab, plus `ui.onboarding`, `ui.settings`, `ui.common` |
-| `strings` | All UI text (NF-3) |
+| `strings` | All UI text (NF-3). On Android this is not a Kotlin package but the resource file `app/src/main/res/values/strings.xml` (Indonesian), with `values-en/` added later (B-2x). Kotlin reads it through `stringResource`. Code packages live under `app.xnkfit` (for example `app.xnkfit.domain.rules`). |
 
 ## 3. Data model
 
@@ -59,7 +59,7 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 
 | Table | Key columns | Notes |
 | --- | --- | --- |
-| `profile` | sex, birthYear, heightCm, goal, interest, nickname, healthRisk (bool), screeningDone, pregnant, eatingHistory | One row. Sensitive health fields stay on the phone (PV-1). |
+| `profile` | sex, birthYear, heightCm, goal, interest, nickname, healthRisk (bool), screeningDone, pregnant (pregnant or breastfeeding, one answer), eatingHistory | One row. Sensitive health fields stay on the phone (PV-1). |
 | `measure` | type (weight, waist, + six opt-in), value, unit, takenAt | Weight by default. Unit always metric. |
 | `photo` | path, takenAt, kind (front, side, back), hiddenFromBackup | Files in app-private storage; rows reference them. |
 | `equipment` | setting (gym, home-bw, home-db, custom), items (set of codes) | Tick-your-own = `custom`. |
@@ -133,9 +133,10 @@ Steps:
 1. Filter exercises by equipment setting. A pattern with no valid exercise is reported as missing with the plain sentence from L-3, never filled with a wrong pattern.
 2. Pick one main and one accessory per pattern from the level-appropriate variants (Rules.md §Latihan).
 3. Set sets/reps/rest from the level table in Rules.md.
+3a. Weekly volume (L-17): sum working sets per muscle group (main 1, helper 0.5; R_TRN_VOL_COUNT). Raise groups under the level minimum (R_TRN_VOL_FILL), trim above 20. Golden tests assert the totals per equipment setting.
 4. Attach a reason string per exercise ("Kenapa gerakan ini", L-11).
 
-Progression (L-2, L-4): double progression for weights: when every working set reaches the top of the rep range with form "rapi", propose +2.5 kg (upper) or +5 kg (legs). For bodyweight and limited weights: reps to the top, then +1 set, then the next harder variant (`variantOf`). Bands: band level + reps.
+Progression (L-2, L-4): double progression for weights: when every working set reaches the top of the rep range with form "rapi", propose +2.5 kg (upper) or +5 kg (legs), limited to 10 % of the load and rounded down to the equipment step (R_TRN_PROG_STEP). For bodyweight and limited weights: reps to the top, then +1 set, then the next harder variant (`variantOf`). Bands: band level + reps.
 
 Form hold (L-12): a "ragu" self-rating holds the load until two "rapi" in a row. Reps and sets may still progress.
 
@@ -197,8 +198,8 @@ Delete all (B-7): removes the database, photos, DataStore and cached content, th
 
 ## 10. Speed budget and performance
 
-Targets from NF-1, measured on the reference phone. Proposed model (S-05, 2026-11-18): **Xiaomi Redmi 9A, 2 GB RAM, MediaTek Helio G25 (8× Cortex-A53, up to 2.0 GHz), 720×1600 screen, Android 10 (MIUI 12)**. Two points differ from the first plan and need the owner's OK before a phone is bought: (a) it runs Android 10, not 8–9, so Android 8–9 is not yet tested; a 2 GB Android 8–9 phone would be the stricter test; (b) store listings found on 2026-11-18 showed it out of stock, so check local availability. The CPU is a MediaTek, not a Snapdragon 4xx; the class is "2 GB, octa-core A53".
-Sources: https://m.gsmarena.com/xiaomi_redmi_9a-10279.php (listing search, 2026-11-18).
+Targets from NF-1, measured on the reference phone. **Owner decision 2026-11-18 (S-05): Xiaomi Redmi 10** (Helio G88, 4 GB or 6 GB RAM, 6.5″ 1080×2400, launched on Android 11, updatable to Android 13). Source: https://m.gsmarena.com/xiaomi_redmi_10-11060.php (listing search, 2026-11-18).
+Gap against the first plan (2–3 GB, Android 8–9), accepted by the owner: this phone is stronger than the target. To keep the "fast on 2–3 GB" promise (PRD G6) the speed check also runs (a) with the CPU throttled 4× on this phone and (b) on an Android 8 (API 26) emulator limited to 2 GB RAM. Budgets below must pass on both. The first candidate (Redmi 9A, 2 GB) is dropped.
 
 | Measure | Budget | How it is checked |
 | --- | --- | --- |
@@ -236,6 +237,7 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | Library | Why | Size concern |
 | --- | --- | --- |
 | Jetpack Compose + Material 3 | UI | Baseline, R8 shrinks |
+| AndroidX Activity Compose (`activity-compose`) | `ComponentActivity.setContent`, the entry point of every Compose app (added in B-01) | Small |
 | Room | Database (§3) | Small |
 | DataStore | Settings | Small |
 | WorkManager | Reminders, backup on open | Small |
@@ -257,9 +259,12 @@ Anything else needs a row here first.
 | Kill test | Instrumented: kill at each logger step | Nightly |
 | Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR |
 | Speed | Macrobenchmark budgets (§10) | Nightly and before release |
-| Text literals | Lint rule: no string literal in `ui.*` (NF-3) | Every PR |
+| Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
+| APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
+| Permissions | `tools/check_permissions.sh`: the built APK may declare only the §14 list plus the WorkManager and AndroidX extras named there | Every PR |
+| Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks are off (they go stale and would turn CI red with no code change) | Every PR |
 
-Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed.
+Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_ACT, R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07.
 
 ## 14. Security and privacy in code
 
@@ -269,7 +274,7 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 - Photos are excluded from backup unless B-3 is on; their rows set `hiddenFromBackup`.
 - Release builds strip `Log` calls with R8 so no user value reaches logcat.
 - `android:allowBackup="false"`: Android's own cloud backup must not copy the database outside the user's Drive choice.
-- The manifest asks only for: notifications, camera (photos), Health Connect read (steps), internet, exact alarm (rest timer only). Nothing else.
+- The manifest asks only for: notifications, camera (photos), Health Connect read (steps), internet, exact alarm (rest timer only). Nothing else, with these exceptions the build adds and that were checked in B-01: `WAKE_LOCK` and `ACCESS_NETWORK_STATE` from WorkManager (needed to run work on Wi-Fi only, B-2; no prompt, normal permissions), and `app.xnkfit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` from AndroidX (the app's own signature permission, grants nothing to others). WorkManager's `FOREGROUND_SERVICE` and `RECEIVE_BOOT_COMPLETED` are removed in the manifest because we use no foreground service and API 26+ keeps JobScheduler work across reboot. `<uses-feature camera required=false>` is not a permission; it keeps phones without a camera installable.
 
 ## 15. Accessibility
 
@@ -282,6 +287,6 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 
 | # | Question | Default until decided |
 | --- | --- | --- |
-| 1 | Exact reference phone model | Proposed Redmi 9A in §10 (S-05); owner confirms, then budgets are measured on it |
-| 2 | Content update host | Decided in S-06 (proposed, owner confirms): GitHub Pages of a project content repo, per-file SHA-256 and a signed manifest; details in [Content-Update.md](Content-Update.md) |
+| 1 | Exact reference phone model | Decided in S-05 (owner, 2026-11-18): Redmi 10, plus a 2 GB API 26 emulator run (§10) |
+| 2 | Content update host | Decided in S-06 (owner left it to Claude, 2026-11-18): GitHub Pages of a project content repo, per-file SHA-256 and a signed manifest; details in [Content-Update.md](Content-Update.md) |
 | 3 | Whether the figure is drawn with Compose Canvas or a static SVG asset | Decided in D-06 (2026-11-17): reuse the XNK app's figures, the muscle map (`figure.min.json`, react-muscle-highlighter shapes, MIT, credits kept) and the animated exercise rig (`rig.min.json`, XNK's own work); new rigs only for lifts XNK lacks. |

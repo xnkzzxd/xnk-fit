@@ -23,16 +23,16 @@
 | Home dumbbell / band | `home-db` | Some equipment at home | Dumbbells, resistance bands, a pull-up bar optional |
 | Tick your own | `custom` | Anyone | Whatever the user ticks in the equipment list |
 
-Library target: **about 150 curated exercises** (PRD L-10):
+Library target: **about 150 curated exercises** (PRD L-10). Built in C-01 (2026-11-18): **149 entries** in [`content/exercises.json`](../content/exercises.json), checked by `node tools/check-exercises.mjs`.
 
-| Group | Count | Covers |
-| --- | --- | --- |
-| Gym | about 60 | Machines, barbell, cable, dumbbell (heavy) |
-| Dumbbell / band | about 40 | Dumbbell, band, kettlebell-light |
-| Bodyweight | about 35 | Bodyweight, each with an easier and a harder variant |
-| Cardio and core | about 15 | Treadmill, bike, rower, planks, carries, dead bug |
+| Group | Target | Built | Covers |
+| --- | --- | --- | --- |
+| Gym | about 60 | 60 | Machines, barbell, cable, dumbbell (heavy) |
+| Dumbbell / band | about 40 | 40 | Dumbbell, band, kettlebell-light |
+| Bodyweight | about 35 | 34 | Bodyweight, each with an easier and a harder variant |
+| Cardio and core | about 15 | 15 | Treadmill, bike, rower, planks, carries, dead bug |
 
-Every pattern (§3) has **at least three choices in each setting** that can carry it (L-10). A pattern with fewer than three in a setting is a content bug, tested in CI.
+Every pattern (§3) has **at least three choices in each setting** that can carry it (L-10). A pattern with fewer than three in a setting is a content bug, tested in CI (`tools/check-exercises.mjs`). `CURL` and `CARRY` are required in `gym` and `home-db` only, `LEG_ISO` in `gym` only (§3). In `home-bw`, `PULL_V` (all three need a bar) and `PULL_H` (needs a table or door) count entries whose `equipment` the user may lack; the generator still applies L-3.
 
 ## 3. Movement patterns
 
@@ -128,7 +128,13 @@ Decision D-06 (2026-11-17): start from the XNK app's muscle map (`figure.min.jso
 | 17 | `LEVEL_3` | Level 3 | Reached level 3 |
 | 18 | `PLAN_WEEK` | Rencana seminggu | Week planner full for 7 days |
 
-Titles, messages and condition checks live in the badge table (Design §3); the messages are kind and never mention weight loss.
+Built in C-10 (2026-11-18): [`content/badges.json`](../content/badges.json) holds the 18 codes (stable IDs, stored in `badge.code`), Indonesian titles, machine-readable conditions, one celebration message each, and an icon name from the mockup set. Checked by `node tools/check-badges.mjs` (exactly 18, no duplicate code, title or order, required fields, tone rules).
+
+- **Conditions** use eleven named metrics defined once in the file (for example `finishedWorkouts`, `personalRecords`, `streakWeeks`, `activityMinutesWeek`), each computed from Room tables in Design §3: `workout`, `workout_set`, `activity`, `food_log`, `points_event`, `measure`, `photo`, `meal_plan`. They are deterministic and can be unit-tested from fixture rows.
+- **Personal record** (not a table in Design §3): derived from `workout_set`. A done set beats every earlier set of the same exercise by load, or by reps at equal load, or by reps for bodyweight. The first set of an exercise is a baseline. One record per exercise per workout.
+- **Earned once, never lost.** Badges never depend on weight, calories eaten below target, or very low intake. The activity badges stop at 300 minutes a week (WHO upper range, S13); there is no volume badge above it (PRD PR-5). `TARGET_WEEK` counts weeks within ±10 % of target on either side and its message does not mention food amounts. `MEASURE_4` counts measuring, never the value.
+- **Messages**: Indonesian, neutral, no "kamu" or "Kak", at most one emoji, at most 110 characters, no weight or calorie words (Rules R_TONE, R_TONE_WORDS). Titles follow the table above; the Saya mockup uses shorter labels as placeholders and the app uses `title_id`.
+- **Icons** (names only, no assets): star, medal, trophy, flame, run, food, check, ruler, camera, heart, cal. The grey locked state is drawn by the app, not a badge icon.
 
 ## 7. Activities and MET (L-14)
 
@@ -154,8 +160,10 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | C-06 | Packaged food label values (about 80) | Collect from label photos or product sheets; owner or task |
 | C-04 | Warung and bought-meal estimates: 66 rows built in `content/foods-estimates.json` (see §4.1) | Done; 10 rows ⚠ |
 | C-07 | Bought and regional meal numbers (wider set; replace estimates where a label or official site exists) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
+| C-01 | Library draft done (149). Source for every entry is "praktik umum" (status `unverified` ⚠); only the pattern class cites S14. EMG or guideline per entry still to find | Review task (Opus 5.5) |
+| C-01b | Muscle review: 23 entries have `review.muscles = "uncertain"` with a note (`LEGISO_ADD` needs a decision: adductors are not in the 16 muscles). The other 126 are `draft` | Opus 5.5, separate session |
 | C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
-| C-09 | English cues for each exercise (3 lines) | Owner review of English (PRD §14 item 3) |
+| C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
 
 ## 9. Sources for exercises and figures
@@ -163,7 +171,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | Item | Source | Status |
 | --- | --- | --- |
 | Pattern list (§3) | Standard resistance-training pattern classes, ACSM Position Stand 2009 (Rules S14) | ✅ class list; exercise picks ⚠ review |
-| Main and helper muscles per exercise | EMG-based activation review, to cite per exercise in the library file | ⚠ to fill per exercise |
+| Main and helper muscles per exercise | Library file has `source.muscles_cues = "praktik umum"` on all 149 entries; EMG citation not yet found | ⚠ unverified, 23 flagged for Opus review |
 | Joint angles per pose | Standard range-of-motion descriptions, cited per pose | ⚠ to fill per pose |
 | Calories per food | TKPI 2020 (Rules S9) | ✅ source; per-row check when built |
 
@@ -189,3 +197,5 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | --- | --- |
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
 | 2026-11-18 | C-04: 66 warung and bought-meal estimates added (§4.1, §8). |
+| 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
+| 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
