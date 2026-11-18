@@ -51,7 +51,7 @@ Packages:
 | `data.content` | Loader for bundled content and the checksummed content update |
 | `data.backup` | Zip writer/reader, manifest, Drive upload/download |
 | `ui.*` | One package per tab, plus `ui.onboarding`, `ui.settings`, `ui.common` |
-| `strings` | All UI text (NF-3) |
+| `strings` | All UI text (NF-3). On Android this is not a Kotlin package but the resource file `app/src/main/res/values/strings.xml` (Indonesian), with `values-en/` added later (B-2x). Kotlin reads it through `stringResource`. Code packages live under `app.xnkfit` (for example `app.xnkfit.domain.rules`). |
 
 ## 3. Data model
 
@@ -236,6 +236,7 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | Library | Why | Size concern |
 | --- | --- | --- |
 | Jetpack Compose + Material 3 | UI | Baseline, R8 shrinks |
+| AndroidX Activity Compose (`activity-compose`) | `ComponentActivity.setContent`, the entry point of every Compose app (added in B-01) | Small |
 | Room | Database (§3) | Small |
 | DataStore | Settings | Small |
 | WorkManager | Reminders, backup on open | Small |
@@ -257,7 +258,10 @@ Anything else needs a row here first.
 | Kill test | Instrumented: kill at each logger step | Nightly |
 | Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR |
 | Speed | Macrobenchmark budgets (§10) | Nightly and before release |
-| Text literals | Lint rule: no string literal in `ui.*` (NF-3) | Every PR |
+| Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
+| APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
+| Permissions | `tools/check_permissions.sh`: the built APK may declare only the §14 list plus the WorkManager and AndroidX extras named there | Every PR |
+| Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks are off (they go stale and would turn CI red with no code change) | Every PR |
 
 Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed.
 
@@ -269,7 +273,7 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 - Photos are excluded from backup unless B-3 is on; their rows set `hiddenFromBackup`.
 - Release builds strip `Log` calls with R8 so no user value reaches logcat.
 - `android:allowBackup="false"`: Android's own cloud backup must not copy the database outside the user's Drive choice.
-- The manifest asks only for: notifications, camera (photos), Health Connect read (steps), internet, exact alarm (rest timer only). Nothing else.
+- The manifest asks only for: notifications, camera (photos), Health Connect read (steps), internet, exact alarm (rest timer only). Nothing else, with these exceptions the build adds and that were checked in B-01: `WAKE_LOCK` and `ACCESS_NETWORK_STATE` from WorkManager (needed to run work on Wi-Fi only, B-2; no prompt, normal permissions), and `app.xnkfit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` from AndroidX (the app's own signature permission, grants nothing to others). WorkManager's `FOREGROUND_SERVICE` and `RECEIVE_BOOT_COMPLETED` are removed in the manifest because we use no foreground service and API 26+ keeps JobScheduler work across reboot. `<uses-feature camera required=false>` is not a permission; it keeps phones without a camera installable.
 
 ## 15. Accessibility
 

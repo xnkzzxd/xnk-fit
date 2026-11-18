@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- All UI text lives here (PRD NF-3, Design §13). Indonesian first; English added later. -->
+<resources>
+    <string name="app_name">XNK Fit</string>
+
+    <!-- Bottom bar (PRD N-1) -->
+    <string name="nav_today">Hari ini</string>
+    <string name="nav_workout">Latihan</string>
+    <string name="nav_add">Tambah</string>
+    <string name="nav_food">Makan</string>
+    <string name="nav_me">Saya</string>
+
+    <!-- Empty skeleton screen (PRD H-3: an empty screen says what fills it) -->
+    <string name="empty_today">Belum ada yang tercatat hari ini.</string>
+    <string name="empty_other">Layar ini menyusul.</string>
+</resources>
