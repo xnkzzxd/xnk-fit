@@ -18,7 +18,7 @@ Sources are listed in §13. Where a source is cited by short code (for example `
 | R_MSJ_F | BMR women (kcal/day) | 10·kg + 6.25·cm − 5·age − 161 | S1 | ✅ |
 | R_ACT | Activity factor (PAL) from weekly activity (PRD L-14) | Jarang bergerak 1.40 · ringan (1–2 days) 1.55 · sedang (3–4) 1.70 · aktif (5–6) 1.85 · sangat aktif (7 days or physical work) 2.00. Was 1.2 / 1.375 / 1.55 / 1.725 / 1.9 (no primary source). Screen says "perkiraan" | Values inside S2 Table 5.3 PAL bands (1.40–1.69 / 1.70–1.99 / 2.00–2.40); 1.40 is S2's lower limit (§5.3.2: 1.21 "too low"). Mapping to days per week is a product rule. Check against S8: AKG energy for the reference adult ÷ Mifflin BMR ≈ 1.73 (men 19–29) and 1.79 (women 19–29) | ✅ values (S2), 👤 mapping (owner approved 2026-11-18) |
 | R_TDEE | Maintenance = BMR × activity factor. Shown; the target uses it, activity calories are **not** added on top (M-1) | — | product rule (M-1) | 👤 |
-| R_AGE | Age from birth year: current year − birth year | — | product rule | ✅ |
+| R_AGE | Age from birth year: current year − birth year (BMR, fibre, display). The age gates R_GATE_U13 and R_GATE_U18 use the **youngest possible age**, one year less, because the birthday may not have passed (2026-11-18, Decisions.md; safe side) | margin 1 year | product rule | 👤 |
 | R_BMI | BMI = kg / m² | — | S3 | ✅ |
 | R_BMI_UNDER | Goal "turun" not offered below BMI | < 18.5 | S3 (WHO international cut-off kept, p. 157); PRD S-5 | ✅ |
 | R_WHTR | Waist-to-height ratio, shown in Bantuan only | ≥ 0.5 flagged as "perhatikan" (kind wording) | S4 (boundary 0.5, p. 303) | ✅ |
@@ -156,7 +156,7 @@ Product rules (👤). Numbers can change before release; each change is recorded
 | R_PTS_FOOD | Points per day with food logged for ≥ 3 slots | 2 |
 | R_PTS_MEASURE | Points per weight measure taken on the scheduled day (weekly) | 2 |
 | R_PTS_STREAK | Points per streak week | 5 |
-| R_PTS_TARGET | Points per week the logged average is within ±10 % of target | 5 |
+| R_PTS_TARGET | Points per week with food logged on at least 5 days (the amounts are never judged). Was "logged average within ±10 % of target"; changed 2026-11-18 by Claude to match the `LOGWEEK_1` badge, so no points or badge depend on a calorie number (PR-5). Owner can reverse | 5 |
 | R_PTS_NOWEIGHT | Weight change never gives or takes points (PRD P-3) | — |
 | R_LEVEL | Level thresholds (cumulative points): 0, 100, 250, 450, 700, 1,000, 1,400, 1,900, 2,500, then +600 per level | ⚠ tuning (not a source gap; owner decision §12 #3) |
 | R_LEVEL_NOLOSE | Level never drops (PRD P-3) | — |
@@ -199,7 +199,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | G5 | Source for under-18 and pregnancy gates | Under 18: S10 p. 1; AKG energy for 16–18 is at or above adults. Pregnancy: AKG adds +180 / +300 / +300 kcal by trimester (p. 8); S13 p. 6. "No deficit" is the owner's rule; no source loosens it. ACOG 804 (S11): only the abstract could be opened (full text behind a paywall, HTTP 402) | ✅ closed (gate unchanged) | — |
 | G6 | Training numbers (R_TRN_*) | WEEK and REST confirmed (S14 Table 2, p. 700; S15). SETS and REPS differ from S14 for beginners: values changed (§5) | ✅ closed; changes approved 2026-11-18; weekly volume R_TRN_VOL added | — |
 | G7 | Household measure weights for cooked dishes | Not a single source; data work in C-05. PMK 41/2014 (S17) could not be downloaded in S-07 (peraturan.bpk.go.id returned HTTP 403) | ⚠ open (C-05) | Flagged estimates |
-| G8 | Bought and regional meal numbers | No published source covers warung and bought meals; data work in C-07 (PRD open item 6) | ⚠ open (C-07) | Flagged estimates |
+| G8 | Bought and regional meal numbers | No published source covers warung and bought meals. C-07 added 108 regional rows from our own recipes and a generic ingredient table (not TKPI, `sodium` empty); 0 official `bought` rows (PRD open item 6) | ⚠ open (C-07 partly done) | Flagged estimates |
 | G9 | Return-after-absence load (R_TRN_RETURN, 60 %) | No source found that prescribes a return load; 60 % and one fewer set is a conservative owner rule | ⚠ open (owner rule, no source) | Rule on as written |
 
 ## 11. Changes log
@@ -209,7 +209,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | 2026-11-16 | First draft (D-03). |
 | 2026-11-18 | S-07: sources opened; exact figures and pages written in §13. Closed G2–G6. Values changed (owner to confirm, §12): R_FIBRE 30 g → AKG table by sex and age (30 g fitted only two groups); R_TRN_SETS "3–4 after 4 weeks" → 3–4 from level 2 (S14 novice is 1–3 sets); R_TRN_REPS 3–5 strength range moved to level 2 and up (S14 novice is 8–12 RM). Open: G1, G7, G8, G9. S5 re-cited to the NHLBI Practical Guide (Donnelly 2009 gives no pace number); S18–S20 added; S15 title corrected. No safety limit loosened. |
 | 2026-11-18 | Owner decision §12 #4: R_ACT changed to S2 PAL values 1.40 / 1.55 / 1.70 / 1.85 / 2.00 (maintenance about 7–17 % higher at low activity); G1 closed. Floors, BMR floor and pace check unchanged. |
-| 2026-11-18 | B-02 (domain code): added IDs for numbers that had none: R_INPUT, R_GATE_U13 (PRD O-5), R_KCAL_G, R_RECALC (PRD M-2), R_MET, R_WHO_MIN, R_TRN_LEVELS. Written down how the code reads existing rules (no value changed, no limit loosened): gate order in §3; R_DEF_CAP group = risk answers; floor rounded up (R_ROUND); protein steps to 1.4 g/kg only when carbohydrate would go negative; R_PACE on weekly weights; R_TRN_RETURN rounded down to the equipment step. Open owner question §12 #9 (age from birth year). |
+| 2026-11-18 | B-02 (domain code): added IDs for numbers that had none: R_INPUT, R_GATE_U13 (PRD O-5), R_KCAL_G, R_RECALC (PRD M-2), R_MET, R_WHO_MIN, R_TRN_LEVELS. Written down how the code reads existing rules (no value changed, no limit loosened): gate order in §3; R_DEF_CAP group = risk answers; floor rounded up (R_ROUND); protein steps to 1.4 g/kg only when carbohydrate would go negative; R_PACE on weekly weights; R_TRN_RETURN rounded down to the equipment step. R_AGE: age gates use the youngest possible age (current year − birth year − 1), so born-2008 users stay under the R_GATE_U18 rules for 2026 and born-2013 users are stopped by R_GATE_U13 (tightened, not loosened; Decisions.md, §12 #9). |
 | 2026-11-18 | Owner decisions on §12 #5–#8: R_FIBRE and R_TRN_SETS / R_TRN_REPS approved; added R_TRN_VOL, R_TRN_VOL_COUNT, R_TRN_VOL_SCOPE, R_TRN_VOL_FILL (weekly sets per muscle group) and R_TRN_PROG_STEP (10 % step limit); R_GATE_PREG now covers breastfeeding. Sources S21–S23 added. |
 
 ## 12. Owner decisions still open
@@ -219,7 +219,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | 1 | Under-18 gate: adjust goal or block the goal | Goal changed to "jaga", note shown |
 | 2 | Calorie floor values (1,200 / 1,500) | As PRD S-4 (supported by S5, see §2) |
 | 3 | Level thresholds (R_LEVEL) | As listed above |
-| 9 | Age from birth year only (R_AGE) can be up to one year too high: someone born in 2008 counts as 18 for all of 2026, even before the birthday. So R_GATE_U18 can miss a 17-year-old for part of a year, and R_GATE_U13 a 12-year-old. Safer options: ask birth month too, or treat "current year − birth year = 18" (and 13) as still under the limit | As written (current year − birth year); raised in B-02, not changed without the owner |
+| 9 | Age from birth year only (R_AGE) can be up to one year too high: someone born in 2008 counts as 18 for all of 2026, even before the birthday, so the age gates could miss a 17-year-old (or a 12-year-old) | Safe side taken by Claude (Decisions.md): the age gates use current year − birth year − 1. Alternative for the owner: ask birth month too |
 
 Decided 2026-11-18 (owner): #5 fibre from the AKG table (approved); #6 sets and reps by level (approved), plus weekly sets per muscle group (R_TRN_VOL); #7 load step limited to 10 % (R_TRN_PROG_STEP); #8 left to Claude: breastfeeding shares the pregnancy gate, no deficit (R_GATE_PREG). #4 activity factor: S2 PAL values 1.40 / 1.55 / 1.70 / 1.85 / 2.00 (R_ACT).
 

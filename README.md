@@ -19,7 +19,8 @@ A free, offline-first workout and meal app for people without a coach. Android f
 Needs JDK 17 or newer (CI uses 21), the Android SDK with platform 36 and build-tools 36.0.0 (`ANDROID_HOME` set, or `sdk.dir` in `local.properties`), and Python 3 for the checks in `tools/`.
 
 ```sh
-./gradlew testDebugUnitTest        # unit tests
+./gradlew testDebugUnitTest        # unit tests, including the Room database and migration tests (Robolectric, JVM)
+./gradlew testDebugUnitTest --tests 'app.xnkfit.data.db.*'   # only the database tests
 ./gradlew lintRelease              # Android Lint, warnings are errors
 ./gradlew assembleRelease          # R8 on; output is unsigned: app/build/outputs/apk/release/app-release-unsigned.apk
 python3 tools/check_text_literals.py          # no hardcoded UI text (NF-3)
@@ -27,5 +28,7 @@ python3 -m unittest discover -s tools         # tests of that rule
 tools/check_apk_size.sh app/build/outputs/apk/release/app-release-unsigned.apk   # 20 MB budget
 tools/check_permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk # Design 14 list
 ```
+
+Database (B-03): the Room schema JSON is exported to `app/schemas/` on every build and is committed. Never edit or delete a committed version file. To change the schema: change the entities, bump `XnkDatabase.VERSION`, add the `Migration` to `XnkDatabase.MIGRATIONS`, add a test next to `MigrationTest.exampleMigrationPattern`, commit the new `N.json`. The database tests run on the JVM with Robolectric, not on a phone or emulator; see Design §3 and §13.
 
 CI (`.github/workflows/ci.yml`) runs all of the above on every push and pull request. There is no signing key, keystore or client ID in this repo; release signing will come from CI secrets later. UI text lives in `app/src/main/res/values/strings.xml`. Speed benchmarks will live in `benchmark/` (B-19).

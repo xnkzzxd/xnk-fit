@@ -129,7 +129,7 @@ fun evaluateTargets(profile: Profile, screening: Screening?, currentYear: Int): 
     // R_GATE_U13 first: a child stops here whatever else was typed.
     val birthYear = profile.birthYear
     if (birthYear != null && birthYear <= currentYear &&
-        ageFromBirthYear(birthYear, currentYear) < R_GATE_U13_MIN_AGE
+        youngestPossibleAge(birthYear, currentYear) < R_GATE_U13_MIN_AGE
     ) {
         return GateResult.StopUnder13
     }
@@ -138,7 +138,8 @@ fun evaluateTargets(profile: Profile, screening: Screening?, currentYear: Int): 
     val problems = validate(profile, currentYear)
     if (problems.isNotEmpty()) return GateResult.InvalidInput(problems)
     val sex = profile.sex!!
-    val age = ageFromBirthYear(profile.birthYear!!, currentYear)
+    val born = profile.birthYear!!
+    val age = ageFromBirthYear(born, currentYear)
     val heightCm = profile.heightCm!!
     val weightKg = profile.weightKg!!
     val activity = profile.activity!!
@@ -160,8 +161,8 @@ fun evaluateTargets(profile: Profile, screening: Screening?, currentYear: Int): 
     ).any { it == true }
     if (risk) notes += GateNote.RISK_SEE_DOCTOR
 
-    // R_GATE_U18
-    val under18 = age < R_GATE_U18_ADULT_AGE
+    // R_GATE_U18 (youngest possible age, R_AGE)
+    val under18 = youngestPossibleAge(born, currentYear) < R_GATE_U18_ADULT_AGE
     if (under18) {
         notes += GateNote.UNDER_18_LIGHT_MODE
         goalsOffered -= Goal.TURUN

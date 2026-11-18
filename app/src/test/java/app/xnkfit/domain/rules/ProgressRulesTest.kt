@@ -32,20 +32,19 @@ class ProgressRulesTest {
     fun R_PTS_STREAK_5() = assertEquals(5, PointSource.STREAK_WEEK.points)
 
     @Test
-    fun R_PTS_TARGET_5withinTenPercent() {
-        assertEquals(5, PointSource.TARGET_WEEK.points)
-        assertEquals(0.10, R_PTS_TARGET_BAND, 1e-12)
-        assertTrue(weekWithinTarget(2200.0, 2000))
-        assertTrue(weekWithinTarget(1800.0, 2000))
-        assertFalse(weekWithinTarget(2201.0, 2000))
-        assertFalse(weekWithinTarget(Double.NaN, 2000))
+    fun R_PTS_TARGET_5forAWeekLoggedOnFiveDays() {
+        // Changed 2026-11-18 (Decisions.md): was "average within ±10 % of target"; no calorie number is rewarded.
+        assertEquals(5, PointSource.LOGGED_WEEK.points)
+        assertEquals(5, R_PTS_TARGET_MIN_FOOD_DAYS)
+        assertFalse(loggedWeek(4))
+        assertTrue(loggedWeek(5))
     }
 
     @Test
     fun R_PTS_NOWEIGHT_noPointSourceForWeightChange() {
         // P-3: points never come from the weight number. Only these sources exist.
         assertEquals(
-            setOf("WORKOUT_FINISHED", "ACTIVITY_30_MIN", "FOOD_DAY", "MEASURE_ON_SCHEDULE", "STREAK_WEEK", "TARGET_WEEK"),
+            setOf("WORKOUT_FINISHED", "ACTIVITY_30_MIN", "FOOD_DAY", "MEASURE_ON_SCHEDULE", "STREAK_WEEK", "LOGGED_WEEK"),
             PointSource.entries.map { it.name }.toSet(),
         )
     }

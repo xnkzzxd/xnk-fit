@@ -46,6 +46,20 @@ android {
         // "Newer version available" checks go stale by themselves and would turn CI red with no code change.
         // Version bumps are done on purpose, one dependency at a time, with a row in Design §12.
         disable += setOf("GradleDependency", "NewerVersionAvailable", "AndroidGradlePluginVersion")
+        // Same family: it fires as soon as the CI runner has a newer platform than our target (it did, API 37).
+        // targetSdk is a recorded decision in Design §1 (S-02), raised on purpose at release time, not by a lint date.
+        disable += "OldTargetApi"
+    }
+
+    testOptions {
+        // Robolectric needs merged resources and the manifest (Design §12).
+        unitTests.isIncludeAndroidResources = true
+    }
+
+    sourceSets {
+        // MigrationTestHelper reads the exported schema JSON as assets under Robolectric (Design §13).
+        // Debug only: the release APK does not carry the schemas.
+        getByName("debug").assets.srcDir("$projectDir/schemas")
     }
 
     packaging {
@@ -77,4 +91,7 @@ dependencies {
     implementation(libs.work.runtime)
 
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.test.core)
+    testImplementation(libs.room.testing)
 }

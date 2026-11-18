@@ -36,6 +36,8 @@ class SafetyGatesTest {
         assertEquals(13, R_GATE_U13_MIN_AGE)
         val child = GateFixtures.man30.copy(birthYear = 2014) // 12
         assertEquals(GateResult.StopUnder13, evaluateTargets(child, clear, year))
+        // R_AGE: born 2013 may still be 12 in 2026 (birthday not yet passed) → stop, safe side.
+        assertEquals(GateResult.StopUnder13, evaluateTargets(child.copy(birthYear = 2013), clear, year))
         // Even with nothing else typed and no screening: stop, never a target.
         val bare = Profile(null, 2014, null, null, null, null)
         assertEquals(GateResult.StopUnder13, evaluateTargets(bare, null, year))
@@ -43,7 +45,7 @@ class SafetyGatesTest {
 
     @Test
     fun R_GATE_U13_thirteenContinues() {
-        val teen = GateFixtures.man30.copy(birthYear = 2013) // 13
+        val teen = GateFixtures.man30.copy(birthYear = 2012) // 14 by birth year, at least 13
         assertTrue(evaluateTargets(teen, clear, year) is GateResult.Ready)
     }
 
@@ -170,8 +172,13 @@ class SafetyGatesTest {
     }
 
     @Test
-    fun R_GATE_U18_eighteenIsAdult() {
-        val r = ready(GateFixtures.man30.copy(birthYear = 2008))
+    fun R_GATE_U18_adultOnlyWhenSurely18() {
+        // R_AGE: born 2008 counts as 18 but may be 17 until the birthday → still under 18 (safe side).
+        val maybe17 = ready(GateFixtures.man30.copy(birthYear = 2008))
+        assertTrue(maybe17.program.lightMode)
+        assertEquals(Goal.JAGA, maybe17.goalUsed)
+        // Born 2007: at least 18 → adult rules.
+        val r = ready(GateFixtures.man30.copy(birthYear = 2007))
         assertFalse(r.program.lightMode)
         assertEquals(Goal.TURUN, r.goalUsed)
     }
@@ -262,7 +269,7 @@ class SafetyGatesTest {
                 assertTrue("$r", r.targetKcal >= sexFloorKcal(sex))
                 assertTrue("$r", r.targetKcal >= r.bmrKcal)
                 assertEquals(0, r.targetKcal % R_ROUND_KCAL)
-                if (age < 18) assertTrue(r.targetKcal >= r.maintenanceKcal - R_ROUND_KCAL)
+                if (age <= 18) assertTrue(r.targetKcal >= r.maintenanceKcal - R_ROUND_KCAL)
             }
     }
 

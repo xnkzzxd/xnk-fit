@@ -51,8 +51,16 @@ const val R_INPUT_AGE_MAX = 100
 
 private const val CM_PER_M = 100.0 // unit conversion, not a rule
 
-/** R_AGE: age from birth year = current year − birth year (product rule). */
+// R_AGE: with a birth year only, the birthday may not have passed yet. The age gates (R_GATE_U13, R_GATE_U18)
+// use the youngest possible age, one year less (Decisions.md, 2026-11-18, safe side).
+const val R_AGE_GATE_MARGIN_YEARS = 1
+
+/** R_AGE: age from birth year = current year − birth year (product rule). Used for BMR, fibre and display. */
 fun ageFromBirthYear(birthYear: Int, currentYear: Int): Int = currentYear - birthYear
+
+/** R_AGE: youngest age the person can be this year; the age gates use this one. */
+fun youngestPossibleAge(birthYear: Int, currentYear: Int): Int =
+    ageFromBirthYear(birthYear, currentYear) - R_AGE_GATE_MARGIN_YEARS
 
 /** R_MSJ_M / R_MSJ_F: BMR in kcal/day. */
 fun bmrKcal(sex: Sex, weightKg: Double, heightCm: Double, ageYears: Int): Double = when (sex) {

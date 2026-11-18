@@ -1,0 +1,5922 @@
+{
+ "task": "C-07",
+ "schemaNote": "Design §3 food; per-100g values computed from recipe; sodium null = no basis (⚠)",
+ "ingredientReference": {
+  "nasi": {
+   "kcal": 130,
+   "protein": 2.7,
+   "carb": 28,
+   "fat": 0.3,
+   "fibre": 0.4,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "lontong": {
+   "kcal": 100,
+   "protein": 2,
+   "carb": 22,
+   "fat": 0.2,
+   "fibre": 0.3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ketan": {
+   "kcal": 170,
+   "protein": 3,
+   "carb": 36,
+   "fat": 0.4,
+   "fibre": 0.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "mie": {
+   "kcal": 110,
+   "protein": 3,
+   "carb": 22,
+   "fat": 1,
+   "fibre": 1,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "bihun": {
+   "kcal": 110,
+   "protein": 1.5,
+   "carb": 25,
+   "fat": 0.1,
+   "fibre": 0.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ayamgoreng": {
+   "kcal": 250,
+   "protein": 22,
+   "carb": 6,
+   "fat": 15,
+   "fibre": 0.2,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ayamrebus": {
+   "kcal": 165,
+   "protein": 31,
+   "carb": 0,
+   "fat": 3.6,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ayambakar": {
+   "kcal": 220,
+   "protein": 25,
+   "carb": 2,
+   "fat": 13,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "sapi": {
+   "kcal": 250,
+   "protein": 26,
+   "carb": 0,
+   "fat": 16,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kambing": {
+   "kcal": 230,
+   "protein": 24,
+   "carb": 0,
+   "fat": 15,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "telurrebus": {
+   "kcal": 155,
+   "protein": 13,
+   "carb": 1,
+   "fat": 11,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "telurdadar": {
+   "kcal": 190,
+   "protein": 12,
+   "carb": 1,
+   "fat": 15,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ikangoreng": {
+   "kcal": 200,
+   "protein": 22,
+   "carb": 3,
+   "fat": 11,
+   "fibre": 0.1,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ikanbakar": {
+   "kcal": 140,
+   "protein": 24,
+   "carb": 0,
+   "fat": 5,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "teri": {
+   "kcal": 280,
+   "protein": 40,
+   "carb": 5,
+   "fat": 11,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ikanasin": {
+   "kcal": 250,
+   "protein": 40,
+   "carb": 0,
+   "fat": 10,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "tempe": {
+   "kcal": 300,
+   "protein": 18,
+   "carb": 12,
+   "fat": 20,
+   "fibre": 1.4,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "tahu": {
+   "kcal": 200,
+   "protein": 12,
+   "carb": 5,
+   "fat": 14,
+   "fibre": 0.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "tahurebus": {
+   "kcal": 80,
+   "protein": 8,
+   "carb": 2,
+   "fat": 5,
+   "fibre": 0.3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "sayurkuah": {
+   "kcal": 35,
+   "protein": 2,
+   "carb": 5,
+   "fat": 1,
+   "fibre": 1.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "sayurtumis": {
+   "kcal": 70,
+   "protein": 2,
+   "carb": 6,
+   "fat": 4,
+   "fibre": 2,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kacang": {
+   "kcal": 580,
+   "protein": 25,
+   "carb": 21,
+   "fat": 49,
+   "fibre": 8,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "bumbukacang": {
+   "kcal": 300,
+   "protein": 10,
+   "carb": 18,
+   "fat": 22,
+   "fibre": 3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "santankuah": {
+   "kcal": 120,
+   "protein": 2,
+   "carb": 4,
+   "fat": 11,
+   "fibre": 0.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kuahbening": {
+   "kcal": 20,
+   "protein": 1,
+   "carb": 3,
+   "fat": 0.5,
+   "fibre": 0.3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kuahsoto": {
+   "kcal": 40,
+   "protein": 3,
+   "carb": 3,
+   "fat": 2,
+   "fibre": 0.3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kerupuk": {
+   "kcal": 450,
+   "protein": 3,
+   "carb": 60,
+   "fat": 22,
+   "fibre": 1,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "sambal": {
+   "kcal": 60,
+   "protein": 2,
+   "carb": 9,
+   "fat": 2,
+   "fibre": 3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "minyak": {
+   "kcal": 884,
+   "protein": 0,
+   "carb": 0,
+   "fat": 100,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "singkong": {
+   "kcal": 150,
+   "protein": 1,
+   "carb": 36,
+   "fat": 0.3,
+   "fibre": 1.4,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kentang": {
+   "kcal": 85,
+   "protein": 2,
+   "carb": 19,
+   "fat": 0.1,
+   "fibre": 1.8,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kentanggoreng": {
+   "kcal": 310,
+   "protein": 3.5,
+   "carb": 40,
+   "fat": 15,
+   "fibre": 3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kelapa": {
+   "kcal": 350,
+   "protein": 3,
+   "carb": 15,
+   "fat": 33,
+   "fibre": 9,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "udang": {
+   "kcal": 100,
+   "protein": 20,
+   "carb": 1,
+   "fat": 1.5,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "cumi": {
+   "kcal": 120,
+   "protein": 18,
+   "carb": 5,
+   "fat": 3,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "bakso": {
+   "kcal": 180,
+   "protein": 10,
+   "carb": 15,
+   "fat": 9,
+   "fibre": 0.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "roti": {
+   "kcal": 265,
+   "protein": 9,
+   "carb": 49,
+   "fat": 3,
+   "fibre": 2.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "susu": {
+   "kcal": 61,
+   "protein": 3.2,
+   "carb": 4.8,
+   "fat": 3.3,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "pisang": {
+   "kcal": 90,
+   "protein": 1,
+   "carb": 23,
+   "fat": 0.3,
+   "fibre": 2,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kacanghijau": {
+   "kcal": 105,
+   "protein": 7,
+   "carb": 19,
+   "fat": 0.4,
+   "fibre": 7,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "tauge": {
+   "kcal": 30,
+   "protein": 3,
+   "carb": 6,
+   "fat": 0.2,
+   "fibre": 1.8,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "lalap": {
+   "kcal": 20,
+   "protein": 1,
+   "carb": 4,
+   "fat": 0.2,
+   "fibre": 1.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "daunsingkong": {
+   "kcal": 55,
+   "protein": 6,
+   "carb": 9,
+   "fat": 1,
+   "fibre": 3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "papeda": {
+   "kcal": 85,
+   "protein": 0.2,
+   "carb": 21,
+   "fat": 0.1,
+   "fibre": 0.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "jagung": {
+   "kcal": 103,
+   "protein": 3.4,
+   "carb": 19,
+   "fat": 1.5,
+   "fibre": 2.4,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "nangka": {
+   "kcal": 60,
+   "protein": 2,
+   "carb": 12,
+   "fat": 1,
+   "fibre": 2,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "gulamerah": {
+   "kcal": 370,
+   "protein": 0.5,
+   "carb": 95,
+   "fat": 0,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "tepungberas": {
+   "kcal": 360,
+   "protein": 6,
+   "carb": 80,
+   "fat": 1,
+   "fibre": 1,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "paru": {
+   "kcal": 250,
+   "protein": 20,
+   "carb": 5,
+   "fat": 17,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "hati": {
+   "kcal": 165,
+   "protein": 26,
+   "carb": 4,
+   "fat": 5,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kikil": {
+   "kcal": 200,
+   "protein": 25,
+   "carb": 0,
+   "fat": 11,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kerangsayur": {
+   "kcal": 90,
+   "protein": 14,
+   "carb": 4,
+   "fat": 2,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "kecap": {
+   "kcal": 60,
+   "protein": 5,
+   "carb": 10,
+   "fat": 0,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "acar": {
+   "kcal": 30,
+   "protein": 1,
+   "carb": 6,
+   "fat": 0.3,
+   "fibre": 1.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "emping": {
+   "kcal": 400,
+   "protein": 6,
+   "carb": 70,
+   "fat": 12,
+   "fibre": 3,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "ubi": {
+   "kcal": 120,
+   "protein": 1.5,
+   "carb": 28,
+   "fat": 0.2,
+   "fibre": 2.5,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "cakalang": {
+   "kcal": 170,
+   "protein": 28,
+   "carb": 0,
+   "fat": 6,
+   "fibre": 0,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  },
+  "buncis": {
+   "kcal": 35,
+   "protein": 2,
+   "carb": 7,
+   "fat": 0.2,
+   "fibre": 2.7,
+   "basis": "generic reference, not TKPI-verified ⚠"
+  }
+ },
+ "rows": [
+  {
+   "id": "REG-nasi-uduk",
+   "source": "warung-est",
+   "name_id": "Nasi uduk, ayam goreng, telur dadar, orek tempe",
+   "name_en": "Nasi uduk with fried chicken, omelette, tempeh",
+   "region": "Betawi",
+   "kcalPer100": 173.4,
+   "protein": 8.5,
+   "carb": 16.8,
+   "fat": 7.7,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 325,
+   "servingKcal": 564,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 325,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamgoreng",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 25,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ketupat-sayur",
+   "source": "warung-est",
+   "name_id": "Ketupat sayur",
+   "name_en": "Ketupat in coconut-veg curry",
+   "region": "Betawi",
+   "kcalPer100": 106.3,
+   "protein": 2.8,
+   "carb": 11.5,
+   "fat": 5.5,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 395,
+   "servingKcal": 420,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 395,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "lontong",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-kerak-telor",
+   "source": "warung-est",
+   "name_id": "Kerak telor",
+   "name_en": "Betawi sticky-rice omelette",
+   "region": "Betawi",
+   "kcalPer100": 192.9,
+   "protein": 7.7,
+   "carb": 20.1,
+   "fat": 8.5,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 155,
+   "servingKcal": 299,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 155,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ketan",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "teri",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-asinan-betawi",
+   "source": "warung-est",
+   "name_id": "Asinan Betawi",
+   "name_en": "Betawi pickled veg and peanut",
+   "region": "Betawi",
+   "kcalPer100": 116.3,
+   "protein": 4.8,
+   "carb": 9.6,
+   "fat": 6.9,
+   "fibre": 1.7,
+   "sodium": null,
+   "servingGrams": 240,
+   "servingKcal": 279,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 240,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sayurkuah",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-timbel",
+   "source": "warung-est",
+   "name_id": "Nasi timbel, ayam goreng, tahu tempe, lalap",
+   "name_en": "Sundanese wrapped rice with chicken",
+   "region": "Sunda",
+   "kcalPer100": 160.6,
+   "protein": 8.8,
+   "carb": 16.1,
+   "fat": 6.4,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 360,
+   "servingKcal": 578,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 360,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 160,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamgoreng",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lalap",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-karedok",
+   "source": "warung-est",
+   "name_id": "Karedok",
+   "name_en": "Raw vegetable peanut salad",
+   "region": "Sunda",
+   "kcalPer100": 91.3,
+   "protein": 3.5,
+   "carb": 7.8,
+   "fat": 5.6,
+   "fibre": 1.9,
+   "sodium": null,
+   "servingGrams": 240,
+   "servingKcal": 219,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 240,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "lalap",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-pecel-lele",
+   "source": "warung-est",
+   "name_id": "Pecel lele, nasi, lalap, sambal",
+   "name_en": "Fried catfish with rice",
+   "region": "Sunda",
+   "kcalPer100": 132.6,
+   "protein": 8.4,
+   "carb": 15.9,
+   "fat": 3.7,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 325,
+   "servingKcal": 431,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 325,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 160,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikangoreng",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lalap",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 25,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-lotek",
+   "source": "warung-est",
+   "name_id": "Lotek",
+   "name_en": "Cooked vegetable peanut salad",
+   "region": "Sunda",
+   "kcalPer100": 107.2,
+   "protein": 3.8,
+   "carb": 12.5,
+   "fat": 5,
+   "fibre": 1.5,
+   "sodium": null,
+   "servingGrams": 290,
+   "servingKcal": 311,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 290,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sayurkuah",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lontong",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-soto-bandung",
+   "source": "warung-est",
+   "name_id": "Soto Bandung",
+   "name_en": "Bandung clear beef soup",
+   "region": "Sunda",
+   "kcalPer100": 96.5,
+   "protein": 5.9,
+   "carb": 9.9,
+   "fat": 3.7,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 425,
+   "servingKcal": 410,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 425,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kacang",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-tutug-oncom",
+   "source": "warung-est",
+   "name_id": "Nasi tutug oncom",
+   "name_en": "Sundanese oncom rice",
+   "region": "Sunda",
+   "kcalPer100": 157.7,
+   "protein": 7.7,
+   "carb": 19,
+   "fat": 5.4,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 305,
+   "servingKcal": 481,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 305,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 170,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamgoreng",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lalap",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-mie-kocok",
+   "source": "warung-est",
+   "name_id": "Mie kocok Bandung",
+   "name_en": "Bandung beef-tendon noodles",
+   "region": "Sunda",
+   "kcalPer100": 82.3,
+   "protein": 5.6,
+   "carb": 9.5,
+   "fat": 2.6,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 430,
+   "servingKcal": 354,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 430,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kikil",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-goreng-kampung",
+   "source": "warung-est",
+   "name_id": "Nasi goreng kampung, telur ceplok",
+   "name_en": "Village fried rice with fried egg",
+   "region": "Jawa",
+   "kcalPer100": 174.7,
+   "protein": 5.3,
+   "carb": 21.5,
+   "fat": 7.2,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 283,
+   "servingKcal": 494,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 283,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "teri",
+     "grams": 8,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-goreng-ayam",
+   "source": "warung-est",
+   "name_id": "Nasi goreng ayam",
+   "name_en": "Chicken fried rice",
+   "region": "Jawa",
+   "kcalPer100": 173.6,
+   "protein": 8.5,
+   "carb": 19.5,
+   "fat": 6.4,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 305,
+   "servingKcal": 529,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 305,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-mie-rebus",
+   "source": "warung-est",
+   "name_id": "Mie rebus (Jawa), telur",
+   "name_en": "Javanese noodle soup with egg",
+   "region": "Jawa",
+   "kcalPer100": 81.5,
+   "protein": 3.8,
+   "carb": 11.1,
+   "fat": 2.5,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 470,
+   "servingKcal": 383,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 470,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg",
+    "gluten"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-soto-ayam-lamongan",
+   "source": "warung-est",
+   "name_id": "Soto ayam Lamongan, nasi",
+   "name_en": "Lamongan chicken soup with rice",
+   "region": "Jawa",
+   "kcalPer100": 88.7,
+   "protein": 6.9,
+   "carb": 10,
+   "fat": 2.2,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 490,
+   "servingKcal": 435,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 490,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ayamrebus",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bihun",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-soto-kudus",
+   "source": "warung-est",
+   "name_id": "Soto Kudus, nasi",
+   "name_en": "Kudus chicken soup with rice",
+   "region": "Jawa",
+   "kcalPer100": 83.2,
+   "protein": 6.5,
+   "carb": 10.5,
+   "fat": 1.6,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 390,
+   "servingKcal": 325,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 390,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ayamrebus",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-rujak-cingur-halal",
+   "source": "warung-est",
+   "name_id": "Rujak cingur varian halal (tanpa cingur)",
+   "name_en": "Halal rujak salad (no cingur)",
+   "region": "Jawa",
+   "kcalPer100": 139.7,
+   "protein": 6.1,
+   "carb": 11.7,
+   "fat": 7.7,
+   "fibre": 1.4,
+   "sodium": null,
+   "servingGrams": 310,
+   "servingKcal": 433,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 310,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sayurkuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lontong",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nangka",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-pecel-madiun",
+   "source": "warung-est",
+   "name_id": "Pecel, nasi, tempe",
+   "name_en": "Pecel vegetables with peanut sauce",
+   "region": "Jawa",
+   "kcalPer100": 147,
+   "protein": 5,
+   "carb": 18.7,
+   "fat": 5.8,
+   "fibre": 1.2,
+   "sodium": null,
+   "servingGrams": 335,
+   "servingKcal": 493,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 335,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-gudeg-komplit",
+   "source": "warung-est",
+   "name_id": "Gudeg, nasi, ayam, telur, krecek",
+   "name_en": "Gudeg set with chicken and egg",
+   "region": "Jawa",
+   "kcalPer100": 123.5,
+   "protein": 7.1,
+   "carb": 15.8,
+   "fat": 3.4,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 405,
+   "servingKcal": 500,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 405,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nangka",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 45,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tahu-campur",
+   "source": "warung-est",
+   "name_id": "Tahu campur",
+   "name_en": "East Javanese tofu-noodle soup",
+   "region": "Jawa",
+   "kcalPer100": 82.3,
+   "protein": 4.2,
+   "carb": 8.8,
+   "fat": 3.3,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 390,
+   "servingKcal": 321,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 390,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tahu",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lontong",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "mie",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-lontong-balap",
+   "source": "warung-est",
+   "name_id": "Lontong balap",
+   "name_en": "Surabaya lontong sprouts",
+   "region": "Jawa",
+   "kcalPer100": 83,
+   "protein": 3.7,
+   "carb": 10.8,
+   "fat": 2.8,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 355,
+   "servingKcal": 295,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 355,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "lontong",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tahu-gejrot",
+   "source": "warung-est",
+   "name_id": "Tahu gejrot",
+   "name_en": "Cirebon tofu in sweet-sour broth",
+   "region": "Jawa",
+   "kcalPer100": 189.6,
+   "protein": 10.6,
+   "carb": 9.4,
+   "fat": 11.7,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 120,
+   "servingKcal": 228,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 120,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tahu",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-lengko",
+   "source": "warung-est",
+   "name_id": "Nasi lengko",
+   "name_en": "Cirebon rice, tempeh, tofu, cucumber",
+   "region": "Jawa",
+   "kcalPer100": 139.8,
+   "protein": 5.8,
+   "carb": 18.1,
+   "fat": 4.7,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 305,
+   "servingKcal": 427,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 305,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 160,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lalap",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-empal-gentong",
+   "source": "warung-est",
+   "name_id": "Empal gentong, nasi",
+   "name_en": "Cirebon beef coconut soup",
+   "region": "Jawa",
+   "kcalPer100": 143.7,
+   "protein": 6,
+   "carb": 10.9,
+   "fat": 8.4,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 380,
+   "servingKcal": 546,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 380,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-semur-daging",
+   "source": "warung-est",
+   "name_id": "Semur daging, nasi",
+   "name_en": "Sweet soy braised beef with rice",
+   "region": "Jawa",
+   "kcalPer100": 145.5,
+   "protein": 8.5,
+   "carb": 18.1,
+   "fat": 4,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 290,
+   "servingKcal": 422,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 290,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 70,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kentang",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sate-kambing",
+   "source": "warung-est",
+   "name_id": "Sate kambing 10 tusuk, nasi",
+   "name_en": "Goat satay with rice",
+   "region": "Jawa",
+   "kcalPer100": 165.8,
+   "protein": 11.8,
+   "carb": 14.8,
+   "fat": 6.4,
+   "fibre": 0.2,
+   "sodium": null,
+   "servingGrams": 240,
+   "servingKcal": 398,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 240,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kambing",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tongseng",
+   "source": "warung-est",
+   "name_id": "Tongseng kambing, nasi",
+   "name_en": "Goat tongseng with rice",
+   "region": "Jawa",
+   "kcalPer100": 134.4,
+   "protein": 6.6,
+   "carb": 10.5,
+   "fat": 7.3,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 400,
+   "servingKcal": 538,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 400,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kambing",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tengkleng",
+   "source": "warung-est",
+   "name_id": "Tengkleng kambing, nasi",
+   "name_en": "Solo goat-bone soup with rice",
+   "region": "Jawa",
+   "kcalPer100": 111,
+   "protein": 7.9,
+   "carb": 9.4,
+   "fat": 4.6,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 420,
+   "servingKcal": 466,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 420,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kambing",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-liwet",
+   "source": "warung-est",
+   "name_id": "Nasi liwet Solo, ayam suwir, telur",
+   "name_en": "Solo coconut rice with chicken, egg",
+   "region": "Jawa",
+   "kcalPer100": 137.5,
+   "protein": 8.7,
+   "carb": 15.7,
+   "fat": 4.1,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 413,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 160,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-serabi",
+   "source": "warung-est",
+   "name_id": "Serabi kuah kinca (2 buah)",
+   "name_en": "Coconut pancake with palm sugar syrup",
+   "region": "Jawa",
+   "kcalPer100": 360,
+   "protein": 4.1,
+   "carb": 68.9,
+   "fat": 7.9,
+   "fibre": 2.6,
+   "sodium": null,
+   "servingGrams": 90,
+   "servingKcal": 324,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 90,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-klepon",
+   "source": "warung-est",
+   "name_id": "Klepon (5 butir)",
+   "name_en": "Pandan rice-flour balls with palm sugar",
+   "region": "Jawa",
+   "kcalPer100": 360,
+   "protein": 4.1,
+   "carb": 68.9,
+   "fat": 7.9,
+   "fibre": 2.6,
+   "sodium": null,
+   "servingGrams": 90,
+   "servingKcal": 324,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 90,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-getuk",
+   "source": "warung-est",
+   "name_id": "Getuk singkong (1 potong)",
+   "name_en": "Mashed cassava sweet",
+   "region": "Jawa",
+   "kcalPer100": 192.4,
+   "protein": 1.1,
+   "carb": 41.4,
+   "fat": 2.9,
+   "fibre": 1.8,
+   "sodium": null,
+   "servingGrams": 125,
+   "servingKcal": 241,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 125,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "singkong",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-padang-rendang",
+   "source": "warung-est",
+   "name_id": "Nasi Padang, rendang, daun singkong, sambal",
+   "name_en": "Padang rice with rendang",
+   "region": "Padang",
+   "kcalPer100": 132.9,
+   "protein": 7.2,
+   "carb": 16.8,
+   "fat": 4.1,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 350,
+   "servingKcal": 465,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 350,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sapi",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "daunsingkong",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-padang-ayam-pop",
+   "source": "warung-est",
+   "name_id": "Nasi Padang, ayam pop, sayur",
+   "name_en": "Padang rice, ayam pop",
+   "region": "Padang",
+   "kcalPer100": 136.2,
+   "protein": 8.6,
+   "carb": 17.7,
+   "fat": 3.6,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 330,
+   "servingKcal": 450,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 330,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayambakar",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "daunsingkong",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-padang-gulai-ikan",
+   "source": "warung-est",
+   "name_id": "Nasi Padang, gulai ikan",
+   "name_en": "Padang rice, fish curry",
+   "region": "Padang",
+   "kcalPer100": 120.4,
+   "protein": 7.1,
+   "carb": 14.4,
+   "fat": 3.9,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 410,
+   "servingKcal": 494,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 410,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikanbakar",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "daunsingkong",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-padang-dendeng",
+   "source": "warung-est",
+   "name_id": "Nasi Padang, dendeng balado",
+   "name_en": "Padang rice, crispy beef",
+   "region": "Padang",
+   "kcalPer100": 150.9,
+   "protein": 6.8,
+   "carb": 18.3,
+   "fat": 5.6,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 313,
+   "servingKcal": 472,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 313,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sapi",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 8,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 25,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "daunsingkong",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-padang-telur",
+   "source": "warung-est",
+   "name_id": "Nasi Padang, telur balado",
+   "name_en": "Padang rice, egg balado",
+   "region": "Padang",
+   "kcalPer100": 129.3,
+   "protein": 5.1,
+   "carb": 18,
+   "fat": 4.1,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 320,
+   "servingKcal": 414,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 320,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 25,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "daunsingkong",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-gulai-kambing",
+   "source": "warung-est",
+   "name_id": "Gulai kambing, nasi",
+   "name_en": "Goat curry with rice",
+   "region": "Padang",
+   "kcalPer100": 144,
+   "protein": 6.3,
+   "carb": 11.6,
+   "fat": 8,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 430,
+   "servingKcal": 619,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 430,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kambing",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-soto-padang",
+   "source": "warung-est",
+   "name_id": "Soto Padang, nasi",
+   "name_en": "Padang beef soup with rice",
+   "region": "Padang",
+   "kcalPer100": 112.8,
+   "protein": 5.8,
+   "carb": 12.8,
+   "fat": 4.2,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 395,
+   "servingKcal": 446,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 395,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kentanggoreng",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sate-padang",
+   "source": "warung-est",
+   "name_id": "Sate Padang 10 tusuk, ketupat",
+   "name_en": "Padang beef satay with ketupat",
+   "region": "Padang",
+   "kcalPer100": 130,
+   "protein": 10.3,
+   "carb": 8.3,
+   "fat": 6.1,
+   "fibre": 0.2,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 390,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lontong",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-lontong-pical",
+   "source": "warung-est",
+   "name_id": "Lontong pical",
+   "name_en": "Lontong with spicy peanut sauce",
+   "region": "Sumatera",
+   "kcalPer100": 149.6,
+   "protein": 5.3,
+   "carb": 17,
+   "fat": 6.8,
+   "fibre": 1.1,
+   "sodium": null,
+   "servingGrams": 280,
+   "servingKcal": 419,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 280,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "lontong",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tauge",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-pempek-lenjer",
+   "source": "warung-est",
+   "name_id": "Pempek lenjer 4 potong, cuko",
+   "name_en": "Palembang fish cake sticks",
+   "region": "Sumatera",
+   "kcalPer100": 247.6,
+   "protein": 17,
+   "carb": 26.5,
+   "fat": 8,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 170,
+   "servingKcal": 421,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 170,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikangoreng",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tepungberas",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tekwan",
+   "source": "warung-est",
+   "name_id": "Tekwan",
+   "name_en": "Palembang fish-ball soup",
+   "region": "Sumatera",
+   "kcalPer100": 66.2,
+   "protein": 5,
+   "carb": 6,
+   "fat": 2.4,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 370,
+   "servingKcal": 245,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 370,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikangoreng",
+     "grams": 70,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bihun",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahbening",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-mie-celor",
+   "source": "warung-est",
+   "name_id": "Mie celor",
+   "name_en": "Palembang noodles in shrimp coconut broth",
+   "region": "Sumatera",
+   "kcalPer100": 117.1,
+   "protein": 4.8,
+   "carb": 11,
+   "fat": 6,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 360,
+   "servingKcal": 422,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 360,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg",
+    "seafood",
+    "gluten"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "udang",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-model-palembang",
+   "source": "warung-est",
+   "name_id": "Model (ikan, tahu isi)",
+   "name_en": "Palembang fish dumplings in broth",
+   "region": "Sumatera",
+   "kcalPer100": 100,
+   "protein": 8.6,
+   "carb": 3.3,
+   "fat": 5.8,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 320,
+   "servingKcal": 320,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 320,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikangoreng",
+     "grams": 70,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-pindang-patin",
+   "source": "warung-est",
+   "name_id": "Pindang patin, nasi",
+   "name_en": "Palembang sour-spicy fish soup with rice",
+   "region": "Sumatera",
+   "kcalPer100": 83.3,
+   "protein": 6.7,
+   "carb": 10.7,
+   "fat": 1.4,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 450,
+   "servingKcal": 375,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 450,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahbening",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-mie-aceh",
+   "source": "warung-est",
+   "name_id": "Mie Aceh, daging",
+   "name_en": "Aceh spicy noodles with beef",
+   "region": "Sumatera",
+   "kcalPer100": 152.7,
+   "protein": 6.8,
+   "carb": 16.2,
+   "fat": 6.7,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 350,
+   "servingKcal": 534,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 350,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "gluten"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sapi",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-nasi-gurih-aceh",
+   "source": "warung-est",
+   "name_id": "Nasi gurih Aceh, ayam, telur",
+   "name_en": "Aceh coconut rice with chicken, egg",
+   "region": "Sumatera",
+   "kcalPer100": 163.8,
+   "protein": 8.5,
+   "carb": 16.5,
+   "fat": 6.7,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 308,
+   "servingKcal": 504,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 308,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 160,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamgoreng",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "teri",
+     "grams": 8,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-soto-medan",
+   "source": "warung-est",
+   "name_id": "Soto Medan, nasi",
+   "name_en": "Medan coconut chicken soup with rice",
+   "region": "Sumatera",
+   "kcalPer100": 138.6,
+   "protein": 6,
+   "carb": 12.7,
+   "fat": 7,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 390,
+   "servingKcal": 541,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 390,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "recipe": [
+    {
+     "ingredient": "ayamrebus",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kentanggoreng",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-lontong-medan",
+   "source": "warung-est",
+   "name_id": "Lontong Medan",
+   "name_en": "Medan lontong with vegetable curry",
+   "region": "Sumatera",
+   "kcalPer100": 99.3,
+   "protein": 3,
+   "carb": 11.9,
+   "fat": 4.5,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 340,
+   "servingKcal": 338,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 340,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "lontong",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bika-ambon",
+   "source": "warung-est",
+   "name_id": "Bika Ambon (1 potong)",
+   "name_en": "Medan honeycomb cake",
+   "region": "Sumatera",
+   "kcalPer100": 285.8,
+   "protein": 3.9,
+   "carb": 58.4,
+   "fat": 4,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 95,
+   "servingKcal": 272,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 95,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-arsik-ikan-mas",
+   "source": "warung-est",
+   "name_id": "Arsik ikan mas, nasi",
+   "name_en": "Batak yellow carp, halal fish dish",
+   "region": "Sumatera",
+   "kcalPer100": 132.2,
+   "protein": 10.6,
+   "carb": 13.8,
+   "fat": 3.7,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 320,
+   "servingKcal": 423,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 320,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-pangek-ikan",
+   "source": "warung-est",
+   "name_id": "Gulai pangek ikan, nasi",
+   "name_en": "Minang fish with chilli palm",
+   "region": "Padang",
+   "kcalPer100": 130,
+   "protein": 8.6,
+   "carb": 13.1,
+   "fat": 4.7,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 350,
+   "servingKcal": 455,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 350,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bubur-kampiun",
+   "source": "warung-est",
+   "name_id": "Bubur kampiun",
+   "name_en": "Minang mixed porridge dessert",
+   "region": "Padang",
+   "kcalPer100": 146.1,
+   "protein": 3.6,
+   "carb": 22.9,
+   "fat": 4.5,
+   "fibre": 2.4,
+   "sodium": null,
+   "servingGrams": 205,
+   "servingKcal": 300,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 205,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kacanghijau",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ketan",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-ayam-betutu",
+   "source": "warung-est",
+   "name_id": "Ayam betutu, nasi, sayur urab",
+   "name_en": "Balinese spiced chicken with rice",
+   "region": "Bali",
+   "kcalPer100": 159.3,
+   "protein": 10.1,
+   "carb": 16,
+   "fat": 6.1,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 478,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ayambakar",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-lawar-nangka",
+   "source": "warung-est",
+   "name_id": "Lawar nangka (varian halal)",
+   "name_en": "Balinese young jackfruit lawar, halal",
+   "region": "Bali",
+   "kcalPer100": 124.8,
+   "protein": 5.3,
+   "carb": 19,
+   "fat": 3,
+   "fibre": 1.5,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 375,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nangka",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-sate-lilit-ikan",
+   "source": "warung-est",
+   "name_id": "Sate lilit ikan 5 tusuk, nasi",
+   "name_en": "Balinese minced fish satay with rice",
+   "region": "Bali",
+   "kcalPer100": 146.2,
+   "protein": 10.8,
+   "carb": 16.7,
+   "fat": 3.9,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 265,
+   "servingKcal": 388,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 265,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-nasi-campur",
+   "source": "warung-est",
+   "name_id": "Nasi campur Bali, ayam sisit, urab, telur",
+   "name_en": "Balinese mixed rice, halal version",
+   "region": "Bali",
+   "kcalPer100": 141.4,
+   "protein": 8.5,
+   "carb": 16.6,
+   "fat": 4.2,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 424,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 35,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kerupuk",
+     "grams": 5,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-tipat-cantok",
+   "source": "warung-est",
+   "name_id": "Tipat cantok",
+   "name_en": "Balinese rice cake peanut salad",
+   "region": "Bali",
+   "kcalPer100": 120.9,
+   "protein": 3.7,
+   "carb": 15.2,
+   "fat": 5.2,
+   "fibre": 1.3,
+   "sodium": null,
+   "servingGrams": 230,
+   "servingKcal": 278,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 230,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "lontong",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-jukut-ares",
+   "source": "warung-est",
+   "name_id": "Jukut ares (batang pisang), nasi",
+   "name_en": "Balinese banana-stem soup, halal (chicken)",
+   "region": "Bali",
+   "kcalPer100": 77.2,
+   "protein": 4.7,
+   "carb": 12.3,
+   "fat": 0.7,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 390,
+   "servingKcal": 301,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 390,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kuahbening",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-bali-pepes-ikan",
+   "source": "warung-est",
+   "name_id": "Pepes ikan, nasi",
+   "name_en": "Balinese steamed fish with rice",
+   "region": "Bali",
+   "kcalPer100": 121.8,
+   "protein": 10.1,
+   "carb": 15.4,
+   "fat": 2,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 280,
+   "servingKcal": 341,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 280,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lalap",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-coto-makassar",
+   "source": "warung-est",
+   "name_id": "Coto Makassar, ketupat",
+   "name_en": "Makassar beef offal soup with ketupat",
+   "region": "Sulawesi",
+   "kcalPer100": 85.2,
+   "protein": 6.6,
+   "carb": 7.2,
+   "fat": 3.4,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 420,
+   "servingKcal": 358,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 420,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "hati",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lontong",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-konro",
+   "source": "warung-est",
+   "name_id": "Sop konro, nasi",
+   "name_en": "Makassar short-rib soup with rice",
+   "region": "Sulawesi",
+   "kcalPer100": 109,
+   "protein": 7.5,
+   "carb": 9.9,
+   "fat": 4.3,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 500,
+   "servingKcal": 545,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 500,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-pallubasa",
+   "source": "warung-est",
+   "name_id": "Pallubasa, nasi",
+   "name_en": "Makassar beef soup with coconut, rice",
+   "region": "Sulawesi",
+   "kcalPer100": 147.3,
+   "protein": 6.6,
+   "carb": 12,
+   "fat": 8,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 330,
+   "servingKcal": 486,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 330,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-konro-bakar",
+   "source": "warung-est",
+   "name_id": "Konro bakar, nasi",
+   "name_en": "Grilled ribs with rice",
+   "region": "Sulawesi",
+   "kcalPer100": 171.3,
+   "protein": 11.6,
+   "carb": 16.4,
+   "fat": 6.2,
+   "fibre": 0.2,
+   "sodium": null,
+   "servingGrams": 265,
+   "servingKcal": 454,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 265,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-pisang-epe",
+   "source": "warung-est",
+   "name_id": "Pisang epe, saus gula merah",
+   "name_en": "Grilled banana with palm sugar sauce",
+   "region": "Sulawesi",
+   "kcalPer100": 122.9,
+   "protein": 0.9,
+   "carb": 31.5,
+   "fat": 0.3,
+   "fibre": 1.8,
+   "sodium": null,
+   "servingGrams": 170,
+   "servingKcal": 209,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 170,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "pisang",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-ikan-bakar-parape",
+   "source": "warung-est",
+   "name_id": "Ikan bakar parape, nasi, sambal",
+   "name_en": "Makassar grilled fish with rice",
+   "region": "Sulawesi",
+   "kcalPer100": 129.3,
+   "protein": 11.5,
+   "carb": 15.1,
+   "fat": 2.4,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 290,
+   "servingKcal": 375,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 290,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-tinutuan",
+   "source": "warung-est",
+   "name_id": "Tinutuan (bubur Manado)",
+   "name_en": "Manado vegetable congee",
+   "region": "Sulawesi",
+   "kcalPer100": 89.2,
+   "protein": 3.6,
+   "carb": 16.2,
+   "fat": 1,
+   "fibre": 1.1,
+   "sodium": null,
+   "servingGrams": 340,
+   "servingKcal": 303,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 340,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "jagung",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikanasin",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-cakalang-fufu",
+   "source": "warung-est",
+   "name_id": "Cakalang fufu, nasi, sambal dabu-dabu",
+   "name_en": "Smoked skipjack with rice",
+   "region": "Sulawesi",
+   "kcalPer100": 126.2,
+   "protein": 10.3,
+   "carb": 15.5,
+   "fat": 2.2,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 290,
+   "servingKcal": 366,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 290,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "cakalang",
+     "grams": 90,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lalap",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-ayam-rica",
+   "source": "warung-est",
+   "name_id": "Ayam rica-rica, nasi",
+   "name_en": "Manado chilli chicken with rice",
+   "region": "Sulawesi",
+   "kcalPer100": 167.3,
+   "protein": 9.7,
+   "carb": 18.3,
+   "fat": 5.8,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 275,
+   "servingKcal": 460,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 275,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ayamgoreng",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 25,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-mie-cakalang",
+   "source": "warung-est",
+   "name_id": "Mie cakalang",
+   "name_en": "Manado noodles with skipjack",
+   "region": "Sulawesi",
+   "kcalPer100": 116.7,
+   "protein": 7.9,
+   "carb": 15.5,
+   "fat": 2.4,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 350,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish",
+    "gluten"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "cakalang",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-sul-kapurung",
+   "source": "warung-est",
+   "name_id": "Kapurung (sagu, ikan, sayur)",
+   "name_en": "Luwu sago with fish and vegetables",
+   "region": "Sulawesi",
+   "kcalPer100": 76.8,
+   "protein": 5.2,
+   "carb": 11.4,
+   "fat": 1.3,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 330,
+   "servingKcal": 254,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 330,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "papeda",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikanbakar",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-mal-papeda-ikan-kuah-kuning",
+   "source": "warung-est",
+   "name_id": "Papeda, ikan kuah kuning",
+   "name_en": "Papeda with yellow fish soup",
+   "region": "Maluku-Papua",
+   "kcalPer100": 80.4,
+   "protein": 6.8,
+   "carb": 9.2,
+   "fat": 2,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 520,
+   "servingKcal": 418,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 520,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "papeda",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikanbakar",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-mal-colo-colo",
+   "source": "warung-est",
+   "name_id": "Ikan bakar colo-colo, nasi",
+   "name_en": "Ambon grilled fish with rice",
+   "region": "Maluku-Papua",
+   "kcalPer100": 129.3,
+   "protein": 11.5,
+   "carb": 15.1,
+   "fat": 2.4,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 290,
+   "servingKcal": 375,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 290,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ikanbakar",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-kal-soto-banjar",
+   "source": "warung-est",
+   "name_id": "Soto Banjar, lontong",
+   "name_en": "Banjar chicken soup with lontong",
+   "region": "Kalimantan",
+   "kcalPer100": 78.5,
+   "protein": 7.3,
+   "carb": 6.8,
+   "fat": 2.4,
+   "fibre": 0.2,
+   "sodium": null,
+   "servingGrams": 440,
+   "servingKcal": 346,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 440,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ayamrebus",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "lontong",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurrebus",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-kal-nasi-kuning-banjar",
+   "source": "warung-est",
+   "name_id": "Nasi kuning Banjar, ikan haruan",
+   "name_en": "Banjar turmeric rice with fish",
+   "region": "Kalimantan",
+   "kcalPer100": 151.3,
+   "protein": 8.1,
+   "carb": 17.1,
+   "fat": 5.3,
+   "fibre": 0.3,
+   "sodium": null,
+   "servingGrams": 300,
+   "servingKcal": 454,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 300,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish",
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 170,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikangoreng",
+     "grams": 70,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-kal-bubur-pedas",
+   "source": "warung-est",
+   "name_id": "Bubur pedas Sambas",
+   "name_en": "Sambas spicy porridge",
+   "region": "Kalimantan",
+   "kcalPer100": 101.9,
+   "protein": 2.4,
+   "carb": 18.7,
+   "fat": 1.8,
+   "fibre": 1.2,
+   "sodium": null,
+   "servingGrams": 260,
+   "servingKcal": 265,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 260,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ntb-ayam-taliwang",
+   "source": "warung-est",
+   "name_id": "Ayam Taliwang, nasi, plecing kangkung",
+   "name_en": "Lombok spicy chicken with rice",
+   "region": "Nusa Tenggara",
+   "kcalPer100": 142.1,
+   "protein": 9.3,
+   "carb": 15,
+   "fat": 4.9,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 330,
+   "servingKcal": 469,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 330,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ayambakar",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ntb-sate-rembiga",
+   "source": "warung-est",
+   "name_id": "Sate rembiga, nasi",
+   "name_en": "Lombok beef satay with rice",
+   "region": "Nusa Tenggara",
+   "kcalPer100": 164.9,
+   "protein": 10.4,
+   "carb": 17.8,
+   "fat": 5.4,
+   "fibre": 0.2,
+   "sodium": null,
+   "servingGrams": 245,
+   "servingKcal": 404,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 245,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ntb-bebalung",
+   "source": "warung-est",
+   "name_id": "Bebalung (sup tulang sapi)",
+   "name_en": "Lombok beef-bone soup",
+   "region": "Nusa Tenggara",
+   "kcalPer100": 84.2,
+   "protein": 7.8,
+   "carb": 2.4,
+   "fat": 4.9,
+   "fibre": 0.2,
+   "sodium": null,
+   "servingGrams": 380,
+   "servingKcal": 320,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 380,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 300,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ntt-se-i-sapi",
+   "source": "warung-est",
+   "name_id": "Se’i sapi, nasi, sayur",
+   "name_en": "Kupang smoked beef with rice",
+   "region": "Nusa Tenggara",
+   "kcalPer100": 147.6,
+   "protein": 9.8,
+   "carb": 16.3,
+   "fat": 4.8,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 290,
+   "servingKcal": 428,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 290,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sapi",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nasi",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "daunsingkong",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ntt-jagung-bose",
+   "source": "warung-est",
+   "name_id": "Jagung bose, ikan",
+   "name_en": "Corn bose with fish",
+   "region": "Nusa Tenggara",
+   "kcalPer100": 113.6,
+   "protein": 9.3,
+   "carb": 13.6,
+   "fat": 2.5,
+   "fibre": 1.7,
+   "sodium": null,
+   "servingGrams": 280,
+   "servingKcal": 318,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 280,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "jagung",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikanbakar",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tj-bakmi-halal-ayam",
+   "source": "warung-est",
+   "name_id": "Mie ayam, pangsit rebus",
+   "name_en": "Chicken noodles with dumplings",
+   "region": "Jawa",
+   "kcalPer100": 84.1,
+   "protein": 6.1,
+   "carb": 11.4,
+   "fat": 1.4,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 440,
+   "servingKcal": 370,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 440,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "gluten"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahbening",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-tj-nasi-rames",
+   "source": "warung-est",
+   "name_id": "Nasi rames (warteg): ayam, tahu, tempe",
+   "name_en": "Rames set: chicken, tofu, tempeh",
+   "region": "Warteg",
+   "kcalPer100": 162.2,
+   "protein": 8.2,
+   "carb": 17.2,
+   "fat": 6.3,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 370,
+   "servingKcal": 600,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 370,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamgoreng",
+     "grams": 70,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-wt-nasi-telur-sayur",
+   "source": "warung-est",
+   "name_id": "Warteg: nasi, telur dadar, sayur, tempe",
+   "name_en": "Warteg: rice, omelette, veg, tempeh",
+   "region": "Warteg",
+   "kcalPer100": 146.5,
+   "protein": 5.7,
+   "carb": 17.8,
+   "fat": 5.5,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 370,
+   "servingKcal": 542,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 370,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-wt-nasi-ayam-bakar",
+   "source": "warung-est",
+   "name_id": "Warteg: nasi, ayam bakar, sayur",
+   "name_en": "Warteg: rice, grilled chicken, veg",
+   "region": "Warteg",
+   "kcalPer100": 142.9,
+   "protein": 8.3,
+   "carb": 17.5,
+   "fat": 4.2,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 350,
+   "servingKcal": 500,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 350,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayambakar",
+     "grams": 90,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-wt-nasi-ikan",
+   "source": "warung-est",
+   "name_id": "Warteg: nasi, ikan goreng, sayur asem",
+   "name_en": "Warteg: rice, fried fish, soup",
+   "region": "Warteg",
+   "kcalPer100": 121.8,
+   "protein": 7,
+   "carb": 16.3,
+   "fat": 2.9,
+   "fibre": 0.6,
+   "sodium": null,
+   "servingGrams": 390,
+   "servingKcal": 475,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 390,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "fish"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ikangoreng",
+     "grams": 90,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-wt-nasi-orek",
+   "source": "warung-est",
+   "name_id": "Warteg: nasi, orek tempe, tahu, sayur",
+   "name_en": "Warteg: rice, sweet tempeh, tofu, veg",
+   "region": "Warteg",
+   "kcalPer100": 153.9,
+   "protein": 5.8,
+   "carb": 20,
+   "fat": 5.3,
+   "fibre": 0.8,
+   "sodium": null,
+   "servingGrams": 353,
+   "servingKcal": 543,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 353,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tahu",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurtumis",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 3,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-jagung-bakar",
+   "source": "warung-est",
+   "name_id": "Jagung bakar manis",
+   "name_en": "Grilled sweet corn",
+   "region": "Kaki lima",
+   "kcalPer100": 114.5,
+   "protein": 3.3,
+   "carb": 18.7,
+   "fat": 3,
+   "fibre": 2.4,
+   "sodium": null,
+   "servingGrams": 203,
+   "servingKcal": 233,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 203,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "jagung",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 3,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-cilok",
+   "source": "warung-est",
+   "name_id": "Cilok bumbu kacang (10 butir)",
+   "name_en": "Tapioca balls with peanut sauce",
+   "region": "Kaki lima",
+   "kcalPer100": 342.9,
+   "protein": 7.1,
+   "carb": 62.3,
+   "fat": 7,
+   "fibre": 1.6,
+   "sodium": null,
+   "servingGrams": 140,
+   "servingKcal": 480,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 140,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "bumbukacang",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-es-cendol",
+   "source": "warung-est",
+   "name_id": "Es cendol (santan, gula merah)",
+   "name_en": "Cendol dessert with coconut milk",
+   "region": "Kaki lima",
+   "kcalPer100": 206.8,
+   "protein": 2.5,
+   "carb": 33.4,
+   "fat": 7.3,
+   "fibre": 0.5,
+   "sodium": null,
+   "servingGrams": 155,
+   "servingKcal": 321,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 155,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 25,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-kue-lapis",
+   "source": "warung-est",
+   "name_id": "Kue lapis (2 potong)",
+   "name_en": "Steamed layered cake",
+   "region": "Kaki lima",
+   "kcalPer100": 292.9,
+   "protein": 4.1,
+   "carb": 60.4,
+   "fat": 3.7,
+   "fibre": 0.7,
+   "sodium": null,
+   "servingGrams": 105,
+   "servingKcal": 308,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 105,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-onde-onde",
+   "source": "warung-est",
+   "name_id": "Onde-onde (2 buah)",
+   "name_en": "Fried sesame mung-bean balls",
+   "region": "Kaki lima",
+   "kcalPer100": 185.9,
+   "protein": 4.3,
+   "carb": 27.5,
+   "fat": 6,
+   "fibre": 2.9,
+   "sodium": null,
+   "servingGrams": 106,
+   "servingKcal": 197,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 106,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ketan",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kacanghijau",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 6,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-lupis",
+   "source": "warung-est",
+   "name_id": "Lupis, gula merah, kelapa",
+   "name_en": "Sticky-rice cake with palm sugar",
+   "region": "Kaki lima",
+   "kcalPer100": 219.6,
+   "protein": 2.6,
+   "carb": 42.4,
+   "fat": 4,
+   "fibre": 1.4,
+   "sodium": null,
+   "servingGrams": 135,
+   "servingKcal": 297,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 135,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ketan",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kelapa",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-rujak-buah",
+   "source": "warung-est",
+   "name_id": "Rujak buah, bumbu gula merah",
+   "name_en": "Fruit rujak with palm sugar sauce",
+   "region": "Kaki lima",
+   "kcalPer100": 109.2,
+   "protein": 1.4,
+   "carb": 26.1,
+   "fat": 0.7,
+   "fibre": 1.8,
+   "sodium": null,
+   "servingGrams": 125,
+   "servingKcal": 137,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 125,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "pisang",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "nangka",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-ubi-rebus",
+   "source": "warung-est",
+   "name_id": "Ubi rebus",
+   "name_en": "Boiled sweet potato",
+   "region": "Kaki lima",
+   "kcalPer100": 120,
+   "protein": 1.5,
+   "carb": 28,
+   "fat": 0.2,
+   "fibre": 2.5,
+   "sodium": null,
+   "servingGrams": 200,
+   "servingKcal": 240,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 200,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "ubi",
+     "grams": 200,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-singkong-goreng",
+   "source": "warung-est",
+   "name_id": "Singkong goreng",
+   "name_en": "Fried cassava",
+   "region": "Kaki lima",
+   "kcalPer100": 195.9,
+   "protein": 0.9,
+   "carb": 33.8,
+   "fat": 6.5,
+   "fibre": 1.3,
+   "sodium": null,
+   "servingGrams": 160,
+   "servingKcal": 313,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 160,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "singkong",
+     "grams": 150,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-bakwan",
+   "source": "warung-est",
+   "name_id": "Bakwan sayur (3 buah)",
+   "name_en": "Vegetable fritters",
+   "region": "Kaki lima",
+   "kcalPer100": 209.9,
+   "protein": 2.7,
+   "carb": 22.3,
+   "fat": 12,
+   "fibre": 1.6,
+   "sodium": null,
+   "servingGrams": 132,
+   "servingKcal": 277,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 132,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "sayurtumis",
+     "grams": 90,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tepungberas",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 12,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-rempeyek",
+   "source": "warung-est",
+   "name_id": "Rempeyek kacang (3 keping)",
+   "name_en": "Peanut crackers",
+   "region": "Kaki lima",
+   "kcalPer100": 557.2,
+   "protein": 12.2,
+   "carb": 39.9,
+   "fat": 40.8,
+   "fibre": 3.6,
+   "sodium": null,
+   "servingGrams": 38,
+   "servingKcal": 212,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 38,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kacang",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tepungberas",
+     "grams": 15,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 8,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-sate-ati-ampela",
+   "source": "warung-est",
+   "name_id": "Sate hati-ampela ayam 3 tusuk",
+   "name_en": "Chicken liver-gizzard satay",
+   "region": "Kaki lima",
+   "kcalPer100": 153.3,
+   "protein": 23.7,
+   "carb": 4.7,
+   "fat": 4.4,
+   "fibre": 0,
+   "sodium": null,
+   "servingGrams": 90,
+   "servingKcal": 138,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 90,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "hati",
+     "grams": 80,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kecap",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-soto-mie",
+   "source": "warung-est",
+   "name_id": "Soto mie Bogor",
+   "name_en": "Bogor beef soup with noodles",
+   "region": "Sunda",
+   "kcalPer100": 79.5,
+   "protein": 5.4,
+   "carb": 7.6,
+   "fat": 3.2,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 390,
+   "servingKcal": 310,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 390,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "gluten"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "mie",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sapi",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "kuahsoto",
+     "grams": 250,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-nasi-bakar",
+   "source": "warung-est",
+   "name_id": "Nasi bakar ayam kemangi",
+   "name_en": "Banana-leaf grilled rice with chicken",
+   "region": "Sunda",
+   "kcalPer100": 135.6,
+   "protein": 9.5,
+   "carb": 20.5,
+   "fat": 1.2,
+   "fibre": 0.4,
+   "sodium": null,
+   "servingGrams": 250,
+   "servingKcal": 339,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 250,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "nasi",
+     "grams": 180,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "ayamrebus",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sambal",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-comro",
+   "source": "warung-est",
+   "name_id": "Comro (3 buah)",
+   "name_en": "Cassava oncom fritters",
+   "region": "Sunda",
+   "kcalPer100": 224,
+   "protein": 4.1,
+   "carb": 29.3,
+   "fat": 10.2,
+   "fibre": 1.3,
+   "sodium": null,
+   "servingGrams": 160,
+   "servingKcal": 358,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 160,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "singkong",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-misro",
+   "source": "warung-est",
+   "name_id": "Misro (3 buah)",
+   "name_en": "Cassava with palm-sugar filling fritters",
+   "region": "Sunda",
+   "kcalPer100": 228.3,
+   "protein": 0.9,
+   "carb": 41.5,
+   "fat": 6.9,
+   "fibre": 1.1,
+   "sodium": null,
+   "servingGrams": 150,
+   "servingKcal": 342,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 150,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "singkong",
+     "grams": 120,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 10,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-surabi-oncom",
+   "source": "warung-est",
+   "name_id": "Surabi oncom (2 buah)",
+   "name_en": "Sundanese pancake with oncom",
+   "region": "Sunda",
+   "kcalPer100": 283.6,
+   "protein": 7.1,
+   "carb": 46.9,
+   "fat": 7.2,
+   "fibre": 0.9,
+   "sodium": null,
+   "servingGrams": 110,
+   "servingKcal": 312,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 110,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "tepungberas",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "santankuah",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "tempe",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-seblak-halal",
+   "source": "warung-est",
+   "name_id": "Seblak kerupuk, telur, sayur",
+   "name_en": "Seblak with egg and veg",
+   "region": "Sunda",
+   "kcalPer100": 192.4,
+   "protein": 4.3,
+   "carb": 15.6,
+   "fat": 12.7,
+   "fibre": 1,
+   "sodium": null,
+   "servingGrams": 188,
+   "servingKcal": 362,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 188,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kerupuk",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "telurdadar",
+     "grams": 40,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "sayurkuah",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "minyak",
+     "grams": 8,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-es-teler",
+   "source": "warung-est",
+   "name_id": "Es teler",
+   "name_en": "Avocado coconut ice drink",
+   "region": "Kaki lima",
+   "kcalPer100": 142.5,
+   "protein": 2.4,
+   "carb": 19.9,
+   "fat": 6.7,
+   "fibre": 1.9,
+   "sodium": null,
+   "servingGrams": 200,
+   "servingKcal": 285,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 200,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "recipe": [
+    {
+     "ingredient": "kelapa",
+     "grams": 30,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "susu",
+     "grams": 100,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "pisang",
+     "grams": 50,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  },
+  {
+   "id": "REG-ks-es-kelapa-muda",
+   "source": "warung-est",
+   "name_id": "Es kelapa muda gula",
+   "name_en": "Young coconut ice",
+   "region": "Kaki lima",
+   "kcalPer100": 355,
+   "protein": 2.4,
+   "carb": 35,
+   "fat": 24.8,
+   "fibre": 6.8,
+   "sodium": null,
+   "servingGrams": 80,
+   "servingKcal": 284,
+   "household": [
+    {
+     "code": "porsi",
+     "label": "1 porsi",
+     "grams": 80,
+     "source": "warung-est"
+    }
+   ],
+   "isEstimate": true,
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "recipe": [
+    {
+     "ingredient": "kelapa",
+     "grams": 60,
+     "basis": "generic-ref ⚠"
+    },
+    {
+     "ingredient": "gulamerah",
+     "grams": 20,
+     "basis": "generic-ref ⚠"
+    }
+   ],
+   "basis": "Resep perkiraan (bahan + gram) × nilai gizi acuan umum per 100 g; BUKAN dari TKPI/situs gerai. ⚠ ganti dengan kode TKPI (C-03) dan bobot porsi terukur.",
+   "warn": true
+  }
+ ]
+}

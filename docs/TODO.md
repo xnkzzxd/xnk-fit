@@ -40,14 +40,15 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [x] (149 entries in `content/exercises.json`, checker passes. Muscle review by Opus done 2026-11-18, Content §12: all 149 reviewed; sources per entry: 57 verified, 65 analog, 27 praktik umum ⚠; 21 entries had muscles changed; 35 still ⚠ uncertain with reasons, incl. owner decision on `LEGISO_ADD`) |
+| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [x] (149 entries in `content/exercises.json`, checker passes. Muscle review by Opus done 2026-11-18, Content §12: all 149 reviewed; sources per entry: 57 verified, 65 analog, 27 praktik umum ⚠; 21 entries had muscles changed; 34 still ⚠ uncertain with reasons; owner decided `LEGISO_ADD` keeps QUADS and the pullover stays `PULL_V`) |
 | C-02 | Movement pattern check: each pattern has ≥ 3 choices per setting (Content §2) | C-01 | Haiku 5.5 | [x] (`node tools/check-exercises.mjs` passes 2026-11-18: every pattern has ≥ 3 choices in each required setting; lowest counts are 3. Needs table = Content §3. B-01 can wire the script into CI) |
-| C-03 | Food table from TKPI 2020 (about 1,100 rows) with parser and checks | D-04 | Sonnet 5.5 | [ ] |
+| C-03 | Food table from TKPI 2020 (about 1,100 rows) with parser and checks | D-04 | Sonnet 5.5 | [x] (1,143 rows, 3 on the hand-check list, 92 rows flagged for source inconsistencies; `name_en`, household, halal and allergens left empty, see Content §4.2) |
 | C-04 | Warung and bought-meal estimates, each flagged | D-04 | Sonnet 5.5 | [x] |
 | C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
-| C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [ ] |
-| C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [ ] |
-| C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [ ] |
+| C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [x] (2 rows, both third-party ⚠; about 80 not reached, 13 failed products in Content §4.3; no producer label found) |
+| C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [~] 108 flagged estimate rows in `content/foods-regional.json` + `tools/check-foods-regional.mjs` (passes); open: official `bought` rows (no gerai site read), TKPI codes instead of the generic ingredient table, sodium |
+| C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [x] 2026-11-18: `content/figures/` (XNK files from commit `6dc57b3` in `xnk-source/`, unchanged, credits kept, sha256 locked); `rig` field in `exercises.json`: 20 exercises with an XNK rig, 129 `null` with a written reason in `no-rig.json`; all 149 show the muscle map; `node tools/check-figures.mjs` passes (Content §5.1, §5.2). Not done: no new rig drawn (no sourced joint angles yet; XNK repo, incl. `Gerak.md`, could not be opened here) → C-08b |
+| C-08b | Rest of the figures: read XNK `Gerak.md` for the 20 reused rigs; draw sourced rigs for 67 `derive` + 55 `new` exercises (`content/figures/no-rig.json`); owner confirms 7 cardio `map-only` and the seated `PUSHV_DB` rig; split delts and obliques in the XNK figure build (Content §5.2) | C-08, XNK repo access | Opus 5.5 | [ ] |
 | C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
 | C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [x] (`content/badges.json`, `tools/check-badges.mjs` passes; Content §6) |
 | C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [ ] |
@@ -58,9 +59,9 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [x] (verified in sandbox: `testDebugUnitTest`, `lintRelease`, `assembleRelease` green; size and permission checks pass; CI workflow written but not yet run on GitHub; not run on a device or emulator, no emulator in sandbox) |
-| B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [x] (2026-11-18: `domain.rules`, `domain.training`, `domain.food`; all 87 Rules IDs have a test, checked by `RulesCoverageTest` together with "no number outside a named constant"; 125 tests, 4 `@Ignore("unverified")`: R_HH (G7), G8, R_TRN_RETURN (G9), R_LEVEL; golden target profiles. Rules.md: 7 IDs added for numbers that had none, readings written down, owner question §12 #9 on age from birth year. `testDebugUnitTest`, `lintRelease`, `assembleRelease` green in sandbox; not run on GitHub CI yet) |
-| B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [ ] |
+| B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [x] (verified in sandbox: `testDebugUnitTest`, `lintRelease`, `assembleRelease` green; size and permission checks pass; CI green on GitHub (run 44420990967, all steps: text-literal rule and tests, unit tests, lint, release build with R8, permission check, APK size check); first run failed in Lint on `OldTargetApi` (runner SDK newer than target 36), check turned off and recorded in Design §13; concurrency changed so pushes from parallel sessions stop cancelling each other's runs; not run on a device or emulator, no emulator in sandbox) |
+| B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [x] (2026-11-18: `domain.rules`, `domain.training`, `domain.food`; all 87 Rules IDs have a test, checked by `RulesCoverageTest` together with "no number outside a named constant"; 125 tests, 4 `@Ignore("unverified")`: R_HH (G7), G8, R_TRN_RETURN (G9), R_LEVEL; golden target profiles. Rules.md: 7 IDs added for numbers that had none, readings written down; age gates use the youngest possible age from the birth year (safe side, Rules §12 #9, Decisions.md); R_PTS_TARGET code follows the 5-logged-days rule. `testDebugUnitTest`, `lintRelease`, `assembleRelease` green in sandbox; not run on GitHub CI yet) |
+| B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [x] (`data/db`, `app/schemas/.../1.json`; 28 tests green, 1 ignored example migration; JVM/Robolectric only, nothing run on a device; see Design §3) |
 | B-04 | Content loader and checksummed content update (PV-2) | B-03, C-01, C-03 | Sonnet 5.5 | [ ] |
 | B-05 | Onboarding and screening (O-1…O-6, S-1…S-6), under-13 stop | B-02, D-06 | Sonnet 5.5 | [ ] |
 | B-06 | Program generator and progression (Design §6; L-1…L-5, L-12, L-16) with golden tests | B-02, B-04, C-02 | Opus 5.5 | [ ] |
@@ -96,15 +97,20 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 | Date | Change |
 | --- | --- |
+| 2026-11-18 | B-03 done: Room schema v1, DAOs, FTS4 food search, migration harness, schema JSON committed. |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
 | 2026-11-18 | B-02 done: domain rules, gates, pace check, rule tests and coverage check. |
+| 2026-11-18 | C-08 done: XNK figures reused, 20 rigs mapped, 129 reasons written, figure checker; C-08b added for the rest. |
 | 2026-11-18 | C-01 done: exercise library draft, checker. |
 | 2026-11-18 | C-02 done: pattern check passes on the 149 entries. |
 | 2026-11-18 | C-01 muscle review (Opus) done: sources on all 149 entries, 21 muscle changes, 35 entries still ⚠ (Content §12). |
+| 2026-11-18 | Autonomy rule for sessions: owner is away; decisions taken by Claude are listed in `docs/Decisions.md` for the owner to reverse. `R_PTS_TARGET` now counts weeks with food logged on 5+ days (matches `LOGWEEK_1`). |
+| 2026-11-18 | C-10 owner decisions: `TARGET_WEEK` replaced by `LOGWEEK_1` (a week with food logged on 5+ days, no calorie number); personal record definition accepted as written (Content §6). |
 | 2026-11-18 | Owner decisions: S-05 Redmi 10, S-06 left to Claude, S-01 name accepted, S-08 last. Sessions started for B-01 and C-01. |
 | 2026-11-18 | S-07 done: R_ACT set to FAO/WHO/UNU PAL values (owner), G1 closed; mockup Bantuan example updated. |
 | 2026-11-18 | Owner decisions on Rules §12 #5–#8 recorded; R_TRN_VOL and R_TRN_PROG_STEP added; PRD S-3 and new L-17; Design §6. |
 | 2026-11-18 | S-07 partly done: Rules §2/§3/§5 sources checked, §10 G1–G9 updated, §13 has exact figures and pages; G1, G7, G8, G9 still ⚠; three value changes for the owner. |
+| 2026-11-18 | C-06 done: `content/foods-packaged.json` (2 third-party ⚠ rows), checker, 13 failed products in Content §4.3. |
 | 2026-11-18 | S-06 done: Content-Update.md. |
 | 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |

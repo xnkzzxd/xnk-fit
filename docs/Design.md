@@ -75,13 +75,22 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 | `food_log` | id, day (local date), slot (pagi, siang, malam, camilan), foodId?, recipeId?, grams, kcal, protein, carb, fat, quickKcal? | Kcal stored at write time so the log never changes when a food row updates. |
 | `meal_plan` | id, weekStart, slot, day, optionCode, locked (bool), cookOnce (bool), eatOut (bool) | M-3. |
 | `reminder` | type, hour, minute, days, enabled | R-1. |
-| `points_event` | id, at, kind (workout, activity, foodDay, measure, streakWeek, target), points | Level = sum. Never from weight (P-3). |
+| `points_event` | id, at, kind (workout, activity, foodDay, measure, streakWeek, loggedWeek), points | Level = sum. Never from weight (P-3). |
 | `badge` | code, earnedAt | 18 codes in Content.md. |
 | `journey_moment` | id, at, text, kind, photoId? | P-2. |
 | `backup_meta` | lastBackupAt, lastDeviceId, lastDriveFileIds | B-6 compares device ids. |
 | `schema_meta` | version, appVersionCreated | B-5 newer-version check. |
 
 Indexes: `food_log(day)`, `workout(startedAt)`, `workout_set(workoutId)`, `measure(type, takenAt)`.
+
+Implementation (B-03, `app.xnkfit.data.db`): the schema is version 1, 21 tables plus the FTS4 table `food_fts` (§10). Deviations and choices, all inside this text:
+
+- Every table has `id`, `createdAt`, `updatedAt`. Singletons use a fixed id (`profile` = `me`, `backup_meta` = `backup`, `schema_meta` = `schema`); `badge.id` is the badge code, so a badge is earned once. `recipe.ownOrBundled` is the column `origin`.
+- Lists (muscles, equipment items, household measures, allergens, ingredients, reminder days, Drive file ids) are JSON text columns named `...Json`; no query looks inside them.
+- Foreign keys exist only where children must die with the parent: `program_day` → `program`, `program_item` → `program_day`, `workout_set` → `workout` (cascade). `workout.programDayId`, `program_item.exerciseId`, `food_log.foodId`, `food_log.recipeId` and `journey_moment.photoId` have no foreign key, so regenerating a program, a content update or deleting an own food never alters history.
+- Unique keys: `(workoutId, position)` on `workout_set`, `(programId, position)` on `program_day`, `(dayId, position)` on `program_item`, `(weekStart, day, slot)` on `meal_plan` (a new row for the same slot replaces the old one).
+- `workout.restEndsAt` holds the rest-timer end time (§4). A set write is one transaction: the set row plus the workout's `updatedAt` and `restEndsAt`. The set DAO does update-then-insert, not Room `@Upsert`, because `@Upsert` swallows a unique-key clash and would drop a tapped set without an error.
+- `schema_meta` is written once when the file is created.
 
 Migrations: Room `Migration` objects, each tested with the schema JSON exported per release (NF-5 "migration tests from every released schema"). Rule: append columns or add tables only; never drop a column in v1.x.
 
@@ -245,6 +254,8 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | Google Sign-In + Drive REST via Ktor/OkHttp | Backup (B-1) | Keep to one HTTP client |
 | kotlinx.serialization | Backup JSON | Small |
 | JUnit, Robolectric, Compose UI test, Macrobenchmark | Tests (NF-5) | Test only |
+| `androidx.room:room-testing` | `MigrationTestHelper` for the migration tests (§13), same version as Room (added in B-03) | Test only |
+| `androidx.test:core` | `ApplicationProvider` for Robolectric database tests (B-03) | Test only |
 
 Anything else needs a row here first.
 
@@ -254,7 +265,7 @@ Anything else needs a row here first.
 | --- | --- | --- |
 | Domain rules | JUnit, pure JVM; every rule ID has at least one test | Every PR |
 | Generator | JUnit with golden programs per equipment setting | Every PR |
-| Migrations | Room migration tests from each exported schema | Every PR |
+| Migrations | Room migration tests from each exported schema (`MigrationTestHelper`, Robolectric; JSON in `app/schemas/`, committed, never edited after release). `MigrationTest.everyReleasedVersionMigratesToLatest` finds every `N.json` by itself. Today only v1 exists: the test runs v1 → v1, and one example migration is kept as an ignored pattern. CI fails when a build changes a committed schema file (see CI). | Every PR |
 | Backup round trip | Unit: export → import equals source | Every PR |
 | Kill test | Instrumented: kill at each logger step | Nightly |
 | Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR |
@@ -262,7 +273,7 @@ Anything else needs a row here first.
 | Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
 | APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
 | Permissions | `tools/check_permissions.sh`: the built APK may declare only the §14 list plus the WorkManager and AndroidX extras named there | Every PR |
-| Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks are off (they go stale and would turn CI red with no code change) | Every PR |
+| Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks and `OldTargetApi` are off: they go stale, and would turn CI red with no code change (first CI run failed on `OldTargetApi` because the runner had a newer platform than our target 36). Target SDK is raised on purpose, per §1 | Every PR |
 
 Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_ACT, R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07. `RulesCoverageTest` (B-02) reads Rules.md and the test sources and fails when a rule ID has no test whose name starts with the ID, when a ⚠ rule has a running test or a ✅/👤 rule has none, when a `domain` constant is not named after a rule ID, or when `domain` code writes a number outside a named constant.
 

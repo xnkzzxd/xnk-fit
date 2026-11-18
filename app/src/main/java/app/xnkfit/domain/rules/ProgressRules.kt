@@ -11,7 +11,7 @@ const val R_PTS_FOOD_MIN_SLOTS = 3
 const val R_PTS_MEASURE = 2
 const val R_PTS_STREAK = 5
 const val R_PTS_TARGET = 5
-const val R_PTS_TARGET_BAND = 0.10
+const val R_PTS_TARGET_MIN_FOOD_DAYS = 5
 
 // R_LEVEL: cumulative thresholds, then +600 per level (⚠ tuning, owner decision Rules §12 #3).
 const val R_LEVEL_STEP_AFTER_TABLE = 600
@@ -32,7 +32,7 @@ enum class PointSource(val points: Int) {
     FOOD_DAY(R_PTS_FOOD),
     MEASURE_ON_SCHEDULE(R_PTS_MEASURE),
     STREAK_WEEK(R_PTS_STREAK),
-    TARGET_WEEK(R_PTS_TARGET),
+    LOGGED_WEEK(R_PTS_TARGET),
 }
 
 /** R_LEVEL: level (1-based) for cumulative points. R_LEVEL_NOLOSE: points only add, so the level never drops. */
@@ -46,8 +46,5 @@ fun levelForPoints(points: Int): Int {
 /** R_STREAK: a week counts with at least 2 active days (workout, activity or food day). */
 fun weekCounts(activeDays: Int): Boolean = activeDays >= R_STREAK_MIN_ACTIVE_DAYS
 
-/** R_PTS_TARGET: weekly logged average within ±10 % of the target. */
-fun weekWithinTarget(averageKcal: Double, targetKcal: Int): Boolean {
-    if (!averageKcal.isFinite() || targetKcal <= 0) return false
-    return kotlin.math.abs(averageKcal - targetKcal) <= R_PTS_TARGET_BAND * targetKcal
-}
+/** R_PTS_TARGET: a week with food logged on at least 5 days. The amounts are never judged (PR-5). */
+fun loggedWeek(daysWithFoodLogged: Int): Boolean = daysWithFoodLogged >= R_PTS_TARGET_MIN_FOOD_DAYS

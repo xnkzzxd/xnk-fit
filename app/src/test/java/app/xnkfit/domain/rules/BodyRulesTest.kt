@@ -62,6 +62,9 @@ class BodyRulesTest {
         assertEquals(30, ageFromBirthYear(1996, 2026))
         assertEquals(13, ageFromBirthYear(2013, 2026))
         assertEquals(0, ageFromBirthYear(2026, 2026))
+        // Gates use the youngest possible age (birthday may not have passed).
+        assertEquals(1, R_AGE_GATE_MARGIN_YEARS)
+        assertEquals(17, youngestPossibleAge(2008, 2026))
     }
 
     @Test

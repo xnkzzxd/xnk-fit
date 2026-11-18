@@ -1,0 +1,23 @@
+{
+ "schema": 1,
+ "about": "Where the XNK figure files come from (task C-08). They are build outputs of the XNK repo, kept unedited in xnk-source/ (see its README.md); tools/check-figures.mjs fails when a sha256 changes. To update: copy the new build output from XNK, record its commit here and in xnk-source/README.md, and change the sha256 in the same commit.",
+ "xnkCommit": "6dc57b3",
+ "files": {
+  "xnk-source/figure.min.json": {
+   "sha256": "c5a3432cd37075f96a775cc59e5eb64abc94e9e75f2aaa5ebde2c765e167a53d",
+   "xnkPath": "figure/figure.min.json",
+   "xnkBuiltBy": "tools/build-figure.js",
+   "license": "Muscle shapes from react-muscle-highlighter 1.2.0, MIT; xnk-source/CREDITS.md and LICENSE-react-muscle-highlighter.txt"
+  },
+  "xnk-source/rig.min.json": {
+   "sha256": "fa52ae773192a1621fbd165a5d91997d5e83996c24bb99d845b06d6b1469773b",
+   "xnkPath": "figure/rig.min.json",
+   "xnkBuiltBy": "tools/build-rig.js",
+   "license": "XNK's own work; joint angles from XNK docs/program/Gerak.md; xnk-source/CREDITS.md"
+  }
+ },
+ "checks": [
+  "Same bytes as the D-05 mockup copies (docs/mockups/figure-data.js and rig-data.js, JSON after 'window.XF_FIG = ' / 'window.XF_RIG = '), compared 2026-11-18.",
+  "XNK docs/program/Gerak.md (joint-angle sources of the 21 rigs) not read in C-08: this session had no access to the XNK repo (C-08b)."
+ ]
+}
