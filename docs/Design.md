@@ -59,7 +59,7 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 
 | Table | Key columns | Notes |
 | --- | --- | --- |
-| `profile` | sex, birthYear, heightCm, goal, interest, nickname, healthRisk (bool), screeningDone, pregnant, eatingHistory | One row. Sensitive health fields stay on the phone (PV-1). |
+| `profile` | sex, birthYear, heightCm, goal, interest, nickname, healthRisk (bool), screeningDone, pregnant (pregnant or breastfeeding, one answer), eatingHistory | One row. Sensitive health fields stay on the phone (PV-1). |
 | `measure` | type (weight, waist, + six opt-in), value, unit, takenAt | Weight by default. Unit always metric. |
 | `photo` | path, takenAt, kind (front, side, back), hiddenFromBackup | Files in app-private storage; rows reference them. |
 | `equipment` | setting (gym, home-bw, home-db, custom), items (set of codes) | Tick-your-own = `custom`. |
@@ -133,9 +133,10 @@ Steps:
 1. Filter exercises by equipment setting. A pattern with no valid exercise is reported as missing with the plain sentence from L-3, never filled with a wrong pattern.
 2. Pick one main and one accessory per pattern from the level-appropriate variants (Rules.md §Latihan).
 3. Set sets/reps/rest from the level table in Rules.md.
+3a. Weekly volume (L-17): sum working sets per muscle group (main 1, helper 0.5; R_TRN_VOL_COUNT). Raise groups under the level minimum (R_TRN_VOL_FILL), trim above 20. Golden tests assert the totals per equipment setting.
 4. Attach a reason string per exercise ("Kenapa gerakan ini", L-11).
 
-Progression (L-2, L-4): double progression for weights: when every working set reaches the top of the rep range with form "rapi", propose +2.5 kg (upper) or +5 kg (legs). For bodyweight and limited weights: reps to the top, then +1 set, then the next harder variant (`variantOf`). Bands: band level + reps.
+Progression (L-2, L-4): double progression for weights: when every working set reaches the top of the rep range with form "rapi", propose +2.5 kg (upper) or +5 kg (legs), limited to 10 % of the load and rounded down to the equipment step (R_TRN_PROG_STEP). For bodyweight and limited weights: reps to the top, then +1 set, then the next harder variant (`variantOf`). Bands: band level + reps.
 
 Form hold (L-12): a "ragu" self-rating holds the load until two "rapi" in a row. Reps and sets may still progress.
 

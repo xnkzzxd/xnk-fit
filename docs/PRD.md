@@ -122,6 +122,7 @@ The owner wants one new product instead: an app **for people without a coach**, 
 | L-14 | Activity log: type + minutes + effort, calories from published MET values. Any logged activity counts toward 150–300 minutes a week; vigorous effort counts double. |
 | L-15 | Steps from Health Connect, shown (today, weekly average) but adding no calories and no level points. The feature hides itself where Health Connect is missing. |
 | L-16 | Coming back after weeks: quiet restart, no "streak lost" banner, and the first workout is eased by the return-after-absence rule. |
+| L-17 | Weekly sets per muscle group: the program reaches a minimum per group for the level (Rules R_TRN_VOL) and the weekly muscle map shows sets against it. A group the equipment cannot reach is told plainly (as L-3). |
 
 ### 7.5 Makan
 
@@ -183,7 +184,7 @@ The owner wants one new product instead: an app **for people without a coach**, 
 | --- | --- |
 | S-1 | Full health screening before the first program. Risk answers give a lighter program and text advising a doctor. |
 | S-2 | Under 18: light mode, technique first, text advising training with an adult, **no calorie deficit**. |
-| S-3 | Pregnancy: **no calorie deficit**. |
+| S-3 | Pregnancy or breastfeeding (one screening question): **no calorie deficit**. |
 | S-4 | Calorie floor: never below 1,200 kcal (women) / 1,500 kcal (men), and never below BMR (owner's own caution, stated as such). |
 | S-5 | Goal "turun" is not offered below BMI 18.5. |
 | S-6 | A history of eating disorder gives a maintain target and a **no-numbers mode** (meal plan and ticks only, calories hidden), with a gentle note to talk to a doctor. |

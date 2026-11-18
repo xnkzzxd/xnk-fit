@@ -37,7 +37,7 @@ Sources are listed in §13. Where a source is cited by short code (for example `
 | R_PROT | Protein target | 1.6 g per kg body weight; floor 1.4, cap 2.0 | S6 (range 1.4–2.0 g/kg) | ✅ |
 | R_FAT | Fat | 25 % of target kcal, floor 0.8 g/kg | S7: AKG 2019 adult rows give 24.7–26.0 % of energy from fat; S18 15–30 %; floor 0.8 g/kg is inside S19's 0.5–1.5 g/kg | ✅ |
 | R_CARB | Carbohydrate | Remaining kcal | arithmetic | ✅ |
-| R_FIBRE | Fibre target (shown, not enforced) | AKG 2019 value for the user's sex and age group (table below). Was 30 g/day | S8, Tabel 1, pp. 7–8 | ✅ value changed 2026-11-18, owner to confirm (§12 #5) |
+| R_FIBRE | Fibre target (shown, not enforced) | AKG 2019 value for the user's sex and age group (table below). Was 30 g/day | S8, Tabel 1, pp. 7–8 | ✅ (owner approved 2026-11-18) |
 | R_ROUND | Calorie target rounded to 10 kcal | — | product rule | 👤 |
 
 Fibre by sex and age (S8 Tabel 1, g/day). The fixed 30 g matched only women 30–49 and men 50–64; AKG fibre is about 14 g per 1,000 kcal of the AKG energy value, so it does **not** fall with a deficit and is read from the table, not from the target.
@@ -60,7 +60,7 @@ Applied in this order before any program or target is shown (PR-5, Design §7).
 | R_GATE_SCREEN | Full screening not done | No program, no target; screening opens | PRD O-2, S-1 | 👤 |
 | R_GATE_RISK | Health question "yes" (risk answers) | Lighter program (§5 level 1), text: "Konsultasi dokter sebelum latihan" | PRD S-1 | 👤 |
 | R_GATE_U18 | Age under 18 | Light mode, technique-first, **no deficit** (goal "turun" changed to "jaga") | PRD S-2 (owner rule). Support: S10 (ages 5–17 average 60 min/day, muscle and bone strengthening ≥ 3 days/week, p. 1); S8 energy for 16–18 (2,650 / 2,100 kcal) is at or above adult values. No source states "no deficit"; it is the owner's safe-side rule | 👤 |
-| R_GATE_PREG | Pregnancy (self-reported) | **No deficit**; text advising a doctor | PRD S-3 (owner rule). Support: S8 Tabel 1 p. 8, pregnancy adds +180 kcal (trimester 1) and +300 kcal (trimesters 2, 3); S13 p. 6 (≥ 150 min/week moderate activity without contraindication); S11 abstract | 👤 |
+| R_GATE_PREG | Pregnancy **or breastfeeding** (self-reported, one question "Hamil atau menyusui?", as the screening mockup) | **No deficit**; text advising a doctor | PRD S-3 (owner rule). Support: S8 Tabel 1 p. 8, pregnancy adds +180 kcal (trimester 1) and +300 kcal (trimesters 2, 3); S13 p. 6 (≥ 150 min/week moderate activity without contraindication); S11 abstract ; breastfeeding: S8 p. 8 adds +330 kcal (first 6 months) and +400 kcal (second 6 months). S21 allows a 500 kcal/day deficit for overweight women once lactation is established; the app stays on the safe side (no deficit) and the text points to a doctor or midwife | 👤 (owner left the choice to Claude, 2026-11-18) |
 | R_GATE_ED | History of eating disorder | Maintain target (no deficit), **no-numbers mode**: calories hidden, meal plan and ticks only, note to talk to a doctor | PRD S-6 (owner rule). Support: S20 (105 patients with an eating disorder: about 75 % used a calorie tracker, 73 % of them felt it contributed to their symptoms, p. 14). No guideline sets a "no-numbers mode"; it is the owner's safe-side rule | 👤 |
 | R_GATE_BMI | BMI < 18.5 | No "turun" option (R_BMI_UNDER) | PRD S-5; S3 | ✅ |
 | R_GATE_FLOOR | Target below floor | Raised to the floor (R_FLOOR_*) and note shown | PRD S-4 | 👤 |
@@ -93,12 +93,17 @@ Weekly activity target shown to non-lifters (H-2): 150 min moderate-equivalent p
 | ID | Rule | Value | Source | Status |
 | --- | --- | --- | --- | --- |
 | R_TRN_WEEK | Strength sessions per week by level | Beginner 2–3 (full body), intermediate 3–4 (3 full body or 4 upper/lower split) | S14 Table 2, p. 700 | ✅ |
-| R_TRN_SETS | Working sets per exercise | Level 1: 2–3. Level 2 and up: 3–4. Was "2–3 rising to 3–4 after 4 weeks" | S14 Table 2, p. 700: novice 1–3 sets; multiple sets for progression | ✅ value changed 2026-11-18, owner to confirm (§12 #6) |
-| R_TRN_REPS | Rep range | Level 1 weighted lifts: 8–12. Level 2 and up: 3–5 (strength) or 8–12 (hypertrophy). Bodyweight and bands: 10–15 at every level. Was "3–5 / 8–12" with no level split | S14 p. 687 and Table 2, p. 700: novice 8–12 RM at 60–70 % 1 RM; heavy 1–6 RM for intermediate and advanced; 10–15 reps for endurance | ✅ value changed 2026-11-18, owner to confirm (§12 #6) |
+| R_TRN_SETS | Working sets per exercise | Level 1: 2–3. Level 2 and up: 3–4. Was "2–3 rising to 3–4 after 4 weeks" | S14 Table 2, p. 700: novice 1–3 sets; multiple sets for progression | ✅ (owner approved 2026-11-18) |
+| R_TRN_REPS | Rep range | Level 1 weighted lifts: 8–12. Level 2 and up: 3–5 (strength) or 8–12 (hypertrophy). Bodyweight and bands: 10–15 at every level. Was "3–5 / 8–12" with no level split | S14 p. 687 and Table 2, p. 700: novice 8–12 RM at 60–70 % 1 RM; heavy 1–6 RM for intermediate and advanced; 10–15 reps for endurance | ✅ (owner approved 2026-11-18) |
 | R_TRN_REST | Rest between sets | 60–90 s isolation; 2–3 min compound (default) | S14 Table 2, p. 700 (core lifts ≥ 2–3 min, assistance 1–2 min); S15 (3 min beat 1 min, p. 1805) | ✅ |
 | R_TRN_RIR | Target effort: 1–3 reps in reserve for most sets | Taught in Bantuan (glossary) | S16 | ✅ |
-| R_TRN_PROG_UP | Upper body load increase when top of range hit with form "rapi" | +2.5 kg | product rule, common practice | 👤 |
-| R_TRN_PROG_LEG | Legs load increase | +5 kg | product rule | 👤 |
+| R_TRN_PROG_UP | Upper body load increase when top of range hit with form "rapi" | +2.5 kg, limited by R_TRN_PROG_STEP | product rule, common practice | 👤 |
+| R_TRN_PROG_LEG | Legs load increase | +5 kg, limited by R_TRN_PROG_STEP | product rule | 👤 |
+| R_TRN_PROG_STEP | Load step limit when the top of the range is hit | Step = the smaller of the fixed step and 10 % of the current load, then rounded **down** to the smallest step the user's equipment allows (default 1 kg for dumbbells, 2.5 kg for barbell/machine). If even that smallest step is above 10 %, it is proposed only after the top of the range + 2 reps on all working sets | S14 p. 687 (+2–10 % when 1–2 reps over the target); owner approved 2026-11-18 | ✅ |
+| R_TRN_VOL | Weekly working sets per muscle group (16 groups, Content.md §5) | Level 1: at least 5. Level 2 and up: at least 10. Upper limit 20 for every level | S22 (graded dose-response; categories < 5, 5–9, ≥ 10 sets per muscle per week, p. 1073); upper limit is a product rule (S23: diminishing returns) | ✅ (limit 20 👤) |
+| R_TRN_VOL_COUNT | How sets are counted for R_TRN_VOL | Main muscle of the exercise = 1 set; each helper muscle = 0.5 set. Warm-up sets do not exist (R_TRN_NO_WARMUP) | S23 ("fractional" counting fit best, p. 481) | ✅ |
+| R_TRN_VOL_SCOPE | Groups with a minimum | All except `FOREARM`, `LOWER_BACK`, `OBLIQUES`, `TRAPS`: these are counted and shown, with no minimum (they get helper sets from compound lifts) | product rule | 👤 |
+| R_TRN_VOL_FILL | When a group is under its minimum | The generator first adds sets within R_TRN_SETS, then one accessory from a valid pattern. If the equipment cannot reach it, it says so plainly (as L-3) and never fills with a wrong pattern. Over 20: the lowest-priority accessory set is removed | product rule (L-3, L-17) | 👤 |
 | R_TRN_PROG_BW | Bodyweight / limited weights progression: reps to top → +1 set → next harder variant | — | product rule (L-2) | 👤 |
 | R_TRN_BAND | Bands logged as band level + reps (no kg) | Levels 1–5 | product rule (L-2) | 👤 |
 | R_TRN_FORM | "Ragu" holds load until two "rapi" in a row | 2 | product rule (L-12) | 👤 |
@@ -107,7 +112,9 @@ Weekly activity target shown to non-lifters (H-2): 150 min moderate-equivalent p
 | R_TRN_LEVEL1 | Gate for "risk" answers | Level 1 programs only (§3) | PRD S-1 | 👤 |
 | R_TRN_NO_WARMUP | No warm-up sets in programs or the logger | — | PRD L-7 | 👤 |
 
-Note on R_TRN_PROG_UP / R_TRN_PROG_LEG: S14 (p. 687) advises a 2–10 % load increase when 1–2 reps above the target are done. A fixed +2.5 kg is above 10 % for loads under 25 kg, and +5 kg for loads under 50 kg. The owner rule stands; the generator may need a smaller step for light loads (owner choice, §12 #7).
+Note on R_TRN_PROG_STEP: example, a 12 kg dumbbell press: 10 % is 1.2 kg, so the step is 1 kg (not 2.5 kg). A 40 kg squat: 10 % is 4 kg, so the step is 2.5 kg (not 5 kg). From 50 kg (legs) and 25 kg (upper) the fixed steps apply unchanged.
+
+Note on R_TRN_VOL: example, level 1, full body 3 days, goblet squat 3 sets: QUADS +3, GLUTES +1.5 per session, so 9 and 4.5 per week. The weekly muscle map (L-11) shows sets per group against the minimum.
 
 Levels: 1 beginner (first 8 weeks, or sign-up experience), 2 intermediate, 3 advanced. The sign-up experience sets the starting level (Design §6).
 
@@ -177,10 +184,10 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | --- | --- | --- | --- | --- |
 | G1 | Exact activity-factor cut-offs (R_ACT) | S2 does not contain the 1.2 / 1.375 / 1.55 / 1.725 / 1.9 set. S2 gives PAL bands 1.40–1.69, 1.70–1.99, 2.00–2.40 (Table 5.3) with no cut-offs by days per week. No primary source found for the five-step set (it is a common convention). AKG 2019 itself uses a single factor 1.26 for ages 4–64 (Tabel 1 note 2, p. 8) | ⚠ open, owner choice §12 #4 | Use the labelled ranges; screen says "perkiraan" |
 | G2 | Deficit and surplus (R_GOAL_*) | −500 kcal is the low end of S5 (500–1,000 kcal/day, p. 26). +300 kcal is inside S19's 10–20 % surplus for maintenance 1,500–3,000 kcal. Pace R_PACE matches S18 (0.5–1 %/week) | ✅ closed | — |
-| G3 | Fat share (R_FAT) and fibre (R_FIBRE) | Fat 25 % matches AKG 2019 adult rows (24.7–26.0 %); floor 0.8 g/kg inside S19 0.5–1.5 g/kg. Fibre: AKG 2019 is 20–37 g by sex and age, not a fixed 30 g; value changed to the AKG table (§2) | ✅ closed; fibre change awaits owner (§12 #5) | — |
+| G3 | Fat share (R_FAT) and fibre (R_FIBRE) | Fat 25 % matches AKG 2019 adult rows (24.7–26.0 %); floor 0.8 g/kg inside S19 0.5–1.5 g/kg. Fibre: AKG 2019 is 20–37 g by sex and age, not a fixed 30 g; value changed to the AKG table (§2) | ✅ closed; fibre change approved 2026-11-18 | — |
 | G4 | Clinical source for R_GATE_ED | S20 added (calorie-tracker harm reported by patients). No guideline prescribes a no-numbers mode; the gate stays an owner safe-side rule | ✅ closed (support found) | — |
 | G5 | Source for under-18 and pregnancy gates | Under 18: S10 p. 1; AKG energy for 16–18 is at or above adults. Pregnancy: AKG adds +180 / +300 / +300 kcal by trimester (p. 8); S13 p. 6. "No deficit" is the owner's rule; no source loosens it. ACOG 804 (S11): only the abstract could be opened (full text behind a paywall, HTTP 402) | ✅ closed (gate unchanged) | — |
-| G6 | Training numbers (R_TRN_*) | WEEK and REST confirmed (S14 Table 2, p. 700; S15). SETS and REPS differ from S14 for beginners: values changed (§5) | ✅ closed; changes await owner (§12 #6) | — |
+| G6 | Training numbers (R_TRN_*) | WEEK and REST confirmed (S14 Table 2, p. 700; S15). SETS and REPS differ from S14 for beginners: values changed (§5) | ✅ closed; changes approved 2026-11-18; weekly volume R_TRN_VOL added | — |
 | G7 | Household measure weights for cooked dishes | Not a single source; data work in C-05. PMK 41/2014 (S17) could not be downloaded in S-07 (peraturan.bpk.go.id returned HTTP 403) | ⚠ open (C-05) | Flagged estimates |
 | G8 | Bought and regional meal numbers | No published source covers warung and bought meals; data work in C-07 (PRD open item 6) | ⚠ open (C-07) | Flagged estimates |
 | G9 | Return-after-absence load (R_TRN_RETURN, 60 %) | No source found that prescribes a return load; 60 % and one fewer set is a conservative owner rule | ⚠ open (owner rule, no source) | Rule on as written |
@@ -191,6 +198,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | --- | --- |
 | 2026-11-16 | First draft (D-03). |
 | 2026-11-18 | S-07: sources opened; exact figures and pages written in §13. Closed G2–G6. Values changed (owner to confirm, §12): R_FIBRE 30 g → AKG table by sex and age (30 g fitted only two groups); R_TRN_SETS "3–4 after 4 weeks" → 3–4 from level 2 (S14 novice is 1–3 sets); R_TRN_REPS 3–5 strength range moved to level 2 and up (S14 novice is 8–12 RM). Open: G1, G7, G8, G9. S5 re-cited to the NHLBI Practical Guide (Donnelly 2009 gives no pace number); S18–S20 added; S15 title corrected. No safety limit loosened. |
+| 2026-11-18 | Owner decisions on §12 #5–#8: R_FIBRE and R_TRN_SETS / R_TRN_REPS approved; added R_TRN_VOL, R_TRN_VOL_COUNT, R_TRN_VOL_SCOPE, R_TRN_VOL_FILL (weekly sets per muscle group) and R_TRN_PROG_STEP (10 % step limit); R_GATE_PREG now covers breastfeeding. Sources S21–S23 added. |
 
 ## 12. Owner decisions still open
 
@@ -200,10 +208,8 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | 2 | Calorie floor values (1,200 / 1,500) | As PRD S-4 (supported by S5, see §2) |
 | 3 | Level thresholds (R_LEVEL) | As listed above |
 | 4 | Activity factor (G1): keep the 1.2–1.9 convention (no primary source) or switch to S2 PAL bands (1.40–1.69 / 1.70–1.99 / 2.00–2.40), which give higher maintenance for low activity | Keep 1.2–1.9, ⚠, "perkiraan" |
-| 5 | Fibre (R_FIBRE): AKG table by sex and age instead of a fixed 30 g | AKG table |
-| 6 | Sets and reps (R_TRN_SETS, R_TRN_REPS): level 1 stays at 2–3 sets of 8–12 (weighted); 3–4 sets and 3–5 reps from level 2 | As §5 |
-| 7 | Load step for light weights: +2.5 / +5 kg is above S14's 2–10 % under 25 kg / 50 kg | Fixed steps (owner rule) |
-| 8 | Breastfeeding: AKG adds +330 kcal (first 6 months) and +400 kcal (second 6 months), p. 8. The app has no breastfeeding question; a "no deficit while breastfeeding" gate would be a stricter safety rule | No gate (not in PRD); owner to decide |
+
+Decided 2026-11-18 (owner): #5 fibre from the AKG table (approved); #6 sets and reps by level (approved), plus weekly sets per muscle group (R_TRN_VOL); #7 load step limited to 10 % (R_TRN_PROG_STEP); #8 left to Claude: breastfeeding shares the pregnancy gate, no deficit (R_GATE_PREG).
 
 ## 13. Sources
 
@@ -231,5 +237,9 @@ Checked 2026-11-18 (S-07). "p." is the printed page of the document. "Abstract o
 | S18 | Helms ER, Aragon AA, Fitschen PJ (2014). Evidence-based recommendations for natural bodybuilding contest preparation: nutrition and supplementation. *J Int Soc Sports Nutr* 11:20. | Abstract, p. 1: weight loss "approximately 0.5 to 1%/wk"; "15–30% of calories from fat". | Pace, fat range |
 | S19 | Iraki J, Fitschen P, Espinar S, Helms E (2019). Nutrition recommendations for bodybuilders in the off-season: a narrative review. *Sports* 7(7):154. | Abstract, p. 1: surplus "~10–20%", gain "~0.25–0.5% of bodyweight/week" for novice and intermediate; fat "0.5–1.5 g/kg/day". | Surplus, fat floor |
 | S20 | Levinson CA, Fewell L, Brosof LC (2017). My Fitness Pal calorie tracker usage in the eating disorders. *Eat Behav* 27:14–16. | Abstract, p. 14: N = 105 with an eating disorder; ~75 % used the app; 73 % of users felt it contributed to their eating disorder. | Eating-disorder gate (G4) |
+
+| S21 | Lovelady C (2011). Balancing exercise and food intake with lactation to promote post-partum weight loss. *Proc Nutr Soc* 70(2):181–184. | Abstract, p. 181: "once lactation is established, overweight women may restrict their energy intake by 2092 kJ/d [500 kcal] and exercise aerobically 4 d/week to promote a weight loss of 0·5 kg/week". Used only as context; the app does not apply a deficit. | Breastfeeding gate |
+| S22 | Schoenfeld BJ, Ogborn D, Krieger JW (2017). Dose-response relationship between weekly resistance training volume and increases in muscle mass: a systematic review and meta-analysis. *J Sports Sci* 35(11):1073–1082. | Abstract, p. 1073: 15 studies; each extra weekly set +0.37 % gain; categories < 5, 5–9 and 10+ sets per muscle per week (trend P = 0.074); "graded dose-response relationship". | Weekly sets |
+| S23 | Pelland JC, Remmert JF, Robinson ZP, Hinson SR, Zourdos MC (2026). The resistance training dose response: meta-regressions exploring the effects of weekly volume and frequency on muscle hypertrophy and strength gains. *Sports Med* 56(2):481–505. | Abstract, p. 481: 67 studies, 2,058 participants; indirect sets counted 0.5 ("fractional") fit best; gains rise with volume "with diminishing returns". | Set counting, upper limit |
 
 Population note: S5, S18 and S19 come from adults with overweight (S5) or trained lifters (S18, S19). They support the working numbers; they do not make them medical advice. R_DISCLAIMER stays.
