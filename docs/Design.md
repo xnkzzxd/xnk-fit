@@ -264,7 +264,7 @@ Anything else needs a row here first.
 | Permissions | `tools/check_permissions.sh`: the built APK may declare only the §14 list plus the WorkManager and AndroidX extras named there | Every PR |
 | Android Lint | `lintRelease`, warnings are errors. The "newer version available" checks are off (they go stale and would turn CI red with no code change) | Every PR |
 
-Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_ACT, R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07.
+Rule tests: each number in Rules.md is asserted in a test that names its rule ID. A rule with ⚠ in Rules.md has a test marked `@Ignore("unverified")` until closed. After S-07 (2026-11-18) the ⚠ rules are R_HH (G7), bought and regional meal numbers (G8), R_TRN_RETURN (G9) and R_LEVEL (tuning); every other rule test runs. R_ACT, R_FIBRE, R_TRN_SETS and R_TRN_REPS assert the values changed in S-07. `RulesCoverageTest` (B-02) reads Rules.md and the test sources and fails when a rule ID has no test whose name starts with the ID, when a ⚠ rule has a running test or a ✅/👤 rule has none, when a `domain` constant is not named after a rule ID, or when `domain` code writes a number outside a named constant.
 
 ## 14. Security and privacy in code
 

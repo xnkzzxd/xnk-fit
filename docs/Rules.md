@@ -22,6 +22,7 @@ Sources are listed in §13. Where a source is cited by short code (for example `
 | R_BMI | BMI = kg / m² | — | S3 | ✅ |
 | R_BMI_UNDER | Goal "turun" not offered below BMI | < 18.5 | S3 (WHO international cut-off kept, p. 157); PRD S-5 | ✅ |
 | R_WHTR | Waist-to-height ratio, shown in Bantuan only | ≥ 0.5 flagged as "perhatikan" (kind wording) | S4 (boundary 0.5, p. 303) | ✅ |
+| R_INPUT | Plausibility limits for typed values. Outside them the value is treated as a typo: **no target and no program** (fail-safe, PR-5) | Height 100–250 cm · weight 25–300 kg · waist 40–250 cm · age ≤ 100 | product rule (B-02). Not health limits; they only catch typos (170 typed as 1.7) | 👤 |
 
 ## 2. Calorie target and macros
 
@@ -30,15 +31,17 @@ Sources are listed in §13. Where a source is cited by short code (for example `
 | R_GOAL_TURUN | Deficit for "turun" | −500 kcal/day (≈ 0.5 kg/week) | S5: deficit 500–1,000 kcal/day for 1–2 lb (0.45–0.9 kg) per week, p. 26; −500 is the low end | ✅ |
 | R_GOAL_NAIK | Surplus for "naik" | +300 kcal/day | S19: surplus ≈ 10–20 % and gain ≈ 0.25–0.5 % of body weight per week. +300 is 10–20 % of maintenance from 1,500 to 3,000 kcal | ✅ |
 | R_GOAL_JAGA | "jaga" (maintain) | 0 | product rule | 👤 |
-| R_DEF_CAP | Safety cap: deficit never more than −10 % of maintenance for the "other safety" group (PRD S-7) | ≤ −10 % | owner rule, PRD S-7 | 👤 |
+| R_DEF_CAP | Safety cap: deficit never more than −10 % of maintenance for the "other safety" group (PRD S-7). That group is anyone with a risk answer (R_GATE_RISK); the other gates already allow no deficit | ≤ −10 % | owner rule, PRD S-7 | 👤 |
 | R_FLOOR_F | Calorie floor women (PRD S-4) | 1,200 kcal/day | owner caution; S5 low-calorie diet for women 1,000–1,200 kcal/day (p. 26), so the floor is at the top of that range | 👤 ✅ |
 | R_FLOOR_M | Calorie floor men (PRD S-4) | 1,500 kcal/day | owner caution; S5 low-calorie diet for men 1,200–1,600 kcal/day (p. 26), so the floor is inside that range | 👤 ✅ |
 | R_FLOOR_BMR | Target is never below BMR (PRD S-4) | target ≥ BMR | owner caution | 👤 |
-| R_PROT | Protein target | 1.6 g per kg body weight; floor 1.4, cap 2.0 | S6 (range 1.4–2.0 g/kg) | ✅ |
+| R_PROT | Protein target | 1.6 g per kg body weight; floor 1.4, cap 2.0. Steps down to 1.4 only when the target is too small to leave room for carbohydrate | S6 (range 1.4–2.0 g/kg) | ✅ |
 | R_FAT | Fat | 25 % of target kcal, floor 0.8 g/kg | S7: AKG 2019 adult rows give 24.7–26.0 % of energy from fat; S18 15–30 %; floor 0.8 g/kg is inside S19's 0.5–1.5 g/kg | ✅ |
-| R_CARB | Carbohydrate | Remaining kcal | arithmetic | ✅ |
+| R_CARB | Carbohydrate | Remaining kcal (never below 0) | arithmetic | ✅ |
 | R_FIBRE | Fibre target (shown, not enforced) | AKG 2019 value for the user's sex and age group (table below). Was 30 g/day | S8, Tabel 1, pp. 7–8 | ✅ (owner approved 2026-11-18) |
-| R_ROUND | Calorie target rounded to 10 kcal | — | product rule | 👤 |
+| R_ROUND | Calorie target rounded to 10 kcal (halves up). When a floor raises the target, the floor is rounded **up** to the next 10 kcal so the target never ends below BMR | — | product rule | 👤 |
+| R_KCAL_G | kcal per gram: protein 4, carbohydrate 4, fat 9 | 4 / 4 / 9 | S9 | ✅ |
+| R_RECALC | Ask to recalculate the target (PRD M-2, Design §7) when weight differs from the weight used by | ≥ 3 kg | product rule (PRD M-2) | 👤 |
 
 Fibre by sex and age (S8 Tabel 1, g/day). The fixed 30 g matched only women 30–49 and men 50–64; AKG fibre is about 14 g per 1,000 kcal of the AKG energy value, so it does **not** fall with a deficit and is read from the table, not from the target.
 
@@ -53,21 +56,27 @@ Activity calories (L-14): shown, **never added** to the target (M-1). Activity c
 
 ## 3. Safety gates
 
-Applied in this order before any program or target is shown (PR-5, Design §7).
+Applied in this order before any program or target is shown (PR-5, Design §7): R_GATE_U13 → R_INPUT → R_GATE_SCREEN → R_GATE_RISK → R_GATE_U18 → R_GATE_PREG → R_GATE_ED → R_GATE_BMI → R_GATE_FLOOR. The first three end with **no target and no program**. Code: `domain.rules.evaluateTargets` (B-02).
 
 | ID | Gate | Effect | Source | Status |
 | --- | --- | --- | --- | --- |
-| R_GATE_SCREEN | Full screening not done | No program, no target; screening opens | PRD O-2, S-1 | 👤 |
-| R_GATE_RISK | Health question "yes" (risk answers) | Lighter program (§5 level 1), text: "Konsultasi dokter sebelum latihan" | PRD S-1 | 👤 |
+| R_GATE_U13 | Age under 13 (from birth year) | App explains it is for 13 and up and does not continue; no target, no program | PRD O-5 (owner rule). Added in B-02: O-5 had no Rules ID | 👤 |
+| R_GATE_SCREEN | Full screening not done (any of the seven questions unanswered; "Hamil atau menyusui?" may stay "—" for men only) | No program, no target; screening opens | PRD O-2, S-1 | 👤 |
+| R_GATE_RISK | Health question "yes" (risk answers: heart or blood pressure, chest pain on activity, injury still felt, other treated condition, restriction from a doctor) | Lighter program (§5 level 1), text: "Konsultasi dokter sebelum latihan" | PRD S-1 | 👤 |
 | R_GATE_U18 | Age under 18 | Light mode, technique-first, **no deficit** (goal "turun" changed to "jaga") | PRD S-2 (owner rule). Support: S10 (ages 5–17 average 60 min/day, muscle and bone strengthening ≥ 3 days/week, p. 1); S8 energy for 16–18 (2,650 / 2,100 kcal) is at or above adult values. No source states "no deficit"; it is the owner's safe-side rule | 👤 |
 | R_GATE_PREG | Pregnancy **or breastfeeding** (self-reported, one question "Hamil atau menyusui?", as the screening mockup) | **No deficit**; text advising a doctor | PRD S-3 (owner rule). Support: S8 Tabel 1 p. 8, pregnancy adds +180 kcal (trimester 1) and +300 kcal (trimesters 2, 3); S13 p. 6 (≥ 150 min/week moderate activity without contraindication); S11 abstract ; breastfeeding: S8 p. 8 adds +330 kcal (first 6 months) and +400 kcal (second 6 months). S21 allows a 500 kcal/day deficit for overweight women once lactation is established; the app stays on the safe side (no deficit) and the text points to a doctor or midwife | 👤 (owner left the choice to Claude, 2026-11-18) |
 | R_GATE_ED | History of eating disorder | Maintain target (no deficit), **no-numbers mode**: calories hidden, meal plan and ticks only, note to talk to a doctor | PRD S-6 (owner rule). Support: S20 (105 patients with an eating disorder: about 75 % used a calorie tracker, 73 % of them felt it contributed to their symptoms, p. 14). No guideline sets a "no-numbers mode"; it is the owner's safe-side rule | 👤 |
 | R_GATE_BMI | BMI < 18.5 | No "turun" option (R_BMI_UNDER) | PRD S-5; S3 | ✅ |
 | R_GATE_FLOOR | Target below floor | Raised to the floor (R_FLOOR_*) and note shown | PRD S-4 | 👤 |
-| R_PACE | Fat-loss pace: loss faster than 1 % of body weight per week for two weeks | Suggests raising calories (+100 kcal), user decides (M-2) | PRD S-8; S18 (loss of about 0.5–1 % of body weight per week, p. 1) | 👤 ✅ |
+| R_PACE | Fat-loss pace: loss faster than 1 % of body weight per week for two weeks. Read on the last three weekly weights: both weeks show a loss and the average over the two weeks is more than 1 % of the first weight per week; a missing week gives no suggestion | Suggests raising calories (+100 kcal), user decides (M-2) | PRD S-8; S18 (loss of about 0.5–1 % of body weight per week, p. 1) | 👤 ✅ |
 | R_DISCLAIMER | "Bukan pengganti dokter / ahli gizi" text on target and program screens | Always shown once in Bantuan and on the target card | PRD S-7 | ✅ text |
 
 ## 4. Activity (MET)
+
+| ID | Rule | Status |
+| --- | --- | --- |
+| R_MET | Activity calories = MET × body kg × hours, MET values in the table below (S12). Activity with no vigorous value uses the moderate value | ✅ |
+| R_WHO_MIN | Weekly minutes: target 150, up to 300 moderate-equivalent; 1 vigorous minute = 2 moderate (S13) | ✅ |
 
 Calories from activity = MET × body kg × hours (S12). Values used:
 
@@ -108,9 +117,10 @@ Weekly activity target shown to non-lifters (H-2): 150 min moderate-equivalent p
 | R_TRN_BAND | Bands logged as band level + reps (no kg) | Levels 1–5 | product rule (L-2) | 👤 |
 | R_TRN_FORM | "Ragu" holds load until two "rapi" in a row | 2 | product rule (L-12) | 👤 |
 | R_TRN_REVIEW | Automatic review of the program | Every 4 weeks or after 3 completed sessions | product rule (L-4) | 👤 |
-| R_TRN_RETURN | Return after absence | ≥ 14 days: 60 % of last loads, one fewer set | product rule (L-16). No source found that sets a return load (G9) | 👤 ⚠ |
+| R_TRN_RETURN | Return after absence | ≥ 14 days: 60 % of last loads (rounded down to the equipment step), one fewer set (never below one) | product rule (L-16). No source found that sets a return load (G9) | 👤 ⚠ |
 | R_TRN_LEVEL1 | Gate for "risk" answers | Level 1 programs only (§3) | PRD S-1 | 👤 |
 | R_TRN_NO_WARMUP | No warm-up sets in programs or the logger | — | PRD L-7 | 👤 |
+| R_TRN_LEVELS | Level 1 lasts the first 8 weeks unless the sign-up experience sets a higher start level (note below) | 8 weeks | product rule (Design §6). ID added in B-02: the number had none | 👤 |
 
 Note on R_TRN_PROG_STEP: example, a 12 kg dumbbell press: 10 % is 1.2 kg, so the step is 1 kg (not 2.5 kg). A 40 kg squat: 10 % is 4 kg, so the step is 2.5 kg (not 5 kg). From 50 kg (legs) and 25 kg (upper) the fixed steps apply unchanged.
 
@@ -199,6 +209,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | 2026-11-16 | First draft (D-03). |
 | 2026-11-18 | S-07: sources opened; exact figures and pages written in §13. Closed G2–G6. Values changed (owner to confirm, §12): R_FIBRE 30 g → AKG table by sex and age (30 g fitted only two groups); R_TRN_SETS "3–4 after 4 weeks" → 3–4 from level 2 (S14 novice is 1–3 sets); R_TRN_REPS 3–5 strength range moved to level 2 and up (S14 novice is 8–12 RM). Open: G1, G7, G8, G9. S5 re-cited to the NHLBI Practical Guide (Donnelly 2009 gives no pace number); S18–S20 added; S15 title corrected. No safety limit loosened. |
 | 2026-11-18 | Owner decision §12 #4: R_ACT changed to S2 PAL values 1.40 / 1.55 / 1.70 / 1.85 / 2.00 (maintenance about 7–17 % higher at low activity); G1 closed. Floors, BMR floor and pace check unchanged. |
+| 2026-11-18 | B-02 (domain code): added IDs for numbers that had none: R_INPUT, R_GATE_U13 (PRD O-5), R_KCAL_G, R_RECALC (PRD M-2), R_MET, R_WHO_MIN, R_TRN_LEVELS. Written down how the code reads existing rules (no value changed, no limit loosened): gate order in §3; R_DEF_CAP group = risk answers; floor rounded up (R_ROUND); protein steps to 1.4 g/kg only when carbohydrate would go negative; R_PACE on weekly weights; R_TRN_RETURN rounded down to the equipment step. Open owner question §12 #9 (age from birth year). |
 | 2026-11-18 | Owner decisions on §12 #5–#8: R_FIBRE and R_TRN_SETS / R_TRN_REPS approved; added R_TRN_VOL, R_TRN_VOL_COUNT, R_TRN_VOL_SCOPE, R_TRN_VOL_FILL (weekly sets per muscle group) and R_TRN_PROG_STEP (10 % step limit); R_GATE_PREG now covers breastfeeding. Sources S21–S23 added. |
 
 ## 12. Owner decisions still open
@@ -208,6 +219,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | 1 | Under-18 gate: adjust goal or block the goal | Goal changed to "jaga", note shown |
 | 2 | Calorie floor values (1,200 / 1,500) | As PRD S-4 (supported by S5, see §2) |
 | 3 | Level thresholds (R_LEVEL) | As listed above |
+| 9 | Age from birth year only (R_AGE) can be up to one year too high: someone born in 2008 counts as 18 for all of 2026, even before the birthday. So R_GATE_U18 can miss a 17-year-old for part of a year, and R_GATE_U13 a 12-year-old. Safer options: ask birth month too, or treat "current year − birth year = 18" (and 13) as still under the limit | As written (current year − birth year); raised in B-02, not changed without the owner |
 
 Decided 2026-11-18 (owner): #5 fibre from the AKG table (approved); #6 sets and reps by level (approved), plus weekly sets per muscle group (R_TRN_VOL); #7 load step limited to 10 % (R_TRN_PROG_STEP); #8 left to Claude: breastfeeding shares the pregnancy gate, no deficit (R_GATE_PREG). #4 activity factor: S2 PAL values 1.40 / 1.55 / 1.70 / 1.85 / 2.00 (R_ACT).
 

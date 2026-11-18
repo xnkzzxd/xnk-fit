@@ -59,7 +59,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
 | B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [x] (verified in sandbox: `testDebugUnitTest`, `lintRelease`, `assembleRelease` green; size and permission checks pass; CI workflow written but not yet run on GitHub; not run on a device or emulator, no emulator in sandbox) |
-| B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [ ] |
+| B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [x] (2026-11-18: `domain.rules`, `domain.training`, `domain.food`; all 87 Rules IDs have a test, checked by `RulesCoverageTest` together with "no number outside a named constant"; 125 tests, 4 `@Ignore("unverified")`: R_HH (G7), G8, R_TRN_RETURN (G9), R_LEVEL; golden target profiles. Rules.md: 7 IDs added for numbers that had none, readings written down, owner question §12 #9 on age from birth year. `testDebugUnitTest`, `lintRelease`, `assembleRelease` green in sandbox; not run on GitHub CI yet) |
 | B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [ ] |
 | B-04 | Content loader and checksummed content update (PV-2) | B-03, C-01, C-03 | Sonnet 5.5 | [ ] |
 | B-05 | Onboarding and screening (O-1…O-6, S-1…S-6), under-13 stop | B-02, D-06 | Sonnet 5.5 | [ ] |
@@ -97,6 +97,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-18 | B-02 done: domain rules, gates, pace check, rule tests and coverage check. |
 | 2026-11-18 | C-01 done: exercise library draft, checker. |
 | 2026-11-18 | C-02 done: pattern check passes on the 149 entries. |
 | 2026-11-18 | C-01 muscle review (Opus) done: sources on all 149 entries, 21 muscle changes, 35 entries still ⚠ (Content §12). |
