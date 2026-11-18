@@ -27,14 +27,14 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| S-01 | Name checks: store search (Play, App Store), PDKI trademark (classes 9, 41, 44), domain xnkfit.com (PRD §12). Write results in PRD §12 | — | Sonnet 5.5 | [~] Play, App Store, domain done 2026-11-17; PDKI not checkable by tool, owner searches by hand |
+| S-01 | Name checks: store search (Play, App Store), PDKI trademark (classes 9, 41, 44), domain xnkfit.com (PRD §12). Write results in PRD §12 | — | Sonnet 5.5 | [x] Play, App Store, domain checked 2026-11-17. PDKI could not be checked by tool; owner states on 2026-11-18 that the name "XNK Fit" is safe (owner's statement, not a register check) |
 | S-02 | Play target SDK rule at release time; record in Design §1. Remaining: official date for next raise (API 37) not published as of 2026-11-17; re-check before release | D-02 | Sonnet 5.5 | [~] |
 | S-03 | Google OAuth verification for the Drive app folder: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [x] (`docs/Google-OAuth.md`: `drive.appdata` is non-sensitive, no review expected; owner does the console steps; three ⚠ items inside) |
 | S-04 | Play Health Connect and health-apps declarations: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [x] (`docs/Play-Health.md`: form is required for every app; steps only; draft answers; review time not published, three ⚠) |
-| S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [~] Proposed Redmi 9A (2 GB, Helio G25, Android 10: not 8–9, and listed out of stock). Owner confirms model and availability before buying |
-| S-06 | Content update host choice (Design §16 item 2) | D-02 | Sonnet 5.5 | [x] (`docs/Content-Update.md`: GitHub Pages, signed manifest; owner confirms repo name; Cloudflare bandwidth terms ⚠) |
-| S-07 | Close ⚠ sources: read each source in Rules §13 and write the exact figure and page; then fix G1–G8 in Rules §10 | D-03 | Opus 5.5 | [ ] |
-| S-08 | Play developer account: owner creates it (not Claude). Claude only writes the checklist | — | — (owner) | [ ] |
+| S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [x] Owner chose Redmi 10 (2026-11-18). It is stronger than the plan (4 GB+, Android 11), so Design §10 adds a 2 GB API 26 emulator run |
+| S-06 | Content update host choice (Design §16 item 2) | D-02 | Sonnet 5.5 | [x] (`docs/Content-Update.md`: GitHub Pages, signed manifest; owner left the choice to Claude 2026-11-18: repo `xnk-fit-content`, no mirror on day one; Cloudflare bandwidth terms ⚠) |
+| S-07 | Close ⚠ sources: read each source in Rules §13 and write the exact figure and page; then fix G1–G8 in Rules §10 | D-03 | Opus 5.5 | [x] 2026-11-18: G1–G6 closed with figures and pages (Rules §13); owner decisions Rules §12 #4–#8 applied. Handed on with written reasons: G7 → C-05, G8 → C-07, G9 (R_TRN_RETURN) stays an owner rule without a source |
+| S-08 | Play developer account: owner creates it (not Claude). Claude only writes the checklist | — | — (owner) | [ ] Owner does it last (2026-11-18), before B-20 / R-01 |
 
 ## Phase C — Content (may run in parallel with D-05)
 
@@ -98,6 +98,10 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
 | 2026-11-18 | C-01 done: exercise library draft, checker. |
+| 2026-11-18 | Owner decisions: S-05 Redmi 10, S-06 left to Claude, S-01 name accepted, S-08 last. Sessions started for B-01 and C-01. |
+| 2026-11-18 | S-07 done: R_ACT set to FAO/WHO/UNU PAL values (owner), G1 closed; mockup Bantuan example updated. |
+| 2026-11-18 | Owner decisions on Rules §12 #5–#8 recorded; R_TRN_VOL and R_TRN_PROG_STEP added; PRD S-3 and new L-17; Design §6. |
+| 2026-11-18 | S-07 partly done: Rules §2/§3/§5 sources checked, §10 G1–G9 updated, §13 has exact figures and pages; G1, G7, G8, G9 still ⚠; three value changes for the owner. |
 | 2026-11-18 | S-06 done: Content-Update.md. |
 | 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |
