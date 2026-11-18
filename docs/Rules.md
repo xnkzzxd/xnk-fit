@@ -189,7 +189,7 @@ Closed only with a source (see Content.md §8, open items). Checked 2026-11-18 (
 | G5 | Source for under-18 and pregnancy gates | Under 18: S10 p. 1; AKG energy for 16–18 is at or above adults. Pregnancy: AKG adds +180 / +300 / +300 kcal by trimester (p. 8); S13 p. 6. "No deficit" is the owner's rule; no source loosens it. ACOG 804 (S11): only the abstract could be opened (full text behind a paywall, HTTP 402) | ✅ closed (gate unchanged) | — |
 | G6 | Training numbers (R_TRN_*) | WEEK and REST confirmed (S14 Table 2, p. 700; S15). SETS and REPS differ from S14 for beginners: values changed (§5) | ✅ closed; changes approved 2026-11-18; weekly volume R_TRN_VOL added | — |
 | G7 | Household measure weights for cooked dishes | Not a single source; data work in C-05. PMK 41/2014 (S17) could not be downloaded in S-07 (peraturan.bpk.go.id returned HTTP 403) | ⚠ open (C-05) | Flagged estimates |
-| G8 | Bought and regional meal numbers | No published source covers warung and bought meals; data work in C-07 (PRD open item 6) | ⚠ open (C-07) | Flagged estimates |
+| G8 | Bought and regional meal numbers | No published source covers warung and bought meals. C-07 added 108 regional rows from our own recipes and a generic ingredient table (not TKPI, `sodium` empty); 0 official `bought` rows (PRD open item 6) | ⚠ open (C-07 partly done) | Flagged estimates |
 | G9 | Return-after-absence load (R_TRN_RETURN, 60 %) | No source found that prescribes a return load; 60 % and one fewer set is a conservative owner rule | ⚠ open (owner rule, no source) | Rule on as written |
 
 ## 11. Changes log

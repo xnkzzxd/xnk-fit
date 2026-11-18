@@ -308,7 +308,7 @@ data class PointsEventEntity(
     val createdAt: Long,
     val updatedAt: Long,
     val at: Long,
-    /** workout, activity, foodDay, measure, streakWeek, target. Never from weight (P-3). */
+    /** workout, activity, foodDay, measure, streakWeek, loggedWeek (R_PTS_TARGET: week with food logged on 5+ days). Never from weight (P-3). */
     val kind: String,
     val points: Int,
 )

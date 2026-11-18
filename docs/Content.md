@@ -62,7 +62,7 @@ Every exercise also has: `level` (1–3), `variantOf` (easier variant link), `cu
 | Source code | Content | Count (target) | Flag |
 | --- | --- | --- | --- |
 | `tkpi` | TKPI 2020 (Tabel Komposisi Pangan Indonesia), raw foods and cooked items as listed | about 1,100 | `isEstimate = false` |
-| `packaged` | Packaged foods by name (brand-neutral names, e.g. "Mie instan, kuah, 1 bungkus") with label values | start with about 80 | `isEstimate = false` only when label-verified |
+| `packaged` | Packaged foods by name (brand-neutral names, e.g. "Mie instan, kuah, 1 bungkus") with label values | start with about 80; **2 built** (C-06, §4.3) | `isEstimate = false` only when label-verified; third-party values `isEstimate = true` ⚠ |
 | `warung` | Common warung dishes (nasi campur, soto, gado-gado, padang set) with estimated portions | about 50 | `isEstimate = true` |
 | `bought` | Bought meals for "makan di luar" (warteg, padang, bakso, nasi goreng) | about 30 | `isEstimate = true` |
 | `own` | User's foods and recipes | unlimited | user-entered |
@@ -109,7 +109,7 @@ File: `content/foods-tkpi.json`. Built by `node tools/build-tkpi.mjs <tkpi.pdf>`
 
 **Known limits (kendala):** blank cells and the "1,480" cell above; typos and unit slips printed in the table itself (flags above); fibre in TKPI is a mix of total fibre and dietary fibre (PDF note to Table 3), so fibre is only comparable within a row, not across foods; zinc in wheat flour is adjusted for fortification but not in foods made from it (PDF §2.6); vitamin C uses an old titration method; the file does not know which values are imputed (colour only).
 
-### 4.3 Meal packages (C-11)
+### 4.5 Meal packages (C-11)
 
 File: `content/meal-packages.json`. Built by `node tools/build-meal-packages.mjs` (the package definitions are in that script: foodId + grams only), checked by `node tools/check-meal-packages.mjs`. Totals are never typed; the builder computes them from `foods-tkpi.json` and `foods-estimates.json` (per 100 g x gram).
 
@@ -137,6 +137,49 @@ File: `content/meal-packages.json`. Built by `node tools/build-meal-packages.mjs
 | Susu kedelai without a source flag | `TKPI_CP060` carries a flag, so it is not used |
 
 **Rows to fix in `foods-estimates.json` (not edited here; another session owns it):** `W_LELE_GORENG` has `allergens = []` although it is fish (the builder adds `seafood`); `W_MIE_AYAM` has no egg although mie kuning usually has it (the builder adds `egg`). If C-04 or C-07 corrects the rows, rerun the builder; nothing else changes.
+
+### 4.3 Packaged label values (C-06)
+
+File: `content/foods-packaged.json`, checked by `node tools/check-foods-packaged.mjs`.
+
+- **2 rows built**, `source = packaged`, both from third-party sites (`sourceType = third-party`, `isEstimate = true`, flag ⚠), each with `sourceUrl` and `readDate` (2026-11-18). **No row is label-verified yet** (`isEstimate = false` needs a producer label or official producer product page).
+  - `PK_ULTRA_FULLCREAM_250`: Ultra Milk full cream, 1 kotak 250 ml (150 kkal, protein 8 g, lemak 8 g, karbo 12 g, natrium 50 mg). Source: carbmanager.com. The source's serving is 250 ml, not 200 ml.
+  - `PK_OREO_ORIGINAL_27G`: Oreo Original, 27,6 g serving (130 kkal, protein 1 g, lemak 6 g, karbo 20 g, gula 11 g, serat 1 g, natrium 140 mg). Source: Open Food Facts (barcode 8992760221028, sold in India, Indonesia, Singapore). The page shows the table as an image, so the values are as displayed on the page, not checked against the pack.
+- **Halal and allergens are `null`** in both rows: no label or site stated them, so nothing is guessed.
+- **No brand-logo or pack images** are used.
+- **Checked:** the producer sites were read first (Milo, Ultrajaya, Indofood). Milo (`milo.co.id`) returned HTTP 403. The Ultrajaya and Indofood product pages carry no nutrition table, so they gave no values.
+
+**Failed products (no label or source value found; not filled in).** The "about 80" target is not reached: the rest are listed here so the next session can start from them.
+
+| Product (target) | What was found | Why not used |
+| --- | --- | --- |
+| Indomie Mi Goreng (85 g pack, Indonesia) | Indofood official pages have no table. Third-party values conflict (about 400 vs 193 kkal per 85 g; sodium 649 to 952 mg) | Conflicting, and the Indonesian label is missing |
+| Indomie Mi Goreng Spicy Red Curry | Australian listing only (185 g, 415 kkal) | Other market, prepared-serving basis |
+| Indomie Goreng Cabe Ijo | Official launch page has no table | No table |
+| Milo (Indonesia, per sajian) | `milo.co.id` 403; retailer listings show other sizes and other countries | No Indonesian label |
+| Ultra Milk full cream 200 ml | Official Ultrajaya page has no table; the only figure is 250 ml | Serving does not match |
+| Ultra Milk full cream, Oman listing (200 ml) | Sugar missing ("?") | Other market, incomplete |
+| Teh Kotak Jasmine (Ultrajaya) | Official page has no table | No table |
+| Teh Botol Sosro 450 ml | No table for 450 ml; 230 ml and 200 ml figures only | Only extrapolation was possible; not used |
+| Chitato Sapi Panggang | Search returned meat and steak pages only | Not found |
+| Kecap Bango (per sendok makan 15 ml) | Bango data for 6.2 kg pack per 100 g; sodium 230 mg with no serving stated; sources disagree | No per-serving label |
+| Roma Kelapa (Mayora) | Registry listings only, no nutrition data | No table |
+| Good Day Cappuccino 25 g | Singapore and Iran listings disagree (carb per serving does not match per 100 g) | Internally inconsistent |
+| Oreo Original (Indonesia pack, other than the 27,6 g entry) | Australian and Open Food Facts entries for other sizes | Other sizes only |
+
+Next steps for C-06 (owner or a later session): read the table photo on the Indonesian pack (BPOM label), or the producer's Informasi Nilai Gizi, then write `isEstimate = false` and `sourceUrl` to that page or to a photo note.
+
+### 4.4 Regional and street meals (C-07)
+
+File `content/foods-regional.json`, **108 rows**, all `source = warung-est`, `isEstimate = true`, `halal = true`, each with a `recipe` (ingredient + grams) and a `basis` note. Check: `node tools/check-foods-regional.mjs` (passes: required fields, 4/4/9 within 10 %, no duplicate id or name against `foods-estimates.json` and `foods-tkpi.json`, no pork or alcohol term).
+
+- **Method:** per-100 g values are computed from the recipe with one shared ingredient table (`ingredientReference` in the file: generic per-100 g reference values, **not** TKPI-verified). Portion grams = sum of ingredient grams as eaten. Nothing was copied from a gerai site.
+- **Coverage (`region`):** Betawi 4, Sunda 13, Jawa 22, Padang 10, Sumatera 12, Bali 7, Sulawesi 11, Maluku-Papua 2, Kalimantan 3, Nusa Tenggara 5, Warteg 5, Kaki lima 14.
+- **Overlap rules:** dishes already in C-04 (for example tempe mendoan, bubur ayam, sate ayam, rawon, bakso, opor ayam) and dishes that are TKPI rows (gado-gado, sayur asem, ketoprak) were left out. Rows that look similar to a C-04 row (nasi uduk with sides, nasi goreng variants, gudeg-free Jawa sets) are regional variants with their own recipe.
+- **⚠ (all 108 rows):** ingredient values are generic, to be replaced by TKPI 2020 codes now that `foods-tkpi.json` exists (later step); portion grams are assumed recipes; `sodium` is `null` everywhere (no basis, not invented); mostly liquid sweets and drinks (es teler, es cendol, es kelapa muda) omit water, so per-100 g is overstated.
+- **`source = bought` (official gerai nutrition pages with URL and date): 0 rows.** No gerai site was read in this session.
+- **Halal (R_HALAL):** left out because they normally contain pork or alcohol: babi guling, sate babi, saksang, babi panggang Karo, lawar babi, sengsu, tuak, arak, brem, cap tikus. Present only as halal variants: lawar nangka (no pork or blood), Bali nasi campur with chicken, rujak cingur without pork.
+- **Proposed replacements for `foods-estimates.json` (C-04, not edited):** none yet, no official figure collected. Slots are in `content/foods-regional-proposals.md`.
 
 ## 5. Muscles and figure
 
@@ -286,15 +329,15 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | # | Item | Owner / task |
 | --- | --- | --- |
 | C-05 | Household measures for cooked dishes and centong weights (estimates until verified) | Research task after D-04 |
-| C-06 | Packaged food label values (about 80) | Collect from label photos or product sheets; owner or task |
+| C-06 | Packaged food label values: 2 rows built (third-party, ⚠); about 80 not reached, 13 products failed (§4.3) | Label photos or producer tables needed; owner or a later task |
 | C-04 | Warung and bought-meal estimates: 66 rows built in `content/foods-estimates.json` (see §4.1) | Done; 10 rows ⚠ |
-| C-07 | Bought and regional meal numbers (wider set; replace estimates where a label or official site exists) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
+| C-07 | Bought and regional meal numbers (wider set; replace estimates where a label or official site exists) | Partly done: 108 flagged estimates (§4.4); 0 official `bought` rows yet (PRD §14 item 6) |
 | C-01 | Muscle review done 2026-11-18 (§12): 57 entries `verified`, 65 `analog`, 27 `unverified` (praktik umum ⚠). 21 entries had muscles changed | Remaining ⚠ need a study or owner decision |
 | C-01b | 34 entries still `review.muscles = "uncertain"` ⚠, each with its reason in `review.note` (§12.3). Owner decided 2026-11-18: `LEGISO_ADD` keeps QUADS as a stand-in; `PULLV_DB_PULLOVER` stays `PULL_V` | Later research |
 | C-08 | Figures reused from XNK (§5.1): 20 exercises with a rig, 129 with a written reason; every exercise has the muscle map. XNK commit `6dc57b3` | Done 2026-11-18; rest in C-08b |
 | C-08b | Rigs still to draw with sourced joint angles: 67 `derive`, 55 `new`; owner to confirm 7 cardio `map-only` and `PUSHV_DB` seated rig; read XNK `Gerak.md` for the 20 reused rigs; split delts and obliques in the XNK figure build (§5.2) | Needs XNK repo access and a joint-angle source per rig |
 | C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
-| C-11 | Meal packages built (§4.3): 72 packages, own hook, 7 row needs and 2 row fixes listed there; budget tiers ⚠ | Owner may reorder tiers in `foodTier` (builder) |
+| C-11 | Meal packages built (§4.5): 72 packages, own hook, 7 row needs and 2 row fixes listed there; budget tiers ⚠ | Owner may reorder tiers in `foodTier` (builder) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
 
 ## 9. Sources for exercises and figures
@@ -328,11 +371,12 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | --- | --- |
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
 | 2026-11-18 | C-04: 66 warung and bought-meal estimates added (§4.1, §8). |
-| 2026-11-18 | C-11: `content/meal-packages.json` (72 packages, 6 profiles, own hook), `tools/build-meal-packages.mjs`, `tools/check-meal-packages.mjs` (§4.3). |
+| 2026-11-18 | C-11: `content/meal-packages.json` (72 packages, 6 profiles, own hook), `tools/build-meal-packages.mjs`, `tools/check-meal-packages.mjs` (§4.5). |
 | 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
 | 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
 | 2026-11-18 | C-01 muscle review (Opus): sources per entry, 21 muscle changes, 1 hint change, statuses `verified` / `analog` / `unverified`, file version 2026-11-18.2 (§12). |
 | 2026-11-18 | Owner decisions: `LEGISO_ADD` keeps QUADS (stand-in for adductors); `PULLV_DB_PULLOVER` stays `PULL_V`. |
+| 2026-11-18 | C-06: `content/foods-packaged.json` with 2 third-party rows (⚠, isEstimate true), `tools/check-foods-packaged.mjs`; 13 failed products listed in §4.3; target about 80 not reached. |
 | 2026-11-18 | C-08: XNK muscle map and rig copied to `content/figures/` (XNK commit `6dc57b3`, credits kept, sha256 locked); `rig` field added to `exercises.json` (20 rigged, 129 with reason in `no-rig.json`); upper back moved to TRAPS in the muscle map; `tools/check-figures.mjs` (§5.1, §5.2). |
 
 ## 12. Muscle review (C-01, 2026-11-18)
@@ -428,3 +472,4 @@ Other change: `SQUAT_FRONT` `hint_id` "…dan menekan paha depan" → "…; otot
 | OpenStax 2022 | Betts JG et al. *Anatomy and Physiology 2e*, OpenStax, §11.5 Fig. 11.26; §11.6 Figs. 11.30–11.32 | Single-joint arm, hip, knee and ankle actions |
 
 Limits: most figures come from abstracts; MVC normalisation differs between studies, so numbers are compared only within a study. EMG amplitude is activation, not proof of growth; Muyor 2023 advises against choosing exercises on activation alone.
+| 2026-11-18 | C-07: 108 regional, street and warteg rows as flagged estimates (§4.4); no official bought rows. |
