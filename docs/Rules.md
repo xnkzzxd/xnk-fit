@@ -173,7 +173,7 @@ Closed only with a source (see Content.md §8, open items).
 | G5 | Source for under-18 and pregnancy gates | Gate on (safe side); source tracked in S10/S11 |
 | G6 | Training rep/set/rest numbers (R_TRN_*) | Beginner defaults; verify in S14–S15 |
 | G7 | Household measure weights for cooked dishes | Flagged estimates; C-05 |
-| G8 | Bought and regional meal numbers | Flagged estimates (PRD open item 6) |
+| G8 | Bought and regional meal numbers | 130 regional rows are flagged estimates from our own recipes and a generic ingredient table (not TKPI, `sodium` empty); 0 official `bought` rows yet (PRD open item 6; C-07) |
 
 ## 11. Changes log
 

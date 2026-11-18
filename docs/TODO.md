@@ -46,7 +46,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | C-04 | Warung and bought-meal estimates, each flagged | D-04 | Sonnet 5.5 | [ ] |
 | C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
 | C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [ ] |
-| C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [ ] |
+| C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [~] 130 flagged estimate rows in `content/foods-regional.json` + `tools/check-foods-regional.mjs` (passes); open: official `bought` rows, TKPI codes (needs C-03/C-04, absent from this branch), sodium |
 | C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [ ] |
 | C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
 | C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [ ] |

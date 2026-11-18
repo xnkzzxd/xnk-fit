@@ -73,6 +73,25 @@ Household measures (M-6): each food may have a list `household = [{code, label, 
 
 Each food row: name_id, name_en, kcal per 100 g, protein, carbohydrate, fat, fibre, sodium (mg), household list, source code, `isEstimate`.
 
+### 4.1 Regional and bought meals (C-07)
+
+File `content/foods-regional.json`, 130 rows, all `source = warung-est`, `isEstimate = true`, `halal = true`, each carrying a `recipe` (ingredient + grams) and a `basis` note. Check: `node tools/check-foods-regional.mjs` (required fields, 4/4/9 within 10 %, no duplicate id or name against other `foods-*.json`, no pork or alcohol).
+
+Method: per-100 g values are **computed** from the recipe using one shared ingredient table (`ingredientReference` in the file, generic per-100 g reference values, **not** TKPI-verified). Portion grams are the sum of ingredient grams as eaten. Nothing was copied from a gerai site.
+
+Coverage: Betawi 7, Sunda 14, Jawa 29, Padang 10, Sumatera 13, Bali 7, Sulawesi 11, Maluku-Papua 2, Kalimantan 3, Nusa Tenggara 5, Warteg 5, Kaki lima 24 (field `region`).
+
+⚠ list (all 130 rows):
+- Every row's per-100 g values rest on the generic ingredient table. Replace each ingredient by a TKPI 2020 code once C-03 exists (the C-03 file was not present when C-07 ran).
+- Portion grams are our own assumed recipes, not measured.
+- `sodium` is `null` on every row (no basis, not invented).
+- Drinks and desserts that are mostly liquid (es teler, es cendol, es kelapa muda) omit water, so per-100 g is overstated; fix with measured serving volume.
+- `source = bought` (official gerai nutrition pages, with URL and date): **zero rows**. No gerai site was read in this session; add them with `sourceUrl` and date when fetched.
+
+Halal (R_HALAL): excluded because they normally contain pork or alcohol: babi guling, sate babi, saksang, babi panggang Karo, lawar babi, sengsu, tuak, arak, brem, cap tikus. Included only as halal variants: lawar nangka (no pork or blood), rujak cingur (no pork; cingur is beef), Bali nasi campur with chicken.
+
+Proposed replacements for `foods-estimates.json` (C-04, not edited): none can be made yet, because that file is not on this branch and no official figure was collected. Candidates to replace once official gerai values exist: fried chicken, burger and rice items from chain outlets. Tracked in `content/foods-regional-proposals.md`.
+
 ## 5. Muscles and figure
 
 Muscle groups (16 for the muscle map, L-11):
@@ -141,7 +160,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | --- | --- | --- |
 | C-05 | Household measures for cooked dishes and centong weights (estimates until verified) | Research task after D-04 |
 | C-06 | Packaged food label values (about 80) | Collect from label photos or product sheets; owner or task |
-| C-07 | Bought and regional meal numbers (warung, bought) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
+| C-07 | Bought and regional meal numbers (warung, bought) | Partly done: 130 flagged estimates (§4.1); no official `bought` rows yet (PRD §14 item 6) |
 | C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
 | C-09 | English cues for each exercise (3 lines) | Owner review of English (PRD §14 item 3) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
@@ -176,3 +195,4 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
+| 2026-11-18 | C-07: 130 regional/street/warteg rows as flagged estimates (§4.1). |
