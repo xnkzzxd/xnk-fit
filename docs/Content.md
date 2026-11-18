@@ -142,8 +142,8 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | C-05 | Household measures for cooked dishes and centong weights (estimates until verified) | Research task after D-04 |
 | C-06 | Packaged food label values (about 80) | Collect from label photos or product sheets; owner or task |
 | C-07 | Bought and regional meal numbers (warung, bought) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
-| C-01 | Library draft done (149). Source for every entry is "praktik umum" (status `unverified` ⚠); only the pattern class cites S14. EMG or guideline per entry still to find | Review task (Opus 5.5) |
-| C-01b | Muscle review: 23 entries have `review.muscles = "uncertain"` with a note (`LEGISO_ADD` needs a decision: adductors are not in the 16 muscles). The other 126 are `draft` | Opus 5.5, separate session |
+| C-01 | Muscle review done 2026-11-18 (§12): 57 entries `verified`, 65 `analog`, 27 `unverified` (praktik umum ⚠). 21 entries had muscles changed | Remaining ⚠ need a study or owner decision |
+| C-01b | 35 entries still `review.muscles = "uncertain"` ⚠, each with its reason in `review.note` (§12.3). Owner decisions: `LEGISO_ADD` (adductors not in the 16 muscles; QUADS is wrong) and `PULLV_DB_PULLOVER` pattern (now CHEST main, still `PULL_V`) | Owner; later research |
 | C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
 | C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
@@ -153,7 +153,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | Item | Source | Status |
 | --- | --- | --- |
 | Pattern list (§3) | Standard resistance-training pattern classes, ACSM Position Stand 2009 (Rules S14) | ✅ class list; exercise picks ⚠ review |
-| Main and helper muscles per exercise | Library file has `source.muscles_cues = "praktik umum"` on all 149 entries; EMG citation not yet found | ⚠ unverified, 23 flagged for Opus review |
+| Main and helper muscles per exercise | `source.muscles_cues` per entry: EMG studies, biomechanics studies or an anatomy text (list in §12.4) | ✅ 57 verified, ✅/⚠ 65 analog, ⚠ 27 unverified; 35 uncertain (§12.3) |
 | Joint angles per pose | Standard range-of-motion descriptions, cited per pose | ⚠ to fill per pose |
 | Calories per food | TKPI 2020 (Rules S9) | ✅ source; per-row check when built |
 
@@ -180,3 +180,99 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
 | 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
 | 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
+| 2026-11-18 | C-01 muscle review (Opus): sources per entry, 21 muscle changes, 1 hint change, statuses `verified` / `analog` / `unverified`, file version 2026-11-18.2 (§12). |
+
+## 12. Muscle review (C-01, 2026-11-18)
+
+Scope: main and helper muscles, pattern, equipment and settings of all 149 entries in `content/exercises.json`. English cues (C-09) and figures (C-08) were not touched. Sources were opened as abstracts (Europe PMC), full text where free (McGill 2009, McGill 2012, Escamilla 2016) and OpenStax for single-joint anatomy. Each entry now has:
+
+- `source.muscles_cues`: exact citation (authors, year, journal, volume, pages, table or abstract page) and the figure used, or `praktik umum`.
+- `source.status`: `verified` (a study or anatomy text covers this exercise), `analog` (a study of the closely related parent exercise; same joint actions, different load or setup), `unverified` (praktik umum ⚠).
+- `review.muscles`: `reviewed`, or `uncertain` ⚠ with the reason in `review.note`; `review.date`.
+
+Result: 57 verified, 65 analog, 27 unverified. 114 reviewed, 35 uncertain ⚠. Of the 23 entries flagged in the draft, 7 are resolved and 16 stay ⚠; 19 more entries were marked ⚠ because no study was found. Pattern, equipment and settings: no errors found; `node tools/check-exercises.mjs` passes with the same counts per pattern and setting.
+
+### 12.1 Muscle changes (21 entries)
+
+| ID | Before (main / helper) | After (main / helper) | Reason |
+| --- | --- | --- | --- |
+| `SQUAT_FRONT` | QUADS / GLUTES, ABS, LOWER_BACK | QUADS, GLUTES / HAMS, LOWER_BACK, ABS | Gullett 2009: muscle activity no different from back squat, so same split as `SQUAT_BACK` |
+| `SQUAT_SMITH` | QUADS, GLUTES / – | QUADS, GLUTES / HAMS | Svensson 2022: hamstrings active (less than free squat) |
+| `HINGE_HT_DB` | GLUTES / HAMS | GLUTES / HAMS, QUADS | Match barbell hip thrust; Contreras 2015 vastus lateralis similar to squat |
+| `HINGE_HT_BW` | GLUTES / HAMS | GLUTES / HAMS, QUADS | As above |
+| `HINGE_SWING_KB` | GLUTES, HAMS / LOWER_BACK, FOREARM, ABS | GLUTES, HAMS / LOWER_BACK, OBLIQUES, FOREARM | McGill 2012 Table 1: rectus abdominis 7 %, internal oblique 30–42 % MVC; Zebis 2013 semitendinosus 73–115 % keeps HAMS main |
+| `PUSHH_FLY_DB` | CHEST / FRONT_DELT, BICEPS | CHEST / FRONT_DELT | No fly study measured biceps; Campos 2020 anterior deltoid 19 % MVIC |
+| `PUSHV_LAT_DB` | SIDE_DELT / – | SIDE_DELT / FRONT_DELT, REAR_DELT, TRAPS | Campos 2020: medial 30 %, posterior 24 %, anterior 21 % MVIC; Coratella 2020 upper trapezius active |
+| `PUSHV_LAT_CBL` | SIDE_DELT / – | SIDE_DELT / FRONT_DELT, REAR_DELT, TRAPS | As dumbbell lateral raise |
+| `PUSHV_LAT_BAND` | SIDE_DELT / – | SIDE_DELT / FRONT_DELT, REAR_DELT, TRAPS | As dumbbell lateral raise |
+| `PULLH_SA_CBL` | LATS / BICEPS, TRAPS | LATS / BICEPS, TRAPS, OBLIQUES | Fenwick 2009: one-arm cable row challenges trunk twist |
+| `PULLV_DB_PULLOVER` | LATS, CHEST / TRICEPS | CHEST / LATS, TRICEPS | Marchetti 2011: pectoralis major EMG significantly larger than latissimus; Di Fonza 2026 review agrees. Pattern left as `PULL_V` (owner) |
+| `CARRY_FARMER_DB` | FOREARM, TRAPS / ABS, OBLIQUES, GLUTES | FOREARM, TRAPS / OBLIQUES, LOWER_BACK, GLUTES | McGill 2009 Table 2: rectus abdominis 13–21 %, lumbar erector spinae 106–144 % MVC |
+| `CARRY_TRAP` | FOREARM, TRAPS / ABS, GLUTES | FOREARM, TRAPS / OBLIQUES, LOWER_BACK, GLUTES | As farmer's walk |
+| `CARRY_SUIT_DB` | OBLIQUES, FOREARM / ABS, TRAPS | OBLIQUES, FOREARM / LOWER_BACK, GLUTES, TRAPS | McGill 2009 Table 2: opposite-side external oblique 65 %, lumbar erector spinae 97 %, gluteus medius 57–64 %, rectus abdominis 6–21 % |
+| `CARRY_KB` | OBLIQUES, FOREARM / ABS | OBLIQUES, FOREARM / LOWER_BACK, GLUTES | As suitcase carry |
+| `CARRY_FRONT_KB` | ABS, FOREARM / OBLIQUES, TRAPS | OBLIQUES, FOREARM / LOWER_BACK, TRAPS | McGill 2012 Table 3: racked carry rectus abdominis 1.1–1.3 %, internal oblique 8.4 %, erector spinae 4.5–7.9 % MVC (all low) |
+| `CORE_PLANK` | ABS / OBLIQUES, LOWER_BACK | ABS / OBLIQUES | Escamilla 2016 Table 1: lumbar paraspinals 5 % MVIC |
+| `CORE_SIDEPLANK` | OBLIQUES / ABS | OBLIQUES / ABS, LOWER_BACK, GLUTES | Escamilla 2016: external oblique 62 %, paraspinals 29 %; Ekstrom 2007: gluteus medius at strengthening level |
+| `CORE_CRUNCH` | ABS / – | ABS / OBLIQUES | Escamilla 2016: external/internal oblique 28/33 % MVIC |
+| `CORE_BIRDDOG` | ABS, LOWER_BACK / GLUTES | LOWER_BACK, GLUTES / ABS | Ekstrom 2007: gluteus maximus at strengthening level; ABS placement still praktik umum (note in entry) |
+| `CARDIO_BIKE` | QUADS, HAMS / GLUTES, CALVES | QUADS, GLUTES / HAMS, CALVES | Ericson 1988: gluteus maximus and vasti carry power; biceps femoris mainly a hip extensor |
+
+Other change: `SQUAT_FRONT` `hint_id` "…dan menekan paha depan" → "…; otot yang bekerja sama dengan squat biasa." (the old line contradicted Gullett 2009). Main bench, push-up and press splits were checked against Welsch 2005, Muyor 2023, Campos 2020 and Calatayud 2015 and left as they were.
+
+### 12.2 Draft flags resolved (7)
+
+`SQUAT_PISTOL` (DiStefano 2009 single-limb squat), `HINGE_SWING_KB`, `PULLV_DB_PULLOVER`, `CARRY_SUIT_DB`, `CARRY_KB`, `CORE_SIDEPLANK`, `CARDIO_BIKE`.
+
+### 12.3 Still ⚠ (35, reason in `review.note`)
+
+| Reason | IDs |
+| --- | --- |
+| Owner decision: no correct code in the 16 muscles | `LEGISO_ADD` (adductors; QUADS is wrong. Drop with `active=false` or add a muscle) |
+| Main muscles not measured (grip, trapezius) | `CARRY_FARMER_DB`, `CARRY_TRAP`, `CARRY_FRONT_KB` |
+| Muscles confirmed active, but no main/helper ranking in the source | `CARDIO_TREAD`, `CARDIO_WALK`, `CARDIO_WALK_BW`, `CARDIO_JOG` (Cappellini 2006), `CARDIO_ROWER` (Turpin 2011) |
+| No EMG study found (praktik umum) | `SQUAT_WALLSIT`, `SQUAT_HACK`, `SQUAT_JUMP`, `HINGE_BACKEXT`, `HINGE_PULLTHRU`, `HINGE_BAND_PT`, `HINGE_SUPERMAN`, `PUSHV_PIKE`, `PUSHV_PIKE_KNEE`, `PUSHV_HSPU_WALL`, `PULLH_FACEPULL`, `PULLH_BAND_FACE`, `PULLH_REVFLY_MC`, `PULLH_REVFLY_DB`, `PULLH_BAND_REV`, `PULLH_TOWEL`, `TRI_DIPMC`, `TRI_BENCHDIP`, `TRI_BWEXT`, `CORE_DEADBUG`, `CORE_HOLLOW`, `CORE_PALLOF`, `CORE_PALLOF_BAND`, `CARDIO_ROPE` |
+| Source exists but could not be opened (HTTP 403) | `PULLV_STRAIGHT`, `PULLV_BAND_ST` |
+
+`PULLH_TOWEL` also keeps the open safety question of the door anchor. `analog` entries are usable but weaker than `verified`: incline presses (front-delt share), hammer curl (brachioradialis share) and machine/band variants rely on the parent exercise.
+
+### 12.4 Sources used
+
+| Key | Citation | Used for |
+| --- | --- | --- |
+| Andersen 2018 | Andersen V et al. J Strength Cond Res 32(3):587–593 | Deadlift, hex bar, hip thrust |
+| Aygun-Polat 2025 | Aygun-Polat E et al. BMC Sports Sci Med Rehabil 17:251 | Bulgarian split squat |
+| Calatayud 2015 | Calatayud J et al. J Strength Cond Res 29(1):246–253 | Push-up vs bench press |
+| Camara 2016 | Camara KD et al. J Strength Cond Res 30(5):1183–1188 | Straight vs hex bar deadlift |
+| Campos 2020 | Campos YAC et al. J Hum Kinet 75:5–14 | Deltoid in press, raise, fly |
+| Cappellini 2006 | Cappellini G et al. J Neurophysiol 95(6):3426–3437 | Walking, running |
+| Contreras 2015 | Contreras B et al. J Appl Biomech 31(6):452–458 | Hip thrust vs squat |
+| Contreras 2016 | Contreras B et al. J Appl Biomech 32(3):254–260 | Hip thrust variants |
+| Coratella 2020 | Coratella G et al. Int J Environ Res Public Health 17(17):6015 | Lateral raise |
+| Di Fonza 2026 | Di Fonza D et al. J Funct Morphol Kinesiol 11(3):315 | Latissimus review (rows, pulldown, pullover) |
+| DiStefano 2009 | DiStefano LJ et al. J Orthop Sports Phys Ther 39(7):532–540 | Single-limb squat and deadlift, lunge, abduction |
+| Ekstrom 2007 | Ekstrom RA et al. J Orthop Sports Phys Ther 37(12):754–762 | Bridge, side bridge, bird dog, lunge, step-up |
+| Ericson 1988 | Ericson MO. Scand J Rehabil Med 20(1):35–41 | Cycling |
+| Escamilla 1998 | Escamilla RF et al. Med Sci Sports Exerc 30(4):556–569 | Squat, leg press, leg extension |
+| Escamilla 2001 | Escamilla RF et al. Med Sci Sports Exerc 33(9):1552–1566 | Squat and leg press |
+| Escamilla 2016 | Escamilla RF et al. Sports Health 8(4):372–379, Table 1 | Crunch, plank, side plank |
+| Fenwick 2009 | Fenwick CM et al. J Strength Cond Res 23(5):1408–1417 | Rows |
+| Gullett 2009 | Gullett JC et al. J Strength Cond Res 23(1):284–292 | Front vs back squat |
+| Kipp 2022 | Kipp K et al. J Strength Cond Res 36(2):314–323 | Squat, split squat, step-up |
+| Marchetti 2011 | Marchetti PH, Uchida MC. J Appl Biomech 27(4):380–384 | Pullover |
+| Marcolin 2015 | Marcolin G et al. J Athl Train 50(11):1126–1132 | Push-up variants |
+| Marcolin 2018 | Marcolin G et al. PeerJ 6:e5165 | Curls |
+| McAllister 2014 | McAllister MJ et al. J Strength Cond Res 28(6):1573–1580 | RDL, good morning, leg curl |
+| McGill 2009 | McGill SM et al. J Strength Cond Res 23(4):1148–1161, Table 2 p. 1154 | Farmer's walk, suitcase carry |
+| McGill 2012 | McGill SM, Marshall LW. J Strength Cond Res 26(1):16–27, Table 1 p. 21, Table 3 p. 24 | Kettlebell swing, racked carry |
+| Muyor 2023 | Muyor JM et al. J Hum Kinet 87:23–34 | Bench press, chest press |
+| Snarr 2017 | Snarr RL et al. J Hum Kinet 58:5–13 | Pull-up variants |
+| Svensson 2022 | Svensson F et al. Front Sports Act Living 4:1021323 | Smith squat |
+| Turpin 2011 | Turpin NA et al. J Electromyogr Kinesiol 21(6):1030–1040 | Rowing ergometer |
+| Welsch 2005 | Welsch EA et al. J Strength Cond Res 19(2):449–452 | Bench press, fly |
+| Youdas 2010 | Youdas JW et al. J Strength Cond Res 24(12):3404–3414 | Pull-up, chin-up |
+| Youdas 2016 | Youdas JW et al. J Strength Cond Res 30(7):1933–1941 | Inverted row |
+| Zebis 2013 | Zebis MK et al. Br J Sports Med 47(18):1192–1198 | Kettlebell swing, RDL, leg curl |
+| OpenStax 2022 | Betts JG et al. *Anatomy and Physiology 2e*, OpenStax, §11.5 Fig. 11.26; §11.6 Figs. 11.30–11.32 | Single-joint arm, hip, knee and ankle actions |
+
+Limits: most figures come from abstracts; MVC normalisation differs between studies, so numbers are compared only within a study. EMG amplitude is activation, not proof of growth; Muyor 2023 advises against choosing exercises on activation alone.

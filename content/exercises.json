@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "version": "2026-11-18.1",
- "about": "XNK Fit exercise library. IDs are stable forever; remove with active=false. variantOf points to the easier variant. status=unverified means source is 'praktik umum' (not yet checked against EMG or a guideline).",
+ "version": "2026-11-18.2",
+ "about": "XNK Fit exercise library. IDs are stable forever; remove with active=false. variantOf points to the easier variant. source.status: verified = an EMG/biomechanics study or anatomy text on this exercise; analog = a study of the closely related parent exercise; unverified = praktik umum. review.muscles: reviewed or uncertain (⚠, reason in review.note). Cues are not covered by the sources (C-09).",
  "settings": [
   "gym",
   "home-bw",
@@ -73,11 +73,13 @@
    "hint_id": "Melatih paha depan dan bokong sekaligus; dasar kekuatan kaki.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot); Gullett JC et al. (2009) J Strength Cond Res 23(1):284-292, abstract p. 284: front and back squat, bar position did not change muscle activity; Contreras B et al. (2015) J Appl Biomech 31(6):452-458, abstract p. 452: barbell hip thrust > back squat in gluteus maximus and biceps femoris EMG; vastus lateralis not different (mean 99.5 % vs 110 %)",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "ABS helper not measured in the cited studies."
    },
    "active": true
   },
@@ -96,12 +98,13 @@
    "level": 3,
    "muscles": {
     "main": [
-     "QUADS"
+     "QUADS",
+     "GLUTES"
     ],
     "helper": [
-     "GLUTES",
-     "ABS",
-     "LOWER_BACK"
+     "HAMS",
+     "LOWER_BACK",
+     "ABS"
     ]
    },
    "variantOf": "SQUAT_BACK",
@@ -110,14 +113,16 @@
     "Stay tall through the whole rep",
     "Knees forward, heels flat"
    ],
-   "hint_id": "Beban di depan menjaga badan tegak dan menekan paha depan.",
+   "hint_id": "Beban di depan menjaga badan tegak; otot yang bekerja sama dengan squat biasa.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Gullett JC et al. (2009) J Strength Cond Res 23(1):284-292, abstract p. 284: front and back squat, bar position did not change muscle activity",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Changed to match back squat: Gullett 2009 found no difference in muscle activity between front and back squat."
    },
    "active": true
   },
@@ -138,7 +143,9 @@
      "QUADS",
      "GLUTES"
     ],
-    "helper": []
+    "helper": [
+     "HAMS"
+    ]
    },
    "variantOf": null,
    "cues_en": [
@@ -149,11 +156,13 @@
    "hint_id": "Rel penuntun membuat gerakan lebih stabil untuk pemula.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Svensson F, Aasa U, Strong A (2022) Front Sports Act Living 4:1021323, abstract: Smith (fixed path) squat lower quadriceps and hamstring EMG than free squat; gluteus maximus no difference",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "HAMS added: hamstrings active in Smith squat (Svensson 2022)."
    },
    "active": true
   },
@@ -190,7 +199,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the hack squat found; muscles follow the squat pattern (praktik umum)."
    },
    "active": true
   },
@@ -224,11 +235,13 @@
    "hint_id": "Aman untuk pemula karena punggung ditopang; melatih kaki tanpa beban di punggung.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot); Escamilla RF et al. (1998) Med Sci Sports Exerc 30(4):556-569, abstract p. 556: squat about 2x the hamstring activity of leg press and knee extension; knee extension more rectus femoris, closed chain more vasti",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Gluteus maximus was not measured in the cited studies."
    },
    "active": true
   },
@@ -264,11 +277,13 @@
    "hint_id": "Beban di depan membantu badan tegak; mudah dipelajari.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot); Gullett JC et al. (2009) J Strength Cond Res 23(1):284-292, abstract p. 284: front and back squat, bar position did not change muscle activity",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: squat pattern; no goblet-specific EMG found."
    },
    "active": true
   },
@@ -303,11 +318,13 @@
    "hint_id": "Menambah beban pada squat tanpa rak atau barbel.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot); Gullett JC et al. (2009) J Strength Cond Res 23(1):284-292, abstract p. 284: front and back squat, bar position did not change muscle activity",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: squat pattern."
    },
    "active": true
   },
@@ -344,11 +361,12 @@
    "hint_id": "Satu kaki bekerja lebih keras; baik untuk kekuatan dan keseimbangan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Aygun-Polat E et al. (2025) BMC Sports Sci Med Rehabil 17:251, abstract: Bulgarian split squat EMG of gluteus maximus/medius, vasti, rectus femoris, hamstrings, erector spinae; Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -384,11 +402,13 @@
    "hint_id": "Langkah ke belakang lebih ramah untuk lutut.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC; DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %; Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: forward/standing lunge and split squat studies."
    },
    "active": true
   },
@@ -424,11 +444,13 @@
    "hint_id": "Melatih kaki sambil bergerak; butuh ruang lapang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC; DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %; Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: lunge and split squat studies."
    },
    "active": true
   },
@@ -465,11 +487,12 @@
    "hint_id": "Meniru naik tangga; melatih satu kaki secara bergantian.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up; Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -504,11 +527,13 @@
    "hint_id": "Kaki lebar menekankan bokong dan paha dalam.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot)",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: squat pattern; adductors (wide stance) are not in the 16 muscles."
    },
    "active": true
   },
@@ -542,11 +567,13 @@
    "hint_id": "Karet memberi tahanan yang naik di akhir gerakan; bagus untuk di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot); Gullett JC et al. (2009) J Strength Cond Res 23(1):284-292, abstract p. 284: front and back squat, bar position did not change muscle activity",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: squat pattern."
    },
    "active": true
   },
@@ -581,11 +608,13 @@
    "hint_id": "Gerakan dasar kaki, tanpa alat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot); Gullett JC et al. (2009) J Strength Cond Res 23(1):284-292, abstract p. 284: front and back squat, bar position did not change muscle activity",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: loaded squat studies."
    },
    "active": true
   },
@@ -617,11 +646,13 @@
    "hint_id": "Versi paling mudah; melatih kekuatan untuk aktivitas sehari-hari.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2001) Med Sci Sports Exerc 33(9):1552-1566, abstract p. 1552: squat gives more quadriceps and hamstring EMG than leg press (high and low foot)",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: squat pattern."
    },
    "active": true
   },
@@ -655,11 +686,12 @@
    "hint_id": "Satu kaki di depan, melatih kekuatan sisi demi sisi.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -693,11 +725,13 @@
    "hint_id": "Lebih berat dari split squat biasa; kursi menopang kaki belakang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Aygun-Polat E et al. (2025) BMC Sports Sci Med Rehabil 17:251, abstract: Bulgarian split squat EMG of gluteus maximus/medius, vasti, rectus femoris, hamstrings, erector spinae; Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: studies used load."
    },
    "active": true
   },
@@ -731,11 +765,13 @@
    "hint_id": "Langkah mundur lebih mudah dikontrol.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC; DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: standing lunge."
    },
    "active": true
   },
@@ -770,11 +806,13 @@
    "hint_id": "Melatih kaki dan keseimbangan sambil berjalan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC; DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %; Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: lunge; calf helper from step-up/split squat forces (Kipp 2022)."
    },
    "active": true
   },
@@ -808,11 +846,12 @@
    "hint_id": "Tangga rumah bisa jadi alat latihan kaki.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Kipp K, Kim H, Wolf WI (2022) J Strength Cond Res 36(2):314-323, abstract p. 314: squat, split squat, step-up; load-dependent forces in gluteus maximus/medius, vasti, hamstrings, soleus, gastrocnemius; gluteus maximus and vasti rise more in split squat and step-up; Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -850,7 +889,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the jump squat found; squat pattern plus calves (praktik umum)."
    },
    "active": true
   },
@@ -883,12 +924,13 @@
    "hint_id": "Tahan posisi duduk di dinding; melatih daya tahan paha depan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
+    "muscles_cues": "praktik umum; related source: Escamilla RF et al. (1998) Med Sci Sports Exerc 30(4):556-569, abstract p. 556: squat about 2x the hamstring activity of leg press and knee extension; knee extension more rectus femoris, closed chain more vasti",
     "status": "unverified"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Isometric: helper muscles unverified."
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the wall sit found. Escamilla 1998 shows closed-chain quadriceps activity is highest near full knee flexion, which supports QUADS as main, but the gluteus helper is unverified."
    },
    "active": true
   },
@@ -924,12 +966,13 @@
    "hint_id": "Squat satu kaki; sangat berat, mulai dengan pegangan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Helper muscles unverified."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: single-limb squat (DiStefano 2009) supports GLUTES; QUADS by squat pattern; ABS and CALVES helpers not measured."
    },
    "active": true
   },
@@ -964,11 +1007,13 @@
    "hint_id": "Menguatkan paha belakang dan bokong dengan punggung tetap lurus.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured; Zebis MK et al. (2013) Br J Sports Med 47(18):1192-1198, abstract: kettlebell swing and RDL semitendinosus-dominant at 73-115 % MVC; supine leg curl biceps femoris-dominant at 75-87 % MVC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "FOREARM (grip) not measured."
    },
    "active": true
   },
@@ -1005,11 +1050,12 @@
    "hint_id": "Angkat penuh dari lantai; melatih seluruh rantai belakang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Andersen V et al. (2018) J Strength Cond Res 32(3):587-593, abstract p. 587: hip thrust > hex bar deadlift in gluteus maximus; barbell deadlift > hex bar and hip thrust in biceps femoris; erector spinae measured; Camara KD et al. (2016) J Strength Cond Res 30(5):1183-1188, abstract p. 1183: hex bar > straight bar deadlift in vastus lateralis; straight bar > hex bar in biceps femoris (concentric) and erector spinae (eccentric)",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1046,11 +1092,12 @@
    "hint_id": "Lebih mudah dipelajari daripada deadlift lurus.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Camara KD et al. (2016) J Strength Cond Res 30(5):1183-1188, abstract p. 1183: hex bar > straight bar deadlift in vastus lateralis; straight bar > hex bar in biceps femoris (concentric) and erector spinae (eccentric); Andersen V et al. (2018) J Strength Cond Res 32(3):587-593, abstract p. 587: hip thrust > hex bar deadlift in gluteus maximus; barbell deadlift > hex bar and hip thrust in biceps femoris; erector spinae measured",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1085,11 +1132,12 @@
    "hint_id": "Terbaik untuk menguatkan bokong.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Contreras B et al. (2015) J Appl Biomech 31(6):452-458, abstract p. 452: barbell hip thrust > back squat in gluteus maximus and biceps femoris EMG; vastus lateralis not different (mean 99.5 % vs 110 %); Contreras B et al. (2016) J Appl Biomech 32(3):254-260, abstract p. 254: barbell, band and American hip thrust; barbell highest mean gluteus maximus EMG",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1123,11 +1171,13 @@
    "hint_id": "Mesin membuat gerakan lebih mudah diatur beban.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Contreras B et al. (2015) J Appl Biomech 31(6):452-458, abstract p. 452: barbell hip thrust > back squat in gluteus maximus and biceps femoris EMG; vastus lateralis not different (mean 99.5 % vs 110 %); Contreras B et al. (2016) J Appl Biomech 32(3):254-260, abstract p. 254: barbell, band and American hip thrust; barbell highest mean gluteus maximus EMG",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: barbell and band hip thrust."
    },
    "active": true
   },
@@ -1162,11 +1212,13 @@
    "hint_id": "Melatih paha belakang dan punggung bawah; butuh teknik.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "McAllister 2014 measured the good morning but did not rank it first; GLUTES helper not measured (gluteus medius only)."
    },
    "active": true
   },
@@ -1205,7 +1257,8 @@
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Lower back vs glutes emphasis depends on technique."
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the 45-degree or horizontal back extension found; lower back vs gluteus emphasis depends on technique (praktik umum)."
    },
    "active": true
   },
@@ -1243,7 +1296,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the cable pull-through found (praktik umum)."
    },
    "active": true
   },
@@ -1279,11 +1334,13 @@
    "hint_id": "Melatih keseimbangan dan paha belakang satu kaki.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %; McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-limb deadlift gluteus maximus 59 % MVIC (DiStefano 2009); hamstrings from RDL (McAllister 2014)."
    },
    "active": true
   },
@@ -1319,11 +1376,13 @@
    "hint_id": "Versi dumbbell mudah disesuaikan beratnya.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured; Zebis MK et al. (2013) Br J Sports Med 47(18):1192-1198, abstract: kettlebell swing and RDL semitendinosus-dominant at 73-115 % MVC; supine leg curl biceps femoris-dominant at 75-87 % MVC",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: barbell RDL."
    },
    "active": true
   },
@@ -1360,11 +1419,13 @@
    "hint_id": "Angkat dari lantai dengan dumbbell di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Andersen V et al. (2018) J Strength Cond Res 32(3):587-593, abstract p. 587: hip thrust > hex bar deadlift in gluteus maximus; barbell deadlift > hex bar and hip thrust in biceps femoris; erector spinae measured; Camara KD et al. (2016) J Strength Cond Res 30(5):1183-1188, abstract p. 1183: hex bar > straight bar deadlift in vastus lateralis; straight bar > hex bar in biceps femoris (concentric) and erector spinae (eccentric)",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: barbell deadlift."
    },
    "active": true
   },
@@ -1387,7 +1448,8 @@
      "GLUTES"
     ],
     "helper": [
-     "HAMS"
+     "HAMS",
+     "QUADS"
     ]
    },
    "variantOf": "HINGE_BRIDGE_BW",
@@ -1399,11 +1461,13 @@
    "hint_id": "Bokong dilatih dengan beban di pinggul.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Contreras B et al. (2015) J Appl Biomech 31(6):452-458, abstract p. 452: barbell hip thrust > back squat in gluteus maximus and biceps femoris EMG; vastus lateralis not different (mean 99.5 % vs 110 %); Contreras B et al. (2016) J Appl Biomech 32(3):254-260, abstract p. 254: barbell, band and American hip thrust; barbell highest mean gluteus maximus EMG",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "QUADS helper added to match the barbell hip thrust (vastus lateralis similar to squat, Contreras 2015)."
    },
    "active": true
   },
@@ -1427,8 +1491,8 @@
     ],
     "helper": [
      "LOWER_BACK",
-     "FOREARM",
-     "ABS"
+     "OBLIQUES",
+     "FOREARM"
     ]
    },
    "variantOf": "HINGE_RDL_DB",
@@ -1440,12 +1504,13 @@
    "hint_id": "Melatih tenaga pinggul dan kebugaran.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McGill SM, Marshall LW (2012) J Strength Cond Res 26(1):16-27, Table 1 p. 21: swing peak gluteus maximus 76 %, gluteus medius 70 %, biceps femoris 33 %, lumbar erector spinae 46-52 %, internal oblique 30-42 %, rectus abdominis 7 % MVC; Zebis MK et al. (2013) Br J Sports Med 47(18):1192-1198, abstract: kettlebell swing and RDL semitendinosus-dominant at 73-115 % MVC; supine leg curl biceps femoris-dominant at 75-87 % MVC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Glutes vs hamstrings emphasis unverified."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "ABS replaced by OBLIQUES: rectus abdominis 7 % vs internal oblique 30-42 % MVC (McGill 2012). Hamstrings main supported by Zebis 2013 (semitendinosus 73-115 %). FOREARM not measured."
    },
    "active": true
   },
@@ -1481,7 +1546,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the band pull-through found (praktik umum)."
    },
    "active": true
   },
@@ -1515,11 +1582,13 @@
    "hint_id": "Karet memberi beban ringan untuk paha belakang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: barbell good morning."
    },
    "active": true
   },
@@ -1552,11 +1621,12 @@
    "hint_id": "Dasar untuk bokong; aman untuk pemula.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1590,11 +1660,13 @@
    "hint_id": "Satu kaki, lebih berat dari bridge biasa.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "ABS helper not measured as a separate result in the abstract."
    },
    "active": true
   },
@@ -1629,11 +1701,12 @@
    "hint_id": "Melatih keseimbangan dan paha belakang tanpa alat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1654,7 +1727,8 @@
      "GLUTES"
     ],
     "helper": [
-     "HAMS"
+     "HAMS",
+     "QUADS"
     ]
    },
    "variantOf": "HINGE_BRIDGE_BW",
@@ -1666,11 +1740,13 @@
    "hint_id": "Versi tanpa alat; bagus sebelum menambah beban.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Contreras B et al. (2015) J Appl Biomech 31(6):452-458, abstract p. 452: barbell hip thrust > back squat in gluteus maximus and biceps femoris EMG; vastus lateralis not different (mean 99.5 % vs 110 %); Contreras B et al. (2016) J Appl Biomech 32(3):254-260, abstract p. 254: barbell, band and American hip thrust; barbell highest mean gluteus maximus EMG",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "QUADS helper added to match the barbell hip thrust (Contreras 2015)."
    },
    "active": true
   },
@@ -1709,7 +1785,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the prone superman found (praktik umum)."
    },
    "active": true
   },
@@ -1744,11 +1822,12 @@
    "hint_id": "Dasar dorong dada; melatih dada, trisep dan bahu depan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly; Muyor JM, Rodriguez-Ridao D, Oliva-Lozano JM (2023) J Hum Kinet 87:23-34, abstract p. 23: bench press and seated chest press at 60 % 1RM, pectoralis major about 25-30 %, anterior deltoid about 24 %, triceps 12-16 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1783,11 +1862,13 @@
    "hint_id": "Menekankan dada bagian atas dan bahu depan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly; Muyor JM, Rodriguez-Ridao D, Oliva-Lozano JM (2023) J Hum Kinet 87:23-34, abstract p. 23: bench press and seated chest press at 60 % 1RM, pectoralis major about 25-30 %, anterior deltoid about 24 %, triceps 12-16 % MVIC",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: flat bench studies; the higher front-delt share in incline is praktik umum."
    },
    "active": true
   },
@@ -1822,11 +1903,12 @@
    "hint_id": "Rentang gerak lebih luas dari barbel dan lebih mudah untuk pemula.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1861,11 +1943,13 @@
    "hint_id": "Menekankan dada atas dengan dumbbell.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: flat bench studies; incline emphasis praktik umum."
    },
    "active": true
   },
@@ -1898,11 +1982,12 @@
    "hint_id": "Paling mudah dipelajari; mesin menjaga jalur gerak.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Muyor JM, Rodriguez-Ridao D, Oliva-Lozano JM (2023) J Hum Kinet 87:23-34, abstract p. 23: bench press and seated chest press at 60 % 1RM, pectoralis major about 25-30 %, anterior deltoid about 24 %, triceps 12-16 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -1935,11 +2020,13 @@
    "hint_id": "Dada bagian atas dengan mesin.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Muyor JM, Rodriguez-Ridao D, Oliva-Lozano JM (2023) J Hum Kinet 87:23-34, abstract p. 23: bench press and seated chest press at 60 % 1RM, pectoralis major about 25-30 %, anterior deltoid about 24 %, triceps 12-16 % MVIC",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: seated chest press; incline emphasis praktik umum."
    },
    "active": true
   },
@@ -1972,11 +2059,13 @@
    "hint_id": "Menarik dada dari samping; gerakan isolasi.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly; Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: dumbbell fly (pectoralis and anterior deltoid active)."
    },
    "active": true
   },
@@ -2009,11 +2098,13 @@
    "hint_id": "Tahanan kabel terasa konstan sepanjang gerakan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly; Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: dumbbell fly."
    },
    "active": true
   },
@@ -2036,8 +2127,7 @@
      "CHEST"
     ],
     "helper": [
-     "FRONT_DELT",
-     "BICEPS"
+     "FRONT_DELT"
     ]
    },
    "variantOf": "PUSHH_PECDEC",
@@ -2049,11 +2139,13 @@
    "hint_id": "Meregangkan dada; pakai beban ringan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly; Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "BICEPS helper removed: not measured in any fly study found; anterior deltoid 19 % MVIC in fly (Campos 2020)."
    },
    "active": true
   },
@@ -2087,11 +2179,13 @@
    "hint_id": "Bisa tanpa bangku; lantai membatasi rentang gerak.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: dumbbell bench press."
    },
    "active": true
   },
@@ -2125,11 +2219,13 @@
    "hint_id": "Tahanan karet dengan posisi berdiri; ringan di sendi.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Calatayud J et al. (2015) J Strength Cond Res 29(1):246-253, abstract p. 246: 6RM bench press and elastic-band push-up gave no difference in EMG amplitude and similar strength gains",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: band push-up vs bench press."
    },
    "active": true
   },
@@ -2162,11 +2258,13 @@
    "hint_id": "Isolasi dada dengan karet.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Welsch EA, Bird M, Mayhew JL (2005) J Strength Cond Res 19(2):449-452, abstract p. 449: pectoralis major and anterior deltoid activation not different between barbell bench press, dumbbell bench press and dumbbell fly",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: dumbbell fly."
    },
    "active": true
   },
@@ -2202,11 +2300,13 @@
    "hint_id": "Versi mudah push-up; dasar untuk pemula.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Calatayud J et al. (2015) J Strength Cond Res 29(1):246-253, abstract p. 246: 6RM bench press and elastic-band push-up gave no difference in EMG amplitude and similar strength gains; Marcolin G et al. (2015) J Athl Train 50(11):1126-1132, abstract p. 1126: push-up variants, 12 muscles; triceps and pectoralis major higher with a narrow hand base",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: floor push-up."
    },
    "active": true
   },
@@ -2240,11 +2340,13 @@
    "hint_id": "Lebih ringan dari push-up penuh.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Calatayud J et al. (2015) J Strength Cond Res 29(1):246-253, abstract p. 246: 6RM bench press and elastic-band push-up gave no difference in EMG amplitude and similar strength gains; Marcolin G et al. (2015) J Athl Train 50(11):1126-1132, abstract p. 1126: push-up variants, 12 muscles; triceps and pectoralis major higher with a narrow hand base",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: floor push-up."
    },
    "active": true
   },
@@ -2279,11 +2381,12 @@
    "hint_id": "Gerakan dorong paling dasar; melatih dada dan trisep.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Calatayud J et al. (2015) J Strength Cond Res 29(1):246-253, abstract p. 246: 6RM bench press and elastic-band push-up gave no difference in EMG amplitude and similar strength gains; Marcolin G et al. (2015) J Athl Train 50(11):1126-1132, abstract p. 1126: push-up variants, 12 muscles; triceps and pectoralis major higher with a narrow hand base",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -2318,11 +2421,13 @@
    "hint_id": "Kaki lebih tinggi, beban lebih besar ke dada atas dan bahu.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2015) J Athl Train 50(11):1126-1132, abstract p. 1126: push-up variants, 12 muscles; triceps and pectoralis major higher with a narrow hand base",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: floor push-up; front-delt share praktik umum."
    },
    "active": true
   },
@@ -2360,11 +2465,13 @@
    "hint_id": "Dasar tekan bahu; melatih bahu dan trisep.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Helpers ABS, TRAPS, CHEST not measured in Campos 2020."
    },
    "active": true
   },
@@ -2397,11 +2504,13 @@
    "hint_id": "Mudah dipelajari dan stabil untuk pemula.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: shoulder press."
    },
    "active": true
   },
@@ -2438,11 +2547,13 @@
    "hint_id": "Bahu bekerja secara seimbang; beban bisa kecil di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: shoulder press."
    },
    "active": true
   },
@@ -2463,7 +2574,11 @@
     "main": [
      "SIDE_DELT"
     ],
-    "helper": []
+    "helper": [
+     "FRONT_DELT",
+     "REAR_DELT",
+     "TRAPS"
+    ]
    },
    "variantOf": null,
    "cues_en": [
@@ -2474,11 +2589,13 @@
    "hint_id": "Membentuk bahu bagian samping.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %; Coratella G et al. (2020) Int J Environ Res Public Health 17(17):6015, abstract: lateral raise variants, medial deltoid highest with neutral humerus; anterior and posterior deltoid, upper trapezius, triceps also active",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Helpers added: anterior 21 % and posterior deltoid 24 % vs medial 30 % MVIC (Campos 2020); upper trapezius active (Coratella 2020)."
    },
    "active": true
   },
@@ -2498,7 +2615,11 @@
     "main": [
      "SIDE_DELT"
     ],
-    "helper": []
+    "helper": [
+     "FRONT_DELT",
+     "REAR_DELT",
+     "TRAPS"
+    ]
    },
    "variantOf": "PUSHV_LAT_DB",
    "cues_en": [
@@ -2509,11 +2630,13 @@
    "hint_id": "Tahanan kabel konstan, bahu samping.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %; Coratella G et al. (2020) Int J Environ Res Public Health 17(17):6015, abstract: lateral raise variants, medial deltoid highest with neutral humerus; anterior and posterior deltoid, upper trapezius, triceps also active",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "As dumbbell lateral raise."
    },
    "active": true
   },
@@ -2546,11 +2669,13 @@
    "hint_id": "Tekan bahu dengan karet; ringan di sendi.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: shoulder press."
    },
    "active": true
   },
@@ -2570,7 +2695,11 @@
     "main": [
      "SIDE_DELT"
     ],
-    "helper": []
+    "helper": [
+     "FRONT_DELT",
+     "REAR_DELT",
+     "TRAPS"
+    ]
    },
    "variantOf": null,
    "cues_en": [
@@ -2581,11 +2710,13 @@
    "hint_id": "Bahu samping dengan karet.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Campos YAC et al. (2020) J Hum Kinet 75:5-14, abstract p. 5: anterior deltoid shoulder press 33 %, bench press 21 %, lateral raise 21 %, fly 19 % MVIC; medial deltoid lateral raise 30 %, shoulder press 28 %, bench 5 %, fly 3 %; posterior deltoid lateral raise 24 %, shoulder press 11 %; Coratella G et al. (2020) Int J Environ Res Public Health 17(17):6015, abstract: lateral raise variants, medial deltoid highest with neutral humerus; anterior and posterior deltoid, upper trapezius, triceps also active",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "As dumbbell lateral raise."
    },
    "active": true
   },
@@ -2625,7 +2756,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the pike push-up found (praktik umum)."
    },
    "active": true
   },
@@ -2662,7 +2795,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study found (praktik umum)."
    },
    "active": true
   },
@@ -2703,7 +2838,8 @@
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Helper muscles unverified."
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the wall handstand push-up found; main muscles by analogy with the shoulder press (Campos 2020), helpers unverified."
    },
    "active": true
   },
@@ -2739,11 +2875,13 @@
    "hint_id": "Menguatkan punggung tengah dan postur.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up; Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: seated row in the review; FOREARM not measured."
    },
    "active": true
   },
@@ -2780,11 +2918,12 @@
    "hint_id": "Beban berat untuk punggung; butuh teknik baik.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist; Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -2820,11 +2959,13 @@
    "hint_id": "Punggung tengah dengan posisi stabil.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: bent-over row."
    },
    "active": true
   },
@@ -2859,11 +3000,13 @@
    "hint_id": "Dada ditopang sehingga punggung bawah tidak ikut bekerja.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: seated row."
    },
    "active": true
   },
@@ -2885,7 +3028,8 @@
     ],
     "helper": [
      "BICEPS",
-     "TRAPS"
+     "TRAPS",
+     "OBLIQUES"
     ]
    },
    "variantOf": null,
@@ -2897,11 +3041,13 @@
    "hint_id": "Satu sisi bergantian; menyeimbangkan kiri dan kanan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "OBLIQUES helper added: one-arm standing cable row challenges trunk twist (Fenwick 2009)."
    },
    "active": true
   },
@@ -2940,7 +3086,8 @@
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Rear delts vs traps order unverified."
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the face pull found; rear delt vs trapezius order unverified (praktik umum)."
    },
    "active": true
   },
@@ -2977,7 +3124,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the reverse fly found (praktik umum)."
    },
    "active": true
   },
@@ -3015,11 +3164,13 @@
    "hint_id": "Mudah dipelajari; cukup dumbbell dan kursi.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist; Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: bent-over and one-arm rows."
    },
    "active": true
   },
@@ -3056,11 +3207,13 @@
    "hint_id": "Tanpa tekanan di punggung bawah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: seated row."
    },
    "active": true
   },
@@ -3096,11 +3249,13 @@
    "hint_id": "Tarik dengan dua dumbbell; butuh punggung kuat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: barbell bent-over row."
    },
    "active": true
   },
@@ -3137,7 +3292,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the reverse fly found (praktik umum)."
    },
    "active": true
   },
@@ -3172,11 +3329,13 @@
    "hint_id": "Tarik dengan karet; cocok di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: seated row."
    },
    "active": true
   },
@@ -3214,7 +3373,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the face pull found (praktik umum)."
    },
    "active": true
   },
@@ -3251,7 +3412,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the reverse fly found (praktik umum)."
    },
    "active": true
   },
@@ -3287,11 +3450,12 @@
    "hint_id": "Pakai meja kokoh; hanya bila aman.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2016) J Strength Cond Res 30(7):1933-1941, abstract p. 1933: inverted row, biceps, latissimus, lower trapezius, posterior deltoid > 61 % MVIC; upper and middle trapezius 41-60 %; rectus abdominis 21-40 %; Fenwick CM, Brown SH, McGill SM (2009) J Strength Cond Res 23(5):1408-1417, abstract p. 1408: inverted row highest latissimus, upper back and hip extensors; bent-over row large symmetric back activation and largest lumbar load; one-arm standing cable row challenges trunk twist",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -3326,11 +3490,13 @@
    "hint_id": "Lebih mudah karena kaki menopang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2016) J Strength Cond Res 30(7):1933-1941, abstract p. 1933: inverted row, biceps, latissimus, lower trapezius, posterior deltoid > 61 % MVIC; upper and middle trapezius 41-60 %; rectus abdominis 21-40 %",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: inverted row (bent-knee form not tested)."
    },
    "active": true
   },
@@ -3366,12 +3532,13 @@
    "hint_id": "Tarik handuk di pintu; pastikan pintu aman.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
+    "muscles_cues": "praktik umum; related source: Snarr RL et al. (2017) J Hum Kinet 58:5-13, abstract p. 5: traditional, suspension and towel pull-up; latissimus, biceps, posterior deltoid not different",
     "status": "unverified"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles and safety of the door setup unverified."
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of a towel row on a door found (Snarr 2017 is a vertical towel pull-up). Door anchor safety is not a muscle question and stays open."
    },
    "active": true
   },
@@ -3406,11 +3573,13 @@
    "hint_id": "Melatih punggung lebar; bisa jadi dasar sebelum pull-up.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up; Youdas JW et al. (2010) J Strength Cond Res 24(12):3404-3414, abstract p. 3404: pull-up and chin-up latissimus 117-130 %, biceps 78-96 %, lower trapezius 45-56 %, pectoralis major 44-57 %, erector spinae 39-41 % MVIC; chin-up > pull-up in biceps and pectoralis, pull-up > chin-up in lower trapezius",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: pull-up; pulldown in the review."
    },
    "active": true
   },
@@ -3444,11 +3613,13 @@
    "hint_id": "Pegangan netral lebih nyaman untuk bahu.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: pulldown."
    },
    "active": true
   },
@@ -3486,7 +3657,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG source opened for the straight-arm pulldown (a 2022 Applied Sciences paper exists but was not readable, HTTP 403)."
    },
    "active": true
   },
@@ -3521,11 +3694,13 @@
    "hint_id": "Pull-up dengan bantuan berat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2010) J Strength Cond Res 24(12):3404-3414, abstract p. 3404: pull-up and chin-up latissimus 117-130 %, biceps 78-96 %, lower trapezius 45-56 %, pectoralis major 44-57 %, erector spinae 39-41 % MVIC; chin-up > pull-up in biceps and pectoralis, pull-up > chin-up in lower trapezius",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: pull-up."
    },
    "active": true
   },
@@ -3562,11 +3737,13 @@
    "hint_id": "Gerakan tarik vertikal terbaik; butuh palang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2010) J Strength Cond Res 24(12):3404-3414, abstract p. 3404: pull-up and chin-up latissimus 117-130 %, biceps 78-96 %, lower trapezius 45-56 %, pectoralis major 44-57 %, erector spinae 39-41 % MVIC; chin-up > pull-up in biceps and pectoralis, pull-up > chin-up in lower trapezius; Snarr RL et al. (2017) J Hum Kinet 58:5-13, abstract p. 5: traditional, suspension and towel pull-up; latissimus, biceps, posterior deltoid not different",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "FOREARM not measured."
    },
    "active": true
   },
@@ -3602,11 +3779,12 @@
    "hint_id": "Lebih banyak bisep; biasanya lebih mudah dari pull-up.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2010) J Strength Cond Res 24(12):3404-3414, abstract p. 3404: pull-up and chin-up latissimus 117-130 %, biceps 78-96 %, lower trapezius 45-56 %, pectoralis major 44-57 %, erector spinae 39-41 % MVIC; chin-up > pull-up in biceps and pectoralis, pull-up > chin-up in lower trapezius",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -3641,11 +3819,13 @@
    "hint_id": "Latihan turun lambat untuk belajar pull-up.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2010) J Strength Cond Res 24(12):3404-3414, abstract p. 3404: pull-up and chin-up latissimus 117-130 %, biceps 78-96 %, lower trapezius 45-56 %, pectoralis major 44-57 %, erector spinae 39-41 % MVIC; chin-up > pull-up in biceps and pectoralis, pull-up > chin-up in lower trapezius",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: pull-up."
    },
    "active": true
   },
@@ -3679,11 +3859,13 @@
    "hint_id": "Tarik vertikal dengan karet; tanpa palang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: pulldown."
    },
    "active": true
   },
@@ -3720,7 +3902,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG source opened for the straight-arm pulldown."
    },
    "active": true
   },
@@ -3755,11 +3939,13 @@
    "hint_id": "Karet membantu pull-up.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Youdas JW et al. (2010) J Strength Cond Res 24(12):3404-3414, abstract p. 3404: pull-up and chin-up latissimus 117-130 %, biceps 78-96 %, lower trapezius 45-56 %, pectoralis major 44-57 %, erector spinae 39-41 % MVIC; chin-up > pull-up in biceps and pectoralis, pull-up > chin-up in lower trapezius",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: pull-up."
    },
    "active": true
   },
@@ -3778,10 +3964,10 @@
    "level": 2,
    "muscles": {
     "main": [
-     "LATS",
      "CHEST"
     ],
     "helper": [
+     "LATS",
      "TRICEPS"
     ]
    },
@@ -3794,12 +3980,13 @@
    "hint_id": "Meregangkan punggung lebar dan dada.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marchetti PH, Uchida MC (2011) J Appl Biomech 27(4):380-384: barbell pullover, pectoralis major integrated EMG significantly larger than latissimus dorsi; Di Fonza D et al. (2026) J Funct Morphol Kinesiol 11(3):315, abstract: review of 23 latissimus EMG studies on pulldown, pullover, seated row, barbell and bent-over row, pull-up",
+    "status": "verified"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Lats vs chest as main muscle is debated; check EMG."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Main changed to CHEST only, LATS to helper: pullover activates pectoralis major more than latissimus (Marchetti 2011; review Di Fonza 2026). Pattern kept as PULL_V; see open item."
    },
    "active": true
   },
@@ -3832,11 +4019,12 @@
    "hint_id": "Bisep dengan beban berat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -3869,11 +4057,12 @@
    "hint_id": "Nyaman untuk pergelangan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -3906,11 +4095,13 @@
    "hint_id": "Tahanan kabel konstan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: free-weight curls."
    },
    "active": true
   },
@@ -3943,11 +4134,13 @@
    "hint_id": "Meminimalkan ayunan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: free-weight curls."
    },
    "active": true
   },
@@ -3982,11 +4175,13 @@
    "hint_id": "Meregangkan bisep.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: dumbbell curl."
    },
    "active": true
   },
@@ -4020,11 +4215,12 @@
    "hint_id": "Mudah dilakukan di rumah dengan dumbbell.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -4058,11 +4254,13 @@
    "hint_id": "Menguatkan lengan bawah juga.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: neutral grip not tested; brachioradialis (FOREARM) share praktik umum."
    },
    "active": true
   },
@@ -4095,11 +4293,13 @@
    "hint_id": "Karet cocok untuk bisep di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2018) PeerJ 6:e5165, abstract: dumbbell, straight-bar and EZ-bar curl; biceps brachii and brachioradialis both active, EZ > dumbbell for both; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: free-weight curls."
    },
    "active": true
   },
@@ -4130,11 +4330,13 @@
    "hint_id": "Trisep dengan tahanan konstan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4165,11 +4367,13 @@
    "hint_id": "Tali memberi rentang gerak lebih luas.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4200,11 +4404,13 @@
    "hint_id": "Meregangkan trisep.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4236,11 +4442,13 @@
    "hint_id": "Isolasi trisep.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4276,11 +4484,13 @@
    "hint_id": "Menekankan trisep dengan beban berat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2015) J Athl Train 50(11):1126-1132, abstract p. 1126: push-up variants, 12 muscles; triceps and pectoralis major higher with a narrow hand base; Muyor JM, Rodriguez-Ridao D, Oliva-Lozano JM (2023) J Hum Kinet 87:23-34, abstract p. 23: bench press and seated chest press at 60 % 1RM, pectoralis major about 25-30 %, anterior deltoid about 24 %, triceps 12-16 % MVIC",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: narrow push-up and narrow-grip bench raise triceps EMG (Marcolin 2015; Muyor 2023: 16 % vs 12 % MVIC)."
    },
    "active": true
   },
@@ -4317,7 +4527,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the machine dip found (praktik umum)."
    },
    "active": true
   },
@@ -4349,11 +4561,13 @@
    "hint_id": "Mudah dilakukan di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4384,11 +4598,13 @@
    "hint_id": "Trisep dengan karet.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4419,11 +4635,13 @@
    "hint_id": "Meregangkan trisep dengan karet.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint elbow extension: anatomy source."
    },
    "active": true
   },
@@ -4461,7 +4679,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the bench dip found (praktik umum)."
    },
    "active": true
   },
@@ -4494,11 +4714,12 @@
    "hint_id": "Push-up dengan siku rapat untuk trisep.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Marcolin G et al. (2015) J Athl Train 50(11):1126-1132, abstract p. 1126: push-up variants, 12 muscles; triceps and pectoralis major higher with a narrow hand base",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -4531,12 +4752,13 @@
    "hint_id": "Trisep tanpa alat; butuh meja kokoh.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
+    "muscles_cues": "praktik umum; related source: OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.5, Fig. 11.26 text: triceps brachii extends the forearm; biceps curl by biceps, brachioradialis assists",
     "status": "unverified"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Main/helper split unverified."
+    "date": "2026-11-18",
+    "note": "⚠ TRICEPS main follows from elbow extension (anatomy); FRONT_DELT helper unverified, no EMG study found."
    },
    "active": true
   },
@@ -4567,11 +4789,12 @@
    "hint_id": "Isolasi paha depan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (1998) Med Sci Sports Exerc 30(4):556-569, abstract p. 556: squat about 2x the hamstring activity of leg press and knee extension; knee extension more rectus femoris, closed chain more vasti",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18"
    },
    "active": true
   },
@@ -4604,11 +4827,13 @@
    "hint_id": "Isolasi paha belakang.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "CALVES helper: gastrocnemius flexes the knee (anatomy)."
    },
    "active": true
   },
@@ -4641,11 +4866,13 @@
    "hint_id": "Paha belakang dengan berbaring.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Zebis MK et al. (2013) Br J Sports Med 47(18):1192-1198, abstract: kettlebell swing and RDL semitendinosus-dominant at 73-115 % MVC; supine leg curl biceps femoris-dominant at 75-87 % MVC; McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580, abstract p. 1573: leg curl, good morning, glute-ham raise, RDL; semitendinosus > biceps femoris in all; hamstrings highest in RDL and glute-ham raise; erector spinae and gluteus medius measured; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "CALVES helper: gastrocnemius flexes the knee (anatomy)."
    },
    "active": true
   },
@@ -4676,11 +4903,13 @@
    "hint_id": "Melatih betis.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint plantar flexion: anatomy source."
    },
    "active": true
   },
@@ -4711,11 +4940,13 @@
    "hint_id": "Bokong samping.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: side-lying abduction, gluteus medius 81 % MVIC."
    },
    "active": true
   },
@@ -4746,12 +4977,13 @@
    "hint_id": "Melatih paha bagian dalam; otot ini tidak ada di daftar 16, jadi dicatat ke paha depan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
+    "muscles_cues": "praktik umum; related source: OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
     "status": "unverified"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Adductors are not in the 16-muscle list; QUADS is a stand-in. Decide: drop the entry or add a muscle."
+    "date": "2026-11-18",
+    "note": "⚠ QUADS is wrong: hip adduction is done by the adductors (anatomy), which are not in the 16 muscles. No correct code exists; owner to decide: drop (active=false) or add an ADDUCTORS muscle (changes the muscle map)."
    },
    "active": true
   },
@@ -4784,11 +5016,13 @@
    "hint_id": "Isolasi bokong.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: quadruped hip extension (bird dog) reached strengthening level for gluteus maximus."
    },
    "active": true
   },
@@ -4820,11 +5054,13 @@
    "hint_id": "Betis dengan dumbbell; bisa di tangga.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint plantar flexion: anatomy source."
    },
    "active": true
   },
@@ -4855,11 +5091,13 @@
    "hint_id": "Betis tanpa alat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint plantar flexion: anatomy source."
    },
    "active": true
   },
@@ -4890,11 +5128,13 @@
    "hint_id": "Lebih berat dari dua kaki.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Single-joint plantar flexion: anatomy source."
    },
    "active": true
   },
@@ -4927,11 +5167,13 @@
    "hint_id": "Bokong tanpa alat.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: quadruped arm/leg lift."
    },
    "active": true
   },
@@ -4962,11 +5204,13 @@
    "hint_id": "Bokong samping dengan karet.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "DiStefano LJ et al. (2009) J Orthop Sports Phys Ther 39(7):532-540, abstract: single-limb squat gluteus maximus 59 % and medius 64 % MVIC; single-limb deadlift 59 % / 59 %; lunge medius 48 %; side-lying abduction medius 81 %; OpenStax Anatomy and Physiology 2e (Betts JG et al., 2022) §11.6, Figs. 11.30-11.32: gluteus medius abducts the thigh; adductors bring the thighs together; quadriceps extend the knee; hamstrings and gastrocnemius flex the knee; gastrocnemius and soleus plantar-flex",
+    "status": "analog"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Analog: side-lying abduction."
    },
    "active": true
   },
@@ -4989,8 +5233,8 @@
      "TRAPS"
     ],
     "helper": [
-     "ABS",
      "OBLIQUES",
+     "LOWER_BACK",
      "GLUTES"
     ]
    },
@@ -5003,12 +5247,13 @@
    "hint_id": "Melatih genggaman dan inti.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McGill SM, McDermott A, Fenwick CMJ (2009) J Strength Cond Res 23(4):1148-1161, Table 2 p. 1154: farmer's walk peak latissimus 152-169 %, lumbar erector spinae 106-144 %, gluteus maximus 114 %, gluteus medius 108 %, internal oblique 81-111 %, external oblique 39-50 %, rectus abdominis 13-21 % MVC (peaks include the lift from the floor); grip and trapezius not measured",
+    "status": "verified"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ ABS helper removed (rectus abdominis 13-21 % MVC), LOWER_BACK added (lumbar erector spinae 106-144 %). Main FOREARM and TRAPS were not measured: still praktik umum."
    },
    "active": true
   },
@@ -5031,7 +5276,8 @@
      "FOREARM"
     ],
     "helper": [
-     "ABS",
+     "LOWER_BACK",
+     "GLUTES",
      "TRAPS"
     ]
    },
@@ -5044,12 +5290,13 @@
    "hint_id": "Melatih sisi perut.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McGill SM, McDermott A, Fenwick CMJ (2009) J Strength Cond Res 23(4):1148-1161, Table 2 p. 1154: suitcase carry (load in left hand) right external oblique 65 %, right lumbar erector spinae 97 %, gluteus medius 57-64 %, rectus abdominis 6-21 % MVC; text p. 1157: quadratus lumborum and obliques stiffen the trunk; grip and trapezius not measured",
+    "status": "verified"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "ABS helper removed (rectus abdominis 6-21 %); LOWER_BACK and GLUTES (medius) added. FOREARM main not measured."
    },
    "active": true
   },
@@ -5071,7 +5318,8 @@
      "TRAPS"
     ],
     "helper": [
-     "ABS",
+     "OBLIQUES",
+     "LOWER_BACK",
      "GLUTES"
     ]
    },
@@ -5084,12 +5332,13 @@
    "hint_id": "Berat penuh untuk genggaman.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McGill SM, McDermott A, Fenwick CMJ (2009) J Strength Cond Res 23(4):1148-1161, Table 2 p. 1154: farmer's walk peak latissimus 152-169 %, lumbar erector spinae 106-144 %, gluteus maximus 114 %, gluteus medius 108 %, internal oblique 81-111 %, external oblique 39-50 %, rectus abdominis 13-21 % MVC (peaks include the lift from the floor); grip and trapezius not measured",
+    "status": "analog"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ As dumbbell farmer's walk (bar type differs). Main FOREARM and TRAPS not measured."
    },
    "active": true
   },
@@ -5112,7 +5361,8 @@
      "FOREARM"
     ],
     "helper": [
-     "ABS"
+     "LOWER_BACK",
+     "GLUTES"
     ]
    },
    "variantOf": null,
@@ -5124,12 +5374,13 @@
    "hint_id": "Kettlebell untuk di rumah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McGill SM, McDermott A, Fenwick CMJ (2009) J Strength Cond Res 23(4):1148-1161, Table 2 p. 1154: suitcase carry (load in left hand) right external oblique 65 %, right lumbar erector spinae 97 %, gluteus medius 57-64 %, rectus abdominis 6-21 % MVC; text p. 1157: quadratus lumborum and obliques stiffen the trunk; grip and trapezius not measured",
+    "status": "analog"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "As dumbbell suitcase carry. ABS helper removed; LOWER_BACK and GLUTES added."
    },
    "active": true
   },
@@ -5148,11 +5399,11 @@
    "level": 2,
    "muscles": {
     "main": [
-     "ABS",
+     "OBLIQUES",
      "FOREARM"
     ],
     "helper": [
-     "OBLIQUES",
+     "LOWER_BACK",
      "TRAPS"
     ]
    },
@@ -5165,12 +5416,13 @@
    "hint_id": "Menyiapkan inti.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "McGill SM, Marshall LW (2012) J Strength Cond Res 26(1):16-27, Table 3 p. 24: racked 16 kg kettlebell carry, all trunk and hip muscles < 9 % MVC (internal oblique 8.4, erector spinae 4.5-7.9, latissimus 3.1-7.2, rectus abdominis 1.1-1.3)",
+    "status": "verified"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ ABS main removed: rectus abdominis 1.1-1.3 % MVC in the racked carry; internal oblique highest (8.4 %), erector spinae 4.5-7.9 %. All muscles are low (< 9 %) at 16 kg. FOREARM and TRAPS not measured."
    },
    "active": true
   },
@@ -5193,8 +5445,7 @@
      "ABS"
     ],
     "helper": [
-     "OBLIQUES",
-     "LOWER_BACK"
+     "OBLIQUES"
     ]
    },
    "variantOf": null,
@@ -5206,11 +5457,13 @@
    "hint_id": "Menguatkan inti.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2016) Sports Health 8(4):372-379, Table 1: crunch upper/lower rectus abdominis 53/39 %, external/internal oblique 28/33 %, lumbar paraspinals 5 %; plank on toes rectus abdominis 34/40 %, external oblique 40 %, internal oblique 29 %, paraspinals 5 %; side plank on toes external oblique 62 %, paraspinals 29 %, rectus abdominis 26/21 %, internal oblique 28 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "LOWER_BACK helper removed: lumbar paraspinals 5 % MVIC in the plank."
    },
    "active": true
   },
@@ -5233,7 +5486,9 @@
      "OBLIQUES"
     ],
     "helper": [
-     "ABS"
+     "ABS",
+     "LOWER_BACK",
+     "GLUTES"
     ]
    },
    "variantOf": "CORE_PLANK",
@@ -5245,12 +5500,13 @@
    "hint_id": "Samping perut.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2016) Sports Health 8(4):372-379, Table 1: crunch upper/lower rectus abdominis 53/39 %, external/internal oblique 28/33 %, lumbar paraspinals 5 %; plank on toes rectus abdominis 34/40 %, external oblique 40 %, internal oblique 29 %, paraspinals 5 %; side plank on toes external oblique 62 %, paraspinals 29 %, rectus abdominis 26/21 %, internal oblique 28 % MVIC; Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Obliques main; glute medius not in the 16."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "Added LOWER_BACK (paraspinals 29 %) and GLUTES (gluteus medius at strengthening level, Ekstrom 2007)."
    },
    "active": true
   },
@@ -5289,7 +5545,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the dead bug found (praktik umum)."
    },
    "active": true
   },
@@ -5326,7 +5584,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the hollow hold found (praktik umum)."
    },
    "active": true
   },
@@ -5348,7 +5608,9 @@
     "main": [
      "ABS"
     ],
-    "helper": []
+    "helper": [
+     "OBLIQUES"
+    ]
    },
    "variantOf": null,
    "cues_en": [
@@ -5359,11 +5621,13 @@
    "hint_id": "Perut atas.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Escamilla RF et al. (2016) Sports Health 8(4):372-379, Table 1: crunch upper/lower rectus abdominis 53/39 %, external/internal oblique 28/33 %, lumbar paraspinals 5 %; plank on toes rectus abdominis 34/40 %, external oblique 40 %, internal oblique 29 %, paraspinals 5 %; side plank on toes external oblique 62 %, paraspinals 29 %, rectus abdominis 26/21 %, internal oblique 28 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "OBLIQUES helper added: external/internal oblique 28/33 % MVIC."
    },
    "active": true
   },
@@ -5383,11 +5647,11 @@
    "level": 1,
    "muscles": {
     "main": [
-     "ABS",
-     "LOWER_BACK"
+     "LOWER_BACK",
+     "GLUTES"
     ],
     "helper": [
-     "GLUTES"
+     "ABS"
     ]
    },
    "variantOf": null,
@@ -5399,11 +5663,13 @@
    "hint_id": "Stabilitas punggung dan inti.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ekstrom RA, Donatelli RA, Carp KC (2007) J Orthop Sports Phys Ther 37(12):754-762, abstract p. 754: lunge and lateral step-up > 45 % MVIC vastus medialis; side-bridge at strengthening level for gluteus medius and external oblique; quadruped arm/leg lift for gluteus maximus; bridge and unilateral bridge < 45 % MVIC",
+    "status": "verified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "GLUTES moved to main: quadruped arm/leg lift reached strengthening level for gluteus maximus (Ekstrom 2007). ABS moved to helper; rectus abdominis level not given in the abstract, so this placement is praktik umum."
    },
    "active": true
   },
@@ -5439,7 +5705,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the Pallof press found (praktik umum)."
    },
    "active": true
   },
@@ -5475,7 +5743,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "draft"
+    "muscles": "uncertain",
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of the Pallof press found (praktik umum)."
    },
    "active": true
   },
@@ -5510,12 +5780,13 @@
    "hint_id": "Kardio dasar.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Cappellini G et al. (2006) J Neurophysiol 95(6):3426-3437, abstract: EMG of 32 leg and trunk muscles in walking and running at 3-12 km/h; the same activation components load similar leg muscles in both gaits (no main/helper ranking)",
+    "status": "analog"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ Leg muscles confirmed active (Cappellini 2006); main/helper split praktik umum."
    },
    "active": true
   },
@@ -5550,12 +5821,13 @@
    "hint_id": "Kardio ringan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Cappellini G et al. (2006) J Neurophysiol 95(6):3426-3437, abstract: EMG of 32 leg and trunk muscles in walking and running at 3-12 km/h; the same activation components load similar leg muscles in both gaits (no main/helper ranking)",
+    "status": "analog"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ Leg muscles confirmed active (Cappellini 2006); main/helper split praktik umum."
    },
    "active": true
   },
@@ -5574,10 +5846,10 @@
    "muscles": {
     "main": [
      "QUADS",
-     "HAMS"
+     "GLUTES"
     ],
     "helper": [
-     "GLUTES",
+     "HAMS",
      "CALVES"
     ]
    },
@@ -5590,12 +5862,13 @@
    "hint_id": "Kardio dengan beban sendi rendah.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Ericson MO (1988) Scand J Rehabil Med 20(1):35-41, abstract p. 35: ergometer cycling, gluteus maximus, gluteus medius, vasti and soleus EMG rise linearly with power; biceps femoris acts mainly as hip extensor, gastrocnemius medialis as plantar flexor",
+    "status": "verified"
    },
    "review": {
-    "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "muscles": "reviewed",
+    "date": "2026-11-18",
+    "note": "GLUTES moved to main and HAMS to helper: gluteus maximus and vasti carry power output; biceps femoris mainly a hip extensor (Ericson 1988)."
    },
    "active": true
   },
@@ -5632,12 +5905,13 @@
    "hint_id": "Kardio seluruh tubuh.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Turpin NA et al. (2011) J Electromyogr Kinesiol 21(6):1030-1040, abstract: 23 muscles recorded on a rowing ergometer, three synergies (no main/helper ranking in abstract)",
+    "status": "analog"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ Rowing ergometer EMG exists (Turpin 2011) but the abstract gives no ranking; main/helper split praktik umum."
    },
    "active": true
   },
@@ -5673,12 +5947,13 @@
    "hint_id": "Jalan cepat; murah dan sederhana.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Cappellini G et al. (2006) J Neurophysiol 95(6):3426-3437, abstract: EMG of 32 leg and trunk muscles in walking and running at 3-12 km/h; the same activation components load similar leg muscles in both gaits (no main/helper ranking)",
+    "status": "analog"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ Leg muscles confirmed active (Cappellini 2006); main/helper split praktik umum."
    },
    "active": true
   },
@@ -5714,12 +5989,13 @@
    "hint_id": "Lari ringan.",
    "source": {
     "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
-    "muscles_cues": "praktik umum",
-    "status": "unverified"
+    "muscles_cues": "Cappellini G et al. (2006) J Neurophysiol 95(6):3426-3437, abstract: EMG of 32 leg and trunk muscles in walking and running at 3-12 km/h; the same activation components load similar leg muscles in both gaits (no main/helper ranking)",
+    "status": "analog"
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ Leg muscles confirmed active (Cappellini 2006); main/helper split praktik umum."
    },
    "active": true
   },
@@ -5759,7 +6035,8 @@
    },
    "review": {
     "muscles": "uncertain",
-    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+    "date": "2026-11-18",
+    "note": "⚠ No EMG study of rope jumping found (praktik umum)."
    },
    "active": true
   }
