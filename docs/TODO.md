@@ -40,7 +40,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [x] (149 entries in `content/exercises.json`, checker passes. Muscle review by Opus done 2026-11-18, Content §12: all 149 reviewed; sources per entry: 57 verified, 65 analog, 27 praktik umum ⚠; 21 entries had muscles changed; 35 still ⚠ uncertain with reasons, incl. owner decision on `LEGISO_ADD`) |
+| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [x] (149 entries in `content/exercises.json`, checker passes. Muscle review by Opus done 2026-11-18, Content §12: all 149 reviewed; sources per entry: 57 verified, 65 analog, 27 praktik umum ⚠; 21 entries had muscles changed; 34 still ⚠ uncertain with reasons; owner decided `LEGISO_ADD` keeps QUADS and the pullover stays `PULL_V`) |
 | C-02 | Movement pattern check: each pattern has ≥ 3 choices per setting (Content §2) | C-01 | Haiku 5.5 | [x] (`node tools/check-exercises.mjs` passes 2026-11-18: every pattern has ≥ 3 choices in each required setting; lowest counts are 3. Needs table = Content §3. B-01 can wire the script into CI) |
 | C-03 | Food table from TKPI 2020 (about 1,100 rows) with parser and checks | D-04 | Sonnet 5.5 | [ ] |
 | C-04 | Warung and bought-meal estimates, each flagged | D-04 | Sonnet 5.5 | [x] |
