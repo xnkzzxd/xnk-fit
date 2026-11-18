@@ -45,7 +45,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | C-03 | Food table from TKPI 2020 (about 1,100 rows) with parser and checks | D-04 | Sonnet 5.5 | [x] (1,143 rows, 3 on the hand-check list, 92 rows flagged for source inconsistencies; `name_en`, household, halal and allergens left empty, see Content §4.2) |
 | C-04 | Warung and bought-meal estimates, each flagged | D-04 | Sonnet 5.5 | [x] |
 | C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
-| C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [ ] |
+| C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [x] (2 rows, both third-party ⚠; about 80 not reached, 13 failed products in Content §4.3; no producer label found) |
 | C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [~] 108 flagged estimate rows in `content/foods-regional.json` + `tools/check-foods-regional.mjs` (passes); open: official `bought` rows (no gerai site read), TKPI codes instead of the generic ingredient table, sodium |
 | C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [x] 2026-11-18: `content/figures/` (XNK files from commit `6dc57b3` in `xnk-source/`, unchanged, credits kept, sha256 locked); `rig` field in `exercises.json`: 20 exercises with an XNK rig, 129 `null` with a written reason in `no-rig.json`; all 149 show the muscle map; `node tools/check-figures.mjs` passes (Content §5.1, §5.2). Not done: no new rig drawn (no sourced joint angles yet; XNK repo, incl. `Gerak.md`, could not be opened here) → C-08b |
 | C-08b | Rest of the figures: read XNK `Gerak.md` for the 20 reused rigs; draw sourced rigs for 67 `derive` + 55 `new` exercises (`content/figures/no-rig.json`); owner confirms 7 cardio `map-only` and the seated `PUSHV_DB` rig; split delts and obliques in the XNK figure build (Content §5.2) | C-08, XNK repo access | Opus 5.5 | [ ] |
@@ -109,6 +109,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | 2026-11-18 | S-07 done: R_ACT set to FAO/WHO/UNU PAL values (owner), G1 closed; mockup Bantuan example updated. |
 | 2026-11-18 | Owner decisions on Rules §12 #5–#8 recorded; R_TRN_VOL and R_TRN_PROG_STEP added; PRD S-3 and new L-17; Design §6. |
 | 2026-11-18 | S-07 partly done: Rules §2/§3/§5 sources checked, §10 G1–G9 updated, §13 has exact figures and pages; G1, G7, G8, G9 still ⚠; three value changes for the owner. |
+| 2026-11-18 | C-06 done: `content/foods-packaged.json` (2 third-party ⚠ rows), checker, 13 failed products in Content §4.3. |
 | 2026-11-18 | S-06 done: Content-Update.md. |
 | 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |
