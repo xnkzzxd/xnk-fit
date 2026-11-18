@@ -1,0 +1,27 @@
+{
+ "schema": 1,
+ "about": "Maps the 16 muscle codes of content/exercises.json (Content §5) onto the region names of figure.min.json (muscle map) and rig.min.json (muscle marks on the rig). Starts from the D-05 mockup mapping (docs/mockups/mock.js MM_MAP), with two changes in C-08 so the map shows only the muscles in exercises.json: QUADS no longer lights \"adductors\" (the inner thigh is not the quadriceps; Content §12.3), and \"upper back\" (middle trapezius and rhomboid area, split from the package's upper-back shape) moves from LATS to TRAPS. GLUTES keeps \"abductors\": gluteus medius and minimus are the hip abductors (OpenStax 2022 §11.6). \"adductors\" has no code and stays unlit (Content §5.2). The app colours the map and the rig from exercises.json muscles through this file, never from the rig's own muscle list. A region that two codes share takes the stronger level (main over helper). shared = codes that land on the same region, so the figure cannot tell them apart (Content §5.2).",
+ "map": {
+  "CHEST": ["pectorals"],
+  "FRONT_DELT": ["delts"],
+  "SIDE_DELT": ["delts"],
+  "REAR_DELT": ["delts"],
+  "BICEPS": ["biceps"],
+  "TRICEPS": ["triceps"],
+  "LATS": ["lats"],
+  "TRAPS": ["traps", "upper back"],
+  "QUADS": ["quads"],
+  "HAMS": ["hamstrings"],
+  "GLUTES": ["glutes", "abductors"],
+  "CALVES": ["calves"],
+  "ABS": ["abs"],
+  "OBLIQUES": ["abs"],
+  "LOWER_BACK": ["spine"],
+  "FOREARM": ["forearms"]
+ },
+ "unused": ["adductors"],
+ "shared": {
+  "delts": ["FRONT_DELT", "SIDE_DELT", "REAR_DELT"],
+  "abs": ["ABS", "OBLIQUES"]
+ }
+}

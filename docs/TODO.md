@@ -47,7 +47,8 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
 | C-06 | Packaged food label values (about 80) | C-03 | Haiku 5.5 (data entry) | [ ] |
 | C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [ ] |
-| C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [ ] |
+| C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [x] 2026-11-18: `content/figures/` (XNK files unchanged, credits kept, sha256 locked); `rig` field in `exercises.json`: 20 exercises with an XNK rig, 129 `null` with a written reason in `no-rig.json`; all 149 show the muscle map; `node tools/check-figures.mjs` passes (Content §5.1, §5.2). Not done: XNK commit not recorded (XNK repo access denied; files taken from the mockup copies), no new rig drawn (no sourced angles yet) → C-08b |
+| C-08b | Rest of the figures: record the XNK commit and read XNK `Gerak.md`; draw sourced rigs for 67 `derive` + 55 `new` exercises (`content/figures/no-rig.json`); owner confirms 7 cardio `map-only` and the seated `PUSHV_DB` rig; split delts and obliques in the XNK figure build (Content §5.2) | C-08, XNK repo access | Opus 5.5 | [ ] |
 | C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
 | C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [x] (`content/badges.json`, `tools/check-badges.mjs` passes; Content §6) |
 | C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [ ] |
@@ -97,6 +98,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-18 | C-08 done: XNK figures reused, 20 rigs mapped, 129 reasons written, figure checker; C-08b added for the rest. |
 | 2026-11-18 | C-01 done: exercise library draft, checker. |
 | 2026-11-18 | C-02 done: pattern check passes on the 149 entries. |
 | 2026-11-18 | C-01 muscle review (Opus) done: sources on all 149 entries, 21 muscle changes, 35 entries still ⚠ (Content §12). |

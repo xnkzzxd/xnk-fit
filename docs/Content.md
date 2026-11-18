@@ -103,6 +103,79 @@ Figure: our own vector drawing, male and female, front and back (Design §11). E
 
 Decision D-06 (2026-11-17): start from the XNK app's muscle map (`figure.min.json`, react-muscle-highlighter shapes, MIT, keep its credits) and exercise rig (`rig.min.json`, 21 patterns, XNK's own work); draw new rigs only for lifts XNK lacks. Figure work is the largest content job (PRD §14 item 2): about 150 exercises, but only the pattern set (about 25 base poses) is drawn; variants reuse a base pose with a changed angle table.
 
+### 5.1 Figure files and rig mapping (C-08, 2026-11-18)
+
+Files in `content/figures/`, checked by `node tools/check-figures.mjs`:
+
+| File | What | Origin |
+| --- | --- | --- |
+| `figure.min.json` | Muscle map, male and female, front and back | XNK `apps-script/pt-scheduler/figure/figure.min.json` (built by `tools/build-figure.js`), shapes from react-muscle-highlighter 1.2.0, MIT |
+| `rig.min.json` | 21 animated rig patterns, 13 frames each | XNK `apps-script/pt-scheduler/figure/rig.min.json` (built by `tools/build-rig.js`), XNK's own work, joint angles from XNK `docs/program/Gerak.md` |
+| `CREDITS.md` | MIT licence text and XNK credits, unchanged copy of `docs/mockups/FIGURE-CREDITS.md` | — |
+| `source.json` | Origin, XNK path and sha256 of both build files; the checker fails if either file is edited | — |
+| `muscle-map.json` | The 16 muscle codes → figure regions (§5.2) | — |
+| `no-rig.json` | Every exercise without a rig, with its reason | — |
+
+⚠ **XNK commit not recorded.** This session could not open the XNK repo (access denied), so both files were taken from the D-05 mockup copies (`docs/mockups/figure-data.js`, commit dd20ca1; `rig-data.js`, commit 4754def), the JSON unchanged. `source.json` has `xnkCommit: null`; a session with XNK access compares the sha256 values and fills it. XNK `Gerak.md` (the joint-angle sources of the 21 rigs) was not read for the same reason.
+
+**Mapping rule.** `exercises.json` has a new field `rig`: an XNK pattern name only when the rig shows the **same lift with the same setup**, otherwise `null`. A rig never stands in for a different lift: borrowed angles or the wrong equipment would teach the wrong movement, and the angles were sourced for that lift only. Every exercise shows the muscle map, so all 149 have a figure; the rig is extra.
+
+Result: **20 exercises have a rig, 129 have `rig = null` with a written reason** in `no-rig.json`. 20 of the 21 XNK patterns are used; `squat-machine` (a belt/lever squat machine) matches no entry.
+
+| Exercise | XNK rig | Note |
+| --- | --- | --- |
+| `SQUAT_GOB` | `goblet-squat` | |
+| `LEG_PRESS` | `leg-press` | XNK rig is the 45° sled |
+| `HINGE_RDL_DB` | `db-rdl` | |
+| `HINGE_HT_MC` | `hip-thrust-machine` | |
+| `PUSHH_BENCH_DB` | `db-bench-press` | |
+| `PUSHH_PECDEC` | `chest-fly-machine` | |
+| `PUSHH_PUSHUP_INCL` | `incline-push-up` | Rig shows a bench-height support; entry says wall or chair |
+| `PUSHH_PUSHUP` | `push-up` | |
+| `PUSHV_DB` | `db-shoulder-press` | Rig is seated with a back rest; entry lists no bench ⚠ owner: keep, or derive a standing rig |
+| `PUSHV_LAT_DB` | `lateral-raise` | Front view |
+| `PULLH_CBLROW` | `seated-cable-row` | |
+| `PULLH_BO_DB` | `db-row` | |
+| `PULLV_PULLDOWN` | `lat-pulldown` | |
+| `CURL_CABLE` | `bicep-curl-cable` | |
+| `TRI_PUSHDOWN` | `triceps-pushdown` | |
+| `LEGISO_EXT` | `leg-extension` | |
+| `LEGISO_CURL_SEAT` | `seated-leg-curl` | |
+| `LEGISO_CALF_STAND` | `calf-raise-machine` | |
+| `LEGISO_ABD` | `hip-abduction-machine` | Front view |
+| `CORE_DEADBUG` | `dead-bug` | |
+
+**Without a rig (129), by kind** (`no-rig.json`; this is the remaining C-08 drawing work, task C-08b):
+
+| Kind | Count | Meaning | Exercises (base pattern) |
+| --- | --- | --- | --- |
+| `derive` | 67 | Same joint path as an XNK base pattern, but a different load, grip, support or machine. Needs its own angle table from a written source and its own equipment drawing | goblet-squat: `SQUAT_BACK`, `SQUAT_FRONT`, `SQUAT_SMITH`, `SQUAT_DB`, `SQUAT_SUMO_DB`, `SQUAT_BAND`, `SQUAT_BW`, `SQUAT_CHAIR`, `SQUAT_JUMP`, `SQUAT_WALLSIT` · db-rdl: `HINGE_RDL_BB`, `HINGE_DL_BB`, `HINGE_TRAP`, `HINGE_GM`, `HINGE_DL_DB`, `HINGE_GM_BAND` · hip-thrust-machine: `HINGE_HT_BB`, `HINGE_HT_DB`, `HINGE_HT_BW` · db-bench-press: `PUSHH_BENCH_BB`, `PUSHH_INCL_BB`, `PUSHH_INCL_DB`, `PUSHH_CHEST_MC`, `PUSHH_INCL_MC`, `PUSHH_FLOOR_DB`, `PUSHH_BAND`, `TRI_CLOSE` · chest-fly-machine: `PUSHH_FLY_CBL`, `PUSHH_FLY_DB`, `PUSHH_BAND_FLY` · push-up: `PUSHH_PUSHUP_KNEE`, `PUSHH_PUSHUP_DECL`, `TRI_NARROW` · db-shoulder-press: `PUSHV_OHP_BB`, `PUSHV_MC`, `PUSHV_BAND` · lateral-raise: `PUSHV_LAT_CBL`, `PUSHV_LAT_BAND` · db-row: `PULLH_BBROW`, `PULLH_TBAR`, `PULLH_CSROW_MC`, `PULLH_DBROW`, `PULLH_CSROW_DB` · seated-cable-row: `PULLH_SA_CBL`, `PULLH_BAND_ROW` · lat-pulldown: `PULLV_VBAR`, `PULLV_ASSIST`, `PULLV_PULLUP`, `PULLV_CHINUP`, `PULLV_NEG`, `PULLV_BAND_PD`, `PULLV_BAND_PU` · bicep-curl-cable: `CURL_BB`, `CURL_EZ`, `CURL_PREACHER`, `CURL_INCL_DB`, `CURL_DB`, `CURL_HAMMER`, `CURL_BAND` · triceps-pushdown: `TRI_ROPE`, `TRI_BAND` · seated-leg-curl: `LEGISO_CURL_LYING` · hip-abduction-machine: `LEGISO_BAND_ABD`, `LEGISO_ADD` (after the owner's muscle decision) · calf-raise-machine: `LEGISO_CALF_DB`, `LEGISO_CALF_BW`, `LEGISO_CALF_SL` |
+| `new` | 55 | No XNK pattern with the same joint path. Needs a new rig with joint angles from a written source | Single-leg squats and lunges (`SQUAT_BULG_DB`, `SQUAT_BULG_BW`, `SQUAT_SPLIT_BW`, `LUNGE_REV_DB`, `LUNGE_REV_BW`, `LUNGE_WALK_DB`, `LUNGE_WALK_BW`, `STEPUP_DB`, `STEPUP_BW`, `SQUAT_PISTOL`), `SQUAT_HACK`; `HINGE_BACKEXT`, `HINGE_PULLTHRU`, `HINGE_BAND_PT`, `HINGE_SLDL_DB`, `HINGE_SLDL_BW`, `HINGE_SWING_KB`, `HINGE_BRIDGE_BW`, `HINGE_BRIDGE_SL`, `HINGE_SUPERMAN`; `PUSHV_PIKE`, `PUSHV_PIKE_KNEE`, `PUSHV_HSPU_WALL`; `PULLH_FACEPULL`, `PULLH_BAND_FACE`, `PULLH_REVFLY_MC`, `PULLH_REVFLY_DB`, `PULLH_BAND_REV`, `PULLH_INVROW`, `PULLH_INVROW_KNEE`, `PULLH_TOWEL`; `PULLV_STRAIGHT`, `PULLV_BAND_ST`, `PULLV_DB_PULLOVER`; `TRI_OH_CBL`, `TRI_OH_DB`, `TRI_BAND_OH`, `TRI_SKULL`, `TRI_DIPMC`, `TRI_BENCHDIP`, `TRI_BWEXT`; `LEGISO_KICK_CBL`, `LEGISO_KICK_BW`; all five carries; `CORE_PLANK`, `CORE_SIDEPLANK`, `CORE_HOLLOW`, `CORE_CRUNCH`, `CORE_BIRDDOG`, `CORE_PALLOF`, `CORE_PALLOF_BAND` |
+| `map-only` | 7 | Proposal (owner to confirm): cyclic whole-body movement; a 13-frame loop teaches little. Muscle map and cues only | `CARDIO_TREAD`, `CARDIO_WALK`, `CARDIO_BIKE`, `CARDIO_ROWER`, `CARDIO_WALK_BW`, `CARDIO_JOG`, `CARDIO_ROPE` |
+
+No new rig was drawn in C-08: no joint-angle source was collected for any of the 129, and the rig builder (`build-rig.js`) lives in the XNK repo, which this session could not open. Hand-written rig data would break the "angles only from a written source" rule above.
+
+### 5.2 Muscle map against the library (C-08)
+
+The app colours both the muscle map and the rig marks from `exercises.json` muscles through `content/figures/muscle-map.json`, never from the rig's own muscle list. Changes from the D-05 mockup mapping, so that the map shows only the library's muscles:
+
+- `QUADS` no longer lights the figure's `adductors` (inner thigh is not the quadriceps; §12.3). `adductors` now has no code and stays unlit.
+- The figure's `upper back` (middle trapezius and rhomboid area) moves from `LATS` to `TRAPS`.
+- `GLUTES` keeps `abductors` (gluteus medius and minimus abduct the hip, OpenStax 2022 §11.6).
+
+The mockups (`docs/mockups/mock.js`) still use the old mapping; they are not shipped.
+
+Mismatches the figure cannot fix (reported, not failed, by the checker):
+
+| Issue | Effect | Exercises |
+| --- | --- | --- |
+| One `delts` region for `FRONT_DELT`, `SIDE_DELT`, `REAR_DELT` | The map cannot show which head works; the whole shoulder takes the strongest level | 47 entries name the heads at different levels, e.g. the 13 rows, face pulls and reverse flies with `REAR_DELT` main, the 3 lateral raises (`SIDE_DELT` main) |
+| One `abs` region for `ABS` and `OBLIQUES` (XNK merged the package's obliques into abs) | Oblique work shows as front abs | 11 entries: `CORE_SIDEPLANK`, the five carries, `HINGE_SWING_KB`, `PULLH_SA_CBL`, `CORE_PLANK`, `CORE_CRUNCH`, `CORE_DEADBUG` |
+| Front-view rig `lateral-raise` has no trapezius mark | `TRAPS` helper shows on the map only, not on the rig | `PUSHV_LAT_DB` |
+| XNK rig's own muscle list differs from the library | Ignored by rule; the library wins | 14 of 20 rigged entries (checker output), e.g. `seated-cable-row` rig: upper back main, library: `LATS`, `TRAPS`, `REAR_DELT` main |
+
+Fixing the first two needs new shapes: split `delts` into three heads and keep `obliques` in the XNK figure build (`build-figure.js`), then re-copy. That is an XNK change; listed in C-08b.
+
 ## 6. Badges (P-5)
 
 18 badges, none for weight lost (PRD P-5). Each has a code, a plain title (ID), a condition, and a kind message.
@@ -162,7 +235,8 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | C-07 | Bought and regional meal numbers (wider set; replace estimates where a label or official site exists) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
 | C-01 | Muscle review done 2026-11-18 (§12): 57 entries `verified`, 65 `analog`, 27 `unverified` (praktik umum ⚠). 21 entries had muscles changed | Remaining ⚠ need a study or owner decision |
 | C-01b | 35 entries still `review.muscles = "uncertain"` ⚠, each with its reason in `review.note` (§12.3). Owner decisions: `LEGISO_ADD` (adductors not in the 16 muscles; QUADS is wrong) and `PULLV_DB_PULLOVER` pattern (now CHEST main, still `PULL_V`) | Owner; later research |
-| C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
+| C-08 | Figures reused from XNK (§5.1): 20 exercises with a rig, 129 with a written reason; every exercise has the muscle map. XNK commit not recorded ⚠ | Done 2026-11-18; rest in C-08b |
+| C-08b | Rigs still to draw with sourced joint angles: 67 `derive`, 55 `new`; owner to confirm 7 cardio `map-only` and `PUSHV_DB` seated rig; record XNK commit; split delts and obliques in the XNK figure build (§5.2) | Needs XNK repo access and a joint-angle source per rig |
 | C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
 
@@ -172,7 +246,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | --- | --- | --- |
 | Pattern list (§3) | Standard resistance-training pattern classes, ACSM Position Stand 2009 (Rules S14) | ✅ class list; exercise picks ⚠ review |
 | Main and helper muscles per exercise | `source.muscles_cues` per entry: EMG studies, biomechanics studies or an anatomy text (list in §12.4) | ✅ 57 verified, ✅/⚠ 65 analog, ⚠ 27 unverified; 35 uncertain (§12.3) |
-| Joint angles per pose | Standard range-of-motion descriptions, cited per pose | ⚠ to fill per pose |
+| Joint angles per pose | 20 XNK rigs: XNK `docs/program/Gerak.md` (not read in C-08, ⚠). New rigs: standard range-of-motion descriptions, cited per pose | ⚠ 129 to fill (C-08b) |
 | Calories per food | TKPI 2020 (Rules S9) | ✅ source; per-row check when built |
 
 No exercise is published without its source line in the library file.
@@ -200,6 +274,7 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | 2026-11-18 | C-02: pattern check passes (minimum 3 per required pattern and setting; CI wiring left to B-01). |
 | 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |
 | 2026-11-18 | C-01 muscle review (Opus): sources per entry, 21 muscle changes, 1 hint change, statuses `verified` / `analog` / `unverified`, file version 2026-11-18.2 (§12). |
+| 2026-11-18 | C-08: XNK muscle map and rig copied to `content/figures/` (credits kept, sha256 locked, XNK commit ⚠); `rig` field added to `exercises.json` (20 rigged, 129 with reason in `no-rig.json`); muscle-map changes for QUADS and upper back; `tools/check-figures.mjs` (§5.1, §5.2). |
 
 ## 12. Muscle review (C-01, 2026-11-18)
 
