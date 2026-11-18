@@ -529,7 +529,7 @@
    "kind": "derive",
    "base": "hip-abduction-machine",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing.",
-   "note": "Owner decision on its muscle is still open (Content §12.3); draw only after that."
+   "note": "Owner decided 2026-11-18 that QUADS stands in for the adductors; the muscle map lights quads and adductors. The rig needs the adduction direction, mirrored from the abduction base."
   },
   "LEGISO_KICK_CBL": {
    "kind": "new",

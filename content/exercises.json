@@ -4083,7 +4083,7 @@
    "review": {
     "muscles": "reviewed",
     "date": "2026-11-18",
-    "note": "Main changed to CHEST only, LATS to helper: pullover activates pectoralis major more than latissimus (Marchetti 2011; review Di Fonza 2026). Pattern kept as PULL_V; see open item."
+    "note": "Main changed to CHEST only, LATS to helper: pullover activates pectoralis major more than latissimus (Marchetti 2011; review Di Fonza 2026). Owner decision 2026-11-18: pattern stays PULL_V."
    },
    "active": true
   },
@@ -5104,9 +5104,9 @@
     "status": "unverified"
    },
    "review": {
-    "muscles": "uncertain",
+    "muscles": "reviewed",
     "date": "2026-11-18",
-    "note": "⚠ QUADS is wrong: hip adduction is done by the adductors (anatomy), which are not in the 16 muscles. No correct code exists; owner to decide: drop (active=false) or add an ADDUCTORS muscle (changes the muscle map)."
+    "note": "Owner decision 2026-11-18: keep QUADS as a stand-in. Hip adduction is done by the adductors (anatomy), which are not in the 16 muscles; the muscle map shows the thigh."
    },
    "active": true
   },

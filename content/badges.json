@@ -7,7 +7,7 @@
     "streakWeeks": "Current streak length in weeks under Rules R_STREAK and R_STREAK_GRACE; a week (Monday to Sunday, local time) counts with at least 2 active days (a finished workout, an activity row, or a food_log day with at least 1 entry). Peak value is kept: the badge is earned when the value reaches the target at any time. Fields: workout.endedAt, activity.at, food_log.day.",
     "activityMinutesWeek": "Per calendar week (Monday to Sunday), SUM(activity.minutes) where effort = vigorous counts double (Rules section 4, S13). Fields: activity.minutes, activity.effort, activity.at.",
     "foodDays": "COUNT(DISTINCT food_log.day). Fields: food_log.day.",
-    "targetWeeks": "COUNT of weeks whose logged daily average kcal is within +-10 % of the day target and with at least 5 logged days (Rules R_PTS_TARGET). The same rows that create points_event kind = target. Fields: food_log.kcal, food_log.day, points_event.kind.",
+    "loggedWeeks": "COUNT of calendar weeks (Monday to Sunday, local time) with at least 5 distinct food_log.day values. Counts logging only, never the amounts eaten. Fields: food_log.day.",
     "scheduledMeasures": "COUNT(points_event WHERE kind = measure) (measure taken on the scheduled day, Rules R_PTS_MEASURE). Any measure type counts, never the value. Fields: points_event.kind, measure.takenAt.",
     "photos": "COUNT(photo). Fields: photo.takenAt.",
     "returnAfterBreak": "On a workout finish (workout.endedAt set), days between this endedAt and the previous finished workout's endedAt are at least 14. Fields: workout.endedAt.",
@@ -76,9 +76,9 @@
       "message_id": "Tiga puluh hari catatan makan. Data yang berguna untuk menyesuaikan rencana."
     },
     {
-      "code": "TARGET_WEEK", "order": 13, "title_id": "Minggu sesuai target", "icon": "check",
-      "condition": { "metric": "targetWeeks", "op": ">=", "value": 1, "tables": ["food_log", "points_event"], "fields": ["food_log.kcal", "food_log.day", "points_event.kind"], "text_en": "A week within +-10 % of target (at least 5 logged days; counts below and above target alike)" },
-      "message_id": "Satu minggu berjalan sesuai target harian."
+      "code": "LOGWEEK_1", "order": 13, "title_id": "Minggu rajin mencatat", "icon": "check",
+      "condition": { "metric": "loggedWeeks", "op": ">=", "value": 1, "tables": ["food_log"], "fields": ["food_log.day"], "text_en": "A week with food logged on at least 5 days (the amounts are never judged)" },
+      "message_id": "Satu minggu dengan catatan makan di lima hari atau lebih. Kebiasaan yang rapi."
     },
     {
       "code": "MEASURE_4", "order": 14, "title_id": "Empat kali ukur", "icon": "ruler",

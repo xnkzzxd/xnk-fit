@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "about": "Maps the 16 muscle codes of content/exercises.json (Content §5) onto the region names of figure.min.json (muscle map) and rig.min.json (muscle marks on the rig). Starts from the D-05 mockup mapping (docs/mockups/mock.js MM_MAP), with two changes in C-08 so the map shows only the muscles in exercises.json: QUADS no longer lights \"adductors\" (the inner thigh is not the quadriceps; Content §12.3), and \"upper back\" (middle trapezius and rhomboid area, split from the package's upper-back shape) moves from LATS to TRAPS. GLUTES keeps \"abductors\": gluteus medius and minimus are the hip abductors (OpenStax 2022 §11.6). \"adductors\" has no code and stays unlit (Content §5.2). The app colours the map and the rig from exercises.json muscles through this file, never from the rig's own muscle list. A region that two codes share takes the stronger level (main over helper). shared = codes that land on the same region, so the figure cannot tell them apart (Content §5.2).",
+ "about": "Maps the 16 muscle codes of content/exercises.json (Content §5) onto the region names of xnk-source/figure.min.json (muscle map) and xnk-source/rig.min.json (muscle marks on the rig). Starts from the D-05 mockup mapping (docs/mockups/mock.js MM_MAP), with one change in C-08: \"upper back\" (middle trapezius and rhomboid area, split from the package's upper-back shape) moves from LATS to TRAPS, since the latissimus does not cover it. QUADS keeps \"adductors\": the owner decided (2026-11-18) that QUADS stands in for the adductors, which have no code (LEGISO_ADD). GLUTES keeps \"abductors\": gluteus medius and minimus are the hip abductors (OpenStax 2022 §11.6). See Content §5.2. The app colours the map and the rig from exercises.json muscles through this file, never from the rig's own muscle list. A region that two codes share takes the stronger level (main over helper). shared = codes that land on the same region, so the figure cannot tell them apart (Content §5.2).",
  "map": {
   "CHEST": ["pectorals"],
   "FRONT_DELT": ["delts"],
@@ -10,7 +10,7 @@
   "TRICEPS": ["triceps"],
   "LATS": ["lats"],
   "TRAPS": ["traps", "upper back"],
-  "QUADS": ["quads"],
+  "QUADS": ["quads", "adductors"],
   "HAMS": ["hamstrings"],
   "GLUTES": ["glutes", "abductors"],
   "CALVES": ["calves"],
@@ -19,7 +19,9 @@
   "LOWER_BACK": ["spine"],
   "FOREARM": ["forearms"]
  },
- "unused": ["adductors"],
+ "standIn": {
+  "adductors": "QUADS"
+ },
  "shared": {
   "delts": ["FRONT_DELT", "SIDE_DELT", "REAR_DELT"],
   "abs": ["ABS", "OBLIQUES"]

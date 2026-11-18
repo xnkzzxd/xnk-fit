@@ -15,8 +15,8 @@ const errors = [];
 const err = (m) => errors.push(m);
 
 const ex = json(new URL("content/exercises.json", root));
-const fig = json(new URL("figure.min.json", dir));
-const rig = json(new URL("rig.min.json", dir));
+const fig = json(new URL("xnk-source/figure.min.json", dir));
+const rig = json(new URL("xnk-source/rig.min.json", dir));
 const mm = json(new URL("muscle-map.json", dir));
 const noRig = json(new URL("no-rig.json", dir)).exercises;
 const src = json(new URL("source.json", dir));
@@ -26,11 +26,13 @@ const list = ex.exercises;
 for (const [name, meta] of Object.entries(src.files)) {
   const sha = createHash("sha256").update(readFileSync(new URL(name, dir))).digest("hex");
   if (sha !== meta.sha256) err(`${name}: sha256 ${sha} differs from source.json (build output edited by hand?)`);
-  if (!meta.xnkCommit) console.log(`⚠ ${name}: XNK commit not recorded (source.json openItems)`);
 }
-const credits = read(new URL("CREDITS.md", dir));
-for (const s of ["react-muscle-highlighter", "MIT License", "Copyright (c) 2024 My Muscle Contributors", "rig.min.json"])
-  if (!credits.includes(s)) err(`CREDITS.md: missing "${s}"`);
+if (!src.xnkCommit) err("source.json: XNK commit not recorded");
+const credits = read(new URL("xnk-source/CREDITS.md", dir));
+for (const s of ["react-muscle-highlighter", "MIT License", "My Muscle Contributors", "rig.min.json"])
+  if (!credits.includes(s)) err(`xnk-source/CREDITS.md: missing "${s}"`);
+const lic = read(new URL("xnk-source/LICENSE-react-muscle-highlighter.txt", dir));
+if (!/MIT License/.test(lic) || !/My Muscle Contributors/.test(lic)) err("xnk-source/LICENSE-react-muscle-highlighter.txt: MIT licence text missing");
 if (!/react-muscle-highlighter/.test(fig.credit ?? "")) err("figure.min.json: credit field missing");
 
 // 2. Rig patterns: each used one exists; each null has a reason.
@@ -69,7 +71,8 @@ for (const c of Object.keys(mm.map)) if (!(ex.muscles ?? []).includes(c)) err(`m
 // 4. Size and first frame (Design §10): vector data only, small share of the 20 MB budget.
 const BUDGET = 20 * 1024 * 1024, FIG_SHARE = 1024 * 1024;
 let total = 0, raster = 0;
-for (const f of readdirSync(dir)) {
+for (const f of readdirSync(dir, { recursive: true })) {
+  if (statSync(new URL(f, dir)).isDirectory()) continue;
   const size = statSync(new URL(f, dir)).size;
   total += size;
   if (/\.(png|jpe?g|gif|webp|bmp|avif|heic)$/i.test(f)) { raster++; err(`${f}: raster image in content/figures (vector only)`); }
