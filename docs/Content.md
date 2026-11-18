@@ -23,16 +23,16 @@
 | Home dumbbell / band | `home-db` | Some equipment at home | Dumbbells, resistance bands, a pull-up bar optional |
 | Tick your own | `custom` | Anyone | Whatever the user ticks in the equipment list |
 
-Library target: **about 150 curated exercises** (PRD L-10):
+Library target: **about 150 curated exercises** (PRD L-10). Built in C-01 (2026-11-18): **149 entries** in [`content/exercises.json`](../content/exercises.json), checked by `node tools/check-exercises.mjs`.
 
-| Group | Count | Covers |
-| --- | --- | --- |
-| Gym | about 60 | Machines, barbell, cable, dumbbell (heavy) |
-| Dumbbell / band | about 40 | Dumbbell, band, kettlebell-light |
-| Bodyweight | about 35 | Bodyweight, each with an easier and a harder variant |
-| Cardio and core | about 15 | Treadmill, bike, rower, planks, carries, dead bug |
+| Group | Target | Built | Covers |
+| --- | --- | --- | --- |
+| Gym | about 60 | 60 | Machines, barbell, cable, dumbbell (heavy) |
+| Dumbbell / band | about 40 | 40 | Dumbbell, band, kettlebell-light |
+| Bodyweight | about 35 | 34 | Bodyweight, each with an easier and a harder variant |
+| Cardio and core | about 15 | 15 | Treadmill, bike, rower, planks, carries, dead bug |
 
-Every pattern (§3) has **at least three choices in each setting** that can carry it (L-10). A pattern with fewer than three in a setting is a content bug, tested in CI.
+Every pattern (§3) has **at least three choices in each setting** that can carry it (L-10). A pattern with fewer than three in a setting is a content bug, tested in CI (`tools/check-exercises.mjs`). `CURL` and `CARRY` are required in `gym` and `home-db` only, `LEG_ISO` in `gym` only (§3). In `home-bw`, `PULL_V` (all three need a bar) and `PULL_H` (needs a table or door) count entries whose `equipment` the user may lack; the generator still applies L-3.
 
 ## 3. Movement patterns
 
@@ -142,8 +142,10 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | C-05 | Household measures for cooked dishes and centong weights (estimates until verified) | Research task after D-04 |
 | C-06 | Packaged food label values (about 80) | Collect from label photos or product sheets; owner or task |
 | C-07 | Bought and regional meal numbers (warung, bought) | Flagged estimates; listed here until a source exists (PRD §14 item 6) |
+| C-01 | Library draft done (149). Source for every entry is "praktik umum" (status `unverified` ⚠); only the pattern class cites S14. EMG or guideline per entry still to find | Review task (Opus 5.5) |
+| C-01b | Muscle review: 23 entries have `review.muscles = "uncertain"` with a note (`LEGISO_ADD` needs a decision: adductors are not in the 16 muscles). The other 126 are `draft` | Opus 5.5, separate session |
 | C-08 | Exercise figure poses (about 25 base poses, sourced angles) | Design task D-05 onward (PRD §14 item 2) |
-| C-09 | English cues for each exercise (3 lines) | Owner review of English (PRD §14 item 3) |
+| C-09 | English cues for each exercise (3 lines): all 149 drafted by Claude in its own words, none owner-reviewed | Owner review of English (PRD §14 item 3) |
 | C-10 | Level ↔ exercise mapping for variants | Set when the pattern list is final |
 
 ## 9. Sources for exercises and figures
@@ -151,7 +153,7 @@ Activity codes with MET values are in [Rules.md §4](Rules.md#4-activity-met). C
 | Item | Source | Status |
 | --- | --- | --- |
 | Pattern list (§3) | Standard resistance-training pattern classes, ACSM Position Stand 2009 (Rules S14) | ✅ class list; exercise picks ⚠ review |
-| Main and helper muscles per exercise | EMG-based activation review, to cite per exercise in the library file | ⚠ to fill per exercise |
+| Main and helper muscles per exercise | Library file has `source.muscles_cues = "praktik umum"` on all 149 entries; EMG citation not yet found | ⚠ unverified, 23 flagged for Opus review |
 | Joint angles per pose | Standard range-of-motion descriptions, cited per pose | ⚠ to fill per pose |
 | Calories per food | TKPI 2020 (Rules S9) | ✅ source; per-row check when built |
 
@@ -176,3 +178,4 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First draft (D-04). Counts are targets; the library is built in its own tasks. |
+| 2026-11-18 | C-01: `content/exercises.json` with 149 entries and `tools/check-exercises.mjs`. `variantOf` points to the easier variant. |

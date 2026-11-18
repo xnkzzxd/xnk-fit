@@ -40,8 +40,8 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [ ] |
-| C-02 | Movement pattern check: each pattern has ≥ 3 choices per setting (Content §2) | C-01 | Haiku 5.5 | [ ] |
+| C-01 | Exercise library file: about 150 entries, IDs, patterns, muscles, cues (English), hints (Indonesian), sources per entry | D-04 | Sonnet 5.5 (draft), Opus 5.5 (review of muscles) | [x] (149 entries in `content/exercises.json`, checker passes; muscle review by Opus open for 23 flagged entries, sources are "praktik umum" ⚠, see Content §8) |
+| C-02 | Movement pattern check: each pattern has ≥ 3 choices per setting (Content §2) | C-01 | Haiku 5.5 | [~] (checker already in `tools/check-exercises.mjs` and passes; confirm needs table with owner) |
 | C-03 | Food table from TKPI 2020 (about 1,100 rows) with parser and checks | D-04 | Sonnet 5.5 | [ ] |
 | C-04 | Warung and bought-meal estimates, each flagged | D-04 | Sonnet 5.5 | [ ] |
 | C-05 | Household measures: PMK 41/2014 first set; cooked dish and centong weights as flagged estimates | C-03 | Opus 5.5 | [ ] |
@@ -97,6 +97,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-18 | C-01 done: exercise library draft, checker. |
 | 2026-11-18 | S-06 done: Content-Update.md. |
 | 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |
