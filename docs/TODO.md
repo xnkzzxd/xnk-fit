@@ -31,7 +31,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | S-02 | Play target SDK rule at release time; record in Design §1. Remaining: official date for next raise (API 37) not published as of 2026-11-17; re-check before release | D-02 | Sonnet 5.5 | [~] |
 | S-03 | Google OAuth verification for the Drive app folder: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [x] (`docs/Google-OAuth.md`: `drive.appdata` is non-sensitive, no review expected; owner does the console steps; three ⚠ items inside) |
 | S-04 | Play Health Connect and health-apps declarations: checklist and timing (PRD §14 item 4) | D-02 | Sonnet 5.5 | [x] (`docs/Play-Health.md`: form is required for every app; steps only; draft answers; review time not published, three ⚠) |
-| S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [ ] |
+| S-05 | Pick the reference low-end phone (2–3 GB RAM, Android 8–9), record it in Design §10 | D-02 | Haiku 5.5 | [~] Proposed Redmi 9A (2 GB, Helio G25, Android 10: not 8–9, and listed out of stock). Owner confirms model and availability before buying |
 | S-06 | Content update host choice (Design §16 item 2) | D-02 | Sonnet 5.5 | [ ] |
 | S-07 | Close ⚠ sources: read each source in Rules §13 and write the exact figure and page; then fix G1–G8 in Rules §10 | D-03 | Opus 5.5 | [ ] |
 | S-08 | Play developer account: owner creates it (not Claude). Claude only writes the checklist | — | — (owner) | [ ] |
@@ -97,6 +97,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | Date | Change |
 | --- | --- |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
+| 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |
 | 2026-11-18 | S-03 done: Google-OAuth.md; PRD §14 item 4 corrected. |
 | 2026-11-17 | D-06 approved by the owner; decisions recorded in PRD L-6 and §14, Design §16, Content §5, mockups README. |

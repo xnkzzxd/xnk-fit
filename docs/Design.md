@@ -197,7 +197,8 @@ Delete all (B-7): removes the database, photos, DataStore and cached content, th
 
 ## 10. Speed budget and performance
 
-Targets from NF-1, measured on the reference phone (2–3 GB RAM, Android 8–9, a Snapdragon 4xx-class CPU; the exact model is chosen in S-05):
+Targets from NF-1, measured on the reference phone. Proposed model (S-05, 2026-11-18): **Xiaomi Redmi 9A, 2 GB RAM, MediaTek Helio G25 (8× Cortex-A53, up to 2.0 GHz), 720×1600 screen, Android 10 (MIUI 12)**. Two points differ from the first plan and need the owner's OK before a phone is bought: (a) it runs Android 10, not 8–9, so Android 8–9 is not yet tested; a 2 GB Android 8–9 phone would be the stricter test; (b) store listings found on 2026-11-18 showed it out of stock, so check local availability. The CPU is a MediaTek, not a Snapdragon 4xx; the class is "2 GB, octa-core A53".
+Sources: https://m.gsmarena.com/xiaomi_redmi_9a-10279.php (listing search, 2026-11-18).
 
 | Measure | Budget | How it is checked |
 | --- | --- | --- |
@@ -281,6 +282,6 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 
 | # | Question | Default until decided |
 | --- | --- | --- |
-| 1 | Exact reference phone model | Chosen in S-05; budgets fixed here |
+| 1 | Exact reference phone model | Proposed Redmi 9A in §10 (S-05); owner confirms, then budgets are measured on it |
 | 2 | Content update host | GitHub Pages of the project, checksummed (decide in S-06) |
 | 3 | Whether the figure is drawn with Compose Canvas or a static SVG asset | Decided in D-06 (2026-11-17): reuse the XNK app's figures, the muscle map (`figure.min.json`, react-muscle-highlighter shapes, MIT, credits kept) and the animated exercise rig (`rig.min.json`, XNK's own work); new rigs only for lifts XNK lacks. |
