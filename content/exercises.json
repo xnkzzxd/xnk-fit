@@ -1,0 +1,5767 @@
+{
+ "schema": 1,
+ "version": "2026-11-18.1",
+ "about": "XNK Fit exercise library. IDs are stable forever; remove with active=false. variantOf points to the easier variant. status=unverified means source is 'praktik umum' (not yet checked against EMG or a guideline).",
+ "settings": [
+  "gym",
+  "home-bw",
+  "home-db"
+ ],
+ "patterns": [
+  "SQUAT",
+  "HINGE",
+  "PUSH_H",
+  "PUSH_V",
+  "PULL_H",
+  "PULL_V",
+  "CURL",
+  "TRI",
+  "LEG_ISO",
+  "CORE",
+  "CARRY",
+  "CARDIO"
+ ],
+ "muscles": [
+  "ABS",
+  "BICEPS",
+  "CALVES",
+  "CHEST",
+  "FOREARM",
+  "FRONT_DELT",
+  "GLUTES",
+  "HAMS",
+  "LATS",
+  "LOWER_BACK",
+  "OBLIQUES",
+  "QUADS",
+  "REAR_DELT",
+  "SIDE_DELT",
+  "TRAPS",
+  "TRICEPS"
+ ],
+ "exercises": [
+  {
+   "id": "SQUAT_BACK",
+   "name_en": "Back Squat (Barbell)",
+   "pattern": "SQUAT",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "rack"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "LOWER_BACK",
+     "ABS"
+    ]
+   },
+   "variantOf": "SQUAT_GOB",
+   "cues_en": [
+    "Bar on upper back, ribs down",
+    "Sit between the hips, knees track toes",
+    "Drive the floor away to stand"
+   ],
+   "hint_id": "Melatih paha depan dan bokong sekaligus; dasar kekuatan kaki.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_FRONT",
+   "name_en": "Front Squat (Barbell)",
+   "pattern": "SQUAT",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "rack"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "QUADS"
+    ],
+    "helper": [
+     "GLUTES",
+     "ABS",
+     "LOWER_BACK"
+    ]
+   },
+   "variantOf": "SQUAT_BACK",
+   "cues_en": [
+    "Elbows high, bar on front shoulders",
+    "Stay tall through the whole rep",
+    "Knees forward, heels flat"
+   ],
+   "hint_id": "Beban di depan menjaga badan tegak dan menekan paha depan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_SMITH",
+   "name_en": "Squat (Smith Machine)",
+   "pattern": "SQUAT",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "smith_machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Feet slightly forward of the bar",
+    "Lower under control to parallel",
+    "Press up without locking hard"
+   ],
+   "hint_id": "Rel penuntun membuat gerakan lebih stabil untuk pemula.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_HACK",
+   "name_en": "Hack Squat (Machine)",
+   "pattern": "SQUAT",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Back flat against the pad",
+    "Feet shoulder width on the plate",
+    "Go deep only as far as the back stays flat"
+   ],
+   "hint_id": "Menekan paha depan dengan punggung ditopang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEG_PRESS",
+   "name_en": "Leg Press (Machine)",
+   "pattern": "SQUAT",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Feet shoulder width, mid-plate",
+    "Lower until knees near 90 degrees",
+    "Press without letting the hips lift"
+   ],
+   "hint_id": "Aman untuk pemula karena punggung ditopang; melatih kaki tanpa beban di punggung.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_GOB",
+   "name_en": "Goblet Squat (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "ABS",
+     "LOWER_BACK"
+    ]
+   },
+   "variantOf": "SQUAT_BW",
+   "cues_en": [
+    "Hold the weight at your chest",
+    "Elbows inside the knees at the bottom",
+    "Stand up tall, squeeze glutes"
+   ],
+   "hint_id": "Beban di depan membantu badan tegak; mudah dipelajari.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_DB",
+   "name_en": "Squat (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "FOREARM",
+     "ABS"
+    ]
+   },
+   "variantOf": "SQUAT_BW",
+   "cues_en": [
+    "Hold dumbbells at your sides",
+    "Sit back and down",
+    "Keep the weights close to your legs"
+   ],
+   "hint_id": "Menambah beban pada squat tanpa rak atau barbel.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_BULG_DB",
+   "name_en": "Bulgarian Split Squat (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "ABS"
+    ]
+   },
+   "variantOf": "SQUAT_BULG_BW",
+   "cues_en": [
+    "Back foot resting on a bench",
+    "Lower straight down, front knee over the foot",
+    "Push through the front heel"
+   ],
+   "hint_id": "Satu kaki bekerja lebih keras; baik untuk kekuatan dan keseimbangan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LUNGE_REV_DB",
+   "name_en": "Reverse Lunge (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "ABS"
+    ]
+   },
+   "variantOf": "LUNGE_REV_BW",
+   "cues_en": [
+    "Step back, drop the back knee",
+    "Front shin stays near vertical",
+    "Push off the front foot to return"
+   ],
+   "hint_id": "Langkah ke belakang lebih ramah untuk lutut.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LUNGE_WALK_DB",
+   "name_en": "Walking Lunge (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "ABS"
+    ]
+   },
+   "variantOf": "LUNGE_WALK_BW",
+   "cues_en": [
+    "Long steps, torso upright",
+    "Back knee lightly touches down",
+    "Keep the steps smooth"
+   ],
+   "hint_id": "Melatih kaki sambil bergerak; butuh ruang lapang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "STEPUP_DB",
+   "name_en": "Step Up (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "CALVES"
+    ]
+   },
+   "variantOf": "STEPUP_BW",
+   "cues_en": [
+    "Whole foot on the box",
+    "Drive up with the top leg, not the bottom",
+    "Lower slowly"
+   ],
+   "hint_id": "Meniru naik tangga; melatih satu kaki secara bergantian.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_SUMO_DB",
+   "name_en": "Sumo Squat (Dumbbell)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Wide stance, toes turned out",
+    "Hold one dumbbell between the legs",
+    "Knees follow the toes"
+   ],
+   "hint_id": "Kaki lebar menekankan bokong dan paha dalam.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_BAND",
+   "name_en": "Squat (Band)",
+   "pattern": "SQUAT",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "ABS"
+    ]
+   },
+   "variantOf": "SQUAT_BW",
+   "cues_en": [
+    "Stand on the band, hold the ends at the shoulders",
+    "Sit back and down",
+    "Drive up against the band"
+   ],
+   "hint_id": "Karet memberi tahanan yang naik di akhir gerakan; bagus untuk di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_BW",
+   "name_en": "Squat (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "ABS"
+    ]
+   },
+   "variantOf": "SQUAT_CHAIR",
+   "cues_en": [
+    "Feet shoulder width",
+    "Sit back like onto a chair",
+    "Knees track over the toes"
+   ],
+   "hint_id": "Gerakan dasar kaki, tanpa alat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_CHAIR",
+   "name_en": "Sit to Stand (Chair)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Sit near the edge of the chair",
+    "Lean forward, stand without using hands",
+    "Sit down slowly"
+   ],
+   "hint_id": "Versi paling mudah; melatih kekuatan untuk aktivitas sehari-hari.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_SPLIT_BW",
+   "name_en": "Split Squat (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": "SQUAT_BW",
+   "cues_en": [
+    "Feet in a long stride",
+    "Lower straight down",
+    "Push through the front heel"
+   ],
+   "hint_id": "Satu kaki di depan, melatih kekuatan sisi demi sisi.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_BULG_BW",
+   "name_en": "Bulgarian Split Squat (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": "SQUAT_SPLIT_BW",
+   "cues_en": [
+    "Back foot on a chair",
+    "Lower under control",
+    "Keep the front foot flat"
+   ],
+   "hint_id": "Lebih berat dari split squat biasa; kursi menopang kaki belakang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LUNGE_REV_BW",
+   "name_en": "Reverse Lunge (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Step back with control",
+    "Back knee near the floor",
+    "Return by pushing the front foot"
+   ],
+   "hint_id": "Langkah mundur lebih mudah dikontrol.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LUNGE_WALK_BW",
+   "name_en": "Walking Lunge (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "CALVES"
+    ]
+   },
+   "variantOf": "LUNGE_REV_BW",
+   "cues_en": [
+    "Take long steps",
+    "Torso tall",
+    "Pause briefly at the bottom"
+   ],
+   "hint_id": "Melatih kaki dan keseimbangan sambil berjalan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "STEPUP_BW",
+   "name_en": "Step Up (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "stairs"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "CALVES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Use a sturdy step or stairs",
+    "Push through the top foot",
+    "Step down slowly"
+   ],
+   "hint_id": "Tangga rumah bisa jadi alat latihan kaki.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_JUMP",
+   "name_en": "Jump Squat (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "CALVES"
+    ]
+   },
+   "variantOf": "SQUAT_BW",
+   "cues_en": [
+    "Squat down then jump",
+    "Land softly with bent knees",
+    "Reset before the next rep"
+   ],
+   "hint_id": "Melatih tenaga ledak dan detak jantung naik.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_WALLSIT",
+   "name_en": "Wall Sit (Bodyweight)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "wall"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Back flat on the wall",
+    "Knees at about 90 degrees",
+    "Breathe steadily, hold"
+   ],
+   "hint_id": "Tahan posisi duduk di dinding; melatih daya tahan paha depan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Isometric: helper muscles unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "SQUAT_PISTOL",
+   "name_en": "Pistol Squat (Assisted)",
+   "pattern": "SQUAT",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "chair",
+    "wall"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES"
+    ],
+    "helper": [
+     "ABS",
+     "CALVES"
+    ]
+   },
+   "variantOf": "SQUAT_SPLIT_BW",
+   "cues_en": [
+    "Hold a stable support",
+    "Lower on one leg",
+    "Use the free leg only to balance"
+   ],
+   "hint_id": "Squat satu kaki; sangat berat, mulai dengan pegangan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Helper muscles unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_RDL_BB",
+   "name_en": "Romanian Deadlift (Barbell)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "HAMS",
+     "GLUTES"
+    ],
+    "helper": [
+     "LOWER_BACK",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "HINGE_RDL_DB",
+   "cues_en": [
+    "Soft knees, push hips back",
+    "Bar slides down the thighs",
+    "Stand up by squeezing the glutes"
+   ],
+   "hint_id": "Menguatkan paha belakang dan bokong dengan punggung tetap lurus.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_DL_BB",
+   "name_en": "Deadlift (Barbell)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "GLUTES",
+     "HAMS",
+     "LOWER_BACK"
+    ],
+    "helper": [
+     "QUADS",
+     "TRAPS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "HINGE_RDL_BB",
+   "cues_en": [
+    "Bar over mid-foot",
+    "Pull the slack out of the bar",
+    "Push the floor away, lock hips"
+   ],
+   "hint_id": "Angkat penuh dari lantai; melatih seluruh rantai belakang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_TRAP",
+   "name_en": "Deadlift (Trap Bar)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "trap_bar"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "GLUTES",
+     "HAMS"
+    ],
+    "helper": [
+     "LOWER_BACK",
+     "TRAPS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "HINGE_RDL_BB",
+   "cues_en": [
+    "Stand centered in the bar",
+    "Chest up, grip the handles",
+    "Stand tall, hips and shoulders rise together"
+   ],
+   "hint_id": "Lebih mudah dipelajari daripada deadlift lurus.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_HT_BB",
+   "name_en": "Hip Thrust (Barbell)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "QUADS"
+    ]
+   },
+   "variantOf": "HINGE_BRIDGE_BW",
+   "cues_en": [
+    "Upper back on the bench",
+    "Chin tucked, ribs down",
+    "Squeeze glutes at the top"
+   ],
+   "hint_id": "Terbaik untuk menguatkan bokong.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_HT_MC",
+   "name_en": "Hip Thrust (Machine)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "QUADS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Set the pad over the hips",
+    "Drive through the heels",
+    "Pause at the top"
+   ],
+   "hint_id": "Mesin membuat gerakan lebih mudah diatur beban.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_GM",
+   "name_en": "Good Morning (Barbell)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "rack"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "HAMS",
+     "LOWER_BACK"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": "HINGE_RDL_BB",
+   "cues_en": [
+    "Bar on the upper back",
+    "Push the hips back, soft knees",
+    "Back stays long"
+   ],
+   "hint_id": "Melatih paha belakang dan punggung bawah; butuh teknik.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_BACKEXT",
+   "name_en": "Back Extension (Machine)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LOWER_BACK",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hips on the pad",
+    "Hinge at the hips, not the waist",
+    "Stop at a straight line"
+   ],
+   "hint_id": "Menguatkan punggung bawah dengan aman.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Lower back vs glutes emphasis depends on technique."
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_PULLTHRU",
+   "name_en": "Pull Through (Cable)",
+   "pattern": "HINGE",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES",
+     "HAMS"
+    ],
+    "helper": [
+     "LOWER_BACK"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Face away from the stack",
+    "Push hips back, flat back",
+    "Stand up squeezing the glutes"
+   ],
+   "hint_id": "Cara aman belajar engsel pinggul dengan tarikan stabil.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_SLDL_DB",
+   "name_en": "Single Leg Romanian Deadlift (Dumbbell)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "HAMS",
+     "GLUTES"
+    ],
+    "helper": [
+     "LOWER_BACK",
+     "ABS"
+    ]
+   },
+   "variantOf": "HINGE_SLDL_BW",
+   "cues_en": [
+    "Hips square to the floor",
+    "Reach long with the free leg",
+    "Stand tall, squeeze the glute"
+   ],
+   "hint_id": "Melatih keseimbangan dan paha belakang satu kaki.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_RDL_DB",
+   "name_en": "Romanian Deadlift (Dumbbell)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "HAMS",
+     "GLUTES"
+    ],
+    "helper": [
+     "LOWER_BACK",
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Dumbbells slide down the thighs",
+    "Hips go back first",
+    "Stand up squeezing the glutes"
+   ],
+   "hint_id": "Versi dumbbell mudah disesuaikan beratnya.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_DL_DB",
+   "name_en": "Deadlift (Dumbbell)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "GLUTES",
+     "HAMS",
+     "LOWER_BACK"
+    ],
+    "helper": [
+     "QUADS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "HINGE_RDL_DB",
+   "cues_en": [
+    "Dumbbells at your sides",
+    "Hinge, then bend knees to the floor",
+    "Drive up"
+   ],
+   "hint_id": "Angkat dari lantai dengan dumbbell di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_HT_DB",
+   "name_en": "Hip Thrust (Dumbbell)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": "HINGE_BRIDGE_BW",
+   "cues_en": [
+    "Shoulders on a bench or couch",
+    "Dumbbell on the hips",
+    "Squeeze at the top"
+   ],
+   "hint_id": "Bokong dilatih dengan beban di pinggul.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_SWING_KB",
+   "name_en": "Swing (Kettlebell)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "kettlebell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "GLUTES",
+     "HAMS"
+    ],
+    "helper": [
+     "LOWER_BACK",
+     "FOREARM",
+     "ABS"
+    ]
+   },
+   "variantOf": "HINGE_RDL_DB",
+   "cues_en": [
+    "Hinge, not squat",
+    "Snap the hips forward",
+    "Arms hang loose like ropes"
+   ],
+   "hint_id": "Melatih tenaga pinggul dan kebugaran.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Glutes vs hamstrings emphasis unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_BAND_PT",
+   "name_en": "Pull Through (Band)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES",
+     "HAMS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Anchor the band low behind you",
+    "Push hips back",
+    "Squeeze the glutes at the top"
+   ],
+   "hint_id": "Versi karet dari pull through kabel; cocok di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_GM_BAND",
+   "name_en": "Good Morning (Band)",
+   "pattern": "HINGE",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "HAMS",
+     "LOWER_BACK"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": "HINGE_RDL_DB",
+   "cues_en": [
+    "Stand on the band, loop over the neck",
+    "Hinge with a flat back",
+    "Stand tall"
+   ],
+   "hint_id": "Karet memberi beban ringan untuk paha belakang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_BRIDGE_BW",
+   "name_en": "Glute Bridge (Bodyweight)",
+   "pattern": "HINGE",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Lie on your back, knees bent",
+    "Push through the heels",
+    "Pause at the top"
+   ],
+   "hint_id": "Dasar untuk bokong; aman untuk pemula.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_BRIDGE_SL",
+   "name_en": "Single Leg Glute Bridge (Bodyweight)",
+   "pattern": "HINGE",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "GLUTES",
+     "HAMS"
+    ],
+    "helper": [
+     "ABS"
+    ]
+   },
+   "variantOf": "HINGE_BRIDGE_BW",
+   "cues_en": [
+    "One foot on the floor",
+    "Keep the hips level",
+    "Push through the heel"
+   ],
+   "hint_id": "Satu kaki, lebih berat dari bridge biasa.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_SLDL_BW",
+   "name_en": "Single Leg Romanian Deadlift (Bodyweight)",
+   "pattern": "HINGE",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "HAMS",
+     "GLUTES"
+    ],
+    "helper": [
+     "LOWER_BACK",
+     "ABS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hips square to the floor",
+    "Reach long with the free leg",
+    "Stand tall"
+   ],
+   "hint_id": "Melatih keseimbangan dan paha belakang tanpa alat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_HT_BW",
+   "name_en": "Hip Thrust (Bodyweight)",
+   "pattern": "HINGE",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "bench"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": "HINGE_BRIDGE_BW",
+   "cues_en": [
+    "Upper back on a chair or couch",
+    "Drive the hips up",
+    "Hold the top briefly"
+   ],
+   "hint_id": "Versi tanpa alat; bagus sebelum menambah beban.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "HINGE_SUPERMAN",
+   "name_en": "Superman (Bodyweight)",
+   "pattern": "HINGE",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LOWER_BACK",
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Lie face down, arms forward",
+    "Lift arms and legs a little",
+    "Hold, breathe, lower slowly"
+   ],
+   "hint_id": "Menguatkan punggung bawah dan bokong.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_BENCH_BB",
+   "name_en": "Bench Press (Barbell)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "bench",
+    "rack"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS",
+     "FRONT_DELT"
+    ],
+    "helper": []
+   },
+   "variantOf": "PUSHH_CHEST_MC",
+   "cues_en": [
+    "Shoulder blades pinched on the bench",
+    "Lower to mid chest",
+    "Press up and slightly back"
+   ],
+   "hint_id": "Dasar dorong dada; melatih dada, trisep dan bahu depan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_INCL_BB",
+   "name_en": "Incline Bench Press (Barbell)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "bench",
+    "rack"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "FRONT_DELT",
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": "PUSHH_BENCH_BB",
+   "cues_en": [
+    "Bench at a low incline",
+    "Lower to the upper chest",
+    "Press without flaring the elbows"
+   ],
+   "hint_id": "Menekankan dada bagian atas dan bahu depan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_BENCH_DB",
+   "name_en": "Bench Press (Dumbbell)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS",
+     "FRONT_DELT"
+    ],
+    "helper": []
+   },
+   "variantOf": "PUSHH_CHEST_MC",
+   "cues_en": [
+    "Dumbbells over the chest",
+    "Lower with elbows about 45 degrees",
+    "Press together at the top"
+   ],
+   "hint_id": "Rentang gerak lebih luas dari barbel dan lebih mudah untuk pemula.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_INCL_DB",
+   "name_en": "Incline Bench Press (Dumbbell)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "FRONT_DELT",
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": "PUSHH_BENCH_DB",
+   "cues_en": [
+    "Bench at a low incline",
+    "Lower to the upper chest",
+    "Press up without clanging the bells"
+   ],
+   "hint_id": "Menekankan dada atas dengan dumbbell.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_CHEST_MC",
+   "name_en": "Chest Press (Machine)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS",
+     "FRONT_DELT"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Seat height so handles are mid chest",
+    "Back flat on the pad",
+    "Press out, return slowly"
+   ],
+   "hint_id": "Paling mudah dipelajari; mesin menjaga jalur gerak.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_INCL_MC",
+   "name_en": "Incline Chest Press (Machine)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "FRONT_DELT",
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": "PUSHH_CHEST_MC",
+   "cues_en": [
+    "Back flat on the pad",
+    "Press up and forward",
+    "Control the return"
+   ],
+   "hint_id": "Dada bagian atas dengan mesin.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_PECDEC",
+   "name_en": "Pec Deck (Machine)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Elbows slightly bent",
+    "Bring the arms together in an arc",
+    "Open slowly"
+   ],
+   "hint_id": "Menarik dada dari samping; gerakan isolasi.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_FLY_CBL",
+   "name_en": "Chest Fly (Cable)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CHEST"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": "PUSHH_PECDEC",
+   "cues_en": [
+    "Step forward, soft elbows",
+    "Sweep hands together",
+    "Return slowly"
+   ],
+   "hint_id": "Tahanan kabel terasa konstan sepanjang gerakan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_FLY_DB",
+   "name_en": "Chest Fly (Dumbbell)",
+   "pattern": "PUSH_H",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CHEST"
+    ],
+    "helper": [
+     "FRONT_DELT",
+     "BICEPS"
+    ]
+   },
+   "variantOf": "PUSHH_PECDEC",
+   "cues_en": [
+    "Slight elbow bend, fixed",
+    "Open to chest level",
+    "Squeeze back up"
+   ],
+   "hint_id": "Meregangkan dada; pakai beban ringan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_FLOOR_DB",
+   "name_en": "Floor Press (Dumbbell)",
+   "pattern": "PUSH_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Lie on the floor, knees bent",
+    "Elbows touch the floor",
+    "Press up"
+   ],
+   "hint_id": "Bisa tanpa bangku; lantai membatasi rentang gerak.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_BAND",
+   "name_en": "Chest Press (Band)",
+   "pattern": "PUSH_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Band across the back",
+    "Press forward, hands level",
+    "Return slowly"
+   ],
+   "hint_id": "Tahanan karet dengan posisi berdiri; ringan di sendi.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_BAND_FLY",
+   "name_en": "Chest Fly (Band)",
+   "pattern": "PUSH_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Band behind the back",
+    "Soft elbows, hug a barrel",
+    "Hold one second"
+   ],
+   "hint_id": "Isolasi dada dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_PUSHUP_INCL",
+   "name_en": "Push-Up (Incline)",
+   "pattern": "PUSH_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "wall",
+    "chair"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS"
+    ],
+    "helper": [
+     "FRONT_DELT",
+     "ABS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hands on a wall or chair",
+    "Body in a straight line",
+    "Chest to the surface"
+   ],
+   "hint_id": "Versi mudah push-up; dasar untuk pemula.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_PUSHUP_KNEE",
+   "name_en": "Push-Up (Knees)",
+   "pattern": "PUSH_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": "PUSHH_PUSHUP_INCL",
+   "cues_en": [
+    "Knees on the floor",
+    "Straight line knee to head",
+    "Lower slowly"
+   ],
+   "hint_id": "Lebih ringan dari push-up penuh.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_PUSHUP",
+   "name_en": "Push-Up (Bodyweight)",
+   "pattern": "PUSH_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "TRICEPS",
+     "FRONT_DELT"
+    ],
+    "helper": [
+     "ABS"
+    ]
+   },
+   "variantOf": "PUSHH_PUSHUP_KNEE",
+   "cues_en": [
+    "Hands under shoulders",
+    "Body in a straight line",
+    "Chest to the floor"
+   ],
+   "hint_id": "Gerakan dorong paling dasar; melatih dada dan trisep.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHH_PUSHUP_DECL",
+   "name_en": "Push-Up (Decline)",
+   "pattern": "PUSH_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "CHEST",
+     "FRONT_DELT",
+     "TRICEPS"
+    ],
+    "helper": [
+     "ABS"
+    ]
+   },
+   "variantOf": "PUSHH_PUSHUP",
+   "cues_en": [
+    "Feet on a chair",
+    "Keep the body straight",
+    "Press the floor away"
+   ],
+   "hint_id": "Kaki lebih tinggi, beban lebih besar ke dada atas dan bahu.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_OHP_BB",
+   "name_en": "Overhead Press (Barbell)",
+   "pattern": "PUSH_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "rack"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": [
+     "ABS",
+     "TRAPS",
+     "CHEST"
+    ]
+   },
+   "variantOf": "PUSHV_MC",
+   "cues_en": [
+    "Bar at the collarbone",
+    "Squeeze glutes, ribs down",
+    "Press up, head through"
+   ],
+   "hint_id": "Dasar tekan bahu; melatih bahu dan trisep.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_MC",
+   "name_en": "Shoulder Press (Machine)",
+   "pattern": "PUSH_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Seat set so handles are at shoulder height",
+    "Press without shrugging",
+    "Lower slowly"
+   ],
+   "hint_id": "Mudah dipelajari dan stabil untuk pemula.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_DB",
+   "name_en": "Shoulder Press (Dumbbell)",
+   "pattern": "PUSH_V",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": [
+     "TRAPS",
+     "ABS"
+    ]
+   },
+   "variantOf": "PUSHV_BAND",
+   "cues_en": [
+    "Dumbbells at shoulder height",
+    "Press up and slightly in",
+    "Lower to the ears"
+   ],
+   "hint_id": "Bahu bekerja secara seimbang; beban bisa kecil di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_LAT_DB",
+   "name_en": "Lateral Raise (Dumbbell)",
+   "pattern": "PUSH_V",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "SIDE_DELT"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Slight elbow bend",
+    "Raise to shoulder height",
+    "Lower slowly"
+   ],
+   "hint_id": "Membentuk bahu bagian samping.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_LAT_CBL",
+   "name_en": "Lateral Raise (Cable)",
+   "pattern": "PUSH_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "SIDE_DELT"
+    ],
+    "helper": []
+   },
+   "variantOf": "PUSHV_LAT_DB",
+   "cues_en": [
+    "Cable crosses in front",
+    "Lead with the elbow",
+    "Stop at shoulder height"
+   ],
+   "hint_id": "Tahanan kabel konstan, bahu samping.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_BAND",
+   "name_en": "Shoulder Press (Band)",
+   "pattern": "PUSH_V",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Stand on the band",
+    "Press overhead",
+    "Lower slowly"
+   ],
+   "hint_id": "Tekan bahu dengan karet; ringan di sendi.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_LAT_BAND",
+   "name_en": "Lateral Raise (Band)",
+   "pattern": "PUSH_V",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "SIDE_DELT"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Stand on the band",
+    "Raise to shoulder height",
+    "Control the return"
+   ],
+   "hint_id": "Bahu samping dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_PIKE",
+   "name_en": "Pike Push-Up (Bodyweight)",
+   "pattern": "PUSH_V",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": [
+     "CHEST",
+     "TRAPS"
+    ]
+   },
+   "variantOf": "PUSHV_PIKE_KNEE",
+   "cues_en": [
+    "Hips high, body in an inverted V",
+    "Lower the head toward the floor",
+    "Press up"
+   ],
+   "hint_id": "Versi dorong vertikal tanpa alat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_PIKE_KNEE",
+   "name_en": "Pike Push-Up (Elevated Knees)",
+   "pattern": "PUSH_V",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Knees on a chair, hips high",
+    "Bend elbows to lower",
+    "Press up"
+   ],
+   "hint_id": "Lebih mudah dari pike biasa.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PUSHV_HSPU_WALL",
+   "name_en": "Handstand Push-Up (Wall)",
+   "pattern": "PUSH_V",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "wall"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "FRONT_DELT",
+     "SIDE_DELT",
+     "TRICEPS"
+    ],
+    "helper": [
+     "TRAPS",
+     "ABS"
+    ]
+   },
+   "variantOf": "PUSHV_PIKE",
+   "cues_en": [
+    "Kick up to the wall",
+    "Lower head between hands",
+    "Press back up"
+   ],
+   "hint_id": "Sangat berat; hanya bila sudah kuat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Helper muscles unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_CBLROW",
+   "name_en": "Seated Row (Cable)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Chest tall, shoulders down",
+    "Pull elbows back",
+    "Return with control"
+   ],
+   "hint_id": "Menguatkan punggung tengah dan postur.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_BBROW",
+   "name_en": "Bent Over Row (Barbell)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS",
+     "LOWER_BACK",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "PULLH_CBLROW",
+   "cues_en": [
+    "Hinge, back flat",
+    "Pull the bar to the belly",
+    "Lower under control"
+   ],
+   "hint_id": "Beban berat untuk punggung; butuh teknik baik.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_TBAR",
+   "name_en": "T-Bar Row (Barbell)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS"
+    ],
+    "helper": [
+     "BICEPS",
+     "REAR_DELT",
+     "LOWER_BACK"
+    ]
+   },
+   "variantOf": "PULLH_CBLROW",
+   "cues_en": [
+    "Back flat, chest up",
+    "Pull to the chest",
+    "Squeeze the blades"
+   ],
+   "hint_id": "Punggung tengah dengan posisi stabil.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_CSROW_MC",
+   "name_en": "Chest Supported Row (Machine)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Chest on the pad",
+    "Pull elbows back",
+    "Pause at the end"
+   ],
+   "hint_id": "Dada ditopang sehingga punggung bawah tidak ikut bekerja.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_SA_CBL",
+   "name_en": "Single Arm Row (Cable)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Stable stance",
+    "Pull to the hip",
+    "Do not twist"
+   ],
+   "hint_id": "Satu sisi bergantian; menyeimbangkan kiri dan kanan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_FACEPULL",
+   "name_en": "Face Pull (Cable)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "REAR_DELT",
+     "TRAPS"
+    ],
+    "helper": [
+     "BICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Rope at face height",
+    "Pull toward the forehead",
+    "Elbows high"
+   ],
+   "hint_id": "Menjaga bahu sehat dan melatih bahu belakang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Rear delts vs traps order unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_REVFLY_MC",
+   "name_en": "Reverse Fly (Machine)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "REAR_DELT"
+    ],
+    "helper": [
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Chest on the pad",
+    "Open arms to the sides",
+    "Do not shrug"
+   ],
+   "hint_id": "Melatih bahu belakang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_DBROW",
+   "name_en": "Single Arm Row (Dumbbell)",
+   "pattern": "PULL_H",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS"
+    ],
+    "helper": [
+     "BICEPS",
+     "REAR_DELT",
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "One hand on a bench or chair",
+    "Pull the elbow to the hip",
+    "Lower under control"
+   ],
+   "hint_id": "Mudah dipelajari; cukup dumbbell dan kursi.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_CSROW_DB",
+   "name_en": "Chest Supported Row (Dumbbell)",
+   "pattern": "PULL_H",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS"
+    ]
+   },
+   "variantOf": "PULLH_DBROW",
+   "cues_en": [
+    "Chest on an incline bench",
+    "Row both elbows back",
+    "Pause at the top"
+   ],
+   "hint_id": "Tanpa tekanan di punggung bawah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_BO_DB",
+   "name_en": "Bent Over Row (Dumbbell)",
+   "pattern": "PULL_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS",
+     "LOWER_BACK"
+    ]
+   },
+   "variantOf": "PULLH_DBROW",
+   "cues_en": [
+    "Hinge, back flat",
+    "Pull both dumbbells to the belly",
+    "Lower slowly"
+   ],
+   "hint_id": "Tarik dengan dua dumbbell; butuh punggung kuat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_REVFLY_DB",
+   "name_en": "Reverse Fly (Dumbbell)",
+   "pattern": "PULL_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "REAR_DELT"
+    ],
+    "helper": [
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hinge forward",
+    "Open the arms like wings",
+    "Light weight, no swing"
+   ],
+   "hint_id": "Bahu belakang dengan dumbbell ringan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_BAND_ROW",
+   "name_en": "Seated Row (Band)",
+   "pattern": "PULL_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Sit with legs out, band around the feet",
+    "Pull elbows back",
+    "Return slowly"
+   ],
+   "hint_id": "Tarik dengan karet; cocok di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_BAND_FACE",
+   "name_en": "Face Pull (Band)",
+   "pattern": "PULL_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "REAR_DELT",
+     "TRAPS"
+    ],
+    "helper": [
+     "BICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Anchor the band at face height",
+    "Pull toward the face",
+    "Elbows high"
+   ],
+   "hint_id": "Postur bahu dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_BAND_REV",
+   "name_en": "Reverse Fly (Band)",
+   "pattern": "PULL_H",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "REAR_DELT"
+    ],
+    "helper": [
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hold the band in front",
+    "Pull apart to the sides",
+    "Squeeze the blades"
+   ],
+   "hint_id": "Bahu belakang dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_INVROW",
+   "name_en": "Inverted Row (Table)",
+   "pattern": "PULL_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "table"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS",
+     "ABS"
+    ]
+   },
+   "variantOf": "PULLH_INVROW_KNEE",
+   "cues_en": [
+    "Lie under a sturdy table, grip the edge",
+    "Body in a straight line",
+    "Pull the chest up"
+   ],
+   "hint_id": "Pakai meja kokoh; hanya bila aman.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_INVROW_KNEE",
+   "name_en": "Inverted Row (Bent Knees)",
+   "pattern": "PULL_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "table"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS",
+     "REAR_DELT"
+    ],
+    "helper": [
+     "BICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Bent knees",
+    "Pull the chest up",
+    "Lower slowly"
+   ],
+   "hint_id": "Lebih mudah karena kaki menopang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLH_TOWEL",
+   "name_en": "Towel Row (Door)",
+   "pattern": "PULL_H",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "towel",
+    "door"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS",
+     "TRAPS"
+    ],
+    "helper": [
+     "BICEPS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Towel around a sturdy door handle",
+    "Lean back, arms straight",
+    "Pull the chest toward the door"
+   ],
+   "hint_id": "Tarik handuk di pintu; pastikan pintu aman.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles and safety of the door setup unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_PULLDOWN",
+   "name_en": "Lat Pulldown (Cable)",
+   "pattern": "PULL_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS",
+     "REAR_DELT"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Chest up, lean back slightly",
+    "Pull the bar to the collarbone",
+    "Return with control"
+   ],
+   "hint_id": "Melatih punggung lebar; bisa jadi dasar sebelum pull-up.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_VBAR",
+   "name_en": "V-Bar Pulldown (Cable)",
+   "pattern": "PULL_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": "PULLV_PULLDOWN",
+   "cues_en": [
+    "Neutral grip",
+    "Pull to the chest",
+    "Do not swing"
+   ],
+   "hint_id": "Pegangan netral lebih nyaman untuk bahu.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_STRAIGHT",
+   "name_en": "Straight Arm Pulldown (Cable)",
+   "pattern": "PULL_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "TRICEPS",
+     "ABS"
+    ]
+   },
+   "variantOf": "PULLV_PULLDOWN",
+   "cues_en": [
+    "Arms nearly straight",
+    "Pull the bar to the thighs",
+    "Feel the lats"
+   ],
+   "hint_id": "Fokus punggung lebar tanpa lengan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_ASSIST",
+   "name_en": "Pull Up (Assisted Machine)",
+   "pattern": "PULL_V",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS",
+     "REAR_DELT"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Choose a counterweight",
+    "Chest up",
+    "Pull the chin over the bar"
+   ],
+   "hint_id": "Pull-up dengan bantuan berat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_PULLUP",
+   "name_en": "Pull Up (Bar)",
+   "pattern": "PULL_V",
+   "group": "bodyweight",
+   "settings": [
+    "gym",
+    "home-bw"
+   ],
+   "equipment": [
+    "bar"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS",
+     "REAR_DELT",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "PULLV_NEG",
+   "cues_en": [
+    "Hang with shoulders down",
+    "Pull the chest to the bar",
+    "Lower fully"
+   ],
+   "hint_id": "Gerakan tarik vertikal terbaik; butuh palang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_CHINUP",
+   "name_en": "Chin Up (Bar)",
+   "pattern": "PULL_V",
+   "group": "bodyweight",
+   "settings": [
+    "gym",
+    "home-bw"
+   ],
+   "equipment": [
+    "bar"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "BICEPS"
+    ],
+    "helper": [
+     "TRAPS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": "PULLV_NEG",
+   "cues_en": [
+    "Palms facing you",
+    "Pull the chin over the bar",
+    "Lower slowly"
+   ],
+   "hint_id": "Lebih banyak bisep; biasanya lebih mudah dari pull-up.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_NEG",
+   "name_en": "Negative Pull Up (Bar)",
+   "pattern": "PULL_V",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "bar",
+    "chair"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Start with chin over the bar",
+    "Lower for 3 to 5 seconds",
+    "Reset on the chair"
+   ],
+   "hint_id": "Latihan turun lambat untuk belajar pull-up.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_BAND_PD",
+   "name_en": "Lat Pulldown (Band)",
+   "pattern": "PULL_V",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Anchor the band overhead",
+    "Kneel and pull the elbows down",
+    "Return slowly"
+   ],
+   "hint_id": "Tarik vertikal dengan karet; tanpa palang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_BAND_ST",
+   "name_en": "Straight Arm Pulldown (Band)",
+   "pattern": "PULL_V",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "TRICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Anchor the band overhead",
+    "Arms nearly straight",
+    "Pull to the thighs"
+   ],
+   "hint_id": "Punggung lebar dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_BAND_PU",
+   "name_en": "Pull Up (Band Assisted)",
+   "pattern": "PULL_V",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band",
+    "bar"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS"
+    ],
+    "helper": [
+     "BICEPS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": "PULLV_PULLUP",
+   "cues_en": [
+    "Loop the band over the bar",
+    "Place a knee or foot in the loop",
+    "Pull the chin over"
+   ],
+   "hint_id": "Karet membantu pull-up.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "PULLV_DB_PULLOVER",
+   "name_en": "Pullover (Dumbbell)",
+   "pattern": "PULL_V",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "LATS",
+     "CHEST"
+    ],
+    "helper": [
+     "TRICEPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hold one dumbbell overhead",
+    "Lower behind the head",
+    "Pull over the chest"
+   ],
+   "hint_id": "Meregangkan punggung lebar dan dada.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Lats vs chest as main muscle is debated; check EMG."
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_BB",
+   "name_en": "Bicep Curl (Barbell)",
+   "pattern": "CURL",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Elbows by the sides",
+    "Curl without swinging",
+    "Lower slowly"
+   ],
+   "hint_id": "Bisep dengan beban berat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_EZ",
+   "name_en": "Bicep Curl (EZ Bar)",
+   "pattern": "CURL",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Grip the angled parts",
+    "Elbows by the sides",
+    "Lower slowly"
+   ],
+   "hint_id": "Nyaman untuk pergelangan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_CABLE",
+   "name_en": "Bicep Curl (Cable)",
+   "pattern": "CURL",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Elbows pinned",
+    "Curl up",
+    "Slow return"
+   ],
+   "hint_id": "Tahanan kabel konstan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_PREACHER",
+   "name_en": "Preacher Curl (Machine)",
+   "pattern": "CURL",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Arms on the pad",
+    "Curl up",
+    "Do not lift the shoulders"
+   ],
+   "hint_id": "Meminimalkan ayunan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_INCL_DB",
+   "name_en": "Incline Curl (Dumbbell)",
+   "pattern": "CURL",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": "CURL_DB",
+   "cues_en": [
+    "Lean back on the bench",
+    "Arms hang behind the body",
+    "Curl up"
+   ],
+   "hint_id": "Meregangkan bisep.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_DB",
+   "name_en": "Bicep Curl (Dumbbell)",
+   "pattern": "CURL",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Elbows by the sides",
+    "Rotate palms up",
+    "Lower slowly"
+   ],
+   "hint_id": "Mudah dilakukan di rumah dengan dumbbell.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_HAMMER",
+   "name_en": "Hammer Curl (Dumbbell)",
+   "pattern": "CURL",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Palms face each other",
+    "Curl up",
+    "Lower slowly"
+   ],
+   "hint_id": "Menguatkan lengan bawah juga.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CURL_BAND",
+   "name_en": "Bicep Curl (Band)",
+   "pattern": "CURL",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "BICEPS"
+    ],
+    "helper": [
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Stand on the band",
+    "Curl to the shoulders",
+    "Control the return"
+   ],
+   "hint_id": "Karet cocok untuk bisep di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_PUSHDOWN",
+   "name_en": "Triceps Pushdown (Cable)",
+   "pattern": "TRI",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Elbows pinned to the sides",
+    "Press down",
+    "Do not lean forward"
+   ],
+   "hint_id": "Trisep dengan tahanan konstan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_ROPE",
+   "name_en": "Triceps Rope Pushdown (Cable)",
+   "pattern": "TRI",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": "TRI_PUSHDOWN",
+   "cues_en": [
+    "Elbows by the sides",
+    "Spread the rope at the bottom",
+    "Return slowly"
+   ],
+   "hint_id": "Tali memberi rentang gerak lebih luas.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_OH_CBL",
+   "name_en": "Overhead Triceps Extension (Cable)",
+   "pattern": "TRI",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": "TRI_PUSHDOWN",
+   "cues_en": [
+    "Elbows beside the head",
+    "Extend the arms",
+    "Return slowly"
+   ],
+   "hint_id": "Meregangkan trisep.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_SKULL",
+   "name_en": "Skull Crusher (EZ Bar)",
+   "pattern": "TRI",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "bench"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": "TRI_OH_DB",
+   "cues_en": [
+    "Elbows pointing up",
+    "Lower toward the forehead",
+    "Extend the arms"
+   ],
+   "hint_id": "Isolasi trisep.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_CLOSE",
+   "name_en": "Close Grip Bench Press (Barbell)",
+   "pattern": "TRI",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "barbell",
+    "bench",
+    "rack"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "TRICEPS",
+     "CHEST"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": "TRI_PUSHDOWN",
+   "cues_en": [
+    "Hands shoulder width",
+    "Elbows close",
+    "Press up"
+   ],
+   "hint_id": "Menekankan trisep dengan beban berat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_DIPMC",
+   "name_en": "Triceps Dip (Machine)",
+   "pattern": "TRI",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": [
+     "CHEST"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Seat adjusted",
+    "Press down",
+    "Control the return"
+   ],
+   "hint_id": "Dip dengan bantuan mesin.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_OH_DB",
+   "name_en": "Overhead Triceps Extension (Dumbbell)",
+   "pattern": "TRI",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hold one dumbbell with both hands",
+    "Elbows beside the head",
+    "Extend the arms"
+   ],
+   "hint_id": "Mudah dilakukan di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_BAND",
+   "name_en": "Triceps Pushdown (Band)",
+   "pattern": "TRI",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Anchor the band overhead",
+    "Elbows pinned",
+    "Press down"
+   ],
+   "hint_id": "Trisep dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_BAND_OH",
+   "name_en": "Overhead Triceps Extension (Band)",
+   "pattern": "TRI",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Stand on the band",
+    "Elbows beside the head",
+    "Extend the arms"
+   ],
+   "hint_id": "Meregangkan trisep dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_BENCHDIP",
+   "name_en": "Bench Dip (Chair)",
+   "pattern": "TRI",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "chair"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": [
+     "CHEST",
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": "TRI_NARROW",
+   "cues_en": [
+    "Hands on the chair edge",
+    "Lower the body",
+    "Press up"
+   ],
+   "hint_id": "Dip dengan kursi; hati-hati pada bahu.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_NARROW",
+   "name_en": "Push-Up (Triceps)",
+   "pattern": "TRI",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": [
+     "CHEST"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hands under shoulders",
+    "Elbows tight",
+    "Lower slowly"
+   ],
+   "hint_id": "Push-up dengan siku rapat untuk trisep.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "TRI_BWEXT",
+   "name_en": "Triceps Extension (Bodyweight)",
+   "pattern": "TRI",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "table"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "TRICEPS"
+    ],
+    "helper": [
+     "FRONT_DELT"
+    ]
+   },
+   "variantOf": "TRI_NARROW",
+   "cues_en": [
+    "Hands on a sturdy table edge",
+    "Lower the head toward the hands",
+    "Press up"
+   ],
+   "hint_id": "Trisep tanpa alat; butuh meja kokoh.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Main/helper split unverified."
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_EXT",
+   "name_en": "Leg Extension (Machine)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Pad on the lower shin",
+    "Extend without locking hard",
+    "Lower slowly"
+   ],
+   "hint_id": "Isolasi paha depan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_CURL_SEAT",
+   "name_en": "Seated Leg Curl (Machine)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "HAMS"
+    ],
+    "helper": [
+     "CALVES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Pad above the heels",
+    "Curl under the seat",
+    "Return slowly"
+   ],
+   "hint_id": "Isolasi paha belakang.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_CURL_LYING",
+   "name_en": "Lying Leg Curl (Machine)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "HAMS"
+    ],
+    "helper": [
+     "CALVES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hips pressed down",
+    "Curl toward the glutes",
+    "Lower slowly"
+   ],
+   "hint_id": "Paha belakang dengan berbaring.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_CALF_STAND",
+   "name_en": "Standing Calf Raise (Machine)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CALVES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Balls of the feet on the edge",
+    "Rise as high as possible",
+    "Lower to a deep stretch"
+   ],
+   "hint_id": "Melatih betis.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_ABD",
+   "name_en": "Hip Abduction (Machine)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Sit tall",
+    "Push the knees apart",
+    "Return slowly"
+   ],
+   "hint_id": "Bokong samping.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_ADD",
+   "name_en": "Hip Adduction (Machine)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "machine"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Sit tall",
+    "Squeeze the knees together",
+    "Return slowly"
+   ],
+   "hint_id": "Melatih paha bagian dalam; otot ini tidak ada di daftar 16, jadi dicatat ke paha depan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Adductors are not in the 16-muscle list; QUADS is a stand-in. Decide: drop the entry or add a muscle."
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_KICK_CBL",
+   "name_en": "Glute Kickback (Cable)",
+   "pattern": "LEG_ISO",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Strap on the ankle",
+    "Kick back, not up",
+    "Squeeze the glute"
+   ],
+   "hint_id": "Isolasi bokong.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_CALF_DB",
+   "name_en": "Calf Raise (Dumbbell)",
+   "pattern": "LEG_ISO",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell",
+    "stairs"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CALVES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hold a dumbbell",
+    "Rise up",
+    "Lower to a stretch"
+   ],
+   "hint_id": "Betis dengan dumbbell; bisa di tangga.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_CALF_BW",
+   "name_en": "Calf Raise (Bodyweight)",
+   "pattern": "LEG_ISO",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "stairs"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "CALVES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Balls of the feet on a step",
+    "Rise high",
+    "Lower slowly"
+   ],
+   "hint_id": "Betis tanpa alat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_CALF_SL",
+   "name_en": "Single Leg Calf Raise (Bodyweight)",
+   "pattern": "LEG_ISO",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "stairs"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CALVES"
+    ],
+    "helper": []
+   },
+   "variantOf": "LEGISO_CALF_BW",
+   "cues_en": [
+    "Hold a wall for balance",
+    "Rise on one foot",
+    "Lower slowly"
+   ],
+   "hint_id": "Lebih berat dari dua kaki.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_KICK_BW",
+   "name_en": "Donkey Kick (Bodyweight)",
+   "pattern": "LEG_ISO",
+   "group": "bodyweight",
+   "settings": [
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": [
+     "HAMS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "On hands and knees",
+    "Kick back and up",
+    "Do not arch the back"
+   ],
+   "hint_id": "Bokong tanpa alat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "LEGISO_BAND_ABD",
+   "name_en": "Hip Abduction (Band)",
+   "pattern": "LEG_ISO",
+   "group": "db-band",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "GLUTES"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Band above the knees",
+    "Push the knees out",
+    "Return slowly"
+   ],
+   "hint_id": "Bokong samping dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CARRY_FARMER_DB",
+   "name_en": "Farmer's Walk (Dumbbell)",
+   "pattern": "CARRY",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "FOREARM",
+     "TRAPS"
+    ],
+    "helper": [
+     "ABS",
+     "OBLIQUES",
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Tall posture",
+    "Walk with short steps",
+    "Do not lean"
+   ],
+   "hint_id": "Melatih genggaman dan inti.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARRY_SUIT_DB",
+   "name_en": "Suitcase Carry (Dumbbell)",
+   "pattern": "CARRY",
+   "group": "gym",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "dumbbell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "OBLIQUES",
+     "FOREARM"
+    ],
+    "helper": [
+     "ABS",
+     "TRAPS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "One dumbbell only",
+    "Stay upright",
+    "Do not lean to the side"
+   ],
+   "hint_id": "Melatih sisi perut.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARRY_TRAP",
+   "name_en": "Farmer's Walk (Trap Bar)",
+   "pattern": "CARRY",
+   "group": "gym",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "trap_bar"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "FOREARM",
+     "TRAPS"
+    ],
+    "helper": [
+     "ABS",
+     "GLUTES"
+    ]
+   },
+   "variantOf": "CARRY_FARMER_DB",
+   "cues_en": [
+    "Stand in the bar",
+    "Walk steadily",
+    "Breathe"
+   ],
+   "hint_id": "Berat penuh untuk genggaman.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARRY_KB",
+   "name_en": "Suitcase Carry (Kettlebell)",
+   "pattern": "CARRY",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "kettlebell"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "OBLIQUES",
+     "FOREARM"
+    ],
+    "helper": [
+     "ABS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hold one kettlebell",
+    "Keep the shoulders level",
+    "Walk slowly"
+   ],
+   "hint_id": "Kettlebell untuk di rumah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARRY_FRONT_KB",
+   "name_en": "Front Rack Carry (Kettlebell)",
+   "pattern": "CARRY",
+   "group": "db-band",
+   "settings": [
+    "gym",
+    "home-db"
+   ],
+   "equipment": [
+    "kettlebell"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "ABS",
+     "FOREARM"
+    ],
+    "helper": [
+     "OBLIQUES",
+     "TRAPS"
+    ]
+   },
+   "variantOf": "CARRY_KB",
+   "cues_en": [
+    "Hold at the chest",
+    "Ribs down",
+    "Walk smoothly"
+   ],
+   "hint_id": "Menyiapkan inti.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_PLANK",
+   "name_en": "Plank (Bodyweight)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym",
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "ABS"
+    ],
+    "helper": [
+     "OBLIQUES",
+     "LOWER_BACK"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Forearms under shoulders",
+    "Straight line",
+    "Breathe"
+   ],
+   "hint_id": "Menguatkan inti.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_SIDEPLANK",
+   "name_en": "Side Plank (Bodyweight)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym",
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "OBLIQUES"
+    ],
+    "helper": [
+     "ABS"
+    ]
+   },
+   "variantOf": "CORE_PLANK",
+   "cues_en": [
+    "Stack the feet",
+    "Hips lifted",
+    "Breathe"
+   ],
+   "hint_id": "Samping perut.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Obliques main; glute medius not in the 16."
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_DEADBUG",
+   "name_en": "Dead Bug (Bodyweight)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym",
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "ABS"
+    ],
+    "helper": [
+     "OBLIQUES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Back flat on the floor",
+    "Extend opposite arm and leg",
+    "Move slowly"
+   ],
+   "hint_id": "Melatih kontrol inti.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_HOLLOW",
+   "name_en": "Hollow Hold (Bodyweight)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym",
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 3,
+   "muscles": {
+    "main": [
+     "ABS"
+    ],
+    "helper": []
+   },
+   "variantOf": "CORE_DEADBUG",
+   "cues_en": [
+    "Lower back pressed down",
+    "Lift shoulders and legs",
+    "Hold"
+   ],
+   "hint_id": "Inti yang berat.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_CRUNCH",
+   "name_en": "Crunch (Bodyweight)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym",
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "ABS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Hands by the temples",
+    "Curl the ribs to the hips",
+    "Lower slowly"
+   ],
+   "hint_id": "Perut atas.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_BIRDDOG",
+   "name_en": "Bird Dog (Bodyweight)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym",
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "mat"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "ABS",
+     "LOWER_BACK"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "On hands and knees",
+    "Extend opposite arm and leg",
+    "Keep the hips level"
+   ],
+   "hint_id": "Stabilitas punggung dan inti.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_PALLOF",
+   "name_en": "Pallof Press (Cable)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "cable"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "OBLIQUES",
+     "ABS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Stand sideways",
+    "Press the hands out",
+    "Resist the twist"
+   ],
+   "hint_id": "Anti-rotasi.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CORE_PALLOF_BAND",
+   "name_en": "Pallof Press (Band)",
+   "pattern": "CORE",
+   "group": "cardio-core",
+   "settings": [
+    "home-db"
+   ],
+   "equipment": [
+    "band"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "OBLIQUES",
+     "ABS"
+    ],
+    "helper": []
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Anchor the band",
+    "Press out",
+    "Resist twist"
+   ],
+   "hint_id": "Anti-rotasi dengan karet.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "draft"
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_TREAD",
+   "name_en": "Treadmill (Run)",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "treadmill"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "HAMS",
+     "CALVES"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Easy pace",
+    "Land softly",
+    "Look ahead"
+   ],
+   "hint_id": "Kardio dasar.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_WALK",
+   "name_en": "Walking (Treadmill)",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "treadmill"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "HAMS",
+     "CALVES"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Tall posture",
+    "Relaxed arms",
+    "Steady pace"
+   ],
+   "hint_id": "Kardio ringan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_BIKE",
+   "name_en": "Stationary Bike",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "bike"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "HAMS"
+    ],
+    "helper": [
+     "GLUTES",
+     "CALVES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Seat height at hip",
+    "Steady cadence",
+    "Relax shoulders"
+   ],
+   "hint_id": "Kardio dengan beban sendi rendah.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_ROWER",
+   "name_en": "Rowing Machine",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "gym"
+   ],
+   "equipment": [
+    "rower"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "LATS",
+     "HAMS"
+    ],
+    "helper": [
+     "GLUTES",
+     "BICEPS",
+     "ABS"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Legs, body, arms",
+    "Reverse on the way back",
+    "Smooth stroke"
+   ],
+   "hint_id": "Kardio seluruh tubuh.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_WALK_BW",
+   "name_en": "Walking (Bodyweight)",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 1,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "HAMS",
+     "CALVES"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Brisk pace",
+    "Swing the arms",
+    "Breathe easily"
+   ],
+   "hint_id": "Jalan cepat; murah dan sederhana.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_JOG",
+   "name_en": "Jogging (Bodyweight)",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "none"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "QUADS",
+     "HAMS",
+     "CALVES"
+    ],
+    "helper": [
+     "GLUTES"
+    ]
+   },
+   "variantOf": "CARDIO_WALK_BW",
+   "cues_en": [
+    "Easy pace",
+    "Land softly",
+    "Breathe"
+   ],
+   "hint_id": "Lari ringan.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  },
+  {
+   "id": "CARDIO_ROPE",
+   "name_en": "Jump Rope",
+   "pattern": "CARDIO",
+   "group": "cardio-core",
+   "settings": [
+    "home-db",
+    "home-bw"
+   ],
+   "equipment": [
+    "rope"
+   ],
+   "level": 2,
+   "muscles": {
+    "main": [
+     "CALVES"
+    ],
+    "helper": [
+     "QUADS",
+     "FOREARM"
+    ]
+   },
+   "variantOf": null,
+   "cues_en": [
+    "Small hops",
+    "Wrists turn the rope",
+    "Land on the balls of the feet"
+   ],
+   "hint_id": "Kardio intens.",
+   "source": {
+    "pattern": "Ratamess 2009, ACSM position stand (Rules S14)",
+    "muscles_cues": "praktik umum",
+    "status": "unverified"
+   },
+   "review": {
+    "muscles": "uncertain",
+    "note": "Muscles approximate for this movement type; check EMG or a guideline."
+   },
+   "active": true
+  }
+ ]
+}

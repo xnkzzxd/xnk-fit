@@ -3,7 +3,7 @@
 | | |
 | --- | --- |
 | Task | S-06 (TODO), Design §16 item 2 |
-| Status | Draft, 2026-11-18. Decision proposed; owner confirms. |
+| Status | 2026-11-18. Owner left the choice to Claude, so this is the decision. Repo name `xnk-fit-content`; no second host on day one. |
 | Rules it must keep | PR-3 (no backend of ours), PV-2 (static files only, no user data sent), Content.md (SHA-256 per file, one transaction swap) |
 
 ## 1. Decision
@@ -55,5 +55,4 @@ Limits quoted from https://docs.github.com/en/pages/getting-started-with-github-
 ## 6. Open points (⚠)
 
 - Cloudflare Pages bandwidth terms are not in the pages read.
-- Owner confirms the repo name and whether a second host is wanted from day one.
 - `SHA256withECDSA` on API 26 (B-04).
