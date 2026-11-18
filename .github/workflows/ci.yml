@@ -8,8 +8,10 @@ on:
 permissions:
   contents: read
 
+# Several sessions push to one branch; a per-branch group would cancel each run before it finishes.
+# One group per commit (or per pull request) keeps every push's result.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
