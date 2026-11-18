@@ -75,7 +75,7 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 | `food_log` | id, day (local date), slot (pagi, siang, malam, camilan), foodId?, recipeId?, grams, kcal, protein, carb, fat, quickKcal? | Kcal stored at write time so the log never changes when a food row updates. |
 | `meal_plan` | id, weekStart, slot, day, optionCode, locked (bool), cookOnce (bool), eatOut (bool) | M-3. |
 | `reminder` | type, hour, minute, days, enabled | R-1. |
-| `points_event` | id, at, kind (workout, activity, foodDay, measure, streakWeek, target), points | Level = sum. Never from weight (P-3). |
+| `points_event` | id, at, kind (workout, activity, foodDay, measure, streakWeek, loggedWeek), points | Level = sum. Never from weight (P-3). |
 | `badge` | code, earnedAt | 18 codes in Content.md. |
 | `journey_moment` | id, at, text, kind, photoId? | P-2. |
 | `backup_meta` | lastBackupAt, lastDeviceId, lastDriveFileIds | B-6 compares device ids. |

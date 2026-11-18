@@ -102,6 +102,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | 2026-11-18 | C-01 done: exercise library draft, checker. |
 | 2026-11-18 | C-02 done: pattern check passes on the 149 entries. |
 | 2026-11-18 | C-01 muscle review (Opus) done: sources on all 149 entries, 21 muscle changes, 35 entries still ⚠ (Content §12). |
+| 2026-11-18 | Autonomy rule for sessions: owner is away; decisions taken by Claude are listed in `docs/Decisions.md` for the owner to reverse. `R_PTS_TARGET` now counts weeks with food logged on 5+ days (matches `LOGWEEK_1`). |
 | 2026-11-18 | C-10 owner decisions: `TARGET_WEEK` replaced by `LOGWEEK_1` (a week with food logged on 5+ days, no calorie number); personal record definition accepted as written (Content §6). |
 | 2026-11-18 | Owner decisions: S-05 Redmi 10, S-06 left to Claude, S-01 name accepted, S-08 last. Sessions started for B-01 and C-01. |
 | 2026-11-18 | S-07 done: R_ACT set to FAO/WHO/UNU PAL values (owner), G1 closed; mockup Bantuan example updated. |
