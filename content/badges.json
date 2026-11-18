@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "note": "C-10. 18 badges (PRD P-5, Rules R_BADGE_COUNT). Codes are stable IDs and are stored in the Room table badge(code, earnedAt). A badge is earned once and never taken back. No badge depends on weight change, calorie deficit, very low intake or training volume above the WHO range (PRD PR-5). Messages: Indonesian, neutral, no kamu/Kak, at most one emoji, no weight or calorie judgement (Rules R_TONE, R_TONE_WORDS). Icon is a name from the mockup icon set (docs/mockups/mock.js); no assets.",
+  "metrics": {
+    "finishedWorkouts": "COUNT(workout WHERE endedAt IS NOT NULL). Fields: workout.endedAt.",
+    "personalRecords": "COUNT of done workout_set rows (done = true, form = rapi or ragu, kind = normal) where, for the same exerciseId, weightKg is higher than every earlier done set (by doneAt), or weightKg is equal and reps is higher, or (no weightKg, no bandLevel) reps is higher. The first ever set of an exercise is a baseline, not a record. At most one record per exercise per workout (the best set). Fields: workout_set.exerciseId, weightKg, reps, done, doneAt, workoutId.",
+    "streakWeeks": "Current streak length in weeks under Rules R_STREAK and R_STREAK_GRACE; a week (Monday to Sunday, local time) counts with at least 2 active days (a finished workout, an activity row, or a food_log day with at least 1 entry). Peak value is kept: the badge is earned when the value reaches the target at any time. Fields: workout.endedAt, activity.at, food_log.day.",
+    "activityMinutesWeek": "Per calendar week (Monday to Sunday), SUM(activity.minutes) where effort = vigorous counts double (Rules section 4, S13). Fields: activity.minutes, activity.effort, activity.at.",
+    "foodDays": "COUNT(DISTINCT food_log.day). Fields: food_log.day.",
+    "targetWeeks": "COUNT of weeks whose logged daily average kcal is within +-10 % of the day target and with at least 5 logged days (Rules R_PTS_TARGET). The same rows that create points_event kind = target. Fields: food_log.kcal, food_log.day, points_event.kind.",
+    "scheduledMeasures": "COUNT(points_event WHERE kind = measure) (measure taken on the scheduled day, Rules R_PTS_MEASURE). Any measure type counts, never the value. Fields: points_event.kind, measure.takenAt.",
+    "photos": "COUNT(photo). Fields: photo.takenAt.",
+    "returnAfterBreak": "On a workout finish (workout.endedAt set), days between this endedAt and the previous finished workout's endedAt are at least 14. Fields: workout.endedAt.",
+    "level": "Level from the sum of points_event.points against the thresholds in Rules R_LEVEL. Points never come from weight (R_PTS_NOWEIGHT). Fields: points_event.points.",
+    "plannedDays": "For one weekStart, number of distinct meal_plan.day values with at least one row, out of 7. Fields: meal_plan.weekStart, meal_plan.day."
+  },
+  "badges": [
+    {
+      "code": "WO_FIRST", "order": 1, "title_id": "Latihan pertama", "icon": "star",
+      "condition": { "metric": "finishedWorkouts", "op": ">=", "value": 1, "tables": ["workout"], "fields": ["workout.endedAt"], "text_en": "First finished workout" },
+      "message_id": "Latihan pertama selesai. Awal yang baik. 🎉"
+    },
+    {
+      "code": "WO_5", "order": 2, "title_id": "Lima kali latihan", "icon": "medal",
+      "condition": { "metric": "finishedWorkouts", "op": ">=", "value": 5, "tables": ["workout"], "fields": ["workout.endedAt"], "text_en": "5 finished workouts" },
+      "message_id": "Lima latihan sudah selesai. Kebiasaan mulai terbentuk."
+    },
+    {
+      "code": "WO_20", "order": 3, "title_id": "Dua puluh latihan", "icon": "medal",
+      "condition": { "metric": "finishedWorkouts", "op": ">=", "value": 20, "tables": ["workout"], "fields": ["workout.endedAt"], "text_en": "20 finished workouts" },
+      "message_id": "Dua puluh latihan selesai. Konsistensi yang patut dicatat."
+    },
+    {
+      "code": "WO_50", "order": 4, "title_id": "Lima puluh latihan", "icon": "trophy",
+      "condition": { "metric": "finishedWorkouts", "op": ">=", "value": 50, "tables": ["workout"], "fields": ["workout.endedAt"], "text_en": "50 finished workouts" },
+      "message_id": "Lima puluh latihan selesai. Latihan sudah jadi bagian dari rutinitas. 🏆"
+    },
+    {
+      "code": "STREAK_4", "order": 5, "title_id": "Empat minggu", "icon": "flame",
+      "condition": { "metric": "streakWeeks", "op": ">=", "value": 4, "tables": ["workout", "activity", "food_log"], "fields": ["workout.endedAt", "activity.at", "food_log.day"], "text_en": "Streak of 4 weeks" },
+      "message_id": "Empat minggu berturut-turut aktif. Ritme yang stabil."
+    },
+    {
+      "code": "STREAK_12", "order": 6, "title_id": "Dua belas minggu", "icon": "flame",
+      "condition": { "metric": "streakWeeks", "op": ">=", "value": 12, "tables": ["workout", "activity", "food_log"], "fields": ["workout.endedAt", "activity.at", "food_log.day"], "text_en": "Streak of 12 weeks" },
+      "message_id": "Dua belas minggu berjalan. Tiga bulan konsisten. 🔥"
+    },
+    {
+      "code": "PR_FIRST", "order": 7, "title_id": "Rekor pertama", "icon": "trophy",
+      "condition": { "metric": "personalRecords", "op": ">=", "value": 1, "tables": ["workout_set"], "fields": ["workout_set.exerciseId", "workout_set.weightKg", "workout_set.reps", "workout_set.doneAt"], "text_en": "First personal record" },
+      "message_id": "Rekor pribadi pertama tercatat. Kemajuan nyata."
+    },
+    {
+      "code": "PR_10", "order": 8, "title_id": "Sepuluh rekor", "icon": "trophy",
+      "condition": { "metric": "personalRecords", "op": ">=", "value": 10, "tables": ["workout_set"], "fields": ["workout_set.exerciseId", "workout_set.weightKg", "workout_set.reps", "workout_set.doneAt"], "text_en": "10 personal records" },
+      "message_id": "Sepuluh rekor pribadi. Latihan terus berkembang."
+    },
+    {
+      "code": "ACT_150", "order": 9, "title_id": "150 menit", "icon": "run",
+      "condition": { "metric": "activityMinutesWeek", "op": ">=", "value": 150, "window": "one calendar week", "tables": ["activity"], "fields": ["activity.minutes", "activity.effort", "activity.at"], "text_en": "150 activity minutes in one week (vigorous counts double)" },
+      "message_id": "150 menit aktif dalam satu minggu, sesuai anjuran WHO."
+    },
+    {
+      "code": "ACT_300", "order": 10, "title_id": "300 menit", "icon": "run",
+      "condition": { "metric": "activityMinutesWeek", "op": ">=", "value": 300, "window": "one calendar week", "tables": ["activity"], "fields": ["activity.minutes", "activity.effort", "activity.at"], "text_en": "300 activity minutes in one week (vigorous counts double)" },
+      "message_id": "300 menit aktif dalam satu minggu, batas atas anjuran WHO. Istirahat tetap bagian dari rencana."
+    },
+    {
+      "code": "FOOD_7", "order": 11, "title_id": "Tujuh hari catat", "icon": "food",
+      "condition": { "metric": "foodDays", "op": ">=", "value": 7, "tables": ["food_log"], "fields": ["food_log.day"], "text_en": "Food logged on 7 days" },
+      "message_id": "Tujuh hari catatan makan. Gambaran pola makan mulai terlihat."
+    },
+    {
+      "code": "FOOD_30", "order": 12, "title_id": "Tiga puluh hari catat", "icon": "food",
+      "condition": { "metric": "foodDays", "op": ">=", "value": 30, "tables": ["food_log"], "fields": ["food_log.day"], "text_en": "Food logged on 30 days" },
+      "message_id": "Tiga puluh hari catatan makan. Data yang berguna untuk menyesuaikan rencana."
+    },
+    {
+      "code": "TARGET_WEEK", "order": 13, "title_id": "Minggu sesuai target", "icon": "check",
+      "condition": { "metric": "targetWeeks", "op": ">=", "value": 1, "tables": ["food_log", "points_event"], "fields": ["food_log.kcal", "food_log.day", "points_event.kind"], "text_en": "A week within +-10 % of target (at least 5 logged days; counts below and above target alike)" },
+      "message_id": "Satu minggu berjalan sesuai target harian."
+    },
+    {
+      "code": "MEASURE_4", "order": 14, "title_id": "Empat kali ukur", "icon": "ruler",
+      "condition": { "metric": "scheduledMeasures", "op": ">=", "value": 4, "tables": ["points_event", "measure"], "fields": ["points_event.kind", "measure.takenAt"], "text_en": "4 scheduled measures (the value is never judged)" },
+      "message_id": "Empat kali pengukuran sesuai jadwal. Catatan yang rutin memudahkan melihat tren."
+    },
+    {
+      "code": "PHOTO_FIRST", "order": 15, "title_id": "Foto pertama", "icon": "camera",
+      "condition": { "metric": "photos", "op": ">=", "value": 1, "tables": ["photo"], "fields": ["photo.takenAt"], "text_en": "First progress photo (kept on the phone)" },
+      "message_id": "Foto kemajuan pertama tersimpan, hanya di HP ini."
+    },
+    {
+      "code": "BACK", "order": 16, "title_id": "Kembali lagi", "icon": "heart",
+      "condition": { "metric": "returnAfterBreak", "op": ">=", "value": 14, "unit": "days", "tables": ["workout"], "fields": ["workout.endedAt"], "text_en": "Back after 14+ days away, workout finished" },
+      "message_id": "Selamat datang kembali. Satu latihan selesai, itu yang terpenting."
+    },
+    {
+      "code": "LEVEL_3", "order": 17, "title_id": "Level 3", "icon": "star",
+      "condition": { "metric": "level", "op": ">=", "value": 3, "tables": ["points_event"], "fields": ["points_event.points"], "text_en": "Reached level 3 (250 points, Rules R_LEVEL)" },
+      "message_id": "Level 3 tercapai. Poin terus bertambah dan tidak pernah berkurang."
+    },
+    {
+      "code": "PLAN_WEEK", "order": 18, "title_id": "Rencana seminggu", "icon": "cal",
+      "condition": { "metric": "plannedDays", "op": ">=", "value": 7, "tables": ["meal_plan"], "fields": ["meal_plan.weekStart", "meal_plan.day"], "text_en": "Week planner full for 7 days" },
+      "message_id": "Rencana makan tujuh hari sudah terisi. Minggu ini lebih mudah diatur."
+    }
+  ]
+}

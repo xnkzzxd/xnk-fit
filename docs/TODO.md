@@ -49,7 +49,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | C-07 | Bought and regional meal numbers (Content §8, C-07) | C-04 | Sonnet 5.5 | [ ] |
 | C-08 | Exercise figures: reuse the XNK muscle map and 21 rig patterns (D-06); draw sourced rigs only for lifts XNK lacks | C-01, D-06 | Opus 5.5 | [ ] |
 | C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
-| C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [ ] |
+| C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [x] (`content/badges.json`, `tools/check-badges.mjs` passes; Content §6) |
 | C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [ ] |
 
 ## Phase B — Build (after D-06 approval)
