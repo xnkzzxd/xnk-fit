@@ -64,6 +64,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_GOB",
    "cues_en": [
     "Bar on upper back, ribs down",
@@ -107,6 +108,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_BACK",
    "cues_en": [
     "Elbows high, bar on front shoulders",
@@ -147,6 +149,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Feet slightly forward of the bar",
@@ -186,6 +189,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Back flat against the pad",
@@ -226,6 +230,7 @@
      "HAMS"
     ]
    },
+   "rig": "leg-press",
    "variantOf": null,
    "cues_en": [
     "Feet shoulder width, mid-plate",
@@ -268,6 +273,7 @@
      "LOWER_BACK"
     ]
    },
+   "rig": "goblet-squat",
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Hold the weight at your chest",
@@ -309,6 +315,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Hold dumbbells at your sides",
@@ -352,6 +359,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_BULG_BW",
    "cues_en": [
     "Back foot resting on a bench",
@@ -393,6 +401,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "LUNGE_REV_BW",
    "cues_en": [
     "Step back, drop the back knee",
@@ -435,6 +444,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "LUNGE_WALK_BW",
    "cues_en": [
     "Long steps, torso upright",
@@ -478,6 +488,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": "STEPUP_BW",
    "cues_en": [
     "Whole foot on the box",
@@ -518,6 +529,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Wide stance, toes turned out",
@@ -558,6 +570,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Stand on the band, hold the ends at the shoulders",
@@ -599,6 +612,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_CHAIR",
    "cues_en": [
     "Feet shoulder width",
@@ -637,6 +651,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Sit near the edge of the chair",
@@ -677,6 +692,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Feet in a long stride",
@@ -716,6 +732,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_SPLIT_BW",
    "cues_en": [
     "Back foot on a chair",
@@ -756,6 +773,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Step back with control",
@@ -797,6 +815,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": "LUNGE_REV_BW",
    "cues_en": [
     "Take long steps",
@@ -837,6 +856,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Use a sturdy step or stairs",
@@ -876,6 +896,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Squat down then jump",
@@ -915,6 +936,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Back flat on the wall",
@@ -957,6 +979,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": "SQUAT_SPLIT_BW",
    "cues_en": [
     "Hold a stable support",
@@ -998,6 +1021,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_DB",
    "cues_en": [
     "Soft knees, push hips back",
@@ -1041,6 +1065,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_BB",
    "cues_en": [
     "Bar over mid-foot",
@@ -1083,6 +1108,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_BB",
    "cues_en": [
     "Stand centered in the bar",
@@ -1123,6 +1149,7 @@
      "QUADS"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "Upper back on the bench",
@@ -1162,6 +1189,7 @@
      "QUADS"
     ]
    },
+   "rig": "hip-thrust-machine",
    "variantOf": null,
    "cues_en": [
     "Set the pad over the hips",
@@ -1203,6 +1231,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_BB",
    "cues_en": [
     "Bar on the upper back",
@@ -1243,6 +1272,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hips on the pad",
@@ -1283,6 +1313,7 @@
      "LOWER_BACK"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Face away from the stack",
@@ -1325,6 +1356,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_SLDL_BW",
    "cues_en": [
     "Hips square to the floor",
@@ -1367,6 +1399,7 @@
      "FOREARM"
     ]
    },
+   "rig": "db-rdl",
    "variantOf": null,
    "cues_en": [
     "Dumbbells slide down the thighs",
@@ -1410,6 +1443,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_DB",
    "cues_en": [
     "Dumbbells at your sides",
@@ -1452,6 +1486,7 @@
      "QUADS"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "Shoulders on a bench or couch",
@@ -1495,6 +1530,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_DB",
    "cues_en": [
     "Hinge, not squat",
@@ -1533,6 +1569,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Anchor the band low behind you",
@@ -1573,6 +1610,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_RDL_DB",
    "cues_en": [
     "Stand on the band, loop over the neck",
@@ -1612,6 +1650,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Lie on your back, knees bent",
@@ -1651,6 +1690,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "One foot on the floor",
@@ -1692,6 +1732,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hips square to the floor",
@@ -1731,6 +1772,7 @@
      "QUADS"
     ]
    },
+   "rig": null,
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "Upper back on a chair or couch",
@@ -1772,6 +1814,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Lie face down, arms forward",
@@ -1813,6 +1856,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "PUSHH_CHEST_MC",
    "cues_en": [
     "Shoulder blades pinched on the bench",
@@ -1853,6 +1897,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "PUSHH_BENCH_BB",
    "cues_en": [
     "Bench at a low incline",
@@ -1894,6 +1939,7 @@
     ],
     "helper": []
    },
+   "rig": "db-bench-press",
    "variantOf": "PUSHH_CHEST_MC",
    "cues_en": [
     "Dumbbells over the chest",
@@ -1934,6 +1980,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "PUSHH_BENCH_DB",
    "cues_en": [
     "Bench at a low incline",
@@ -1973,6 +2020,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Seat height so handles are mid chest",
@@ -2011,6 +2059,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "PUSHH_CHEST_MC",
    "cues_en": [
     "Back flat on the pad",
@@ -2050,6 +2099,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": "chest-fly-machine",
    "variantOf": null,
    "cues_en": [
     "Elbows slightly bent",
@@ -2089,6 +2139,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHH_PECDEC",
    "cues_en": [
     "Step forward, soft elbows",
@@ -2130,6 +2181,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHH_PECDEC",
    "cues_en": [
     "Slight elbow bend, fixed",
@@ -2170,6 +2222,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Lie on the floor, knees bent",
@@ -2210,6 +2263,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Band across the back",
@@ -2249,6 +2303,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Band behind the back",
@@ -2291,6 +2346,7 @@
      "ABS"
     ]
    },
+   "rig": "incline-push-up",
    "variantOf": null,
    "cues_en": [
     "Hands on a wall or chair",
@@ -2331,6 +2387,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHH_PUSHUP_INCL",
    "cues_en": [
     "Knees on the floor",
@@ -2372,6 +2429,7 @@
      "ABS"
     ]
    },
+   "rig": "push-up",
    "variantOf": "PUSHH_PUSHUP_KNEE",
    "cues_en": [
     "Hands under shoulders",
@@ -2412,6 +2470,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHH_PUSHUP",
    "cues_en": [
     "Feet on a chair",
@@ -2456,6 +2515,7 @@
      "CHEST"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHV_MC",
    "cues_en": [
     "Bar at the collarbone",
@@ -2495,6 +2555,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Seat set so handles are at shoulder height",
@@ -2538,6 +2599,7 @@
      "ABS"
     ]
    },
+   "rig": "db-shoulder-press",
    "variantOf": "PUSHV_BAND",
    "cues_en": [
     "Dumbbells at shoulder height",
@@ -2580,6 +2642,7 @@
      "TRAPS"
     ]
    },
+   "rig": "lateral-raise",
    "variantOf": null,
    "cues_en": [
     "Slight elbow bend",
@@ -2621,6 +2684,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHV_LAT_DB",
    "cues_en": [
     "Cable crosses in front",
@@ -2660,6 +2724,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -2701,6 +2766,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -2743,6 +2809,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHV_PIKE_KNEE",
    "cues_en": [
     "Hips high, body in an inverted V",
@@ -2782,6 +2849,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Knees on a chair, hips high",
@@ -2824,6 +2892,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "PUSHV_PIKE",
    "cues_en": [
     "Kick up to the wall",
@@ -2866,6 +2935,7 @@
      "FOREARM"
     ]
    },
+   "rig": "seated-cable-row",
    "variantOf": null,
    "cues_en": [
     "Chest tall, shoulders down",
@@ -2909,6 +2979,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "PULLH_CBLROW",
    "cues_en": [
     "Hinge, back flat",
@@ -2950,6 +3021,7 @@
      "LOWER_BACK"
     ]
    },
+   "rig": null,
    "variantOf": "PULLH_CBLROW",
    "cues_en": [
     "Back flat, chest up",
@@ -2991,6 +3063,7 @@
      "BICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Chest on the pad",
@@ -3032,6 +3105,7 @@
      "OBLIQUES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Stable stance",
@@ -3072,6 +3146,7 @@
      "BICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Rope at face height",
@@ -3111,6 +3186,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Chest on the pad",
@@ -3155,6 +3231,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "One hand on a bench or chair",
@@ -3198,6 +3275,7 @@
      "BICEPS"
     ]
    },
+   "rig": null,
    "variantOf": "PULLH_DBROW",
    "cues_en": [
     "Chest on an incline bench",
@@ -3240,6 +3318,7 @@
      "LOWER_BACK"
     ]
    },
+   "rig": "db-row",
    "variantOf": "PULLH_DBROW",
    "cues_en": [
     "Hinge, back flat",
@@ -3279,6 +3358,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hinge forward",
@@ -3320,6 +3400,7 @@
      "BICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Sit with legs out, band around the feet",
@@ -3360,6 +3441,7 @@
      "BICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Anchor the band at face height",
@@ -3399,6 +3481,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hold the band in front",
@@ -3441,6 +3524,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "PULLH_INVROW_KNEE",
    "cues_en": [
     "Lie under a sturdy table, grip the edge",
@@ -3481,6 +3565,7 @@
      "BICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Bent knees",
@@ -3523,6 +3608,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Towel around a sturdy door handle",
@@ -3564,6 +3650,7 @@
      "REAR_DELT"
     ]
    },
+   "rig": "lat-pulldown",
    "variantOf": null,
    "cues_en": [
     "Chest up, lean back slightly",
@@ -3604,6 +3691,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": "PULLV_PULLDOWN",
    "cues_en": [
     "Neutral grip",
@@ -3644,6 +3732,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": "PULLV_PULLDOWN",
    "cues_en": [
     "Arms nearly straight",
@@ -3685,6 +3774,7 @@
      "REAR_DELT"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Choose a counterweight",
@@ -3728,6 +3818,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "PULLV_NEG",
    "cues_en": [
     "Hang with shoulders down",
@@ -3770,6 +3861,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "PULLV_NEG",
    "cues_en": [
     "Palms facing you",
@@ -3810,6 +3902,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Start with chin over the bar",
@@ -3850,6 +3943,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Anchor the band overhead",
@@ -3889,6 +3983,7 @@
      "TRICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Anchor the band overhead",
@@ -3930,6 +4025,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": "PULLV_PULLUP",
    "cues_en": [
     "Loop the band over the bar",
@@ -3971,6 +4067,7 @@
      "TRICEPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hold one dumbbell overhead",
@@ -4010,6 +4107,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Elbows by the sides",
@@ -4048,6 +4146,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Grip the angled parts",
@@ -4086,6 +4185,7 @@
      "FOREARM"
     ]
    },
+   "rig": "bicep-curl-cable",
    "variantOf": null,
    "cues_en": [
     "Elbows pinned",
@@ -4125,6 +4225,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Arms on the pad",
@@ -4166,6 +4267,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": "CURL_DB",
    "cues_en": [
     "Lean back on the bench",
@@ -4206,6 +4308,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Elbows by the sides",
@@ -4245,6 +4348,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Palms face each other",
@@ -4284,6 +4388,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -4321,6 +4426,7 @@
     ],
     "helper": []
    },
+   "rig": "triceps-pushdown",
    "variantOf": null,
    "cues_en": [
     "Elbows pinned to the sides",
@@ -4358,6 +4464,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "TRI_PUSHDOWN",
    "cues_en": [
     "Elbows by the sides",
@@ -4395,6 +4502,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "TRI_PUSHDOWN",
    "cues_en": [
     "Elbows beside the head",
@@ -4433,6 +4541,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "TRI_OH_DB",
    "cues_en": [
     "Elbows pointing up",
@@ -4475,6 +4584,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": "TRI_PUSHDOWN",
    "cues_en": [
     "Hands shoulder width",
@@ -4514,6 +4624,7 @@
      "CHEST"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Seat adjusted",
@@ -4552,6 +4663,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hold one dumbbell with both hands",
@@ -4589,6 +4701,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Anchor the band overhead",
@@ -4626,6 +4739,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -4666,6 +4780,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": "TRI_NARROW",
    "cues_en": [
     "Hands on the chair edge",
@@ -4705,6 +4820,7 @@
      "CHEST"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hands under shoulders",
@@ -4743,6 +4859,7 @@
      "FRONT_DELT"
     ]
    },
+   "rig": null,
    "variantOf": "TRI_NARROW",
    "cues_en": [
     "Hands on a sturdy table edge",
@@ -4780,6 +4897,7 @@
     ],
     "helper": []
    },
+   "rig": "leg-extension",
    "variantOf": null,
    "cues_en": [
     "Pad on the lower shin",
@@ -4818,6 +4936,7 @@
      "CALVES"
     ]
    },
+   "rig": "seated-leg-curl",
    "variantOf": null,
    "cues_en": [
     "Pad above the heels",
@@ -4857,6 +4976,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hips pressed down",
@@ -4894,6 +5014,7 @@
     ],
     "helper": []
    },
+   "rig": "calf-raise-machine",
    "variantOf": null,
    "cues_en": [
     "Balls of the feet on the edge",
@@ -4931,6 +5052,7 @@
     ],
     "helper": []
    },
+   "rig": "hip-abduction-machine",
    "variantOf": null,
    "cues_en": [
     "Sit tall",
@@ -4968,6 +5090,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Sit tall",
@@ -5007,6 +5130,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Strap on the ankle",
@@ -5045,6 +5169,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hold a dumbbell",
@@ -5082,6 +5207,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Balls of the feet on a step",
@@ -5119,6 +5245,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "LEGISO_CALF_BW",
    "cues_en": [
     "Hold a wall for balance",
@@ -5158,6 +5285,7 @@
      "HAMS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "On hands and knees",
@@ -5195,6 +5323,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Band above the knees",
@@ -5238,6 +5367,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Tall posture",
@@ -5281,6 +5411,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "One dumbbell only",
@@ -5323,6 +5454,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": "CARRY_FARMER_DB",
    "cues_en": [
     "Stand in the bar",
@@ -5365,6 +5497,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hold one kettlebell",
@@ -5407,6 +5540,7 @@
      "TRAPS"
     ]
    },
+   "rig": null,
    "variantOf": "CARRY_KB",
    "cues_en": [
     "Hold at the chest",
@@ -5448,6 +5582,7 @@
      "OBLIQUES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Forearms under shoulders",
@@ -5491,6 +5626,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": "CORE_PLANK",
    "cues_en": [
     "Stack the feet",
@@ -5532,6 +5668,7 @@
      "OBLIQUES"
     ]
    },
+   "rig": "dead-bug",
    "variantOf": null,
    "cues_en": [
     "Back flat on the floor",
@@ -5571,6 +5708,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": "CORE_DEADBUG",
    "cues_en": [
     "Lower back pressed down",
@@ -5612,6 +5750,7 @@
      "OBLIQUES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Hands by the temples",
@@ -5654,6 +5793,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "On hands and knees",
@@ -5692,6 +5832,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Stand sideways",
@@ -5730,6 +5871,7 @@
     ],
     "helper": []
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Anchor the band",
@@ -5771,6 +5913,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Easy pace",
@@ -5812,6 +5955,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Tall posture",
@@ -5853,6 +5997,7 @@
      "CALVES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Seat height at hip",
@@ -5896,6 +6041,7 @@
      "ABS"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Legs, body, arms",
@@ -5938,6 +6084,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Brisk pace",
@@ -5980,6 +6127,7 @@
      "GLUTES"
     ]
    },
+   "rig": null,
    "variantOf": "CARDIO_WALK_BW",
    "cues_en": [
     "Easy pace",
@@ -6021,6 +6169,7 @@
      "FOREARM"
     ]
    },
+   "rig": null,
    "variantOf": null,
    "cues_en": [
     "Small hops",
