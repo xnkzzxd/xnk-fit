@@ -59,7 +59,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [x] (verified in sandbox: `testDebugUnitTest`, `lintRelease`, `assembleRelease` green; size and permission checks pass; CI workflow written but not yet run on GitHub; not run on a device or emulator, no emulator in sandbox) |
+| B-01 | Repo skeleton: Gradle, Compose, Room, DataStore, WorkManager, R8, CI (unit tests, lint, text-literal rule, APK size check) | D-06 | Sonnet 5.5 | [x] (verified in sandbox: `testDebugUnitTest`, `lintRelease`, `assembleRelease` green; size and permission checks pass; CI green on GitHub (run 44420990967, all steps: text-literal rule and tests, unit tests, lint, release build with R8, permission check, APK size check); first run failed in Lint on `OldTargetApi` (runner SDK newer than target 36), check turned off and recorded in Design §13; concurrency changed so pushes from parallel sessions stop cancelling each other's runs; not run on a device or emulator, no emulator in sandbox) |
 | B-02 | Domain: targets, BMR/TDEE, safety gates, pace check; every Rules ID has a test | B-01, S-07 | Opus 5.5 | [ ] |
 | B-03 | Room schema v1 and migration test harness; export schema JSON | B-01, D-02 | Sonnet 5.5 | [x] (`data/db`, `app/schemas/.../1.json`; 28 tests green, 1 ignored example migration; JVM/Robolectric only, nothing run on a device; see Design §3) |
 | B-04 | Content loader and checksummed content update (PV-2) | B-03, C-01, C-03 | Sonnet 5.5 | [ ] |
