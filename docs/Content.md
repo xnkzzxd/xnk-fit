@@ -84,6 +84,31 @@ Household measures (M-6): each food may have a list `household = [{code, label, 
 
 Each food row: name_id, name_en, kcal per 100 g, protein, carbohydrate, fat, fibre, sodium (mg), household list, source code, `isEstimate`.
 
+
+### 4.2 TKPI 2020 table (C-03)
+
+File: `content/foods-tkpi.json`. Built by `node tools/build-tkpi.mjs <tkpi.pdf>`, checked by `node tools/check-foods-tkpi.mjs`. The PDF (Kemenkes, 148 pages, table "Komposisi zat gizi makanan per 100 gram BDD", PDF pages 15 to 83) is **not in the repo** (copyright, 21 MB); the owner's copy is on Google Drive. Run the builder from a folder other than the download folder.
+
+- **1,143 rows** in the table, all `source = tkpi`, `isEstimate = false`, 64 table pages, 13 sections (4.1 Serealia to 4.13 Minuman). **3 rows** are not in the table and sit in `needsHandCheck` with page numbers (below). No TKPI code is missing apart from those 3.
+- **Per row:** `id` (`TKPI_` + code), `code` (original TKPI code, e.g. AR001), `name_id`, `group` and `groupName` (section), `processing` (raw `R` / processed `P`, from the code), `kcalPer100`, `protein`, `fat`, `carb`, `fibre`, `sodium`, `micro` (water, ash, calcium, phosphorus, iron, potassium, copper, zinc, retinol, beta-carotene, total carotene, thiamin, riboflavin, niacin, vitamin C), `bdd` (edible portion %), `sourceRef` (the SUMBER column), `page` (PDF page), `flags`.
+- **Method:** `pdftotext -bbox` gives each word with its x/y position. A row starts at its code; name and source words are taken by position; each number goes to the column whose centre (from the unit header row of that page) is nearest. Because of that, **blank cells stay blank** (`null`, "tidak dianalisis") and do not shift later numbers. Page layouts differ by a few points, so the column centres are read per page. Numbers are copied as printed; nothing is rounded, filled in, imputed or estimated.
+- **Atwater (Rules S9):** the checker compares printed kcal with 4/4/9 from protein, carbohydrate and fat. TKPI does not always use 4/4/9 (it uses food-specific factors, counts fibre and other carbohydrates differently, and some legumes, oils and alcohol-containing items differ), so a row is only flagged `kcalVsMacros` when it is off by more than 15 % **and** more than 10 kcal. 53 rows are flagged. Several of these are clearly typos in the printed table (for example AP022 Mi kering: 339 kcal with carbohydrate 6.3 g; DR004 Andewi: 226 kcal; BR033 Umbi Uwi: carbohydrate 82.3 g with 120 kcal). The app shows the printed kcal, not a recalculated one.
+- **Other source flags:** `proximateSum` (water + protein + fat + carbohydrate + ash is not 100 g ± 6 g), 23 rows; `implausible:<field>` (one printed value above a physical limit, for example copper 110 mg in apples ER003, which looks like a unit mix-up in the table), 21 values; `macrosOver100` (GP022, GP060); `fibreOverCarb`, 7 rows. In total **92 rows carry at least one flag** (8.0 %). The numbers are still exactly as printed. B-04 decides whether flagged rows are hidden from search; until then treat flagged rows as ⚠ and do not use the flagged field in any calculation.
+- **Not in this file:** `name_en` is `null` (English names are only in the PDF index, not parsed); `household` is empty (C-05); `halal` and `allergens` are `null` because TKPI does not state them (items with pork, such as KR003 Lemak babi, must be marked by C-11 or B-04 before any halal filter is trusted).
+- **Empty cells:** fibre is empty in 220 rows, BDD in 155 rows (the PDF itself says some foods have no BDD). Sodium and other micronutrients are empty where the PDF is empty. TKPI marks imputed and borrowed values in light blue; the colour is not in the text, so the file does not say which values are imputed.
+
+**Hand-check list (3 rows, not in the table):**
+
+| Code | Page | Name | Reason |
+| --- | --- | --- | --- |
+| ER101 | 53 | Salak, segar | fat cell is empty in the PDF (core value) |
+| GP059 | 70 | Dendeng belut, goreng, masakan | one cell is printed as "1,480" (thousands comma); not guessed |
+| MP013 | 79 | Melase | protein cell is empty in the PDF (core value) |
+
+**Spot-check (30 random rows, seed 20261118) against the PDF:** each row's values were compared in order with an independent plain-text extraction (`pdftotext -layout`), 30 of 30 matched. Column placement with blanks was also checked by eye on the rendered page 68 (rows GP020 to GP038, including GP034, GP033 and GP022). Rows: AP009, AP039, AP049, AP087, BP070, CP019, CP033, CP034, CP046, DR021, DR101, DR116, DR151, DP003, DP044, ER092, ER097, ER107, FP029, FP066, GR060, GP008, GP034, GP036, GP061, GP095, HP002, HP007, MP008, NR001. The order-only comparison cannot see a value that moved to a neighbouring column, so the sum-to-100 and 4/4/9 checks in the checker are the guard for that.
+
+**Known limits (kendala):** blank cells and the "1,480" cell above; typos and unit slips printed in the table itself (flags above); fibre in TKPI is a mix of total fibre and dietary fibre (PDF note to Table 3), so fibre is only comparable within a row, not across foods; zinc in wheat flour is adjusted for fortification but not in foods made from it (PDF §2.6); vitamin C uses an old titration method; the file does not know which values are imputed (colour only).
+
 ## 5. Muscles and figure
 
 Muscle groups (16 for the muscle map, L-11):
