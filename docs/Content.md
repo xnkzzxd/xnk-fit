@@ -146,7 +146,7 @@ Decision D-06 (2026-11-17): start from the XNK app's muscle map (`figure.min.jso
 | 10 | `ACT_300` | 300 menit | 300 activity minutes in one week (vigorous counts double) |
 | 11 | `FOOD_7` | Tujuh hari catat | Food logged on 7 days |
 | 12 | `FOOD_30` | Tiga puluh hari catat | Food logged on 30 days |
-| 13 | `TARGET_WEEK` | Minggu sesuai target | A week within ±10 % of target |
+| 13 | `LOGWEEK_1` | Minggu rajin mencatat | A week with food logged on at least 5 days |
 | 14 | `MEASURE_4` | Empat kali ukur | 4 scheduled measures |
 | 15 | `PHOTO_FIRST` | Foto pertama | First progress photo (kept on the phone) |
 | 16 | `BACK` | Kembali lagi | Back after 14+ days away, workout finished |
@@ -157,7 +157,7 @@ Built in C-10 (2026-11-18): [`content/badges.json`](../content/badges.json) hold
 
 - **Conditions** use eleven named metrics defined once in the file (for example `finishedWorkouts`, `personalRecords`, `streakWeeks`, `activityMinutesWeek`), each computed from Room tables in Design §3: `workout`, `workout_set`, `activity`, `food_log`, `points_event`, `measure`, `photo`, `meal_plan`. They are deterministic and can be unit-tested from fixture rows.
 - **Personal record** (not a table in Design §3): derived from `workout_set`. A done set beats every earlier set of the same exercise by load, or by reps at equal load, or by reps for bodyweight. The first set of an exercise is a baseline. One record per exercise per workout.
-- **Earned once, never lost.** Badges never depend on weight, calories eaten below target, or very low intake. The activity badges stop at 300 minutes a week (WHO upper range, S13); there is no volume badge above it (PRD PR-5). `TARGET_WEEK` counts weeks within ±10 % of target on either side and its message does not mention food amounts. `MEASURE_4` counts measuring, never the value.
+- **Earned once, never lost.** Badges never depend on weight, calories eaten below target, or very low intake. The activity badges stop at 300 minutes a week (WHO upper range, S13); there is no volume badge above it (PRD PR-5). `LOGWEEK_1` (was `TARGET_WEEK`; owner decision 2026-11-18) counts weeks with food logged on at least 5 days and never looks at the amounts, so no badge depends on a calorie number. `MEASURE_4` counts measuring, never the value.
 - **Messages**: Indonesian, neutral, no "kamu" or "Kak", at most one emoji, at most 110 characters, no weight or calorie words (Rules R_TONE, R_TONE_WORDS). Titles follow the table above; the Saya mockup uses shorter labels as placeholders and the app uses `title_id`.
 - **Icons** (names only, no assets): star, medal, trophy, flame, run, food, check, ruler, camera, heart, cal. The grey locked state is drawn by the app, not a badge icon.
 
