@@ -1,0 +1,3993 @@
+{
+ "schema": 1,
+ "version": 1,
+ "source": "meal-packages",
+ "note": "Dibangun oleh tools/build-meal-packages.mjs dari foods-tkpi.json dan foods-estimates.json. kkal dan makro dihitung dari tabel (per 100 g x gram); jangan diubah tangan. Paket dengan isEstimate=true tampil sebagai perkiraan (R_EST). Label anggaran adalah urutan Hemat/Standar/Bebas dari tabel foodTier, bukan harga.",
+ "slots": [
+  "pagi",
+  "siang",
+  "malam",
+  "camilan"
+ ],
+ "profiles": [
+  {
+   "id": "jawa",
+   "kind": "region",
+   "label": "Jawa"
+  },
+  {
+   "id": "sunda",
+   "kind": "region",
+   "label": "Sunda"
+  },
+  {
+   "id": "padang",
+   "kind": "region",
+   "label": "Padang"
+  },
+  {
+   "id": "umum",
+   "kind": "region",
+   "label": "Umum"
+  },
+  {
+   "id": "beli",
+   "kind": "bought",
+   "label": "Beli (warung, warteg)"
+  },
+  {
+   "id": "kos",
+   "kind": "kos",
+   "label": "Anak kos (hemat, minim alat)"
+  }
+ ],
+ "budgets": [
+  "Hemat",
+  "Standar",
+  "Bebas"
+ ],
+ "allergenCodes": [
+  "egg",
+  "seafood",
+  "nuts",
+  "milk"
+ ],
+ "floorKcal": {
+  "R_FLOOR_F": 1200,
+  "R_FLOOR_M": 1500,
+  "used": 1500
+ },
+ "own": {
+  "profile": "sendiri",
+  "label": "Milik sendiri",
+  "slots": [
+   "pagi",
+   "siang",
+   "malam",
+   "camilan"
+  ],
+  "accepts": [
+   "recipe",
+   "food"
+  ],
+  "packages": [],
+  "note": "Hook untuk resep dan makanan milik pengguna (food.source=own, recipe.origin=own). Tidak ada paket bawaan; kkal dan makro dihitung dari tabel saat pengguna menyusunnya."
+ },
+ "foodTier": {
+  "TKPI_AP006": 1,
+  "TKPI_AP024": 1,
+  "TKPI_BP011": 1,
+  "TKPI_CP005": 1,
+  "TKPI_CP013": 1,
+  "TKPI_CP036": 2,
+  "TKPI_CP054": 1,
+  "TKPI_DP002": 1,
+  "TKPI_DP003": 1,
+  "TKPI_DP014": 1,
+  "TKPI_DR109": 1,
+  "TKPI_DR141": 1,
+  "TKPI_DR145": 1,
+  "TKPI_DR161": 1,
+  "TKPI_ER031": 1,
+  "TKPI_ER073": 1,
+  "TKPI_ER074": 1,
+  "TKPI_ER081": 1,
+  "TKPI_ER105": 1,
+  "TKPI_GP004": 1,
+  "TKPI_GP005": 2,
+  "TKPI_GP019": 2,
+  "TKPI_GP024": 2,
+  "TKPI_GP042": 1,
+  "TKPI_GP065": 2,
+  "TKPI_HR002": 1,
+  "TKPI_JP011": 2,
+  "TKPI_JR006": 2,
+  "TKPI_KR012": 1,
+  "TKPI_NP005": 1,
+  "W_AYAM_BAKAR": 2,
+  "W_AYAM_GEPREK": 2,
+  "W_AYAM_GORENG": 2,
+  "W_BAKSO": 2,
+  "W_BAKWAN": 1,
+  "W_BUBUR_AYAM": 1,
+  "W_BUBUR_KACANG_IJO": 1,
+  "W_CAPCAY": 1,
+  "W_CIRENG": 1,
+  "W_DAUN_SINGKONG": 1,
+  "W_ES_JERUK": 2,
+  "W_ES_TEH_MANIS": 1,
+  "W_GADO_GADO": 1,
+  "W_GUDEG_NASI": 2,
+  "W_GULAI_NANGKA": 1,
+  "W_KOLAK_PISANG": 1,
+  "W_LELE_GORENG": 2,
+  "W_LEMPER": 1,
+  "W_LONTONG_SAYUR": 1,
+  "W_MENDOAN": 1,
+  "W_MIE_AYAM": 1,
+  "W_NASI_CAMPUR": 1,
+  "W_NASI_GORENG": 2,
+  "W_NASI_PADANG_AYAM": 3,
+  "W_NASI_PADANG_RENDANG": 3,
+  "W_NASI_PUTIH": 1,
+  "W_NASI_UDUK": 1,
+  "W_OREK_TEMPE": 1,
+  "W_PECEL": 1,
+  "W_PERKEDEL": 1,
+  "W_PISANG_GORENG": 1,
+  "W_RAWON": 3,
+  "W_RISOLES": 1,
+  "W_SATE_AYAM": 2,
+  "W_SAYUR_ASEM": 1,
+  "W_SAYUR_BENING": 1,
+  "W_SAYUR_LODEH": 1,
+  "W_SOP_AYAM": 2,
+  "W_SOTO_AYAM": 2,
+  "W_TAHU_GORENG": 1,
+  "W_TAHU_ISI": 1,
+  "W_TEH_MANIS_HANGAT": 1,
+  "W_TELUR_BALADO": 1,
+  "W_TELUR_DADAR": 1,
+  "W_TEMPE_GORENG": 1,
+  "W_TUMIS_KANGKUNG": 1
+ },
+ "packages": [
+  {
+   "id": "MP_JAWA_PAGI_1",
+   "profile": "jawa",
+   "slot": "pagi",
+   "name_id": "Nasi uduk, telur dadar, tempe goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_UDUK",
+     "name_id": "Nasi uduk",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TELUR_DADAR",
+     "name_id": "Telur dadar",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 50
+    }
+   ],
+   "kcal": 534,
+   "protein": 20.1,
+   "carb": 54.7,
+   "fat": 26.1,
+   "fibre": 2.2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_DADAR"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_PAGI_2",
+   "profile": "jawa",
+   "slot": "pagi",
+   "name_id": "Lontong sayur dan tempe goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_LONTONG_SAYUR",
+     "name_id": "Lontong sayur",
+     "grams": 400,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 490,
+   "protein": 17,
+   "carb": 55,
+   "fat": 22,
+   "fibre": 4.2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_LONTONG_SAYUR"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_PAGI_3",
+   "profile": "jawa",
+   "slot": "pagi",
+   "name_id": "Pecel, nasi, tempe goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_PECEL",
+     "name_id": "Pecel (sayur dan bumbu kacang)",
+     "grams": 250,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 150
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 550,
+   "protein": 22.3,
+   "carb": 69,
+   "fat": 20.3,
+   "fibre": 8.6,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_PECEL"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_SIANG_1",
+   "profile": "jawa",
+   "slot": "siang",
+   "name_id": "Nasi, ayam bakar, sayur bening, tempe goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_AYAM_BAKAR",
+     "name_id": "Ayam bakar, 1 potong",
+     "grams": 90,
+     "household": {
+      "code": "porsi",
+      "label": "1 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_SAYUR_BENING",
+     "name_id": "Sayur bening bayam",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 591,
+   "protein": 37.4,
+   "carb": 70,
+   "fat": 18,
+   "fibre": 4.8,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_AYAM_BAKAR"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_SIANG_2",
+   "profile": "jawa",
+   "slot": "siang",
+   "name_id": "Nasi gudeg komplit dan tahu goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_GUDEG_NASI",
+     "name_id": "Nasi gudeg komplit",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 624,
+   "protein": 23.8,
+   "carb": 73,
+   "fat": 25.8,
+   "fibre": 4.3,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_GUDEG_NASI"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_SIANG_3",
+   "profile": "jawa",
+   "slot": "siang",
+   "name_id": "Nasi, sayur lodeh, tahu dan tempe goreng, perkedel",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_SAYUR_LODEH",
+     "name_id": "Sayur lodeh",
+     "grams": 150,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_PERKEDEL",
+     "name_id": "Perkedel kentang",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 676,
+   "protein": 24.4,
+   "carb": 81,
+   "fat": 27.4,
+   "fibre": 5.5,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": true,
+    "mainProtein": [
+     "W_TAHU_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_MALAM_1",
+   "profile": "jawa",
+   "slot": "malam",
+   "name_id": "Soto ayam, nasi, tempe goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_SOTO_AYAM",
+     "name_id": "Soto ayam (tanpa nasi)",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 562,
+   "protein": 31.3,
+   "carb": 71.2,
+   "fat": 16.5,
+   "fibre": 3.2,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_SOTO_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_MALAM_2",
+   "profile": "jawa",
+   "slot": "malam",
+   "name_id": "Nasi, lele goreng, tumis kangkung",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_LELE_GORENG",
+     "name_id": "Ikan lele goreng, 1 ekor",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 ekor",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TUMIS_KANGKUNG",
+     "name_id": "Tumis kangkung",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 511,
+   "protein": 25.4,
+   "carb": 64,
+   "fat": 17.4,
+   "fibre": 2.8,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_LELE_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_MALAM_3",
+   "profile": "jawa",
+   "slot": "malam",
+   "name_id": "Rawon, nasi, daun singkong rebus",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_RAWON",
+     "name_id": "Rawon (tanpa nasi)",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_DAUN_SINGKONG",
+     "name_id": "Daun singkong rebus",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 537,
+   "protein": 31.5,
+   "carb": 72.1,
+   "fat": 13,
+   "fibre": 5.2,
+   "fibreComplete": true,
+   "budget": "Bebas",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_RAWON"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_CAMILAN_1",
+   "profile": "jawa",
+   "slot": "camilan",
+   "name_id": "Pisang kepok",
+   "mode": "tanpa-masak",
+   "items": [
+    {
+     "foodId": "TKPI_ER081",
+     "name_id": "Pisang kepok, segar",
+     "grams": 150,
+     "main": true
+    }
+   ],
+   "kcal": 164,
+   "protein": 1.2,
+   "carb": 39.5,
+   "fat": 0.8,
+   "fibre": 8.6,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_ER081"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_CAMILAN_2",
+   "profile": "jawa",
+   "slot": "camilan",
+   "name_id": "Kolak pisang",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_KOLAK_PISANG",
+     "name_id": "Kolak pisang",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 200,
+   "protein": 1,
+   "carb": 38,
+   "fat": 5,
+   "fibre": 2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_KOLAK_PISANG"
+    ]
+   }
+  },
+  {
+   "id": "MP_JAWA_CAMILAN_3",
+   "profile": "jawa",
+   "slot": "camilan",
+   "name_id": "Ubi jalar kukus",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "TKPI_BP011",
+     "name_id": "Ubi jalar, kuning, kukus",
+     "grams": 200,
+     "main": true
+    }
+   ],
+   "kcal": 200,
+   "protein": 1.4,
+   "carb": 47.6,
+   "fat": 0.6,
+   "fibre": 2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_BP011"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_PAGI_1",
+   "profile": "sunda",
+   "slot": "pagi",
+   "name_id": "Nasi, oncom pepes, tahu goreng, lalapan",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_CP054",
+     "name_id": "Oncom kacang tanah pepes",
+     "grams": 100,
+     "main": true
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 50
+    },
+    {
+     "foodId": "TKPI_DR161",
+     "name_id": "Tomat merah, segar",
+     "grams": 50
+    }
+   ],
+   "kcal": 504,
+   "protein": 23.9,
+   "carb": 75.8,
+   "fat": 12.5,
+   "fibre": 5.3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_CP054"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_PAGI_2",
+   "profile": "sunda",
+   "slot": "pagi",
+   "name_id": "Bubur ayam dan tahu isi",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_BUBUR_AYAM",
+     "name_id": "Bubur ayam",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TAHU_ISI",
+     "name_id": "Tahu isi",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 380,
+   "protein": 14.9,
+   "carb": 45.9,
+   "fat": 15.1,
+   "fibre": 2.4,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_BUBUR_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_PAGI_3",
+   "profile": "sunda",
+   "slot": "pagi",
+   "name_id": "Nasi, telur dadar, tumis kangkung",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TELUR_DADAR",
+     "name_id": "Telur dadar",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TUMIS_KANGKUNG",
+     "name_id": "Tumis kangkung",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 441,
+   "protein": 14.4,
+   "carb": 62,
+   "fat": 15.4,
+   "fibre": 2.8,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_DADAR"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_SIANG_1",
+   "profile": "sunda",
+   "slot": "siang",
+   "name_id": "Nasi, ayam goreng, sayur asem, tempe goreng, lalapan",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_AYAM_GORENG",
+     "name_id": "Ayam goreng (paha), 1 potong",
+     "grams": 80,
+     "household": {
+      "code": "porsi",
+      "label": "1 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_SAYUR_ASEM",
+     "name_id": "Sayur asem",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 50
+    }
+   ],
+   "kcal": 656,
+   "protein": 35.5,
+   "carb": 75.7,
+   "fat": 23.5,
+   "fibre": 5,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_AYAM_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_SIANG_2",
+   "profile": "sunda",
+   "slot": "siang",
+   "name_id": "Nasi, pepes ikan mas, sayur asem, tahu goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_GP019",
+     "name_id": "Ikan Mas pepes",
+     "grams": 100,
+     "main": true
+    },
+    {
+     "foodId": "W_SAYUR_ASEM",
+     "name_id": "Sayur asem",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 621,
+   "protein": 27.6,
+   "carb": 80.8,
+   "fat": 20.7,
+   "fibre": 4.8,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "nuts",
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_GP019"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_SIANG_3",
+   "profile": "sunda",
+   "slot": "siang",
+   "name_id": "Sate ayam, nasi, sayur bening",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_SATE_AYAM",
+     "name_id": "Sate ayam bumbu kacang, 10 tusuk",
+     "grams": 150,
+     "household": {
+      "code": "porsi",
+      "label": "10 tusuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 150
+    },
+    {
+     "foodId": "W_SAYUR_BENING",
+     "name_id": "Sayur bening bayam",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 565,
+   "protein": 34.3,
+   "carb": 60,
+   "fat": 20.9,
+   "fibre": 5.1,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_SATE_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_MALAM_1",
+   "profile": "sunda",
+   "slot": "malam",
+   "name_id": "Nasi, tempe dan tahu goreng, lalapan sambal",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 60
+    },
+    {
+     "foodId": "TKPI_DR145",
+     "name_id": "Selada, segar",
+     "grams": 30
+    }
+   ],
+   "kcal": 496,
+   "protein": 19.9,
+   "carb": 65.7,
+   "fat": 16.6,
+   "fibre": 3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_TEMPE_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_MALAM_2",
+   "profile": "sunda",
+   "slot": "malam",
+   "name_id": "Nasi, bandeng presto, tumis kangkung",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_GP005",
+     "name_id": "Ikan bandeng presto, masakan",
+     "grams": 80,
+     "main": true
+    },
+    {
+     "foodId": "W_TUMIS_KANGKUNG",
+     "name_id": "Tumis kangkung",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 558,
+   "protein": 21.1,
+   "carb": 70,
+   "fat": 21.6,
+   "fibre": 2.8,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_GP005"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_MALAM_3",
+   "profile": "sunda",
+   "slot": "malam",
+   "name_id": "Sop ayam, nasi, tahu isi",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_SOP_AYAM",
+     "name_id": "Sop ayam",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TAHU_ISI",
+     "name_id": "Tahu isi",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 2
+     }
+    }
+   ],
+   "kcal": 607,
+   "protein": 25.5,
+   "carb": 79.9,
+   "fat": 20.4,
+   "fibre": 5.3,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_SOP_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_CAMILAN_1",
+   "profile": "sunda",
+   "slot": "camilan",
+   "name_id": "Cireng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_CIRENG",
+     "name_id": "Cireng, 5 buah",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "5 buah",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 175,
+   "protein": 1,
+   "carb": 25,
+   "fat": 8,
+   "fibre": 0.5,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_CIRENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_CAMILAN_2",
+   "profile": "sunda",
+   "slot": "camilan",
+   "name_id": "Pisang goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_PISANG_GORENG",
+     "name_id": "Pisang goreng",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 165,
+   "protein": 1,
+   "carb": 24,
+   "fat": 7,
+   "fibre": 1.5,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_PISANG_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_SUNDA_CAMILAN_3",
+   "profile": "sunda",
+   "slot": "camilan",
+   "name_id": "Jambu biji",
+   "mode": "tanpa-masak",
+   "items": [
+    {
+     "foodId": "TKPI_ER031",
+     "name_id": "Jambu biji",
+     "grams": 200,
+     "main": true
+    }
+   ],
+   "kcal": 128,
+   "protein": 1.8,
+   "carb": 24.4,
+   "fat": 0.6,
+   "fibre": 4.8,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_ER031"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_PAGI_1",
+   "profile": "padang",
+   "slot": "pagi",
+   "name_id": "Lontong sayur dan telur balado",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_LONTONG_SAYUR",
+     "name_id": "Lontong sayur",
+     "grams": 400,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TELUR_BALADO",
+     "name_id": "Telur balado",
+     "grams": 70,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 505,
+   "protein": 15,
+   "carb": 55,
+   "fat": 25,
+   "fibre": 3.7,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_LONTONG_SAYUR"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_PAGI_2",
+   "profile": "padang",
+   "slot": "pagi",
+   "name_id": "Nasi, telur dadar, daun singkong, gulai nangka",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 150
+    },
+    {
+     "foodId": "W_TELUR_DADAR",
+     "name_id": "Telur dadar",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_DAUN_SINGKONG",
+     "name_id": "Daun singkong rebus",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_GULAI_NANGKA",
+     "name_id": "Gulai nangka muda",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 480,
+   "protein": 17.3,
+   "carb": 60,
+   "fat": 19,
+   "fibre": 6.6,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_DADAR"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_PAGI_3",
+   "profile": "padang",
+   "slot": "pagi",
+   "name_id": "Nasi, teri kering, daun singkong, tahu goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_GP042",
+     "name_id": "Ikan teri, kering, mentah",
+     "grams": 20,
+     "main": true
+    },
+    {
+     "foodId": "W_DAUN_SINGKONG",
+     "name_id": "Daun singkong rebus",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 450,
+   "protein": 22.1,
+   "carb": 67,
+   "fat": 9.7,
+   "fibre": 4.3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_GP042"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_SIANG_1",
+   "profile": "padang",
+   "slot": "siang",
+   "name_id": "Nasi padang dengan rendang",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_PADANG_RENDANG",
+     "name_id": "Nasi padang dengan rendang",
+     "grams": 450,
+     "household": {
+      "code": "porsi",
+      "label": "1 bungkus",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 747,
+   "protein": 32,
+   "carb": 80.1,
+   "fat": 32.9,
+   "fibre": 4.1,
+   "fibreComplete": true,
+   "budget": "Bebas",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_NASI_PADANG_RENDANG"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_SIANG_2",
+   "profile": "padang",
+   "slot": "siang",
+   "name_id": "Nasi padang ayam bakar",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_PADANG_AYAM",
+     "name_id": "Nasi padang ayam bakar/pop",
+     "grams": 450,
+     "household": {
+      "code": "porsi",
+      "label": "1 bungkus",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 666,
+   "protein": 32,
+   "carb": 77.9,
+   "fat": 25.2,
+   "fibre": 4.1,
+   "fibreComplete": true,
+   "budget": "Bebas",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_NASI_PADANG_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_SIANG_3",
+   "profile": "padang",
+   "slot": "siang",
+   "name_id": "Nasi, gulai ikan, daun singkong, gulai nangka",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_GP065",
+     "name_id": "Gulai ikan, masakan",
+     "grams": 150,
+     "main": true
+    },
+    {
+     "foodId": "W_DAUN_SINGKONG",
+     "name_id": "Daun singkong rebus",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_GULAI_NANGKA",
+     "name_id": "Gulai nangka muda",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 580,
+   "protein": 36.2,
+   "carb": 76.8,
+   "fat": 14.1,
+   "fibre": 6.8,
+   "fibreComplete": false,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_GP065"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_MALAM_1",
+   "profile": "padang",
+   "slot": "malam",
+   "name_id": "Nasi, ayam bakar, daun singkong, gulai nangka",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_AYAM_BAKAR",
+     "name_id": "Ayam bakar, 1 potong",
+     "grams": 90,
+     "household": {
+      "code": "porsi",
+      "label": "1 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_DAUN_SINGKONG",
+     "name_id": "Daun singkong rebus",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_GULAI_NANGKA",
+     "name_id": "Gulai nangka muda",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 596,
+   "protein": 32.4,
+   "carb": 76,
+   "fat": 18.1,
+   "fibre": 6.8,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_AYAM_BAKAR"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_MALAM_2",
+   "profile": "padang",
+   "slot": "malam",
+   "name_id": "Nasi, ikan patin bakar, tumis kangkung, perkedel",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "TKPI_GP024",
+     "name_id": "Ikan patin, bakar",
+     "grams": 120,
+     "main": true
+    },
+    {
+     "foodId": "W_TUMIS_KANGKUNG",
+     "name_id": "Tumis kangkung",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_PERKEDEL",
+     "name_id": "Perkedel kentang",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 584,
+   "protein": 30.4,
+   "carb": 75.2,
+   "fat": 18,
+   "fibre": 3.5,
+   "fibreComplete": false,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_GP024"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_MALAM_3",
+   "profile": "padang",
+   "slot": "malam",
+   "name_id": "Nasi, orek tempe, sayur lodeh, tahu goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_OREK_TEMPE",
+     "name_id": "Orek tempe",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "3 sdm",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_SAYUR_LODEH",
+     "name_id": "Sayur lodeh",
+     "grams": 150,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 571,
+   "protein": 19.4,
+   "carb": 76,
+   "fat": 20.4,
+   "fibre": 5.3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_OREK_TEMPE"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_CAMILAN_1",
+   "profile": "padang",
+   "slot": "camilan",
+   "name_id": "Bubur kacang hijau",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_BUBUR_KACANG_IJO",
+     "name_id": "Bubur kacang hijau",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 216,
+   "protein": 5,
+   "carb": 35,
+   "fat": 6,
+   "fibre": 4,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_BUBUR_KACANG_IJO"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_CAMILAN_2",
+   "profile": "padang",
+   "slot": "camilan",
+   "name_id": "Pisang goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_PISANG_GORENG",
+     "name_id": "Pisang goreng",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 165,
+   "protein": 1,
+   "carb": 24,
+   "fat": 7,
+   "fibre": 1.5,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_PISANG_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_PADANG_CAMILAN_3",
+   "profile": "padang",
+   "slot": "camilan",
+   "name_id": "Lemper ayam dan semangka",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_LEMPER",
+     "name_id": "Lemper ayam",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_ER105",
+     "name_id": "Semangka, segar",
+     "grams": 200
+    }
+   ],
+   "kcal": 186,
+   "protein": 4,
+   "carb": 33.8,
+   "fat": 4.4,
+   "fibre": 1.3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_LEMPER"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_PAGI_1",
+   "profile": "umum",
+   "slot": "pagi",
+   "name_id": "Nasi goreng dan ketimun",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_GORENG",
+     "name_id": "Nasi goreng",
+     "grams": 250,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 50
+    }
+   ],
+   "kcal": 414,
+   "protein": 12.1,
+   "carb": 55.7,
+   "fat": 16.1,
+   "fibre": 2.2,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_NASI_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_PAGI_2",
+   "profile": "umum",
+   "slot": "pagi",
+   "name_id": "Roti, telur dadar, susu sapi",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "TKPI_AP024",
+     "name_id": "Roti putih",
+     "grams": 60
+    },
+    {
+     "foodId": "W_TELUR_DADAR",
+     "name_id": "Telur dadar",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_JR006",
+     "name_id": "Susu sapi, segar",
+     "grams": 200
+    }
+   ],
+   "kcal": 391,
+   "protein": 18.2,
+   "carb": 39.6,
+   "fat": 17.7,
+   "fibre": 5.5,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "milk"
+   ],
+   "lactose": true,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_DADAR"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_PAGI_3",
+   "profile": "umum",
+   "slot": "pagi",
+   "name_id": "Bubur ayam dan tempe mendoan",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_BUBUR_AYAM",
+     "name_id": "Bubur ayam",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_MENDOAN",
+     "name_id": "Tempe mendoan",
+     "grams": 80,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 2
+     }
+    }
+   ],
+   "kcal": 480,
+   "protein": 21.9,
+   "carb": 53.9,
+   "fat": 20,
+   "fibre": 3.4,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_BUBUR_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_SIANG_1",
+   "profile": "umum",
+   "slot": "siang",
+   "name_id": "Nasi campur warung dan semangka",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_CAMPUR",
+     "name_id": "Nasi campur warung",
+     "grams": 400,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_ER105",
+     "name_id": "Semangka, segar",
+     "grams": 150
+    }
+   ],
+   "kcal": 622,
+   "protein": 26,
+   "carb": 85.6,
+   "fat": 20.3,
+   "fibre": 4.6,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_NASI_CAMPUR"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_SIANG_2",
+   "profile": "umum",
+   "slot": "siang",
+   "name_id": "Gado-gado, nasi, ayam bakar",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_GADO_GADO",
+     "name_id": "Gado-gado",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 0.5
+     }
+    },
+    {
+     "foodId": "W_AYAM_BAKAR",
+     "name_id": "Ayam bakar, 1 potong",
+     "grams": 90,
+     "household": {
+      "code": "porsi",
+      "label": "1 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 637,
+   "protein": 38.2,
+   "carb": 61,
+   "fat": 27.2,
+   "fibre": 8.5,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_GADO_GADO"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_SIANG_3",
+   "profile": "umum",
+   "slot": "siang",
+   "name_id": "Soto ayam, nasi, tempe goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_SOTO_AYAM",
+     "name_id": "Soto ayam (tanpa nasi)",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 562,
+   "protein": 31.3,
+   "carb": 71.2,
+   "fat": 16.5,
+   "fibre": 3.2,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_SOTO_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_MALAM_1",
+   "profile": "umum",
+   "slot": "malam",
+   "name_id": "Nasi, ayam geprek, ketimun",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_AYAM_GEPREK",
+     "name_id": "Ayam geprek dengan sambal",
+     "grams": 150,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 50
+    }
+   ],
+   "kcal": 591,
+   "protein": 26.6,
+   "carb": 70.7,
+   "fat": 22.5,
+   "fibre": 2,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_AYAM_GEPREK"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_MALAM_2",
+   "profile": "umum",
+   "slot": "malam",
+   "name_id": "Nasi, lele goreng, capcay",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_LELE_GORENG",
+     "name_id": "Ikan lele goreng, 1 ekor",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 ekor",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_CAPCAY",
+     "name_id": "Capcay",
+     "grams": 150,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 552,
+   "protein": 28.4,
+   "carb": 68,
+   "fat": 18.4,
+   "fibre": 3.8,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_LELE_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_MALAM_3",
+   "profile": "umum",
+   "slot": "malam",
+   "name_id": "Nasi, tahu dan tempe goreng, sayur asem, sayur bening",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_SAYUR_ASEM",
+     "name_id": "Sayur asem",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_SAYUR_BENING",
+     "name_id": "Sayur bening bayam",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 582,
+   "protein": 24.4,
+   "carb": 80,
+   "fat": 18,
+   "fibre": 8.3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_TAHU_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_CAMILAN_1",
+   "profile": "umum",
+   "slot": "camilan",
+   "name_id": "Pisang ambon",
+   "mode": "tanpa-masak",
+   "items": [
+    {
+     "foodId": "TKPI_ER074",
+     "name_id": "Pisang ambon, segar",
+     "grams": 150,
+     "main": true
+    }
+   ],
+   "kcal": 162,
+   "protein": 1.5,
+   "carb": 36.5,
+   "fat": 1.2,
+   "fibre": 2.8,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_ER074"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_CAMILAN_2",
+   "profile": "umum",
+   "slot": "camilan",
+   "name_id": "Yoghurt dan pepaya",
+   "mode": "tanpa-masak",
+   "items": [
+    {
+     "foodId": "TKPI_JP011",
+     "name_id": "Yoghurt, segar",
+     "grams": 150,
+     "main": true
+    },
+    {
+     "foodId": "TKPI_ER073",
+     "name_id": "Pepaya, segar",
+     "grams": 150
+    }
+   ],
+   "kcal": 147,
+   "protein": 5.7,
+   "carb": 24.3,
+   "fat": 3.9,
+   "fibre": 2.4,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "milk"
+   ],
+   "lactose": true,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_JP011"
+    ]
+   }
+  },
+  {
+   "id": "MP_UMUM_CAMILAN_3",
+   "profile": "umum",
+   "slot": "camilan",
+   "name_id": "Kacang tanah rebus",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "TKPI_CP013",
+     "name_id": "Kacang tanah, rebus",
+     "grams": 60,
+     "main": true
+    }
+   ],
+   "kcal": 132,
+   "protein": 6.4,
+   "carb": 4.8,
+   "fat": 10.8,
+   "fibre": 0.6,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_CP013"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_PAGI_1",
+   "profile": "beli",
+   "slot": "pagi",
+   "name_id": "Bubur ayam, tempe mendoan, teh manis hangat",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_BUBUR_AYAM",
+     "name_id": "Bubur ayam",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_MENDOAN",
+     "name_id": "Tempe mendoan",
+     "grams": 40,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEH_MANIS_HANGAT",
+     "name_id": "Teh manis hangat",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 gelas (200 ml)",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 440,
+   "protein": 16.9,
+   "carb": 61.9,
+   "fat": 14.1,
+   "fibre": 2.4,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_BUBUR_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_PAGI_2",
+   "profile": "beli",
+   "slot": "pagi",
+   "name_id": "Nasi uduk, telur balado, tempe goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_UDUK",
+     "name_id": "Nasi uduk",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TELUR_BALADO",
+     "name_id": "Telur balado",
+     "grams": 70,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 555,
+   "protein": 20,
+   "carb": 58,
+   "fat": 27,
+   "fibre": 2.5,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_BALADO"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_PAGI_3",
+   "profile": "beli",
+   "slot": "pagi",
+   "name_id": "Lontong sayur, bakwan, teh manis hangat",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_LONTONG_SAYUR",
+     "name_id": "Lontong sayur",
+     "grams": 400,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_BAKWAN",
+     "name_id": "Bakwan sayur",
+     "grams": 40,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEH_MANIS_HANGAT",
+     "name_id": "Teh manis hangat",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 gelas (200 ml)",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 520,
+   "protein": 9.5,
+   "carb": 75,
+   "fat": 20,
+   "fibre": 4.2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": true,
+    "goreng": false,
+    "mainProtein": [
+     "W_LONTONG_SAYUR"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_SIANG_1",
+   "profile": "beli",
+   "slot": "siang",
+   "name_id": "Nasi campur warteg dan es teh manis",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_NASI_CAMPUR",
+     "name_id": "Nasi campur warung",
+     "grams": 400,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_ES_TEH_MANIS",
+     "name_id": "Es teh manis",
+     "grams": 250,
+     "household": {
+      "code": "porsi",
+      "label": "1 gelas (250 ml)",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 660,
+   "protein": 25.2,
+   "carb": 95.2,
+   "fat": 20,
+   "fibre": 4,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_NASI_CAMPUR"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_SIANG_2",
+   "profile": "beli",
+   "slot": "siang",
+   "name_id": "Bakso kuah, tahu goreng, es jeruk",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_BAKSO",
+     "name_id": "Bakso kuah dengan mie",
+     "grams": 400,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_ES_JERUK",
+     "name_id": "Es jeruk peras",
+     "grams": 250,
+     "household": {
+      "code": "porsi",
+      "label": "1 gelas (250 ml)",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 545,
+   "protein": 25,
+   "carb": 65,
+   "fat": 20.2,
+   "fibre": 2.7,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_BAKSO"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_SIANG_3",
+   "profile": "beli",
+   "slot": "siang",
+   "name_id": "Gado-gado dan nasi putih",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_GADO_GADO",
+     "name_id": "Gado-gado",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 585,
+   "protein": 19.4,
+   "carb": 86,
+   "fat": 18.4,
+   "fibre": 8.9,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_GADO_GADO"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_MALAM_1",
+   "profile": "beli",
+   "slot": "malam",
+   "name_id": "Mie ayam dan tahu goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_MIE_AYAM",
+     "name_id": "Mie ayam",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 533,
+   "protein": 21,
+   "carb": 62.9,
+   "fat": 22,
+   "fibre": 2.9,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_MIE_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_MALAM_2",
+   "profile": "beli",
+   "slot": "malam",
+   "name_id": "Soto ayam, nasi, tempe goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_SOTO_AYAM",
+     "name_id": "Soto ayam (tanpa nasi)",
+     "grams": 350,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 562,
+   "protein": 31.3,
+   "carb": 71.2,
+   "fat": 16.5,
+   "fibre": 3.2,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_SOTO_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_MALAM_3",
+   "profile": "beli",
+   "slot": "malam",
+   "name_id": "Sate ayam dan nasi",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_SATE_AYAM",
+     "name_id": "Sate ayam bumbu kacang, 10 tusuk",
+     "grams": 150,
+     "household": {
+      "code": "porsi",
+      "label": "10 tusuk",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 150
+    }
+   ],
+   "kcal": 525,
+   "protein": 31.4,
+   "carb": 54,
+   "fat": 20.3,
+   "fibre": 2.1,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_SATE_AYAM"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_CAMILAN_1",
+   "profile": "beli",
+   "slot": "camilan",
+   "name_id": "Pisang goreng",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_PISANG_GORENG",
+     "name_id": "Pisang goreng",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 165,
+   "protein": 1,
+   "carb": 24,
+   "fat": 7,
+   "fibre": 1.5,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_PISANG_GORENG"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_CAMILAN_2",
+   "profile": "beli",
+   "slot": "camilan",
+   "name_id": "Risoles",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_RISOLES",
+     "name_id": "Risoles isi ragout",
+     "grams": 70,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 1
+     },
+     "main": true
+    }
+   ],
+   "kcal": 155,
+   "protein": 4,
+   "carb": 15,
+   "fat": 9,
+   "fibre": 1,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "milk"
+   ],
+   "lactose": true,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_RISOLES"
+    ]
+   }
+  },
+  {
+   "id": "MP_BELI_CAMILAN_3",
+   "profile": "beli",
+   "slot": "camilan",
+   "name_id": "Tahu isi",
+   "mode": "beli",
+   "items": [
+    {
+     "foodId": "W_TAHU_ISI",
+     "name_id": "Tahu isi",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 buah",
+      "qty": 2
+     },
+     "main": true
+    }
+   ],
+   "kcal": 200,
+   "protein": 6,
+   "carb": 12,
+   "fat": 14,
+   "fibre": 2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_TAHU_ISI"
+    ]
+   }
+  },
+  {
+   "id": "MP_KOS_PAGI_1",
+   "profile": "kos",
+   "slot": "pagi",
+   "name_id": "Roti selai kacang dan susu sapi",
+   "mode": "tanpa-masak",
+   "items": [
+    {
+     "foodId": "TKPI_AP024",
+     "name_id": "Roti putih",
+     "grams": 90,
+     "main": true
+    },
+    {
+     "foodId": "TKPI_CP036",
+     "name_id": "Keju kacang tanah (peanut butter)",
+     "grams": 20
+    },
+    {
+     "foodId": "TKPI_JR006",
+     "name_id": "Susu sapi, segar",
+     "grams": 200
+    }
+   ],
+   "kcal": 463,
+   "protein": 19,
+   "carb": 57.8,
+   "fat": 17.9,
+   "fibre": 8.5,
+   "fibreComplete": true,
+   "budget": "Standar",
+   "halal": true,
+   "allergens": [
+    "egg",
+    "milk",
+    "nuts"
+   ],
+   "lactose": true,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_AP024"
+    ]
+   },
+   "equipment": [
+    "tanpa"
+   ]
+  },
+  {
+   "id": "MP_KOS_PAGI_2",
+   "profile": "kos",
+   "slot": "pagi",
+   "name_id": "Nasi, telur dadar, kecap, ketimun",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "W_TELUR_DADAR",
+     "name_id": "Telur dadar",
+     "grams": 60,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_NP005",
+     "name_id": "Kecap",
+     "grams": 10
+    },
+    {
+     "foodId": "TKPI_DR109",
+     "name_id": "Ketimun, segar",
+     "grams": 50
+    }
+   ],
+   "kcal": 500,
+   "protein": 14.3,
+   "carb": 86.6,
+   "fat": 10.9,
+   "fibre": 1.4,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_DADAR"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "wajan"
+   ]
+  },
+  {
+   "id": "MP_KOS_PAGI_3",
+   "profile": "kos",
+   "slot": "pagi",
+   "name_id": "Bihun rebus, telur, sawi",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "TKPI_AP006",
+     "name_id": "Bihun, mentah",
+     "grams": 70,
+     "main": true
+    },
+    {
+     "foodId": "TKPI_HR002",
+     "name_id": "Telur ayam ras, segar",
+     "grams": 55
+    },
+    {
+     "foodId": "TKPI_DR141",
+     "name_id": "Sawi, segar",
+     "grams": 80
+    },
+    {
+     "foodId": "TKPI_KR012",
+     "name_id": "Minyak kelapa sawit",
+     "grams": 5
+    }
+   ],
+   "kcal": 395,
+   "protein": 12,
+   "carb": 61.1,
+   "fat": 11.3,
+   "fibre": 2.8,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_AP006"
+    ]
+   },
+   "equipment": [
+    "panci",
+    "kompor"
+   ]
+  },
+  {
+   "id": "MP_KOS_SIANG_1",
+   "profile": "kos",
+   "slot": "siang",
+   "name_id": "Nasi, tempe goreng, tumis kangkung",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_TUMIS_KANGKUNG",
+     "name_id": "Tumis kangkung",
+     "grams": 100,
+     "household": {
+      "code": "porsi",
+      "label": "1 porsi",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 574,
+   "protein": 18.6,
+   "carb": 94,
+   "fat": 13.6,
+   "fibre": 4.2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_TEMPE_GORENG"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "wajan"
+   ]
+  },
+  {
+   "id": "MP_KOS_SIANG_2",
+   "profile": "kos",
+   "slot": "siang",
+   "name_id": "Nasi, tahu goreng, sayur bening",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "W_TAHU_GORENG",
+     "name_id": "Tahu goreng, 2 potong",
+     "grams": 120,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 2
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_SAYUR_BENING",
+     "name_id": "Sayur bening bayam",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 629,
+   "protein": 21.6,
+   "carb": 96,
+   "fat": 17.2,
+   "fibre": 5.2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": true,
+    "mainProtein": [
+     "W_TAHU_GORENG"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "wajan",
+    "panci"
+   ]
+  },
+  {
+   "id": "MP_KOS_SIANG_3",
+   "profile": "kos",
+   "slot": "siang",
+   "name_id": "Nasi, oncom pepes, kangkung rebus, orek tempe",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "TKPI_CP054",
+     "name_id": "Oncom kacang tanah pepes",
+     "grams": 100,
+     "main": true
+    },
+    {
+     "foodId": "TKPI_DP014",
+     "name_id": "Kangkung, rebus",
+     "grams": 100
+    },
+    {
+     "foodId": "W_OREK_TEMPE",
+     "name_id": "Orek tempe",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "3 sdm",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 638,
+   "protein": 27.8,
+   "carb": 109.8,
+   "fat": 11,
+   "fibre": 7,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "nuts"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_CP054"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "panci"
+   ]
+  },
+  {
+   "id": "MP_KOS_MALAM_1",
+   "profile": "kos",
+   "slot": "malam",
+   "name_id": "Nasi, orek tempe, sayur bening",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "W_OREK_TEMPE",
+     "name_id": "Orek tempe",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "3 sdm",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "W_SAYUR_BENING",
+     "name_id": "Sayur bening bayam",
+     "grams": 200,
+     "household": {
+      "code": "porsi",
+      "label": "1 mangkuk",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 524,
+   "protein": 15.6,
+   "carb": 99,
+   "fat": 7.2,
+   "fibre": 5.7,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_OREK_TEMPE"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "wajan",
+    "panci"
+   ]
+  },
+  {
+   "id": "MP_KOS_MALAM_2",
+   "profile": "kos",
+   "slot": "malam",
+   "name_id": "Nasi, telur balado, buncis rebus",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "W_TELUR_BALADO",
+     "name_id": "Telur balado",
+     "grams": 70,
+     "household": {
+      "code": "porsi",
+      "label": "1 butir",
+      "qty": 1
+     },
+     "main": true
+    },
+    {
+     "foodId": "TKPI_DP003",
+     "name_id": "Buncis, rebus",
+     "grams": 100
+    }
+   ],
+   "kcal": 544,
+   "protein": 15.8,
+   "carb": 95.4,
+   "fat": 11.8,
+   "fibre": 3.2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "egg"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "W_TELUR_BALADO"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "wajan",
+    "panci"
+   ]
+  },
+  {
+   "id": "MP_KOS_MALAM_3",
+   "profile": "kos",
+   "slot": "malam",
+   "name_id": "Nasi, ikan asin, bayam rebus, tempe goreng",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "W_NASI_PUTIH",
+     "name_id": "Nasi putih",
+     "grams": 300,
+     "household": {
+      "code": "porsi",
+      "label": "1 piring",
+      "qty": 1.5
+     }
+    },
+    {
+     "foodId": "TKPI_GP004",
+     "name_id": "Ikan asin, kering",
+     "grams": 30,
+     "main": true
+    },
+    {
+     "foodId": "TKPI_DP002",
+     "name_id": "Bayam, rebus",
+     "grams": 100
+    },
+    {
+     "foodId": "W_TEMPE_GORENG",
+     "name_id": "Tempe goreng, 2 potong",
+     "grams": 50,
+     "household": {
+      "code": "porsi",
+      "label": "2 potong",
+      "qty": 1
+     }
+    }
+   ],
+   "kcal": 580,
+   "protein": 29.4,
+   "carb": 92.7,
+   "fat": 9.7,
+   "fibre": 3.3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [
+    "seafood"
+   ],
+   "lactose": false,
+   "isEstimate": true,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_GP004"
+    ]
+   },
+   "equipment": [
+    "rice-cooker",
+    "wajan",
+    "panci"
+   ]
+  },
+  {
+   "id": "MP_KOS_CAMILAN_1",
+   "profile": "kos",
+   "slot": "camilan",
+   "name_id": "Pisang kepok",
+   "mode": "tanpa-masak",
+   "items": [
+    {
+     "foodId": "TKPI_ER081",
+     "name_id": "Pisang kepok, segar",
+     "grams": 150,
+     "main": true
+    }
+   ],
+   "kcal": 164,
+   "protein": 1.2,
+   "carb": 39.5,
+   "fat": 0.8,
+   "fibre": 8.6,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_ER081"
+    ]
+   },
+   "equipment": [
+    "tanpa"
+   ]
+  },
+  {
+   "id": "MP_KOS_CAMILAN_2",
+   "profile": "kos",
+   "slot": "camilan",
+   "name_id": "Ubi jalar kukus",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "TKPI_BP011",
+     "name_id": "Ubi jalar, kuning, kukus",
+     "grams": 200,
+     "main": true
+    }
+   ],
+   "kcal": 200,
+   "protein": 1.4,
+   "carb": 47.6,
+   "fat": 0.6,
+   "fibre": 2,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_BP011"
+    ]
+   },
+   "equipment": [
+    "panci",
+    "kompor"
+   ]
+  },
+  {
+   "id": "MP_KOS_CAMILAN_3",
+   "profile": "kos",
+   "slot": "camilan",
+   "name_id": "Kacang hijau rebus",
+   "mode": "masak",
+   "items": [
+    {
+     "foodId": "TKPI_CP005",
+     "name_id": "kacang hijau, rebus",
+     "grams": 200,
+     "main": true
+    }
+   ],
+   "kcal": 218,
+   "protein": 17.4,
+   "carb": 36.6,
+   "fat": 1,
+   "fibre": 3,
+   "fibreComplete": true,
+   "budget": "Hemat",
+   "halal": true,
+   "allergens": [],
+   "lactose": false,
+   "isEstimate": false,
+   "tags": {
+    "santan": false,
+    "goreng": false,
+    "mainProtein": [
+     "TKPI_CP005"
+    ]
+   },
+   "equipment": [
+    "panci",
+    "kompor"
+   ]
+  }
+ ]
+}

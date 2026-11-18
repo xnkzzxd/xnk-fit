@@ -51,7 +51,7 @@ Some items are the owner's to do (accounts, forms). Claude prepares the text and
 | C-08b | Rest of the figures: read XNK `Gerak.md` for the 20 reused rigs; draw sourced rigs for 67 `derive` + 55 `new` exercises (`content/figures/no-rig.json`); owner confirms 7 cardio `map-only` and the seated `PUSHV_DB` rig; split delts and obliques in the XNK figure build (Content §5.2) | C-08, XNK repo access | Opus 5.5 | [ ] |
 | C-09 | Owner review of English cues | C-01 | — (owner) | [ ] |
 | C-10 | Badge table: 18 codes, titles, conditions, messages | D-04 | Sonnet 5.5 | [x] (`content/badges.json`, `tools/check-badges.mjs` passes; Content §6) |
-| C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [ ] |
+| C-11 | Meal packages (Makan): three options per slot, regions, bought, anak kos, own | C-03, C-04 | Sonnet 5.5 | [x] (`content/meal-packages.json`: 72 packages, 6 profiles, own hook; `tools/check-meal-packages.mjs` passes; Content §4.5; budget tiers ⚠ unsourced; row needs listed there) |
 
 ## Phase B — Build (after D-06 approval)
 
