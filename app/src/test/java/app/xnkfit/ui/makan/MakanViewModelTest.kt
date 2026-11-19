@@ -15,6 +15,7 @@ import app.xnkfit.data.food.RoomTargetSource
 import app.xnkfit.domain.food.Allergen
 import app.xnkfit.domain.food.DaySummary
 import app.xnkfit.domain.food.MealSlot
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -31,6 +32,10 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows.shadowOf
 import java.io.File
 import java.time.LocalDate
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.Executors
+import java.util.concurrent.atomic.AtomicInteger
+import kotlin.coroutines.CoroutineContext
 
 /** Makan screens' logic on the JVM with real content and a real (Robolectric) Room. No Compose UI test: see Decisions.md. */
 @RunWith(RobolectricTestRunner::class)
@@ -48,12 +53,25 @@ class MakanViewModelTest {
 
     private fun store() = PreferenceDataStoreFactory.create(scope = CoroutineScope(Dispatchers.IO)) { File.createTempFile("makan", ".preferences_pb").also { it.delete() } }
 
-    private fun vm(day: LocalDate = monday.plusDays(2)) = MakanViewModel(
+    /** A test dispatcher: runs blocks on its own thread once [gate] opens, and records that thread. */
+    private class GateDispatcher : CoroutineDispatcher() {
+        val gate = CountDownLatch(1)
+        val dispatched = AtomicInteger()
+        @Volatile var thread: Thread? = null
+        private val pool = Executors.newSingleThreadExecutor()
+        override fun dispatch(context: CoroutineContext, block: Runnable) {
+            dispatched.incrementAndGet()
+            pool.execute { gate.await(); thread = Thread.currentThread(); block.run() }
+        }
+    }
+
+    private fun vm(day: LocalDate = monday.plusDays(2), planOn: CoroutineDispatcher = Dispatchers.Default) = MakanViewModel(
         repo = FoodRepository(db, { 1_000L + seq }, { "id${seq++}" }),
         targets = RoomTargetSource(db) { 2026 },
         prefsStore = FoodPrefsStore(store()),
         ticksStore = ShoppingTickStore(store()),
         today = { day },
+        planDispatcher = planOn,
     )
 
     private fun await(what: String, cond: () -> Boolean) {
@@ -190,6 +208,51 @@ class MakanViewModelTest {
         assertTrue(s.plan.none { c -> s.packages.getValue(c.packageId).allergens.any { it == Allergen.MILK || it == Allergen.LACTOSE } })
     }
 
+    @Test fun autoFillRunsThePlannerOffTheMainThreadWithALoadingState() {
+        profile()
+        val d = GateDispatcher()
+        val v = vm(planOn = d)
+        await("load") { v.state.value.hasTarget }
+        v.autoFill()
+        await("dispatched") { d.dispatched.get() > 0 }
+        assertTrue(v.state.value.planning)
+        assertTrue(v.state.value.plan.isEmpty())
+        d.gate.countDown()
+        await("plan") { v.state.value.plan.size == 28 && !v.state.value.planning }
+        assertNotNull(d.thread)
+        assertTrue(d.thread !== Thread.currentThread()) // the test thread is Robolectric's main thread
+    }
+
+    @Test fun autoFillTwiceCancelsTheFirstAndEndsLoadingOnce() {
+        profile()
+        val d = GateDispatcher()
+        val v = vm(planOn = d)
+        await("load") { v.state.value.hasTarget }
+        v.autoFill()
+        v.autoFill()
+        assertTrue(v.state.value.planning)
+        d.gate.countDown()
+        await("plan") { v.state.value.plan.size == 28 && !v.state.value.planning }
+        assertFalse(v.state.value.failed)
+    }
+
+    @Test fun aChangeByHandDuringAutoFillWins() {
+        profile()
+        val d = GateDispatcher()
+        val v = vm(planOn = d)
+        await("load") { v.state.value.hasTarget }
+        v.autoFill()
+        await("dispatched") { d.dispatched.get() > 0 }
+        val any = v.state.value.packages.values.first { it.slot == MealSlot.PAGI }
+        v.choose(1, MealSlot.PAGI, any.id)
+        assertFalse(v.state.value.planning)
+        d.gate.countDown()
+        await("chosen") { v.state.value.plan.any { it.day == 1 && it.slot == MealSlot.PAGI && it.packageId == any.id } }
+        Thread.sleep(200)
+        shadowOf(Looper.getMainLooper()).idle()
+        assertEquals(1, v.state.value.plan.size)
+    }
+
     @Test fun plannerAimsAtTheProteinRangeAndShowsTheDayProtein() {
         profile()
         val v = vm()
@@ -216,7 +279,7 @@ class MakanViewModelTest {
         v.toggleLock(3, MealSlot.SIANG)
         await("locked") { v.state.value.plan.first { it.day == 3 && it.slot == MealSlot.SIANG }.locked }
         v.autoFill()
-        await("refilled") { v.state.value.plan.size == 28 }
+        await("refilled") { v.state.value.plan.size == 28 && !v.state.value.planning }
         assertEquals(other.id, v.state.value.plan.first { it.day == 3 && it.slot == MealSlot.SIANG }.packageId)
         v.cookOnce(1, MealSlot.MALAM)
         await("cook once") { v.state.value.plan.first { it.day == 2 && it.slot == MealSlot.MALAM }.cookOnce }

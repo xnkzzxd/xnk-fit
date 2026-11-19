@@ -234,6 +234,7 @@
     <string name="pl_day_long_6">Sabtu</string>
     <string name="pl_day_long_7">Minggu</string>
     <string name="pl_day_kcal">±%1$d kkal</string>
+    <string name="pl_planning">Menyusun rencana…</string>
     <string name="pl_no_target">Belum ada target. Rencana disusun tanpa angka: nama menu, urutan hari dan variasi saja.</string>
     <string name="pl_day_protein">Protein ±%1$d g · rentang harian %2$d–%3$d g</string>
     <string name="pl_santan_note">Minggu ini santan sudah %1$d kali.</string>

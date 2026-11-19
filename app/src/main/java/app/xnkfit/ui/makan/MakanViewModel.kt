@@ -35,6 +35,8 @@ import app.xnkfit.domain.food.withChoice
 import app.xnkfit.domain.food.withCookOnce
 import app.xnkfit.domain.food.withEatOut
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -42,6 +44,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
@@ -113,6 +116,8 @@ data class MakanState(
     val shopping: List<ShopLine> = emptyList(),
     val ticks: Set<String> = emptySet(),
     val failed: Boolean = false,
+    /** "Isi ulang otomatis" is running off the main thread; the button waits. */
+    val planning: Boolean = false,
 ) {
     /**
      * The week planner shows kcal, grams or protein only with a target and outside R_GATE_ED. Without a target
@@ -133,6 +138,8 @@ class MakanViewModel(
     private val ticksStore: ShoppingTickStore,
     private val today: () -> LocalDate,
     private val activityKcalToday: suspend () -> Int? = { null },
+    /** Where [planWeek] runs (owner answer 2026-11-19, Review-Planner R3): never the main thread. Tests pass their own. */
+    private val planDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) : ViewModel() {
     private val _state = MutableStateFlow(MakanState())
     val state: StateFlow<MakanState> = _state.asStateFlow()
@@ -378,18 +385,50 @@ class MakanViewModel(
 
     private fun input(): PlannerInput = plannerInput(_state.value.prefs, cachedTargets, _state.value.plan.filter { it.locked })
 
-    /** "Isi ulang otomatis": keeps locked cells, fills the rest by the planner rules. */
-    fun autoFill() = launch {
-        val s = _state.value
-        val result = planWeek(input())
-        repo.savePlan(s.weekStart, result.meals)
-        refresh()
-        _state.update { it.copy(daysBelowFloor = result.daysBelowFloor) }
+    private var planJob: Job? = null
+    private var planToken = 0
+
+    /**
+     * "Isi ulang otomatis": keeps locked cells, fills the rest by the planner rules. The input is read here on the main
+     * thread; only the pure [planWeek] runs on [planDispatcher]. A new call cancels the one still running, so only the
+     * latest result is saved; the loading flag clears only when the latest call ends.
+     */
+    fun autoFill() {
+        planJob?.cancel()
+        val token = ++planToken
+        val inp = input()
+        val week = _state.value.weekStart
+        _state.update { it.copy(planning = true) }
+        planJob = viewModelScope.launch {
+            try {
+                val result = withContext(planDispatcher) { planWeek(inp) }
+                repo.savePlan(week, result.meals)
+                refresh()
+                _state.update { it.copy(daysBelowFloor = result.daysBelowFloor) }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                _state.update { it.copy(failed = true) }
+            } finally {
+                if (token == planToken) _state.update { it.copy(planning = false) }
+            }
+        }
     }
 
-    private fun savePlanChange(next: List<PlannedMeal>) = launch {
-        repo.savePlan(_state.value.weekStart, next)
-        refresh()
+    /** M-4: a change by hand while "isi ulang otomatis" runs wins; the running fill is dropped, not saved over it. */
+    private fun stopPlanning() {
+        if (planJob?.isActive != true) return
+        planJob?.cancel()
+        planToken++
+        _state.update { it.copy(planning = false) }
+    }
+
+    private fun savePlanChange(next: List<PlannedMeal>) {
+        stopPlanning()
+        launch {
+            repo.savePlan(_state.value.weekStart, next)
+            refresh()
+        }
     }
 
     /** M-4: a manual choice is never blocked. */

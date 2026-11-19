@@ -58,7 +58,9 @@ fun PlannerScreen(state: MakanState, vm: MakanViewModel, modifier: Modifier = Mo
             Text(stringResource(R.string.pl_title), style = MaterialTheme.typography.headlineSmall)
             TextButton({ vm.back() }, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.mk_back)) }
         }
-        Button({ vm.autoFill() }, Modifier.fillMaxWidth().heightIn(min = MinTouch)) { Text(stringResource(R.string.pl_autofill)) }
+        Button({ vm.autoFill() }, Modifier.fillMaxWidth().heightIn(min = MinTouch), enabled = !state.planning) {
+            Text(stringResource(if (state.planning) R.string.pl_planning else R.string.pl_autofill))
+        }
         if (!state.hasTarget) Text(stringResource(R.string.pl_no_target), style = MaterialTheme.typography.bodyMedium)
         if (state.plan.isEmpty()) {
             Text(stringResource(R.string.pl_empty), style = MaterialTheme.typography.bodyLarge)
