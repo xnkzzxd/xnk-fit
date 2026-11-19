@@ -34,46 +34,54 @@ class ReminderPlannerTest {
         lastActivityDay = lastActivity, backSentSinceActivity = back,
     )
 
-    @Test fun picksKindAtItsHour() {
+    @Test
+    fun picksKindAtItsHour() {
         assertEquals(ReminderKind.MAKAN_PAGI, nextReminder(facts(at = "07:15")))
         assertEquals(ReminderKind.MAKAN_SIANG, nextReminder(facts(at = "12:00", sent = setOf(ReminderKind.MAKAN_PAGI))))
         assertEquals(ReminderKind.LATIHAN, nextReminder(facts(at = "17:30")))
         assertNull(nextReminder(facts(at = "10:00"))) // nothing due
     }
 
-    @Test fun R_REM_MAX_threeTotalPerDay() {
+    @Test
+    fun R_REM_MAX_threeTotalPerDay() {
         val three = setOf(ReminderKind.MAKAN_PAGI, ReminderKind.MAKAN_SIANG, ReminderKind.LATIHAN)
         assertNull(nextReminder(facts(at = "18:00", sent = three)))
         assertEquals(ReminderKind.MAKAN_MALAM, nextReminder(facts(at = "18:00", sent = three - ReminderKind.LATIHAN, enabled = all - ReminderKind.LATIHAN)))
     }
 
-    @Test fun neverTwoOfTheSameKindInADay() {
+    @Test
+    fun neverTwoOfTheSameKindInADay() {
         assertNull(nextReminder(facts(at = "17:10", enabled = setOf(ReminderKind.LATIHAN), sent = setOf(ReminderKind.LATIHAN))))
     }
 
-    @Test fun R_REM_LATE_dropsAfterThreeHours() {
+    @Test
+    fun R_REM_LATE_dropsAfterThreeHours() {
         assertNull(nextReminder(facts(at = "10:01", enabled = setOf(ReminderKind.MAKAN_PAGI))))
         assertEquals(ReminderKind.MAKAN_PAGI, nextReminder(facts(at = "09:59", enabled = setOf(ReminderKind.MAKAN_PAGI))))
     }
 
-    @Test fun R_REM_QUIET_hours() {
+    @Test
+    fun R_REM_QUIET_hours() {
         assertTrue(inQuietHours(java.time.LocalTime.of(21, 0)))
         assertTrue(inQuietHours(java.time.LocalTime.of(6, 59)))
         assertNull(nextReminder(facts(at = "21:30", enabled = setOf(ReminderKind.MAKAN_MALAM))))
         assertEquals(ReminderKind.MAKAN_MALAM, nextReminder(facts(at = "20:30", enabled = setOf(ReminderKind.MAKAN_MALAM))))
     }
 
-    @Test fun switchesAreHonoured() {
+    @Test
+    fun switchesAreHonoured() {
         assertNull(nextReminder(facts(at = "17:00", enabled = setOf(ReminderKind.MAKAN_PAGI))))
         assertNull(nextReminder(facts(at = "17:00", enabled = emptySet())))
     }
 
-    @Test fun R_REM_SKIP_whenAlreadyDone() {
+    @Test
+    fun R_REM_SKIP_whenAlreadyDone() {
         assertNull(nextReminder(facts(at = "17:00", enabled = setOf(ReminderKind.LATIHAN), doneToday = true)))
         assertNull(nextReminder(facts(at = "12:00", enabled = setOf(ReminderKind.MAKAN_SIANG), slots = setOf(ReminderKind.MAKAN_SIANG))))
     }
 
-    @Test fun R_REM_GAP_latihanNeedsProgramAndNotARestDay() {
+    @Test
+    fun R_REM_GAP_latihanNeedsProgramAndNotARestDay() {
         val only = setOf(ReminderKind.LATIHAN)
         assertNull(nextReminder(facts(enabled = only, program = false)))
         assertNull(nextReminder(facts(enabled = only, lastWorkout = wed.minusDays(1)))) // rest day
@@ -81,7 +89,8 @@ class ReminderPlannerTest {
         assertEquals(ReminderKind.LATIHAN, nextReminder(facts(enabled = only, lastWorkout = null))) // never trained
     }
 
-    @Test fun R_REM_WEIGH_SKIP_onlySundayAndNotRightAfterWeighing() {
+    @Test
+    fun R_REM_WEIGH_SKIP_onlySundayAndNotRightAfterWeighing() {
         val sun = LocalDate.of(2026, 11, 22)
         val only = setOf(ReminderKind.TIMBANG)
         assertEquals(ReminderKind.TIMBANG, nextReminder(facts(at = "07:00", date = sun, enabled = only)))
@@ -89,13 +98,15 @@ class ReminderPlannerTest {
         assertNull(nextReminder(facts(at = "07:00", date = sun, enabled = only, lastWeight = sun.minusDays(1))))
     }
 
-    @Test fun comeBackAfterAbsenceReplacesLatihan() {
+    @Test
+    fun comeBackAfterAbsenceReplacesLatihan() {
         val gone = facts(lastWorkout = wed.minusDays(9), lastActivity = wed.minusDays(8))
         assertEquals(ReminderKind.KEMBALI, nextReminder(gone))
         assertNull(nextReminder(gone.copy(sentToday = setOf(ReminderKind.KEMBALI))))
     }
 
-    @Test fun R_REM_BACK_isRareAndNeedsData() {
+    @Test
+    fun R_REM_BACK_isRareAndNeedsData() {
         val gone = facts(lastWorkout = wed.minusDays(30), lastActivity = wed.minusDays(30))
         assertEquals(ReminderKind.KEMBALI, nextReminder(gone.copy(enabled = setOf(ReminderKind.KEMBALI), backSentSinceActivity = 1)))
         assertNull(nextReminder(gone.copy(enabled = setOf(ReminderKind.KEMBALI), backSentSinceActivity = 2))) // at most two
@@ -105,7 +116,8 @@ class ReminderPlannerTest {
         assertNull(nextReminder(facts(enabled = setOf(ReminderKind.KEMBALI), lastActivity = wed.minusDays(10), back = 1)))
     }
 
-    @Test fun R_REM_ROTATE_neverRepeatsTwoDaysInARow() {
+    @Test
+    fun R_REM_ROTATE_neverRepeatsTwoDaysInARow() {
         for (kind in ReminderKind.entries) for (n in 2..8) {
             var day = LocalDate.of(2026, 1, 1)
             repeat(400) {
@@ -122,7 +134,8 @@ class ReminderPlannerTest {
         .findAll(RepoFiles.text("app/src/main/res/values/strings_reminder.xml"))
         .associate { m -> m.groupValues[1] to Regex("<item>(.*?)</item>").findAll(m.groupValues[2]).map { it.groupValues[1] }.toList() }
 
-    @Test fun R_REM_ROTATE_everyKindHasAtLeastFiveVariants() {
+    @Test
+    fun R_REM_ROTATE_everyKindHasAtLeastFiveVariants() {
         assertEquals(setOf("rem_latihan", "rem_kembali", "rem_timbang", "rem_makan_pagi", "rem_makan_siang", "rem_makan_malam"), arrays.keys)
         arrays.forEach { (name, v) -> assertTrue("$name has ${v.size}", v.size >= 5 && v.toSet().size == v.size) }
     }
@@ -132,7 +145,8 @@ class ReminderPlannerTest {
         "menurunkan", "membakar", "wajib", "harus", "jangan", "gagal", "kamu", "kak", "anda", "bapak", "ibu", "kantor", "anak", "keluarga",
     )
 
-    @Test fun textsKeepTheToneRules() {
+    @Test
+    fun textsKeepTheToneRules() {
         arrays.forEach { (name, v) ->
             v.forEach { t ->
                 assertEquals("$name: $t", emptyList<String>(), toneProblems(t, isReminder = true))
