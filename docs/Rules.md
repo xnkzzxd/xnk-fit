@@ -186,6 +186,11 @@ Product rules (👤). Numbers can change before release; each change is recorded
 | R_REM_HOURS | Default hours: Latihan 17:00 on scheduled days; Makan pagi 07:00, siang 12:00, malam 18:00; Timbang Sunday 07:00 | — | 👤 |
 | R_TONE | No red for calories or weight; no blame; neutral words (no "kamu" or "Kak") | PRD PR-4 | ✅ |
 | R_TONE_WORDS | No shaming words in any text, for example "gagal"; no commands such as "harus" or "jangan" in reminders | product rule | 👤 |
+| R_REM_QUIET | No reminder from 21:00 until 07:00 | 21:00–07:00 | 👤 |
+| R_REM_LATE | A reminder still goes out up to 3 h after its hour, then it is dropped for the day | 3 h | 👤 |
+| R_REM_GAP | Latihan reminder only when the last workout was 2 or more days ago (rest days stay quiet; the program stores no weekdays) | 2 days | 👤 |
+| R_REM_BACK | "Kembali" after 7 days without any record (workout, food, measure); a second one after 14; never more than 2 until a new record; never when the phone holds no data | 7 / 2 | 👤 |
+| R_REM_WEIGH_SKIP | Timbang skipped when a weight was saved in the last 3 days | 3 days | 👤 |
 
 ## 9. Privacy and data rules
 

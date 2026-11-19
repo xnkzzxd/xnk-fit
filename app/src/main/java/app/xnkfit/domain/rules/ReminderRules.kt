@@ -1,6 +1,6 @@
 package app.xnkfit.domain.rules
 
-// Reminders and tone (Rules.md §8, PRD R-1, R-2, PR-4). Scheduling itself is B-15.
+// Reminders and tone (Rules.md §8, PRD R-1, R-2, PR-4). The scheduler is domain.reminder (B-15).
 
 const val R_REM_MAX = 3
 
@@ -19,6 +19,8 @@ enum class ReminderKind(val hour: Int) {
     MAKAN_SIANG(R_REM_HOURS_SIANG_H),
     MAKAN_MALAM(R_REM_HOURS_MALAM_H),
     TIMBANG(R_REM_HOURS_TIMBANG_H),
+    /** B-15: an invitation back after a long pause; shares the Latihan hour. */
+    KEMBALI(R_REM_HOURS_LATIHAN_H),
 }
 
 /** R_REM_SKIP and R_REM_MAX: send only when the action is not done yet and fewer than 3 were sent today. */

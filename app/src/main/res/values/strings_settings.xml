@@ -8,7 +8,7 @@
 
     <string name="set_remind_title">Pengingat</string>
     <string name="set_remind_max">Maksimal 3 per hari</string>
-    <string name="set_remind_note">Saklar ini disimpan di HP. Pengingat mulai berbunyi pada pembaruan berikutnya.</string>
+    <string name="set_remind_note">Saklar dan pengingat hanya ada di HP ini. Tidak berbunyi antara 21.00 dan 07.00, dan bergantung pada izin notifikasi.</string>
     <string name="set_remind_latihan">Latihan</string>
     <string name="set_remind_latihan_time">17.00</string>
     <string name="set_remind_makan">Catat makan</string>

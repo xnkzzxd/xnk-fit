@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import app.xnkfit.R
 import app.xnkfit.data.prefs.ReminderGroup
+import app.xnkfit.data.reminder.ReminderScheduler
 import app.xnkfit.data.prefs.ThemeMode
 import app.xnkfit.ui.common.MinTouch
 
@@ -112,11 +113,21 @@ private fun SwitchRow(label: String, hint: String?, checked: Boolean, onChange: 
 
 @Composable
 private fun RemindersCard(on: Set<ReminderGroup>, set: (ReminderGroup, Boolean) -> Unit) {
+    val context = LocalContext.current
+    // O-3: the notification permission is asked when a switch is turned on. A "no" changes nothing else and is not asked again.
+    val ask = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { }
+    fun change(group: ReminderGroup, enabled: Boolean) {
+        set(group, enabled)
+        ReminderScheduler.sync(context.applicationContext, (if (enabled) on + group else on - group).isNotEmpty())
+        if (enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) ask.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }
     SectionCard(R.string.set_remind_title) {
         Text(stringResource(R.string.set_remind_max), style = MaterialTheme.typography.bodySmall)
-        SwitchRow(stringResource(R.string.set_remind_latihan), stringResource(R.string.set_remind_latihan_time), ReminderGroup.LATIHAN in on) { set(ReminderGroup.LATIHAN, it) }
-        SwitchRow(stringResource(R.string.set_remind_makan), stringResource(R.string.set_remind_makan_time), ReminderGroup.MAKAN in on) { set(ReminderGroup.MAKAN, it) }
-        SwitchRow(stringResource(R.string.set_remind_timbang), stringResource(R.string.set_remind_timbang_time), ReminderGroup.TIMBANG in on) { set(ReminderGroup.TIMBANG, it) }
+        SwitchRow(stringResource(R.string.set_remind_latihan), stringResource(R.string.set_remind_latihan_time), ReminderGroup.LATIHAN in on) { change(ReminderGroup.LATIHAN, it) }
+        SwitchRow(stringResource(R.string.set_remind_makan), stringResource(R.string.set_remind_makan_time), ReminderGroup.MAKAN in on) { change(ReminderGroup.MAKAN, it) }
+        SwitchRow(stringResource(R.string.set_remind_timbang), stringResource(R.string.set_remind_timbang_time), ReminderGroup.TIMBANG in on) { change(ReminderGroup.TIMBANG, it) }
         Text(stringResource(R.string.set_remind_note), style = MaterialTheme.typography.bodySmall)
     }
 }

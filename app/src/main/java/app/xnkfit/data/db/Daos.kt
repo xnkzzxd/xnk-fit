@@ -216,6 +216,9 @@ interface WorkoutDao {
     @Query("SELECT MAX(doneAt) FROM workout_set WHERE workoutId = :workoutId AND done = 1")
     suspend fun lastDoneAt(workoutId: String): Long?
 
+    @Query("SELECT * FROM workout WHERE endedAt IS NOT NULL ORDER BY endedAt DESC LIMIT 1")
+    suspend fun lastFinished(): WorkoutEntity?
+
     @Query("SELECT * FROM workout WHERE endedAt IS NOT NULL ORDER BY startedAt DESC LIMIT :limit")
     fun observeFinished(limit: Int): Flow<List<WorkoutEntity>>
 
