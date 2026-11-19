@@ -31,7 +31,7 @@ fun ChoiceCard(
     val color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
     OutlinedCard(
         border = BorderStroke(if (selected) 2.dp else 1.dp, color),
-        modifier = modifier.fillMaxWidth().selectable(selected = selected, role = Role.RadioButton, onClick = onClick),
+        modifier = modifier.fillMaxWidth().heightIn(min = MinTouch).selectable(selected = selected, role = Role.RadioButton, onClick = onClick),
     ) {
         Column(Modifier.heightIn(min = MinTouch).padding(horizontal = 16.dp, vertical = 12.dp), Arrangement.Center) {
             Text(title, style = MaterialTheme.typography.titleMedium)
