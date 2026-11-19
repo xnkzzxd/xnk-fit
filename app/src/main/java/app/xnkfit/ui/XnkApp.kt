@@ -23,7 +23,7 @@ import app.xnkfit.ui.today.TodayScreen
 
 /** App frame: five bottom destinations (PRD N-1). Hari ini and Makan exist; the rest are empty stubs. */
 @Composable
-fun XnkApp(makan: MakanViewModel) {
+fun XnkApp(makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) }) {
     var selected by rememberSaveable { mutableStateOf(Destination.TODAY) }
     Scaffold(
         bottomBar = {
@@ -45,6 +45,7 @@ fun XnkApp(makan: MakanViewModel) {
         when (selected) {
             Destination.TODAY -> TodayScreen(modifier)
             Destination.FOOD -> MakanHost(makan, modifier)
+            Destination.ME -> me(modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)
         }
     }

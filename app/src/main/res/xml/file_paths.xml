@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One folder only: the camera's private capture cache (B-12). Photos in filesDir are never shared. -->
+<paths>
+    <cache-path name="capture" path="capture/" />
+</paths>

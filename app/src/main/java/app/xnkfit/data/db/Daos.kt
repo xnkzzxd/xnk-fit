@@ -221,6 +221,66 @@ interface ProgressDao {
 
     @Upsert suspend fun upsertMoment(row: JourneyMomentEntity)
 
+    /** Points keep a stable id (`workout:<id>`, `foodDay:<date>` ...), so a recount never doubles them (B-12). */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addPointsIfNew(rows: List<PointsEventEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addMomentIfNew(row: JourneyMomentEntity)
+
+    @Query("SELECT id FROM badge")
+    suspend fun earnedBadgeCodes(): List<String>
+
+    @Query("SELECT * FROM badge ORDER BY earnedAt")
+    suspend fun badges(): List<BadgeEntity>
+
+    @Query("SELECT * FROM journey_moment ORDER BY at DESC LIMIT :limit")
+    suspend fun moments(limit: Int): List<JourneyMomentEntity>
+
+    // Rows for the progress rules (B-12). Columns map onto `domain.progress` data classes by name.
+    @Query("SELECT id, endedAt FROM workout WHERE endedAt IS NOT NULL")
+    suspend fun finishedWorkouts(): List<app.xnkfit.domain.progress.FinishedWorkout>
+
+    @Query(
+        "SELECT workoutId, exerciseId, kind, weightKg, reps, bandLevel, form, doneAt FROM workout_set " +
+            "WHERE done = 1 AND doneAt IS NOT NULL",
+    )
+    suspend fun doneSets(): List<app.xnkfit.domain.progress.DoneSet>
+
+    @Query("SELECT at, minutes, effort FROM activity")
+    suspend fun activityRows(): List<app.xnkfit.domain.progress.ActivityRow>
+
+    @Query("SELECT day, slot FROM food_log")
+    suspend fun foodLogRows(): List<app.xnkfit.domain.progress.FoodLogRow>
+
+    @Query("SELECT type, takenAt FROM measure")
+    suspend fun measureRows(): List<app.xnkfit.domain.progress.MeasureRow>
+
+    @Query("SELECT weekStart, day FROM meal_plan")
+    suspend fun planRows(): List<app.xnkfit.domain.progress.PlanRow>
+
+    @Query("SELECT COUNT(*) FROM photo")
+    suspend fun photoCount(): Int
+
+    @Query("SELECT kind, points FROM points_event")
+    suspend fun pointRows(): List<app.xnkfit.domain.progress.PointRow>
+
+    @Query("SELECT * FROM photo ORDER BY takenAt DESC")
+    suspend fun photos(): List<PhotoEntity>
+
+    @Query("SELECT * FROM photo WHERE id = :id")
+    suspend fun photo(id: String): PhotoEntity?
+
+    @Query("DELETE FROM photo WHERE id = :id")
+    suspend fun deletePhoto(id: String)
+
+    @Query("SELECT * FROM measure WHERE type = :type ORDER BY takenAt")
+    suspend fun measures(type: String): List<MeasureEntity>
+
+    @Upsert suspend fun upsertMeasure(row: MeasureEntity)
+
+    @Upsert suspend fun upsertPhoto(row: PhotoEntity)
+
     @Query("SELECT * FROM journey_moment ORDER BY at DESC")
     fun observeMoments(): Flow<List<JourneyMomentEntity>>
 }

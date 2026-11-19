@@ -1,0 +1,40 @@
+setting=home-bw level=L2 focus=OTOT source=AUTO rulesVersion=1
+day 1 FULL_A ~50 min
+  1. SQUAT_BW SQUAT MAIN 3x10-15 rest=120s bodyweight_or_band
+  2. PUSHH_PUSHUP_INCL PUSH_H MAIN 4x10-15 rest=120s bodyweight_or_band
+  3. HINGE_BRIDGE_SL HINGE ACCESSORY 4x10-15 rest=120s bodyweight_or_band
+  4. CORE_PLANK CORE MAIN 3x10-15 rest=60s bodyweight_or_band
+  5. TRI_BENCHDIP TRI MAIN 4x10-15 rest=60s bodyweight_or_band
+  6. LEGISO_CALF_SL LEG_ISO VOLUME_FILL for=CALVES 4x10-15 rest=60s bodyweight_or_band
+day 2 FULL_B ~52 min
+  1. HINGE_BRIDGE_BW HINGE MAIN 3x10-15 rest=120s bodyweight_or_band
+  2. PUSHV_PIKE PUSH_V MAIN 4x10-15 rest=120s bodyweight_or_band
+  3. SQUAT_WALLSIT SQUAT ACCESSORY 4x10-15 rest=120s bodyweight_or_band
+  4. CORE_SIDEPLANK CORE ACCESSORY 3x10-15 rest=60s bodyweight_or_band
+  5. PUSHV_PIKE_KNEE PUSH_V VOLUME_FILL for=SIDE_DELT 4x10-15 rest=120s bodyweight_or_band
+  6. LEGISO_CALF_SL LEG_ISO VOLUME_FILL for=CALVES 3x10-15 rest=60s bodyweight_or_band
+day 3 FULL_C ~40 min
+  1. SQUAT_BW SQUAT MAIN 3x10-15 rest=120s bodyweight_or_band
+  2. PUSHH_PUSHUP_KNEE PUSH_H ACCESSORY 4x10-15 rest=120s bodyweight_or_band
+  3. HINGE_BRIDGE_BW HINGE MAIN 3x10-15 rest=120s bodyweight_or_band
+  4. CORE_PLANK CORE MAIN 3x10-15 rest=60s bodyweight_or_band
+  5. LEGISO_CALF_BW LEG_ISO MAIN 4x10-15 rest=60s bodyweight_or_band
+missing: PULL_H needs band+dumbbell+table, PULL_V needs band+bar, CURL needs band+dumbbell
+under minimum: SIDE_DELT, REAR_DELT, BICEPS, LATS
+weekly sets:
+  CHEST 12.0 OK
+  FRONT_DELT 14.0 OK
+  SIDE_DELT 8.0 UNDER
+  REAR_DELT 0.0 UNDER
+  BICEPS 0.0 UNDER
+  TRICEPS 20.0 OK
+  LATS 0.0 UNDER
+  TRAPS 2.0 NO_MINIMUM
+  QUADS 10.0 OK
+  HAMS 10.0 OK
+  GLUTES 19.5 OK
+  CALVES 11.0 OK
+  ABS 14.5 OK
+  OBLIQUES 6.0 NO_MINIMUM
+  LOWER_BACK 1.5 NO_MINIMUM
+  FOREARM 0.0 NO_MINIMUM
