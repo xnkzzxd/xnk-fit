@@ -23,8 +23,11 @@ Needs JDK 17 or newer (CI uses 21), the Android SDK with platform 36 and build-t
 ./gradlew testDebugUnitTest --tests 'app.xnkfit.data.db.*'   # only the database tests
 ./gradlew testDebugUnitTest --tests 'app.xnkfit.data.content.*'   # content loader and update tests
 node --test tools/test-content-manifest.mjs   # manifest generator and signer (throwaway key)
+./gradlew testDebugUnitTest --tests 'app.xnkfit.data.backup.*'   # backup zip, restore and fake-Drive tests
 ./gradlew lintRelease              # Android Lint, warnings are errors
 ./gradlew assembleRelease          # R8 on; output is unsigned: app/build/outputs/apk/release/app-release-unsigned.apk
+# Drive backup is off ("belum tersedia") unless the owner's OAuth client id is passed:
+#   ./gradlew assembleRelease -Pxnkfit.driveClientId=...   (or env XNKFIT_DRIVE_CLIENT_ID; never commit it)
 python3 tools/check_text_literals.py          # no hardcoded UI text (NF-3)
 python3 -m unittest discover -s tools         # tests of that rule
 tools/check_apk_size.sh app/build/outputs/apk/release/app-release-unsigned.apk   # 20 MB budget

@@ -191,6 +191,11 @@ class BackupService(
         /** `backup-<timestamp>.zip` (Design §9), UTC so names sort by time. */
         fun fileName(at: Long): String = DriveClient.NAME_PREFIX + NAME_TIME.format(Instant.ofEpochMilli(at)) + ".zip"
 
+        /** Time encoded in a `backup-<timestamp>.zip` name, or null for any other name. */
+        fun timeOfName(name: String): Long? = runCatching {
+            Instant.from(NAME_TIME.parse(name.removePrefix(DriveClient.NAME_PREFIX).removeSuffix(".zip"))).toEpochMilli()
+        }.getOrNull()
+
         /** Export file name `xnkfit-backup-<date>.zip` (Design §9). */
         fun exportName(at: Long): String =
             "xnkfit-backup-" + DateTimeFormatter.ISO_LOCAL_DATE.withZone(ZoneOffset.UTC).format(Instant.ofEpochMilli(at)) + ".zip"

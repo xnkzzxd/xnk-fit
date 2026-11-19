@@ -230,6 +230,8 @@ Restore (B-5): the Data screen shows the manifest summary, a warning that everyt
 
 Another phone (B-6): if the manifest's device id differs from `backup_meta.lastDeviceId`, ask before overwrite.
 
+Built in B-16 (`data/backup`): the zip holds the user tables only (bundled content, `food_fts`, `backup_meta`, `schema_meta` are left out; DataStore settings are not in it); a backup without photos leaves the phone's photos in place. Drive works only when the build carries the owner's OAuth client id (`-Pxnkfit.driveClientId`, empty by default → "belum tersedia"). Automatic backup on a phone that never backed up stops when Drive's newest backup is from another phone and the Data screen asks. See Decisions.md (B-16).
+
 Delete all (B-7): removes the database, photos, DataStore and cached content, then restarts at onboarding.
 
 ## 10. Speed budget and performance
@@ -293,7 +295,7 @@ Anything else needs a row here first.
 | Domain rules | JUnit, pure JVM; every rule ID has at least one test | Every PR |
 | Generator | JUnit with golden programs per equipment setting | Every PR |
 | Migrations | Room migration tests from each exported schema (`MigrationTestHelper`, Robolectric; JSON in `app/schemas/`, committed, never edited after release). `MigrationTest.everyReleasedVersionMigratesToLatest` finds every `N.json` by itself. Today only v1 exists: the test runs v1 → v1, and one example migration is kept as an ignored pattern. CI fails when a build changes a committed schema file (see CI). | Every PR |
-| Backup round trip | Unit: export → import equals source | Every PR |
+| Backup round trip | Unit: export → import equals source per table, refusals before any write, rollback on a failed write (`BackupArchiveTest`); Drive upload, keep-three, device check against a fake Drive server on 127.0.0.1 (`DriveBackupTest`) | Every PR |
 | Kill test | Instrumented: kill at each logger step | Nightly |
 | Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR. **Not in place yet (B-05):** `compose-ui-test` is not in the catalog and no Compose test has run; screens are covered by ViewModel tests on the JVM (`OnboardingViewModelTest`, `ScreeningModelTest`) |
 | Speed | Macrobenchmark budgets (§10) | Nightly and before release |

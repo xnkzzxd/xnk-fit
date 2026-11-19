@@ -47,6 +47,12 @@ import java.util.Calendar
 import java.util.UUID
 import androidx.lifecycle.lifecycleScope
 import app.xnkfit.data.backup.BackupScheduler
+import app.xnkfit.data.backup.BackupGraph
+import app.xnkfit.data.backup.DeviceId
+import app.xnkfit.data.backup.DriveConfig
+import app.xnkfit.data.backup.PlayDriveAuth
+import app.xnkfit.ui.data.DataScreen
+import app.xnkfit.ui.data.DataViewModel
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -147,6 +153,19 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // B-16: Data dan cadangan. Drive parts are null when this build has no OAuth client id ("belum tersedia").
+    private val data: DataViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = DataViewModel(
+                service = BackupGraph.service(applicationContext),
+                store = BackupGraph.settings(applicationContext),
+                auth = if (DriveConfig.configured) PlayDriveAuth(applicationContext) else null,
+                deviceId = DeviceId(applicationContext.noBackupFilesDir)::get,
+            ) as T
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         // B-2: automatic backup is checked when the app is opened or resumed, never in the background.
@@ -174,10 +193,13 @@ class MainActivity : ComponentActivity() {
                     false -> OnboardingScreen(onboarding, onDone = { hasProfile = true })
                     true -> {
                         var showCards by rememberSaveable { mutableStateOf(false) }
+                        var showData by rememberSaveable { mutableStateOf(false) }
                         if (showCards) {
                             KartuScreen(share, onBack = { showCards = false })
+                        } else if (showData) {
+                            DataScreen(data, onBack = { showData = false })
                         } else {
-                            XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { showCards = true }) }, workout = { LoggerHost(logger, restAlarms, it) }, start = startTab)
+                            XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { showCards = true }, onOpenData = { showData = true }) }, workout = { LoggerHost(logger, restAlarms, it) }, start = startTab)
                         }
                     }
                 }

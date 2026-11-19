@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Data screen: backup, restore, export, import (B-16, PRD B-1…B-6). Indonesian; wording from docs/mockups/pengaturan.html. -->
+<resources>
+    <string name="data_title">Data dan cadangan</string>
+    <string name="data_back">Kembali</string>
+    <string name="data_entry_hint">Cadangan Google Drive, ekspor dan impor.</string>
+    <string name="data_open">Buka</string>
+    <string name="data_drive_title">Google Drive</string>
+    <string name="data_drive_unavailable">Cadangan ke Google Drive belum tersedia di versi ini. Ekspor ke file tetap bisa.</string>
+    <string name="data_drive_where">Cadangan disimpan di folder tersembunyi aplikasi di Drive Anda sendiri. Tiga cadangan terakhir disimpan.</string>
+    <string name="data_backup_on">Cadangan otomatis lewat Wi-Fi</string>
+    <string name="data_photos_on">Ikutkan foto</string>
+    <string name="data_photos_hint">Foto hanya dikirim ke Drive Anda bila ini dinyalakan.</string>
+    <string name="data_last_backup">Cadangan terakhir: %1$s</string>
+    <string name="data_never">Belum pernah dicadangkan</string>
+    <string name="data_stale">Cadangan sudah lebih dari sehari. Buka aplikasi saat tersambung Wi-Fi, atau tekan Cadangkan.</string>
+    <string name="data_sign_in_again">Masuk Google lagi untuk melanjutkan cadangan.</string>
+    <string name="data_other_waiting">Di Drive ada cadangan dari HP lain. Cadangan otomatis berhenti sampai Anda memilih: pulihkan cadangan itu, atau tekan Cadangkan untuk HP ini.</string>
+    <string name="data_backup_now">Cadangkan</string>
+    <string name="data_restore">Pulihkan</string>
+    <string name="data_export">Ekspor</string>
+    <string name="data_import">Impor</string>
+    <string name="data_file_title">File</string>
+    <string name="data_export_hint">File zip berisi data Anda, ditambah tabel CSV yang bisa dibaca. Impor memakai file yang sama.</string>
+    <string name="data_busy">Sedang bekerja…</string>
+    <string name="data_done_backup">Cadangan tersimpan di Drive.</string>
+    <string name="data_done_export">Ekspor selesai.</string>
+    <string name="data_done_restore">Data dipulihkan.</string>
+    <string name="data_no_backups">Belum ada cadangan di Drive.</string>
+    <string name="data_pick_title">Pilih cadangan</string>
+    <string name="data_this_phone">HP ini</string>
+    <string name="data_other_phone">HP lain</string>
+    <string name="data_item">%1$s · %2$s</string>
+    <string name="data_restore_title">Pulihkan cadangan?</string>
+    <string name="data_restore_warning">Semua data di HP ini diganti. Tidak bisa dibatalkan.</string>
+    <string name="data_restore_photos_kept">Cadangan ini tanpa foto; foto di HP ini tetap ada.</string>
+    <string name="data_restore_made">Dibuat %1$s · aplikasi %2$s</string>
+    <string name="data_restore_rows">%1$d latihan · %2$d catatan makan · %3$d ukuran</string>
+    <string name="data_restore_photos">%1$d foto</string>
+    <string name="data_restore_word">PULIHKAN</string>
+    <string name="data_restore_type">Ketik %1$s untuk lanjut</string>
+    <string name="data_cancel">Batal</string>
+    <string name="data_continue">Lanjut</string>
+    <string name="data_close">Tutup</string>
+    <string name="data_other_title">Dari HP lain</string>
+    <string name="data_other_body">Cadangan ini dibuat di HP lain (%1$s). Ganti data di HP ini?</string>
+    <string name="data_err_title">Tidak bisa dipulihkan</string>
+    <string name="data_err_newer">Cadangan dari versi lebih baru. Perbarui aplikasi dulu.</string>
+    <string name="data_err_not_backup">File ini bukan cadangan XNK Fit.</string>
+    <string name="data_err_manifest">Daftar isi cadangan rusak. Data di HP tidak diubah.</string>
+    <string name="data_err_checksum">Isi cadangan tidak cocok dengan daftar isinya (file rusak). Data di HP tidak diubah.</string>
+    <string name="data_err_too_large">File terlalu besar untuk dipulihkan.</string>
+    <string name="data_err_write">Pemulihan gagal. Data lama di HP tetap utuh.</string>
+    <string name="data_err_network">Tidak tersambung ke Drive. Coba lagi nanti.</string>
+    <string name="data_err_sign_in">Masuk Google belum berhasil.</string>
+    <string name="data_err_generic">Gagal. Coba lagi.</string>
+</resources>

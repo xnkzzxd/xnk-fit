@@ -27,16 +27,22 @@ sealed interface DriveAuthResult {
     data class NeedsConsent(val intent: PendingIntent) : DriveAuthResult
 }
 
+/** The Data screen's view of sign-in, so tests can stand in for Google. */
+interface DriveAuthorizer {
+    /** Blocking; call off the main thread. */
+    fun authorize(): DriveAuthResult
+    fun fromConsent(data: Intent?): DriveAuthResult
+}
+
 /**
  * Google's AuthorizationClient (play-services-auth, Design §12) asks for `drive.appdata` and nothing else
  * (Google-OAuth.md §1). Tokens stay in the system account store (Design §14); the app keeps no copy.
  */
-class PlayDriveAuth(private val context: Context) {
+class PlayDriveAuth(private val context: Context) : DriveAuthorizer {
     private val request: AuthorizationRequest =
         AuthorizationRequest.builder().setRequestedScopes(listOf(Scope(DriveClient.SCOPE))).build()
 
-    /** Blocking; call off the main thread. */
-    fun authorize(): DriveAuthResult {
+    override fun authorize(): DriveAuthResult {
         val r = Tasks.await(Identity.getAuthorizationClient(context).authorize(request), TIMEOUT_S, TimeUnit.SECONDS)
         return toResult(r)
     }
@@ -48,7 +54,7 @@ class PlayDriveAuth(private val context: Context) {
     }
 
     /** After Google's consent screen returned [data]. */
-    fun fromConsent(data: Intent?): DriveAuthResult =
+    override fun fromConsent(data: Intent?): DriveAuthResult =
         toResult(Identity.getAuthorizationClient(context).getAuthorizationResultFromIntent(data))
 
     private fun toResult(r: AuthorizationResult): DriveAuthResult {
