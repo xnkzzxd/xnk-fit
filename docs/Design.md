@@ -80,6 +80,9 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 | `journey_moment` | id, at, text, kind, photoId? | P-2. |
 | `backup_meta` | lastBackupAt, lastDeviceId, lastDriveFileIds | B-6 compares device ids. |
 | `schema_meta` | version, appVersionCreated | B-5 newer-version check. |
+| `content_meta` | contentVersion, source (bundled, update), filesJson (file name to SHA-256), lastCheckAt, lastAttemptAt | B-04. Installed content and the update check clock (Content-Update.md §3). Singleton id `content`. |
+| `content_doc` | id (`badges`, `meal-packages-meta`), bodyJson | B-04. Whole bundled documents nobody queries inside. |
+| `meal_package` | id, profile, slot, bodyJson | B-04. The 72 bundled packages (Content.md §4.5); the planner reads by profile and slot. |
 
 Indexes: `food_log(day)`, `workout(startedAt)`, `workout_set(workoutId)`, `measure(type, takenAt)`.
 

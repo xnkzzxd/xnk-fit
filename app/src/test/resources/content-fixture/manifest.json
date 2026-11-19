@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "contentVersion": 1,
+  "minAppVersion": 1,
+  "files": [
+    {
+      "path": "badges.json",
+      "sha256": "d48b2ebbe6429ff326eaa59821d948bf46415b008ad2e3b1108f78e5607f5b4b",
+      "size": 9718
+    },
+    {
+      "path": "exercises.json",
+      "sha256": "0f9f4f471a07a26bd333e3a0bae64733656b1753487c60423dd00eb00c37f432",
+      "size": 165695
+    },
+    {
+      "path": "foods-estimates.json",
+      "sha256": "502e145a39ca8ca2521dc4f07894e4d19569e11d0a2a5449c0a5a8d426aebb57",
+      "size": 74825
+    },
+    {
+      "path": "foods-packaged.json",
+      "sha256": "36d22d761e2e710b405a42c1bdd0141886667b26acd4d01f0a8e1c9685600364",
+      "size": 2501
+    },
+    {
+      "path": "foods-regional.json",
+      "sha256": "8cd47e33ac050b829b3b92e2b7ce18b522034da0630ff957de1696eb40da8ef3",
+      "size": 128295
+    },
+    {
+      "path": "foods-tkpi.json",
+      "sha256": "7dd74b30e25b9941ea8790287142088dfc49e43cfffa3d9ef8467610ed1174b4",
+      "size": 927955
+    },
+    {
+      "path": "meal-packages.json",
+      "sha256": "2b81cae7febc2f546e0ed67cff5bd1848403fcf6227a8f75a4da95037a2e3bfc",
+      "size": 72759
+    }
+  ]
+}

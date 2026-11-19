@@ -33,6 +33,8 @@ jobs:
         run: python3 -m unittest discover -s tools
       - name: Text-literal rule
         run: python3 tools/check_text_literals.py
+      - name: Content manifest tool tests
+        run: node --test tools/test-content-manifest.mjs
       - name: APK size gate tests
         run: tools/test_check_apk_size.sh
 

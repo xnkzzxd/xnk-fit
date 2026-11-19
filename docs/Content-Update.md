@@ -55,4 +55,25 @@ Limits quoted from https://docs.github.com/en/pages/getting-started-with-github-
 ## 6. Open points (⚠)
 
 - Cloudflare Pages bandwidth terms are not in the pages read.
-- `SHA256withECDSA` on API 26 (B-04).
+- `SHA256withECDSA` on API 26: code uses only `KeyFactory("EC")`, `X509EncodedKeySpec`, `Signature("SHA256withECDSA")` and `java.util.Base64`, all in API 26; checked on the JVM only. Needs an emulator or the reference phone (B-04 left it open).
+
+## 7. Owner steps: key and content repo (B-04)
+
+Not done by Claude (Decisions.md rule 3). The app ships with a **placeholder** public key (`ContentConfig.PUBLIC_KEY_BASE64`) whose private half does not exist; `PUBLIC_KEY_IS_PLACEHOLDER = true` keeps the update check off.
+
+1. Make the private key on your own computer, offline: `openssl ecparam -name prime256v1 -genkey -noout | openssl pkcs8 -topk8 -nocrypt > xnk-content-key.pem`. Keep it out of every repo, Actions secret and chat (§3).
+2. Print the public key for the app: `XNK_CONTENT_SIGNING_KEY="$(cat xnk-content-key.pem)" node tools/content-manifest.mjs pubkey`. Paste the line into `ContentConfig.PUBLIC_KEY_BASE64`, set `PUBLIC_KEY_IS_PLACEHOLDER = false`, and ship an app version.
+3. Make the repo `xnk-fit-content` with GitHub Pages and check `ContentConfig.BASE_URL` (it assumes `https://xnkzzxd.github.io/xnk-fit-content/`).
+4. To publish: raise `contentVersion` in `content/content-version.json`, then on your computer `XNK_CONTENT_SIGNING_KEY="$(cat xnk-content-key.pem)" node tools/content-manifest.mjs build --src content --out dist --sign`, and push the files of `dist/` (7 content files, `manifest.json`, `manifest.sig`) to the content repo. The signing happens on your computer, not in Actions.
+
+## 8. What B-04 built (details that differ from or add to §3)
+
+- **Files:** `exercises`, `foods-tkpi`, `foods-estimates`, `foods-regional`, `foods-packaged`, `badges`, `meal-packages` (`*.json`). The manifest may list only these names; any other name or a path rejects the whole update. `figures/` is not part of the loader (UI tasks).
+- **Manifest:** `{schema: 1, contentVersion, minAppVersion, files: [{path, sha256, size}]}`. `minAppVersion` is compared with the app `versionCode`. `contentVersion` is an integer that must grow. The bundled release marker is `content/content-version.json` (same fields, no files).
+- **Signature:** `manifest.sig` is base64 of a DER ECDSA signature (`SHA256withECDSA`) over the exact bytes of `manifest.json`. The app checks it before parsing anything.
+- **Order of checks:** throttle, fetch both files, signature, shape, `schema`, `minAppVersion`, `contentVersion`, then per changed file: size, SHA-256, full parse. Then one Room transaction. Any failure keeps the old data; nothing is half-applied.
+- **Throttle:** state in table `content_meta`. A check completed (genuine manifest, whatever the result) blocks the next for 24 h; any attempt blocks the next for 6 h, so a network failure or rejected update is retried after 6 h. A clock set backwards counts as due.
+- **Request:** `GET <base>manifest.json` and `GET <base>manifest.sig`, then one `GET` per changed file. `HttpURLConnection`, https only, no redirect, no body, no cookies, no header added by us (the platform adds Host and User-Agent), 8 s connect, read and total deadline per request, size capped by the manifest.
+- **Changed files only:** each installed file's SHA-256 is kept in `content_meta.filesJson`; only files with a different hash are downloaded. The rows of a file are replaced as a set (foods by id prefix: `TKPI_`, `W_`, `REG-`, `PK_`; user foods are never touched).
+- **Bundled content:** `./gradlew` copies `content/*.json` byte for byte into `assets/content/` (task `copyContentAssets`, run by `preBuild`). Not minified: the APK deflates the JSON, total APK 1.16 MB against the 20 MB budget, so no size work is needed. A newer APK replaces older content; an older APK never replaces newer content.
+- **Off until the owner key is in:** see §7.

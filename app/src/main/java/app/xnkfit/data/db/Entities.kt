@@ -362,3 +362,50 @@ data class SchemaMetaEntity(
         const val SINGLETON_ID = "schema"
     }
 }
+
+/*
+ * Content tables added in B-04 (still schema v1: the app has not been released, so there is no migration).
+ * They hold what the loader needs and nothing the user types. Kept small on purpose.
+ */
+
+/** One row, `id` = "content". Which content is installed, and the update check clock (PV-2). */
+@Entity(tableName = "content_meta")
+data class ContentMetaEntity(
+    @PrimaryKey val id: String = SINGLETON_ID,
+    val createdAt: Long,
+    val updatedAt: Long,
+    /** Monotonic integer from `content/content-version.json`, later from the signed manifest. */
+    val contentVersion: Int,
+    /** bundled or update. */
+    val source: String,
+    /** JSON object: content file name to the SHA-256 (hex) of the bytes installed. */
+    val filesJson: String,
+    /** Last time a signed manifest was fetched and verified; drives the 24 h rule. */
+    val lastCheckAt: Long? = null,
+    /** Last time a check was started; drives the 6 h rule after a failure. */
+    val lastAttemptAt: Long? = null,
+) {
+    companion object {
+        const val SINGLETON_ID = "content"
+    }
+}
+
+/** Whole bundled documents nobody queries inside: `badges` (18 definitions) and `meal-packages-meta`. */
+@Entity(tableName = "content_doc")
+data class ContentDocEntity(
+    @PrimaryKey val id: String,
+    val createdAt: Long,
+    val updatedAt: Long,
+    val bodyJson: String,
+)
+
+/** One bundled meal package (Content.md §4.5). `bodyJson` is the package object as shipped. */
+@Entity(tableName = "meal_package", indices = [Index(value = ["profile", "slot"])])
+data class MealPackageEntity(
+    @PrimaryKey val id: String,
+    val createdAt: Long,
+    val updatedAt: Long,
+    val profile: String,
+    val slot: String,
+    val bodyJson: String,
+)

@@ -2,7 +2,7 @@
 
 A free, offline-first workout and meal app for people without a coach. Android first. Indonesian first.
 
-**Status: skeleton.** The Android project builds (B-01): an empty Hari ini screen and the five-tab bar. The domain rules are in code with tests (B-02: targets, safety gates, pace check in `app.xnkfit.domain`); no screen uses them yet. Process: docs, then clickable mockups (owner approval), then code.
+**Status: skeleton.** The Android project builds (B-01): an empty Hari ini screen and the five-tab bar. The domain rules are in code with tests (B-02: targets, safety gates, pace check in `app.xnkfit.domain`); no screen uses them yet. The bundled content loader and the signed content update are in `app.xnkfit.data.content` (B-04); the update stays off until the owner's public key is set (docs/Content-Update.md §7). Process: docs, then clickable mockups (owner approval), then code.
 
 - [docs/PRD.md](docs/PRD.md): product requirements (D-01)
 - [docs/Design.md](docs/Design.md): how it is built (D-02)
@@ -16,11 +16,13 @@ A free, offline-first workout and meal app for people without a coach. Android f
 
 ## Build and test
 
-Needs JDK 17 or newer (CI uses 21), the Android SDK with platform 36 and build-tools 36.0.0 (`ANDROID_HOME` set, or `sdk.dir` in `local.properties`), and Python 3 for the checks in `tools/`.
+Needs JDK 17 or newer (CI uses 21), the Android SDK with platform 36 and build-tools 36.0.0 (`ANDROID_HOME` set, or `sdk.dir` in `local.properties`), and Python 3 and Node 20+ for the checks in `tools/`.
 
 ```sh
 ./gradlew testDebugUnitTest        # unit tests, including the Room database and migration tests (Robolectric, JVM)
 ./gradlew testDebugUnitTest --tests 'app.xnkfit.data.db.*'   # only the database tests
+./gradlew testDebugUnitTest --tests 'app.xnkfit.data.content.*'   # content loader and update tests
+node --test tools/test-content-manifest.mjs   # manifest generator and signer (throwaway key)
 ./gradlew lintRelease              # Android Lint, warnings are errors
 ./gradlew assembleRelease          # R8 on; output is unsigned: app/build/outputs/apk/release/app-release-unsigned.apk
 python3 tools/check_text_literals.py          # no hardcoded UI text (NF-3)

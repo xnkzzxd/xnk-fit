@@ -6,6 +6,15 @@ plugins {
     alias(libs.plugins.room)
 }
 
+// Top-level *.json of content/ only (the figures and notes are not part of the loader). The APK deflates the
+// JSON (about 10x), so the files are copied byte for byte instead of minified; see docs/Content-Update.md §8.
+val copyContentAssets = tasks.register<Sync>("copyContentAssets") {
+    from(rootProject.layout.projectDirectory.dir("content")) { include("*.json") }
+    into(layout.buildDirectory.dir("generated/content-assets/content"))
+}
+// preBuild runs before every variant task (assets merge, lint, tests), so the copy is never skipped.
+tasks.named("preBuild") { dependsOn(copyContentAssets) }
+
 android {
     namespace = "app.xnkfit"
     compileSdk = 36
@@ -57,6 +66,9 @@ android {
     }
 
     sourceSets {
+        // Bundled content (B-04): copied from the repo's content/ at build time, never duplicated by hand.
+        // Same bytes as the files the content repo publishes, so file hashes match the manifest.
+        getByName("main").assets.srcDir(layout.buildDirectory.dir("generated/content-assets"))
         // MigrationTestHelper reads the exported schema JSON as assets under Robolectric (Design §13).
         // Debug only: the release APK does not carry the schemas.
         getByName("debug").assets.srcDir("$projectDir/schemas")

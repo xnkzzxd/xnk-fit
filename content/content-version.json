@@ -1,0 +1,6 @@
+{
+  "about": "Content release marker (B-04). Raise contentVersion on every content change that should reach phones. minAppVersion is the lowest app versionCode that can read it. schema is the content file format version.",
+  "contentVersion": 1,
+  "minAppVersion": 1,
+  "schema": 1
+}

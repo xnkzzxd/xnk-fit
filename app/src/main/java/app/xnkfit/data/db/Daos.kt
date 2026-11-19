@@ -210,3 +210,42 @@ object FoodSearch {
         return words.joinToString(" ") { "$it*" }
     }
 }
+
+/** Content loader writes (B-04). Replace-by-kind: delete the kind, insert the new rows, all inside one transaction. */
+@Dao
+interface ContentDao {
+    @Query("SELECT * FROM content_meta WHERE id = 'content'")
+    suspend fun meta(): ContentMetaEntity?
+
+    @Upsert suspend fun upsertMeta(row: ContentMetaEntity)
+
+    @Query("DELETE FROM exercise")
+    suspend fun deleteExercises()
+
+    @Insert suspend fun insertExercises(rows: List<ExerciseEntity>)
+
+    /** Deletes the foods of one content file by id prefix; user foods (`own`) never match a bundled prefix. */
+    @Query("DELETE FROM food WHERE substr(id, 1, length(:prefix)) = :prefix")
+    suspend fun deleteFoodsWithPrefix(prefix: String)
+
+    @Insert suspend fun insertFoods(rows: List<FoodEntity>)
+
+    @Query("DELETE FROM meal_package")
+    suspend fun deleteMealPackages()
+
+    @Insert suspend fun insertMealPackages(rows: List<MealPackageEntity>)
+
+    @Query("SELECT * FROM meal_package WHERE profile = :profile AND slot = :slot ORDER BY id")
+    suspend fun mealPackages(profile: String, slot: String): List<MealPackageEntity>
+
+    @Upsert suspend fun upsertDoc(row: ContentDocEntity)
+
+    @Query("SELECT * FROM content_doc WHERE id = :id")
+    suspend fun doc(id: String): ContentDocEntity?
+
+    @Query("SELECT COUNT(*) FROM exercise")
+    suspend fun exerciseCount(): Int
+
+    @Query("SELECT COUNT(*) FROM food")
+    suspend fun foodCount(): Int
+}

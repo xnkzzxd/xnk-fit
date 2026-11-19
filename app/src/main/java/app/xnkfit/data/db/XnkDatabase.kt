@@ -20,6 +20,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
         FoodEntity::class, FoodFts::class, RecipeEntity::class, FoodLogEntity::class, MealPlanEntity::class,
         ReminderEntity::class, PointsEventEntity::class, BadgeEntity::class, JourneyMomentEntity::class,
         BackupMetaEntity::class, SchemaMetaEntity::class,
+        ContentMetaEntity::class, ContentDocEntity::class, MealPackageEntity::class,
     ],
     version = XnkDatabase.VERSION,
     exportSchema = true,
@@ -31,6 +32,7 @@ abstract class XnkDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDao
     abstract fun progressDao(): ProgressDao
     abstract fun metaDao(): MetaDao
+    abstract fun contentDao(): ContentDao
 
     companion object {
         const val VERSION = 1
