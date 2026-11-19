@@ -70,7 +70,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | B-09 | Health Connect steps, hidden when missing (L-15) | B-08 | Sonnet 5.5 | [ ] |
 | B-10 | Food log, meal options, week planner, shopping list, household measures (M-1…M-10) | B-04, C-11 | Opus 5.5 (planner rules), Sonnet 5.5 (rest) | [ ] |
 | B-11 | Hari ini screen and targets card, recalculation prompt (H-1…H-3, M-2) | B-02, B-10 | Sonnet 5.5 | [ ] |
-| B-12 | Saya: progress, photos on phone, journey, level, streak, badges (P-1…P-5) | B-03, C-10 | Sonnet 5.5 | [ ] |
+| B-12 | Saya: progress, photos on phone, journey, level, streak, badges (P-1…P-5) | B-03, C-10 | Sonnet 5.5 | [x] (`domain/progress` pure rules, `data/progress`, `ui/saya`; JVM tests per badge, streak, points, level, photo privacy. Not run on a device: camera, FileProvider, DataStore and Compose layout are unverified. Deviations in Decisions.md: weight and waist only until B-14, no name/motto edit, no Kartu until B-13, one-column layout until B-17) |
 | B-13 | Share cards and Kartu saya, editor, QR on, no-kg switch (P-6) | B-12 | Sonnet 5.5 | [ ] |
 | B-14 | Settings, Bantuan, welcome cards, glossary, privacy (P-7, P-8, PV-4) | B-11 | Sonnet 5.5 | [ ] |
 | B-15 | Reminders: local notifications, rotation text, three-per-day cap (R-1, R-2) | B-08, B-10 | Sonnet 5.5 | [ ] |
