@@ -315,7 +315,7 @@
      "ABS"
     ]
    },
-   "rig": null,
+   "rig": "goblet-squat/dumbbell",
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Hold dumbbells at your sides",
@@ -570,7 +570,7 @@
      "ABS"
     ]
    },
-   "rig": null,
+   "rig": "goblet-squat/band",
    "variantOf": "SQUAT_BW",
    "cues_en": [
     "Stand on the band, hold the ends at the shoulders",
@@ -612,7 +612,7 @@
      "ABS"
     ]
    },
-   "rig": null,
+   "rig": "goblet-squat/bodyweight",
    "variantOf": "SQUAT_CHAIR",
    "cues_en": [
     "Feet shoulder width",
@@ -1021,7 +1021,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "db-rdl/barbell",
    "variantOf": "HINGE_RDL_DB",
    "cues_en": [
     "Soft knees, push hips back",
@@ -1149,7 +1149,7 @@
      "QUADS"
     ]
    },
-   "rig": null,
+   "rig": "hip-thrust-machine/barbell",
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "Upper back on the bench",
@@ -1486,7 +1486,7 @@
      "QUADS"
     ]
    },
-   "rig": null,
+   "rig": "hip-thrust-machine/dumbbell",
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "Shoulders on a bench or couch",
@@ -1772,7 +1772,7 @@
      "QUADS"
     ]
    },
-   "rig": null,
+   "rig": "hip-thrust-machine/bodyweight",
    "variantOf": "HINGE_BRIDGE_BW",
    "cues_en": [
     "Upper back on a chair or couch",
@@ -2766,7 +2766,7 @@
      "TRAPS"
     ]
    },
-   "rig": null,
+   "rig": "lateral-raise/band",
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -2979,7 +2979,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "db-row/barbell",
    "variantOf": "PULLH_CBLROW",
    "cues_en": [
     "Hinge, back flat",
@@ -4107,7 +4107,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "bicep-curl-cable/barbell",
    "variantOf": null,
    "cues_en": [
     "Elbows by the sides",
@@ -4146,7 +4146,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "bicep-curl-cable/barbell",
    "variantOf": null,
    "cues_en": [
     "Grip the angled parts",
@@ -4308,7 +4308,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "bicep-curl-cable/dumbbell",
    "variantOf": null,
    "cues_en": [
     "Elbows by the sides",
@@ -4348,7 +4348,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "bicep-curl-cable/hammer",
    "variantOf": null,
    "cues_en": [
     "Palms face each other",
@@ -4388,7 +4388,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "bicep-curl-cable/band",
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -4464,7 +4464,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "triceps-pushdown/rope",
    "variantOf": "TRI_PUSHDOWN",
    "cues_en": [
     "Elbows by the sides",
@@ -4701,7 +4701,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "triceps-pushdown/band",
    "variantOf": null,
    "cues_en": [
     "Anchor the band overhead",
@@ -5169,7 +5169,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "calf-raise-machine/dumbbell",
    "variantOf": null,
    "cues_en": [
     "Hold a dumbbell",
@@ -5207,7 +5207,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "calf-raise-machine/bodyweight",
    "variantOf": null,
    "cues_en": [
     "Balls of the feet on a step",
@@ -5245,7 +5245,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "calf-raise-machine/bodyweight",
    "variantOf": "LEGISO_CALF_BW",
    "cues_en": [
     "Hold a wall for balance",

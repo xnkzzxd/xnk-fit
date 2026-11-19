@@ -1,0 +1,541 @@
+{
+ "schema": 1,
+ "about": "Source of rig-local.json (task C-08b). Only joints listed in a 'joints' pair [start, end] move; single numbers are fixed. Angles follow the XNK convention (xnk-source/docs/Gerak.md): knee / elbow 0 = straight; hip flexion from the trunk line; shoulder 0 = arm at the side, 180 = overhead; ankle 0 = foot at 90 deg to the shin, negative = dorsiflexion. 'torso' and 'thigh' are absolute segment angles in the SVG plane (degrees, y down, figure faces right). 'angles' says which numbers come from the source; 'choice' lists what is our drawing choice, as in Gerak.md 'Yang bukan dari studi'. Variants: 'rig' = parent pattern, 'variant' = what changes; parent frames are reused, only equipment and (if 'arms' is given) the static arm pose change.",
+ "patterns": {
+  "bicep-curl-cable/dumbbell": {
+   "name": "Bicep Curl (Dumbbell)",
+   "for": [
+    "CURL_DB"
+   ],
+   "rig": "bicep-curl-cable",
+   "variant": "dumbbell",
+   "muscles": [
+    [
+     "biceps"
+    ],
+    [
+     "forearms"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: Pedrosa 2023 elbow 0-135 deg; Attarieh 2025 arm at the side). Dumbbell, straight-bar and EZ-bar curls: same elbow flexion task, Marcolin G et al. (2018) PeerJ 6:e5165.",
+   "eq": [
+    {
+     "d": "M74 186 H124 V190 H74 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-5 -5 H5 V5 H-5 Z"
+    }
+   ]
+  },
+  "bicep-curl-cable/hammer": {
+   "name": "Hammer Curl (Dumbbell)",
+   "for": [
+    "CURL_HAMMER"
+   ],
+   "rig": "bicep-curl-cable",
+   "variant": "dumbbell, neutral grip",
+   "muscles": [
+    [
+     "biceps"
+    ],
+    [
+     "forearms"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: Pedrosa 2023, Attarieh 2025). The neutral grip turns the forearm, which a side view does not show; the dumbbell is drawn along the line of sight.",
+   "eq": [
+    {
+     "d": "M74 186 H124 V190 H74 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-9 -3 H9 V3 H-9 Z"
+    }
+   ]
+  },
+  "bicep-curl-cable/barbell": {
+   "name": "Bicep Curl (Barbell)",
+   "for": [
+    "CURL_BB",
+    "CURL_EZ"
+   ],
+   "rig": "bicep-curl-cable",
+   "variant": "barbell or EZ bar",
+   "muscles": [
+    [
+     "biceps"
+    ],
+    [
+     "forearms"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: Pedrosa 2023, Attarieh 2025); Marcolin G et al. (2018) PeerJ 6:e5165 (straight and EZ bar). Side view shows the plate.",
+   "eq": [
+    {
+     "d": "M74 186 H124 V190 H74 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-10 0 A10 10 0 1 0 10 0 A10 10 0 1 0 -10 0 Z"
+    }
+   ]
+  },
+  "bicep-curl-cable/band": {
+   "name": "Bicep Curl (Band)",
+   "for": [
+    "CURL_BAND"
+   ],
+   "rig": "bicep-curl-cable",
+   "variant": "band under the feet",
+   "muscles": [
+    [
+     "biceps"
+    ],
+    [
+     "forearms"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: Pedrosa 2023, Attarieh 2025); band instead of the cable.",
+   "eq": [
+    {
+     "d": "M74 186 H124 V190 H74 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -6 H3 V6 H-3 Z"
+    },
+    {
+     "f": "wrist",
+     "cable": [
+      100,
+      187
+     ]
+    }
+   ]
+  },
+  "triceps-pushdown/rope": {
+   "name": "Triceps Rope Pushdown (Cable)",
+   "for": [
+    "TRI_ROPE"
+   ],
+   "rig": "triceps-pushdown",
+   "variant": "rope handle",
+   "muscles": [
+    [
+     "triceps"
+    ],
+    []
+   ],
+   "source": "Parent angles (Gerak.md: Maeo 2023 cable elbow extension 90-0 deg, neutral arm); only the handle changes.",
+   "eq": [
+    {
+     "d": "M70 186 H120 V190 H70 Z"
+    },
+    {
+     "d": "M150 8 V186 M140 186 H160",
+     "line": true
+    },
+    {
+     "f": "wrist",
+     "d": "M-2 -3 H2 V8 H-2 Z"
+    },
+    {
+     "f": "wrist",
+     "cable": [
+      148,
+      12
+     ]
+    }
+   ]
+  },
+  "triceps-pushdown/band": {
+   "name": "Triceps Pushdown (Band)",
+   "for": [
+    "TRI_BAND"
+   ],
+   "rig": "triceps-pushdown",
+   "variant": "band anchored overhead",
+   "muscles": [
+    [
+     "triceps"
+    ],
+    []
+   ],
+   "source": "Parent angles (Gerak.md: Maeo 2023); band anchored overhead instead of the cable.",
+   "eq": [
+    {
+     "d": "M70 186 H120 V190 H70 Z"
+    },
+    {
+     "d": "M140 4 H156 V12 H140 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -6 H3 V6 H-3 Z"
+    },
+    {
+     "f": "wrist",
+     "cable": [
+      148,
+      12
+     ]
+    }
+   ]
+  },
+  "calf-raise-machine/dumbbell": {
+   "name": "Calf Raise (Dumbbell)",
+   "for": [
+    "LEGISO_CALF_DB"
+   ],
+   "rig": "calf-raise-machine",
+   "variant": "dumbbell in the hand, on a step",
+   "arms": {
+    "abs": [
+     90,
+     90
+    ]
+   },
+   "muscles": [
+    [
+     "calves"
+    ],
+    []
+   ],
+   "source": "Parent angles (Gerak.md: Kassiano 2023 ankle -25 to +25 deg; that study used a horizontal leg-press machine, the parent rig stands). Arms hang at the side (drawing choice).",
+   "eq": [
+    {
+     "d": "M104 182 H150 V192 H104 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-5 -5 H5 V5 H-5 Z"
+    }
+   ]
+  },
+  "calf-raise-machine/bodyweight": {
+   "name": "Calf Raise (Bodyweight)",
+   "for": [
+    "LEGISO_CALF_BW",
+    "LEGISO_CALF_SL"
+   ],
+   "rig": "calf-raise-machine",
+   "variant": "bodyweight on a step, hand on a wall",
+   "arms": {
+    "abs": [
+     15,
+     -10
+    ]
+   },
+   "muscles": [
+    [
+     "calves"
+    ],
+    []
+   ],
+   "source": "Parent angles (Gerak.md: Kassiano 2023 ankle -25 to +25 deg). Single-leg version: the side view draws one leg, so it looks the same. Arm reaching to a wall is a drawing choice.",
+   "eq": [
+    {
+     "d": "M104 182 H150 V192 H104 Z"
+    },
+    {
+     "d": "M164 20 V192",
+     "line": true
+    }
+   ]
+  },
+  "hip-thrust-machine/barbell": {
+   "name": "Hip Thrust (Barbell)",
+   "for": [
+    "HINGE_HT_BB"
+   ],
+   "rig": "hip-thrust-machine",
+   "variant": "barbell on the hips, feet on the floor",
+   "muscles": [
+    [
+     "glutes"
+    ],
+    [
+     "hamstrings"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: McCurdy 2021, hip about 73 deg -> 0 deg); barbell hip thrust: Contreras B et al. (2015) J Appl Biomech 31(6):452-458. Floor drawn at the parent's foot plate height.",
+   "eq": [
+    {
+     "d": "M18 125 H62 V135 H18 Z"
+    },
+    {
+     "d": "M28 135 V166 M54 135 V166"
+    },
+    {
+     "d": "M10 166 H190 V170 H10 Z"
+    },
+    {
+     "f": "hip",
+     "d": "M-14 -14 A14 14 0 1 0 14 -14 A14 14 0 1 0 -14 -14 Z"
+    }
+   ]
+  },
+  "hip-thrust-machine/dumbbell": {
+   "name": "Hip Thrust (Dumbbell)",
+   "for": [
+    "HINGE_HT_DB"
+   ],
+   "rig": "hip-thrust-machine",
+   "variant": "dumbbell on the hips, feet on the floor",
+   "muscles": [
+    [
+     "glutes"
+    ],
+    [
+     "hamstrings"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: McCurdy 2021); Contreras 2015 (barbell hip thrust, same joint path).",
+   "eq": [
+    {
+     "d": "M18 125 H62 V135 H18 Z"
+    },
+    {
+     "d": "M28 135 V166 M54 135 V166"
+    },
+    {
+     "d": "M10 166 H190 V170 H10 Z"
+    },
+    {
+     "f": "hip",
+     "d": "M-10 -14 H10 V-6 H-10 Z"
+    }
+   ]
+  },
+  "hip-thrust-machine/bodyweight": {
+   "name": "Hip Thrust (Bodyweight)",
+   "for": [
+    "HINGE_HT_BW"
+   ],
+   "rig": "hip-thrust-machine",
+   "variant": "no load, feet on the floor",
+   "muscles": [
+    [
+     "glutes"
+    ],
+    [
+     "hamstrings"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: McCurdy 2021); Contreras 2015 (same joint path).",
+   "eq": [
+    {
+     "d": "M18 125 H62 V135 H18 Z"
+    },
+    {
+     "d": "M28 135 V166 M54 135 V166"
+    },
+    {
+     "d": "M10 166 H190 V170 H10 Z"
+    }
+   ]
+  },
+  "db-rdl/barbell": {
+   "name": "Romanian Deadlift (Barbell)",
+   "for": [
+    "HINGE_RDL_BB"
+   ],
+   "rig": "db-rdl",
+   "variant": "barbell",
+   "muscles": [
+    [
+     "hamstrings"
+    ],
+    [
+     "glutes",
+     "spine"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: knee fixed 15 deg, hip about 79 deg -> upright; Hermann 2026). RDL with a barbell: McAllister MJ et al. (2014) J Strength Cond Res 28(6):1573-1580. Side view shows the plate.",
+   "eq": [
+    {
+     "d": "M70 182 H140 V186 H70 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-20 0 A20 20 0 1 0 20 0 A20 20 0 1 0 -20 0 Z"
+    }
+   ]
+  },
+  "db-row/barbell": {
+   "name": "Bent Over Row (Barbell)",
+   "for": [
+    "PULLH_BBROW"
+   ],
+   "rig": "db-row",
+   "variant": "barbell",
+   "muscles": [
+    [
+     "upper back"
+    ],
+    [
+     "lats",
+     "biceps"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: trunk about 68 deg forward, knee 20 deg; Di Fonza 2026 review of row EMG including barbell bent-over row). Side view shows the plate.",
+   "eq": [
+    {
+     "d": "M66 182 H136 V186 H66 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-20 0 A20 20 0 1 0 20 0 A20 20 0 1 0 -20 0 Z"
+    }
+   ]
+  },
+  "lateral-raise/band": {
+   "name": "Lateral Raise (Band)",
+   "for": [
+    "PUSHV_LAT_BAND"
+   ],
+   "rig": "lateral-raise",
+   "variant": "band under the feet",
+   "muscles": [
+    [
+     "delts"
+    ],
+    []
+   ],
+   "source": "Parent angles (Gerak.md: shoulder abduction 4 -> 90 deg, drawing choice; Larsen 2025 dumbbell vs cable). Band from under the feet to each hand.",
+   "eq": [
+    {
+     "d": "M62 192 H138 V196 H62 Z"
+    },
+    {
+     "f": "wristL",
+     "d": "M-3 -5 H3 V5 H-3 Z"
+    },
+    {
+     "f": "wristR",
+     "d": "M-3 -5 H3 V5 H-3 Z"
+    },
+    {
+     "f": "wristL",
+     "cable": [
+      90,
+      191
+     ]
+    },
+    {
+     "f": "wristR",
+     "cable": [
+      110,
+      191
+     ]
+    }
+   ]
+  },
+  "goblet-squat/dumbbell": {
+   "name": "Squat (Dumbbell)",
+   "for": [
+    "SQUAT_DB"
+   ],
+   "rig": "goblet-squat",
+   "variant": "dumbbells at the sides",
+   "arms": {
+    "abs": [
+     90,
+     90
+    ]
+   },
+   "muscles": [
+    [
+     "quads"
+    ],
+    [
+     "glutes",
+     "adductors"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: knee 5 -> 100 deg, Larsen 2025, Kubo 2019). Arms hang straight down (drawing choice).",
+   "eq": [
+    {
+     "d": "M70 182 H140 V186 H70 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-5 -5 H5 V5 H-5 Z"
+    }
+   ],
+   "armsNote": "The parent's shoulder angle changes only because the arms follow the trunk lean while holding the weight at the chest (drawing choice, Gerak.md: only the knee range is sourced); knee, hip and ankle stay identical."
+  },
+  "goblet-squat/band": {
+   "name": "Squat (Band)",
+   "for": [
+    "SQUAT_BAND"
+   ],
+   "rig": "goblet-squat",
+   "variant": "band from under the feet to the shoulders",
+   "arms": {
+    "rel": [
+     40,
+     140
+    ]
+   },
+   "muscles": [
+    [
+     "quads"
+    ],
+    [
+     "glutes",
+     "adductors"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: knee 5 -> 100 deg, Larsen 2025, Kubo 2019). Hands at the shoulders (drawing choice).",
+   "eq": [
+    {
+     "d": "M70 182 H140 V186 H70 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -5 H3 V5 H-3 Z"
+    },
+    {
+     "f": "wrist",
+     "cable": [
+      104,
+      181
+     ]
+    }
+   ],
+   "armsNote": "The parent's shoulder angle changes only because the arms follow the trunk lean while holding the weight at the chest (drawing choice, Gerak.md: only the knee range is sourced); knee, hip and ankle stay identical."
+  },
+  "goblet-squat/bodyweight": {
+   "name": "Squat (Bodyweight)",
+   "for": [
+    "SQUAT_BW"
+   ],
+   "rig": "goblet-squat",
+   "variant": "no load, arms forward",
+   "arms": {
+    "abs": [
+     0,
+     0
+    ]
+   },
+   "muscles": [
+    [
+     "quads"
+    ],
+    [
+     "glutes",
+     "adductors"
+    ]
+   ],
+   "source": "Parent angles (Gerak.md: knee 5 -> 100 deg, Larsen 2025, Kubo 2019). Arms held forward (drawing choice).",
+   "eq": [
+    {
+     "d": "M70 182 H140 V186 H70 Z"
+    }
+   ],
+   "armsNote": "The parent's shoulder angle changes only because the arms follow the trunk lean while holding the weight at the chest (drawing choice, Gerak.md: only the knee range is sourced); knee, hip and ankle stay identical."
+  }
+ }
+}

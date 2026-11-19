@@ -22,11 +22,6 @@
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
   },
-  "SQUAT_DB": {
-   "kind": "derive",
-   "base": "goblet-squat",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
   "SQUAT_BULG_DB": {
    "kind": "new",
    "base": null,
@@ -48,16 +43,6 @@
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
   },
   "SQUAT_SUMO_DB": {
-   "kind": "derive",
-   "base": "goblet-squat",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "SQUAT_BAND": {
-   "kind": "derive",
-   "base": "goblet-squat",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "SQUAT_BW": {
    "kind": "derive",
    "base": "goblet-squat",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
@@ -108,11 +93,6 @@
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
   },
-  "HINGE_RDL_BB": {
-   "kind": "derive",
-   "base": "db-rdl",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
   "HINGE_DL_BB": {
    "kind": "derive",
    "base": "db-rdl",
@@ -123,11 +103,6 @@
    "base": "db-rdl",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing.",
    "note": "Hips start lower than a Romanian deadlift; angle table differs most in the knee."
-  },
-  "HINGE_HT_BB": {
-   "kind": "derive",
-   "base": "hip-thrust-machine",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "HINGE_GM": {
    "kind": "derive",
@@ -152,11 +127,6 @@
   "HINGE_DL_DB": {
    "kind": "derive",
    "base": "db-rdl",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "HINGE_HT_DB": {
-   "kind": "derive",
-   "base": "hip-thrust-machine",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "HINGE_SWING_KB": {
@@ -188,11 +158,6 @@
    "kind": "new",
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "HINGE_HT_BW": {
-   "kind": "derive",
-   "base": "hip-thrust-machine",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "HINGE_SUPERMAN": {
    "kind": "new",
@@ -279,11 +244,6 @@
    "base": "db-shoulder-press",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
-  "PUSHV_LAT_BAND": {
-   "kind": "derive",
-   "base": "lateral-raise",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
   "PUSHV_PIKE": {
    "kind": "new",
    "base": null,
@@ -298,11 +258,6 @@
    "kind": "new",
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "PULLH_BBROW": {
-   "kind": "derive",
-   "base": "db-row",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "PULLH_TBAR": {
    "kind": "derive",
@@ -429,16 +384,6 @@
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
   },
-  "CURL_BB": {
-   "kind": "derive",
-   "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "CURL_EZ": {
-   "kind": "derive",
-   "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
   "CURL_PREACHER": {
    "kind": "derive",
    "base": "bicep-curl-cable",
@@ -447,26 +392,6 @@
   "CURL_INCL_DB": {
    "kind": "derive",
    "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "CURL_DB": {
-   "kind": "derive",
-   "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "CURL_HAMMER": {
-   "kind": "derive",
-   "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "CURL_BAND": {
-   "kind": "derive",
-   "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "TRI_ROPE": {
-   "kind": "derive",
-   "base": "triceps-pushdown",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "TRI_OH_CBL": {
@@ -494,11 +419,6 @@
    "kind": "new",
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "TRI_BAND": {
-   "kind": "derive",
-   "base": "triceps-pushdown",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "TRI_BAND_OH": {
    "kind": "new",
@@ -535,21 +455,6 @@
    "kind": "new",
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "LEGISO_CALF_DB": {
-   "kind": "derive",
-   "base": "calf-raise-machine",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "LEGISO_CALF_BW": {
-   "kind": "derive",
-   "base": "calf-raise-machine",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "LEGISO_CALF_SL": {
-   "kind": "derive",
-   "base": "calf-raise-machine",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "LEGISO_KICK_BW": {
    "kind": "new",
