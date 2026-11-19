@@ -229,7 +229,7 @@ Files in `content/figures/`, checked by `node tools/check-figures.mjs`:
 | `muscle-map.json` | The 16 muscle codes → figure regions (§5.2) | — |
 | `no-rig.json` | Every exercise without a rig, with its reason | — |
 
-The two build files were copied unedited from XNK commit `6dc57b3` (`xnk-source/`, commit 573db10 on this branch). They are byte-identical to the D-05 mockup copies (`docs/mockups/figure-data.js`, `rig-data.js`; same sha256). ⚠ XNK `Gerak.md` (the joint-angle sources of the 21 rigs) was not read in C-08: this session could not open the XNK repo.
+The two build files were copied unedited from XNK commit `6dc57b3` (`xnk-source/`, commit 573db10 on this branch). They are byte-identical to the D-05 mockup copies (`docs/mockups/figure-data.js`, `rig-data.js`; same sha256). XNK `Gerak.md` (joint-angle sources of the rigs) was read in C-08b from its copy in `xnk-source/docs/`; summary and mismatches in §5.3.
 
 **Mapping rule.** `exercises.json` has a new field `rig`: an XNK pattern name only when the rig shows the **same lift with the same setup**, otherwise `null`. A rig never stands in for a different lift: borrowed angles or the wrong equipment would teach the wrong movement, and the angles were sourced for that lift only. Every exercise shows the muscle map, so all 149 have a figure; the rig is extra.
 
@@ -289,6 +289,35 @@ Mismatches the figure cannot fix (reported, not failed, by the checker):
 | XNK rig's own muscle list differs from the library | Ignored by rule; the library wins | 14 of 20 rigged entries (checker output), e.g. `seated-cable-row` rig: upper back main, library: `LATS`, `TRAPS`, `REAR_DELT` main |
 
 Fixing the first two needs new shapes: split `delts` into three heads and keep `obliques` in the XNK figure build (`build-figure.js`), then re-copy. That is an XNK change; listed in C-08b.
+
+### 5.3 Joint angles of the 20 reused XNK rigs (C-08b, from `Gerak.md`)
+
+Read from `content/figures/xnk-source/docs/Gerak.md` (unedited copy of XNK `docs/program/Gerak.md`) and checked against the frames in `rig.min.json` (first and last frame). Convention (Gerak.md): knee and elbow 0° = straight; hip flexion from the trunk line; shoulder 0° = arm at the side, 180° = overhead; ankle 0° = foot at 90° to the shin. "Choice" = Gerak.md itself says the number is a drawing choice, not a study value.
+
+| Exercise | Rig | Animated angles (rig frames) | Source in Gerak.md | Mismatch with rig or `exercises.json` |
+| --- | --- | --- | --- | --- |
+| `LEGISO_EXT` | `leg-extension` | Knee 100° → 30° | Pedrosa 2021, PMID 33977835 (full ROM 100–30°) | — |
+| `LEG_PRESS` | `leg-press` | Knee 100° → 5°, sled 45° | Larsen 2025, PMID 40113586 | — |
+| `HINGE_HT_MC` | `hip-thrust-machine` | Hip 73° → 0° | McCurdy 2021, PMID 33900255 (top position); bottom angle computed from bench and feet | — |
+| `PULLV_PULLDOWN` | `lat-pulldown` | Shoulder 163° → −5°, elbow 10° → 153° | Di Fonza 2026, PMID 42647355 (bar in front) | Shoulder and elbow numbers are not in the review: choice |
+| `PULLH_CBLROW` | `seated-cable-row` | Shoulder 86° → −27°, elbow 5° → 139° | Di Fonza 2026 (narrow grip, low abduction) | Angles not in the review: choice |
+| `PUSHH_PECDEC` | `chest-fly-machine` | Horizontal adduction, elbow 15° fixed (side view shows the arm shortened) | Solstad 2020, PMID 33239937 | — |
+| `PUSHH_PUSHUP_INCL` | `incline-push-up` | Elbow 4° → 95° | Kang 2019, PMID 31584855 (elbow straight at top); bottom = chest near support | Rig support is bench height; entry says wall or chair (C-08 note) |
+| `PUSHH_PUSHUP` | `push-up` | Elbow 4° → 95° | Kang 2019 | — |
+| `LEGISO_CURL_SEAT` | `seated-leg-curl` | Hip 90°, knee 10° → 100° | Maeo 2021, PMID 33009197 (seated > prone) | Gerak.md: 10–100° is the machine on the drawing, not the study. Maeo 2021 full text (PMC7969179) used knee 0–90° with hip ~90°: the rig range is 10° off at both ends ⚠ (XNK change, not ours: file is locked) |
+| `CURL_CABLE` | `bicep-curl-cable` | Elbow 2° → 135°, arm at the side | Pedrosa 2023, PMID 36828324 (0–135°); Attarieh 2025, PMID 40082069 (shoulder angle does not change growth) | Pedrosa 2023 measured a seated dumbbell **preacher** curl (shoulder 45°, full text PMC9960616); the standing arm-at-side pose rests on Attarieh 2025 |
+| `TRI_PUSHDOWN` | `triceps-pushdown` | Elbow 90° → 2° | Maeo 2023 (Eur J Sport Sci 23:1240), PMID 35819335 (cable, 90–0°, neutral arm) | Gerak.md writes "Maeo 2022" (online 2022; issue 2023) |
+| `LEGISO_CALF_STAND` | `calf-raise-machine` | Ankle −25° → +25° | Kassiano 2023, PMID 37015016 | The study used a horizontal leg-press machine (abstract); the rig stands. Same ankle and knee (straight) |
+| `SQUAT_GOB` | `goblet-squat` | Knee 5° → 100° (hip 9° → 94°, ankle 2° → −26°) | Larsen 2025; Kubo 2019, PMID 31230110 | Hip and ankle follow from the drawing (trunk lean): choice |
+| `PUSHV_LAT_DB` | `lateral-raise` (front) | Shoulder abduction 4° → 90° | Larsen 2025 (Front Physiol), PMID 40692697: muscle only | Angles: choice |
+| `LEGISO_ABD` | `hip-abduction-machine` (front) | Hip abduction 6° → 40° | Attarieh 2026, PMID 42842490: muscle only | Angles: choice |
+| `PUSHH_BENCH_DB` | `db-bench-press` | Elbow 4° → 152°, shoulder 88° → 18° | Uribe 2010, PMID 20300023; Patterson 2015, PMID 26528421 | Angles: choice |
+| `PUSHV_DB` | `db-shoulder-press` | Elbow 155° → 6°, seated | Kohler 2010, PMID 20072068 (seated); Uribe 2010 | Rig is seated with a back rest; entry lists dumbbells only (decision in Decisions.md, C-08b) |
+| `PULLH_BO_DB` | `db-row` | Trunk 68° from vertical (hip 78°), knee 20°, elbow 4° → 138° | Di Fonza 2026 | Angles: choice; trunk 68° matches the frames |
+| `HINGE_RDL_DB` | `db-rdl` | Knee 15° fixed, hip 79° → 11° | Hermann 2026, PMID 42516618: exercise only | Gerak.md says "to upright"; the last frame stops at hip 11°. Angles: choice |
+| `CORE_DEADBUG` | `dead-bug` | Hip 90° → 25°, knee 90° → 0°, shoulder 90° → 150° | Jeon 2026, PMID 42960974; Kim 2016, PMID 27317910: muscle only | Angles: choice |
+
+Summary: 8 of the 20 rigs animate a range taken from a study (leg extension, leg press, hip thrust top, push-ups, biceps curl, triceps pushdown, calf raise, goblet squat knee); 12 use Gerak.md's own drawing choices for start and end positions, which Gerak.md says openly. One study range is not followed (`seated-leg-curl`, 10–100° vs 0–90°). `squat-machine` (the 21st XNK rig) matches no library entry.
 
 ## 6. Badges (P-5)
 
