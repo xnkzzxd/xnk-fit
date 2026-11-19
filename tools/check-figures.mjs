@@ -81,9 +81,23 @@ for (const e of list) {
 const ids = new Set(list.map((e) => e.id));
 for (const id of Object.keys(noRig)) if (!ids.has(id)) err(`no-rig.json: unknown exercise ${id}`);
 
-// 3. Muscles: every code maps to regions that the muscle map draws (both sexes).
-const regionsIn = (s) => new Set(["front", "back"].flatMap((v) => Object.keys(fig.views?.[s]?.[v]?.parts ?? {})));
-const figM = regionsIn("m"), figF = regionsIn("f");
+// 3. Muscles: every code maps to regions that the muscle map draws (both sexes), schema 2 (Content §5.2):
+// "region" = both views, "front:region" / "back:region" = one view, a split name = listed paths of another region.
+if (mm.schema !== 2) err(`muscle-map.json: schema ${mm.schema}, checker expects 2`);
+const split = mm.split ?? {};
+for (const [name, sp] of Object.entries(split)) for (const s of ["m", "f"]) {
+  const all = fig.views?.[s]?.[sp.view]?.parts?.[sp.from] ?? [], ix = sp.paths?.[s] ?? [];
+  if (!ix.length || ix.some((i) => !Number.isInteger(i) || i < 0 || i >= all.length)) err(`split ${name} (${s}): bad path indices`);
+  else if (ix.length === all.length) err(`split ${name} (${s}): takes every path of ${sp.from}`);
+  const sha = createHash("sha256").update(ix.map((i) => all[i]).join("\n")).digest("hex");
+  if (sha !== sp.sha256?.[s]) err(`split ${name} (${s}): sha256 of the listed paths differs (figure changed?)`);
+}
+const parse = (ref) => { const m = /^(front|back):(.+)$/.exec(ref); return m ? { views: [m[1]], region: m[2] } : { views: ["front", "back"], region: ref }; };
+const figHas = (s, ref) => { const { views, region } = parse(ref), sp = split[region];
+  if (sp) return views.includes(sp.view) && !!fig.views?.[s]?.[sp.view]?.parts?.[sp.from];
+  const has = views.map((v) => !!fig.views?.[s]?.[v]?.parts?.[region]);
+  return ref.includes(":") ? has.every(Boolean) : has.some(Boolean); };
+const rigRegion = (ref) => { const { region } = parse(ref); return split[region]?.from ?? region; };
 const rigRegions = new Set([...(rig.muscles ?? []).map((m) => m[1]),
   ...Object.values(pats).flatMap((p) => (p.fm ?? []).map((m) => m[1]))]);
 const codes = new Set([...(ex.muscles ?? []), ...list.flatMap((e) => [...e.muscles.main, ...e.muscles.helper])]);
@@ -91,8 +105,8 @@ for (const c of codes) {
   const rs = mm.map[c];
   if (!rs?.length) { err(`muscle ${c}: not in muscle-map.json`); continue; }
   for (const r of rs) {
-    if (!figM.has(r) || !figF.has(r)) err(`muscle ${c}: region "${r}" not drawn in the muscle map (m: ${figM.has(r)}, f: ${figF.has(r)})`);
-    if (!rigRegions.has(r)) err(`muscle ${c}: region "${r}" has no mark on the rig`);
+    if (!figHas("m", r) || !figHas("f", r)) err(`muscle ${c}: region "${r}" not drawn in the muscle map (m: ${figHas("m", r)}, f: ${figHas("f", r)})`);
+    if (!rigRegions.has(rigRegion(r))) err(`muscle ${c}: region "${r}" has no mark on the rig`);
   }
 }
 for (const c of Object.keys(mm.map)) if (!(ex.muscles ?? []).includes(c)) err(`muscle-map.json: ${c} is not one of the 16 codes`);
@@ -112,18 +126,23 @@ if (total > FIG_SHARE) err(`content/figures is ${total} bytes, over its ${FIG_SH
 // 5. Report (no failure).
 const level = (e) => { const lv = {}; // region -> 1 main, 2 helper
   for (const [codesOf, l] of [[e.muscles.main, 1], [e.muscles.helper, 2]]) for (const c of codesOf)
-    for (const r of mm.map[c] ?? []) lv[r] = Math.min(lv[r] ?? 9, l);
+    for (const r of mm.map[c] ?? []) { const g = rigRegion(r); lv[g] = Math.min(lv[g] ?? 9, l); }
   return lv; };
-const sharedCodes = new Set(Object.values(mm.shared).flat());
-const sharedHits = list.filter((e) => [...e.muscles.main, ...e.muscles.helper].some((c) => sharedCodes.has(c)));
+// An exercise is ambiguous on a figure when two of its codes land on one region at different levels.
+const clash = (e, toRegions) => { const lv = {};
+  for (const [cs, l] of [[e.muscles.main, 1], [e.muscles.helper, 2]]) for (const c of cs)
+    for (const r of new Set((mm.map[c] ?? []).flatMap(toRegions))) (lv[r] ??= new Set()).add(l);
+  return Object.values(lv).some((x) => x.size > 1); };
+const mapRegions = (ref) => { const { views, region } = parse(ref); return views.map((v) => `${v}:${region}`); };
+const mapClash = list.filter((e) => clash(e, mapRegions)).length, rigClash = list.filter((e) => clash(e, (r) => [rigRegion(r)])).length;
 const nLocal = list.filter((e) => local.pats?.[e.rig]).length;
 console.log(`exercises: ${list.length} | with a rig: ${rigged} (XNK ${rigged - nLocal}, local ${nLocal}: ${list.filter((e) => local.pats?.[e.rig]?.rig).length} variants, ${list.filter((e) => local.pats?.[e.rig] && !local.pats[e.rig].rig).length} new patterns) | without: ${list.length - rigged}`);
 const kinds = {}; for (const r of Object.values(noRig)) kinds[r.kind] = (kinds[r.kind] ?? 0) + 1;
 console.log("without rig by kind:", JSON.stringify(kinds));
 console.log(`rig patterns used: ${used.size}/${Object.keys(pats).length} (local entries: ${Object.keys(local.pats ?? {}).length}); unused: ${Object.keys(pats).filter((p) => !used.has(p)).join(", ") || "none"}`);
 console.log(`figure files: ${total} bytes (${(100 * total / BUDGET).toFixed(2)} % of the 20 MB app budget); raster images: ${raster}`);
-console.log(`muscle codes: ${codes.size}, unmapped: ${[...codes].filter((c) => !mm.map[c]).join(", ") || "none"}. Shared regions: ${Object.entries(mm.shared).map(([r, cs]) => `${r} <- ${cs.join("/")}`).join("; ")}`);
-console.log(`exercises using a shared region (figure cannot show which head/part): ${sharedHits.length}`);
+console.log(`muscle codes: ${codes.size}, unmapped: ${[...codes].filter((c) => !mm.map[c]).join(", ") || "none"}. Shared regions: map ${Object.entries(mm.shared.map).map(([r, cs]) => `${r} <- ${cs.join("/")}`).join("; ")}; rig ${Object.entries(mm.shared.rig).map(([r, cs]) => `${r} <- ${cs.join("/")}`).join("; ")}`);
+console.log(`exercises with two codes at different levels on one region (figure cannot show the difference): muscle map ${mapClash}, rig ${rigClash}`);
 console.log("rigged exercises, XNK rig's own muscles vs exercises.json (app uses exercises.json):");
 for (const e of list.filter((x) => pats[x.rig])) {
   const p = pats[e.rig], want = level(e), own = {};

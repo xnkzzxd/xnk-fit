@@ -282,13 +282,14 @@ Mismatches the figure cannot fix (reported, not failed, by the checker):
 
 | Issue | Effect | Exercises |
 | --- | --- | --- |
-| One `delts` region for `FRONT_DELT`, `SIDE_DELT`, `REAR_DELT` | The map cannot show which head works; the whole shoulder takes the strongest level | 47 entries name the heads at different levels, e.g. the 13 rows, face pulls and reverse flies with `REAR_DELT` main, the 3 lateral raises (`SIDE_DELT` main) |
-| One `abs` region for `ABS` and `OBLIQUES` (XNK merged the package's obliques into abs) | Oblique work shows as front abs | 11 entries: `CORE_SIDEPLANK`, the five carries, `HINGE_SWING_KB`, `PULLH_SA_CBL`, `CORE_PLANK`, `CORE_CRUNCH`, `CORE_DEADBUG` |
+| One deltoid shape per view (the package has no heads). C-08b: `FRONT_DELT` → front view only, `REAR_DELT` → back view only, `SIDE_DELT` → both | 37 of the 47 deltoid entries now light only the right view (19 front-only, 18 rear-only). The lateral head has no shape of its own: where `SIDE_DELT` and another head have different levels, the shoulder takes the stronger level | 3 entries: the lateral raises `PUSHV_LAT_DB`, `PUSHV_LAT_CBL`, `PUSHV_LAT_BAND` |
+| Obliques: XNK merged the package's `obliques` paths into `abs`. C-08b: split back by path index (`split` in `muscle-map.json`), each listed path byte-identical to react-muscle-highlighter 1.2.0 slug `obliques` (male 16 of 24 abs paths, female 12 of 20); sha256 of the listed paths locked in the file | The map now shows `OBLIQUES` on the flanks and `ABS` on the rectus. No new shape drawn | 13 entries with `OBLIQUES`. On the rig (side view) there is no oblique mark: `OBLIQUES` lights the rig's abs mark |
+| The rig (side view) has one deltoid mark and one abs mark | Heads and obliques cannot be told apart on the rig, only on the map | 7 entries have two of these codes at different levels (checker) |
 | `QUADS` also lights `adductors` (owner's stand-in) | Every quadriceps exercise shows the inner thigh too, e.g. `LEGISO_EXT`, where the adductors do little; hip adduction shows the front thigh too. A proper fix is an `ADDUCTORS` code (owner) | All 39 entries with `QUADS` |
 | Front-view rig `lateral-raise` has no trapezius mark | `TRAPS` helper shows on the map only, not on the rig | `PUSHV_LAT_DB` |
 | XNK rig's own muscle list differs from the library | Ignored by rule; the library wins | 14 of 20 rigged entries (checker output), e.g. `seated-cable-row` rig: upper back main, library: `LATS`, `TRAPS`, `REAR_DELT` main |
 
-Fixing the first two needs new shapes: split `delts` into three heads and keep `obliques` in the XNK figure build (`build-figure.js`), then re-copy. That is an XNK change; listed in C-08b.
+`muscle-map.json` is schema 2 since C-08b: a region is `region` (both views), `front:region` / `back:region` (one view), or a `split` name (listed paths of another region). Splitting the deltoid into three heads would need new shapes, which the package does not have: not drawn (no source shape to copy).
 
 ### 5.3 Joint angles of the 20 reused XNK rigs (C-08b, from `Gerak.md`)
 

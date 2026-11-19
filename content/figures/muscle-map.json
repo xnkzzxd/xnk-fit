@@ -1,29 +1,128 @@
 {
- "schema": 1,
- "about": "Maps the 16 muscle codes of content/exercises.json (Content §5) onto the region names of xnk-source/figure.min.json (muscle map) and xnk-source/rig.min.json (muscle marks on the rig). Starts from the D-05 mockup mapping (docs/mockups/mock.js MM_MAP), with one change in C-08: \"upper back\" (middle trapezius and rhomboid area, split from the package's upper-back shape) moves from LATS to TRAPS, since the latissimus does not cover it. QUADS keeps \"adductors\": the owner decided (2026-11-18) that QUADS stands in for the adductors, which have no code (LEGISO_ADD). GLUTES keeps \"abductors\": gluteus medius and minimus are the hip abductors (OpenStax 2022 §11.6). See Content §5.2. The app colours the map and the rig from exercises.json muscles through this file, never from the rig's own muscle list. A region that two codes share takes the stronger level (main over helper). shared = codes that land on the same region, so the figure cannot tell them apart (Content §5.2).",
+ "schema": 2,
+ "about": "Maps the 16 muscle codes of content/exercises.json (Content §5) onto the region names of xnk-source/figure.min.json (muscle map) and the muscle marks of the rigs. Region forms: \"region\" = both views; \"front:region\" / \"back:region\" = that view only; a name in split = part of another region (see split). On a rig, a view prefix is dropped and a split part uses its from region (rigs have one delts mark and no oblique mark). Starts from the D-05 mockup mapping (docs/mockups/mock.js MM_MAP). C-08: upper back moved from LATS to TRAPS. C-08b (schema 2): deltoid heads split by view (the package has one deltoid shape per view: the front view shows the anterior and lateral part, the back view the posterior and lateral part); obliques split from abs by the original react-muscle-highlighter 1.2.0 slugs, without new shapes. QUADS keeps adductors (owner stand-in for LEGISO_ADD); GLUTES keeps abductors (OpenStax 2022 §11.6). See Content §5.2. The app colours the map and the rig from exercises.json muscles through this file, never from the rig own muscle list. A region that two codes share takes the stronger level (main over helper). shared = codes that land on the same region, so the figure cannot tell them apart.",
  "map": {
-  "CHEST": ["pectorals"],
-  "FRONT_DELT": ["delts"],
-  "SIDE_DELT": ["delts"],
-  "REAR_DELT": ["delts"],
-  "BICEPS": ["biceps"],
-  "TRICEPS": ["triceps"],
-  "LATS": ["lats"],
-  "TRAPS": ["traps", "upper back"],
-  "QUADS": ["quads", "adductors"],
-  "HAMS": ["hamstrings"],
-  "GLUTES": ["glutes", "abductors"],
-  "CALVES": ["calves"],
-  "ABS": ["abs"],
-  "OBLIQUES": ["abs"],
-  "LOWER_BACK": ["spine"],
-  "FOREARM": ["forearms"]
+  "CHEST": [
+   "pectorals"
+  ],
+  "FRONT_DELT": [
+   "front:delts"
+  ],
+  "SIDE_DELT": [
+   "delts"
+  ],
+  "REAR_DELT": [
+   "back:delts"
+  ],
+  "BICEPS": [
+   "biceps"
+  ],
+  "TRICEPS": [
+   "triceps"
+  ],
+  "LATS": [
+   "lats"
+  ],
+  "TRAPS": [
+   "traps",
+   "upper back"
+  ],
+  "QUADS": [
+   "quads",
+   "adductors"
+  ],
+  "HAMS": [
+   "hamstrings"
+  ],
+  "GLUTES": [
+   "glutes",
+   "abductors"
+  ],
+  "CALVES": [
+   "calves"
+  ],
+  "ABS": [
+   "abs"
+  ],
+  "OBLIQUES": [
+   "obliques"
+  ],
+  "LOWER_BACK": [
+   "spine"
+  ],
+  "FOREARM": [
+   "forearms"
+  ]
+ },
+ "split": {
+  "obliques": {
+   "from": "abs",
+   "view": "front",
+   "paths": {
+    "m": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15
+    ],
+    "f": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   "sha256": {
+    "m": "f3da01a78781850d3e47fa3976973b8ea1ec14e67d0e4ed977b2a33817e5156e",
+    "f": "8c7f955c371d38aa0fb62ce14078945a3bcd60b0f5ae9fc0c38d33ee2ebe782d"
+   },
+   "source": "These abs paths of xnk-source/figure.min.json are byte-identical (after whitespace) to the react-muscle-highlighter 1.2.0 slug obliques (dist/esm/assets/bodyFront.js and bodyFemaleFront.js); the rest are its slug abs. XNK merged both into abs. Compared 2026-11-19 (C-08b). The region abs then means the remaining paths."
+  }
  },
  "standIn": {
   "adductors": "QUADS"
  },
  "shared": {
-  "delts": ["FRONT_DELT", "SIDE_DELT", "REAR_DELT"],
-  "abs": ["ABS", "OBLIQUES"]
+  "map": {
+   "front:delts": [
+    "FRONT_DELT",
+    "SIDE_DELT"
+   ],
+   "back:delts": [
+    "SIDE_DELT",
+    "REAR_DELT"
+   ]
+  },
+  "rig": {
+   "delts": [
+    "FRONT_DELT",
+    "SIDE_DELT",
+    "REAR_DELT"
+   ],
+   "abs": [
+    "ABS",
+    "OBLIQUES"
+   ]
+  }
  }
 }
