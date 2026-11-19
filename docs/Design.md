@@ -118,8 +118,8 @@ Bottom bar (phone): **Hari ini · Latihan · ＋ · Makan · Saya** (N-1). The �
 
 | Screen | Content (PRD ref) |
 | --- | --- |
-| Onboarding | Goal, sex/birth year/height/weight, interest, nickname, one health question, permissions (O-1…O-6). Under 13 stops here (O-5). |
-| Screening | Full health form, opened from the question or from the first program (S-1, O-2). |
+| Onboarding | Goal, sex/birth year/height/weight, interest, nickname, one health question, permissions (O-1…O-6). Under 13 stops here (O-5). Built in B-05 (`ui/onboarding`): `OnboardingViewModel` holds everything typed in memory and writes `profile` plus the first `measure` (weight) only at "Masuk"; all gate decisions are `domain.rules.evaluateTargets`. Deviations from the mockup: "Pulihkan cadangan" is shown disabled until B-16; the permissions screen asks notifications and camera for real, while Health Connect and Google Drive rows only say they are asked when used (their libraries arrive in B-14 and B-16). Activity level is not asked in onboarding (O-4), so the gates run with `JARANG`; it cannot change which gate applies. |
+| Screening | Full health form, opened from the question or from the first program (S-1, O-2). `ui/screening`: `ScreeningScreen` and `ScreeningResultScreen` are stateless and reusable; today only onboarding opens them, the "first program" entry comes with B-06. The profile row keeps only `healthRisk` (any of the five risk answers), `pregnant` and `eatingHistory` (`ya`/`tidak`); the single answers are not stored. |
 | Hari ini | Next workout or rest-day card, calorie ring, week strip, level and streak (H-1). Non-lifters get the activity target instead (H-2). Empty cards name what fills them, with one button (H-3). |
 | Latihan | Program day list, own routines, Jelajahi shelf (L-9), activity log entry, muscle map per week (L-11), review proposals (L-4). |
 | Logger | Dipandu or Bebas, chosen at first workout (L-6). Set kinds, supersets, rest timer, swap, suggestions, previous numbers (L-7). |
@@ -271,7 +271,7 @@ Anything else needs a row here first.
 | Migrations | Room migration tests from each exported schema (`MigrationTestHelper`, Robolectric; JSON in `app/schemas/`, committed, never edited after release). `MigrationTest.everyReleasedVersionMigratesToLatest` finds every `N.json` by itself. Today only v1 exists: the test runs v1 → v1, and one example migration is kept as an ignored pattern. CI fails when a build changes a committed schema file (see CI). | Every PR |
 | Backup round trip | Unit: export → import equals source | Every PR |
 | Kill test | Instrumented: kill at each logger step | Nightly |
-| Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR |
+| Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR. **Not in place yet (B-05):** `compose-ui-test` is not in the catalog and no Compose test has run; screens are covered by ViewModel tests on the JVM (`OnboardingViewModelTest`, `ScreeningModelTest`) |
 | Speed | Macrobenchmark budgets (§10) | Nightly and before release |
 | Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
 | APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
@@ -293,7 +293,7 @@ Rule tests: each number in Rules.md is asserted in a test that names its rule ID
 ## 15. Accessibility
 
 - Content descriptions on every icon button.
-- Touch 44 dp (D-2); focus order follows reading order.
+- Touch 48 dp (B-05 raised it from 44; `MinTouch` in `ui/common`); focus order follows reading order.
 - Colour is never the only signal (muscle map has labels, planner has text).
 - Big text up to 200 % (§11).
 
