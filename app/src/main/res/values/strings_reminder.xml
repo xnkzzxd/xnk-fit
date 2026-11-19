@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- B-15 reminder text, Rules §8 (R_TONE, R_TONE_WORDS), Content §10. At least five variants per kind, rotated. -->
+    <string name="rem_channel_latihan">Latihan</string>
+    <string name="rem_channel_makan">Makan</string>
+    <string name="rem_channel_timbang">Timbang</string>
+    <string-array name="rem_latihan">
+        <item>Latihan singkat hari ini? Satu sesi sudah cukup.</item>
+        <item>Waktunya latihan, kapan pun siap. Program sudah menunggu.</item>
+        <item>Sesi latihan hari ini bisa dimulai dari pemanasan.</item>
+        <item>Ada sesi latihan yang siap dibuka. Sekitar 45 menit.</item>
+        <item>Latihan hari ini terbuka kapan saja. Mulai dari yang ringan juga boleh.</item>
+        <item>Sesi hari ini siap. Satu set pertama biasanya yang paling berat dimulai.</item>
+        <item>Kalau ada waktu, program latihan hari ini siap dibuka.</item>
+    </string-array>
+    <string-array name="rem_kembali">
+        <item>Sudah lama tidak mampir. Latihan ringan bisa jadi awal yang baik.</item>
+        <item>Program tetap tersimpan. Mulai lagi dengan sesi pendek kapan pun siap.</item>
+        <item>Selamat datang kembali kapan saja. Beban dimulai lebih ringan dulu.</item>
+        <item>Tidak apa-apa jeda sejenak. Satu sesi singkat cukup untuk memulai lagi.</item>
+        <item>Catatan masih ada di sini. Lanjut dari mana saja, dengan langkah kecil.</item>
+    </string-array>
+    <string-array name="rem_timbang">
+        <item>Timbang Minggu pagi, cukup seminggu sekali.</item>
+        <item>Hari Minggu pas untuk menimbang. Boleh dilewati kalau sedang tidak ingin.</item>
+        <item>Catatan pekan ini menunggu satu angka timbangan.</item>
+        <item>Kalau mau, timbang pagi ini setelah bangun tidur.</item>
+        <item>Pengukuran mingguan: satu kali saja sudah cukup.</item>
+    </string-array>
+    <string-array name="rem_makan_pagi">
+        <item>Sarapan sudah tercatat? Cukup satu menit.</item>
+        <item>Catat sarapan dulu, supaya hari ini rapi.</item>
+        <item>Sarapan pagi ini mau dicatat sekarang?</item>
+        <item>Satu menit untuk mencatat sarapan.</item>
+        <item>Catatan sarapan masih kosong. Isi sekarang atau nanti.</item>
+    </string-array>
+    <string-array name="rem_makan_siang">
+        <item>Sudah makan siang? Catat dulu, cukup satu menit.</item>
+        <item>Makan siang hari ini mau dicatat sekarang?</item>
+        <item>Catatan makan siang masih kosong. Isi kapan pun sempat.</item>
+        <item>Satu menit untuk mencatat makan siang.</item>
+        <item>Siang ini makan apa? Catat sebentar saja.</item>
+    </string-array>
+    <string-array name="rem_makan_malam">
+        <item>Makan malam sudah tercatat? Cukup satu menit.</item>
+        <item>Catat makan malam, lalu hari ini rampung.</item>
+        <item>Makan malam hari ini mau dicatat sekarang?</item>
+        <item>Satu menit untuk mencatat makan malam.</item>
+        <item>Catatan makan malam masih kosong. Isi sekarang atau besok pagi.</item>
+    </string-array>
+</resources>

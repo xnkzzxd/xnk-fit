@@ -213,6 +213,8 @@ Implementation notes (B-11): `domain.today` holds the target card (all gates, R_
 - Text: from `strings`, varied by a rotation index, short and neutral (R-2). The rotation never repeats the same text twice in a row.
 - Permission asked at the moment of use (O-3).
 
+Implementation notes (B-15): `domain.reminder.nextReminder` decides from plain facts (fake-clock tests); `data.reminder.ReminderWorker` reads the facts from Room and posts at most one notification per run on channel Latihan, Makan or Timbang ("kembali" shares Latihan). The job is one unique periodic work (15 min, the system minimum), started on app open and when a switch is turned on, cancelled when all switches are off; no boot receiver (WorkManager keeps its job across restarts). What was posted today and the "kembali" count live in DataStore `reminder_log`. Texts are `string-array` resources in `strings_reminder.xml`, index = `rotationIndex` (day + kind offset). Rules and deviations: Decisions.md.
+
 ## 9. Backup, restore and export
 
 Format (B-4): one zip, `xnkfit-backup-<date>.zip`:

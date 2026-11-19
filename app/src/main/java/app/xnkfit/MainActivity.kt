@@ -63,7 +63,7 @@ import app.xnkfit.R
 import app.xnkfit.data.prefs.ThemeMode
 import app.xnkfit.data.prefs.WelcomeTab
 import app.xnkfit.ui.bantuan.HelpScreen
-import app.xnkfit.data.prefs.DataStoreSettingsStore
+import app.xnkfit.data.prefs.SettingsGraph
 import app.xnkfit.ui.nav.Overlay
 import app.xnkfit.ui.nav.OverlayStack
 import app.xnkfit.data.privacy.AndroidDataWiper
@@ -73,7 +73,9 @@ import app.xnkfit.ui.pengaturan.SettingsScreen
 import app.xnkfit.ui.pengaturan.SettingsViewModel
 import app.xnkfit.ui.data.DataScreen
 import app.xnkfit.ui.data.DataViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import app.xnkfit.data.reminder.ReminderScheduler
 
 class MainActivity : ComponentActivity() {
     private val database by lazy {
@@ -87,7 +89,8 @@ class MainActivity : ComponentActivity() {
     }
 
     private val settingsStore by lazy {
-        DataStoreSettingsStore(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(SETTINGS_FILE) })
+        // Shared with the reminder worker: one DataStore per file in a process.
+        SettingsGraph.store(applicationContext)
     }
 
     // B-14: Pengaturan. The content check here is the manual one: it skips the 24 h wait.
@@ -253,6 +256,10 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         // B-2: automatic backup is checked when the app is opened or resumed, never in the background.
         lifecycleScope.launch { runCatching { BackupScheduler.onAppOpen(applicationContext) } }
+        // B-15: keep the 15-minute reminder check running while any switch is on (WorkManager keeps it across restarts).
+        lifecycleScope.launch {
+            runCatching { ReminderScheduler.sync(applicationContext, settingsStore.settings.first().reminders.isNotEmpty()) }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -301,7 +308,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-private const val SETTINGS_FILE = "settings" // text-ok: file name, not UI text
 private const val FOOD_PREFS_FILE = "food_prefs" // text-ok: file name, not UI text
 private const val TARGET_BASIS_FILE = "target_basis" // text-ok: file name, not UI text
 private const val SHOPPING_TICKS_FILE = "shopping_ticks" // text-ok: file name, not UI text

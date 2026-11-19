@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
+import androidx.datastore.preferences.preferencesDataStoreFile
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -82,4 +83,18 @@ class DataStoreSettingsStore(private val store: DataStore<Preferences>) : Settin
 
     private fun groups(names: Set<String>?): Set<ReminderGroup> =
         (names ?: emptySet()).mapNotNull { n -> ReminderGroup.entries.firstOrNull { it.name == n } }.toSet()
+}
+
+/** One DataStore per file in a process: the screens and the reminder worker must share this store. */
+object SettingsGraph {
+    private const val FILE = "settings" // text-ok: file name, not UI text
+    @Volatile private var store: DataStoreSettingsStore? = null
+
+    fun store(context: android.content.Context): DataStoreSettingsStore = store ?: synchronized(this) {
+        store ?: DataStoreSettingsStore(
+            androidx.datastore.preferences.core.PreferenceDataStoreFactory.create {
+                context.applicationContext.preferencesDataStoreFile(FILE)
+            },
+        ).also { store = it }
+    }
 }
