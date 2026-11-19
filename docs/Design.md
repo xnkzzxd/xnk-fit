@@ -136,8 +136,8 @@ Bottom bar (phone): **Hari ini · Latihan · ＋ · Makan · Saya** (N-1). The �
 | Makan | Target ring, macros, meal options (3 per meal, M-3), food log, week planner (M-3, M-10), shopping list (M-8). |
 | Makan → Pilih makanan | Search TKPI and packaged foods, household measures first (M-6, M-7). |
 | Saya | Profile, measures and charts (P-1), journey (P-2), athlete card, Kartu saya (P-2, P-6), badges (P-5), settings (P-7). |
-| Pengaturan | Profil, Latihan, Makan, Pengingat, Tampilan, Data, Bantuan — in that order (P-7). |
-| Bantuan | Target sources, welcome cards, how-to, glossary, privacy, sources (P-8). |
+| Pengaturan | Profil, Latihan, Makan, Pengingat, Tampilan, Data, Bantuan — in that order (P-7). Built in B-14 (`ui/pengaturan`, `data/prefs`): Pengingat switches, Tampilan (theme; units are metric only), Izin, manual content check, Data, Hapus semua data, Bantuan, Privasi. Profil, Latihan and Makan sections are not built yet (see Decisions.md). Opened from Saya through `ui/nav/Overlay`. |
+| Bantuan | Target sources, welcome cards, how-to, glossary, privacy, sources (P-8). Built in B-14 (`ui/bantuan`); the privacy text is `strings_privacy.xml` = `docs/Privacy-Policy.md`. |
 
 Welcome cards: one per tab, shown once, dismissable (P-8).
 
