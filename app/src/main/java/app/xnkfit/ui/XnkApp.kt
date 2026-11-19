@@ -23,8 +23,14 @@ import app.xnkfit.ui.today.TodayScreen
 
 /** App frame: five bottom destinations (PRD N-1). Hari ini and Makan exist; the rest are empty stubs. */
 @Composable
-fun XnkApp(makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) }) {
-    var selected by rememberSaveable { mutableStateOf(Destination.TODAY) }
+fun XnkApp(
+    makan: MakanViewModel,
+    me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) },
+    workout: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) },
+    /** Latihan first when a workout is unfinished, so "Lanjutkan latihan?" is the first thing seen (Design §4). */
+    start: Destination = Destination.TODAY,
+) {
+    var selected by rememberSaveable { mutableStateOf(start) }
     Scaffold(
         bottomBar = {
             NavigationBar {
@@ -46,6 +52,8 @@ fun XnkApp(makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptySc
             Destination.TODAY -> TodayScreen(modifier)
             Destination.FOOD -> MakanHost(makan, modifier)
             Destination.ME -> me(modifier)
+            // B-07: the logger until the Latihan screen (B-08) wraps it.
+            Destination.WORKOUT -> workout(modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)
         }
     }

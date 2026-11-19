@@ -88,6 +88,7 @@ private fun StartPane(ui: LoggerUi, vm: LoggerViewModel, modifier: Modifier) {
             style = MaterialTheme.typography.headlineSmall,
         )
         if (!ui.hasProgram) Text(stringResource(R.string.lg_no_program))
+        if (ui.chosenMode == null) Text(stringResource(R.string.lg_first_title), style = MaterialTheme.typography.labelLarge)
         Text(stringResource(R.string.lg_how), style = MaterialTheme.typography.titleMedium)
         Text(stringResource(R.string.lg_how_sub))
         // L-6 / D-06: neither card is selected until the user picks; the start button waits for that.
@@ -307,6 +308,7 @@ private fun TablePane(ui: LoggerUi, vm: LoggerViewModel) {
                             Text(stringResource(R.string.lg_ex_menu))
                         }
                     }
+                    Text(stringResource(R.string.lg_prev), style = MaterialTheme.typography.labelSmall)
                     block.sets.forEachIndexed { i, set -> TableRow(i, set, block, vm) }
                     TextButton({ vm.addSet(block.slot, block.exerciseId) }, Modifier.heightIn(min = MinTouch)) { Text("+ " + stringResource(R.string.lg_add_set)) } // text-ok: symbol
                 }

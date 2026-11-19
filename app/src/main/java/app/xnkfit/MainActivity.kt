@@ -30,6 +30,12 @@ import app.xnkfit.data.food.FoodRepository
 import app.xnkfit.data.food.RoomTargetSource
 import app.xnkfit.data.food.ShoppingTickStore
 import app.xnkfit.ui.makan.MakanViewModel
+import app.xnkfit.data.logger.LoggerRepository
+import app.xnkfit.ui.logger.AndroidRestAlarms
+import app.xnkfit.ui.logger.DataStoreLoggerPrefs
+import app.xnkfit.ui.logger.LoggerHost
+import app.xnkfit.ui.logger.LoggerViewModel
+import app.xnkfit.ui.nav.Destination
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.UUID
@@ -69,6 +75,21 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private val restAlarms by lazy { AndroidRestAlarms(applicationContext) }
+
+    private val logger: LoggerViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = LoggerViewModel(
+                repo = LoggerRepository(database, System::currentTimeMillis, { UUID.randomUUID().toString() }),
+                prefs = DataStoreLoggerPrefs(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(LOGGER_PREFS_FILE) }),
+                alarms = restAlarms,
+                now = System::currentTimeMillis,
+                newId = { UUID.randomUUID().toString() },
+            ) as T
+        }
+    }
+
     private val saya: SayaViewModel by viewModels {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -89,15 +110,19 @@ class MainActivity : ComponentActivity() {
                 // A saved profile means onboarding is done (it is written only at the last step).
                 // Until a profile exists the first screen is onboarding (PRD O-1).
                 var hasProfile by rememberSaveable { mutableStateOf<Boolean?>(null) }
+                var startTab by rememberSaveable { mutableStateOf(Destination.TODAY) }
                 androidx.compose.runtime.LaunchedEffect(Unit) {
                     // Bundled foods and meal packages must be in Room before any screen reads them (B-04, B-10).
                     try { ContentBootstrap.loadBundled(this@MainActivity, database) } catch (e: Exception) { /* a broken bundle is a build bug; the app still opens */ }
+                    // Design §4 step 4: an unfinished workout from today or yesterday opens on Latihan.
+                    val yesterday = LocalDate.now().minusDays(1).atStartOfDay(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
+                    if (database.workoutDao().unfinishedSince(yesterday).isNotEmpty()) startTab = Destination.WORKOUT
                     hasProfile = database.profileDao().get() != null
                 }
                 when (hasProfile) {
                     null -> Unit
                     false -> OnboardingScreen(onboarding, onDone = { hasProfile = true })
-                    true -> XnkApp(makan, me = { SayaScreen(saya, it) })
+                    true -> XnkApp(makan, me = { SayaScreen(saya, it) }, workout = { LoggerHost(logger, restAlarms, it) }, start = startTab)
                 }
             }
         }
@@ -106,3 +131,4 @@ class MainActivity : ComponentActivity() {
 
 private const val FOOD_PREFS_FILE = "food_prefs" // text-ok: file name, not UI text
 private const val SHOPPING_TICKS_FILE = "shopping_ticks" // text-ok: file name, not UI text
+private const val LOGGER_PREFS_FILE = "logger_prefs" // text-ok: file name, not UI text
