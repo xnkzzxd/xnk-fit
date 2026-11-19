@@ -20,11 +20,15 @@ import app.xnkfit.ui.nav.Destination
 import app.xnkfit.ui.makan.MakanHost
 import app.xnkfit.ui.makan.MakanViewModel
 import app.xnkfit.ui.today.TodayScreen
+import app.xnkfit.ui.today.TodayViewModel
+import androidx.compose.runtime.LaunchedEffect
 
-/** App frame: five bottom destinations (PRD N-1). Hari ini and Makan exist; the rest are empty stubs. */
+/** App frame: five bottom destinations (PRD N-1). Hari ini, Makan and Saya exist; the rest are empty stubs. */
 @Composable
-fun XnkApp(makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) }) {
+fun XnkApp(today: TodayViewModel, makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) }) {
     var selected by rememberSaveable { mutableStateOf(Destination.TODAY) }
+    // Hari ini reads what the other screens wrote, so it reloads each time it is opened.
+    LaunchedEffect(selected) { if (selected == Destination.TODAY) today.refresh() }
     Scaffold(
         bottomBar = {
             NavigationBar {
@@ -43,7 +47,12 @@ fun XnkApp(makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptySc
     ) { padding ->
         val modifier = Modifier.padding(padding)
         when (selected) {
-            Destination.TODAY -> TodayScreen(modifier)
+            Destination.TODAY -> TodayScreen(
+                today,
+                onOpenWorkout = { selected = Destination.WORKOUT },
+                onOpenFood = { selected = Destination.FOOD },
+                modifier = modifier,
+            )
             Destination.FOOD -> MakanHost(makan, modifier)
             Destination.ME -> me(modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)

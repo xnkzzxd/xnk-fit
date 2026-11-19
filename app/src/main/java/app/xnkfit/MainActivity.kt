@@ -33,6 +33,9 @@ import app.xnkfit.data.food.FoodRepository
 import app.xnkfit.data.food.RoomTargetSource
 import app.xnkfit.data.food.ShoppingTickStore
 import app.xnkfit.ui.makan.MakanViewModel
+import app.xnkfit.data.food.TargetBasisStore
+import app.xnkfit.data.today.TodayRepository
+import app.xnkfit.ui.today.TodayViewModel
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.UUID
@@ -41,6 +44,11 @@ class MainActivity : ComponentActivity() {
     private val database by lazy {
         val version = packageManager.getPackageInfo(packageName, 0).versionName.orEmpty()
         XnkDatabase.open(this, version)
+    }
+
+    // One DataStore per file: Makan and Hari ini must share this one (what the target was calculated with, M-2).
+    private val basisStore by lazy {
+        TargetBasisStore(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(TARGET_BASIS_FILE) })
     }
 
     private val onboarding: OnboardingViewModel by viewModels {
@@ -63,12 +71,26 @@ class MainActivity : ComponentActivity() {
                 fun store(name: String) = PreferenceDataStoreFactory.create { app.preferencesDataStoreFile(name) }
                 return MakanViewModel(
                     repo = FoodRepository(database, System::currentTimeMillis) { UUID.randomUUID().toString() },
-                    targets = RoomTargetSource(database) { Calendar.getInstance().get(Calendar.YEAR) },
+                    targets = RoomTargetSource(database, basisStore) { Calendar.getInstance().get(Calendar.YEAR) },
                     prefsStore = FoodPrefsStore(store(FOOD_PREFS_FILE)),
                     ticksStore = ShoppingTickStore(store(SHOPPING_TICKS_FILE)),
                     today = { LocalDate.now() },
                 ) as T
             }
+        }
+    }
+
+    private val today: TodayViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = TodayViewModel(
+                repo = TodayRepository(database),
+                food = FoodRepository(database, System::currentTimeMillis) { UUID.randomUUID().toString() },
+                progress = ProgressRepository(database),
+                basisStore = basisStore,
+                today = { LocalDate.now() },
+                currentYear = { Calendar.getInstance().get(Calendar.YEAR) },
+            ) as T
         }
     }
 
@@ -121,7 +143,7 @@ class MainActivity : ComponentActivity() {
                         if (showCards) {
                             KartuScreen(share, onBack = { showCards = false })
                         } else {
-                            XnkApp(makan, me = { SayaScreen(saya, it, onOpenCards = { showCards = true }) })
+                            XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { showCards = true }) })
                         }
                     }
                 }
@@ -131,4 +153,5 @@ class MainActivity : ComponentActivity() {
 }
 
 private const val FOOD_PREFS_FILE = "food_prefs" // text-ok: file name, not UI text
+private const val TARGET_BASIS_FILE = "target_basis" // text-ok: file name, not UI text
 private const val SHOPPING_TICKS_FILE = "shopping_ticks" // text-ok: file name, not UI text

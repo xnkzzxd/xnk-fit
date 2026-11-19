@@ -124,6 +124,9 @@ class ProgressRepository(
         )
     }
 
+    /** Days with any activity, workout or food log (R_STREAK active days), for the Hari ini week strip. */
+    suspend fun activeDays(): Set<LocalDate> = activeDays(loadData(), zone())
+
     suspend fun addNote(id: String, text: String) {
         val t = now()
         dao.upsertMoment(JourneyMomentEntity(id, t, t, t, text.trim(), MomentKind.NOTE))
