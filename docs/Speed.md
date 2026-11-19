@@ -64,7 +64,7 @@ Settings → Apps → XNK Fit → Storage "App size" is the installed size (APK 
 
 | Date | Device | Build | Cold start (TTFD median) | Tab switch (frame P99) | Set tick | Search keystroke | Size | By |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-11-19 | CI-like sandbox JVM (Robolectric) | debug unit test | n/a | n/a | median 2.1 ms, p95 3.2 ms | median 1.6 ms, p95 3.4 ms | APK 1.5 MB file | B-19 |
+| 2026-11-19 | CI-like sandbox JVM (Robolectric) | debug unit test | n/a | n/a | median 2.1 ms, p95 3.2 ms | median 1.6 ms, p95 3.4 ms | release APK file 2.9 MB | B-19 |
 | — | Redmi 10 | benchmarkRelease | not run yet (owner's phone) | | | | | |
 | — | Emulator API 26, 2 GB, CPU ¼ | benchmarkRelease | not run yet (no KVM in the cloud sandbox) | | | | | |
 
