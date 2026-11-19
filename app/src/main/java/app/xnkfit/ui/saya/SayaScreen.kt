@@ -100,7 +100,7 @@ private fun badgeIcon(name: String): Int = when (name) {
 
 /** Saya (PRD P-1…P-5). One column; the tablet layout is B-17. */
 @Composable
-fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier, onOpenCards: () -> Unit = {}, onOpenData: (() -> Unit)? = null) {
+fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier, onOpenCards: () -> Unit = {}, onOpenSettings: (() -> Unit)? = null) {
     val state by vm.state.collectAsState()
     // Opening the tab recounts points and badges, so work finished elsewhere shows up here.
     LaunchedEffect(Unit) { vm.refresh() }
@@ -125,7 +125,7 @@ fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier, onOpenCards: ()
         item { BadgesCard(summary.badges, onOpen = { openBadge = it }) }
         item { JourneyCard(summary, onAdd = { showNote = true }) }
         item { CardsEntry(onOpenCards) }
-        if (onOpenData != null) item { DataEntry(onOpenData) }
+        if (onOpenSettings != null) item { SettingsEntry(onOpenSettings) }
         item { PhotosCard(state, vm) }
     }
 
@@ -174,16 +174,16 @@ private fun ProfileCard(state: SayaState, s: app.xnkfit.data.progress.ProgressSu
     }
 }
 
-/** Entry to Data dan cadangan (B-16); B-14 may move it into Pengaturan. */
+/** Entry to Pengaturan (B-14, PRD P-7); Data dan cadangan (B-16) is opened from there. */
 @Composable
-private fun DataEntry(onOpen: () -> Unit) {
+private fun SettingsEntry(onOpen: () -> Unit) {
     Card(Modifier.fillMaxWidth()) {
         Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Column(Modifier.weight(1f)) {
-                Text(stringResource(R.string.data_title), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                Text(stringResource(R.string.data_entry_hint), style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.set_title), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.set_entry_hint), style = MaterialTheme.typography.bodySmall)
             }
-            Button(onClick = onOpen, modifier = Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.data_open)) }
+            Button(onClick = onOpen, modifier = Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.set_open)) }
         }
     }
 }

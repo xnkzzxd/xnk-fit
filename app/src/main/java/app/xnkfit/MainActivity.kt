@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -51,6 +52,14 @@ import app.xnkfit.data.backup.BackupGraph
 import app.xnkfit.data.backup.DeviceId
 import app.xnkfit.data.backup.DriveConfig
 import app.xnkfit.data.backup.PlayDriveAuth
+import app.xnkfit.R
+import app.xnkfit.data.prefs.AppSettings
+import app.xnkfit.data.prefs.DataStoreSettingsStore
+import app.xnkfit.ui.common.EmptyScreen
+import app.xnkfit.ui.nav.Overlay
+import app.xnkfit.ui.nav.OverlayStack
+import app.xnkfit.ui.pengaturan.SettingsScreen
+import app.xnkfit.ui.pengaturan.SettingsViewModel
 import app.xnkfit.ui.data.DataScreen
 import app.xnkfit.ui.data.DataViewModel
 import kotlinx.coroutines.launch
@@ -64,6 +73,25 @@ class MainActivity : ComponentActivity() {
     // One DataStore per file: Makan and Hari ini must share this one (what the target was calculated with, M-2).
     private val basisStore by lazy {
         TargetBasisStore(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(TARGET_BASIS_FILE) })
+    }
+
+    private val settingsStore by lazy {
+        DataStoreSettingsStore(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(SETTINGS_FILE) })
+    }
+
+    // B-14: Pengaturan. The content check here is the manual one: it skips the 24 h wait.
+    private val settingsVm: SettingsViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = SettingsViewModel(
+                store = settingsStore,
+                installedContentVersion = { database.contentDao().meta()?.contentVersion },
+                checkUpdate = {
+                    val code = androidx.core.content.pm.PackageInfoCompat.getLongVersionCode(packageManager.getPackageInfo(packageName, 0)).toInt()
+                    ContentBootstrap.checkForUpdate(database, code, force = true)
+                },
+            ) as T
+        }
     }
 
     private val onboarding: OnboardingViewModel by viewModels {
@@ -175,7 +203,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            XnkTheme {
+            val appSettings by settingsStore.settings.collectAsState(initial = AppSettings())
+            XnkTheme(appSettings.theme) {
                 // A saved profile means onboarding is done (it is written only at the last step).
                 // Until a profile exists the first screen is onboarding (PRD O-1).
                 var hasProfile by rememberSaveable { mutableStateOf<Boolean?>(null) }
@@ -192,14 +221,19 @@ class MainActivity : ComponentActivity() {
                     null -> Unit
                     false -> OnboardingScreen(onboarding, onDone = { hasProfile = true })
                     true -> {
-                        var showCards by rememberSaveable { mutableStateOf(false) }
-                        var showData by rememberSaveable { mutableStateOf(false) }
-                        if (showCards) {
-                            KartuScreen(share, onBack = { showCards = false })
-                        } else if (showData) {
-                            DataScreen(data, onBack = { showData = false })
-                        } else {
-                            XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { showCards = true }, onOpenData = { showData = true }) }, workout = { LoggerHost(logger, restAlarms, it) }, start = startTab)
+                        var saved by rememberSaveable { mutableStateOf("") }
+                        val stack = OverlayStack.parse(saved)
+                        fun open(o: Overlay) { saved = OverlayStack.save(OverlayStack.open(OverlayStack.parse(saved), o)) }
+                        val back = { saved = OverlayStack.save(OverlayStack.back(OverlayStack.parse(saved))) }
+                        when (stack.lastOrNull()) {
+                            Overlay.CARDS -> KartuScreen(share, onBack = back)
+                            Overlay.DATA -> DataScreen(data, onBack = back)
+                            Overlay.SETTINGS -> SettingsScreen(
+                                settingsVm, onBack = back,
+                                onOpenData = { open(Overlay.DATA) }, onOpenHelp = { open(Overlay.HELP) }, onOpenPrivacy = { open(Overlay.PRIVACY) },
+                            )
+                            Overlay.HELP, Overlay.PRIVACY -> EmptyScreen(R.string.empty_other) // B-14 potongan 2 and 3
+                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LoggerHost(logger, restAlarms, it) }, start = startTab)
                         }
                     }
                 }
@@ -208,6 +242,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+private const val SETTINGS_FILE = "settings" // text-ok: file name, not UI text
 private const val FOOD_PREFS_FILE = "food_prefs" // text-ok: file name, not UI text
 private const val TARGET_BASIS_FILE = "target_basis" // text-ok: file name, not UI text
 private const val SHOPPING_TICKS_FILE = "shopping_ticks" // text-ok: file name, not UI text

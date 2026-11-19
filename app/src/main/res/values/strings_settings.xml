@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pengaturan (B-14, PRD P-7). Indonesian; wording from docs/mockups/pengaturan.html. Neutral tone (R_TONE). -->
+<resources>
+    <string name="set_title">Pengaturan</string>
+    <string name="set_back">Kembali</string>
+    <string name="set_entry_hint">Pengingat, tampilan, izin, data dan bantuan.</string>
+    <string name="set_open">Buka</string>
+    <string name="set_hero_label">XNK Fit</string>
+    <string name="set_hero_title">Data di HP Anda</string>
+
+    <string name="set_remind_title">Pengingat</string>
+    <string name="set_remind_max">Maksimal 3 per hari</string>
+    <string name="set_remind_note">Saklar ini disimpan di HP. Pengingat mulai berbunyi pada pembaruan berikutnya.</string>
+    <string name="set_remind_latihan">Latihan</string>
+    <string name="set_remind_latihan_time">17.00</string>
+    <string name="set_remind_makan">Catat makan</string>
+    <string name="set_remind_makan_time">07.00 · 12.00 · 18.00</string>
+    <string name="set_remind_timbang">Timbang</string>
+    <string name="set_remind_timbang_time">Minggu 07.00</string>
+
+    <string name="set_look_title">Tampilan</string>
+    <string name="set_theme">Tema</string>
+    <string name="set_theme_light">Terang</string>
+    <string name="set_theme_dark">Gelap</string>
+    <string name="set_theme_system">Ikuti sistem</string>
+    <string name="set_units">Satuan</string>
+    <string name="set_units_value">Metrik (kg, cm, kkal)</string>
+
+    <string name="set_perm_title">Izin</string>
+    <string name="set_perm_hint">Setiap izin boleh dilewati dan diminta lagi di sini atau saat dipakai.</string>
+    <string name="set_perm_notif">Notifikasi</string>
+    <string name="set_perm_camera">Kamera (foto progres)</string>
+    <string name="set_perm_on">Diizinkan</string>
+    <string name="set_perm_off">Belum diizinkan</string>
+    <string name="set_perm_ask">Minta izin</string>
+    <string name="set_perm_system">Buka pengaturan sistem</string>
+    <string name="set_perm_notif_old">Tidak perlu izin di versi Android ini.</string>
+    <string name="set_perm_hc">Health Connect dan Google Drive diminta saat fitur itu dinyalakan.</string>
+
+    <string name="set_content_title">Konten aplikasi</string>
+    <string name="set_content_version">Versi konten: %1$d</string>
+    <string name="set_content_check">Periksa pembaruan konten</string>
+    <string name="set_content_note">Hanya mengunduh berkas daftar makanan dan latihan. Tidak ada data Anda yang dikirim.</string>
+    <string name="set_update_checking">Memeriksa…</string>
+    <string name="set_update_updated">Konten diperbarui.</string>
+    <string name="set_update_current">Konten sudah yang terbaru.</string>
+    <string name="set_update_unavailable">Pembaruan konten belum aktif di versi ini.</string>
+    <string name="set_update_old_app">Pembaruan ini perlu versi aplikasi yang lebih baru.</string>
+    <string name="set_update_failed">Belum berhasil. Coba lagi nanti.</string>
+
+    <string name="set_data_title">Data</string>
+    <string name="set_data_hint">Cadangan, ekspor, impor.</string>
+    <string name="set_help_title">Bantuan</string>
+    <string name="set_help_hint">Cara kerja, istilah, sumber, privasi.</string>
+    <string name="set_privacy_title">Privasi</string>
+    <string name="set_privacy_hint">Apa yang disimpan dan di mana.</string>
+</resources>
