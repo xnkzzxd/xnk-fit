@@ -5,8 +5,6 @@
     <string name="set_back">Kembali</string>
     <string name="set_entry_hint">Pengingat, tampilan, izin, data dan bantuan.</string>
     <string name="set_open">Buka</string>
-    <string name="set_hero_label">XNK Fit</string>
-    <string name="set_hero_title">Data di HP Anda</string>
 
     <string name="set_remind_title">Pengingat</string>
     <string name="set_remind_max">Maksimal 3 per hari</string>

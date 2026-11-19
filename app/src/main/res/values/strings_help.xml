@@ -3,7 +3,6 @@
 <resources>
     <string name="help_title">Bantuan</string>
     <string name="help_back">Kembali</string>
-    <string name="help_hint">Cara kerja, istilah, sumber, privasi.</string>
     <string name="help_hero_label">XNK Fit · usia 13 tahun ke atas</string>
     <string name="help_disclaimer_title">Bukan pengganti dokter atau ahli gizi</string>
     <string name="help_disclaimer_body">XNK Fit membantu mencatat dan menghitung perkiraan. Untuk kondisi kesehatan, kehamilan, atau riwayat makan, tanyakan ke dokter atau ahli gizi.</string>
@@ -65,13 +64,13 @@
     <string name="help_src_met">Nilai MET: Compendium 2011</string>
     <string name="help_src_met_full">Ainsworth BE, dkk. (2011). 2011 Compendium of Physical Activities. Med Sci Sports Exerc 43:1575–1581.</string>
     <string name="help_src_who">Aktivitas mingguan: WHO 2020</string>
-    <string name="help_src_who_full">WHO (2020). WHO guidelines on physical activity and sedentary behaviour. ISBN 978-92-4-001512-8.</string>
+    <string name="help_src_who_full">WHO (2020). WHO guidelines on physical activity and sedentary behaviour..</string>
     <string name="help_src_protein">Protein: ISSN 2017</string>
     <string name="help_src_protein_full">Jäger R, dkk. (2017). ISSN position stand: protein and exercise. J Int Soc Sports Nutr 14:20.</string>
     <string name="help_src_akg">Lemak dan serat: Permenkes 28/2019</string>
     <string name="help_src_akg_full">Peraturan Menteri Kesehatan RI Nomor 28 Tahun 2019 tentang Angka Kecukupan Gizi yang Dianjurkan untuk Masyarakat Indonesia.</string>
     <string name="help_src_deficit">Batas penurunan: NHLBI 2000</string>
-    <string name="help_src_deficit_full">NHLBI Obesity Education Initiative (2000). The Practical Guide: Identification, Evaluation, and Treatment of Overweight and Obesity in Adults. NIH Pub. No. 00-4084.</string>
+    <string name="help_src_deficit_full">NHLBI Obesity Education Initiative (2000). The Practical Guide: Identification, Evaluation, and Treatment of Overweight and Obesity in Adults..</string>
     <string name="help_src_train">Latihan beban: ACSM 2009</string>
     <string name="help_src_train_full">Ratamess NA, dkk. (2009). ACSM position stand: progression models in resistance training for healthy adults. Med Sci Sports Exerc 41(3):687–708.</string>
     <string name="help_src_rir">RIR: Zourdos dkk. 2016</string>

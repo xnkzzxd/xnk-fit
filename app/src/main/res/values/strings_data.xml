@@ -3,8 +3,6 @@
 <resources>
     <string name="data_title">Data dan cadangan</string>
     <string name="data_back">Kembali</string>
-    <string name="data_entry_hint">Cadangan Google Drive, ekspor dan impor.</string>
-    <string name="data_open">Buka</string>
     <string name="data_drive_title">Google Drive</string>
     <string name="data_drive_unavailable">Cadangan ke Google Drive belum tersedia di versi ini. Ekspor ke file tetap bisa.</string>
     <string name="data_drive_where">Cadangan disimpan di folder tersembunyi aplikasi di Drive Anda sendiri. Tiga cadangan terakhir disimpan.</string>
