@@ -4225,7 +4225,7 @@
      "FOREARM"
     ]
    },
-   "rig": null,
+   "rig": "preacher-curl",
    "variantOf": null,
    "cues_en": [
     "Arms on the pad",
@@ -4502,7 +4502,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "overhead-triceps-ext",
    "variantOf": "TRI_PUSHDOWN",
    "cues_en": [
     "Elbows beside the head",
@@ -4663,7 +4663,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "overhead-triceps-ext/dumbbell",
    "variantOf": null,
    "cues_en": [
     "Hold one dumbbell with both hands",
@@ -4739,7 +4739,7 @@
     ],
     "helper": []
    },
-   "rig": null,
+   "rig": "overhead-triceps-ext/band",
    "variantOf": null,
    "cues_en": [
     "Stand on the band",
@@ -4976,7 +4976,7 @@
      "CALVES"
     ]
    },
-   "rig": null,
+   "rig": "prone-leg-curl",
    "variantOf": null,
    "cues_en": [
     "Hips pressed down",

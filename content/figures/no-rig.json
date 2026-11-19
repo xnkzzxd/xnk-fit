@@ -384,20 +384,10 @@
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
   },
-  "CURL_PREACHER": {
-   "kind": "derive",
-   "base": "bicep-curl-cable",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
   "CURL_INCL_DB": {
    "kind": "derive",
    "base": "bicep-curl-cable",
    "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
-  },
-  "TRI_OH_CBL": {
-   "kind": "new",
-   "base": null,
-   "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
   },
   "TRI_SKULL": {
    "kind": "new",
@@ -411,16 +401,6 @@
    "note": "Barbell to the lower chest; elbow path from a close-grip source, not the dumbbell press."
   },
   "TRI_DIPMC": {
-   "kind": "new",
-   "base": null,
-   "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "TRI_OH_DB": {
-   "kind": "new",
-   "base": null,
-   "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "TRI_BAND_OH": {
    "kind": "new",
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
@@ -439,11 +419,6 @@
    "kind": "new",
    "base": null,
    "reason": "XNK has no rig and no base pattern with the same joint path. Needs a new rig with joint angles from a written source."
-  },
-  "LEGISO_CURL_LYING": {
-   "kind": "derive",
-   "base": "seated-leg-curl",
-   "reason": "XNK has no rig for this lift. Same joint path as the XNK base pattern, but it needs its own sourced angle table and equipment drawing."
   },
   "LEGISO_ADD": {
    "kind": "derive",

@@ -2,6 +2,216 @@
  "schema": 1,
  "about": "Source of rig-local.json (task C-08b). Only joints listed in a 'joints' pair [start, end] move; single numbers are fixed. Angles follow the XNK convention (xnk-source/docs/Gerak.md): knee / elbow 0 = straight; hip flexion from the trunk line; shoulder 0 = arm at the side, 180 = overhead; ankle 0 = foot at 90 deg to the shin, negative = dorsiflexion. 'torso' and 'thigh' are absolute segment angles in the SVG plane (degrees, y down, figure faces right). 'angles' says which numbers come from the source; 'choice' lists what is our drawing choice, as in Gerak.md 'Yang bukan dari studi'. Variants: 'rig' = parent pattern, 'variant' = what changes; parent frames are reused, only equipment and (if 'arms' is given) the static arm pose change.",
  "patterns": {
+  "prone-leg-curl": {
+   "name": "Lying Leg Curl (Machine)",
+   "for": [
+    "LEGISO_CURL_LYING"
+   ],
+   "muscles": [
+    [
+     "hamstrings"
+    ],
+    []
+   ],
+   "root": [
+    100,
+    112
+   ],
+   "joints": {
+    "torso": 30,
+    "thigh": 180,
+    "knee": [
+     0,
+     90
+    ],
+    "ankle": 0,
+    "shoulder": 120,
+    "elbow": 90
+   },
+   "angles": "Knee 0 deg -> 90 deg flexion; hip fixed at about 30 deg flexion on the prone machine (0 deg = anatomical position).",
+   "source": "Maeo S et al. (2021) Med Sci Sports Exerc 53(4):825-837, Methods (full text PMC7969179): prone leg curl machine with the hip joint fixed at ~30 deg, knee joint 0-90 deg for both conditions. PMID 33009197, doi:10.1249/MSS.0000000000002523",
+   "choice": "Bench shape, arm position on the handles, thigh drawn horizontal.",
+   "eq": [
+    {
+     "d": "M46 120 H96 L140 148 L134 158 L94 132 H46 Z"
+    },
+    {
+     "d": "M62 132 V184 M118 144 V184 M50 184 H130"
+    },
+    {
+     "f": "ankle",
+     "d": "M1 -13 h10 v10 h-10 Z"
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -6 H3 V6 H-3 Z"
+    }
+   ]
+  },
+  "preacher-curl": {
+   "name": "Preacher Curl",
+   "for": [
+    "CURL_PREACHER"
+   ],
+   "muscles": [
+    [
+     "biceps"
+    ],
+    [
+     "forearms"
+    ]
+   ],
+   "root": [
+    80,
+    142
+   ],
+   "joints": {
+    "torso": -90,
+    "thigh": 0,
+    "knee": 90,
+    "ankle": 0,
+    "shoulder": 45,
+    "elbow": [
+     0,
+     135
+    ]
+   },
+   "angles": "Seated; shoulder (humerus to trunk) fixed at 45 deg; elbow 0 deg (straight) -> 135 deg (forearm perpendicular to the ground).",
+   "source": "Pedrosa GF et al. (2023) Sports 11(2):39, Methods (full text PMC9960616): seated dumbbell preacher curl, start with the elbow fully extended (0 deg) and the shoulder angle fixed at 45 deg, concentric to 135 deg elbow flexion (forearm perpendicular to the ground). PMID 36828324, doi:10.3390/sports11020039",
+   "choice": "Seat and pad shape, knee 90 deg, handle drawn instead of a dumbbell (the library entry is the machine version; the joint angles are the same).",
+   "eq": [
+    {
+     "d": "M80 98.5 L99.1 117.6 L93.4 123.2 L74.3 104.1 Z"
+    },
+    {
+     "d": "M96 122 V188 M86 188 H112"
+    },
+    {
+     "d": "M56 150 H106 V158 H56 Z"
+    },
+    {
+     "d": "M80 158 V188 M64 188 H96"
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -6 H3 V6 H-3 Z"
+    }
+   ]
+  },
+  "overhead-triceps-ext": {
+   "name": "Overhead Triceps Extension (Cable)",
+   "for": [
+    "TRI_OH_CBL"
+   ],
+   "muscles": [
+    [
+     "triceps"
+    ],
+    []
+   ],
+   "root": [
+    90,
+    140
+   ],
+   "joints": {
+    "torso": -90,
+    "thigh": 0,
+    "knee": 90,
+    "ankle": 0,
+    "shoulder": 180,
+    "elbow": [
+     90,
+     0
+    ]
+   },
+   "angles": "Elbow 90 deg -> 0 deg with the arm overhead (shoulder 180 deg, the XNK convention for 'overhead').",
+   "source": "Maeo S et al. (2023) Eur J Sport Sci 23(7):1240-1250, abstract: cable elbow extensions 90-0 deg with the arm in the overhead position (vs neutral), greater triceps hypertrophy overhead. PMID 35819335, doi:10.1080/17461391.2022.2100279",
+   "choice": "Seated upright on a bench, knee 90 deg (the abstract does not say seated or standing; seated keeps the overhead arm inside the frame); low pulley behind the body; rope drawn as a short handle.",
+   "eq": [
+    {
+     "d": "M66 148 H116 V156 H66 Z"
+    },
+    {
+     "d": "M90 156 V188 M74 188 H106"
+    },
+    {
+     "d": "M36 60 V188 M26 188 H46",
+     "line": true
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -6 H3 V6 H-3 Z"
+    },
+    {
+     "f": "wrist",
+     "cable": [
+      38,
+      178
+     ]
+    }
+   ]
+  },
+  "overhead-triceps-ext/dumbbell": {
+   "name": "Overhead Triceps Extension (Dumbbell)",
+   "for": [
+    "TRI_OH_DB"
+   ],
+   "rig": "overhead-triceps-ext",
+   "variant": "dumbbell",
+   "muscles": [
+    [
+     "triceps"
+    ],
+    []
+   ],
+   "source": "Same joint angles as the parent (Maeo 2023); only the load changes (one dumbbell in both hands).",
+   "eq": [
+    {
+     "d": "M66 148 H116 V156 H66 Z"
+    },
+    {
+     "d": "M90 156 V188 M74 188 H106"
+    },
+    {
+     "f": "wrist",
+     "d": "M-5 -9 H5 V9 H-5 Z"
+    }
+   ]
+  },
+  "overhead-triceps-ext/band": {
+   "name": "Overhead Triceps Extension (Band)",
+   "for": [
+    "TRI_BAND_OH"
+   ],
+   "rig": "overhead-triceps-ext",
+   "variant": "band",
+   "muscles": [
+    [
+     "triceps"
+    ],
+    []
+   ],
+   "source": "Same joint angles as the parent (Maeo 2023); band under the feet instead of the cable (seated, as the parent).",
+   "eq": [
+    {
+     "d": "M66 148 H116 V156 H66 Z"
+    },
+    {
+     "d": "M90 156 V188 M74 188 H106"
+    },
+    {
+     "f": "wrist",
+     "d": "M-3 -6 H3 V6 H-3 Z"
+    },
+    {
+     "f": "wrist",
+     "cable": [
+      136,
+      188
+     ]
+    }
+   ]
+  },
   "bicep-curl-cable/dumbbell": {
    "name": "Bicep Curl (Dumbbell)",
    "for": [
