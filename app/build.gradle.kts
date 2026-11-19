@@ -118,6 +118,7 @@ dependencies {
     implementation(libs.datastore.preferences)
     implementation(libs.work.runtime)
     implementation(libs.play.services.auth)
+    implementation(libs.health.connect)
 
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)

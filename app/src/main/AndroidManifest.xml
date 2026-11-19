@@ -20,6 +20,11 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <!-- B-09: lets the Health Connect client library see whether Health Connect is installed (Android 11 and lower). -->
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+    </queries>
+
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -36,6 +41,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- B-09: what Health Connect needs from a reading app: a privacy policy screen for the permission dialog (same text as Pengaturan, PV-4) and the Android 14+ "data access" entry. No permission is added by these. -->
+        <activity
+            android:name=".ui.pengaturan.PrivacyPolicyActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE"
+            android:targetActivity=".ui.pengaturan.PrivacyPolicyActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
 
         <!-- Rest timer (L-8): woken by the exact alarm, posts one local notification. Not exported. -->
         <receiver

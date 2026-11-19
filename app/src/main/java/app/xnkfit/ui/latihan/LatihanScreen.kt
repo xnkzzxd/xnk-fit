@@ -58,7 +58,7 @@ fun settingLabel(code: String): String = stringResource(
 
 /** Latihan home: the first profile questions, or the program's day list with "Mulai" (L-1, L-5). */
 @Composable
-fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, onStart: (dayId: String?, empty: Boolean) -> Unit, modifier: Modifier = Modifier) {
+fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, steps: app.xnkfit.ui.health.StepsViewModel, onStart: (dayId: String?, empty: Boolean) -> Unit, modifier: Modifier = Modifier) {
     val ui by vm.ui.collectAsState()
     val extra by insights.ui.collectAsState()
     ui.editor?.let { return RoutineEditor(it, vm, modifier) }
@@ -71,7 +71,7 @@ fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, onStart: (d
         if (program == null) {
             profileQuestions(ui, vm)
             item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
-            activitySection(extra, insights)
+            activitySection(extra, insights, steps)
             item { JelajahiSection(vm) }
         } else {
             item { ProgramHeader(program.setting, program.source.name, program.level) }
@@ -83,7 +83,7 @@ fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, onStart: (d
             item { AutoSwitch(ui.autoOff, vm) }
             item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
             weekMapSection(extra)
-            activitySection(extra, insights)
+            activitySection(extra, insights, steps)
             item { JelajahiSection(vm) }
             item {
                 Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(12.dp)) {

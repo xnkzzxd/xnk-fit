@@ -48,6 +48,7 @@ Owner (Play Console, needs S-08):
 
 Claude (code tasks, later):
 - B-09: manifest has `READ_STEPS` and nothing else from Health Connect; the screen explains why before the system dialog; the card hides itself when Health Connect is missing (L-15).
+- B-09 (done): `PrivacyPolicyActivity` (intent `androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE`) and the `ViewPermissionUsageActivity` alias (`VIEW_PERMISSION_USAGE`, Android 14+) show the same `PrivacyScreen` as Pengaturan. ⚠ Not tried on a device.
 - B-14: the same privacy policy opens from Settings and from Health Connect's privacy link (⚠ the exact manifest entry for this is in https://developer.android.com/health-and-fitness/health-connect/get-started; read it in B-09).
 - B-20: wording of Data safety and policy matches this file.
 

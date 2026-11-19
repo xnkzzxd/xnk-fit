@@ -26,7 +26,7 @@ import app.xnkfit.ui.logger.RestAlarms
  * so "Lanjutkan latihan?" is the first thing seen (Design §4); a workout in progress is never hidden behind the list.
  */
 @Composable
-fun LatihanHost(vm: LatihanViewModel, insights: InsightsViewModel, logger: LoggerViewModel, alarms: RestAlarms, modifier: Modifier = Modifier) {
+fun LatihanHost(vm: LatihanViewModel, insights: InsightsViewModel, logger: LoggerViewModel, alarms: RestAlarms, steps: app.xnkfit.ui.health.StepsViewModel, modifier: Modifier = Modifier) {
     val loggerUi by logger.ui.collectAsState()
     var inLogger by rememberSaveable { mutableStateOf(false) }
     val busy = loggerUi.phase == LoggerPhase.RESUME || loggerUi.phase == LoggerPhase.ACTIVE || loggerUi.phase == LoggerPhase.DONE
@@ -40,6 +40,6 @@ fun LatihanHost(vm: LatihanViewModel, insights: InsightsViewModel, logger: Logge
             LoggerHost(logger, alarms)
         }
     } else {
-        LatihanScreen(vm, insights, onStart = { dayId, empty -> logger.useDay(dayId, empty); inLogger = true }, modifier = modifier)
+        LatihanScreen(vm, insights, steps, onStart = { dayId, empty -> logger.useDay(dayId, empty); inLogger = true }, modifier = modifier)
     }
 }

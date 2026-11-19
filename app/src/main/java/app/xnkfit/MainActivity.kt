@@ -167,6 +167,17 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // B-09: steps from Health Connect (L-15). One DataStore file remembers that the user answered the system dialog.
+    private val steps: app.xnkfit.ui.health.StepsViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = app.xnkfit.ui.health.StepsViewModel(
+                source = app.xnkfit.data.health.HealthConnectSteps(applicationContext),
+                asked = app.xnkfit.data.health.DataStoreStepsAsked(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(STEPS_FILE) }),
+            ) as T
+        }
+    }
+
     private val insights: InsightsViewModel by viewModels {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -292,7 +303,7 @@ class MainActivity : ComponentActivity() {
                 onShowWelcomeAgain = { lifecycleScope.launch { settingsStore.resetCards() } },
             )
                             Overlay.PRIVACY -> PrivacyScreen(onBack = back)
-                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
+                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, steps, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
                         }
                     }
                 }
@@ -305,5 +316,6 @@ private const val SETTINGS_FILE = "settings" // text-ok: file name, not UI text
 private const val FOOD_PREFS_FILE = "food_prefs" // text-ok: file name, not UI text
 private const val TARGET_BASIS_FILE = "target_basis" // text-ok: file name, not UI text
 private const val SHOPPING_TICKS_FILE = "shopping_ticks" // text-ok: file name, not UI text
+private const val STEPS_FILE = "steps_prefs" // text-ok: file name, not UI text
 private const val LATIHAN_PREFS_FILE = "latihan_prefs" // text-ok: file name, not UI text
 private const val LOGGER_PREFS_FILE = "logger_prefs" // text-ok: file name, not UI text

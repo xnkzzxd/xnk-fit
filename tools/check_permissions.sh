@@ -5,6 +5,7 @@ set -euo pipefail
 apk="${1:?usage: check_permissions.sh <apk>}"
 aapt2="$(command -v aapt2 || ls "${ANDROID_HOME:-/nonexistent}"/build-tools/*/aapt2 2>/dev/null | sort -V | tail -1)"
 [ -n "$aapt2" ] || { echo "aapt2 not found" >&2; exit 2; }
+# B-09: READ_STEPS is the only Health Connect permission (Play-Health.md). Any other android.permission.health.* fails below with its own message.
 allowed='
 android.permission.POST_NOTIFICATIONS
 android.permission.CAMERA
@@ -18,7 +19,9 @@ app.xnkfit.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 found="$("$aapt2" dump permissions "$apk" | sed -n "s/^uses-permission: name='\(.*\)'.*/\1/p")"
 bad=0
 for p in $found; do
-  if ! grep -qxF "$p" <<<"$allowed"; then echo "FAIL: permission not in Design §14: $p" >&2; bad=1; fi
+  if ! grep -qxF "$p" <<<"$allowed"; then
+    case "$p" in android.permission.health.*) echo "FAIL: only READ_STEPS may be a Health Connect permission: $p" >&2;; esac
+    echo "FAIL: permission not in Design §14: $p" >&2; bad=1; fi
 done
 [ "$bad" -eq 0 ] && echo "OK: permissions within allowlist ($(wc -w <<<"$found") declared)"
 exit "$bad"

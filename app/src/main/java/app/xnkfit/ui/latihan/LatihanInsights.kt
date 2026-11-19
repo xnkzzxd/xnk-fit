@@ -94,7 +94,8 @@ fun LazyListScope.weekMapSection(ui: InsightsUi) {
 }
 
 /** Activity card with the week's minutes and the logged rows (L-14). */
-fun LazyListScope.activitySection(ui: InsightsUi, vm: InsightsViewModel) {
+fun LazyListScope.activitySection(ui: InsightsUi, vm: InsightsViewModel, steps: app.xnkfit.ui.health.StepsViewModel) {
+    item { app.xnkfit.ui.health.StepsCardView(steps) }
     item {
         val view = ui.activity.view
         Card(Modifier.fillMaxWidth()) {

@@ -279,7 +279,7 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | Room | Database (§3) | Small |
 | DataStore | Settings | Small |
 | WorkManager | Reminders, backup on open | Small |
-| Health Connect client | Steps (L-15) | Hidden where missing |
+| `androidx.health.connect:connect-client` 1.1.0 | Steps (L-15): `READ_STEPS` only, `aggregateGroupByPeriod` of `StepsRecord.COUNT_TOTAL`. Added in B-09 | Small; the card hides itself where Health Connect is missing |
 | `com.google.android.gms:play-services-auth` (AuthorizationClient, scope `drive.appdata` only) + Drive REST over the platform `HttpURLConnection` | Backup (B-1). Added in B-16. **Deviation:** no Ktor/OkHttp: the content update (B-04) already uses `HttpURLConnection`, so that is the one HTTP client | play-services-auth pulls play-services-base/basement/tasks; R8 shrinks; APK checked against the 20 MB budget |
 | kotlinx.serialization | Backup JSON | Small |
 | JUnit, Robolectric, Compose UI test, Macrobenchmark | Tests (NF-5) | Test only |
