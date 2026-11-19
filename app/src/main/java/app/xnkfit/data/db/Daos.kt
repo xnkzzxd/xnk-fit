@@ -61,10 +61,10 @@ interface ProgramDao {
 
     @Insert suspend fun insertItems(rows: List<ProgramItemEntity>)
 
-    @Query("SELECT * FROM program WHERE isActive = 1 LIMIT 1")
+    @Query("SELECT * FROM program WHERE isActive = 1 AND kind = 'program' LIMIT 1")
     fun observeActive(): Flow<ProgramEntity?>
 
-    @Query("SELECT * FROM program WHERE isActive = 1 LIMIT 1")
+    @Query("SELECT * FROM program WHERE isActive = 1 AND kind = 'program' LIMIT 1")
     suspend fun active(): ProgramEntity?
 
     @Query("SELECT * FROM exercise")
@@ -73,15 +73,47 @@ interface ProgramDao {
     @Query("SELECT * FROM program_day WHERE programId = :programId ORDER BY position")
     suspend fun days(programId: String): List<ProgramDayEntity>
 
+    @Query("SELECT * FROM program_day WHERE id = :id")
+    suspend fun dayById(id: String): ProgramDayEntity?
+
     @Query("SELECT * FROM program_item WHERE dayId = :dayId ORDER BY position")
     suspend fun items(dayId: String): List<ProgramItemEntity>
 
     /** `auto` programs are regenerated; `own` ones are never touched (L-5). Days and items cascade. */
-    @Query("DELETE FROM program WHERE source = 'auto'")
+    @Query("DELETE FROM program WHERE source = 'auto' AND kind = 'program'")
     suspend fun deleteAutoPrograms()
 
-    @Query("UPDATE program SET isActive = 0, updatedAt = :now WHERE isActive = 1")
+    @Query("UPDATE program SET isActive = 0, updatedAt = :now WHERE isActive = 1 AND kind = 'program'")
     suspend fun deactivateAll(now: Long)
+
+    @Query("SELECT * FROM program WHERE kind = 'program' ORDER BY createdAt DESC")
+    suspend fun allPrograms(): List<ProgramEntity>
+
+    @Query("SELECT * FROM program WHERE id = :id")
+    suspend fun programById(id: String): ProgramEntity?
+
+    @Query("UPDATE program SET isActive = 1, updatedAt = :now WHERE id = :id")
+    suspend fun setActive(id: String, now: Long)
+
+    @Upsert suspend fun upsertProgram(program: ProgramEntity)
+
+    @Query("DELETE FROM program WHERE source = :source AND kind = 'program'")
+    suspend fun deleteProgramsBySource(source: String)
+
+    @Query("SELECT * FROM program WHERE kind = 'routine' ORDER BY createdAt")
+    suspend fun routines(): List<ProgramEntity>
+
+    @Query("UPDATE program SET source = :source, updatedAt = :now WHERE id = :id")
+    suspend fun setSource(id: String, source: String, now: Long)
+
+    @Query("UPDATE program SET level = :level, rulesVersion = :rulesVersion, updatedAt = :now WHERE id = :id")
+    suspend fun setLevel(id: String, level: Int, rulesVersion: Int, now: Long)
+
+    @Query("DELETE FROM program_day WHERE programId = :programId")
+    suspend fun deleteDays(programId: String)
+
+    @Query("DELETE FROM program WHERE id = :id")
+    suspend fun deleteProgram(id: String)
 }
 
 /**
@@ -149,6 +181,10 @@ interface WorkoutDao {
             "WHERE s.done = 1 AND w.endedAt IS NOT NULL ORDER BY w.startedAt",
     )
     suspend fun finishedSetHistory(): List<HistorySetRow>
+
+    /** Finished workouts that ended at or after [since]; the review clock of R_TRN_REVIEW counts them. */
+    @Query("SELECT COUNT(*) FROM workout WHERE endedAt IS NOT NULL AND endedAt >= :since")
+    suspend fun finishedSince(since: Long): Int
 
     /** Program day of the last finished workout, to pick the next day of the rotation. */
     @Query("SELECT programDayId FROM workout WHERE endedAt IS NOT NULL AND programDayId IS NOT NULL ORDER BY startedAt DESC LIMIT 1")

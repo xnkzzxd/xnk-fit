@@ -586,4 +586,41 @@
     <string name="me_cards_title">Kartu saya</string>
     <string name="me_cards_hint">Kartu latihan, kemajuan, konsistensi dan makan. Dibuat di HP, tanpa unggah.</string>
     <string name="me_cards_open">Buka</string>
+
+    <!-- B-08 Latihan -->
+    <string name="lat_day_full_a">Seluruh Tubuh A</string>
+    <string name="lat_day_full_b">Seluruh Tubuh B</string>
+    <string name="lat_day_full_c">Seluruh Tubuh C</string>
+    <string name="lat_day_upper_a">Tubuh Atas A</string>
+    <string name="lat_day_lower_a">Tubuh Bawah A</string>
+    <string name="lat_day_upper_b">Tubuh Atas B</string>
+    <string name="lat_day_lower_b">Tubuh Bawah B</string>
+    <string name="lat_setting_gym">Gym lengkap</string>
+    <string name="lat_setting_home_bw">Rumah, tanpa alat</string>
+    <string name="lat_setting_home_db">Rumah, dumbel / karet</string>
+    <string name="lat_setting_custom">Alat pilihan sendiri</string>
+    <string name="lat_source_auto">Program otomatis</string>
+    <string name="lat_source_own">Program saya</string>
+    <string name="lat_source_jelajahi">Dari Jelajahi</string>
+    <string name="lat_level">Tingkat %1$d</string>
+    <string name="lat_next">Berikutnya</string>
+    <string name="lat_day_summary">%1$d gerakan · ±%2$d menit</string>
+    <string name="lat_start">Mulai</string>
+    <string name="lat_empty_workout">Latihan kosong</string>
+    <string name="lat_change_profile">Ubah profil latihan</string>
+    <string name="lat_cancel">Batal</string>
+    <string name="lat_back">Kembali</string>
+    <string name="lat_create">Buat program</string>
+    <string name="lat_missing_note">Alatmu belum cukup untuk beberapa gerakan tarik. Program tetap dibuat dari yang bisa dilakukan.</string>
+    <string name="lat_q_intro">Tiga pertanyaan singkat untuk membuat programmu.</string>
+    <string name="lat_q_place">Di mana latihan?</string>
+    <string name="lat_q_days">Hari per minggu</string>
+    <string name="lat_q_minutes">Durasi</string>
+    <string name="lat_minutes_value">%1$d mnt</string>
+    <string name="lat_q_experience">Pengalaman</string>
+    <string name="lat_exp_new">Baru mulai</string>
+    <string name="lat_exp_months">Beberapa bulan</string>
+    <string name="lat_exp_year">Lebih dari setahun</string>
+    <string name="lat_blocked_screening">Isi pertanyaan kesehatan dulu supaya program bisa dibuat.</string>
+    <string name="lat_blocked_stopped">Program belum bisa dibuat dengan data saat ini.</string>
 </resources>
