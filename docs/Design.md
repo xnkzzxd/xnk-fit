@@ -284,7 +284,7 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | `androidx.health.connect:connect-client` 1.1.0 | Steps (L-15): `READ_STEPS` only, `aggregateGroupByPeriod` of `StepsRecord.COUNT_TOTAL`. Added in B-09 | Small; the card hides itself where Health Connect is missing |
 | `com.google.android.gms:play-services-auth` (AuthorizationClient, scope `drive.appdata` only) + Drive REST over the platform `HttpURLConnection` | Backup (B-1). Added in B-16. **Deviation:** no Ktor/OkHttp: the content update (B-04) already uses `HttpURLConnection`, so that is the one HTTP client | play-services-auth pulls play-services-base/basement/tasks; R8 shrinks; APK checked against the 20 MB budget |
 | kotlinx.serialization | Backup JSON | Small |
-| JUnit, Robolectric, Compose UI test, Macrobenchmark | Tests (NF-5) | Test only |
+| JUnit, Robolectric, Compose UI test (`ui-test-junit4`; `ui-test-manifest` for `createComposeRule` in debug), Macrobenchmark | Tests (NF-5). Added in B-18. No screenshot library (Roborazzi, Paparazzi): it would add a large test dependency and golden images for little the semantic tests do not catch; pixels are checked by hand (`Test-Manual.md` S-1…S-6) | Test only |
 | `androidx.room:room-testing` | `MigrationTestHelper` for the migration tests (§13), same version as Room (added in B-03) | Test only |
 | `androidx.test:core` | `ApplicationProvider` for Robolectric database tests (B-03) | Test only |
 
@@ -298,8 +298,8 @@ Anything else needs a row here first.
 | Generator | JUnit with golden programs per equipment setting | Every PR |
 | Migrations | Room migration tests from each exported schema (`MigrationTestHelper`, Robolectric; JSON in `app/schemas/`, committed, never edited after release). `MigrationTest.everyReleasedVersionMigratesToLatest` finds every `N.json` by itself. Today only v1 exists: the test runs v1 → v1, and one example migration is kept as an ignored pattern. CI fails when a build changes a committed schema file (see CI). | Every PR |
 | Backup round trip | Unit: export → import equals source per table, refusals before any write, rollback on a failed write (`BackupArchiveTest`); Drive upload, keep-three, device check against a fake Drive server on 127.0.0.1 (`DriveBackupTest`) | Every PR |
-| Kill test | Instrumented: kill at each logger step | Nightly |
-| Screen tests | Compose UI tests, phone and tablet, light and dark | Every PR. **Not in place yet (B-05):** `compose-ui-test` is not in the catalog and no Compose test has run; screens are covered by ViewModel tests on the JVM (`OnboardingViewModelTest`, `ScreeningModelTest`) |
+| Kill test | JVM: tap-by-tap kill and a transaction cut before commit (`LoggerRepositoryTest`, `KillMidTransactionTest`), every PR. A real process kill needs a device: `Test-Manual.md` K-1…K-8 (no instrumented job exists) |
+| Screen tests | Compose UI tests on Robolectric (`ScreenWalkTest`, `LoggerScreenTest`): 360/430/600/840 dp, light and dark, font 1.0/1.3/2.0; no crash, key text, touch targets 48 dp or more. Semantic only, no screenshots (§12). Pixel checks by hand (`Test-Manual.md` S-1…S-6) | Every PR |
 | Speed | Macrobenchmark budgets (§10) | Nightly and before release |
 | Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
 | APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
