@@ -11,7 +11,6 @@
     <string name="nav_me">Saya</string>
 
     <!-- Empty skeleton screen (PRD H-3: an empty screen says what fills it) -->
-    <string name="empty_today">Belum ada yang tercatat hari ini.</string>
     <string name="empty_other">Layar ini menyusul.</string>
 
     <!-- Onboarding (PRD O-1…O-6, mockup onboarding.html) -->
@@ -326,4 +325,103 @@
     <string name="badge_icon_heart">♥</string>
     <string name="badge_icon_cal">📅</string>
     <string name="badge_icon_lock">🔒</string>
+
+    <!-- Hari ini (B-11, PRD H-1…H-3, M-2). Netral, tanpa "kamu", tanpa merah (R_TONE). -->
+    <string name="td_title">Hari ini</string>
+    <string name="td_level_streak">Level %1$d · %2$d minggu beruntun</string>
+    <string name="td_failed">Data belum bisa dibaca. Coba buka lagi.</string>
+    <string name="td_workout_title">Latihan hari ini</string>
+    <string name="td_workout_meta">%1$d gerakan · ±%2$d menit</string>
+    <string name="td_workout_start">Mulai</string>
+    <string name="td_workout_view">Lihat</string>
+    <string name="td_workout_resume_title">Lanjutkan latihan?</string>
+    <string name="td_workout_resume">Lanjutkan</string>
+    <string name="td_rest_title">Hari istirahat</string>
+    <string name="td_rest_body">Pulihkan badan</string>
+    <string name="td_rest_next">Berikutnya: %1$s</string>
+    <string name="td_rest_log_walk">Catat jalan</string>
+    <string name="td_rest_program">Program</string>
+    <string name="td_noprogram_title">Mulai di sini</string>
+    <string name="td_noprogram_body">Buat program pertama, sesuai alat yang ada</string>
+    <string name="td_noprogram_make">Buat program</string>
+    <string name="td_noprogram_food">Atur makan</string>
+    <string name="td_activity_title">Aktivitas minggu ini</string>
+    <string name="td_activity_minutes">%1$d dari %2$d menit</string>
+    <string name="td_activity_empty">Belum ada aktivitas minggu ini. Jalan, sepeda, atau apa saja yang dicatat akan muncul di sini.</string>
+    <string name="td_activity_log">Catat</string>
+    <string name="td_activity_history">Riwayat</string>
+    <string name="td_tasks_title">Tugas hari ini</string>
+    <string name="td_tasks_count">%1$d dari %2$d</string>
+    <string name="td_task_weigh">Timbang</string>
+    <string name="td_task_workout">Latihan</string>
+    <string name="td_task_food">Catat makan</string>
+    <string name="td_task_done">Selesai</string>
+    <string name="td_task_open">Belum</string>
+    <string name="td_food_title">Makan</string>
+    <string name="td_food_open">Buka</string>
+    <string name="td_food_remaining">%1$d kkal lagi</string>
+    <string name="td_food_over">Sudah %1$d kkal di atas target hari ini</string>
+    <string name="td_food_eaten_only">%1$d kkal tercatat</string>
+    <string name="td_food_of">%1$d dari %2$d kkal</string>
+    <string name="td_food_macro">%1$s %2$d/%3$d g</string>
+    <string name="td_food_ticks">%1$d dari %2$d waktu makan tercatat</string>
+    <string name="td_food_empty">Belum ada makanan tercatat hari ini.</string>
+    <string name="td_macro_protein">Protein</string>
+    <string name="td_macro_carb">Karbo</string>
+    <string name="td_macro_fat">Lemak</string>
+    <string name="td_week_title">Minggu ini</string>
+    <string name="td_week_active">%1$d hari aktif</string>
+    <string name="td_day_1">Sen</string>
+    <string name="td_day_2">Sel</string>
+    <string name="td_day_3">Rab</string>
+    <string name="td_day_4">Kam</string>
+    <string name="td_day_5">Jum</string>
+    <string name="td_day_6">Sab</string>
+    <string name="td_day_7">Min</string>
+    <string name="td_day_active">%1$s: aktif</string>
+    <string name="td_day_idle">%1$s: belum</string>
+    <!-- Kartu target -->
+    <string name="td_target_title">Target harian</string>
+    <string name="td_target_goal_turun">Tujuan: turun pelan</string>
+    <string name="td_target_goal_naik">Tujuan: tambah otot</string>
+    <string name="td_target_goal_jaga">Tujuan: jaga berat</string>
+    <string name="td_target_estimate">Perkiraan, bukan angka pasti.</string>
+    <string name="td_target_kcal">Kalori</string>
+    <string name="td_target_kcal_value">%1$d kkal</string>
+    <string name="td_target_g_value">%1$d g</string>
+    <string name="td_target_fibre">Serat</string>
+    <string name="td_target_raised">Sudah ditambah untuk tempo turun yang cepat</string>
+    <string name="td_target_source_i">(i)</string>
+    <string name="td_target_source_button">Sumber %1$s</string>
+    <string name="td_target_source_title">Sumber %1$s</string>
+    <string name="td_target_source_close">Tutup</string>
+    <string name="td_target_needs_screening">Target muncul setelah skrining kesehatan selesai.</string>
+    <string name="td_target_unavailable">Target belum bisa dihitung dari data saat ini. Periksa tinggi, berat, dan tahun lahir.</string>
+    <string name="td_target_no_numbers_title">Tanpa angka</string>
+    <string name="td_target_no_numbers_body">Makan teratur dan catat tiap waktu makan. Angka kalori tidak ditampilkan.</string>
+    <string name="td_disclaimer">Bukan pengganti dokter / ahli gizi.</string>
+    <string name="td_note_risk">Konsultasi dokter sebelum latihan</string>
+    <string name="td_note_deficit_capped">Penurunan dibuat lebih kecil agar aman</string>
+    <string name="td_note_u18">Mode ringan, tanpa defisit, latihan ditemani orang dewasa</string>
+    <string name="td_note_preg">Tanpa defisit kalori. Tanyakan ke dokter atau bidan</string>
+    <string name="td_note_ed">Dokter atau psikolog bisa membantu</string>
+    <string name="td_note_bmi">Berat saat ini sudah rendah, target turun tidak ditawarkan</string>
+    <string name="td_note_goal_changed">Tujuan diubah menjadi jaga berat oleh pemeriksaan keamanan</string>
+    <string name="td_note_floor">Target dinaikkan ke batas bawah yang aman</string>
+    <!-- Hitung ulang (M-2) -->
+    <string name="td_recalc_weight_down">Berat turun %1$s kg sejak target dihitung. Hitung ulang target?</string>
+    <string name="td_recalc_weight_up">Berat naik %1$s kg sejak target dihitung. Hitung ulang target?</string>
+    <string name="td_recalc_goal">Tujuan sudah berubah sejak target dihitung. Hitung ulang target?</string>
+    <string name="td_recalc_pace">Berat turun lebih cepat dari 1 % per minggu selama dua minggu. Naikkan target %1$d kkal?</string>
+    <string name="td_recalc_accept">Hitung ulang target</string>
+    <string name="td_recalc_accept_pace">Naikkan target</string>
+    <string name="td_recalc_keep">Pertahankan</string>
+    <!-- Sumber (i) -->
+    <string name="src_mifflin_s1">Mifflin dkk., 1990. A new predictive equation for resting energy expenditure. Am J Clin Nutr 51(2):241–247.</string>
+    <string name="src_pal_s2">FAO/WHO/UNU, 2004. Human energy requirements, Tabel 5.3 (faktor aktivitas).</string>
+    <string name="src_nhlbi_s5">NHLBI, 2000. The Practical Guide, NIH Pub. 00–4084, hlm. 26: defisit 500–1.000 kkal per hari.</string>
+    <string name="src_protein_s6">Jäger dkk., 2017. ISSN position stand: protein and exercise. J Int Soc Sports Nutr 14:20 (1,4–2,0 g per kg).</string>
+    <string name="src_surplus_s19">Iraki dkk., 2019. Nutrition recommendations for bodybuilders in the off-season. Sports 7(7):154.</string>
+    <string name="src_akg_s8">Permenkes RI No. 28 Tahun 2019, Angka Kecukupan Gizi, Lampiran I, Tabel 1.</string>
+    <string name="src_none">Dihitung dari angka lain di kartu ini.</string>
 </resources>

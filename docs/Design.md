@@ -194,6 +194,8 @@ Household measures (M-6): shown as "1 centong (±100 g)". Grams beside. Conversi
 
 Implementation notes (B-10): the planner and its rules are pure Kotlin in `domain.food` (`Planner.kt`, `Shopping.kt`, `FoodLog.kt`); `data.food` holds the Room repository, FTS4 search, mappers, DataStore for the food preferences and shopping ticks (no schema change), and the target source; `ui.makan` holds the four screens. Deviations from this section: portions are not scaled to the target; "Favorit" is derived from the log; recipes have no builder screen yet. Details and the rows to review are in Decisions.md.
 
+Implementation notes (B-11): `domain.today` holds the target card (all gates, R_GATE_ED without numbers, sources per number), the recalculation prompt, workout card, weekly activity and tasks; `ui/today` reads them through `TodayViewModel`. `TargetBasisStore` remembers what the target was calculated with; `RoomTargetSource` now reads it, so Makan and Hari ini share one target (this replaces B-10's rebuilt one). Deviations in Decisions.md.
+
 ## 8. Reminders and notifications
 
 - Local notifications only (R-1). Channels: Latihan, Makan, Timbang, Istirahat (rest timer).
