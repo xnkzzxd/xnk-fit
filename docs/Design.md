@@ -123,7 +123,7 @@ Implementation (B-07): `domain.logger` (pure: next set, supersets, rest end, res
 
 ## 5. Screens and navigation
 
-Bottom bar (phone): **Hari ini · Latihan · ＋ · Makan · Saya** (N-1). The ＋ opens a sheet with four actions (N-2). Phone back steps: sheet → screen → tab → exit prompt (N-3). Tablets (≥ 600 dp wide): side rail with the same five destinations and two-column content (N-4). Implementation (B-17): `ui.adaptive` (`widthClassOf`, `useTwoColumns`, `TwoColumns`) measures `screenWidthDp` and font scale; no WindowSizeClass dependency. At font scale 2.0 a 600 dp window keeps one column.
+Bottom bar (phone): **Hari ini · Latihan · ＋ · Makan · Saya** (N-1). The ＋ opens a sheet with four actions (N-2). Phone back steps: sheet → screen → tab → exit prompt (N-3). Tablets (≥ 600 dp wide): side rail with the same five destinations and two-column content (N-4). Implementation (B-17): `ui.adaptive` (`widthClassOf`, `useTwoColumns`, `TwoColumns`) measures the window width (`LocalWindowInfo`) and font scale; no WindowSizeClass dependency. At font scale 2.0 a 600 dp window keeps one column.
 
 | Screen | Content (PRD ref) |
 | --- | --- |

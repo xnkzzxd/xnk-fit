@@ -105,7 +105,6 @@ fun XnkApp(
         }
     }
     }
-    }
 }
 
 /** The tab that carries a welcome card; the add action has none. */

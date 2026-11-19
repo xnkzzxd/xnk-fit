@@ -2,7 +2,8 @@ package app.xnkfit.ui.adaptive
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 
 /** Window width classes (PRD N-4, Design §5). Pure so a JVM test covers the threshold. */
 enum class WidthClass {
@@ -35,8 +36,11 @@ fun useTwoColumns(widthDp: Int, fontScale: Float): Boolean =
 val LocalWidthClass = compositionLocalOf { WidthClass.COMPACT }
 
 @Composable
-fun currentWidthClass(): WidthClass = widthClassOf(LocalConfiguration.current.screenWidthDp)
+fun currentWidthClass(): WidthClass = widthClassOf(windowWidthDp())
+
+@Composable
+private fun windowWidthDp(): Int = with(LocalDensity.current) { LocalWindowInfo.current.containerSize.width.toDp().value.toInt() }
 
 /** Whether a screen body splits in two now; false on phones and on a very large font. */
 @Composable
-fun currentTwoColumns(): Boolean = LocalConfiguration.current.let { useTwoColumns(it.screenWidthDp, it.fontScale) }
+fun currentTwoColumns(): Boolean = useTwoColumns(windowWidthDp(), LocalDensity.current.fontScale)
