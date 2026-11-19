@@ -18,6 +18,6 @@
  },
  "checks": [
   "Same bytes as the D-05 mockup copies (docs/mockups/figure-data.js and rig-data.js, JSON after 'window.XF_FIG = ' / 'window.XF_RIG = '), compared 2026-11-18.",
-  "XNK docs/program/Gerak.md (joint-angle sources of the 21 rigs) not read in C-08: this session had no access to the XNK repo (C-08b)."
+  "XNK docs/program/Gerak.md (joint-angle sources of the rigs) read in C-08b from xnk-source/docs/Gerak.md (copy of XNK commit 8001bd3); summary and mismatches in Content §5.3."
  ]
 }
