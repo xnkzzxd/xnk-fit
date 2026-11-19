@@ -1,6 +1,10 @@
 package app.xnkfit.ui
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import app.xnkfit.data.prefs.WelcomeTab
+import app.xnkfit.ui.bantuan.WelcomeCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -32,6 +36,9 @@ fun XnkApp(
     workout: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) },
     /** Latihan first when a workout is unfinished, so "Lanjutkan latihan?" is the first thing seen (Design §4). */
     start: Destination = Destination.TODAY,
+    /** Tabs whose welcome card was dismissed; null while the settings are still loading (no card flashes). */
+    seenCards: Set<WelcomeTab>? = null,
+    onDismissCard: (WelcomeTab) -> Unit = {},
 ) {
     var selected by rememberSaveable { mutableStateOf(start) }
     // Hari ini reads what the other screens wrote, so it reloads each time it is opened.
@@ -52,7 +59,11 @@ fun XnkApp(
             }
         },
     ) { padding ->
-        val modifier = Modifier.padding(padding)
+        val modifier = Modifier
+        val tab = welcomeTabOf(selected)
+        Column(Modifier.padding(padding)) {
+        if (tab != null && seenCards != null && tab !in seenCards) WelcomeCard(tab, onDismiss = { onDismissCard(tab) })
+        Box(Modifier.weight(1f)) {
         when (selected) {
             Destination.TODAY -> TodayScreen(
                 today,
@@ -66,5 +77,16 @@ fun XnkApp(
             Destination.WORKOUT -> workout(modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)
         }
+        }
+        }
     }
+}
+
+/** The tab that carries a welcome card; the add action has none. */
+fun welcomeTabOf(d: Destination): WelcomeTab? = when (d) {
+    Destination.TODAY -> WelcomeTab.TODAY
+    Destination.WORKOUT -> WelcomeTab.WORKOUT
+    Destination.FOOD -> WelcomeTab.FOOD
+    Destination.ME -> WelcomeTab.ME
+    Destination.ADD -> null
 }
