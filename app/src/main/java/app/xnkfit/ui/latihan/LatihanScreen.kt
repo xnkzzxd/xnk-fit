@@ -59,18 +59,25 @@ fun settingLabel(code: String): String = stringResource(
 @Composable
 fun LatihanScreen(vm: LatihanViewModel, onStart: (dayId: String?, empty: Boolean) -> Unit, modifier: Modifier = Modifier) {
     val ui by vm.ui.collectAsState()
+    ui.editor?.let { return RoutineEditor(it, vm, modifier) }
     LazyColumn(modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { Text(stringResource(R.string.nav_workout), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(top = 16.dp)) }
         val program = ui.program
         if (ui.loading) return@LazyColumn
         if (program == null) {
             profileQuestions(ui, vm)
+            item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
+            item { JelajahiSection(vm) }
         } else {
             item { ProgramHeader(program.setting, program.source.name, program.level) }
+            ui.review?.let { r -> item { ReviewCard(r, vm) } }
             if (ui.missing.isNotEmpty()) item { Text(stringResource(R.string.lat_missing_note), style = MaterialTheme.typography.bodyMedium) }
             items(program.days, key = { it.id }) { day ->
-                DayCard(day, next = day.id == ui.nextDayId, onStart = { onStart(day.id, false) })
+                DayCard(day, next = day.id == ui.nextDayId, onStart = { onStart(day.id, false) }, onEdit = { vm.editDay(day.id, it) })
             }
+            item { AutoSwitch(ui.autoOff, vm) }
+            item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
+            item { JelajahiSection(vm) }
             item {
                 Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(12.dp)) {
                     OutlinedButton(onClick = { onStart(null, true) }, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.lat_empty_workout)) }
@@ -99,7 +106,8 @@ private fun ProgramHeader(setting: String, source: String, level: Int) {
 }
 
 @Composable
-private fun DayCard(day: DayView, next: Boolean, onStart: () -> Unit) {
+private fun DayCard(day: DayView, next: Boolean, onStart: () -> Unit, onEdit: (String) -> Unit) {
+    val title = dayTitle(day)
     Card(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp), Arrangement.spacedBy(4.dp)) {
             if (next) Text(stringResource(R.string.lat_next), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
@@ -109,7 +117,8 @@ private fun DayCard(day: DayView, next: Boolean, onStart: () -> Unit) {
                 style = MaterialTheme.typography.bodyMedium,
             )
             day.items.forEach { Text("• " + it.name + " · " + it.sets + "×" + it.repMin + "–" + it.repMax, style = MaterialTheme.typography.bodySmall) } // text-ok: numbers
-            Row(Modifier.fillMaxWidth(), Arrangement.End, Alignment.CenterVertically) {
+            Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(8.dp, Alignment.End), Alignment.CenterVertically) {
+                OutlinedButton(onClick = { onEdit(title) }, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.lat_edit)) }
                 Button(onClick = onStart, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.lat_start)) }
             }
         }
