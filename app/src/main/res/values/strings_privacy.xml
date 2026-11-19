@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Privacy policy (B-14, PRD PV-4). The same text is in docs/Privacy-Policy.md and is posted on Play and linked from
+     Health Connect. Conservative wording from the app's actual behaviour; the owner reviews it before B-20. -->
+<resources>
+    <string name="privacy_title">Kebijakan privasi</string>
+    <string name="privacy_back">Kembali</string>
+    <string name="privacy_review_note">Teks ini ditulis sesuai cara kerja aplikasi dan akan ditinjau pemilik sebelum rilis.</string>
+
+    <string name="privacy_1_title">Ringkasan</string>
+    <string name="privacy_1_body">XNK Fit menyimpan data Anda di HP Anda. Tidak ada akun, tidak ada iklan, dan tidak ada alat analitik atau pelacak. Kami tidak punya server yang menerima data Anda.</string>
+    <string name="privacy_2_title">Data yang disimpan di HP</string>
+    <string name="privacy_2_body">Nama panggilan, jenis kelamin, tahun lahir, tinggi, tujuan, ringkasan jawaban formulir kesehatan, berat dan ukuran tubuh, foto progres, catatan latihan dan makan, serta pengaturan Anda. Semuanya berada di penyimpanan pribadi aplikasi dan tidak dikirim ke kami.</string>
+    <string name="privacy_3_title">Cadangan</string>
+    <string name="privacy_3_body">Cadangan mati sampai Anda menyalakannya. Bila menyala, salinan data dikirim hanya ke folder tersembunyi aplikasi di Google Drive Anda sendiri. Kami tidak bisa membukanya. Foto ikut hanya bila Anda memilih. Ekspor ke berkas disimpan di tempat yang Anda pilih. Google memproses Drive menurut kebijakannya sendiri.</string>
+    <string name="privacy_4_title">Pembaruan konten</string>
+    <string name="privacy_4_body">Aplikasi mengunduh berkas daftar makanan dan latihan dari situs statis. Permintaan itu tidak membawa data Anda. Seperti situs web mana pun, penyedia situs dapat melihat alamat IP dan waktu permintaan.</string>
+    <string name="privacy_5_title">Izin yang diminta</string>
+    <string name="privacy_5_body">Notifikasi untuk pengingat dan timer istirahat, kamera untuk foto progres, Health Connect untuk membaca jumlah langkah bila Anda menyalakannya (data langkah tetap di HP), alarm tepat untuk timer istirahat, dan internet untuk cadangan dan pembaruan konten. Setiap izin boleh dilewati.</string>
+    <string name="privacy_6_title">Berbagi</string>
+    <string name="privacy_6_body">Kartu dibuat di HP dan dikirim lewat menu berbagi sistem hanya bila Anda memilih. Wajah pada foto dikaburkan secara bawaan. Angka berat badan tidak ditampilkan di kartu secara bawaan.</string>
+    <string name="privacy_7_title">Usia dan kesehatan</string>
+    <string name="privacy_7_body">Aplikasi untuk usia 13 tahun ke atas. Pengguna di bawah 13 tahun tidak dilanjutkan dan datanya tidak disimpan. XNK Fit bukan nasihat medis dan bukan pengganti dokter atau ahli gizi.</string>
+    <string name="privacy_8_title">Hak Anda dan penghapusan</string>
+    <string name="privacy_8_body">Anda bisa mengekspor semua data, dan menghapusnya dari HP lewat Pengaturan, Hapus semua data. Menghapus aplikasi juga menghapus data di HP. Cadangan di Google Drive tidak ikut terhapus; hapus lewat pengaturan Drive Anda.</string>
+    <string name="privacy_9_title">Perubahan dan kontak</string>
+    <string name="privacy_9_body">Bila kebijakan ini berubah, versi baru tampil di sini dan di halaman Play. Alamat kontak untuk pertanyaan privasi akan dicantumkan sebelum rilis.</string>
+
+    <!-- Delete everything (PRD B-7) -->
+    <string name="del_open">Hapus semua data</string>
+    <string name="del_title">Hapus semua data?</string>
+    <string name="del_body">Semua data di HP ini dihapus: profil, latihan, catatan makan, ukuran, foto, dan pengaturan. Tidak bisa dibatalkan.</string>
+    <string name="del_drive">Cadangan di Google Drive tidak ikut terhapus. Hapus lewat pengaturan Drive bila perlu.</string>
+    <string name="del_type">Ketik %1$s untuk lanjut</string>
+    <string name="del_word">HAPUS</string>
+    <string name="del_confirm">Hapus semua</string>
+    <string name="del_cancel">Batal</string>
+    <string name="del_busy">Menghapus…</string>
+    <string name="del_failed">Belum semua data terhapus. Coba lagi.</string>
+</resources>

@@ -64,9 +64,11 @@ import app.xnkfit.data.prefs.ThemeMode
 import app.xnkfit.data.prefs.WelcomeTab
 import app.xnkfit.ui.bantuan.HelpScreen
 import app.xnkfit.data.prefs.DataStoreSettingsStore
-import app.xnkfit.ui.common.EmptyScreen
 import app.xnkfit.ui.nav.Overlay
 import app.xnkfit.ui.nav.OverlayStack
+import app.xnkfit.data.privacy.AndroidDataWiper
+import app.xnkfit.ui.pengaturan.DeleteDataViewModel
+import app.xnkfit.ui.pengaturan.PrivacyScreen
 import app.xnkfit.ui.pengaturan.SettingsScreen
 import app.xnkfit.ui.pengaturan.SettingsViewModel
 import app.xnkfit.ui.data.DataScreen
@@ -101,6 +103,24 @@ class MainActivity : ComponentActivity() {
                 },
             ) as T
         }
+    }
+
+    // B-14: "Hapus semua data". After a full wipe the app restarts in a fresh process, so no open store writes old data back.
+    private val deleteVm: DeleteDataViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = DeleteDataViewModel(
+                wiper = AndroidDataWiper(applicationContext, database),
+                word = { getString(R.string.del_word) },
+                onWiped = ::restartAfterWipe,
+            ) as T
+        }
+    }
+
+    private fun restartAfterWipe() {
+        val intent = android.content.Intent(this, MainActivity::class.java).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        android.os.Process.killProcess(android.os.Process.myPid())
     }
 
     private val onboarding: OnboardingViewModel by viewModels {
@@ -264,14 +284,14 @@ class MainActivity : ComponentActivity() {
                             Overlay.CARDS -> KartuScreen(share, onBack = back)
                             Overlay.DATA -> DataScreen(data, onBack = back)
                             Overlay.SETTINGS -> SettingsScreen(
-                                settingsVm, onBack = back,
+                                settingsVm, deleteVm, onBack = back,
                                 onOpenData = { open(Overlay.DATA) }, onOpenHelp = { open(Overlay.HELP) }, onOpenPrivacy = { open(Overlay.PRIVACY) },
                             )
                             Overlay.HELP -> HelpScreen(
                 onBack = back, onOpenPrivacy = { open(Overlay.PRIVACY) },
                 onShowWelcomeAgain = { lifecycleScope.launch { settingsStore.resetCards() } },
             )
-                            Overlay.PRIVACY -> EmptyScreen(R.string.empty_other) // B-14 potongan 3
+                            Overlay.PRIVACY -> PrivacyScreen(onBack = back)
                             null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
                         }
                     }
