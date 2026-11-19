@@ -22,6 +22,7 @@ class ParsedFile(
 /** Pure parsing of the shipped JSON into Room rows. Any malformed row throws [ContentException]: all or nothing. */
 object ContentParser {
     const val DOC_BADGES = "badges"
+    const val DOC_HOUSEHOLD = "household"
     const val DOC_MEAL_META = "meal-packages-meta"
 
     fun parse(file: ContentFile, bytes: ByteArray, now: Long): ParsedFile {
@@ -39,6 +40,7 @@ object ContentParser {
                 ContentFile.FOODS_PACKAGED -> packaged(root.arr("foods"), now)
                 ContentFile.BADGES -> badges(root, now)
                 ContentFile.MEAL_PACKAGES -> mealPackages(root, now)
+                ContentFile.HOUSEHOLD -> household(root, now)
             }
         } catch (e: JSONException) {
             throw ContentException("${file.fileName}: ${e.message}", e)
@@ -162,6 +164,27 @@ object ContentParser {
             ContentFile.MEAL_PACKAGES, mealPackages = rows,
             docs = listOf(ContentDocEntity(DOC_MEAL_META, now, now, meta.toString())),
         )
+    }
+
+    /** Keeps `{foodId: [measures]}` as one document; `ref` (page of the PMK table) is dropped, it is not shown. */
+    private fun household(root: JSONObject, now: Long): ParsedFile {
+        val list = root.arr("foods")
+        val map = JSONObject()
+        for (i in 0 until list.length()) {
+            val o = list.getJSONObject(i)
+            val id = o.getString("foodId")
+            val ms = o.getJSONArray("measures")
+            val out = JSONArray()
+            for (j in 0 until ms.length()) {
+                val m = JSONObject(ms.getJSONObject(j).toString())
+                m.getString("code"); m.getDouble("grams")
+                m.remove("ref")
+                out.put(m)
+            }
+            if (out.length() == 0) throw ContentException("household.json: $id has no measures")
+            map.put(id, out)
+        }
+        return ParsedFile(ContentFile.HOUSEHOLD, docs = listOf(ContentDocEntity(DOC_HOUSEHOLD, now, now, map.toString())))
     }
 
     private fun checkPrefix(file: ContentFile, id: String) {

@@ -230,6 +230,9 @@ interface ContentDao {
 
     @Insert suspend fun insertFoods(rows: List<FoodEntity>)
 
+    @Query("UPDATE food SET householdJson = :json WHERE id = :id")
+    suspend fun setHousehold(id: String, json: String)
+
     @Query("DELETE FROM meal_package")
     suspend fun deleteMealPackages()
 

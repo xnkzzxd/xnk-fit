@@ -28,12 +28,21 @@ class ContentStore(private val db: XnkDatabase, private val now: () -> Long = Sy
                 when (p.file) {
                     ContentFile.EXERCISES -> { dao.deleteExercises(); dao.insertExercises(p.exercises) }
                     ContentFile.MEAL_PACKAGES -> { dao.deleteMealPackages(); dao.insertMealPackages(p.mealPackages) }
+                    ContentFile.HOUSEHOLD -> Unit // the document is written below, the join after the loop
                     else -> if (p.file.idPrefix != null) {
                         dao.deleteFoodsWithPrefix(p.file.idPrefix)
                         dao.insertFoods(p.foods)
                     }
                 }
                 p.docs.forEach { dao.upsertDoc(it) }
+            }
+            // Measures live in one document; whenever foods or measures changed, join them again so the two files
+            // can be updated independently (a replaced foods file loses its measures until this runs).
+            if (parsed.any { it.file == ContentFile.HOUSEHOLD || it.file.idPrefix != null }) {
+                dao.doc(ContentParser.DOC_HOUSEHOLD)?.let { doc ->
+                    val map = JSONObject(doc.bodyJson)
+                    for (id in map.keys()) dao.setHousehold(id, map.getJSONArray(id).toString())
+                }
             }
             val old = dao.meta()
             val merged = parseHashes(old?.filesJson).toMutableMap().apply { putAll(hashes) }

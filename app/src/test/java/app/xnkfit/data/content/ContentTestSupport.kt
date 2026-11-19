@@ -38,6 +38,8 @@ internal object ContentTestSupport {
         m["badges.json"] = JSONObject().put("badges", JSONArray().put(JSONObject().put("code", "B_$tag")))
         m["meal-packages.json"] = JSONObject().put("slots", JSONArray().put("pagi")).put("packages", JSONArray().put(
             JSONObject().put("id", "MP_$tag").put("profile", "jawa").put("slot", "pagi")))
+        m["household.json"] = JSONObject().put("foods", JSONArray().put(JSONObject().put("foodId", "TKPI_$tag").put("measures", JSONArray().put(
+            JSONObject().put("code", "centong").put("grams", 100).put("label", "1 centong").put("ref", JSONObject().put("page", 9))))))
         return m.mapValues { it.value.toString().toByteArray() }
     }
 

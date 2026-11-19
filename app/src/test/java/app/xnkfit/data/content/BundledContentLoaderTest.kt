@@ -38,9 +38,21 @@ class BundledContentLoaderTest {
         // FTS4 works right after the load, with no extra step.
         val hits = db.foodDao().search(FoodSearch.toMatch("beras giling")!!, 10)
         assertTrue(hits.any { it.id == "TKPI_AR001" })
+        // Measures from household.json are joined into food.household, without the PMK page reference.
+        val rice = db.foodDao().food("TKPI_AP001")!!
+        assertTrue(rice.householdJson!!.contains("\"code\":\"centong\"") && !rice.householdJson!!.contains("\"ref\""))
         val meta = dao.meta()!!
         assertEquals("bundled", meta.source)
-        assertEquals(7, ContentStore.parseHashes(meta.filesJson).size)
+        assertEquals(8, ContentStore.parseHashes(meta.filesJson).size)
+    }
+
+    @Test fun measuresFollowTheirFoodAcrossAFoodsOnlyUpdate() = runBlocking {
+        loader(T.source(T.miniFiles("a"), 1)).loadIfNeeded()
+        assertTrue(db.foodDao().food("TKPI_a")!!.householdJson!!.contains("centong"))
+        // A foods file is replaced alone: the joined measures must come back for the rows that exist again.
+        val store = ContentStore(db) { clock }
+        store.apply(listOf(ContentParser.parse(ContentFile.FOODS_TKPI, T.miniFiles("a")["foods-tkpi.json"]!!, clock)), 2, "update", emptyMap())
+        assertTrue(db.foodDao().food("TKPI_a")!!.householdJson!!.contains("centong"))
     }
 
     @Test fun loadingTwiceChangesNothing() = runBlocking {

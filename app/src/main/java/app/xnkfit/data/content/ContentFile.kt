@@ -13,7 +13,9 @@ enum class ContentFile(val fileName: String, val idPrefix: String? = null, val m
     // Rows with no per-100 g basis are skipped (no density is invented), so this file may load zero rows.
     FOODS_PACKAGED("foods-packaged.json", "PK_", mayBeEmpty = true),
     BADGES("badges.json"),
-    MEAL_PACKAGES("meal-packages.json");
+    MEAL_PACKAGES("meal-packages.json"),
+    // Household measures by food id (C-05); joined into `food.household` after the foods are written (Content.md §4.6).
+    HOUSEHOLD("household.json");
 
     companion object {
         /** Release marker, read separately: it is not a manifest file (the manifest carries the version itself). */

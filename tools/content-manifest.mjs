@@ -12,7 +12,7 @@ import { join } from "node:path";
 // Must match app/src/main/java/app/xnkfit/data/content/ContentFile.kt.
 export const CONTENT_FILES = [
   "badges.json", "exercises.json", "foods-estimates.json", "foods-packaged.json",
-  "foods-regional.json", "foods-tkpi.json", "meal-packages.json",
+  "foods-regional.json", "foods-tkpi.json", "household.json", "meal-packages.json",
 ];
 export const KEY_ENV = "XNK_CONTENT_SIGNING_KEY";
 
