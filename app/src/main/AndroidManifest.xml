@@ -35,6 +35,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Rest timer (L-8): woken by the exact alarm, posts one local notification. Not exported. -->
+        <receiver
+            android:name=".ui.logger.RestAlarmReceiver"
+            android:exported="false" />
+
         <!-- Lets the camera app write one picture into the private capture cache (Saya, PV-3). Nothing else is shared. -->
         <provider
             android:name="androidx.core.content.FileProvider"

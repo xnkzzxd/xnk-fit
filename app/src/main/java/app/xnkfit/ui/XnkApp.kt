@@ -25,8 +25,15 @@ import androidx.compose.runtime.LaunchedEffect
 
 /** App frame: five bottom destinations (PRD N-1). Hari ini, Makan and Saya exist; the rest are empty stubs. */
 @Composable
-fun XnkApp(today: TodayViewModel, makan: MakanViewModel, me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) }) {
-    var selected by rememberSaveable { mutableStateOf(Destination.TODAY) }
+fun XnkApp(
+    today: TodayViewModel,
+    makan: MakanViewModel,
+    me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) },
+    workout: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) },
+    /** Latihan first when a workout is unfinished, so "Lanjutkan latihan?" is the first thing seen (Design §4). */
+    start: Destination = Destination.TODAY,
+) {
+    var selected by rememberSaveable { mutableStateOf(start) }
     // Hari ini reads what the other screens wrote, so it reloads each time it is opened.
     LaunchedEffect(selected) { if (selected == Destination.TODAY) today.refresh() }
     Scaffold(
@@ -55,6 +62,8 @@ fun XnkApp(today: TodayViewModel, makan: MakanViewModel, me: @Composable (Modifi
             )
             Destination.FOOD -> MakanHost(makan, modifier)
             Destination.ME -> me(modifier)
+            // B-07: the logger until the Latihan screen (B-08) wraps it.
+            Destination.WORKOUT -> workout(modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)
         }
     }

@@ -112,6 +112,15 @@ Food log: writes are immediate. No queue is needed because nothing leaves the ph
 
 Tests: a kill test (NF-2) runs the logger, kills the process at each step, relaunches and checks the state.
 
+Implementation (B-07): `domain.logger` (pure: next set, supersets, rest end, resume window; Rules.md R_TRN_LOGGER), `data.logger.LoggerRepository` (Room), `ui.logger` (screen, ViewModel, alarm). Readings and deviations, all inside this text:
+
+- **Plan on disk at start.** A workout that follows a program day writes every planned set (not done, prefilled with the B-06 suggestion, else last time's same set, else the bottom of the rep range; kg never invented) in the same transaction as the `workout` row. Each later tap (number, stepper, form, kind, tick, add, delete, swap, superset, rest change) is one Room transaction through a single mutex, in tap order. Set order is `position = slot × 100 + set number`.
+- **Schema.** v1 (unreleased) got `workout_set.holdSec`, `supersetGroup`, `restSec`, `exercise.settingsJson`, `equipmentJson`, `program.level`; JSON regenerated, no migration (Decisions.md).
+- **Modes.** Both modes work on the same rows; the menu switches mode mid-workout. With no active program (the Latihan screen that creates one is B-08) the user adds exercises in either mode. "Seterusnya" in the swap sheet is not built: changing a program for good is own-routine editing (B-08, L-5); swap is "Hanya hari ini".
+- **Resume.** At launch an unfinished workout from today or yesterday opens the Latihan tab on "Lanjutkan latihan?" (Lanjutkan / Selesaikan); older ones are closed at their last done set with no note (no text was specified). Feeling, note and the summary screen (L-13) are B-08.
+- **Rest alarm.** `setExactAndAllowWhileIdle` (RTC_WAKEUP), not `setAlarmClock`, which would show an alarm-clock icon and "next alarm" for a 90 s rest. A not-exported `RestAlarmReceiver` posts one notification on the "Istirahat" channel; no service. Notifications (Android 13+) and the exact-alarm page (Android 12+) are asked once, when the first rest timer starts; a "no" leaves the in-app timer with the line "Pengingat istirahat mati…" and an "Izinkan" button. Alarms do not survive "Force stop" or a reboot (no boot receiver, §14).
+- **Not verified here:** no phone or emulator in the sandbox. The kill test is simulated on the JVM (close the database without finishing, open a new instance on the same file, Robolectric); the real process kill at each step stays with B-18. The set write measured 0.7 ms median, 1.7 ms p95 on the JVM (budget 50 ms, §10); the phone figure is B-19.
+
 ## 5. Screens and navigation
 
 Bottom bar (phone): **Hari ini · Latihan · ＋ · Makan · Saya** (N-1). The ＋ opens a sheet with four actions (N-2). Phone back steps: sheet → screen → tab → exit prompt (N-3). Tablets (≥ 600 dp wide): side rail with the same five destinations and two-column content (N-4).
