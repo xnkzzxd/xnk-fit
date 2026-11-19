@@ -37,7 +37,11 @@ jobs:
         run: node --test tools/test-content-manifest.mjs
       - name: APK size gate tests
         run: tools/test_check_apk_size.sh
+      # Budget gate for device Macrobenchmark results (B-19); the device run itself is manual, see docs/Speed.md.
+      - name: Benchmark budget gate tests
+        run: node --test tools/test-benchmark-budget.mjs
 
+      # Includes app.xnkfit.speed.SpeedBudgetTest: set tick and food search over budget fail the build (NF-1, Design §10).
       - name: Unit tests
         run: ./gradlew --no-daemon testDebugUnitTest
       # The build rewrites app/schemas/ from the entities. A changed or new file means the schema moved
@@ -48,6 +52,9 @@ jobs:
         run: ./gradlew --no-daemon lintRelease
       - name: Build release (R8 on)
         run: ./gradlew --no-daemon assembleRelease
+      # The Macrobenchmark module needs a device to run; CI only keeps it compiling.
+      - name: Compile benchmark module
+        run: ./gradlew --no-daemon :benchmark:compileBenchmarkReleaseKotlin
 
       - name: Permission check (Design §14)
         run: tools/check_permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk
@@ -63,4 +70,5 @@ jobs:
           path: |
             app/build/reports/lint-results-*.html
             app/build/reports/tests/
+            app/build/speed/
           if-no-files-found: ignore

@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 
 /**
  * Design §10 "Cold start to usable Hari ini, 2.0 s". The number checked is `timeToFullDisplayMs`: Hari ini calls
- * `ReportDrawnWhen { loaded }` once its cards have data. Budget check: tools/check-benchmark-budget.mjs.
+ * `ReportDrawnWhen { loaded }` once its cards have data. Budget check: tools/benchmark-budget.mjs.
  */
 @RunWith(AndroidJUnit4::class)
 class StartupBenchmark {

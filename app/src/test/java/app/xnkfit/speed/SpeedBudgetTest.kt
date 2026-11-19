@@ -66,7 +66,12 @@ class SpeedBudgetTest {
     @Test fun foodSearchPerKeystrokeOnTheFullTableWithinBudget() = runBlocking {
         val db = ContentTestSupport.db()
         try {
-            BundledContentLoader(ContentStore(db) { T0 }, ContentTestSupport.repoSource) { T0 }.loadIfNeeded()
+            // First start only (fresh install): the bundled content goes into Room on Dispatchers.IO before onboarding.
+            // Reported, not gated: Design §10 has no budget for it and it is not on the Hari ini path.
+            val loadMs = measureNanoTime {
+                BundledContentLoader(ContentStore(db) { T0 }, ContentTestSupport.repoSource) { T0 }.loadIfNeeded()
+            } / 1e6
+            report("first-start bundled content load: %.0f ms (JVM, report only)".format(loadMs))
             val bySource = mutableMapOf<String, Int>()
             db.openHelper.readableDatabase.query("SELECT source, COUNT(*) FROM food GROUP BY source").use { c ->
                 while (c.moveToNext()) bySource[c.getString(0)] = c.getInt(1)

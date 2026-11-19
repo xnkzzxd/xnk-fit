@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
 /**
  * Design §10 "Tab switch, 100 ms, Macrobenchmark frame timing". A tab switch is one tap and the frames that draw
  * the new screen; the checked number is `frameDurationCpuMs` P99 over all four switches of each iteration, so the
- * slowest frame of a switch must stay inside the budget. Budget check: tools/check-benchmark-budget.mjs.
+ * slowest frame of a switch must stay inside the budget. Budget check: tools/benchmark-budget.mjs.
  */
 @RunWith(AndroidJUnit4::class)
 class TabSwitchBenchmark {
