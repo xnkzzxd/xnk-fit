@@ -26,11 +26,13 @@ import app.xnkfit.ui.logger.RestAlarms
  * so "Lanjutkan latihan?" is the first thing seen (Design §4); a workout in progress is never hidden behind the list.
  */
 @Composable
-fun LatihanHost(vm: LatihanViewModel, logger: LoggerViewModel, alarms: RestAlarms, modifier: Modifier = Modifier) {
+fun LatihanHost(vm: LatihanViewModel, insights: InsightsViewModel, logger: LoggerViewModel, alarms: RestAlarms, modifier: Modifier = Modifier) {
     val loggerUi by logger.ui.collectAsState()
     var inLogger by rememberSaveable { mutableStateOf(false) }
     val busy = loggerUi.phase == LoggerPhase.RESUME || loggerUi.phase == LoggerPhase.ACTIVE || loggerUi.phase == LoggerPhase.DONE
     LaunchedEffect(inLogger, loggerUi.phase) { if (!inLogger && loggerUi.phase == LoggerPhase.START) vm.refresh() }
+    // The figures are read after the first frame, so the list is on screen without any image first (Design §10).
+    LaunchedEffect(Unit) { insights.load() }
     if (inLogger || busy) {
         BackHandler(enabled = !busy) { inLogger = false }
         Column(modifier) {
@@ -38,6 +40,6 @@ fun LatihanHost(vm: LatihanViewModel, logger: LoggerViewModel, alarms: RestAlarm
             LoggerHost(logger, alarms)
         }
     } else {
-        LatihanScreen(vm, onStart = { dayId, empty -> logger.useDay(dayId, empty); inLogger = true }, modifier = modifier)
+        LatihanScreen(vm, insights, onStart = { dayId, empty -> logger.useDay(dayId, empty); inLogger = true }, modifier = modifier)
     }
 }

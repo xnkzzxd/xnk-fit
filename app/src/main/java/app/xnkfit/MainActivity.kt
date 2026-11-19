@@ -39,6 +39,10 @@ import app.xnkfit.ui.logger.AndroidRestAlarms
 import app.xnkfit.ui.logger.DataStoreLoggerPrefs
 import app.xnkfit.ui.latihan.DataStoreLatihanPrefs
 import app.xnkfit.ui.latihan.LatihanHost
+import app.xnkfit.ui.latihan.InsightsViewModel
+import app.xnkfit.data.figures.FigureRepository
+import app.xnkfit.data.program.ActivityRepository
+import app.xnkfit.data.program.WeekMapRepository
 import app.xnkfit.ui.latihan.LatihanViewModel
 import app.xnkfit.data.program.ProgramRepository
 import app.xnkfit.ui.logger.LoggerViewModel
@@ -163,6 +167,19 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private val insights: InsightsViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = InsightsViewModel(
+                logger = loggerRepo,
+                figures = FigureRepository { path -> applicationContext.assets.open(path).bufferedReader().use { it.readText() } },
+                week = WeekMapRepository(database, loggerRepo, System::currentTimeMillis),
+                activity = ActivityRepository(database, System::currentTimeMillis, { UUID.randomUUID().toString() }),
+                sexOf = { if (database.profileDao().get()?.sex == "perempuan") "f" else "m" }, // text-ok: stored code and figure key
+            ) as T
+        }
+    }
+
     private val logger: LoggerViewModel by viewModels {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -275,7 +292,7 @@ class MainActivity : ComponentActivity() {
                 onShowWelcomeAgain = { lifecycleScope.launch { settingsStore.resetCards() } },
             )
                             Overlay.PRIVACY -> PrivacyScreen(onBack = back)
-                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
+                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
                         }
                     }
                 }

@@ -223,6 +223,13 @@ interface WorkoutDao {
 
     @Query("SELECT * FROM activity WHERE at >= :from AND at < :to ORDER BY at")
     suspend fun activitiesBetween(from: Long, to: Long): List<ActivityEntity>
+
+    @Query("DELETE FROM activity WHERE id = :id")
+    suspend fun deleteActivity(id: String)
+
+    /** Feeling 1–5 and a note, set on the summary after "Selesai" (L-13). */
+    @Query("UPDATE workout SET feeling = :feeling, note = :note, updatedAt = :now WHERE id = :workoutId")
+    suspend fun setFeelingNote(workoutId: String, feeling: Int?, note: String?, now: Long)
 }
 
 @Dao

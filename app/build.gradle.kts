@@ -12,8 +12,15 @@ val copyContentAssets = tasks.register<Sync>("copyContentAssets") {
     from(rootProject.layout.projectDirectory.dir("content")) { include("*.json") }
     into(layout.buildDirectory.dir("generated/content-assets/content"))
 }
+val copyFigureAssets = tasks.register<Sync>("copyFigureAssets") {
+    // B-08: the muscle map, the rigs and the credits that must ship with them (Content §5.1). Not part of the content loader.
+    from(rootProject.layout.projectDirectory.dir("content/figures")) {
+        include("muscle-map.json", "xnk-source/figure.min.json", "xnk-source/rig.min.json", "xnk-source/CREDITS.md", "xnk-source/LICENSE-*.txt")
+    }
+    into(layout.buildDirectory.dir("generated/content-assets/figures"))
+}
 // preBuild runs before every variant task (assets merge, lint, tests), so the copy is never skipped.
-tasks.named("preBuild") { dependsOn(copyContentAssets) }
+tasks.named("preBuild") { dependsOn(copyContentAssets, copyFigureAssets) }
 
 android {
     namespace = "app.xnkfit"
