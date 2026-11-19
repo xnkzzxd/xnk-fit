@@ -24,6 +24,9 @@ interface ProfileDao {
     @Query("SELECT * FROM measure WHERE type = :type ORDER BY takenAt")
     fun observeMeasures(type: String): Flow<List<MeasureEntity>>
 
+    @Query("SELECT * FROM measure WHERE type = :type ORDER BY takenAt DESC LIMIT 1")
+    suspend fun latestMeasure(type: String): MeasureEntity?
+
     @Upsert suspend fun upsertPhoto(photo: PhotoEntity)
 
     @Query("SELECT * FROM photo ORDER BY takenAt DESC")

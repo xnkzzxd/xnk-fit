@@ -17,11 +17,13 @@ import androidx.compose.ui.res.stringResource
 import app.xnkfit.R
 import app.xnkfit.ui.common.EmptyScreen
 import app.xnkfit.ui.nav.Destination
+import app.xnkfit.ui.makan.MakanHost
+import app.xnkfit.ui.makan.MakanViewModel
 import app.xnkfit.ui.today.TodayScreen
 
-/** App frame: five bottom destinations (PRD N-1). Only Hari ini exists; the rest are empty stubs. */
+/** App frame: five bottom destinations (PRD N-1). Hari ini and Makan exist; the rest are empty stubs. */
 @Composable
-fun XnkApp() {
+fun XnkApp(makan: MakanViewModel) {
     var selected by rememberSaveable { mutableStateOf(Destination.TODAY) }
     Scaffold(
         bottomBar = {
@@ -42,6 +44,7 @@ fun XnkApp() {
         val modifier = Modifier.padding(padding)
         when (selected) {
             Destination.TODAY -> TodayScreen(modifier)
+            Destination.FOOD -> MakanHost(makan, modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)
         }
     }

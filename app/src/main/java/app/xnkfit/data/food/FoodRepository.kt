@@ -16,6 +16,9 @@ import app.xnkfit.domain.food.quickNutrients
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/** Food and grams behind a log row; both null for a quick-add. */
+data class LogEntry(val foodId: String?, val grams: Double?)
+
 /**
  * Food log, search, meal plan and own foods on Room (B-10, Design §3, §7).
  * Kcal and macros are copied into `food_log` when a row is written, so a later content update never changes the past.
@@ -81,6 +84,9 @@ class FoodRepository(
         return id
     }
 
+    /** The log row with its food and grams, for the day list. */
+    suspend fun logEntry(id: String): LogEntry? = dao.logRow(id)?.let { LogEntry(it.foodId, it.grams) }
+
     suspend fun deleteLog(id: String) = dao.deleteLog(id)
 
     fun observeDay(day: String): Flow<List<LogRow>> = dao.observeDay(day).map { rows -> rows.map { it.toLogRow() } }
@@ -120,7 +126,7 @@ class FoodRepository(
 
     suspend fun loadPlan(weekStart: String): List<PlannedMeal> = dao.plan(weekStart).map {
         PlannedMeal(it.day, MealSlot.entries.first { s -> s.code() == it.slot }, it.optionCode, it.locked, it.cookOnce, it.eatOut)
-    }
+    }.sortedWith(compareBy({ it.day }, { it.slot.ordinal }))
 
     /** Replaces the whole week in one transaction. */
     suspend fun savePlan(weekStart: String, plan: List<PlannedMeal>) = db.withTransaction {

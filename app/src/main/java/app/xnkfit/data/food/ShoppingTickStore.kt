@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 /**
@@ -15,6 +16,8 @@ class ShoppingTickStore(private val store: DataStore<Preferences>) {
     private fun key(weekStart: String) = stringSetPreferencesKey("shop_ticks_$weekStart")
 
     fun observe(weekStart: String): Flow<Set<String>> = store.data.map { it[key(weekStart)] ?: emptySet() }
+
+    suspend fun observeOnce(weekStart: String): Set<String> = observe(weekStart).first()
 
     suspend fun set(weekStart: String, foodId: String, ticked: Boolean) {
         store.edit { p ->

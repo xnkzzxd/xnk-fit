@@ -181,6 +181,8 @@ Food log (M-7): recent and favourite lists, copy meal, copy yesterday, quick kca
 
 Household measures (M-6): shown as "1 centong (±100 g)". Grams beside. Conversion from `food.household`.
 
+Implementation notes (B-10): the planner and its rules are pure Kotlin in `domain.food` (`Planner.kt`, `Shopping.kt`, `FoodLog.kt`); `data.food` holds the Room repository, FTS4 search, mappers, DataStore for the food preferences and shopping ticks (no schema change), and the target source; `ui.makan` holds the four screens. Deviations from this section: portions are not scaled to the target; "Favorit" is derived from the log; recipes have no builder screen yet. Details and the rows to review are in Decisions.md.
+
 ## 8. Reminders and notifications
 
 - Local notifications only (R-1). Channels: Latihan, Makan, Timbang, Istirahat (rest timer).

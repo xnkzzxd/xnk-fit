@@ -58,6 +58,8 @@ android {
         // Same family: it fires as soon as the CI runner has a newer platform than our target (it did, API 37).
         // targetSdk is a recorded decision in Design §1 (S-02), raised on purpose at release time, not by a lint date.
         disable += "OldTargetApi"
+        // The strings are Indonesian, which has one plural form ("%d kkal", "%d hari"); the check assumes English plurals.
+        disable += "PluralsCandidate"
     }
 
     testOptions {
