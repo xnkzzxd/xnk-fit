@@ -25,6 +25,7 @@ import app.xnkfit.domain.food.daySummary
 import app.xnkfit.domain.food.defaultPortion
 import app.xnkfit.domain.food.gramsOf
 import app.xnkfit.domain.food.plannedDayKcal
+import app.xnkfit.domain.food.plannedDayProtein
 import app.xnkfit.domain.food.planWeek
 import app.xnkfit.domain.food.santanCount
 import app.xnkfit.domain.food.shoppingList
@@ -104,6 +105,9 @@ data class MakanState(
     val packages: Map<String, MealPackage> = emptyMap(),
     val options: Map<Pair<Int, MealSlot>, List<MealPackage>> = emptyMap(),
     val dayKcal: Map<Int, Int> = emptyMap(),
+    /** R_PLAN_PROT: protein g per planned day and the R_PROT range; empty / null when numbers are not shown. */
+    val dayProtein: Map<Int, Int> = emptyMap(),
+    val proteinRange: IntRange? = null,
     val santan: Int = 0,
     val daysBelowFloor: Set<Int> = emptySet(),
     val shopping: List<ShopLine> = emptyList(),
@@ -157,7 +161,7 @@ class MakanViewModel(
     private fun plannerInput(prefs: FoodPrefs, t: FoodTargets?, fixed: List<PlannedMeal>): PlannerInput = PlannerInput(
         packages = packagesCache, avoid = prefs.avoid, budget = prefs.budget, buys = prefs.buys,
         targetKcal = t?.targets?.kcal ?: DEFAULT_TARGET_KCAL, floorKcal = t?.floorKcal ?: DEFAULT_FLOOR_KCAL,
-        fixed = fixed, seed = _state.value.weekStart.hashCode(),
+        fixed = fixed, seed = _state.value.weekStart.hashCode(), proteinRangeG = t?.proteinRangeG,
     )
 
     /** Rebuilds everything the screens show from the database. */
@@ -175,6 +179,8 @@ class MakanViewModel(
             for (d in 1..DAYS) for (slot in MealSlot.entries) options[d to slot] = slotOptions(inp, plan, d, slot)
         }
         val dayKcal = (1..DAYS).associateWith { plannedDayKcal(plan, byId, it).roundToInt() }
+        val showProtein = !hidden && t?.proteinRangeG != null
+        val dayProtein = if (showProtein) (1..DAYS).associateWith { plannedDayProtein(plan, byId, it).roundToInt() } else emptyMap()
         val ticks = ticksStore.observeOnce(s.weekStart)
         val shopping = shoppingList(plan, byId, s.todayIndex) { id -> measuresCache[id].orEmpty() }
             .also { loadMeasures(it) }
@@ -183,6 +189,7 @@ class MakanViewModel(
                 loaded = true, failed = false, hasTarget = t != null, numbersHidden = hidden,
                 summary = daySummary(rows, t?.targets, hidden, activityKcalToday()),
                 lines = lines, plan = plan, options = options, dayKcal = dayKcal,
+                dayProtein = dayProtein, proteinRange = if (showProtein) t?.proteinRangeG else null,
                 santan = santanCount(plan, byId), shopping = shopping, ticks = ticks,
             )
         }

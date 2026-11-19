@@ -11,12 +11,19 @@ import app.xnkfit.domain.rules.Screening
 import app.xnkfit.domain.rules.Sex
 import app.xnkfit.domain.rules.evaluateTargets
 import app.xnkfit.domain.rules.sexFloorKcal
+import app.xnkfit.domain.rules.proteinRangeG
 import app.xnkfit.domain.today.withPaceRaise
 import kotlin.math.ceil
 import kotlin.math.max
 
 /** What the food screens need from the target (B-02 `evaluateTargets`). [numbersHidden] is R_GATE_ED. */
-data class FoodTargets(val targets: DayTargets, val floorKcal: Int, val numbersHidden: Boolean)
+data class FoodTargets(
+    val targets: DayTargets,
+    val floorKcal: Int,
+    val numbersHidden: Boolean,
+    /** R_PROT range in grams for the week planner (R_PLAN_PROT); null when unknown. */
+    val proteinRangeG: IntRange? = null,
+)
 
 fun interface TargetSource {
     /** Null when no target exists (gates not passed): the food screens then show no target at all. */
@@ -69,6 +76,7 @@ fun foodTargetsOf(ready: GateResult.Ready, weightKg: Double, raiseKcal: Int, sex
         DayTargets(r.targetKcal, r.macros.proteinG, r.macros.carbG, r.macros.fatG),
         floorKcal = floor,
         numbersHidden = r.numbersHidden,
+        proteinRangeG = proteinRangeG(weightKg),
     )
 }
 

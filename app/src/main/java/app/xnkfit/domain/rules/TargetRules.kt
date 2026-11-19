@@ -117,6 +117,10 @@ fun macros(targetKcal: Int, weightKg: Double, proteinPerKg: Double = R_PROT_G_PE
     )
 }
 
+/** R_PROT: the protein range in grams for a body weight (1.4–2.0 g/kg, rounded), for the week planner (R_PLAN_PROT). */
+fun proteinRangeG(weightKg: Double): IntRange =
+    (R_PROT_MIN_G_PER_KG * weightKg).roundToInt()..(R_PROT_MAX_G_PER_KG * weightKg).roundToInt()
+
 /** R_FIBRE: AKG 2019 fibre for sex and age (not derived from the target). Null below 13 (the app stops, O-5). */
 fun fibreG(sex: Sex, ageYears: Int): Int? {
     val male = sex == Sex.LAKI_LAKI

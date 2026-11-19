@@ -155,6 +155,7 @@ Levels: 1 beginner (first 8 weeks, or sign-up experience), 2 intermediate, 3 adv
 | R_PLAN_REPEAT | The same package at most twice a week in automatic choice; each earlier use adds a cost of 150 | 2 per week; cost 150 | planner rule, first value without a source (B-10) | ⚠ |
 | R_PLAN_BUY | A user who often buys food always sees one bought or no-cook option among the three; a user who rarely buys pays a cost of 100 on bought options | cost 100 | PRD M-5; cost is a first value (B-10) | ⚠ |
 | R_PLAN_COOK_ONCE | "Masak sekali" repeats the option in the same slot on the chosen day and the next 2 days; locked cells are not overwritten | 3 days | mockup `planner.html` (B-10) | ⚠ |
+| R_PLAN_PROT | Automatic choice also aims at the R_PROT range (owner answer 2026-11-19): each gram a day is under the lower end or over the upper end adds a cost. Protein only chooses among combinations that already reach the floor and pass the allergy, lactose, halal and R_LIMIT_* filters; a day above max(target, floor) pays the largest protein cost, so protein never pulls a day above it. Portions are not scaled. The range comes from `domain.rules` (1.4–2.0 g/kg of the weight the target used); none when there is no target | cost 10 per gram under, 10 per gram over | weight is a first value without a source (Decisions.md "B-10 owner") | ⚠ |
 
 Food data sources are in Content.md §4 (TKPI 2020, about 1,100 foods; packaged foods by name, flagged by label source).
 

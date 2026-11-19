@@ -14,8 +14,9 @@ internal fun pkg(
     halal: Boolean = true,
     profile: String = "jawa",
     items: List<PackageItem> = emptyList(),
+    protein: Double = 10.0,
 ) = MealPackage(
-    id = id, profile = profile, slot = slot, nameId = id, mode = mode, nutrients = Nutrients(kcal, 10.0, 20.0, 5.0),
+    id = id, profile = profile, slot = slot, nameId = id, mode = mode, nutrients = Nutrients(kcal, protein, 20.0, 5.0),
     budget = budget, halal = halal, allergens = allergens, isEstimate = false, santan = santan, goreng = goreng,
     mainProtein = main, items = items,
 )
@@ -42,4 +43,5 @@ internal fun input(
     fixed: List<PlannedMeal> = emptyList(),
     profiles: Set<String>? = null,
     seed: Int = 0,
-) = PlannerInput(packages, avoid, budget, buys, target, floor, profiles, fixed, seed)
+    protein: IntRange? = null,
+) = PlannerInput(packages, avoid, budget, buys, target, floor, profiles, fixed, seed, protein)

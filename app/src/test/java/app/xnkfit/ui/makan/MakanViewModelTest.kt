@@ -131,6 +131,20 @@ class MakanViewModelTest {
         v.autoFill()
         await("plan") { v.state.value.plan.isNotEmpty() }
         assertTrue(v.state.value.numbersHidden) // the screens hide dayKcal and package kcal on this flag
+        assertNull(v.state.value.proteinRange)
+        assertTrue(v.state.value.dayProtein.isEmpty())
+    }
+
+    @Test fun plannerAimsAtTheProteinRangeAndShowsTheDayProtein() {
+        profile()
+        val v = vm()
+        await("load") { v.state.value.hasTarget }
+        assertEquals(91..130, v.state.value.proteinRange) // R_PROT 1.4–2.0 g/kg of 65 kg, from domain.rules
+        v.autoFill()
+        await("plan") { v.state.value.plan.size == 28 }
+        val s = v.state.value
+        assertEquals(7, s.dayProtein.size)
+        assertTrue(s.dayProtein.values.all { it > 0 })
     }
 
     @Test fun autoFillBuildsAWeekAndManualChoiceAndLockSurviveARefill() {

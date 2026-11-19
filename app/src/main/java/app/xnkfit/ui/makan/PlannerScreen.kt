@@ -101,6 +101,10 @@ private fun DayPager(state: MakanState, vm: MakanViewModel, selected: Int?, onSe
                     Text(stringResource(longDay(day)), style = MaterialTheme.typography.titleMedium)
                     if (!state.numbersHidden) Text(stringResource(R.string.pl_day_kcal, state.dayKcal[day] ?: 0))
                 }
+                val range = state.proteinRange
+                if (!state.numbersHidden && range != null) {
+                    Text(stringResource(R.string.pl_day_protein, state.dayProtein[day] ?: 0, range.first, range.last), style = MaterialTheme.typography.bodySmall)
+                }
                 MealSlot.entries.forEach { slot ->
                     val cell = state.plan.firstOrNull { it.day == day && it.slot == slot }
                     CellCard(state, vm, day, slot, cell, selected == key(day, slot)) { onSelect(if (selected == key(day, slot)) null else key(day, slot)) }

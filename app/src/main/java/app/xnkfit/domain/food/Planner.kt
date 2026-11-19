@@ -32,6 +32,10 @@ const val R_BUDGET_UNDER_COST = 20.0
 // R_PLAN_BUY: cost for a bought option when the user rarely buys food.
 const val R_PLAN_BUY_RARELY_COST = 100.0
 
+// R_PLAN_PROT: cost (kcal-equivalents) per gram of protein a day is under / over the R_PROT range. Weight only (⚠).
+const val R_PLAN_PROT_SHORT_COST = 10.0
+const val R_PLAN_PROT_OVER_COST = 10.0
+
 enum class PackageMode { MASAK, BELI, TANPA_MASAK }
 
 /** "Sering beli di luar?" (Makan screen). */
@@ -86,6 +90,8 @@ data class PlannerInput(
     val fixed: List<PlannedMeal> = emptyList(),
     /** Changes the tie-break so each week differs; the same seed always gives the same plan. */
     val seed: Int = 0,
+    /** R_PROT range in grams from `domain.rules` (not computed here); null = protein is not aimed at (R_PLAN_PROT). */
+    val proteinRangeG: IntRange? = null,
 )
 
 data class WeekPlan(val meals: List<PlannedMeal>, val daysBelowFloor: Set<Int>)
@@ -93,6 +99,21 @@ data class WeekPlan(val meals: List<PlannedMeal>, val daysBelowFloor: Set<Int>)
 /** R_HALAL, R_LIMIT_ALLERGY: what may be offered automatically at all. */
 fun eligible(p: MealPackage, input: PlannerInput): Boolean =
     p.halal && p.allergens.none { it in input.avoid.withLactose() } && (input.profiles == null || p.profile in input.profiles)
+
+/**
+ * R_PLAN_PROT: protein cost of a day of [kcal] and [protein] g. Protein only chooses among combinations that are already
+ * safe (floor first, filters and limits before), and never pulls a day above the planner's own upper value
+ * max(target, floor): above it every combination pays the same (largest) protein cost, so protein cannot prefer one.
+ */
+internal fun proteinCost(input: PlannerInput, kcal: Double, protein: Double): Double {
+    val r = input.proteinRangeG ?: return 0.0
+    val p = if (kcal > maxOf(input.targetKcal, input.floorKcal)) 0.0 else protein
+    return when {
+        p < r.first -> (r.first - p) * R_PLAN_PROT_SHORT_COST
+        p > r.last -> (p - r.last) * R_PLAN_PROT_OVER_COST
+        else -> 0.0
+    }
+}
 
 private fun budgetCost(p: MealPackage, pref: Budget): Double {
     val diff = p.budget.ordinal - pref.ordinal
@@ -133,11 +154,12 @@ fun planWeek(input: PlannerInput): WeekPlan {
         if (freeSlots.isEmpty()) continue
         val today = fixedToday.mapNotNull { byId[it.packageId] }
         val fixedKcal = today.sumOf { it.kcal }
+        val fixedProtein = today.sumOf { it.nutrients.protein }
         // R_PLAN_FLOOR is hard: widen step by step until a combination reaches the floor (Review-Planner.md F1).
         // If none does, keep the highest total that still respects the limits (FREE only when nothing else exists).
         var best: Best? = null
         for (relax in Relax.entries) {
-            val b = bestCombo(input, pool, uses, freeSlots, today, fixedKcal, santanWeek, relax) ?: continue
+            val b = bestCombo(input, pool, uses, freeSlots, today, fixedKcal, fixedProtein, santanWeek, relax) ?: continue
             if (b.feasible) { best = b; break }
             if (best == null || (relax != Relax.FREE && b.total >= best.total)) best = b
         }
@@ -162,6 +184,7 @@ private fun bestCombo(
     freeSlots: List<MealSlot>,
     today: List<MealPackage>,
     fixedKcal: Double,
+    fixedProtein: Double,
     santanWeek: Int,
     relax: Relax,
 ): Best? {
@@ -179,7 +202,9 @@ private fun bestCombo(
     fun leaf() {
         val total = fixedKcal + chosen.sumOf { it.kcal }
         val feasible = total >= input.floorKcal
-        val cost = chosen.sumOf { staticCost(it, input, uses) } + kotlin.math.abs(total - input.targetKcal)
+        val protein = fixedProtein + chosen.sumOf { it.nutrients.protein }
+        val cost = chosen.sumOf { staticCost(it, input, uses) } + kotlin.math.abs(total - input.targetKcal) +
+            proteinCost(input, total, protein)
         val b = best
         val better = when {
             b == null -> true
@@ -215,6 +240,7 @@ fun slotOptions(input: PlannerInput, plan: List<PlannedMeal>, day: Int, slot: Me
     plan.filter { !(it.day == day && it.slot == slot) }.forEach { uses.merge(it.packageId, 1, Int::plus) }
     val santanWeek = plan.count { !(it.day == day && it.slot == slot) && byId[it.packageId]?.santan == true }
     val othersKcal = others.sumOf { it.kcal }
+    val othersProtein = others.sumOf { it.nutrients.protein }
     val sofar = PlanSoFar(others.map { it.toCandidate() }, santanWeek)
 
     val ranked = input.packages
@@ -225,7 +251,10 @@ fun slotOptions(input: PlannerInput, plan: List<PlannedMeal>, day: Int, slot: Me
             compareBy<MealPackage>(
                 // R_PLAN_FLOOR: options that keep the day at or above the floor come first (Review-Planner.md F3).
                 { othersKcal + it.kcal < input.floorKcal },
-                { staticCost(it, input, uses) + kotlin.math.abs(othersKcal + it.kcal - input.targetKcal) },
+                {
+                    staticCost(it, input, uses) + kotlin.math.abs(othersKcal + it.kcal - input.targetKcal) +
+                        proteinCost(input, othersKcal + it.kcal, othersProtein + it.nutrients.protein)
+                },
                 { it.id },
             ),
         )
@@ -285,3 +314,7 @@ fun santanCount(plan: List<PlannedMeal>, packages: Map<String, MealPackage>): In
 /** Kcal of one planned day, from the packages (for the "±" figure on the planner). */
 fun plannedDayKcal(plan: List<PlannedMeal>, packages: Map<String, MealPackage>, day: Int): Double =
     plan.filter { it.day == day }.sumOf { packages[it.packageId]?.kcal ?: 0.0 }
+
+/** Protein g of one planned day (R_PLAN_PROT; shown only when numbers are allowed). */
+fun plannedDayProtein(plan: List<PlannedMeal>, packages: Map<String, MealPackage>, day: Int): Double =
+    plan.filter { it.day == day }.sumOf { packages[it.packageId]?.nutrients?.protein ?: 0.0 }
