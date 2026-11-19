@@ -92,7 +92,7 @@ data class WeekPlan(val meals: List<PlannedMeal>, val daysBelowFloor: Set<Int>)
 
 /** R_HALAL, R_LIMIT_ALLERGY: what may be offered automatically at all. */
 fun eligible(p: MealPackage, input: PlannerInput): Boolean =
-    p.halal && p.allergens.none { it in input.avoid } && (input.profiles == null || p.profile in input.profiles)
+    p.halal && p.allergens.none { it in input.avoid.withLactose() } && (input.profiles == null || p.profile in input.profiles)
 
 private fun budgetCost(p: MealPackage, pref: Budget): Double {
     val diff = p.budget.ordinal - pref.ordinal
@@ -133,18 +133,24 @@ fun planWeek(input: PlannerInput): WeekPlan {
         if (freeSlots.isEmpty()) continue
         val today = fixedToday.mapNotNull { byId[it.packageId] }
         val fixedKcal = today.sumOf { it.kcal }
+        // R_PLAN_FLOOR is hard: widen step by step until a combination reaches the floor (Review-Planner.md F1).
+        // If none does, keep the highest total that still respects the limits (FREE only when nothing else exists).
         var best: Best? = null
         for (relax in Relax.entries) {
-            best = bestCombo(input, pool, uses, freeSlots, today, fixedKcal, santanWeek, relax)
-            if (best != null) break
+            val b = bestCombo(input, pool, uses, freeSlots, today, fixedKcal, santanWeek, relax) ?: continue
+            if (b.feasible) { best = b; break }
+            if (best == null || (relax != Relax.FREE && b.total >= best.total)) best = b
         }
         val picks = best?.picks.orEmpty()
-        if (best != null && !best.feasible) below += day
         picks.forEach { p ->
             meals += PlannedMeal(day, p.slot, p.id)
             uses.merge(p.id, 1, Int::plus)
             if (p.santan) santanWeek++
         }
+    }
+    // R_PLAN_FLOOR: every day whose planned total stays under the floor is marked, also a day with no option at all.
+    for (day in 1..R_PLAN_FIT_DAYS_PER_WEEK) {
+        if (meals.filter { it.day == day }.sumOf { byId[it.packageId]?.kcal ?: 0.0 } < input.floorKcal) below += day
     }
     return WeekPlan(meals.sortedWith(compareBy({ it.day }, { it.slot.ordinal })), below)
 }
@@ -215,7 +221,14 @@ fun slotOptions(input: PlannerInput, plan: List<PlannedMeal>, day: Int, slot: Me
         .filter { it.slot == slot && eligible(it, input) && it.id != current?.id }
         .filter { allowedAsAutomaticOption(it.toCandidate(), sofar, input.avoid) }
         .filter { (uses[it.id] ?: 0) < R_PLAN_REPEAT_MAX_PER_WEEK }
-        .sortedWith(compareBy({ staticCost(it, input, uses) + kotlin.math.abs(othersKcal + it.kcal - input.targetKcal) }, { it.id }))
+        .sortedWith(
+            compareBy<MealPackage>(
+                // R_PLAN_FLOOR: options that keep the day at or above the floor come first (Review-Planner.md F3).
+                { othersKcal + it.kcal < input.floorKcal },
+                { staticCost(it, input, uses) + kotlin.math.abs(othersKcal + it.kcal - input.targetKcal) },
+                { it.id },
+            ),
+        )
 
     val picked = ArrayList<MealPackage>()
     if (current != null) picked += current

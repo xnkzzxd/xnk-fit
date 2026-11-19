@@ -49,7 +49,7 @@ data class PlanSoFar(
  */
 fun allowedAsAutomaticOption(c: MealCandidate, plan: PlanSoFar, avoid: Set<Allergen>): Boolean {
     if (!c.halal) return false
-    if (c.allergens.any { it in avoid }) return false
+    if (c.allergens.any { it in avoid.withLactose() }) return false
     if (c.santan) {
         if (plan.today.count { it.santan } >= R_LIMIT_SANTAN_PER_DAY) return false
         if (plan.santanThisWeek >= R_LIMIT_SANTAN_PER_WEEK) return false
@@ -59,3 +59,6 @@ fun allowedAsAutomaticOption(c: MealCandidate, plan: PlanSoFar, avoid: Set<Aller
     if (main != null && plan.today.count { it.mainProtein == main } >= R_LIMIT_MAIN_PER_DAY) return false
     return true
 }
+
+/** R_LIMIT_ALLERGY: a milk allergy also removes lactose-flagged foods (lactose comes from milk). Review-Planner.md F2. */
+fun Set<Allergen>.withLactose(): Set<Allergen> = if (Allergen.MILK in this) this + Allergen.LACTOSE else this
