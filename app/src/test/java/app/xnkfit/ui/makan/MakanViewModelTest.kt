@@ -34,6 +34,7 @@ import java.io.File
 import java.time.LocalDate
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.CoroutineContext
 
@@ -58,12 +59,14 @@ class MakanViewModelTest {
         val gate = CountDownLatch(1)
         val dispatched = AtomicInteger()
         @Volatile var thread: Thread? = null
-        private val pool = Executors.newSingleThreadExecutor()
+        private val pool = Executors.newSingleThreadExecutor { r -> Thread(r, "plan-test").apply { isDaemon = true } }
         override fun dispatch(context: CoroutineContext, block: Runnable) {
             dispatched.incrementAndGet()
-            pool.execute { gate.await(); thread = Thread.currentThread(); block.run() }
+            pool.execute { gate.await(GATE_SECONDS, TimeUnit.SECONDS); thread = Thread.currentThread(); block.run() }
         }
     }
+
+    private companion object { const val GATE_SECONDS = 20L }
 
     private fun vm(day: LocalDate = monday.plusDays(2), planOn: CoroutineDispatcher = Dispatchers.Default) = MakanViewModel(
         repo = FoodRepository(db, { 1_000L + seq }, { "id${seq++}" }),
