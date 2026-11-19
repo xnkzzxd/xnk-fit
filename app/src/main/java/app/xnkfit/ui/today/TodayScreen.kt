@@ -1,6 +1,7 @@
 package app.xnkfit.ui.today
 
 import androidx.annotation.StringRes
+import androidx.activity.compose.ReportDrawnWhen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -113,6 +114,8 @@ fun TodayScreen(
     modifier: Modifier = Modifier,
 ) {
     val s by vm.state.collectAsState()
+    // Design §10: "cold start to a usable Hari ini" ends here; Macrobenchmark reads it as timeToFullDisplay (B-19).
+    ReportDrawnWhen { s.loaded }
     TwoColumns(modifier, spacing = Gap, left = {
         item { Header(s) }
         if (s.failed) item { Text(stringResource(R.string.td_failed), style = MaterialTheme.typography.bodyMedium) }

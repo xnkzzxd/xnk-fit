@@ -243,19 +243,21 @@ Gap against the first plan (2–3 GB, Android 8–9), accepted by the owner: thi
 
 | Measure | Budget | How it is checked |
 | --- | --- | --- |
-| Cold start to usable Hari ini | 2.0 s | Macrobenchmark, CPU throttled 4× |
-| Tab switch | 100 ms | Macrobenchmark frame timing |
-| Set tick saved to disk | 50 ms | Unit timing on the DAO path |
-| Food search per keystroke | 100 ms | Benchmark on the full TKPI table |
+| Cold start to usable Hari ini | 2.0 s | Macrobenchmark, CPU throttled 4× (`StartupBenchmark`, `timeToFullDisplayMs` median; Hari ini reports fully drawn when loaded) |
+| Tab switch | 100 ms | Macrobenchmark frame timing (`TabSwitchBenchmark`, `frameDurationCpuMs` P99) |
+| Set tick saved to disk | 50 ms | Unit timing on the DAO path (`SpeedBudgetTest`, JVM, every PR) |
+| Food search per keystroke | 100 ms | Benchmark on the full TKPI table (`SpeedBudgetTest`, JVM, every PR) |
 | Installed size | 20 MB | APK size check in CI |
+
+How each is run and the measured numbers: docs/Speed.md (B-19).
 
 Rules:
 
-- Baseline profiles committed for the cold-start and tab paths.
+- Baseline profiles committed for the cold-start and tab paths. **Not yet (B-19):** the generator exists (`benchmark/`), the file needs an API 33+ device or emulator with KVM; no profile is written by hand (Speed.md §5).
 - Food search uses a prebuilt FTS4 table, not a LIKE scan.
 - No image loads on the first frame; exercise figures are vector drawings (see Content.md) and cache as `ImageBitmap` on demand.
 - Charts draw on `Canvas`, one pass per series.
-- CI fails the build when a benchmark exceeds its budget (NF-1).
+- CI fails the build when a benchmark exceeds its budget (NF-1). **Deviation (B-19):** CI has no device, so CI gates the JVM-measurable budgets (set tick, food search, APK size); cold start and tab switch run by hand on a device and `tools/benchmark-budget.mjs` fails on their results. The unrooted Redmi 10 cannot be throttled: its run is held to budget ÷ 4 ⚠ (Decisions.md).
 
 ## 11. Visual system (summary for D-05)
 
@@ -285,6 +287,8 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | `com.google.android.gms:play-services-auth` (AuthorizationClient, scope `drive.appdata` only) + Drive REST over the platform `HttpURLConnection` | Backup (B-1). Added in B-16. **Deviation:** no Ktor/OkHttp: the content update (B-04) already uses `HttpURLConnection`, so that is the one HTTP client | play-services-auth pulls play-services-base/basement/tasks; R8 shrinks; APK checked against the 20 MB budget |
 | kotlinx.serialization | Backup JSON | Small |
 | JUnit, Robolectric, Compose UI test (`ui-test-junit4`; `ui-test-manifest` for `createComposeRule` in debug), Macrobenchmark | Tests (NF-5). Added in B-18. No screenshot library (Roborazzi, Paparazzi): it would add a large test dependency and golden images for little the semantic tests do not catch; pixels are checked by hand (`Test-Manual.md` S-1…S-6) | Test only |
+| `androidx.benchmark:benchmark-macro-junit4` 1.5.0 + Gradle plugin `androidx.baselineprofile` 1.5.0, `androidx.test.ext:junit` 1.3.0, `androidx.test.uiautomator:uiautomator` 2.4.1 | Macrobenchmark and baseline profile generator in `:benchmark` (B-19) | Test module only, not in the APK |
+| `androidx.profileinstaller:profileinstaller` 1.4.1 | Applies the baseline profile on sideloaded installs and API 26–27, and lets Macrobenchmark compile with it (B-19) | Small (one receiver, no permission) |
 | `androidx.room:room-testing` | `MigrationTestHelper` for the migration tests (§13), same version as Room (added in B-03) | Test only |
 | `androidx.test:core` | `ApplicationProvider` for Robolectric database tests (B-03) | Test only |
 
@@ -300,7 +304,7 @@ Anything else needs a row here first.
 | Backup round trip | Unit: export → import equals source per table, refusals before any write, rollback on a failed write (`BackupArchiveTest`); Drive upload, keep-three, device check against a fake Drive server on 127.0.0.1 (`DriveBackupTest`) | Every PR |
 | Kill test | JVM: tap-by-tap kill and a transaction cut before commit (`LoggerRepositoryTest`, `KillMidTransactionTest`), every PR. A real process kill needs a device: `Test-Manual.md` K-1…K-8 (no instrumented job exists) |
 | Screen tests | Compose UI tests on Robolectric (`ScreenWalkTest`, `LoggerScreenTest`): 360/430/600/840 dp, light and dark, font 1.0/1.3/2.0; no crash, key text, touch targets 48 dp or more. Semantic only, no screenshots (§12). Pixel checks by hand (`Test-Manual.md` S-1…S-6) | Every PR |
-| Speed | Macrobenchmark budgets (§10) | Nightly and before release |
+| Speed | JVM: `SpeedBudgetTest` (set tick, food search on the full table). Device: Macrobenchmark (`:benchmark`) checked by `tools/benchmark-budget.mjs`, see Speed.md | JVM every PR; device before release (no device in CI) |
 | Text literals | `tools/check_text_literals.py`: no string literal with letters in any `ui` package; escape only with `// text-ok: <reason>`. Has its own tests. **Deviation from "lint rule" (B-01):** a source scan, not an Android Lint check, because a custom Lint check needs the lint-api library and its own module; the scan is 80 lines, tested, and runs the same place. Move to real Lint if it produces false hits. | Every PR |
 | APK size | `tools/check_apk_size.sh`, budget 20 MB (§10). Release APK file size stands in for installed size until B-19 measures on a device. | Every PR |
 | Permissions | `tools/check_permissions.sh`: the built APK may declare only the §14 list plus the WorkManager and AndroidX extras named there | Every PR |

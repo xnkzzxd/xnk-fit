@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "xnk-fit"
 include(":app")
+include(":benchmark") // Macrobenchmark and baseline profile generator (B-19, Design §10)

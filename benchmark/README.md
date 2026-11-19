@@ -1,5 +1,12 @@
 # benchmark/
 
-Reserved for the Macrobenchmark module and baseline profile (task B-19, Design §10). Not a Gradle module yet.
+Macrobenchmark and baseline profile generator for the app (B-19, Design §10). A `com.android.test` module: it runs
+on a phone or emulator only. CI compiles it; it does not run it.
 
-Budgets to enforce there (PRD NF-1): cold start to a usable Hari ini 2.0 s, tab switch 100 ms, set tick saved 50 ms, food search 100 ms per keystroke. Reference devices: the reference phone in Design §10 plus an API 26 emulator with 2 GB RAM.
+- `StartupBenchmark`: cold start to usable Hari ini (`timeToFullDisplayMs`, reported by `ReportDrawnWhen` in
+  `TodayScreen`), with and without the baseline profile.
+- `TabSwitchBenchmark`: Latihan → Makan → Saya → Hari ini, frame timing.
+- `BaselineProfileGenerator`: the cold-start and tab path, for `./gradlew :app:generateBaselineProfile`.
+
+Budgets are checked by `tools/benchmark-budget.mjs` on the results. How to run on the Redmi 10 and the API 26 / 2 GB
+emulator, and the numbers: docs/Speed.md. Precondition: onboarding finished once on the device.

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.baselineprofile)
 }
 
 // Top-level *.json of content/ only (the figures and notes are not part of the loader). The APK deflates the
@@ -101,6 +102,13 @@ kotlin {
     }
 }
 
+baselineProfile {
+    // Never generate during a normal build: generation needs a device (benchmark/README.md). The profile file is
+    // committed under src/main/generated/baselineProfiles/ once it has been made on the emulator.
+    automaticGenerationDuringBuild = false
+    mergeIntoMain = true
+}
+
 room {
     // Schema JSON per release feeds the migration tests (Design §3, NF-5). Used from B-03.
     schemaDirectory("$projectDir/schemas")
@@ -119,6 +127,10 @@ dependencies {
     implementation(libs.work.runtime)
     implementation(libs.play.services.auth)
     implementation(libs.health.connect)
+    // Applies the committed baseline profile on install where Play does not (sideload, API 26-27) and lets
+    // Macrobenchmark compile with it (Design §10, §12; B-19).
+    implementation(libs.profileinstaller)
+    baselineProfile(project(":benchmark"))
 
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
