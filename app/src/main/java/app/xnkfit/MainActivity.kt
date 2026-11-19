@@ -11,6 +11,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.xnkfit.data.db.XnkDatabase
+import app.xnkfit.data.progress.PhotoStore
+import app.xnkfit.data.progress.ProgressRepository
+import app.xnkfit.data.progress.RoomPhotoGateway
+import app.xnkfit.ui.saya.DataStoreSayaPrefs
+import app.xnkfit.ui.saya.SayaScreen
+import app.xnkfit.ui.saya.SayaViewModel
 import app.xnkfit.ui.XnkApp
 import app.xnkfit.ui.common.XnkTheme
 import app.xnkfit.ui.onboarding.OnboardingScreen
@@ -37,6 +43,19 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private val saya: SayaViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = SayaViewModel(
+                repo = ProgressRepository(database),
+                photos = RoomPhotoGateway(database, PhotoStore(applicationContext)),
+                prefs = DataStoreSayaPrefs(applicationContext),
+                loadNickname = { database.profileDao().get()?.nickname },
+                newId = { UUID.randomUUID().toString() },
+            ) as T
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -50,7 +69,7 @@ class MainActivity : ComponentActivity() {
                 when (hasProfile) {
                     null -> Unit
                     false -> OnboardingScreen(onboarding, onDone = { hasProfile = true })
-                    true -> XnkApp()
+                    true -> XnkApp(me = { SayaScreen(saya, it) })
                 }
             }
         }

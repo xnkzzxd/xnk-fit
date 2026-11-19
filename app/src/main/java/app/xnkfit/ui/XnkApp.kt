@@ -21,7 +21,7 @@ import app.xnkfit.ui.today.TodayScreen
 
 /** App frame: five bottom destinations (PRD N-1). Only Hari ini exists; the rest are empty stubs. */
 @Composable
-fun XnkApp() {
+fun XnkApp(me: @Composable (Modifier) -> Unit = { EmptyScreen(R.string.empty_other, it) }) {
     var selected by rememberSaveable { mutableStateOf(Destination.TODAY) }
     Scaffold(
         bottomBar = {
@@ -42,6 +42,7 @@ fun XnkApp() {
         val modifier = Modifier.padding(padding)
         when (selected) {
             Destination.TODAY -> TodayScreen(modifier)
+            Destination.ME -> me(modifier)
             else -> EmptyScreen(R.string.empty_other, modifier)
         }
     }
