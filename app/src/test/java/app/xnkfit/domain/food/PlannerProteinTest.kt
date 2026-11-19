@@ -109,3 +109,49 @@ class PlannerProteinTest {
         }
     }
 }
+
+/** Owner answer 2026-11-19: with no target the planner still plans, with no kcal aim and no floor; filters still hold. */
+class PlannerNoTargetTest {
+    private fun noTarget(pool: List<MealPackage>, avoid: Set<Allergen> = emptySet()) =
+        input(pool, avoid = avoid).copy(targetKcal = null, floorKcal = null, proteinRangeG = range())
+
+    private fun range(): IntRange? = 90..130 // ignored without a target
+
+    @Test
+    fun plannerNoTarget_fillsTheWeekAndMarksNoDay() {
+        val plan = planWeek(noTarget(basicPool()))
+        assertEquals(28, plan.meals.size)
+        assertTrue(plan.daysBelowFloor.isEmpty())
+        assertEquals(plan, planWeek(noTarget(basicPool())))
+    }
+
+    @Test
+    fun R_LIMIT_ALLERGY_keptWithoutATarget() {
+        val pool = basicPool(2) + pkg("SIANG_egg", MealSlot.SIANG, 10.0, allergens = setOf(Allergen.EGG)) +
+            pkg("PAGI_lac", MealSlot.PAGI, 10.0, allergens = setOf(Allergen.LACTOSE)) + pkg("MALAM_x", MealSlot.MALAM, 10.0, halal = false)
+        val plan = planWeek(noTarget(pool, setOf(Allergen.EGG, Allergen.MILK)))
+        assertTrue(plan.meals.none { it.packageId in setOf("SIANG_egg", "PAGI_lac", "MALAM_x") })
+        val inp = noTarget(pool, setOf(Allergen.EGG, Allergen.MILK))
+        for (d in 1..7) for (s in MealSlot.entries) {
+            assertTrue(slotOptions(inp, plan.meals, d, s).none { it.id in setOf("SIANG_egg", "PAGI_lac", "MALAM_x") })
+        }
+    }
+
+    @Test
+    fun R_LIMIT_SANTAN_keptWithoutATarget() {
+        val pool = basicPool(1) + (1..6).map { pkg("MALAM_s$it", MealSlot.MALAM, 300.0, santan = true) } +
+            (1..6).map { pkg("SIANG_s$it", MealSlot.SIANG, 300.0, santan = true) }
+        val plan = planWeek(noTarget(pool))
+        val byId = pool.associateBy { it.id }
+        assertTrue(santanCount(plan.meals, byId) <= 3)
+        for (d in 1..7) assertTrue(plan.meals.count { it.day == d && byId.getValue(it.packageId).santan } <= 1)
+    }
+
+    @Test
+    fun plannerNoTarget_eatOutStillWorks() {
+        val pool = basicPool(1) + pkg("SIANG_beli", MealSlot.SIANG, 700.0, mode = PackageMode.BELI)
+        val inp = noTarget(pool)
+        val next = withEatOut(inp, planWeek(inp).meals, 1, MealSlot.SIANG)
+        assertEquals("SIANG_beli", next!!.first { it.day == 1 && it.slot == MealSlot.SIANG }.packageId)
+    }
+}

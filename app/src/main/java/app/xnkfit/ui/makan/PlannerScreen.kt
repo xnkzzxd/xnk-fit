@@ -59,6 +59,7 @@ fun PlannerScreen(state: MakanState, vm: MakanViewModel, modifier: Modifier = Mo
             TextButton({ vm.back() }, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.mk_back)) }
         }
         Button({ vm.autoFill() }, Modifier.fillMaxWidth().heightIn(min = MinTouch)) { Text(stringResource(R.string.pl_autofill)) }
+        if (!state.hasTarget) Text(stringResource(R.string.pl_no_target), style = MaterialTheme.typography.bodyMedium)
         if (state.plan.isEmpty()) {
             Text(stringResource(R.string.pl_empty), style = MaterialTheme.typography.bodyLarge)
         } else {
@@ -99,10 +100,10 @@ private fun DayPager(state: MakanState, vm: MakanViewModel, selected: Int?, onSe
             Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()), Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween) {
                     Text(stringResource(longDay(day)), style = MaterialTheme.typography.titleMedium)
-                    if (!state.numbersHidden) Text(stringResource(R.string.pl_day_kcal, state.dayKcal[day] ?: 0))
+                    if (state.planNumbers) Text(stringResource(R.string.pl_day_kcal, state.dayKcal[day] ?: 0))
                 }
                 val range = state.proteinRange
-                if (!state.numbersHidden && range != null) {
+                if (state.planNumbers && range != null) {
                     Text(stringResource(R.string.pl_day_protein, state.dayProtein[day] ?: 0, range.first, range.last), style = MaterialTheme.typography.bodySmall)
                 }
                 MealSlot.entries.forEach { slot ->
@@ -119,7 +120,7 @@ private fun WeekTable(state: MakanState, vm: MakanViewModel, selected: Int?, onS
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()), Arrangement.spacedBy(8.dp)) {
         Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(4.dp)) {
             for (d in 1..DAYS) {
-                Text(stringResource(shortDay(d)) + if (state.numbersHidden) "" else " " + stringResource(R.string.pl_day_kcal, state.dayKcal[d] ?: 0), Modifier.weight(1f), style = MaterialTheme.typography.labelMedium)
+                Text(stringResource(shortDay(d)) + if (!state.planNumbers) "" else " " + stringResource(R.string.pl_day_kcal, state.dayKcal[d] ?: 0), Modifier.weight(1f), style = MaterialTheme.typography.labelMedium)
             }
         }
         MealSlot.entries.forEach { slot ->
@@ -156,7 +157,7 @@ private fun CellCard(state: MakanState, vm: MakanViewModel, day: Int, slot: Meal
                     Text(p?.nameId ?: "", style = MaterialTheme.typography.titleSmall)
                     if (p != null) {
                         val tags = buildList {
-                            if (!state.numbersHidden) add(stringResource(R.string.mk_approx_kcal, p.kcal.toInt()))
+                            if (state.planNumbers) add(stringResource(R.string.mk_approx_kcal, p.kcal.toInt()))
                             add(stringResource(p.mode.label()))
                             if (p.santan) add(stringResource(R.string.pl_santan_tag))
                             if (cell.locked) add(stringResource(R.string.pl_locked))
@@ -188,7 +189,7 @@ private fun Editor(state: MakanState, vm: MakanViewModel, day: Int, slot: MealSl
                 Column(Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
                     Text(o.nameId, style = MaterialTheme.typography.titleSmall)
                     val tags = buildList {
-                        if (!state.numbersHidden) add(stringResource(R.string.mk_approx_kcal, o.kcal.toInt()))
+                        if (state.planNumbers) add(stringResource(R.string.mk_approx_kcal, o.kcal.toInt()))
                         add(stringResource(o.mode.label()))
                         if (o.santan) add(stringResource(R.string.pl_santan_tag))
                         if (chosen) add(stringResource(R.string.pl_chosen))

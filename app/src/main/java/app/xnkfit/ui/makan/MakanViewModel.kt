@@ -113,7 +113,13 @@ data class MakanState(
     val shopping: List<ShopLine> = emptyList(),
     val ticks: Set<String> = emptySet(),
     val failed: Boolean = false,
-)
+) {
+    /**
+     * The week planner shows kcal, grams or protein only with a target and outside R_GATE_ED. Without a target
+     * (screening not done, risk answers, a gate with no target) it shows names, days and variety only (owner 2026-11-19).
+     */
+    val planNumbers: Boolean get() = hasTarget && !numbersHidden
+}
 
 /**
  * Makan: day log, picking foods, week planner, shopping list (PRD M-1…M-10). All rules are in `domain.food`;
@@ -160,7 +166,7 @@ class MakanViewModel(
 
     private fun plannerInput(prefs: FoodPrefs, t: FoodTargets?, fixed: List<PlannedMeal>): PlannerInput = PlannerInput(
         packages = packagesCache, avoid = prefs.avoid, budget = prefs.budget, buys = prefs.buys,
-        targetKcal = t?.targets?.kcal ?: DEFAULT_TARGET_KCAL, floorKcal = t?.floorKcal ?: DEFAULT_FLOOR_KCAL,
+        targetKcal = t?.targets?.kcal, floorKcal = t?.floorKcal,
         fixed = fixed, seed = _state.value.weekStart.hashCode(), proteinRangeG = t?.proteinRangeG,
     )
 
@@ -178,8 +184,9 @@ class MakanViewModel(
         if (plan.isNotEmpty()) {
             for (d in 1..DAYS) for (slot in MealSlot.entries) options[d to slot] = slotOptions(inp, plan, d, slot)
         }
-        val dayKcal = (1..DAYS).associateWith { plannedDayKcal(plan, byId, it).roundToInt() }
-        val showProtein = !hidden && t?.proteinRangeG != null
+        val numbers = t != null && !hidden
+        val dayKcal = if (numbers) (1..DAYS).associateWith { plannedDayKcal(plan, byId, it).roundToInt() } else emptyMap()
+        val showProtein = numbers && t?.proteinRangeG != null
         val dayProtein = if (showProtein) (1..DAYS).associateWith { plannedDayProtein(plan, byId, it).roundToInt() } else emptyMap()
         val ticks = ticksStore.observeOnce(s.weekStart)
         val shopping = shoppingList(plan, byId, s.todayIndex) { id -> measuresCache[id].orEmpty() }
@@ -408,8 +415,6 @@ class MakanViewModel(
 
     private companion object {
         const val DAYS = 7
-        const val DEFAULT_TARGET_KCAL = 1750 // only used when no target exists; the floor below still holds
-        const val DEFAULT_FLOOR_KCAL = 1500
         const val DEFAULT_GRAMS_TEXT = "100"
         const val GRAMS_TEXT_MAX = 6
     }

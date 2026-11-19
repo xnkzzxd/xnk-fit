@@ -135,6 +135,61 @@ class MakanViewModelTest {
         assertTrue(v.state.value.dayProtein.isEmpty())
     }
 
+    private fun assertPlanWithoutNumbers(v: MakanViewModel) {
+        await("load") { v.state.value.loaded }
+        assertFalse(v.state.value.hasTarget)
+        v.autoFill()
+        await("plan") { v.state.value.plan.size == 28 }
+        val s = v.state.value
+        assertFalse(s.planNumbers)
+        assertTrue(s.dayKcal.isEmpty())
+        assertTrue(s.dayProtein.isEmpty())
+        assertNull(s.proteinRange)
+        assertTrue(s.daysBelowFloor.isEmpty())
+        assertTrue(s.plan.all { c -> s.packages.getValue(c.packageId).halal })
+    }
+
+    @Test fun noTarget_noProfileStillPlansWithoutNumbers() = assertPlanWithoutNumbers(vm())
+
+    @Test fun noTarget_screeningNotDonePlansWithoutNumbers() {
+        runBlocking {
+            db.profileDao().upsert(
+                ProfileEntity(createdAt = 0, updatedAt = 0, sex = "perempuan", birthYear = 1995, heightCm = 160.0, goal = "jaga", interest = null,
+                    nickname = null, healthRisk = false, screeningDone = false, pregnant = false, eatingHistory = "tidak"),
+            )
+            db.profileDao().upsertMeasure(MeasureEntity("w", 0, 0, "weight", 65.0, "kg", 0))
+        }
+        assertPlanWithoutNumbers(vm())
+    }
+
+    @Test fun noTarget_under13GatePlansWithoutNumbers() {
+        runBlocking {
+            db.profileDao().upsert(
+                ProfileEntity(createdAt = 0, updatedAt = 0, sex = "laki_laki", birthYear = 2016, heightCm = 140.0, goal = "jaga", interest = null,
+                    nickname = null, healthRisk = false, screeningDone = true, pregnant = false, eatingHistory = "tidak"),
+            )
+            db.profileDao().upsertMeasure(MeasureEntity("w", 0, 0, "weight", 35.0, "kg", 0))
+        }
+        assertPlanWithoutNumbers(vm())
+    }
+
+    @Test fun noTarget_noWeightPlansWithoutNumbersAndKeepsAllergyFilter() {
+        runBlocking {
+            db.profileDao().upsert(
+                ProfileEntity(createdAt = 0, updatedAt = 0, sex = "perempuan", birthYear = 1995, heightCm = 160.0, goal = "jaga", interest = null,
+                    nickname = null, healthRisk = false, screeningDone = true, pregnant = false, eatingHistory = "tidak"),
+            )
+        }
+        val v = vm()
+        await("load") { v.state.value.loaded }
+        v.toggleAllergen(Allergen.MILK)
+        v.savePrefs()
+        await("saved") { v.state.value.prefsSaved }
+        assertPlanWithoutNumbers(v)
+        val s = v.state.value
+        assertTrue(s.plan.none { c -> s.packages.getValue(c.packageId).allergens.any { it == Allergen.MILK || it == Allergen.LACTOSE } })
+    }
+
     @Test fun plannerAimsAtTheProteinRangeAndShowsTheDayProtein() {
         profile()
         val v = vm()

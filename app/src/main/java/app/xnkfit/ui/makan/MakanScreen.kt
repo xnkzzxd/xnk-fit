@@ -112,7 +112,7 @@ private fun TodayPlanCard(state: MakanState) {
                     Column(Modifier.fillMaxWidth().heightIn(min = MinTouch)) {
                         Text(stringResource(cell.slot.label()), style = MaterialTheme.typography.labelLarge)
                         Text(p.nameId)
-                        val kcal = if (state.numbersHidden) "" else stringResource(R.string.mk_approx_kcal, p.kcal.toInt()) + " · "
+                        val kcal = if (!state.planNumbers) "" else stringResource(R.string.mk_approx_kcal, p.kcal.toInt()) + " · "
                         Text(kcal + stringResource(p.mode.label()), style = MaterialTheme.typography.bodySmall)
                     }
                 }

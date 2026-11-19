@@ -81,9 +81,13 @@ data class PlannerInput(
     val avoid: Set<Allergen>,
     val budget: Budget,
     val buys: BuyFrequency,
-    val targetKcal: Int,
-    /** R_FLOOR_F / R_FLOOR_M or BMR, whichever is higher: a planned day never adds up to less (R_PLAN_FLOOR). */
-    val floorKcal: Int,
+    /** Null when no target exists (owner answer 2026-11-19): the plan is chosen without any kcal aim and shown without numbers. */
+    val targetKcal: Int?,
+    /**
+     * R_FLOOR_F / R_FLOOR_M or BMR, whichever is higher: a planned day never adds up to less (R_PLAN_FLOOR).
+     * Null when there is no target: the floor does not apply then, the safety filters and limits still do.
+     */
+    val floorKcal: Int?,
     /** Profiles (regions, kos, beli) the user allows; null = all. */
     val profiles: Set<String>? = null,
     /** Cells the user locked or picked by hand. They stay, count toward the limits, and are never blocked (M-4). */
@@ -93,6 +97,12 @@ data class PlannerInput(
     /** R_PROT range in grams from `domain.rules` (not computed here); null = protein is not aimed at (R_PLAN_PROT). */
     val proteinRangeG: IntRange? = null,
 )
+
+/** R_PLAN_FLOOR: the floor to reach, 0 (always met) when there is no target. */
+private val PlannerInput.floor: Double get() = floorKcal?.toDouble() ?: 0.0
+
+/** R_PLAN_FIT: distance to the target, 0 when there is no target (only budget, variety and limits choose). */
+private fun PlannerInput.gap(kcal: Double): Double = targetKcal?.let { kotlin.math.abs(kcal - it) } ?: 0.0
 
 data class WeekPlan(val meals: List<PlannedMeal>, val daysBelowFloor: Set<Int>)
 
@@ -107,7 +117,8 @@ fun eligible(p: MealPackage, input: PlannerInput): Boolean =
  */
 internal fun proteinCost(input: PlannerInput, kcal: Double, protein: Double): Double {
     val r = input.proteinRangeG ?: return 0.0
-    val p = if (kcal > maxOf(input.targetKcal, input.floorKcal)) 0.0 else protein
+    val target = input.targetKcal ?: return 0.0
+    val p = if (kcal > maxOf(target, input.floorKcal ?: target)) 0.0 else protein
     return when {
         p < r.first -> (r.first - p) * R_PLAN_PROT_SHORT_COST
         p > r.last -> (p - r.last) * R_PLAN_PROT_OVER_COST
@@ -172,7 +183,8 @@ fun planWeek(input: PlannerInput): WeekPlan {
     }
     // R_PLAN_FLOOR: every day whose planned total stays under the floor is marked, also a day with no option at all.
     for (day in 1..R_PLAN_FIT_DAYS_PER_WEEK) {
-        if (meals.filter { it.day == day }.sumOf { byId[it.packageId]?.kcal ?: 0.0 } < input.floorKcal) below += day
+        if (input.floorKcal == null) break
+        if (meals.filter { it.day == day }.sumOf { byId[it.packageId]?.kcal ?: 0.0 } < input.floor) below += day
     }
     return WeekPlan(meals.sortedWith(compareBy({ it.day }, { it.slot.ordinal })), below)
 }
@@ -201,9 +213,9 @@ private fun bestCombo(
 
     fun leaf() {
         val total = fixedKcal + chosen.sumOf { it.kcal }
-        val feasible = total >= input.floorKcal
+        val feasible = total >= input.floor
         val protein = fixedProtein + chosen.sumOf { it.nutrients.protein }
-        val cost = chosen.sumOf { staticCost(it, input, uses) } + kotlin.math.abs(total - input.targetKcal) +
+        val cost = chosen.sumOf { staticCost(it, input, uses) } + input.gap(total) +
             proteinCost(input, total, protein)
         val b = best
         val better = when {
@@ -250,9 +262,9 @@ fun slotOptions(input: PlannerInput, plan: List<PlannedMeal>, day: Int, slot: Me
         .sortedWith(
             compareBy<MealPackage>(
                 // R_PLAN_FLOOR: options that keep the day at or above the floor come first (Review-Planner.md F3).
-                { othersKcal + it.kcal < input.floorKcal },
+                { othersKcal + it.kcal < input.floor },
                 {
-                    staticCost(it, input, uses) + kotlin.math.abs(othersKcal + it.kcal - input.targetKcal) +
+                    staticCost(it, input, uses) + input.gap(othersKcal + it.kcal) +
                         proteinCost(input, othersKcal + it.kcal, othersProtein + it.nutrients.protein)
                 },
                 { it.id },
@@ -303,7 +315,7 @@ fun withEatOut(input: PlannerInput, plan: List<PlannedMeal>, day: Int, slot: Mea
     val othersKcal = plan.filter { it.day == day && it.slot != slot }.sumOf { byId[it.packageId]?.kcal ?: 0.0 }
     val pick = input.packages
         .filter { it.slot == slot && it.mode == PackageMode.BELI && eligible(it, input) }
-        .minWithOrNull(compareBy({ kotlin.math.abs(othersKcal + it.kcal - input.targetKcal) }, { it.id })) ?: return null
+        .minWithOrNull(compareBy({ input.gap(othersKcal + it.kcal) }, { it.id })) ?: return null
     return plan.filterNot { it.day == day && it.slot == slot } + PlannedMeal(day, slot, pick.id, eatOut = true)
 }
 
