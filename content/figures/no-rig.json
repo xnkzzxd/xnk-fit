@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "about": "Exercises in content/exercises.json with rig = null, and why (task C-08). kind: derive = an XNK base pattern has the same joint path; a new rig needs its own sourced angle table and equipment drawing. new = no XNK base; a new rig with sourced joint angles. map-only = proposal to show the muscle map only (owner to confirm). Every one of these still shows the muscle map.",
+ "about": "Exercises in content/exercises.json with rig = null, and why (task C-08). kind: derive = an XNK base pattern has the same joint path; a new rig needs its own sourced angle table and equipment drawing. new = no XNK base; a new rig with sourced joint angles. map-only = muscle map only (decided in C-08b, docs/Decisions.md). Every one of these still shows the muscle map. C-08b drew 24 of the first 129 (rig-local.json, Content §5.4); the rest stay here (C-08c).",
  "exercises": {
   "SQUAT_BACK": {
    "kind": "derive",
