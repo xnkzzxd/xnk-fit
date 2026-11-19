@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import app.xnkfit.ui.adaptive.TwoColumns
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -115,19 +116,16 @@ fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier, onOpenCards: ()
     var showNote by rememberSaveable { mutableStateOf(false) }
     var openBadge by remember { mutableStateOf<BadgeState?>(null) }
 
-    LazyColumn(
-        modifier = modifier.fillMaxWidth(),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
+    TwoColumns(modifier, padding = androidx.compose.foundation.layout.PaddingValues(16.dp), left = {
         item { ProfileCard(state, summary) }
         item { BodyCard(state, vm, onAdd = { showMeasure = true }) }
         item { BadgesCard(summary.badges, onOpen = { openBadge = it }) }
+    }, right = {
         item { JourneyCard(summary, onAdd = { showNote = true }) }
         item { CardsEntry(onOpenCards) }
         if (onOpenSettings != null) item { SettingsEntry(onOpenSettings) }
         item { PhotosCard(state, vm) }
-    }
+    })
 
     if (showMeasure) MeasureDialog(state.measureInvalid, vm, onClose = { showMeasure = false })
     if (showNote) NoteDialog(onSave = { vm.addNote(it); showNote = false }, onClose = { showNote = false })

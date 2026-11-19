@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import app.xnkfit.ui.adaptive.TwoColumns
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
@@ -32,7 +33,7 @@ import app.xnkfit.ui.common.MinTouch
 /** Makan home (mockup makan.html): day summary, preferences, today's plan, the day's log. */
 @Composable
 fun MakanScreen(state: MakanState, vm: MakanViewModel, modifier: Modifier = Modifier) {
-    LazyColumn(modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    TwoColumns(modifier, left = {
         item { Text(stringResource(R.string.mk_title), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(top = 16.dp)) }
         if (state.failed) item { Text(stringResource(R.string.mk_failed), color = MaterialTheme.colorScheme.error) }
         item { SummaryCard(state) }
@@ -43,6 +44,7 @@ fun MakanScreen(state: MakanState, vm: MakanViewModel, modifier: Modifier = Modi
             }
         }
         item { TodayPlanCard(state) }
+    }, right = {
         item {
             Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
                 Text(stringResource(R.string.mk_diary), style = MaterialTheme.typography.titleMedium)
@@ -56,7 +58,7 @@ fun MakanScreen(state: MakanState, vm: MakanViewModel, modifier: Modifier = Modi
         }
         item { PrefsCard(state, vm) }
         item { Text(stringResource(R.string.mk_disclaimer), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(bottom = 16.dp)) }
-    }
+    })
 }
 
 @Composable

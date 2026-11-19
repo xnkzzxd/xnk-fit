@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import app.xnkfit.ui.adaptive.TwoColumns
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.background
@@ -112,7 +113,7 @@ fun TodayScreen(
     modifier: Modifier = Modifier,
 ) {
     val s by vm.state.collectAsState()
-    LazyColumn(modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(Gap)) {
+    TwoColumns(modifier, spacing = Gap, left = {
         item { Header(s) }
         if (s.failed) item { Text(stringResource(R.string.td_failed), style = MaterialTheme.typography.bodyMedium) }
         s.recalc?.let { p -> item { RecalcCard(p, vm::acceptRecalc, vm::keepTarget) } }
@@ -122,12 +123,15 @@ fun TodayScreen(
                 if (w == null) ActivityCard(s.activity, onOpenWorkout) else WorkoutCardView(w, onOpenWorkout)
             }
             item { TasksCard(s.tasks) }
+        }
+    }, right = {
+        if (s.loaded) {
             item { FoodCard(s.food, onOpenFood) }
             item { TargetCardView(s.target) }
             item { WeekCard(s.week) }
             item { Box(Modifier.padding(bottom = 16.dp)) }
         }
-    }
+    })
 }
 
 @Composable

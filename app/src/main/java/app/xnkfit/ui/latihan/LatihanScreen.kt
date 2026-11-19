@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import app.xnkfit.ui.adaptive.TwoColumns
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -64,15 +65,13 @@ fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, steps: app.
     ui.editor?.let { return RoutineEditor(it, vm, modifier) }
     ActivitySheet(extra.activity, insights)
     ExerciseDetail(extra.detail, extra.sex, insights)
-    LazyColumn(modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    val program = ui.program
+    TwoColumns(modifier, left = {
         item { Text(stringResource(R.string.nav_workout), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(top = 16.dp)) }
-        val program = ui.program
-        if (ui.loading) return@LazyColumn
+        if (ui.loading) return@TwoColumns
         if (program == null) {
             profileQuestions(ui, vm)
             item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
-            activitySection(extra, insights, steps)
-            item { JelajahiSection(vm) }
         } else {
             item { ProgramHeader(program.setting, program.source.name, program.level) }
             ui.review?.let { r -> item { ReviewCard(r, vm) } }
@@ -80,6 +79,13 @@ fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, steps: app.
             items(program.days, key = { it.id }) { day ->
                 DayCard(day, next = day.id == ui.nextDayId, onStart = { onStart(day.id, false) }, onEdit = { vm.editDay(day.id, it) }, onOpen = insights::openDetail)
             }
+        }
+    }, right = {
+        if (ui.loading) return@TwoColumns
+        if (program == null) {
+            activitySection(extra, insights, steps)
+            item { JelajahiSection(vm) }
+        } else {
             item { AutoSwitch(ui.autoOff, vm) }
             item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
             weekMapSection(extra)
@@ -92,7 +98,7 @@ fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, steps: app.
                 }
             }
         }
-    }
+    })
 }
 
 @Composable

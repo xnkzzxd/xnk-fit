@@ -9,6 +9,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.CompositionLocalProvider
+import app.xnkfit.ui.adaptive.WidthClass
+import app.xnkfit.ui.adaptive.LocalWidthClass
+import app.xnkfit.ui.adaptive.currentWidthClass
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -43,9 +50,11 @@ fun XnkApp(
     var selected by rememberSaveable { mutableStateOf(start) }
     // Hari ini reads what the other screens wrote, so it reloads each time it is opened.
     LaunchedEffect(selected) { if (selected == Destination.TODAY) today.refresh() }
+    val width = currentWidthClass()
+    val wide = width == WidthClass.WIDE
     Scaffold(
         bottomBar = {
-            NavigationBar {
+            if (!wide) NavigationBar {
                 Destination.entries.forEach { destination ->
                     val label = stringResource(destination.label)
                     NavigationBarItem(
@@ -59,9 +68,23 @@ fun XnkApp(
             }
         },
     ) { padding ->
+    CompositionLocalProvider(LocalWidthClass provides width) {
+    Row(Modifier.padding(padding)) {
+        // Wide windows: the same five destinations in a side rail (PRD N-4).
+        if (wide) NavigationRail {
+            Destination.entries.forEach { destination ->
+                val label = stringResource(destination.label)
+                NavigationRailItem(
+                    selected = destination == selected,
+                    onClick = { if (destination.isScreen) selected = destination },
+                    icon = { Icon(painterResource(destination.icon), contentDescription = label) },
+                    label = { Text(label) },
+                )
+            }
+        }
+        Column(Modifier.weight(1f)) {
         val modifier = Modifier
         val tab = welcomeTabOf(selected)
-        Column(Modifier.padding(padding)) {
         if (tab != null && seenCards != null && tab !in seenCards) WelcomeCard(tab, onDismiss = { onDismissCard(tab) })
         Box(Modifier.weight(1f)) {
         when (selected) {
@@ -79,6 +102,9 @@ fun XnkApp(
         }
         }
         }
+        }
+    }
+    }
     }
 }
 
