@@ -53,10 +53,15 @@ abstract class XnkDatabase : RoomDatabase() {
                 }
             }
 
-        fun open(context: Context, appVersion: String): XnkDatabase =
-            Room.databaseBuilder(context.applicationContext, XnkDatabase::class.java, FILE_NAME)
+        @Volatile private var instance: XnkDatabase? = null
+
+        /** One instance per process (the screens and the backup worker share it, so Room's change tracking holds). */
+        fun open(context: Context, appVersion: String): XnkDatabase = instance ?: synchronized(this) {
+            instance ?: Room.databaseBuilder(context.applicationContext, XnkDatabase::class.java, FILE_NAME)
                 .addMigrations(*MIGRATIONS)
                 .addCallback(seedCallback(appVersion))
                 .build()
+                .also { instance = it }
+        }
     }
 }

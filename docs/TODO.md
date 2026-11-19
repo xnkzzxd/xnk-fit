@@ -74,7 +74,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | B-13 | Share cards and Kartu saya, editor, QR on, no-kg switch (P-6) | B-12 | Sonnet 5.5 | [x] (2026-11-19: `domain/share` pure card logic (fields, order, no-kg, QR/brand, face switch; Rules R_SHARE_*), `data/share` QR encoder (own, decoded back by OpenCV in the sandbox) and facts from Room, `ui/share` Canvas renderer, face mosaic, gallery and editor, FileProvider share (no new permission). JVM and Robolectric tests green; sizes and colours of the Canvas output are tested, the look is not. Not run on a device or emulator: share sheet, real face detection, fonts. QR link is a marked placeholder (Decisions.md). Ringkasan share button is left to B-07) |
 | B-14 | Settings, Bantuan, welcome cards, glossary, privacy (P-7, P-8, PV-4) | B-11 | Sonnet 5.5 | [ ] |
 | B-15 | Reminders: local notifications, rotation text, three-per-day cap (R-1, R-2) | B-08, B-10 | Sonnet 5.5 | [ ] |
-| B-16 | Backup and restore: zip format, Drive appdata, last three, warnings, device check (B-1…B-7) | B-03 | Opus 5.5 | [~] zip format, reader, restore done |
+| B-16 | Backup and restore: zip format, Drive appdata, last three, warnings, device check (B-1…B-7) | B-03 | Opus 5.5 | [~] zip format, reader, restore, Drive client and automatic run done |
 | B-17 | Tablet layout: rail and two columns (N-4) and 360–430 dp checks (D-2) | B-08…B-14 | Sonnet 5.5 | [ ] |
 | B-18 | Kill and crash tests (NF-2), screen tests phone and tablet, light and dark (NF-5) | B-07, B-17 | Sonnet 5.5 | [ ] |
 | B-19 | Speed budget: Macrobenchmark, baseline profiles, CI gate (NF-1) | B-17 | Opus 5.5 | [ ] |

@@ -45,6 +45,9 @@ import app.xnkfit.ui.today.TodayViewModel
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.UUID
+import androidx.lifecycle.lifecycleScope
+import app.xnkfit.data.backup.BackupScheduler
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     private val database by lazy {
@@ -142,6 +145,12 @@ class MainActivity : ComponentActivity() {
                 ) as T
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // B-2: automatic backup is checked when the app is opened or resumed, never in the background.
+        lifecycleScope.launch { runCatching { BackupScheduler.onAppOpen(applicationContext) } }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
