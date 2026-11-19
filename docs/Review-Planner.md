@@ -50,7 +50,7 @@ Tests: `PlannerReviewTest.kt` (7 edge cases + one seeded property test over 300 
 
 ## 5. Recommendations for the owner
 
-1. Decide whether the planner should aim at protein (a cost per gram under R_PROT, or portion scaling). Until then the protein target is guidance on the Hari ini card only.
-2. Hide the week planner (or show it without numbers) when there is no target (U13, screening not done, risk answers), instead of the 1,750 / 1,500 defaults.
-3. Run `planWeek` off the main thread (`Dispatchers.Default`) in `MakanViewModel.autoFill`.
+1. Decide whether the planner should aim at protein (a cost per gram under R_PROT, or portion scaling). Until then the protein target is guidance on the Hari ini card only. — **Dijawab pemilik 2026-11-19: YA**, aim at R_PROT (Decisions.md "B-10 owner").
+2. Hide the week planner (or show it without numbers) when there is no target (U13, screening not done, risk answers), instead of the 1,750 / 1,500 defaults. — **Dijawab pemilik 2026-11-19: tampilkan tanpa angka** (planner stays, no kcal/grams/protein).
+3. Run `planWeek` off the main thread (`Dispatchers.Default`) in `MakanViewModel.autoFill`. — **Dijawab pemilik 2026-11-19: YA.**
 4. Keep R_PLAN_* ⚠ until a dietitian or the owner confirms the weights; the safety parts (floor, filters) are now tested hard rules.
