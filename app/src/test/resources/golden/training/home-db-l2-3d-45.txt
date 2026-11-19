@@ -1,0 +1,47 @@
+setting=home-db level=L2 focus=OTOT source=AUTO rulesVersion=1
+day 1 FULL_A ~76 min
+  1. SQUAT_GOB SQUAT MAIN 4x8-12 rest=120s weighted
+  2. PUSHH_FLOOR_DB PUSH_H MAIN 4x8-12 rest=120s weighted
+  3. PULLH_BO_DB PULL_H MAIN 4x8-12 rest=120s weighted
+  4. HINGE_GM_BAND HINGE ACCESSORY 4x10-15 rest=120s band
+  5. CORE_PLANK CORE MAIN 3x10-15 rest=60s bodyweight_or_band
+  6. PUSHH_BAND PUSH_H VOLUME_FILL for=CHEST 4x10-15 rest=120s band
+  7. PULLH_REVFLY_DB PULL_H VOLUME_FILL for=REAR_DELT 3x8-12 rest=120s weighted
+  8. LEGISO_CALF_DB LEG_ISO VOLUME_FILL for=CALVES 4x8-12 rest=60s weighted
+day 2 FULL_B ~69 min
+  1. HINGE_SLDL_DB HINGE MAIN 3x8-12 rest=120s weighted
+  2. PUSHV_DB PUSH_V MAIN 4x8-12 rest=120s weighted
+  3. PULLV_BAND_PD PULL_V MAIN 4x10-15 rest=120s band
+  4. SQUAT_DB SQUAT ACCESSORY 3x8-12 rest=120s weighted
+  5. CORE_SIDEPLANK CORE ACCESSORY 3x10-15 rest=60s bodyweight_or_band
+  6. PUSHV_LAT_DB PUSH_V VOLUME_FILL for=SIDE_DELT 4x8-12 rest=120s weighted
+  7. CURL_DB CURL VOLUME_FILL for=BICEPS 4x8-12 rest=60s weighted
+  8. LEGISO_CALF_DB LEG_ISO VOLUME_FILL for=CALVES 4x8-12 rest=60s weighted
+day 3 FULL_C ~63 min
+  1. SQUAT_GOB SQUAT MAIN 3x8-12 rest=120s weighted
+  2. PUSHH_BAND_FLY PUSH_H ACCESSORY 4x10-15 rest=120s band
+  3. PULLV_BAND_ST PULL_V ACCESSORY 3x10-15 rest=120s band
+  4. HINGE_SLDL_DB HINGE MAIN 3x8-12 rest=120s weighted
+  5. CORE_PLANK CORE MAIN 3x10-15 rest=60s bodyweight_or_band
+  6. PUSHV_LAT_DB PUSH_V VOLUME_FILL for=SIDE_DELT 4x8-12 rest=120s weighted
+  7. CURL_DB CURL VOLUME_FILL for=BICEPS 3x8-12 rest=60s weighted
+  8. LEGISO_CALF_DB LEG_ISO VOLUME_FILL for=CALVES 3x8-12 rest=60s weighted
+missing: -
+under minimum: -
+weekly sets:
+  CHEST 12.0 OK
+  FRONT_DELT 14.0 OK
+  SIDE_DELT 12.0 OK
+  REAR_DELT 11.0 OK
+  BICEPS 11.0 OK
+  TRICEPS 13.5 OK
+  LATS 11.0 OK
+  TRAPS 13.5 NO_MINIMUM
+  QUADS 10.0 OK
+  HAMS 10.0 OK
+  GLUTES 19.5 OK
+  CALVES 11.0 OK
+  ABS 17.5 OK
+  OBLIQUES 6.0 NO_MINIMUM
+  LOWER_BACK 14.0 NO_MINIMUM
+  FOREARM 5.0 NO_MINIMUM

@@ -1,0 +1,44 @@
+setting=home-db level=L1 focus=OTOT source=AUTO rulesVersion=1
+day 1 FULL_A ~40 min
+  1. SQUAT_GOB SQUAT MAIN 2x8-12 rest=120s weighted
+  2. PUSHH_FLOOR_DB PUSH_H MAIN 3x8-12 rest=120s weighted
+  3. PULLH_REVFLY_DB PULL_H MAIN 3x8-12 rest=120s weighted
+  4. HINGE_GM_BAND HINGE ACCESSORY 2x10-15 rest=120s band
+  5. CORE_PLANK CORE MAIN 2x10-15 rest=60s bodyweight_or_band
+  6. PUSHV_BAND PUSH_V VOLUME_FILL for=FRONT_DELT 2x10-15 rest=120s band
+  7. CURL_DB CURL VOLUME_FILL for=BICEPS 2x8-12 rest=60s weighted
+day 2 FULL_B ~42 min
+  1. HINGE_RDL_DB HINGE MAIN 2x8-12 rest=120s weighted
+  2. PUSHV_LAT_DB PUSH_V MAIN 3x8-12 rest=120s weighted
+  3. PULLV_BAND_PD PULL_V MAIN 3x10-15 rest=120s band
+  4. SQUAT_DB SQUAT ACCESSORY 2x8-12 rest=120s weighted
+  5. CORE_BIRDDOG CORE ACCESSORY 2x10-15 rest=60s bodyweight_or_band
+  6. PULLH_BAND_REV PULL_H VOLUME_FILL for=REAR_DELT 2x10-15 rest=120s band
+  7. LEGISO_CALF_DB LEG_ISO VOLUME_FILL for=CALVES 3x8-12 rest=60s weighted
+day 3 FULL_C ~37 min
+  1. SQUAT_GOB SQUAT MAIN 2x8-12 rest=120s weighted
+  2. PUSHH_BAND_FLY PUSH_H ACCESSORY 3x10-15 rest=120s band
+  3. PULLV_BAND_ST PULL_V ACCESSORY 2x10-15 rest=120s band
+  4. HINGE_RDL_DB HINGE MAIN 2x8-12 rest=120s weighted
+  5. CORE_PLANK CORE MAIN 2x10-15 rest=60s bodyweight_or_band
+  6. CURL_DB CURL VOLUME_FILL for=BICEPS 3x8-12 rest=60s weighted
+  7. LEGISO_CALF_DB LEG_ISO VOLUME_FILL for=CALVES 2x8-12 rest=60s weighted
+missing: -
+under minimum: -
+weekly sets:
+  CHEST 6.0 OK
+  FRONT_DELT 6.5 OK
+  SIDE_DELT 5.0 OK
+  REAR_DELT 6.5 OK
+  BICEPS 6.5 OK
+  TRICEPS 6.0 OK
+  LATS 5.0 OK
+  TRAPS 5.5 NO_MINIMUM
+  QUADS 6.0 OK
+  HAMS 6.0 OK
+  GLUTES 13.0 OK
+  CALVES 5.0 OK
+  ABS 8.0 OK
+  OBLIQUES 2.0 NO_MINIMUM
+  LOWER_BACK 8.0 NO_MINIMUM
+  FOREARM 5.5 NO_MINIMUM

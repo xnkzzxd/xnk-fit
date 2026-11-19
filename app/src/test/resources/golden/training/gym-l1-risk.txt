@@ -1,0 +1,42 @@
+setting=gym level=L1 focus=OTOT source=AUTO rulesVersion=1
+day 1 FULL_A ~38 min
+  1. SQUAT_SMITH SQUAT MAIN 2x8-12 rest=120s weighted
+  2. PUSHH_CHEST_MC PUSH_H MAIN 2x8-12 rest=120s weighted
+  3. PULLH_CBLROW PULL_H MAIN 3x8-12 rest=120s weighted
+  4. HINGE_BACKEXT HINGE ACCESSORY 2x8-12 rest=120s weighted
+  5. CORE_PLANK CORE MAIN 2x10-15 rest=60s bodyweight_or_band
+  6. PUSHV_LAT_DB PUSH_V VOLUME_FILL for=SIDE_DELT 2x8-12 rest=120s weighted
+  7. LEGISO_CALF_STAND LEG_ISO VOLUME_FILL for=CALVES 2x8-12 rest=60s weighted
+day 2 FULL_B ~35 min
+  1. HINGE_HT_MC HINGE MAIN 2x8-12 rest=120s weighted
+  2. PUSHV_MC PUSH_V MAIN 3x8-12 rest=120s weighted
+  3. PULLV_PULLDOWN PULL_V MAIN 3x8-12 rest=120s weighted
+  4. LEG_PRESS SQUAT ACCESSORY 2x8-12 rest=120s weighted
+  5. CORE_BIRDDOG CORE ACCESSORY 2x10-15 rest=60s bodyweight_or_band
+  6. CURL_BB CURL VOLUME_FILL for=BICEPS 2x8-12 rest=60s weighted
+day 3 FULL_C ~37 min
+  1. SQUAT_SMITH SQUAT MAIN 2x8-12 rest=120s weighted
+  2. PUSHH_PECDEC PUSH_H ACCESSORY 3x8-12 rest=120s weighted
+  3. PULLV_VBAR PULL_V ACCESSORY 3x8-12 rest=120s weighted
+  4. HINGE_HT_MC HINGE MAIN 2x8-12 rest=120s weighted
+  5. CORE_PLANK CORE MAIN 2x10-15 rest=60s bodyweight_or_band
+  6. LEGISO_CALF_STAND LEG_ISO VOLUME_FILL for=CALVES 3x8-12 rest=60s weighted
+missing: -
+under minimum: -
+weekly sets:
+  CHEST 5.0 OK
+  FRONT_DELT 7.5 OK
+  SIDE_DELT 5.0 OK
+  REAR_DELT 5.5 OK
+  BICEPS 6.5 OK
+  TRICEPS 5.0 OK
+  LATS 9.0 OK
+  TRAPS 7.0 NO_MINIMUM
+  QUADS 8.0 OK
+  HAMS 6.0 OK
+  GLUTES 14.0 OK
+  CALVES 5.0 OK
+  ABS 5.0 OK
+  OBLIQUES 2.0 NO_MINIMUM
+  LOWER_BACK 4.0 NO_MINIMUM
+  FOREARM 2.5 NO_MINIMUM

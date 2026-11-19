@@ -1,0 +1,51 @@
+setting=gym level=L2 focus=KEKUATAN source=AUTO rulesVersion=1
+day 1 UPPER_A ~82 min
+  1. PUSHH_BENCH_BB PUSH_H MAIN 4x3-5 rest=180s weighted
+  2. PULLH_CBLROW PULL_H MAIN 4x3-5 rest=180s weighted
+  3. PUSHV_OHP_BB PUSH_V MAIN 4x3-5 rest=180s weighted
+  4. PULLV_PULLDOWN PULL_V MAIN 4x3-5 rest=180s weighted
+  5. TRI_PUSHDOWN TRI MAIN 3x8-12 rest=60s weighted
+  6. CURL_BB CURL MAIN 3x8-12 rest=60s weighted
+  7. PUSHV_LAT_CBL PUSH_V VOLUME_FILL for=SIDE_DELT 4x8-12 rest=120s weighted
+day 2 LOWER_A ~58 min
+  1. SQUAT_BACK SQUAT MAIN 4x3-5 rest=180s weighted
+  2. HINGE_HT_BB HINGE ACCESSORY 3x8-12 rest=120s weighted
+  3. LEGISO_EXT LEG_ISO MAIN 3x8-12 rest=60s weighted
+  4. CORE_PLANK CORE MAIN 4x10-15 rest=60s bodyweight_or_band
+  5. SQUAT_HACK SQUAT ACCESSORY 3x8-12 rest=120s weighted
+  6. LEGISO_CURL_SEAT LEG_ISO ACCESSORY 4x8-12 rest=60s weighted
+  7. LEGISO_CALF_STAND LEG_ISO VOLUME_FILL for=CALVES 4x8-12 rest=60s weighted
+day 3 UPPER_B ~55 min
+  1. PUSHV_LAT_DB PUSH_V ACCESSORY 4x8-12 rest=120s weighted
+  2. PULLV_VBAR PULL_V ACCESSORY 3x8-12 rest=120s weighted
+  3. PUSHH_PECDEC PUSH_H ACCESSORY 4x8-12 rest=120s weighted
+  4. PULLH_SA_CBL PULL_H ACCESSORY 3x8-12 rest=120s weighted
+  5. CURL_EZ CURL ACCESSORY 3x8-12 rest=60s weighted
+  6. TRI_ROPE TRI ACCESSORY 3x8-12 rest=60s weighted
+  7. LEGISO_CALF_STAND LEG_ISO VOLUME_FILL for=CALVES 3x8-12 rest=60s weighted
+day 4 LOWER_B ~47 min
+  1. HINGE_RDL_BB HINGE MAIN 3x3-5 rest=180s weighted
+  2. SQUAT_HACK SQUAT ACCESSORY 3x8-12 rest=120s weighted
+  3. CORE_SIDEPLANK CORE ACCESSORY 4x10-15 rest=60s bodyweight_or_band
+  4. LEGISO_CURL_SEAT LEG_ISO ACCESSORY 4x8-12 rest=60s weighted
+  5. HINGE_HT_BB HINGE ACCESSORY 3x8-12 rest=120s weighted
+  6. LEGISO_EXT LEG_ISO MAIN 3x8-12 rest=60s weighted
+missing: -
+under minimum: -
+weekly sets:
+  CHEST 10.0 OK
+  FRONT_DELT 14.0 OK
+  SIDE_DELT 12.0 OK
+  REAR_DELT 10.0 OK
+  BICEPS 13.0 OK
+  TRICEPS 14.0 OK
+  LATS 14.0 OK
+  TRAPS 15.0 NO_MINIMUM
+  QUADS 19.0 OK
+  HAMS 16.0 OK
+  GLUTES 18.0 OK
+  CALVES 11.0 OK
+  ABS 10.0 OK
+  OBLIQUES 7.5 NO_MINIMUM
+  LOWER_BACK 5.5 NO_MINIMUM
+  FOREARM 6.5 NO_MINIMUM
