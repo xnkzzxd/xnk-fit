@@ -29,6 +29,10 @@ const val R_REM_BACK_MAX = 2
 /** R_REM_WEIGH_SKIP: Timbang is skipped when a weight was saved within this many days. */
 const val R_REM_WEIGH_SKIP_DAYS = 3
 
+/** R_REM_ROTATE: at least two variants per kind; each kind starts at its own offset so kinds do not move in step. */
+const val R_REM_ROTATE_MIN_VARIANTS = 2
+const val R_REM_ROTATE_KIND_OFFSET = 3L
+
 /** Every fact the decision needs. Dates are the phone's local dates. */
 data class ReminderFacts(
     val now: LocalDateTime,
@@ -61,14 +65,16 @@ fun nextReminder(f: ReminderFacts): ReminderKind? {
         .minWithOrNull(compareBy({ dueMinutes(it) }, { it.ordinal }))
 }
 
-private fun dueMinutes(kind: ReminderKind): Int = kind.hour * 60 + R_REM_HOURS_MINUTE
+private const val MINUTES_PER_HOUR = 60
+
+private fun dueMinutes(kind: ReminderKind): Int = kind.hour * MINUTES_PER_HOUR + R_REM_HOURS_MINUTE
 
 /** From its hour until [R_REM_LATE_HOURS] later, and only on its day (Timbang: Sunday). */
 private fun isDue(kind: ReminderKind, now: LocalDateTime): Boolean {
     if (kind == ReminderKind.TIMBANG && now.dayOfWeek.value != R_REM_HOURS_TIMBANG_ISO_DAY) return false
-    val minutes = now.hour * 60 + now.minute
+    val minutes = now.hour * MINUTES_PER_HOUR + now.minute
     val start = dueMinutes(kind)
-    return minutes >= start && minutes < start + R_REM_LATE_HOURS * 60
+    return minutes >= start && minutes < start + R_REM_LATE_HOURS * MINUTES_PER_HOUR
 }
 
 /** R_REM_SKIP plus the "nothing to ask" cases: no program, no data, rest day. */
@@ -92,6 +98,6 @@ private fun backDue(f: ReminderFacts, today: LocalDate): Boolean {
  * one (the index moves by one a day, offset per kind), so a text never repeats two days in a row (Design §8).
  */
 fun rotationIndex(kind: ReminderKind, day: LocalDate, count: Int): Int {
-    require(count >= 2) { "at least two variants" }
-    return Math.floorMod(day.toEpochDay() + kind.ordinal * 3L, count.toLong()).toInt()
+    require(count >= R_REM_ROTATE_MIN_VARIANTS) { "at least two variants" }
+    return Math.floorMod(day.toEpochDay() + kind.ordinal * R_REM_ROTATE_KIND_OFFSET, count.toLong()).toInt()
 }

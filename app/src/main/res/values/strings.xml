@@ -714,7 +714,7 @@
     <string name="lg_note">Catatan (opsional)</string>
     <!-- B-09: Langkah dari Health Connect (L-15) -->
     <string name="steps_title">Langkah</string>
-    <string name="steps_why">Lihat langkah harian dan rata-rata mingguan dari Health Connect. Hanya dibaca di ponsel ini; tidak menambah target kalori. Izin diminta setelah kamu menekan tombol.</string>
+    <string name="steps_why">Lihat langkah harian dan rata-rata mingguan dari Health Connect. Hanya dibaca di ponsel ini; tidak menambah target kalori. Izin diminta setelah tombol ditekan.</string>
     <string name="steps_allow">Izinkan baca langkah</string>
     <string name="steps_today">Hari ini: %1$,d langkah</string>
     <string name="steps_average">Rata-rata 7 hari: %1$,d langkah per hari</string>

@@ -191,6 +191,7 @@ Product rules (👤). Numbers can change before release; each change is recorded
 | R_REM_GAP | Latihan reminder only when the last workout was 2 or more days ago (rest days stay quiet; the program stores no weekdays) | 2 days | 👤 |
 | R_REM_BACK | "Kembali" after 7 days without any record (workout, food, measure); a second one after 14; never more than 2 until a new record; never when the phone holds no data | 7 / 2 | 👤 |
 | R_REM_WEIGH_SKIP | Timbang skipped when a weight was saved in the last 3 days | 3 days | 👤 |
+| R_REM_ROTATE | Each kind has at least 5 text variants; the variant is chosen by day (same day, same text) and never repeats on two days in a row | 5 / 2 | 👤 |
 
 ## 9. Privacy and data rules
 
