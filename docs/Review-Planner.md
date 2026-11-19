@@ -48,6 +48,15 @@ Tests: `PlannerReviewTest.kt` (7 edge cases + one seeded property test over 300 
 | R4 | Only the first `mainProtein` counts for R_LIMIT_MAIN | Unchanged (Decisions B-10) |
 | R5 | Santan/fried/main limits can be lifted in the last-resort step to reach the floor | Deliberate (floor first); shown by the "plan is limited" note only when the floor is still missed |
 
+### Status after the owner's answers (2026-11-19)
+
+| # | Status |
+| --- | --- |
+| R1 | **Closed (dijawab pemilik 2026-11-19).** R_PLAN_PROT ⚠: a cost of 10 per gram under or over the R_PROT range (from `domain.rules.proteinRangeG`, passed in `FoodTargets.proteinRangeG`; the planner computes nothing itself). Protein only ranks combinations that already reach the floor and pass the filters and limits; a day above max(target, floor) pays the largest protein cost, so protein never pulls a day above it. Portions are still not scaled. Day protein is shown only with a target and outside R_GATE_ED, as "Protein ±x g · rentang harian a–b g". Tests: `PlannerProteinTest` (golden, floor, allergy, halal, upper value, seeded property over 300 weeks: floor and filters never lost, protein cost never worse, deterministic). Remaining: the weight is unsourced (⚠); with today's packages some days stay under the range |
+| R2 | **Closed (dijawab pemilik 2026-11-19).** Defaults removed. `PlannerInput.targetKcal/floorKcal` are null without a target: no kcal aim, no floor, no day marked; allergy, lactose, halal, profile and R_LIMIT_* still hold. `MakanState.planNumbers` hides day kcal, package kcal and protein in the planner and the "Rencana hari ini" card, with the note "Belum ada target…". The shopping list keeps package grams: they come from the packages, not from a target (no scaling) |
+| R3 | **Closed (dijawab pemilik 2026-11-19).** `autoFill` reads its input on the main thread, runs `planWeek` on `Dispatchers.Default` (injected for tests), shows "Menyusun rencana…" with the button off, cancels a running fill on a new fill, and drops it when the user changes a cell by hand (M-4). Remaining: speed on a slow phone not measured |
+| R4, R5 | Open, unchanged |
+
 ## 5. Recommendations for the owner
 
 1. Decide whether the planner should aim at protein (a cost per gram under R_PROT, or portion scaling). Until then the protein target is guidance on the Hari ini card only. — **Dijawab pemilik 2026-11-19: YA**, aim at R_PROT (Decisions.md "B-10 owner").
