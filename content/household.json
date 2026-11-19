@@ -46,7 +46,8 @@
   "ekor": "ekor",
   "lembar": "lembar",
   "papan": "papan (petai)",
-  "genggam": "genggam"
+  "genggam": "genggam",
+  "bungkus": "bungkus (pepes, nasi bungkus)"
  },
  "perUnitLimits": {
   "centong": [
@@ -108,6 +109,10 @@
   "genggam": [
    10,
    80
+  ],
+  "bungkus": [
+   20,
+   600
   ]
  },
  "displayFormat": "<label> (±<grams> g)",
@@ -115,10 +120,10 @@
   "pmkRows": 161,
   "pmkRowsMapped": 124,
   "pmkRowsSuspect": 3,
-  "foods": 145,
-  "measures": 152,
+  "foods": 151,
+  "measures": 158,
   "measuresPmk": 140,
-  "measuresEstimate": 12
+  "measuresEstimate": 18
  },
  "foods": [
   {
@@ -480,6 +485,29 @@
    ]
   },
   {
+   "foodId": "TKPI_BP011",
+   "file": "foods-tkpi.json",
+   "name_id": "Ubi jalar, kuning, kukus",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "1 biji sedang",
+     "qty": 1,
+     "grams": 135,
+     "perUnitGrams": 135,
+     "display": "1 biji sedang (±135 g)",
+     "source": "estimate",
+     "method": "Ukuran sama dengan ubi jalar kuning mentah PMK (1 biji sedang = 135 g, hal. 9); perubahan berat saat dikukus tidak diukur.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      95,
+      176
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
    "foodId": "TKPI_BP045",
    "file": "foods-tkpi.json",
    "name_id": "Kerupuk udang goreng",
@@ -707,6 +735,29 @@
       "page": 10
      },
      "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP054",
+   "file": "foods-tkpi.json",
+   "name_id": "Oncom kacang tanah pepes",
+   "measures": [
+    {
+     "code": "bungkus",
+     "label": "1 bungkus",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 bungkus (±100 g)",
+     "source": "estimate",
+     "method": "Penilaian porsi 1 bungkus pepes oncom; sama dengan gram di paket makan C-11. Belum ditimbang.",
+     "spreadPct": 40,
+     "gramsRangeEst": [
+      60,
+      140
+     ],
+     "flag": "⚠"
     }
    ]
   },
@@ -2295,6 +2346,29 @@
    ]
   },
   {
+   "foodId": "TKPI_GP005",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan bandeng presto, masakan",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong",
+     "qty": 1,
+     "grams": 80,
+     "perUnitGrams": 80,
+     "display": "1 potong (±80 g)",
+     "source": "estimate",
+     "method": "Penilaian porsi 1 potong bandeng presto; sama dengan gram di paket makan C-11. Belum ditimbang.",
+     "spreadPct": 40,
+     "gramsRangeEst": [
+      48,
+      112
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
    "foodId": "TKPI_GP009",
    "file": "foods-tkpi.json",
    "name_id": "Ikan cakalang asin, mentah",
@@ -2354,6 +2428,52 @@
       "page": 12
      },
      "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP019",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan Mas pepes",
+   "measures": [
+    {
+     "code": "bungkus",
+     "label": "1 bungkus",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 bungkus (±100 g)",
+     "source": "estimate",
+     "method": "Penilaian porsi 1 bungkus pepes rumah/warung; sama dengan gram di paket makan C-11. Belum ditimbang; berat tulang dan daun tidak dipisah.",
+     "spreadPct": 40,
+     "gramsRangeEst": [
+      60,
+      140
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP024",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan patin, bakar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong",
+     "qty": 1,
+     "grams": 120,
+     "perUnitGrams": 120,
+     "display": "1 potong (±120 g)",
+     "source": "estimate",
+     "method": "Penilaian porsi 1 potong ikan patin bakar; sama dengan gram di paket makan C-11. Belum ditimbang.",
+     "spreadPct": 40,
+     "gramsRangeEst": [
+      72,
+      168
+     ],
+     "flag": "⚠"
     }
    ]
   },
@@ -2459,6 +2579,29 @@
       "page": 12
      },
      "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP065",
+   "file": "foods-tkpi.json",
+   "name_id": "Gulai ikan, masakan",
+   "measures": [
+    {
+     "code": "mangkok",
+     "label": "1 mangkok",
+     "qty": 1,
+     "grams": 150,
+     "perUnitGrams": 150,
+     "display": "1 mangkok (±150 g)",
+     "source": "estimate",
+     "method": "Penilaian porsi 1 mangkok kecil gulai ikan dengan kuah; sama dengan gram di paket makan C-11. Belum ditimbang.",
+     "spreadPct": 40,
+     "gramsRangeEst": [
+      90,
+      210
+     ],
+     "flag": "⚠"
     }
    ]
   },

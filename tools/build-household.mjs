@@ -22,7 +22,7 @@ const fileOf = id => tkpi.has(id) ? 'foods-tkpi.json' : est.has(id) ? 'foods-est
 const UNITS = {
   centong: 'centong nasi (sendok nasi)', piring: 'piring', mangkok: 'mangkok', gelas: 'gelas',
   sdm: 'sendok makan', sdt: 'sendok teh', potong: 'potong', iris: 'iris', butir: 'butir',
-  buah: 'buah', biji: 'biji', ekor: 'ekor', lembar: 'lembar', papan: 'papan (petai)', genggam: 'genggam',
+  buah: 'buah', biji: 'biji', ekor: 'ekor', lembar: 'lembar', papan: 'papan (petai)', genggam: 'genggam', bungkus: 'bungkus (pepes, nasi bungkus)',
 };
 
 // ---- PMK 41/2014 URT tables, as printed -------------------------------------------------
@@ -234,6 +234,13 @@ const EST = [
   ['TKPI_HP001', '1 butir', 1, 'butir', 60, 20, 'Telur ayam mentah PMK 1 butir = 55 g (hal. 11) ditambah kira-kira 1 sdt minyak (5 g, hal. 41) yang terserap; serapan minyak tidak diukur. Sama dengan W_TELUR_DADAR (C-04).'],
   ['TKPI_NP005', '1 sendok makan', 1, 'sdm', 15, 30, 'Sama dengan cairan kental PMK 1 sdm = 15 g (sirup, madu, hal. 37); kecap tidak ditimbang. PMK hal. 38 hanya memberi natrium per sdt, bukan gram.'],
   ['TKPI_NP005', '1 sendok teh', 1, 'sdt', 5, 30, 'Sama dengan PMK 1 sdt minyak = 5 g (hal. 41); kecap tidak ditimbang.'],
+  ['TKPI_BP011', '1 biji sedang', 1, 'biji', 135, 30, 'Ukuran sama dengan ubi jalar kuning mentah PMK (1 biji sedang = 135 g, hal. 9); perubahan berat saat dikukus tidak diukur.'],
+  // Cooked dishes (masakan): portion judgement, same grams as the meal packages (C-11); not weighed, not from PMK.
+  ['TKPI_GP019', '1 bungkus', 1, 'bungkus', 100, 40, 'Penilaian porsi 1 bungkus pepes rumah/warung; sama dengan gram di paket makan C-11. Belum ditimbang; berat tulang dan daun tidak dipisah.'],
+  ['TKPI_CP054', '1 bungkus', 1, 'bungkus', 100, 40, 'Penilaian porsi 1 bungkus pepes oncom; sama dengan gram di paket makan C-11. Belum ditimbang.'],
+  ['TKPI_GP024', '1 potong', 1, 'potong', 120, 40, 'Penilaian porsi 1 potong ikan patin bakar; sama dengan gram di paket makan C-11. Belum ditimbang.'],
+  ['TKPI_GP005', '1 potong', 1, 'potong', 80, 40, 'Penilaian porsi 1 potong bandeng presto; sama dengan gram di paket makan C-11. Belum ditimbang.'],
+  ['TKPI_GP065', '1 mangkok', 1, 'mangkok', 150, 40, 'Penilaian porsi 1 mangkok kecil gulai ikan dengan kuah; sama dengan gram di paket makan C-11. Belum ditimbang.'],
   ['TKPI_JP011', '1 gelas', 1, 'gelas', 200, 25, 'Sama dengan PMK susu sapi 1 gelas = 200 g (hal. 11); yoghurt lebih kental, tidak ditimbang.'],
 ];
 
@@ -242,7 +249,7 @@ const EST = [
 const PER_UNIT = {
   centong: [50, 200], piring: [100, 500], mangkok: [100, 500], gelas: [40, 260],
   sdm: [3, 25], sdt: [1, 8], potong: [5, 300], iris: [10, 60], butir: [5, 80],
-  buah: [1, 1500], biji: [1, 300], ekor: [3, 600], lembar: [5, 60], papan: [5, 60], genggam: [10, 80],
+  buah: [1, 1500], biji: [1, 300], ekor: [3, 600], lembar: [5, 60], papan: [5, 60], genggam: [10, 80], bungkus: [20, 600],
 };
 const LIQUID_GELAS = [150, 260]; // susu, sari, jus: about 200-250 ml per gelas
 
