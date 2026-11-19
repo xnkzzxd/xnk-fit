@@ -53,6 +53,7 @@ import app.xnkfit.ui.common.MinTouch
 @Composable
 fun SettingsScreen(
     vm: SettingsViewModel,
+    deleteVm: DeleteDataViewModel,
     onBack: () -> Unit,
     onOpenData: () -> Unit,
     onOpenHelp: () -> Unit,
@@ -74,9 +75,11 @@ fun SettingsScreen(
         PermissionsCard()
         ContentCard(ui, vm::checkContent)
         LinkCard(R.string.set_data_title, R.string.set_data_hint, onOpenData)
+        OutlinedButton(onClick = deleteVm::open, modifier = Modifier.fillMaxWidth().heightIn(min = MinTouch)) { Text(stringResource(R.string.del_open)) }
         LinkCard(R.string.set_help_title, R.string.set_help_hint, onOpenHelp)
         LinkCard(R.string.set_privacy_title, R.string.set_privacy_hint, onOpenPrivacy)
     }
+    DeleteDialog(deleteVm)
 }
 
 @Composable
