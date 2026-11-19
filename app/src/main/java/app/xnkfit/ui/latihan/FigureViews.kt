@@ -86,7 +86,7 @@ private fun BodySideView(side: BodySide, levels: Map<String, Int>, modifier: Mod
                 drawPath(outline, bodyColor)
                 base.forEach { drawPath(it, baseColor) }
                 parts.forEach { (region, shapes) ->
-                    val lv = levels[region] ?: 0
+                    val lv = levels[side.key(region)] ?: 0
                     shapes.forEach { drawPath(it, if (lv > 0) tones.getValue(lv.coerceIn(R_MAP_TONE_LOW, R_MAP_TONE_HIGH)) else partColor) }
                 }
             }

@@ -7,13 +7,25 @@ import org.json.JSONObject
 // Figure data of the XNK app, read from the bundled assets (Content §5.1): the muscle map, the rig patterns, and the mapping
 // of the 16 muscle codes to the figure's regions (content/figures/muscle-map.json). Nothing here is drawn; see ui/latihan.
 
-/** One side of the body: outline, base shapes and the shape lists of each region (SVG path data). */
-data class BodySide(val viewBox: List<Float>, val outline: String, val base: List<String>, val parts: Map<String, List<String>>)
+/**
+ * One side of the body ([view] "front" or "back"): outline, base shapes and the shape lists of each region (SVG path data).
+ * Split regions of muscle-map.json (schema 2, e.g. `obliques` out of `abs`) are already separate parts here.
+ */
+data class BodySide(val view: String, val viewBox: List<Float>, val outline: String, val base: List<String>, val parts: Map<String, List<String>>) {
+    /** Level key of a region on this side, as [MuscleMapFile.regionsOf] names it. */
+    fun key(region: String) = "$view:$region"
+}
 
 data class BodyFigure(val front: BodySide, val back: BodySide)
 
-/** Muscle code to region names (`map`), as the figure names them. */
-data class MuscleMapFile(val regionsOf: Map<MuscleGroup, List<String>>)
+/** A split region (muscle-map.json `split`): these path indices of [from] in [view] form the region [name]. */
+data class RegionSplit(val name: String, val from: String, val view: String, val paths: Map<String, List<Int>>)
+
+/**
+ * Muscle code to region keys "front:region" / "back:region" (muscle-map.json schema 2: a bare region means both views,
+ * a "front:" or "back:" prefix one view, a `split` name the listed paths of another region; Content §5.2).
+ */
+data class MuscleMapFile(val regionsOf: Map<MuscleGroup, List<String>>, val splits: List<RegionSplit>)
 
 /** Segment transform of one frame: x, y, rotation in degrees, optional horizontal scale. */
 class SegState(val x: Float, val y: Float, val rot: Float, val sx: Float)
@@ -50,24 +62,51 @@ object FigureParser {
 
     private fun strings(a: JSONArray?): List<String> = if (a == null) emptyList() else List(a.length()) { a.getString(it) }
 
+    private val VIEWS = listOf("front", "back")
+
     fun muscleMap(json: String): MuscleMapFile {
-        val m = JSONObject(json).getJSONObject("map")
+        val root = JSONObject(json)
+        val m = root.getJSONObject("map")
+        val sp = root.optJSONObject("split")
+        val splits = if (sp == null) emptyList() else sp.keys().asSequence().map { name ->
+            val o = sp.getJSONObject(name)
+            val paths = o.getJSONObject("paths").let { p -> p.keys().asSequence().associateWith { k -> p.getJSONArray(k).let { a -> List(a.length()) { a.getInt(it) } } } }
+            RegionSplit(name, o.getString("from"), o.getString("view"), paths)
+        }.toList()
+        fun keys(ref: String): List<String> {
+            val view = VIEWS.firstOrNull { ref.startsWith("$it:") }
+            val region = if (view == null) ref else ref.removePrefix("$view:")
+            val split = splits.firstOrNull { it.name == region }
+            return when {
+                split != null -> listOf("${split.view}:$region")
+                view != null -> listOf("$view:$region")
+                else -> VIEWS.map { "$it:$region" }
+            }
+        }
         val out = HashMap<MuscleGroup, List<String>>()
-        MuscleGroup.entries.forEach { g -> if (m.has(g.name)) out[g] = strings(m.getJSONArray(g.name)) }
-        return MuscleMapFile(out)
+        MuscleGroup.entries.forEach { g -> if (m.has(g.name)) out[g] = strings(m.getJSONArray(g.name)).flatMap(::keys).distinct() }
+        return MuscleMapFile(out, splits)
     }
 
-    private fun side(o: JSONObject): BodySide {
+    private fun side(o: JSONObject, view: String, sex: String, splits: List<RegionSplit>): BodySide {
         val vb = o.getString("vb").trim().split(Regex("\\s+")).map { it.toFloat() }
-        val parts = o.getJSONObject("parts")
-        return BodySide(vb, o.getString("outline"), strings(o.getJSONArray("base")), parts.keys().asSequence().associateWith { strings(parts.getJSONArray(it)) })
+        val p = o.getJSONObject("parts")
+        val parts = LinkedHashMap(p.keys().asSequence().associateWith { strings(p.getJSONArray(it)) })
+        splits.filter { it.view == view }.forEach { s ->
+            val all = parts[s.from] ?: return@forEach
+            val take = s.paths[sex].orEmpty().toSet()
+            parts[s.from] = all.filterIndexed { i, _ -> i !in take }
+            parts[s.name] = all.filterIndexed { i, _ -> i in take }
+        }
+        return BodySide(view, vb, o.getString("outline"), strings(o.getJSONArray("base")), parts)
     }
 
-    /** `sex` is "m" or "f" (figure.min.json `views`). */
-    fun body(json: String, sex: String): BodyFigure {
+    /** `sex` is "m" or "f" (figure.min.json `views`); [splits] from [muscleMap]. */
+    fun body(json: String, sex: String, splits: List<RegionSplit> = emptyList()): BodyFigure {
         val v = JSONObject(json).getJSONObject("views")
-        val s = v.optJSONObject(sex) ?: v.getJSONObject("f")
-        return BodyFigure(side(s.getJSONObject("front")), side(s.getJSONObject("back")))
+        val key = if (v.has(sex)) sex else "f"
+        val s = v.getJSONObject(key)
+        return BodyFigure(side(s.getJSONObject("front"), "front", key, splits), side(s.getJSONObject("back"), "back", key, splits))
     }
 
     private fun mark(a: JSONArray) = RigMark(a.getString(0), a.getString(1), a.getDouble(2).toFloat(), a.getDouble(3).toFloat(), a.getDouble(4).toFloat(), a.getDouble(5).toFloat())
@@ -93,10 +132,12 @@ object FigureParser {
         cable = o.optBoolean("cable", false), line = o.optBoolean("line", false), soft = o.optBoolean("soft", false), thick = o.optBoolean("thick", false),
     )
 
-    fun rig(json: String): RigData {
+    /** [localJson] = content/figures/rig-local.json (C-08b): more patterns in the same format, drawn with the XNK lengths and marks. */
+    fun rig(json: String, localJson: String? = null): RigData {
         val r = JSONObject(json)
         val marks = r.getJSONArray("muscles").let { a -> List(a.length()) { mark(a.getJSONArray(it)) } }
         val pats = r.getJSONObject("pats")
+        localJson?.let { JSONObject(it).getJSONObject("pats") }?.let { lp -> lp.keys().forEach { k -> if (!pats.has(k)) pats.put(k, lp.getJSONObject(k)) } }
         val patterns = pats.keys().asSequence().associateWith { id ->
             val p = pats.getJSONObject(id)
             val mus = p.getJSONArray("muscles")
@@ -133,14 +174,14 @@ fun interface FigureSource { fun text(path: String): String }
 class FigureRepository(private val source: FigureSource) {
     private val muscleMapFile by lazy { FigureParser.muscleMap(source.text(MAP)) }
     private val bodies = HashMap<String, BodyFigure>()
-    private val rigData by lazy { FigureParser.rig(source.text(RIG)) }
+    private val rigData by lazy { FigureParser.rig(source.text(RIG), source.text(RIG_LOCAL)) }
     private val rigIds by lazy { FigureParser.rigIds(source.text(EXERCISES)) }
 
     val regionsOf: Map<MuscleGroup, List<String>> get() = muscleMapFile.regionsOf
 
-    @Synchronized fun body(sex: String): BodyFigure = bodies.getOrPut(sex) { FigureParser.body(source.text(FIGURE), sex) }
+    @Synchronized fun body(sex: String): BodyFigure = bodies.getOrPut(sex) { FigureParser.body(source.text(FIGURE), sex, muscleMapFile.splits) }
 
-    /** The rig of an exercise, only when the exercise has one (`rig` in exercises.json); otherwise null (map and cues only). */
+    /** The rig of an exercise, only when the exercise has one (`rig` in exercises.json: an XNK or local pattern); otherwise null (map and cues only). */
     fun rigFor(exerciseId: String): RigPattern? = rigIds[exerciseId]?.let { rigData.patterns[it] }
     fun rigData(): RigData = rigData
 
@@ -148,6 +189,7 @@ class FigureRepository(private val source: FigureSource) {
         const val MAP = "figures/muscle-map.json"
         const val FIGURE = "figures/xnk-source/figure.min.json"
         const val RIG = "figures/xnk-source/rig.min.json"
+        const val RIG_LOCAL = "figures/rig-local.json"
         const val EXERCISES = "content/exercises.json"
     }
 }

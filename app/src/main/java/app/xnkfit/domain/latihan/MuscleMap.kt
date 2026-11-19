@@ -48,7 +48,7 @@ fun weeklySetsDone(doneSetsByExercise: Map<String, Int>, library: List<Exercise>
 }
 
 /**
- * Muscle codes to the regions of the figure (`muscle-map.json` `map`). A region two groups share takes the stronger level
+ * Muscle codes to the region keys of the figure ("front:region" / "back:region", from `muscle-map.json` `map`). A region two groups share takes the stronger level
  * (content/figures/muscle-map.json `shared`).
  */
 fun regionLevels(levels: Map<MuscleGroup, Int>, regionsOf: Map<MuscleGroup, List<String>>): Map<String, Int> {

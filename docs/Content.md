@@ -452,6 +452,7 @@ Rules: short, neutral, no shaming words, no "harus". Each type has at least five
 | 2026-11-18 | C-06: `content/foods-packaged.json` with 2 third-party rows (⚠, isEstimate true), `tools/check-foods-packaged.mjs`; 13 failed products listed in §4.3; target about 80 not reached. |
 | 2026-11-18 | C-08: XNK muscle map and rig copied to `content/figures/` (XNK commit `6dc57b3`, credits kept, sha256 locked); `rig` field added to `exercises.json` (20 rigged, 129 with reason in `no-rig.json`); upper back moved to TRAPS in the muscle map; `tools/check-figures.mjs` (§5.1, §5.2). |
 | 2026-11-19 | C-08b: Gerak.md summary of the 20 reused rigs (§5.3); local rig builder, 21 variants and 3 new sourced rigs (§5.4); muscle map schema 2 with obliques split from abs and deltoids by view (§5.2). |
+| 2026-11-19 | C-08b fix: the app (`FigureData.kt`) reads muscle-map schema 2 (view-qualified region keys "front:region" / "back:region", `split` parts such as obliques) and merges `rig-local.json` into the rig patterns; `rig-local.json` ships with the figure assets. `FigureRepositoryTest` updated to the new schema and rig count. |
 
 ## 12. Muscle review (C-01, 2026-11-18)
 

@@ -26,15 +26,23 @@ class FigureRepositoryTest {
         assertTrue(regions.values.all { it.isNotEmpty() })
         for (sex in listOf("m", "f")) {
             val body = repo.body(sex)
-            val known = body.front.parts.keys + body.back.parts.keys
-            regions.values.flatten().forEach { assertTrue("$it missing for $sex", it in known) }
+            // Schema 2 (C-08b): keys are view-qualified; obliques are split out of abs on the front view.
+            val known = body.front.parts.keys.map(body.front::key) + body.back.parts.keys.map(body.back::key)
+            // A bare region means every view that draws it, so a key may be missing in one view but not in both.
+            regions.forEach { (g, keys) ->
+                assertTrue("$g has no region drawn for $sex", keys.any { it in known })
+                keys.forEach { k -> val r = k.substringAfter(':'); assertTrue("$k missing for $sex", k in known || "front:$r" in known || "back:$r" in known) }
+            }
             assertEquals(4, body.front.viewBox.size)
+            assertTrue(body.front.parts.getValue("obliques").isNotEmpty() && body.front.parts.getValue("abs").isNotEmpty())
         }
     }
 
     @Test fun onlyExercisesWithARigGetOne() {
         val withRig = RepoFiles.text("content/exercises.json").let { FigureParser.rigIds(it) }
-        assertEquals(20, withRig.size)
+        // C-08b: 20 XNK rigs plus local rigs (content/figures/rig-local.json); every named rig must resolve.
+        assertTrue(withRig.size > 20)
+        withRig.forEach { (ex, pat) -> assertEquals("$ex", pat, repo.rigFor(ex)?.id) }
         val (id, pattern) = withRig.entries.first()
         val rig = repo.rigFor(id)
         assertNotNull(rig)
