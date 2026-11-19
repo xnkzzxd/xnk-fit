@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bantuan and welcome cards (B-14, PRD P-8). Neutral words (R_TONE); the disclaimer is R_DISCLAIMER. -->
+<resources>
+    <string name="help_title">Bantuan</string>
+    <string name="help_back">Kembali</string>
+    <string name="help_hint">Cara kerja, istilah, sumber, privasi.</string>
+    <string name="help_hero_label">XNK Fit · usia 13 tahun ke atas</string>
+    <string name="help_disclaimer_title">Bukan pengganti dokter atau ahli gizi</string>
+    <string name="help_disclaimer_body">XNK Fit membantu mencatat dan menghitung perkiraan. Untuk kondisi kesehatan, kehamilan, atau riwayat makan, tanyakan ke dokter atau ahli gizi.</string>
+
+    <string name="help_numbered">%1$d. %2$s</string>
+    <string name="help_guide_title">Panduan singkat</string>
+    <string name="help_guide_1">Isi profil dan formulir kesehatan.</string>
+    <string name="help_guide_2">Tekan ＋ lalu pilih Mulai latihan.</string>
+    <string name="help_guide_3">Catat makan dengan centong, potong, atau sendok makan.</string>
+    <string name="help_guide_4">Nyalakan cadangan Google Drive di Pengaturan, bagian Data.</string>
+
+    <string name="help_calc_title">Cara hitung target</string>
+    <string name="help_calc_1">Energi saat diam (BMR) dihitung dengan rumus Mifflin–St Jeor dari berat, tinggi, usia, dan jenis kelamin.</string>
+    <string name="help_calc_2">BMR dikali faktor aktivitas (FAO/WHO). Ini perkiraan, bukan angka pasti.</string>
+    <string name="help_calc_3">Angka disesuaikan dengan tujuan. Bila ada jawaban kesehatan yang berisiko, penurunan dibatasi paling banyak 10 persen.</string>
+    <string name="help_calc_4">Batas bawah: %1$d kkal untuk perempuan dan %2$d kkal untuk laki-laki. Target tidak turun di bawahnya.</string>
+    <string name="help_calc_protein">Protein %1$s g per kg berat badan.</string>
+    <string name="help_calc_fat">Lemak sekitar %1$d persen dari energi.</string>
+    <string name="help_calc_activity">Aktivitas memakai nilai MET dari Compendium of Physical Activities.</string>
+    <string name="help_calc_weekly">Target aktivitas mingguan: %1$d menit sedang (WHO).</string>
+    <string name="help_calc_safety">Tidak ada target penurunan untuk usia di bawah 18 tahun, kehamilan, atau saat jawaban kesehatan meminta konsultasi dokter lebih dulu.</string>
+
+    <string name="help_terms_title">Istilah</string>
+    <string name="help_terms_workout">Latihan</string>
+    <string name="help_terms_food">Makan</string>
+    <string name="help_term_set">Set kerja</string>
+    <string name="help_term_set_def">Satu rangkaian pengulangan yang dihitung, di luar pemanasan.</string>
+    <string name="help_term_rir">RIR</string>
+    <string name="help_term_rir_def">Sisa pengulangan yang masih sanggup dilakukan. RIR 2 berarti dua lagi masih bisa.</string>
+    <string name="help_term_superset">Superset</string>
+    <string name="help_term_superset_def">Dua gerakan dilakukan bergantian tanpa istirahat di antaranya.</string>
+    <string name="help_term_drop">Drop set</string>
+    <string name="help_term_drop_def">Beban diturunkan lalu set dilanjutkan tanpa istirahat.</string>
+    <string name="help_term_failure">Sampai batas</string>
+    <string name="help_term_failure_def">Set dilakukan sampai tidak sanggup menambah satu pengulangan lagi.</string>
+    <string name="help_term_form">Rapi dan Ragu</string>
+    <string name="help_term_form_def">Penilaian teknik oleh Anda sendiri setelah tiap set. Ragu menahan beban naik.</string>
+    <string name="help_term_pr">Rekor pribadi</string>
+    <string name="help_term_pr_def">Set yang melampaui semua set sebelumnya untuk gerakan itu.</string>
+    <string name="help_term_1rm">1RM</string>
+    <string name="help_term_1rm_def">Beban terberat untuk satu pengulangan.</string>
+    <string name="help_term_macro">Makro</string>
+    <string name="help_term_macro_def">Protein, karbohidrat, dan lemak.</string>
+    <string name="help_term_bmr">BMR</string>
+    <string name="help_term_bmr_def">Energi yang dipakai tubuh saat diam.</string>
+    <string name="help_term_met">MET</string>
+    <string name="help_term_met_def">Ukuran berat suatu aktivitas dibanding diam.</string>
+    <string name="help_term_urt">Ukuran rumah tangga</string>
+    <string name="help_term_urt_def">Centong, potong, dan sendok makan; dikonversi ke gram dengan tabel resmi.</string>
+
+    <string name="help_sources_title">Sumber angka</string>
+    <string name="help_sources_hint">Ketuk (i) untuk rujukan lengkap.</string>
+    <string name="help_info_mark">(i)</string>
+    <string name="help_info_desc">Rujukan lengkap untuk %1$s</string>
+    <string name="help_src_bmr">BMR: Mifflin dkk. 1990</string>
+    <string name="help_src_bmr_full">Mifflin MD, St Jeor ST, dkk. (1990). A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr 51(2):241–247.</string>
+    <string name="help_src_act">Faktor aktivitas: FAO/WHO/UNU 2004</string>
+    <string name="help_src_act_full">FAO/WHO/UNU (2004). Human energy requirements. Food and Nutrition Technical Report Series 1, Tabel 5.3.</string>
+    <string name="help_src_met">Nilai MET: Compendium 2011</string>
+    <string name="help_src_met_full">Ainsworth BE, dkk. (2011). 2011 Compendium of Physical Activities. Med Sci Sports Exerc 43:1575–1581.</string>
+    <string name="help_src_who">Aktivitas mingguan: WHO 2020</string>
+    <string name="help_src_who_full">WHO (2020). WHO guidelines on physical activity and sedentary behaviour. ISBN 978-92-4-001512-8.</string>
+    <string name="help_src_protein">Protein: ISSN 2017</string>
+    <string name="help_src_protein_full">Jäger R, dkk. (2017). ISSN position stand: protein and exercise. J Int Soc Sports Nutr 14:20.</string>
+    <string name="help_src_akg">Lemak dan serat: Permenkes 28/2019</string>
+    <string name="help_src_akg_full">Peraturan Menteri Kesehatan RI Nomor 28 Tahun 2019 tentang Angka Kecukupan Gizi yang Dianjurkan untuk Masyarakat Indonesia.</string>
+    <string name="help_src_deficit">Batas penurunan: NHLBI 2000</string>
+    <string name="help_src_deficit_full">NHLBI Obesity Education Initiative (2000). The Practical Guide: Identification, Evaluation, and Treatment of Overweight and Obesity in Adults. NIH Pub. No. 00-4084.</string>
+    <string name="help_src_train">Latihan beban: ACSM 2009</string>
+    <string name="help_src_train_full">Ratamess NA, dkk. (2009). ACSM position stand: progression models in resistance training for healthy adults. Med Sci Sports Exerc 41(3):687–708.</string>
+    <string name="help_src_rir">RIR: Zourdos dkk. 2016</string>
+    <string name="help_src_rir_full">Zourdos MC, dkk. (2016). Novel resistance training-specific RPE scale measuring repetitions in reserve. J Strength Cond Res 30(1):267–275.</string>
+    <string name="help_src_food">Data pangan: TKPI 2020 dan Permenkes 41/2014</string>
+    <string name="help_src_food_full">Tabel Komposisi Pangan Indonesia (TKPI) 2020; Peraturan Menteri Kesehatan RI Nomor 41 Tahun 2014 tentang Pedoman Gizi Seimbang, lampiran ukuran rumah tangga.</string>
+    <string name="help_src_note">Semua angka di aplikasi berasal dari rujukan di atas atau dari pengaturan yang tertulis jelas. Perkiraan tetap perkiraan.</string>
+
+    <string name="help_welcome_title">Kartu sambutan</string>
+    <string name="help_welcome_hint">Tampilkan lagi kartu perkenalan tiap tab.</string>
+    <string name="help_welcome_again">Tampilkan lagi</string>
+    <string name="help_welcome_done">Kartu sambutan akan muncul lagi.</string>
+
+    <string name="help_feedback_title">Masukan dan laporan masalah</string>
+    <string name="help_feedback_hint">Ceritakan apa yang tidak berjalan atau yang ingin ditambah. Jangan sertakan data kesehatan di formulir.</string>
+    <string name="help_feedback_open">Buka formulir</string>
+    <string name="help_feedback_soon">Alamat formulir masukan akan tersedia sebelum rilis.</string>
+    <string name="help_privacy_open">Baca kebijakan privasi</string>
+
+    <!-- One-time welcome cards, one per tab (PRD P-8) -->
+    <string name="wc_dismiss">Mengerti</string>
+    <string name="wc_today_title">Hari ini</string>
+    <string name="wc_today_body">Ringkasan satu hari: latihan berikutnya, target, dan kemajuan minggu ini.</string>
+    <string name="wc_workout_title">Latihan</string>
+    <string name="wc_workout_body">Program sesuai alat Anda. Catat tiap set; latihan yang belum selesai tetap tersimpan.</string>
+    <string name="wc_food_title">Makan</string>
+    <string name="wc_food_body">Pilih dari menu Indonesia atau cari makanan. Takaran memakai centong, potong, dan sendok makan.</string>
+    <string name="wc_me_title">Saya</string>
+    <string name="wc_me_body">Berat, ukuran, foto, dan pencapaian. Semua tersimpan di HP ini.</string>
+</resources>

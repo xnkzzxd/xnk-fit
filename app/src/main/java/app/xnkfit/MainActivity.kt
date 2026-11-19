@@ -56,7 +56,9 @@ import app.xnkfit.data.backup.DeviceId
 import app.xnkfit.data.backup.DriveConfig
 import app.xnkfit.data.backup.PlayDriveAuth
 import app.xnkfit.R
-import app.xnkfit.data.prefs.AppSettings
+import app.xnkfit.data.prefs.ThemeMode
+import app.xnkfit.data.prefs.WelcomeTab
+import app.xnkfit.ui.bantuan.HelpScreen
 import app.xnkfit.data.prefs.DataStoreSettingsStore
 import app.xnkfit.ui.common.EmptyScreen
 import app.xnkfit.ui.nav.Overlay
@@ -219,8 +221,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val appSettings by settingsStore.settings.collectAsState(initial = AppSettings())
-            XnkTheme(appSettings.theme) {
+            val appSettings by settingsStore.settings.collectAsState(initial = null)
+            XnkTheme(appSettings?.theme ?: ThemeMode.SYSTEM) {
                 // A saved profile means onboarding is done (it is written only at the last step).
                 // Until a profile exists the first screen is onboarding (PRD O-1).
                 var hasProfile by rememberSaveable { mutableStateOf<Boolean?>(null) }
@@ -248,8 +250,12 @@ class MainActivity : ComponentActivity() {
                                 settingsVm, onBack = back,
                                 onOpenData = { open(Overlay.DATA) }, onOpenHelp = { open(Overlay.HELP) }, onOpenPrivacy = { open(Overlay.PRIVACY) },
                             )
-                            Overlay.HELP, Overlay.PRIVACY -> EmptyScreen(R.string.empty_other) // B-14 potongan 2 and 3
-                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, logger, restAlarms, it) }, start = startTab)
+                            Overlay.HELP -> HelpScreen(
+                onBack = back, onOpenPrivacy = { open(Overlay.PRIVACY) },
+                onShowWelcomeAgain = { lifecycleScope.launch { settingsStore.resetCards() } },
+            )
+                            Overlay.PRIVACY -> EmptyScreen(R.string.empty_other) // B-14 potongan 3
+                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
                         }
                     }
                 }
