@@ -2,7 +2,7 @@
 
 A free, offline-first workout and meal app for people without a coach. Android first. Indonesian first.
 
-**Status: skeleton.** The Android project builds (B-01): an empty Hari ini screen and the five-tab bar. The domain rules are in code with tests (B-02: targets, safety gates, pace check in `app.xnkfit.domain`); no screen uses them yet. Process: docs, then clickable mockups (owner approval), then code.
+**Status: skeleton.** The Android project builds (B-01): an empty Hari ini screen and the five-tab bar. The domain rules are in code with tests (B-02: targets, safety gates, pace check in `app.xnkfit.domain`); onboarding and the health screening (B-05, `ui/onboarding`, `ui/screening`) are the first screens to use them: the app opens on onboarding until a profile exists, nothing is saved before its last step, and under 13 it stops and keeps nothing. Process: docs, then clickable mockups (owner approval), then code.
 
 - [docs/PRD.md](docs/PRD.md): product requirements (D-01)
 - [docs/Design.md](docs/Design.md): how it is built (D-02)
