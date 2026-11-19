@@ -12,30 +12,30 @@ import app.xnkfit.domain.training.weeklySets
 // Muscle map levels (L-11). A level is 0 (not trained) to 3 (strongest tone); the picture never relies on colour alone,
 // the screen lists the numbers too. Pure Kotlin: the region names come from `content/figures/muscle-map.json`.
 
-const val MAP_NONE = 0
-const val MAP_LOW = 1
-const val MAP_MID = 2
-const val MAP_HIGH = 3
+const val R_MAP_TONE_NONE = 0
+const val R_MAP_TONE_LOW = 1
+const val R_MAP_TONE_MID = 2
+const val R_MAP_TONE_HIGH = 3
 
 /** One exercise: main muscles in the strongest tone, helpers in the lightest (mockup: accent and tint). */
 fun exerciseLevels(ex: Exercise): Map<MuscleGroup, Int> =
-    (ex.helper.associateWith { MAP_LOW } + ex.main.associateWith { MAP_HIGH })
+    (ex.helper.associateWith { R_MAP_TONE_LOW } + ex.main.associateWith { R_MAP_TONE_HIGH })
 
 /**
  * One week of training. [sets] are working sets per group (R_TRN_VOL_COUNT: main 1, helper half). Below the weekly
  * minimum is low, inside the range mid, over R_TRN_VOL_MAX high; a group with no minimum is mid as soon as it is trained.
  */
 fun weeklyLevel(group: MuscleGroup, level: TrainingLevel, sets: Double): Int {
-    if (sets <= 0.0) return MAP_NONE
+    if (sets <= 0.0) return R_MAP_TONE_NONE
     return when (volumeStatus(group, level, sets)) {
-        VolumeStatus.UNDER -> MAP_LOW
-        VolumeStatus.OK, VolumeStatus.NO_MINIMUM -> MAP_MID
-        VolumeStatus.OVER -> MAP_HIGH
+        VolumeStatus.UNDER -> R_MAP_TONE_LOW
+        VolumeStatus.OK, VolumeStatus.NO_MINIMUM -> R_MAP_TONE_MID
+        VolumeStatus.OVER -> R_MAP_TONE_HIGH
     }
 }
 
 fun weeklyLevels(sets: Map<MuscleGroup, Double>, level: TrainingLevel): Map<MuscleGroup, Int> =
-    sets.mapValues { (g, s) -> weeklyLevel(g, level, s) }.filterValues { it > MAP_NONE }
+    sets.mapValues { (g, s) -> weeklyLevel(g, level, s) }.filterValues { it > R_MAP_TONE_NONE }
 
 /** Working sets done in one week per group, from the number of done sets of each exercise. */
 fun weeklySetsDone(doneSetsByExercise: Map<String, Int>, library: List<Exercise>): Map<MuscleGroup, Double> {

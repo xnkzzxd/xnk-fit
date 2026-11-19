@@ -22,7 +22,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import app.xnkfit.R
 import app.xnkfit.data.program.ProgramView
-import app.xnkfit.domain.latihan.JELAJAHI_SHELF
+import app.xnkfit.domain.latihan.R_JEL_SHELF
 import app.xnkfit.domain.training.ChangeKind
 import app.xnkfit.domain.training.ProgramChange
 import app.xnkfit.domain.training.ReasonCode
@@ -110,7 +110,7 @@ fun RoutinesSection(routines: List<ProgramView>, vm: LatihanViewModel, onStart: 
 fun JelajahiSection(vm: LatihanViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(stringResource(R.string.lat_jelajahi), style = MaterialTheme.typography.titleMedium)
-        JELAJAHI_SHELF.forEach { t ->
+        R_JEL_SHELF.forEach { t ->
             val title = stringResource(
                 when (t.id) {
                     "full_body_gym" -> R.string.lat_jel_full_body // text-ok: stored code

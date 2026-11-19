@@ -89,6 +89,9 @@ data class LoggerUi(
     val alarmNotice: AlarmNotice? = null,
     val sheet: LoggerSheet? = null,
     val doneTotals: Totals? = null,
+    /** Summary (L-13): feeling 1–5 and note of the workout just finished. */
+    val doneFeeling: Int? = null,
+    val doneNote: String = "",
 ) {
     val allSets: List<LoggerSet> get() = blocks.flatMap { it.sets }
     val totals: Totals get() = totals(allSets)
@@ -231,6 +234,22 @@ class LoggerViewModel(
         }
     }
 
+    /** L-13: tapping the same face again clears it. Written at once (PR-2). */
+    fun setFeeling(n: Int) {
+        val id = _ui.value.workoutId ?: return
+        val next = if (_ui.value.doneFeeling == n) null else n
+        _ui.update { it.copy(doneFeeling = next) }
+        write { repo.setFeelingNote(id, next, _ui.value.doneNote) }
+    }
+
+    fun setNote(text: String) = _ui.update { it.copy(doneNote = text.take(NOTE_MAX)) }
+
+    /** The note is written when the field loses focus or the summary is closed. */
+    fun saveNote() {
+        val id = _ui.value.workoutId ?: return
+        write { repo.setFeelingNote(id, _ui.value.doneFeeling, _ui.value.doneNote) }
+    }
+
     fun finish() {
         val id = _ui.value.workoutId ?: return
         write {
@@ -238,7 +257,7 @@ class LoggerViewModel(
             repo.finish(id)
             alarms.cancel()
             clockJob?.cancel()
-            _ui.update { it.copy(phase = LoggerPhase.DONE, doneTotals = t, sheet = null, restEndsAt = null) }
+            _ui.update { it.copy(phase = LoggerPhase.DONE, doneTotals = t, doneFeeling = null, doneNote = "", sheet = null, restEndsAt = null) }
         }
     }
 
@@ -251,7 +270,10 @@ class LoggerViewModel(
         }
     }
 
-    fun closeDone() = write { backToStart() }
+    fun closeDone() = write {
+        _ui.value.workoutId?.let { repo.setFeelingNote(it, _ui.value.doneFeeling, _ui.value.doneNote) }
+        backToStart()
+    }
 
     fun switchMode(mode: LoggerMode) {
         val id = _ui.value.workoutId ?: return
@@ -553,3 +575,6 @@ class LoggerViewModel(
         const val CLOCK_TICK_MS = 1000L
     }
 }
+
+/** Longest note on the summary (typo guard, 👤). */
+private const val NOTE_MAX = 500

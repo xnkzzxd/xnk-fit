@@ -181,6 +181,10 @@ class LoggerRepository(
     /** Design §4 step 3. Points are counted from finished workouts by B-12's recount, so only `endedAt` is set here. */
     suspend fun finish(workoutId: String) = workouts.finish(workoutId, now(), null, null)
 
+    /** L-13: feeling 1–5 and a note on the summary; both optional. */
+    suspend fun setFeelingNote(workoutId: String, feeling: Int?, note: String?) =
+        workouts.setFeelingNote(workoutId, feeling?.takeIf { it in 1..5 }, note?.trim()?.takeIf { it.isNotEmpty() }, now())
+
     suspend fun cancel(workoutId: String) = workouts.deleteWorkout(workoutId)
 
     /** Done sets of the last finished workout with this exercise ("sebelumnya"). */

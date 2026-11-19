@@ -41,7 +41,8 @@ class ActivityLogTest {
         assertEquals(1f, weekActivity(listOf(row(Effort.SEDANG, 400))).fraction, 0f)
     }
 
-    @Test fun minutesAreCheckedForTypos() {
-        assertFalse(validMinutes(0)); assertTrue(validMinutes(30)); assertFalse(validMinutes(ACTIVITY_MINUTES_MAX + 1))
+    @Test
+    fun R_ACT_MINUTES_minutesAreCheckedForTypos() {
+        assertFalse(validMinutes(0)); assertTrue(validMinutes(30)); assertFalse(validMinutes(R_ACT_MINUTES_MAX + 1))
     }
 }

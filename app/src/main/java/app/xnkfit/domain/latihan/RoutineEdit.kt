@@ -13,10 +13,10 @@ import app.xnkfit.domain.training.R_TRN_SETS_L1_MAX
 // Editing an own routine (L-5, L-9). The user's numbers win: these are starting values and typo guards, not rules. Pure Kotlin.
 
 /** Typo guard for the "sets" stepper (👤 product limit, Decisions B-08); the weekly cap R_TRN_VOL_MAX is shown by the generator, not enforced here. */
-const val EDIT_SETS_MAX = 10
-const val EDIT_REPS_MAX = 50
-const val EDIT_REST_STEP_S = 15
-const val EDIT_REST_MAX_S = 600
+const val R_TRN_EDIT_SETS_MAX = 10
+const val R_TRN_EDIT_REPS_MAX = 50
+const val R_TRN_EDIT_REST_STEP_S = 15
+const val R_TRN_EDIT_REST_MAX_S = 600
 
 /** One exercise in the editor, with its name for display. */
 data class DraftItem(
@@ -48,13 +48,13 @@ fun List<DraftItem>.moved(index: Int, delta: Int): List<DraftItem> {
     return toMutableList().also { val x = it.removeAt(index); it.add(to, x) }
 }
 
-fun DraftItem.withSets(delta: Int): DraftItem = copy(sets = (sets + delta).coerceIn(1, EDIT_SETS_MAX))
+fun DraftItem.withSets(delta: Int): DraftItem = copy(sets = (sets + delta).coerceIn(1, R_TRN_EDIT_SETS_MAX))
 
-/** Moves both ends of the rep range by [delta], never below 1 or above [EDIT_REPS_MAX]. */
+/** Moves both ends of the rep range by [delta], never below 1 or above [R_TRN_EDIT_REPS_MAX]. */
 fun DraftItem.withReps(delta: Int): DraftItem {
     val span = repMax - repMin
-    val min = (repMin + delta).coerceIn(1, EDIT_REPS_MAX - span)
+    val min = (repMin + delta).coerceIn(1, R_TRN_EDIT_REPS_MAX - span)
     return copy(repMin = min, repMax = min + span)
 }
 
-fun DraftItem.withRest(delta: Int): DraftItem = copy(restSec = (restSec + delta * EDIT_REST_STEP_S).coerceIn(0, EDIT_REST_MAX_S))
+fun DraftItem.withRest(delta: Int): DraftItem = copy(restSec = (restSec + delta * R_TRN_EDIT_REST_STEP_S).coerceIn(0, R_TRN_EDIT_REST_MAX_S))

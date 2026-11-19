@@ -611,8 +611,8 @@
     <string name="lat_cancel">Batal</string>
     <string name="lat_back">Kembali</string>
     <string name="lat_create">Buat program</string>
-    <string name="lat_missing_note">Alatmu belum cukup untuk beberapa gerakan tarik. Program tetap dibuat dari yang bisa dilakukan.</string>
-    <string name="lat_q_intro">Tiga pertanyaan singkat untuk membuat programmu.</string>
+    <string name="lat_missing_note">Alat yang ada belum cukup untuk beberapa gerakan tarik. Program tetap dibuat dari yang bisa dilakukan.</string>
+    <string name="lat_q_intro">Tiga pertanyaan singkat untuk membuat program.</string>
     <string name="lat_q_place">Di mana latihan?</string>
     <string name="lat_q_days">Hari per minggu</string>
     <string name="lat_q_minutes">Durasi</string>
@@ -625,7 +625,7 @@
     <string name="lat_blocked_stopped">Program belum bisa dibuat dengan data saat ini.</string>
     <string name="lat_edit_new_title">Rutinitas baru</string>
     <string name="lat_edit_title">Ubah latihan</string>
-    <string name="lat_edit_becomes_own">Setelah disimpan, program ini jadi milikmu dan tidak diubah otomatis lagi.</string>
+    <string name="lat_edit_becomes_own">Setelah disimpan, program ini jadi milik sendiri dan tidak diubah otomatis lagi.</string>
     <string name="lat_edit_name">Nama rutinitas</string>
     <string name="lat_edit_add">Tambah gerakan</string>
     <string name="lat_edit_save">Simpan</string>
@@ -642,7 +642,7 @@
     <string name="lat_edit">Ubah</string>
     <string name="lat_delete">Hapus</string>
     <string name="lat_routines">Rutinitas saya</string>
-    <string name="lat_routines_empty">Belum ada. Buat satu dari gerakan yang kamu pilih.</string>
+    <string name="lat_routines_empty">Belum ada. Buat satu dari gerakan yang dipilih.</string>
     <string name="lat_create_short">Buat</string>
     <string name="lat_jelajahi">Jelajahi</string>
     <string name="lat_jel_full_body">Seluruh tubuh</string>
@@ -660,8 +660,8 @@
     <string name="lat_change_reps">%1$s: repetisi %2$d–%3$d → %4$d–%5$d</string>
     <string name="lat_change_replace">Susun ulang program</string>
     <string name="lat_reason_harder">Semua set sudah di batas atas dengan bentuk rapi, jadi variasi yang lebih berat diusulkan.</string>
-    <string name="lat_reason_level">Tingkat latihanmu naik, jadi program mengikuti.</string>
-    <string name="lat_reason_updated">Aturan atau alatmu menghasilkan program yang sedikit berbeda.</string>
+    <string name="lat_reason_level">Tingkat latihan naik, jadi program mengikuti.</string>
+    <string name="lat_reason_updated">Aturan atau alat yang ada menghasilkan program yang sedikit berbeda.</string>
     <string name="lat_week_map">Otot minggu ini</string>
     <string name="lat_week_map_desc">Peta otot tubuh depan dan belakang; warna lebih tua berarti lebih banyak dilatih minggu ini</string>
     <string name="lat_week_legend">Warna muda: di bawah batas bawah mingguan · sedang: dalam kisaran · tua: di atas %1$d set</string>
@@ -710,4 +710,6 @@
     <string name="mus_obliques">Perut samping</string>
     <string name="mus_lower_back">Punggung bawah</string>
     <string name="mus_forearm">Lengan bawah</string>
+    <string name="lg_feeling_title">Rasanya?</string>
+    <string name="lg_note">Catatan (opsional)</string>
 </resources>

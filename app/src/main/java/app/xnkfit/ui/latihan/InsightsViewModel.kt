@@ -55,7 +55,7 @@ data class InsightsUi(
     val figures: FiguresUi = FiguresUi(),
     val activity: ActivityUi = ActivityUi(),
     val detail: DetailUi? = null,
-    val sex: String = "f",
+    val sex: String = "f", // text-ok: figure key
 )
 
 /** Weekly muscle map (L-11), exercise detail and activity log (L-14) of the Latihan tab. */
@@ -128,6 +128,6 @@ class InsightsViewModel(
 
     private companion object {
         const val MIN_STEP = 5
-        const val MAX_MINUTES = app.xnkfit.domain.latihan.ACTIVITY_MINUTES_MAX
+        const val MAX_MINUTES = app.xnkfit.domain.latihan.R_ACT_MINUTES_MAX
     }
 }

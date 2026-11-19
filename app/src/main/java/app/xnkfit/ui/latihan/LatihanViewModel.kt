@@ -10,7 +10,7 @@ import app.xnkfit.data.program.ProgramRepository.EditDay
 import app.xnkfit.data.program.ProgramRepository.EditItem
 import app.xnkfit.data.program.ProgramRepository.ReviewOffer
 import app.xnkfit.domain.latihan.DraftItem
-import app.xnkfit.domain.latihan.JELAJAHI_SHELF
+import app.xnkfit.domain.latihan.R_JEL_SHELF
 import app.xnkfit.domain.latihan.TrainingSetup
 import app.xnkfit.domain.latihan.defaultItem
 import app.xnkfit.domain.latihan.moved
@@ -116,7 +116,7 @@ class LatihanViewModel(
     // ---- Jelajahi (L-9) ----
 
     fun useTemplate(id: String) {
-        val template = JELAJAHI_SHELF.firstOrNull { it.id == id } ?: return
+        val template = R_JEL_SHELF.firstOrNull { it.id == id } ?: return
         _ui.update { it.copy(working = true) }
         viewModelScope.launch {
             val r = programs.useTemplate(template, prefs.setup())

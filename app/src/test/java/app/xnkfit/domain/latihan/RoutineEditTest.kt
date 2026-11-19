@@ -30,16 +30,18 @@ class RoutineEditTest {
         assertEquals(listOf("a", "b"), l.map { it.exerciseId })
     }
 
-    @Test fun steppersStayInsideTheirGuards() {
+    @Test
+    fun R_TRN_EDIT_steppersStayInsideTheirGuards() {
         assertEquals(1, item("a", sets = 1).withSets(-1).sets)
-        assertEquals(EDIT_SETS_MAX, item("a", sets = EDIT_SETS_MAX).withSets(1).sets)
+        assertEquals(R_TRN_EDIT_SETS_MAX, item("a", sets = R_TRN_EDIT_SETS_MAX).withSets(1).sets)
         assertEquals(1..5, item("a", min = 1, max = 5).withReps(-1).let { it.repMin..it.repMax })
         assertEquals(9..13, item("a").withReps(1).let { it.repMin..it.repMax })
         assertEquals(0, item("a", rest = 0).withRest(-1).restSec)
         assertEquals(105, item("a", rest = 90).withRest(1).restSec)
     }
 
-    @Test fun defaultsUseTheCompoundOrIsolationRest() {
+    @Test
+    fun R_TRN_EDIT_defaultsUseTheCompoundOrIsolationRest() {
         val lib = TrainingTestSupport.library
         val squat = lib.first { it.pattern == Pattern.SQUAT }
         val curl = lib.first { it.pattern == Pattern.CURL }

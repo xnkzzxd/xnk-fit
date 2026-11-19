@@ -12,7 +12,7 @@ import app.xnkfit.domain.latihan.TrainingSetup
 import app.xnkfit.domain.training.EquipmentSetting
 import app.xnkfit.domain.training.Experience
 import app.xnkfit.domain.training.ProgramSource
-import app.xnkfit.domain.latihan.JELAJAHI_SHELF
+import app.xnkfit.domain.latihan.R_JEL_SHELF
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import kotlinx.coroutines.runBlocking
@@ -114,10 +114,11 @@ class OwnRoutinesTest {
         assertEquals(0, repo().routines().size)
     }
 
-    @Test fun jelajahiCardBuildsAnActiveProgramAndReplacesTheOldCard() = runBlocking {
+    @Test
+    fun R_JEL_SHELF_cardBuildsAnActiveProgramAndReplacesTheOldCard() = runBlocking {
         ready()
         repo().createAuto(gym)
-        JELAJAHI_SHELF.forEach { t ->
+        R_JEL_SHELF.forEach { t ->
             val r = repo().useTemplate(t, gym) as CreateResult.Created
             assertTrue(r.active)
             assertEquals(ProgramSource.JELAJAHI, repo().active()!!.source)
@@ -128,9 +129,9 @@ class OwnRoutinesTest {
 
     @Test fun jelajahiNeverWritesBeforeTheScreeningIsDone() = runBlocking {
         ready(done = false)
-        assertTrue(repo().useTemplate(JELAJAHI_SHELF.first(), null) is CreateResult.Blocked)
+        assertTrue(repo().useTemplate(R_JEL_SHELF.first(), null) is CreateResult.Blocked)
         assertNull(db.programDao().active())
-        assertNotNull(JELAJAHI_SHELF.firstOrNull { it.id == "home_bodyweight" })
+        assertNotNull(R_JEL_SHELF.firstOrNull { it.id == "home_bodyweight" })
     }
 
     private companion object {

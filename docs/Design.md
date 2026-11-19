@@ -64,7 +64,7 @@ All tables have `id` (UUID text), `createdAt`, `updatedAt` (epoch ms). Deletes a
 | `photo` | path, takenAt, kind (front, side, back), hiddenFromBackup | Files in app-private storage; rows reference them. |
 | `equipment` | setting (gym, home-bw, home-db, custom), items (set of codes) | Tick-your-own = `custom`. |
 | `exercise` | id (stable code, e.g. `SQUAT_GOB`), name_id, name_en, pattern, muscles, level, variantOf, cues_en, hint_id | Read-only from content. Patterns and muscles from Content.md. |
-| `program` | id, source (`auto`, `own`, `jelajahi`), setting, rulesVersion, createdAt, isActive | `auto` rows are regenerated; `own` rows never are (L-5). |
+| `program` | id, source (`auto`, `own`, `jelajahi`), kind (`program`, `routine`; B-08), setting, rulesVersion, createdAt, isActive | `auto` rows are regenerated; `own` rows never are (L-5). |
 | `program_day` | programId, position, name, estMinutes | |
 | `program_item` | dayId, exerciseId, position, setsTarget, repMin, repMax, restSec, supersetGroup, setKindDefault | |
 | `workout` | id, programDayId?, mode (dipandu, bebas), startedAt, endedAt?, feeling 1–5, note | Written on every tap (PR-2). `endedAt` null = unfinished. |
@@ -165,7 +165,7 @@ Review (L-4): every 4 weeks or after 3 completed sessions, the generator reruns 
 
 Return after absence (L-16): gap ≥ 14 days → the first session uses 60 % of the last working loads and one fewer set. No banner.
 
-Own routines (L-5): a program row with `source = own` is never touched by the generator. Editing an `auto` program turns it into `own` on save.
+Own routines (L-5): a program row with `source = own` is never touched by the generator. Editing an `auto` program turns it into `own` on save. B-08 (`data/program/ProgramRepository`): a routine is a one-day `program` row with `kind = routine`, kept out of the program list and the rotation; a new `auto` program is stored inactive while an `own` one is active; a Jelajahi card is built by the same generator and becomes the active program. The review (L-4) runs through B-06 `review` only for an `auto` program with auto-programming on. Figure assets (`figures/…`) are drawn by `ui/latihan/FigureViews.kt` (muscle map and animated rig; rig only where `exercises.json` has `rig`). New v1 column `program.kind`, JSON regenerated, no migration (Decisions.md).
 
 Implementation (B-06, `app.xnkfit.domain.training`: `Library.kt`, `ProgramGenerator.kt`, `Progression.kt`). Deviations and readings, all inside this text; the numbers are Rules.md R_TRN_GEN and R_TRN_EQUIP:
 

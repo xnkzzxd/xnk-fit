@@ -14,16 +14,17 @@ class MuscleMapTest {
     @Test fun mainIsStrongestAndHelperLightest() {
         val squat = lib.first { it.id == "SQUAT_BACK" }
         val lv = exerciseLevels(squat)
-        squat.main.forEach { assertEquals(MAP_HIGH, lv.getValue(it)) }
-        (squat.helper - squat.main).forEach { assertEquals(MAP_LOW, lv.getValue(it)) }
+        squat.main.forEach { assertEquals(R_MAP_TONE_HIGH, lv.getValue(it)) }
+        (squat.helper - squat.main).forEach { assertEquals(R_MAP_TONE_LOW, lv.getValue(it)) }
     }
 
-    @Test fun weeklyLevelsFollowTheVolumeRange() {
-        assertEquals(MAP_NONE, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L1, 0.0))
-        assertEquals(MAP_LOW, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L1, 3.0))
-        assertEquals(MAP_MID, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L1, 8.0))
-        assertEquals(MAP_LOW, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L2, 8.0))
-        assertEquals(MAP_HIGH, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L2, 21.0))
+    @Test
+    fun R_MAP_TONE_weeklyLevelsFollowTheVolumeRange() {
+        assertEquals(R_MAP_TONE_NONE, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L1, 0.0))
+        assertEquals(R_MAP_TONE_LOW, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L1, 3.0))
+        assertEquals(R_MAP_TONE_MID, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L1, 8.0))
+        assertEquals(R_MAP_TONE_LOW, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L2, 8.0))
+        assertEquals(R_MAP_TONE_HIGH, weeklyLevel(MuscleGroup.CHEST, TrainingLevel.L2, 21.0))
     }
 
     @Test fun weekCountsDoneSetsOfMainAndHelperMuscles() {
@@ -40,7 +41,7 @@ class MuscleMapTest {
             MuscleGroup.FRONT_DELT to listOf("delts"), MuscleGroup.REAR_DELT to listOf("delts"),
             MuscleGroup.LATS to listOf("lats"),
         )
-        val r = regionLevels(mapOf(MuscleGroup.FRONT_DELT to MAP_LOW, MuscleGroup.REAR_DELT to MAP_HIGH), regions)
-        assertEquals(mapOf("delts" to MAP_HIGH), r)
+        val r = regionLevels(mapOf(MuscleGroup.FRONT_DELT to R_MAP_TONE_LOW, MuscleGroup.REAR_DELT to R_MAP_TONE_HIGH), regions)
+        assertEquals(mapOf("delts" to R_MAP_TONE_HIGH), r)
     }
 }

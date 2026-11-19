@@ -66,5 +66,5 @@ fun weekActivity(rows: List<LoggedActivity>): WeekActivity = WeekActivity(
 )
 
 /** Typo guard for minutes (👤): one entry is 1–600 minutes. */
-const val ACTIVITY_MINUTES_MAX = 600
-fun validMinutes(m: Int): Boolean = m in 1..ACTIVITY_MINUTES_MAX
+const val R_ACT_MINUTES_MAX = 600
+fun validMinutes(m: Int): Boolean = m in 1..R_ACT_MINUTES_MAX

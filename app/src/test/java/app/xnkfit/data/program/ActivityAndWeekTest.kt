@@ -16,8 +16,9 @@ import app.xnkfit.data.db.WorkoutEntity
 import app.xnkfit.data.db.WorkoutSetEntity
 import app.xnkfit.domain.latihan.ActivityChoice
 import app.xnkfit.domain.latihan.Effort
-import app.xnkfit.domain.latihan.MAP_NONE
+import app.xnkfit.domain.latihan.R_MAP_TONE_NONE
 import app.xnkfit.domain.training.MuscleGroup
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -102,11 +103,26 @@ class ActivityAndWeekTest {
         }
         val m = weekMap().thisWeek()
         assertTrue(m.sets.getValue(MuscleGroup.QUADS) >= 4.0)
-        assertTrue(m.levels.getValue(MuscleGroup.QUADS) > MAP_NONE)
+        assertTrue(m.levels.getValue(MuscleGroup.QUADS) > R_MAP_TONE_NONE)
         assertEquals(null, m.levels[MuscleGroup.BICEPS])
         // A week later nothing of it is left on the map.
         clock += 8L * 24 * 60 * 60 * 1000
         assertTrue(weekMap().thisWeek().levels.isEmpty())
+    }
+
+    @Test fun L13_feelingAndNoteAreStoredAndATypoFeelingIsDropped() = runBlocking {
+        ready()
+        db.workoutDao().startWorkout(WorkoutEntity("w2", clock, clock, null, "bebas", clock, endedAt = clock + 1000))
+        logger().setFeelingNote("w2", 4, "  kaki pegal  ")
+        db.workoutDao().observeFinished(5).first().first { it.id == "w2" }.let {
+            assertEquals(4, it.feeling)
+            assertEquals("kaki pegal", it.note)
+        }
+        logger().setFeelingNote("w2", 9, "   ")
+        db.workoutDao().observeFinished(5).first().first { it.id == "w2" }.let {
+            assertEquals(null, it.feeling)
+            assertEquals(null, it.note)
+        }
     }
 
     private companion object { const val NOW = 1_790_000_000_000L }

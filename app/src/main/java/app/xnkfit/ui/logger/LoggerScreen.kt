@@ -74,6 +74,16 @@ fun LoggerScreen(vm: LoggerViewModel, modifier: Modifier = Modifier) {
         LoggerPhase.DONE -> Column(modifier.fillMaxSize().padding(16.dp), Arrangement.spacedBy(12.dp)) {
             Text(stringResource(R.string.lg_done_title), style = MaterialTheme.typography.headlineSmall)
             ui.doneTotals?.let { Stats(ui.copy(blocks = emptyList()), it.doneSets, it.volumeKg, showDuration = false) }
+            Text(stringResource(R.string.lg_feeling_title), style = MaterialTheme.typography.titleMedium)
+            Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(8.dp)) {
+                (1..FEELING_MAX).forEach { n ->
+                    ChoiceCard(ui.doneFeeling == n, n.toString(), Modifier.weight(1f)) { vm.setFeeling(n) } // text-ok: number
+                }
+            }
+            androidx.compose.material3.OutlinedTextField(
+                value = ui.doneNote, onValueChange = vm::setNote, modifier = Modifier.fillMaxWidth(),
+                label = { Text(stringResource(R.string.lg_note)) },
+            )
             Button(vm::closeDone, Modifier.fillMaxWidth().heightIn(min = MinTouch)) { Text(stringResource(R.string.lg_done_close)) }
         }
     }
@@ -483,3 +493,5 @@ private const val MS_PER_S = 1000L
 private const val SEC_PER_MIN = 60
 private val SHEET_LIST_MAX = 360.dp
 private val REST_CHOICES_S = listOf(60, 90, 120, 180)
+
+private const val FEELING_MAX = 5

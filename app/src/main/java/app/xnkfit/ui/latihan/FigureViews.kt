@@ -39,8 +39,8 @@ import app.xnkfit.data.figures.RigFrame
 import app.xnkfit.data.figures.RigMark
 import app.xnkfit.data.figures.RigPattern
 import app.xnkfit.data.figures.SegState
-import app.xnkfit.domain.latihan.MAP_HIGH
-import app.xnkfit.domain.latihan.MAP_LOW
+import app.xnkfit.domain.latihan.R_MAP_TONE_HIGH
+import app.xnkfit.domain.latihan.R_MAP_TONE_LOW
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
@@ -55,8 +55,8 @@ private fun parse(d: String): Path = PathParser().parsePathString(d).toPath()
 private fun tone(level: Int): Color {
     val base = MaterialTheme.colorScheme.primary
     return when {
-        level >= MAP_HIGH -> base
-        level == MAP_LOW -> base.copy(alpha = 0.35f)
+        level >= R_MAP_TONE_HIGH -> base
+        level == R_MAP_TONE_LOW -> base.copy(alpha = 0.35f)
         else -> base.copy(alpha = 0.65f)
     }
 }
@@ -78,7 +78,7 @@ private fun BodySideView(side: BodySide, levels: Map<String, Int>, modifier: Mod
     val bodyColor = MaterialTheme.colorScheme.surfaceVariant
     val baseColor = MaterialTheme.colorScheme.outlineVariant
     val partColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.25f)
-    val tones = listOf(MAP_LOW, 2, MAP_HIGH).associateWith { tone(it) }
+    val tones = listOf(R_MAP_TONE_LOW, 2, R_MAP_TONE_HIGH).associateWith { tone(it) }
     Canvas(modifier.aspectRatio(side.viewBox[2] / side.viewBox[3])) {
         val sc = size.width / side.viewBox[2]
         scale(sc, sc, Offset.Zero) {
@@ -87,7 +87,7 @@ private fun BodySideView(side: BodySide, levels: Map<String, Int>, modifier: Mod
                 base.forEach { drawPath(it, baseColor) }
                 parts.forEach { (region, shapes) ->
                     val lv = levels[region] ?: 0
-                    shapes.forEach { drawPath(it, if (lv > 0) tones.getValue(lv.coerceIn(MAP_LOW, MAP_HIGH)) else partColor) }
+                    shapes.forEach { drawPath(it, if (lv > 0) tones.getValue(lv.coerceIn(R_MAP_TONE_LOW, R_MAP_TONE_HIGH)) else partColor) }
                 }
             }
         }
@@ -125,8 +125,8 @@ private fun blend(frames: List<RigFrame>, t: Float): RigFrame {
 @Composable
 fun RigView(pattern: RigPattern, data: RigData, sex: String, modifier: Modifier = Modifier) {
     val off = animationsOff()
-    val t = if (off) 1f else rememberInfiniteTransition(label = "rig").animateFloat(
-        0f, 1f, infiniteRepeatable(tween(RIG_MS, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "rig-t",
+    val t = if (off) 1f else rememberInfiniteTransition(label = "rig").animateFloat( // text-ok: label of an animation, SVG segment name
+        0f, 1f, infiniteRepeatable(tween(RIG_MS, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "rig-t", // text-ok: label of an animation, SVG segment name
     ).value
     val frame = remember(pattern, t) { blend(pattern.frames, t) }
     val shapes = remember(pattern) { pattern.equip.map { e -> e.d?.let(::parse) } }
@@ -161,12 +161,12 @@ private fun DrawScope.drawRig(
     }
     p.order.forEach { sg ->
         val s = frame.segments[sg] ?: return@forEach
-        val b = sg.removeSuffix("L").removeSuffix("R")
+        val b = sg.removeSuffix("L").removeSuffix("R") // text-ok: label of an animation, SVG segment name
         val wd = w[b] ?: 8f
         translate(s.x, s.y) {
             rotate(s.rot, Offset.Zero) {
                 scale(s.sx, 1f, Offset.Zero) {
-                    if (b == "head") drawCircle(body, wd, Offset(data.lengths.getValue("head"), 0f))
+                    if (b == "head") drawCircle(body, wd, Offset(data.lengths.getValue("head"), 0f)) // text-ok: label of an animation, SVG segment name
                     else {
                         val len = data.lengths[b] ?: 0f
                         drawRoundRect(body, Offset(0f, -wd / 2), Size(len, wd), CornerRadius(wd / 2))
@@ -181,7 +181,7 @@ private fun DrawScope.drawRig(
 
 private fun DrawScope.drawMark(m: RigMark, base: String, wd: Float, len: Float, p: RigPattern, strong: Color, soft: Color) {
     val color = when (m.region) { in p.main -> strong; in p.helper -> soft; else -> return }
-    val flip = if (p.front) 1f else if (base == "torso") 1f else -1f
+    val flip = if (p.front) 1f else if (base == "torso") 1f else -1f // text-ok: label of an animation, SVG segment name
     val cy = m.side * flip * wd * 0.28f
     val rx = m.rx
     val ry = min(m.ry, wd * 0.42f)

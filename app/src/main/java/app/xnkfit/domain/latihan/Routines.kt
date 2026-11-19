@@ -38,9 +38,12 @@ data class TrainingSetup(
 data class JelajahiTemplate(val id: String, val setting: EquipmentSetting, val days: Int, val minutes: Int)
 
 /** L-9: full body 3×, upper / lower, home bodyweight, dumbbell only. IDs are stable; texts are string resources. */
-val JELAJAHI_SHELF: List<JelajahiTemplate> = listOf(
-    JelajahiTemplate("full_body_gym", EquipmentSetting.GYM, 3, 45),
-    JelajahiTemplate("upper_lower_gym", EquipmentSetting.GYM, 4, 45),
-    JelajahiTemplate("home_bodyweight", EquipmentSetting.HOME_BW, 3, 45),
-    JelajahiTemplate("home_dumbbell", EquipmentSetting.HOME_DB, 3, 45),
+const val R_JEL_SHELF_DAYS = 3
+const val R_JEL_SHELF_DAYS_SPLIT = 4
+const val R_JEL_SHELF_MINUTES = 45
+val R_JEL_SHELF: List<JelajahiTemplate> = listOf(
+    JelajahiTemplate("full_body_gym", EquipmentSetting.GYM, R_JEL_SHELF_DAYS, R_JEL_SHELF_MINUTES),
+    JelajahiTemplate("upper_lower_gym", EquipmentSetting.GYM, R_JEL_SHELF_DAYS_SPLIT, R_JEL_SHELF_MINUTES),
+    JelajahiTemplate("home_bodyweight", EquipmentSetting.HOME_BW, R_JEL_SHELF_DAYS, R_JEL_SHELF_MINUTES),
+    JelajahiTemplate("home_dumbbell", EquipmentSetting.HOME_DB, R_JEL_SHELF_DAYS, R_JEL_SHELF_MINUTES),
 )
