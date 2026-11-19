@@ -19,10 +19,10 @@ sealed interface StepsCard {
     data class Shown(val today: Long, val weeklyAverage: Long) : StepsCard
 }
 
-const val WEEK_DAYS = 7
+const val R_ACT_WEEK_DAYS = 7
 
 /** Window the data source is asked for: the 7 days ending today. */
-fun weekWindow(today: LocalDate): ClosedRange<LocalDate> = today.minusDays(WEEK_DAYS - 1L)..today
+fun weekWindow(today: LocalDate): ClosedRange<LocalDate> = today.minusDays(R_ACT_WEEK_DAYS - 1L)..today
 
 /**
  * Today's steps and the weekly average over the 7 days ending today.
