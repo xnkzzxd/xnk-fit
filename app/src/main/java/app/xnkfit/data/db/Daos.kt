@@ -38,6 +38,16 @@ interface ProfileDao {
     suspend fun equipment(): List<EquipmentEntity>
 }
 
+/** One done set with its workout's start, for [WorkoutDao.finishedSetHistory]. */
+data class HistorySetRow(
+    val startedAt: Long,
+    val exerciseId: String,
+    val weightKg: Double?,
+    val reps: Int?,
+    val bandLevel: Int?,
+    val form: String?,
+)
+
 @Dao
 interface ProgramDao {
     @Upsert suspend fun upsertExercises(rows: List<ExerciseEntity>)
@@ -53,6 +63,12 @@ interface ProgramDao {
 
     @Query("SELECT * FROM program WHERE isActive = 1 LIMIT 1")
     fun observeActive(): Flow<ProgramEntity?>
+
+    @Query("SELECT * FROM program WHERE isActive = 1 LIMIT 1")
+    suspend fun active(): ProgramEntity?
+
+    @Query("SELECT * FROM exercise")
+    suspend fun exercises(): List<ExerciseEntity>
 
     @Query("SELECT * FROM program_day WHERE programId = :programId ORDER BY position")
     suspend fun days(programId: String): List<ProgramDayEntity>
@@ -92,6 +108,54 @@ interface WorkoutDao {
         if (updateSetRow(set) == 0) insertSetRow(set)
         touch(set.workoutId, now, restEndsAt)
     }
+
+    /** Several set rows (swap, superset, rest change) and the workout's clock in one transaction (B-07). */
+    @Transaction
+    suspend fun saveSets(sets: List<WorkoutSetEntity>, workoutId: String, now: Long, restEndsAt: Long?) {
+        sets.forEach { if (updateSetRow(it) == 0) insertSetRow(it) }
+        touch(workoutId, now, restEndsAt)
+    }
+
+    @Query("DELETE FROM workout_set WHERE id IN (:ids)")
+    suspend fun deleteSetRows(ids: List<String>)
+
+    /** Removing sets is a tap like any other: rows and the workout's clock together. */
+    @Transaction
+    suspend fun deleteSets(ids: List<String>, workoutId: String, now: Long, restEndsAt: Long?) {
+        deleteSetRows(ids)
+        touch(workoutId, now, restEndsAt)
+    }
+
+    /** "Batalkan latihan": the workout and (by cascade) its sets are gone. */
+    @Query("DELETE FROM workout WHERE id = :workoutId")
+    suspend fun deleteWorkout(workoutId: String)
+
+    @Query("UPDATE workout SET mode = :mode, updatedAt = :now WHERE id = :workoutId")
+    suspend fun setMode(workoutId: String, mode: String, now: Long)
+
+    /** Done sets of the last finished workout that has [exerciseId] ("sebelumnya", L-7). */
+    @Query(
+        "SELECT s.* FROM workout_set s WHERE s.exerciseId = :exerciseId AND s.done = 1 AND s.workoutId = (" +
+            "SELECT w.id FROM workout w JOIN workout_set x ON x.workoutId = w.id " +
+            "WHERE x.exerciseId = :exerciseId AND x.done = 1 AND w.endedAt IS NOT NULL " +
+            "ORDER BY w.startedAt DESC LIMIT 1) ORDER BY s.position",
+    )
+    suspend fun previousSets(exerciseId: String): List<WorkoutSetEntity>
+
+    /** Done sets of finished workouts, with the start time, for progression (Design §6). */
+    @Query(
+        "SELECT w.startedAt AS startedAt, s.exerciseId AS exerciseId, s.weightKg AS weightKg, s.reps AS reps, " +
+            "s.bandLevel AS bandLevel, s.form AS form FROM workout_set s JOIN workout w ON w.id = s.workoutId " +
+            "WHERE s.done = 1 AND w.endedAt IS NOT NULL ORDER BY w.startedAt",
+    )
+    suspend fun finishedSetHistory(): List<HistorySetRow>
+
+    /** Program day of the last finished workout, to pick the next day of the rotation. */
+    @Query("SELECT programDayId FROM workout WHERE endedAt IS NOT NULL AND programDayId IS NOT NULL ORDER BY startedAt DESC LIMIT 1")
+    suspend fun lastFinishedProgramDayId(): String?
+
+    @Query("SELECT COUNT(*) FROM workout")
+    suspend fun workoutCount(): Int
 
     @Query("SELECT * FROM workout_set WHERE workoutId = :workoutId ORDER BY position")
     fun observeSets(workoutId: String): Flow<List<WorkoutSetEntity>>
