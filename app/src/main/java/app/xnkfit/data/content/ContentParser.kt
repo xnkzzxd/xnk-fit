@@ -74,6 +74,8 @@ object ContentParser {
                 variantOf = o.optStringOrNull("variantOf"),
                 cuesEn = cues?.let { c -> (0 until c.length()).joinToString("\n") { c.getString(it) } },
                 hintId = o.optStringOrNull("hint_id"),
+                settingsJson = (o.optJSONArray("settings") ?: JSONArray()).toString(),
+                equipmentJson = (o.optJSONArray("equipment") ?: JSONArray()).toString(),
             )
         }
         return ParsedFile(ContentFile.EXERCISES, exercises = rows, skipped = skipped)
