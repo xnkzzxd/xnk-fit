@@ -14,8 +14,8 @@ object ContentBootstrap {
         BundledContentLoader(ContentStore(db), AssetContentSource(context.applicationContext.assets)).loadIfNeeded()
     }
 
-    suspend fun checkForUpdate(db: XnkDatabase, appVersionCode: Int): ContentUpdater.Result {
+    suspend fun checkForUpdate(db: XnkDatabase, appVersionCode: Int, force: Boolean = false): ContentUpdater.Result {
         val verifier = if (ContentConfig.PUBLIC_KEY_IS_PLACEHOLDER) null else ManifestVerifier(ContentConfig.PUBLIC_KEY_BASE64)
-        return ContentUpdater(ContentStore(db), HttpsContentFetcher(), ContentConfig.BASE_URL, verifier, appVersionCode).runIfDue()
+        return ContentUpdater(ContentStore(db), HttpsContentFetcher(), ContentConfig.BASE_URL, verifier, appVersionCode).runIfDue(force)
     }
 }

@@ -39,14 +39,15 @@ class ContentUpdater(
 
     data class Result(val outcome: Outcome, val detail: String? = null, val contentVersion: Int? = null)
 
-    suspend fun runIfDue(): Result = withContext(Dispatchers.IO) {
+    /** [force] is the manual "Periksa pembaruan" button: it skips the 24 h and 6 h waits; every other check still runs. */
+    suspend fun runIfDue(force: Boolean = false): Result = withContext(Dispatchers.IO) {
         if (verifier == null) return@withContext Result(Outcome.DISABLED, "no public key")
         if (!baseUrl.startsWith("https://")) return@withContext Result(Outcome.DISABLED, "base URL is not https")
         val meta = store.meta() ?: return@withContext Result(Outcome.DISABLED, "no content installed yet")
         val t = now()
         // A clock set backwards gives a negative gap: treat that as due, not as "wait forever".
-        meta.lastCheckAt?.let { if (t - it in 0 until ContentConfig.CHECK_INTERVAL_MS) return@withContext Result(Outcome.THROTTLED_24H) }
-        meta.lastAttemptAt?.let { if (t - it in 0 until ContentConfig.RETRY_INTERVAL_MS) return@withContext Result(Outcome.THROTTLED_6H) }
+        if (!force) meta.lastCheckAt?.let { if (t - it in 0 until ContentConfig.CHECK_INTERVAL_MS) return@withContext Result(Outcome.THROTTLED_24H) }
+        if (!force) meta.lastAttemptAt?.let { if (t - it in 0 until ContentConfig.RETRY_INTERVAL_MS) return@withContext Result(Outcome.THROTTLED_6H) }
         store.recordCheck(attemptAt = t, checkedAt = null)
         try {
             check(meta.contentVersion, store.installedHashes(), verifier, t)
