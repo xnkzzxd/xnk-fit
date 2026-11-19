@@ -13,6 +13,7 @@ import app.xnkfit.domain.share.mosaicBoxes
  * no network. That detector finds frontal faces only, so when it finds none the whole picture is pixelated:
  * a card must never leak a face the detector missed (PR-5).
  */
+@Suppress("UseKtx") // core-ktx is not in the Design §12 catalog
 object FaceMosaic {
     private const val DETECT_MAX_SIDE = 640
     private const val MAX_FACES = 8

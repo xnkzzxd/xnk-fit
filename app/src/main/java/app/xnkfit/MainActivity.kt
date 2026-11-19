@@ -18,6 +18,9 @@ import app.xnkfit.data.progress.RoomPhotoGateway
 import app.xnkfit.ui.saya.DataStoreSayaPrefs
 import app.xnkfit.ui.saya.SayaScreen
 import app.xnkfit.ui.saya.SayaViewModel
+import app.xnkfit.data.share.ShareFactsSource
+import app.xnkfit.ui.share.KartuScreen
+import app.xnkfit.ui.share.ShareViewModel
 import app.xnkfit.ui.XnkApp
 import app.xnkfit.ui.common.XnkTheme
 import app.xnkfit.ui.onboarding.OnboardingScreen
@@ -82,6 +85,22 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private val share: ShareViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val source = ShareFactsSource(database, ProgressRepository(database))
+                val photos = RoomPhotoGateway(database, PhotoStore(applicationContext))
+                val prefs = DataStoreSayaPrefs(applicationContext)
+                return ShareViewModel(
+                    loadFacts = source::load,
+                    loadPhotoPath = { photos.list().firstOrNull()?.path },
+                    loadSayaHidesWeight = prefs::weightHidden,
+                ) as T
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -97,7 +116,14 @@ class MainActivity : ComponentActivity() {
                 when (hasProfile) {
                     null -> Unit
                     false -> OnboardingScreen(onboarding, onDone = { hasProfile = true })
-                    true -> XnkApp(makan, me = { SayaScreen(saya, it) })
+                    true -> {
+                        var showCards by rememberSaveable { mutableStateOf(false) }
+                        if (showCards) {
+                            KartuScreen(share, onBack = { showCards = false })
+                        } else {
+                            XnkApp(makan, me = { SayaScreen(saya, it, onOpenCards = { showCards = true }) })
+                        }
+                    }
                 }
             }
         }

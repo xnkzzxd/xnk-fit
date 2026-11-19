@@ -27,13 +27,14 @@ private val ID = Locale.forLanguageTag("id-ID") // text-ok: locale tag
 private val DAY_MONTH = DateTimeFormatter.ofPattern("d MMM", ID) // text-ok: date pattern
 
 private const val MINUS = "−" // text-ok: typographic minus
+private const val PLUS = "+" // text-ok: sign character
 
 /** A number for a card: whole numbers without decimals, others with one; [signed] adds + or the minus sign. */
 internal fun cardNumber(v: Double, signed: Boolean): String {
     val body = if (v % 1.0 == 0.0) "%d".format(ID, abs(v).toLong()) else "%.1f".format(ID, abs(v))
     return when {
         v < 0 -> MINUS + body
-        signed && v > 0 -> "+$body"
+        signed && v > 0 -> PLUS + body
         else -> body
     }
 }

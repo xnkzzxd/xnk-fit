@@ -20,6 +20,7 @@ import app.xnkfit.domain.share.CardTemplate
  * All sizes are written for a 1,080 px wide card and scaled, so the preview and the shared picture look alike.
  * Colours follow the approved mockup (black, white, accent), not the app theme, so a card looks the same in light and dark mode.
  */
+@Suppress("UseKtx") // core-ktx is not in the Design §12 catalog
 object CardRenderer {
     private const val DESIGN_WIDTH = 1080f
     private const val PAD = 76f

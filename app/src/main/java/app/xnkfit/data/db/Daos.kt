@@ -347,6 +347,16 @@ interface ProgressDao {
 
     @Query("SELECT * FROM journey_moment ORDER BY at DESC")
     fun observeMoments(): Flow<List<JourneyMomentEntity>>
+
+    // Share cards (B-13): read-only lookups for the card facts.
+    @Query("SELECT * FROM workout WHERE endedAt IS NOT NULL ORDER BY endedAt DESC LIMIT 1")
+    suspend fun lastFinishedWorkout(): WorkoutEntity?
+
+    @Query("SELECT name FROM program_day WHERE id = :id")
+    suspend fun programDayName(id: String): String?
+
+    @Query("SELECT nameId FROM exercise WHERE id = :id")
+    suspend fun exerciseName(id: String): String?
 }
 
 @Dao

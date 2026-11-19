@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -99,7 +100,7 @@ private fun badgeIcon(name: String): Int = when (name) {
 
 /** Saya (PRD P-1…P-5). One column; the tablet layout is B-17. */
 @Composable
-fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier) {
+fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier, onOpenCards: () -> Unit = {}) {
     val state by vm.state.collectAsState()
     // Opening the tab recounts points and badges, so work finished elsewhere shows up here.
     LaunchedEffect(Unit) { vm.refresh() }
@@ -123,6 +124,7 @@ fun SayaScreen(vm: SayaViewModel, modifier: Modifier = Modifier) {
         item { BodyCard(state, vm, onAdd = { showMeasure = true }) }
         item { BadgesCard(summary.badges, onOpen = { openBadge = it }) }
         item { JourneyCard(summary, onAdd = { showNote = true }) }
+        item { CardsEntry(onOpenCards) }
         item { PhotosCard(state, vm) }
     }
 
@@ -167,6 +169,20 @@ private fun ProfileCard(state: SayaState, s: app.xnkfit.data.progress.ProgressSu
                 Stat(s.personalRecords, R.string.me_stat_records)
             }
             Text(stringResource(R.string.me_streak_note), style = MaterialTheme.typography.bodySmall)
+        }
+    }
+}
+
+/** Entry to Kartu saya (B-13, PRD P-6). */
+@Composable
+private fun CardsEntry(onOpen: () -> Unit) {
+    Card(Modifier.fillMaxWidth()) {
+        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Column(Modifier.weight(1f)) {
+                Text(stringResource(R.string.me_cards_title), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.me_cards_hint), style = MaterialTheme.typography.bodySmall)
+            }
+            Button(onClick = onOpen, modifier = Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.me_cards_open)) }
         }
     }
 }

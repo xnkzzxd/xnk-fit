@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One folder only: the camera's private capture cache (B-12). Photos in filesDir are never shared. -->
+<!-- Two cache folders only: the camera capture (B-12) and the share card (B-13). Photos in filesDir are never shared. -->
 <paths>
     <cache-path name="capture" path="capture/" />
+    <!-- The one finished share card, handed to the system share sheet (B-13). Nothing else is shared. -->
+    <cache-path name="share" path="share/" />
 </paths>
