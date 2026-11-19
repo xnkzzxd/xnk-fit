@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4ef5a31459ab34864531f6918a2d18e3",
+    "identityHash": "fcb20d5943a47df0738c5393a705380d",
     "entities": [
       {
         "tableName": "profile",
@@ -251,7 +251,7 @@
       },
       {
         "tableName": "exercise",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `nameId` TEXT NOT NULL, `nameEn` TEXT NOT NULL, `pattern` TEXT NOT NULL, `musclesJson` TEXT NOT NULL, `level` TEXT NOT NULL, `variantOf` TEXT, `cuesEn` TEXT, `hintId` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `nameId` TEXT NOT NULL, `nameEn` TEXT NOT NULL, `pattern` TEXT NOT NULL, `musclesJson` TEXT NOT NULL, `level` TEXT NOT NULL, `variantOf` TEXT, `cuesEn` TEXT, `hintId` TEXT, `settingsJson` TEXT NOT NULL, `equipmentJson` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -315,6 +315,18 @@
             "fieldPath": "hintId",
             "columnName": "hintId",
             "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "settingsJson",
+            "columnName": "settingsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "equipmentJson",
+            "columnName": "equipmentJson",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -337,7 +349,7 @@
       },
       {
         "tableName": "program",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `source` TEXT NOT NULL, `setting` TEXT NOT NULL, `rulesVersion` INTEGER NOT NULL, `isActive` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `source` TEXT NOT NULL, `setting` TEXT NOT NULL, `rulesVersion` INTEGER NOT NULL, `isActive` INTEGER NOT NULL, `level` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -378,6 +390,12 @@
           {
             "fieldPath": "isActive",
             "columnName": "isActive",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -674,7 +692,7 @@
       },
       {
         "tableName": "workout_set",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `workoutId` TEXT NOT NULL, `exerciseId` TEXT NOT NULL, `position` INTEGER NOT NULL, `kind` TEXT NOT NULL, `weightKg` REAL, `reps` INTEGER, `bandLevel` INTEGER, `rpe` REAL, `form` TEXT, `done` INTEGER NOT NULL, `doneAt` INTEGER, PRIMARY KEY(`id`), FOREIGN KEY(`workoutId`) REFERENCES `workout`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `workoutId` TEXT NOT NULL, `exerciseId` TEXT NOT NULL, `position` INTEGER NOT NULL, `kind` TEXT NOT NULL, `weightKg` REAL, `reps` INTEGER, `bandLevel` INTEGER, `rpe` REAL, `form` TEXT, `done` INTEGER NOT NULL, `doneAt` INTEGER, `holdSec` INTEGER, `supersetGroup` INTEGER, `restSec` INTEGER, PRIMARY KEY(`id`), FOREIGN KEY(`workoutId`) REFERENCES `workout`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -752,6 +770,21 @@
           {
             "fieldPath": "doneAt",
             "columnName": "doneAt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "holdSec",
+            "columnName": "holdSec",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "supersetGroup",
+            "columnName": "supersetGroup",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "restSec",
+            "columnName": "restSec",
             "affinity": "INTEGER"
           }
         ],
@@ -1708,7 +1741,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4ef5a31459ab34864531f6918a2d18e3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fcb20d5943a47df0738c5393a705380d')"
     ]
   }
 }

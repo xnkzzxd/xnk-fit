@@ -91,6 +91,10 @@ data class ExerciseEntity(
     val variantOf: String? = null,
     val cuesEn: String? = null,
     val hintId: String? = null,
+    /** JSON array of settings codes (gym, home-bw, home-db) from content; B-07 adds it for the generator and swap. */
+    val settingsJson: String = "[]",
+    /** JSON array of equipment codes the exercise needs (Content.md §2); B-07. */
+    val equipmentJson: String = "[]",
 )
 
 @Entity(tableName = "program")
@@ -103,6 +107,8 @@ data class ProgramEntity(
     val setting: String,
     val rulesVersion: Int,
     val isActive: Boolean,
+    /** Training level 1–3 the program was built for (R_TRN_LEVELS); the logger's suggestions need it (B-07). */
+    val level: Int = 1,
 )
 
 @Entity(
@@ -183,6 +189,12 @@ data class WorkoutSetEntity(
     val form: String? = null,
     val done: Boolean = false,
     val doneAt: Long? = null,
+    /** Seconds for held exercises (plank); reps stay null then (B-07, R_TRN_LOGGER). */
+    val holdSec: Int? = null,
+    /** Same number = same superset inside this workout (L-7). */
+    val supersetGroup: Int? = null,
+    /** Rest after this set, seconds; null = no timer. */
+    val restSec: Int? = null,
 )
 
 @Entity(tableName = "activity", indices = [Index("at")])
