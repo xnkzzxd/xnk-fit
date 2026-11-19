@@ -14,6 +14,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -57,9 +58,12 @@ fun settingLabel(code: String): String = stringResource(
 
 /** Latihan home: the first profile questions, or the program's day list with "Mulai" (L-1, L-5). */
 @Composable
-fun LatihanScreen(vm: LatihanViewModel, onStart: (dayId: String?, empty: Boolean) -> Unit, modifier: Modifier = Modifier) {
+fun LatihanScreen(vm: LatihanViewModel, insights: InsightsViewModel, onStart: (dayId: String?, empty: Boolean) -> Unit, modifier: Modifier = Modifier) {
     val ui by vm.ui.collectAsState()
+    val extra by insights.ui.collectAsState()
     ui.editor?.let { return RoutineEditor(it, vm, modifier) }
+    ActivitySheet(extra.activity, insights)
+    ExerciseDetail(extra.detail, extra.sex, insights)
     LazyColumn(modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { Text(stringResource(R.string.nav_workout), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(top = 16.dp)) }
         val program = ui.program
@@ -67,16 +71,19 @@ fun LatihanScreen(vm: LatihanViewModel, onStart: (dayId: String?, empty: Boolean
         if (program == null) {
             profileQuestions(ui, vm)
             item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
+            activitySection(extra, insights)
             item { JelajahiSection(vm) }
         } else {
             item { ProgramHeader(program.setting, program.source.name, program.level) }
             ui.review?.let { r -> item { ReviewCard(r, vm) } }
             if (ui.missing.isNotEmpty()) item { Text(stringResource(R.string.lat_missing_note), style = MaterialTheme.typography.bodyMedium) }
             items(program.days, key = { it.id }) { day ->
-                DayCard(day, next = day.id == ui.nextDayId, onStart = { onStart(day.id, false) }, onEdit = { vm.editDay(day.id, it) })
+                DayCard(day, next = day.id == ui.nextDayId, onStart = { onStart(day.id, false) }, onEdit = { vm.editDay(day.id, it) }, onOpen = insights::openDetail)
             }
             item { AutoSwitch(ui.autoOff, vm) }
             item { RoutinesSection(ui.routines, vm) { onStart(it, false) } }
+            weekMapSection(extra)
+            activitySection(extra, insights)
             item { JelajahiSection(vm) }
             item {
                 Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(12.dp)) {
@@ -106,7 +113,7 @@ private fun ProgramHeader(setting: String, source: String, level: Int) {
 }
 
 @Composable
-private fun DayCard(day: DayView, next: Boolean, onStart: () -> Unit, onEdit: (String) -> Unit) {
+private fun DayCard(day: DayView, next: Boolean, onStart: () -> Unit, onEdit: (String) -> Unit, onOpen: (String) -> Unit) {
     val title = dayTitle(day)
     Card(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp), Arrangement.spacedBy(4.dp)) {
@@ -116,7 +123,11 @@ private fun DayCard(day: DayView, next: Boolean, onStart: () -> Unit, onEdit: (S
                 stringResource(R.string.lat_day_summary, day.items.size, day.estMinutes),
                 style = MaterialTheme.typography.bodyMedium,
             )
-            day.items.forEach { Text("• " + it.name + " · " + it.sets + "×" + it.repMin + "–" + it.repMax, style = MaterialTheme.typography.bodySmall) } // text-ok: numbers
+            day.items.forEach {
+                TextButton(onClick = { onOpen(it.exerciseId) }, Modifier.fillMaxWidth().heightIn(min = MinTouch)) {
+                    Text(it.name + " · " + it.sets + "×" + it.repMin + "–" + it.repMax, Modifier.fillMaxWidth(), style = MaterialTheme.typography.bodyMedium) // text-ok: numbers
+                }
+            }
             Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(8.dp, Alignment.End), Alignment.CenterVertically) {
                 OutlinedButton(onClick = { onEdit(title) }, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.lat_edit)) }
                 Button(onClick = onStart, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.lat_start)) }
