@@ -161,6 +161,40 @@ interface FoodDao {
 
     @Query("SELECT * FROM meal_plan WHERE weekStart = :weekStart ORDER BY day, slot")
     suspend fun plan(weekStart: String): List<MealPlanEntity>
+
+    @Query("DELETE FROM meal_plan WHERE weekStart = :weekStart")
+    suspend fun deletePlanWeek(weekStart: String)
+
+    @Query("DELETE FROM meal_plan WHERE weekStart = :weekStart AND day = :day AND slot = :slot")
+    suspend fun deletePlanCell(weekStart: String, day: Int, slot: String)
+
+    // --- B-10 food log reads ---
+
+    @Query("SELECT * FROM food_log WHERE day = :day ORDER BY createdAt")
+    suspend fun logOfDay(day: String): List<FoodLogEntity>
+
+    @Query("SELECT * FROM food_log WHERE id = :id")
+    suspend fun logRow(id: String): FoodLogEntity?
+
+    /** Most recently logged foods (M-7 "Terakhir"), newest first. */
+    @Query("SELECT foodId FROM food_log WHERE foodId IS NOT NULL GROUP BY foodId ORDER BY MAX(createdAt) DESC LIMIT :limit")
+    suspend fun recentFoodIds(limit: Int): List<String>
+
+    /** Foods logged at least [min] times (M-7 "Favorit" is derived from the log; there is no extra table). */
+    @Query(
+        "SELECT foodId FROM food_log WHERE foodId IS NOT NULL GROUP BY foodId HAVING COUNT(*) >= :min " +
+            "ORDER BY COUNT(*) DESC, MAX(createdAt) DESC LIMIT :limit",
+    )
+    suspend fun frequentFoodIds(min: Int, limit: Int): List<String>
+
+    @Query("SELECT * FROM food WHERE id IN (:ids)")
+    suspend fun foodsByIds(ids: List<String>): List<FoodEntity>
+
+    @Query("SELECT * FROM food WHERE source = 'own' ORDER BY nameId")
+    suspend fun ownFoods(): List<FoodEntity>
+
+    @Query("SELECT * FROM recipe WHERE id = :id")
+    suspend fun recipe(id: String): RecipeEntity?
 }
 
 @Dao
@@ -237,6 +271,9 @@ interface ContentDao {
     suspend fun deleteMealPackages()
 
     @Insert suspend fun insertMealPackages(rows: List<MealPackageEntity>)
+
+    @Query("SELECT * FROM meal_package ORDER BY id")
+    suspend fun allMealPackages(): List<MealPackageEntity>
 
     @Query("SELECT * FROM meal_package WHERE profile = :profile AND slot = :slot ORDER BY id")
     suspend fun mealPackages(profile: String, slot: String): List<MealPackageEntity>

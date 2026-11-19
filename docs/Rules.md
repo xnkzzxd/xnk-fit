@@ -137,11 +137,17 @@ Levels: 1 beginner (first 8 weeks, or sign-up experience), 2 intermediate, 3 adv
 | R_LIMIT_GORENG | Fried main in automatic options | ≤ 1 per day | product rule | 👤 |
 | R_LIMIT_MAIN | Same main protein twice in a day | not allowed in automatic options | product rule | 👤 |
 | R_LIMIT_ALLERGY | Allergy filters (egg, seafood, nuts, milk), lactose | removed from automatic options | PRD M-9 | ✅ |
-| R_BUDGET | Budget preference: Hemat / Standar / Bebas (no Rupiah amounts) | Option weight in automatic choice only | PRD M-9 | 👤 |
+| R_BUDGET | Budget preference: Hemat / Standar / Bebas (no Rupiah amounts) | Option weight in automatic choice only: cost 300 per tier above the preference (more than the repeat cost, so a budget is kept before variety), 20 per tier below (weights written in B-10 without a source, see Decisions.md "aturan planner perlu review Opus") | PRD M-9 | 👤 |
 | R_MEAL_SLOTS | Slots: pagi, siang, malam, camilan | — | product rule | 👤 |
 | R_OPTIONS | Meal options per slot | 3 | PRD M-3 | ✅ |
 | R_HH | Household measures shown first; grams beside, with "±" (format "1 centong (±100 g)") | Measure weights from PMK 41/2014 (S17) where printed (140 measures, `content/household.json`); centong, piring, fried and cooked dishes are our estimates with a written method (18, ⚠) | S17 p. 8–16, 37, 41, 89; estimates flagged | ✅ PMK part; ⚠ estimates (G7) |
 | R_EST | Estimates (warung, bought, own cooking) are flagged `isEstimate` and labelled "perkiraan" | — | PRD PR-6 | ✅ |
+| R_LOG | Food log: kcal and macros are copied into the row when it is written (to 0.1) and never recomputed; quick-add stores kcal only; a copied meal or day keeps the stored values; "Favorit" = a food logged 3 or more times | — | Design §3, §7; PRD M-7 | 👤 |
+| R_PLAN_FLOOR | A planned day never adds up to less than the calorie floor (R_FLOOR_F or R_FLOOR_M, never below BMR). If no combination reaches it, the highest one is used and the day is marked | floor of R_GATE_FLOOR | PR-5; Design §7 | 👤 |
+| R_PLAN_FIT | Automatic choice per day: the combination of one option per free slot that respects R_LIMIT_* and lies nearest the daily target, after budget, repeat and "buy" costs; portions are not scaled | 6 candidates per slot; tie-break from package id and week seed | planner rule, first version (B-10) | ⚠ |
+| R_PLAN_REPEAT | The same package at most twice a week in automatic choice; each earlier use adds a cost of 150 | 2 per week; cost 150 | planner rule, first value without a source (B-10) | ⚠ |
+| R_PLAN_BUY | A user who often buys food always sees one bought or no-cook option among the three; a user who rarely buys pays a cost of 100 on bought options | cost 100 | PRD M-5; cost is a first value (B-10) | ⚠ |
+| R_PLAN_COOK_ONCE | "Masak sekali" repeats the option in the same slot on the chosen day and the next 2 days; locked cells are not overwritten | 3 days | mockup `planner.html` (B-10) | ⚠ |
 
 Food data sources are in Content.md §4 (TKPI 2020, about 1,100 foods; packaged foods by name, flagged by label source).
 
