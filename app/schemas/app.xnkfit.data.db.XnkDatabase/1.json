@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "fcb20d5943a47df0738c5393a705380d",
+    "identityHash": "d00d2b85f8b56ec30b12c8c97029ffc3",
     "entities": [
       {
         "tableName": "profile",
@@ -349,7 +349,7 @@
       },
       {
         "tableName": "program",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `source` TEXT NOT NULL, `setting` TEXT NOT NULL, `rulesVersion` INTEGER NOT NULL, `isActive` INTEGER NOT NULL, `level` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `source` TEXT NOT NULL, `setting` TEXT NOT NULL, `rulesVersion` INTEGER NOT NULL, `isActive` INTEGER NOT NULL, `level` INTEGER NOT NULL, `kind` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -397,6 +397,12 @@
             "fieldPath": "level",
             "columnName": "level",
             "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
@@ -1741,7 +1747,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fcb20d5943a47df0738c5393a705380d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd00d2b85f8b56ec30b12c8c97029ffc3')"
     ]
   }
 }

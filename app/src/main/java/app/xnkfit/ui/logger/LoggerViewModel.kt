@@ -140,6 +140,18 @@ class LoggerViewModel(
     private var equipment: Equipment? = null
     private var level: TrainingLevel? = null
     private var clockJob: Job? = null
+    private var forcedDayId: String? = null
+    private var emptyStart = false
+
+    /** B-08: the day the user picked on the Latihan list; null means the rotation's next day. */
+    fun useDay(dayId: String?, empty: Boolean = false) {
+        forcedDayId = dayId
+        emptyStart = empty
+        viewModelScope.launch {
+            plan = if (empty) null else repo.nextPlannedDay(dayId)
+            _ui.update { it.copy(plannedDay = plan?.dayName, hasProgram = plan != null) }
+        }
+    }
 
     /** Last write, for tests that must wait for the disk. */
     var lastWrite: Job? = null
@@ -155,7 +167,7 @@ class LoggerViewModel(
         level = repo.activeLevel()
         val open = repo.recoverUnfinished()
         val chosen = prefs.mode()
-        plan = repo.nextPlannedDay()
+        plan = if (emptyStart) null else repo.nextPlannedDay(forcedDayId)
         _ui.update {
             it.copy(
                 phase = if (open != null) LoggerPhase.RESUME else LoggerPhase.START,
@@ -173,7 +185,7 @@ class LoggerViewModel(
         val mode = _ui.value.chosenMode ?: return
         write {
             prefs.setMode(mode)
-            plan = repo.nextPlannedDay()
+            plan = if (emptyStart) null else repo.nextPlannedDay(forcedDayId)
             val id = repo.start(mode, plan)
             open(id)
         }
@@ -210,6 +222,8 @@ class LoggerViewModel(
     }
 
     private suspend fun backToStart() {
+        forcedDayId = null
+        emptyStart = false
         plan = repo.nextPlannedDay()
         clockJob?.cancel()
         _ui.update {

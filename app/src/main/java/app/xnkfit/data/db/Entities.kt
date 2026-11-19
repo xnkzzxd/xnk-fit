@@ -109,6 +109,8 @@ data class ProgramEntity(
     val isActive: Boolean,
     /** Training level 1–3 the program was built for (R_TRN_LEVELS); the logger's suggestions need it (B-07). */
     val level: Int = 1,
+    /** program (the one list on Latihan) or routine (an own single-day routine, L-9). B-08. */
+    val kind: String = "program",
 )
 
 @Entity(

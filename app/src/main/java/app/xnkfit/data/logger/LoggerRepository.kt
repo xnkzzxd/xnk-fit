@@ -100,13 +100,15 @@ class LoggerRepository(
     }
 
     /** Next day of the active program: the one after the day of the last finished workout (rotation). */
-    suspend fun nextPlannedDay(): PlannedDay? {
-        val program = programs.active() ?: return null
+    suspend fun nextPlannedDay(forcedDayId: String? = null): PlannedDay? {
+        // B-08: "Mulai" on a day of the Latihan list, or on an own routine, starts that day instead of the rotation's next one.
+        val forced = forcedDayId?.let { programs.dayById(it) }
+        val program = forced?.let { programs.programById(it.programId) } ?: programs.active() ?: return null
         val days = programs.days(program.id)
         if (days.isEmpty()) return null
         val lastId = workouts.lastFinishedProgramDayId()
         val lastIndex = days.indexOfFirst { it.id == lastId }
-        val dayRow = days[(lastIndex + 1).mod(days.size)]
+        val dayRow = forced ?: days[(lastIndex + 1).mod(days.size)]
         val lib = library().map { it.second }.associateBy { it.id }
         val items = programs.items(dayRow.id).mapNotNull { item ->
             val ex = lib[item.exerciseId] ?: return@mapNotNull null

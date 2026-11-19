@@ -37,7 +37,10 @@ import app.xnkfit.ui.makan.MakanViewModel
 import app.xnkfit.data.logger.LoggerRepository
 import app.xnkfit.ui.logger.AndroidRestAlarms
 import app.xnkfit.ui.logger.DataStoreLoggerPrefs
-import app.xnkfit.ui.logger.LoggerHost
+import app.xnkfit.ui.latihan.DataStoreLatihanPrefs
+import app.xnkfit.ui.latihan.LatihanHost
+import app.xnkfit.ui.latihan.LatihanViewModel
+import app.xnkfit.data.program.ProgramRepository
 import app.xnkfit.ui.logger.LoggerViewModel
 import app.xnkfit.ui.nav.Destination
 import app.xnkfit.data.food.TargetBasisStore
@@ -126,6 +129,19 @@ class MainActivity : ComponentActivity() {
     }
 
     private val restAlarms by lazy { AndroidRestAlarms(applicationContext) }
+
+    private val loggerRepo by lazy { LoggerRepository(database, System::currentTimeMillis, { UUID.randomUUID().toString() }) }
+
+    private val latihan: LatihanViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T = LatihanViewModel(
+                programs = ProgramRepository(database, loggerRepo, System::currentTimeMillis, { UUID.randomUUID().toString() }),
+                logger = loggerRepo,
+                prefs = DataStoreLatihanPrefs(PreferenceDataStoreFactory.create { applicationContext.preferencesDataStoreFile(LATIHAN_PREFS_FILE) }),
+            ) as T
+        }
+    }
 
     private val logger: LoggerViewModel by viewModels {
         object : ViewModelProvider.Factory {
@@ -239,7 +255,7 @@ class MainActivity : ComponentActivity() {
                 onShowWelcomeAgain = { lifecycleScope.launch { settingsStore.resetCards() } },
             )
                             Overlay.PRIVACY -> EmptyScreen(R.string.empty_other) // B-14 potongan 3
-                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LoggerHost(logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
+                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, logger, restAlarms, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
                         }
                     }
                 }
@@ -252,4 +268,5 @@ private const val SETTINGS_FILE = "settings" // text-ok: file name, not UI text
 private const val FOOD_PREFS_FILE = "food_prefs" // text-ok: file name, not UI text
 private const val TARGET_BASIS_FILE = "target_basis" // text-ok: file name, not UI text
 private const val SHOPPING_TICKS_FILE = "shopping_ticks" // text-ok: file name, not UI text
+private const val LATIHAN_PREFS_FILE = "latihan_prefs" // text-ok: file name, not UI text
 private const val LOGGER_PREFS_FILE = "logger_prefs" // text-ok: file name, not UI text
