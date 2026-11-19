@@ -1,0 +1,6009 @@
+{
+ "schema": 1,
+ "version": 1,
+ "task": "C-05",
+ "note": "Takaran rumah tangga (URT) per foodId. Ditampilkan dulu, gram di sampingnya dengan \"±\" (R_HH). source pmk-41-2014 = dicetak di PMK 41/2014; estimate = perkiraan kami ⚠ dengan metode. Aplikasi menggabung file ini ke food.household lewat foodId (B-04). Jangan edit tangan; jalankan node tools/build-household.mjs.",
+ "sources": {
+  "pmk-41-2014": {
+   "title": "Peraturan Menteri Kesehatan RI No. 41 Tahun 2014 tentang Pedoman Gizi Seimbang (Lampiran)",
+   "url": "https://jdih.kemkes.go.id/storage/documents/pdfs/2014permenkes041.pdf",
+   "sha256": "6b030d76043cb8aacdfacfc406f22c7e1a55270a994f5e356c4672dbeef71b90",
+   "pages": 96,
+   "readOn": "2026-11-19",
+   "tablePages": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    37,
+    41,
+    89
+   ],
+   "basis": "Tabel penukar (URT dan berat dalam gram). Daftar pustaka PMK hal. 42: DBMP FKUI 1997 dan Penuntun Diet RSCM/AsDI 2007. PMK tidak menyatakan mentah atau matang kecuali nasi dan sayuran (setelah dimasak), dan buah (berat bersih)."
+  },
+  "estimate": {
+   "title": "Perkiraan kami (C-05), belum ditimbang",
+   "flag": "⚠"
+  }
+ },
+ "units": {
+  "centong": "centong nasi (sendok nasi)",
+  "piring": "piring",
+  "mangkok": "mangkok",
+  "gelas": "gelas",
+  "sdm": "sendok makan",
+  "sdt": "sendok teh",
+  "potong": "potong",
+  "iris": "iris",
+  "butir": "butir",
+  "buah": "buah",
+  "biji": "biji",
+  "ekor": "ekor",
+  "lembar": "lembar",
+  "papan": "papan (petai)",
+  "genggam": "genggam"
+ },
+ "perUnitLimits": {
+  "centong": [
+   50,
+   200
+  ],
+  "piring": [
+   100,
+   500
+  ],
+  "mangkok": [
+   100,
+   500
+  ],
+  "gelas": [
+   40,
+   260
+  ],
+  "sdm": [
+   3,
+   25
+  ],
+  "sdt": [
+   1,
+   8
+  ],
+  "potong": [
+   5,
+   300
+  ],
+  "iris": [
+   10,
+   60
+  ],
+  "butir": [
+   5,
+   80
+  ],
+  "buah": [
+   1,
+   1500
+  ],
+  "biji": [
+   1,
+   300
+  ],
+  "ekor": [
+   3,
+   600
+  ],
+  "lembar": [
+   5,
+   60
+  ],
+  "papan": [
+   5,
+   60
+  ],
+  "genggam": [
+   10,
+   80
+  ]
+ },
+ "displayFormat": "<label> (±<grams> g)",
+ "counts": {
+  "pmkRows": 161,
+  "pmkRowsMapped": 124,
+  "pmkRowsSuspect": 3,
+  "foods": 145,
+  "measures": 152,
+  "measuresPmk": 140,
+  "measuresEstimate": 12
+ },
+ "foods": [
+  {
+   "foodId": "TKPI_AP001",
+   "file": "foods-tkpi.json",
+   "name_id": "Nasi",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "¾ gelas",
+     "qty": 0.75,
+     "grams": 100,
+     "perUnitGrams": 133.3,
+     "display": "¾ gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "nasi-putih",
+      "page": 9
+     },
+     "flag": null
+    },
+    {
+     "code": "centong",
+     "label": "1 centong",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 centong (±100 g)",
+     "source": "estimate",
+     "method": "Penilaian: 1 centong nasi rata dianggap sama dengan porsi PMK ¾ gelas = 100 g (hal. 8-9). Belum ditimbang.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      70,
+      130
+     ],
+     "flag": "⚠"
+    },
+    {
+     "code": "piring",
+     "label": "1 piring",
+     "qty": 1,
+     "grams": 200,
+     "perUnitGrams": 200,
+     "display": "1 piring (±200 g)",
+     "source": "estimate",
+     "method": "Penilaian: 1 piring nasi = 2 centong; sama dengan W_NASI_PUTIH (C-04, juga perkiraan). Belum ditimbang.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      140,
+      260
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP004",
+   "file": "foods-tkpi.json",
+   "name_id": "Tepung beras, mentah",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "8 sendok makan",
+     "qty": 8,
+     "grams": 50,
+     "perUnitGrams": 6.3,
+     "display": "8 sendok makan (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tepung-beras",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP005",
+   "file": "foods-tkpi.json",
+   "name_id": "Nasi beras merah",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "¾ gelas",
+     "qty": 0.75,
+     "grams": 100,
+     "perUnitGrams": 133.3,
+     "display": "¾ gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "nasi-merah",
+      "page": 9
+     },
+     "flag": null
+    },
+    {
+     "code": "centong",
+     "label": "1 centong",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 centong (±100 g)",
+     "source": "estimate",
+     "method": "Penilaian: sama dengan centong nasi putih (porsi PMK ¾ gelas = 100 g). Belum ditimbang.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      70,
+      130
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP006",
+   "file": "foods-tkpi.json",
+   "name_id": "Bihun, mentah",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "½ gelas",
+     "qty": 0.5,
+     "grams": 50,
+     "perUnitGrams": 100,
+     "display": "½ gelas (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "bihun",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP017",
+   "file": "foods-tkpi.json",
+   "name_id": "Ketan putih, matang",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "¾ gelas",
+     "qty": 0.75,
+     "grams": 100,
+     "perUnitGrams": 133.3,
+     "display": "¾ gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "nasi-ketan-putih",
+      "page": 9
+     },
+     "flag": null
+    },
+    {
+     "code": "centong",
+     "label": "1 centong",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 centong (±100 g)",
+     "source": "estimate",
+     "method": "Penilaian: sama dengan centong nasi putih (porsi PMK ¾ gelas = 100 g). Belum ditimbang.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      70,
+      130
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP019",
+   "file": "foods-tkpi.json",
+   "name_id": "Maizena, tepung",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "10 sendok makan",
+     "qty": 10,
+     "grams": 50,
+     "perUnitGrams": 5,
+     "display": "10 sendok makan (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "maizena",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP020",
+   "file": "foods-tkpi.json",
+   "name_id": "Makaroni, mentah",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "½ gelas",
+     "qty": 0.5,
+     "grams": 50,
+     "perUnitGrams": 100,
+     "display": "½ gelas (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "makaroni",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP021",
+   "file": "foods-tkpi.json",
+   "name_id": "Mi basah",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "2 gelas",
+     "qty": 2,
+     "grams": 200,
+     "perUnitGrams": 100,
+     "display": "2 gelas (±200 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "mie-basah",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP022",
+   "file": "foods-tkpi.json",
+   "name_id": "Mi kering",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 gelas (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "mie-kering",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP024",
+   "file": "foods-tkpi.json",
+   "name_id": "Roti putih",
+   "measures": [
+    {
+     "code": "iris",
+     "label": "3 iris",
+     "qty": 3,
+     "grams": 70,
+     "perUnitGrams": 23.3,
+     "display": "3 iris (±70 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "roti-putih",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP025",
+   "file": "foods-tkpi.json",
+   "name_id": "Tepung terigu",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "5 sendok makan",
+     "qty": 5,
+     "grams": 50,
+     "perUnitGrams": 10,
+     "display": "5 sendok makan (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tepung-terigu",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP029",
+   "file": "foods-tkpi.json",
+   "name_id": "Biskuit",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "4 buah besar",
+     "qty": 4,
+     "grams": 40,
+     "perUnitGrams": 10,
+     "display": "4 buah besar (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "biskuit",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AP104",
+   "file": "foods-tkpi.json",
+   "name_id": "Roti warna sawo matang",
+   "measures": [
+    {
+     "code": "iris",
+     "label": "3 iris",
+     "qty": 3,
+     "grams": 70,
+     "perUnitGrams": 23.3,
+     "display": "3 iris (±70 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "roti-coklat",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_AR015",
+   "file": "foods-tkpi.json",
+   "name_id": "Jagung muda, kuning, mentah",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "3 buah sedang",
+     "qty": 3,
+     "grams": 125,
+     "perUnitGrams": 41.7,
+     "display": "3 buah sedang (±125 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jagung-segar",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BP045",
+   "file": "foods-tkpi.json",
+   "name_id": "Kerupuk udang goreng",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "3 biji sedang",
+     "qty": 3,
+     "grams": 30,
+     "perUnitGrams": 10,
+     "display": "3 biji sedang (±30 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kerupuk",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BP063",
+   "file": "foods-tkpi.json",
+   "name_id": "Tapai singkong",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 potong sedang (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tape-singkong",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BP070",
+   "file": "foods-tkpi.json",
+   "name_id": "Tepung singkong/ tapioka",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "8 sendok makan",
+     "qty": 8,
+     "grams": 50,
+     "perUnitGrams": 6.3,
+     "display": "8 sendok makan (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tepung-tapioka",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BR013",
+   "file": "foods-tkpi.json",
+   "name_id": "Kentang, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah sedang",
+     "qty": 2,
+     "grams": 210,
+     "perUnitGrams": 105,
+     "display": "2 buah sedang (±210 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kentang",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BR014",
+   "file": "foods-tkpi.json",
+   "name_id": "Kentang hitam, segar",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "12 biji",
+     "qty": 12,
+     "grams": 125,
+     "perUnitGrams": 10.4,
+     "display": "12 biji (±125 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kentang-hitam",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BR016",
+   "file": "foods-tkpi.json",
+   "name_id": "Ketela pohon/ singkong, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 ½ potong",
+     "qty": 1.5,
+     "grams": 120,
+     "perUnitGrams": 80,
+     "display": "1 ½ potong (±120 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "singkong",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BR025",
+   "file": "foods-tkpi.json",
+   "name_id": "Talas bogor, segar",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "½ biji sedang",
+     "qty": 0.5,
+     "grams": 125,
+     "perUnitGrams": 250,
+     "display": "½ biji sedang (±125 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "talas",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_BR028",
+   "file": "foods-tkpi.json",
+   "name_id": "Ubi jalar, kuning, segar",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "1 biji sedang",
+     "qty": 1,
+     "grams": 135,
+     "perUnitGrams": 135,
+     "display": "1 biji sedang (±135 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ubi-jalar-kuning",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP036",
+   "file": "foods-tkpi.json",
+   "name_id": "Keju kacang tanah (peanut butter)",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 sendok makan (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "selai-kacang",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP037",
+   "file": "foods-tkpi.json",
+   "name_id": "Kembang tahu",
+   "measures": [
+    {
+     "code": "lembar",
+     "label": "1 lembar",
+     "qty": 1,
+     "grams": 20,
+     "perUnitGrams": 20,
+     "display": "1 lembar (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kembang-tahu",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP051",
+   "file": "foods-tkpi.json",
+   "name_id": "Oncom",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "2 potong besar",
+     "qty": 2,
+     "grams": 50,
+     "perUnitGrams": 25,
+     "display": "2 potong besar (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "oncom",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP061",
+   "file": "foods-tkpi.json",
+   "name_id": "Tahu, mentah",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "2 potong sedang",
+     "qty": 2,
+     "grams": 100,
+     "perUnitGrams": 50,
+     "display": "2 potong sedang (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tahu",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP062",
+   "file": "foods-tkpi.json",
+   "name_id": "Tahu goreng",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 potong sedang (±50 g)",
+     "source": "estimate",
+     "method": "Ukuran potong sama dengan tahu mentah PMK (2 potong sedang = 100 g, hal. 10). Tahu kehilangan air saat digoreng, jadi angka ini kemungkinan terlalu tinggi; W_TAHU_GORENG (C-04) memakai 30 g per potong.",
+     "spreadPct": 40,
+     "gramsRangeEst": [
+      30,
+      70
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP076",
+   "file": "foods-tkpi.json",
+   "name_id": "Tempe kedelai murni, goreng",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 25,
+     "perUnitGrams": 25,
+     "display": "1 potong sedang (±25 g)",
+     "source": "estimate",
+     "method": "Ukuran potong sama dengan tempe mentah PMK (2 potong sedang = 50 g, hal. 10); perubahan berat saat digoreng tidak diukur.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      18,
+      33
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP077",
+   "file": "foods-tkpi.json",
+   "name_id": "Tempe kedelai murni, mentah",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "2 potong sedang",
+     "qty": 2,
+     "grams": 50,
+     "perUnitGrams": 25,
+     "display": "2 potong sedang (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tempe",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP082",
+   "file": "foods-tkpi.json",
+   "name_id": "Tempe pasar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "2 potong sedang",
+     "qty": 2,
+     "grams": 50,
+     "perUnitGrams": 25,
+     "display": "2 potong sedang (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tempe",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP083",
+   "file": "foods-tkpi.json",
+   "name_id": "Tempe pasar goreng",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 25,
+     "perUnitGrams": 25,
+     "display": "1 potong sedang (±25 g)",
+     "source": "estimate",
+     "method": "Ukuran potong sama dengan tempe mentah PMK (2 potong sedang = 50 g, hal. 10); perubahan berat saat digoreng tidak diukur.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      18,
+      33
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CP084",
+   "file": "foods-tkpi.json",
+   "name_id": "Tepung hunkwe (pati kacang ijo)",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "10 sendok makan",
+     "qty": 10,
+     "grams": 50,
+     "perUnitGrams": 5,
+     "display": "10 sendok makan (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tepung-hunkwe",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CR014",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang hijau, kering",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 ½ sendok makan",
+     "qty": 2.5,
+     "grams": 25,
+     "perUnitGrams": 10,
+     "display": "2 ½ sendok makan (±25 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kacang-hijau",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CR017",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang kedelai, kering",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 ½ sendok makan",
+     "qty": 2.5,
+     "grams": 25,
+     "perUnitGrams": 10,
+     "display": "2 ½ sendok makan (±25 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kacang-kedelai",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CR026",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang merah, kering",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 ½ sendok makan",
+     "qty": 2.5,
+     "grams": 25,
+     "perUnitGrams": 10,
+     "display": "2 ½ sendok makan (±25 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kacang-merah",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CR028",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang mete/biji jambu monyet, segar",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 ½ sendok makan",
+     "qty": 1.5,
+     "grams": 15,
+     "perUnitGrams": 10,
+     "display": "1 ½ sendok makan (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kacang-mete",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CR032",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang tanah, kering",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 sendok makan",
+     "qty": 2,
+     "grams": 20,
+     "perUnitGrams": 10,
+     "display": "2 sendok makan (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kacang-tanah",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_CR033",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang tolo/ tunggak, kering",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 sendok makan",
+     "qty": 2,
+     "grams": 20,
+     "perUnitGrams": 10,
+     "display": "2 sendok makan (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kacang-tolo",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP001",
+   "file": "foods-tkpi.json",
+   "name_id": "Bayam, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP002",
+   "file": "foods-tkpi.json",
+   "name_id": "Bayam, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP003",
+   "file": "foods-tkpi.json",
+   "name_id": "Buncis, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP004",
+   "file": "foods-tkpi.json",
+   "name_id": "Daun kacang panjang, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP005",
+   "file": "foods-tkpi.json",
+   "name_id": "Daun katuk, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP008",
+   "file": "foods-tkpi.json",
+   "name_id": "Daun singkong, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP009",
+   "file": "foods-tkpi.json",
+   "name_id": "Daun talas, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP011",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang panjang, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP012",
+   "file": "foods-tkpi.json",
+   "name_id": "Kacang panjang, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP013",
+   "file": "foods-tkpi.json",
+   "name_id": "Kangkung, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP014",
+   "file": "foods-tkpi.json",
+   "name_id": "Kangkung, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP015",
+   "file": "foods-tkpi.json",
+   "name_id": "Paria putih, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP019",
+   "file": "foods-tkpi.json",
+   "name_id": "Terung panjang, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP020",
+   "file": "foods-tkpi.json",
+   "name_id": "Wortel, rebus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DP021",
+   "file": "foods-tkpi.json",
+   "name_id": "Wortel, kukus",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sayur-porsi",
+      "page": 89
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_DR134",
+   "file": "foods-tkpi.json",
+   "name_id": "Petai, segar",
+   "measures": [
+    {
+     "code": "papan",
+     "label": "1 papan/biji besar",
+     "qty": 1,
+     "grams": 20,
+     "perUnitGrams": 20,
+     "display": "1 papan/biji besar (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "petai",
+      "page": 10
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER001",
+   "file": "foods-tkpi.json",
+   "name_id": "Alpukat, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "½ buah besar",
+     "qty": 0.5,
+     "grams": 50,
+     "perUnitGrams": 100,
+     "display": "½ buah besar (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "alpukat",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER003",
+   "file": "foods-tkpi.json",
+   "name_id": "Apel malang, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah sedang",
+     "qty": 1,
+     "grams": 75,
+     "perUnitGrams": 75,
+     "display": "1 buah sedang (±75 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "apel-malang",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER004",
+   "file": "foods-tkpi.json",
+   "name_id": "Apel, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah kecil",
+     "qty": 1,
+     "grams": 85,
+     "perUnitGrams": 85,
+     "display": "1 buah kecil (±85 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "apel-merah",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER006",
+   "file": "foods-tkpi.json",
+   "name_id": "Belimbing, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah besar",
+     "qty": 1,
+     "grams": 132.5,
+     "gramsRange": [
+      125,
+      140
+     ],
+     "gramsNote": "Rentang dicetak di PMK; grams = nilai tengah (turunan).",
+     "perUnitGrams": 132.5,
+     "display": "1 buah besar (±125–140 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "belimbing",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER022",
+   "file": "foods-tkpi.json",
+   "name_id": "Duku, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "10-16 buah sedang",
+     "qty": 13,
+     "grams": 80,
+     "perUnitGrams": 6.2,
+     "display": "10-16 buah sedang (±80 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "duku",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER023",
+   "file": "foods-tkpi.json",
+   "name_id": "Durian, segar",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "2 biji besar",
+     "qty": 2,
+     "grams": 35,
+     "perUnitGrams": 17.5,
+     "display": "2 biji besar (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "durian",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER030",
+   "file": "foods-tkpi.json",
+   "name_id": "Jambu air, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah sedang",
+     "qty": 2,
+     "grams": 100,
+     "perUnitGrams": 50,
+     "display": "2 buah sedang (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jambu-air",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER031",
+   "file": "foods-tkpi.json",
+   "name_id": "Jambu biji",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah besar",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 buah besar (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jambu-biji",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER033",
+   "file": "foods-tkpi.json",
+   "name_id": "Jambu bol, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah kecil",
+     "qty": 1,
+     "grams": 90,
+     "perUnitGrams": 90,
+     "display": "1 buah kecil (±90 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jambu-bol",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER035",
+   "file": "foods-tkpi.json",
+   "name_id": "Jeruk bali, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong",
+     "qty": 1,
+     "grams": 105,
+     "perUnitGrams": 105,
+     "display": "1 potong (±105 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jeruk-bali",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER037",
+   "file": "foods-tkpi.json",
+   "name_id": "Jeruk garut-keprok",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah sedang",
+     "qty": 1,
+     "grams": 115,
+     "perUnitGrams": 115,
+     "display": "1 buah sedang (±115 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jeruk-garut",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER039",
+   "file": "foods-tkpi.json",
+   "name_id": "Jeruk manis, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah sedang",
+     "qty": 2,
+     "grams": 100,
+     "perUnitGrams": 50,
+     "display": "2 buah sedang (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "jeruk-manis",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER044",
+   "file": "foods-tkpi.json",
+   "name_id": "Kedondong, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah sedang",
+     "qty": 2,
+     "grams": 100,
+     "perUnitGrams": 50,
+     "display": "2 buah sedang (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kedondong-sedang",
+      "page": 15
+     },
+     "flag": null
+    },
+    {
+     "code": "buah",
+     "label": "2 buah besar",
+     "qty": 2,
+     "grams": 120,
+     "perUnitGrams": 60,
+     "display": "2 buah besar (±120 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kedondong-besar",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER048",
+   "file": "foods-tkpi.json",
+   "name_id": "Kesemek, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "½ buah",
+     "qty": 0.5,
+     "grams": 65,
+     "perUnitGrams": 130,
+     "display": "½ buah (±65 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kesemek",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER054",
+   "file": "foods-tkpi.json",
+   "name_id": "Mangga, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "¾ buah besar",
+     "qty": 0.75,
+     "grams": 90,
+     "perUnitGrams": 120,
+     "display": "¾ buah besar (±90 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "mangga",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER064",
+   "file": "foods-tkpi.json",
+   "name_id": "Manggis, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah sedang",
+     "qty": 2,
+     "grams": 80,
+     "perUnitGrams": 40,
+     "display": "2 buah sedang (±80 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "manggis",
+      "page": 15
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER065",
+   "file": "foods-tkpi.json",
+   "name_id": "Markisa, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "¾ buah sedang",
+     "qty": 0.75,
+     "grams": 35,
+     "perUnitGrams": 46.7,
+     "display": "¾ buah sedang (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "markisa",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER067",
+   "file": "foods-tkpi.json",
+   "name_id": "Melon, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong",
+     "qty": 1,
+     "grams": 90,
+     "perUnitGrams": 90,
+     "display": "1 potong (±90 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "melon",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER070",
+   "file": "foods-tkpi.json",
+   "name_id": "Nanas, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "¼ buah sedang",
+     "qty": 0.25,
+     "grams": 85,
+     "perUnitGrams": 340,
+     "display": "¼ buah sedang (±85 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "nanas",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER071",
+   "file": "foods-tkpi.json",
+   "name_id": "Nangka masak pohon, segar",
+   "measures": [
+    {
+     "code": "biji",
+     "label": "3 biji sedang",
+     "qty": 3,
+     "grams": 50,
+     "perUnitGrams": 16.7,
+     "display": "3 biji sedang (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "nangka",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER073",
+   "file": "foods-tkpi.json",
+   "name_id": "Pepaya, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong besar",
+     "qty": 1,
+     "grams": 145,
+     "gramsRange": [
+      100,
+      190
+     ],
+     "gramsNote": "Rentang dicetak di PMK; grams = nilai tengah (turunan).",
+     "perUnitGrams": 145,
+     "display": "1 potong besar (±100–190 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "pepaya",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER074",
+   "file": "foods-tkpi.json",
+   "name_id": "Pisang ambon, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah sedang",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 buah sedang (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "pisang-ambon",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER081",
+   "file": "foods-tkpi.json",
+   "name_id": "Pisang kepok, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah",
+     "qty": 1,
+     "grams": 45,
+     "perUnitGrams": 45,
+     "display": "1 buah (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "pisang-kepok",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER087",
+   "file": "foods-tkpi.json",
+   "name_id": "Pisang mas, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah",
+     "qty": 2,
+     "grams": 40,
+     "perUnitGrams": 20,
+     "display": "2 buah (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "pisang-mas",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER089",
+   "file": "foods-tkpi.json",
+   "name_id": "Pisang raja, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah kecil",
+     "qty": 2,
+     "grams": 40,
+     "perUnitGrams": 20,
+     "display": "2 buah kecil (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "pisang-raja",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER097",
+   "file": "foods-tkpi.json",
+   "name_id": "Rambutan, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "8 buah",
+     "qty": 8,
+     "grams": 75,
+     "perUnitGrams": 9.4,
+     "display": "8 buah (±75 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "rambutan",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER104",
+   "file": "foods-tkpi.json",
+   "name_id": "Sawo manila, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah sedang",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 buah sedang (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sawo",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER105",
+   "file": "foods-tkpi.json",
+   "name_id": "Semangka, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "2 potong sedang",
+     "qty": 2,
+     "grams": 180,
+     "perUnitGrams": 90,
+     "display": "2 potong sedang (±180 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "semangka",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER106",
+   "file": "foods-tkpi.json",
+   "name_id": "Sirsak, segar",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "½ gelas",
+     "qty": 0.5,
+     "grams": 60,
+     "perUnitGrams": 120,
+     "display": "½ gelas (±60 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sirsak",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER108",
+   "file": "foods-tkpi.json",
+   "name_id": "Srikaya, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "2 buah besar",
+     "qty": 2,
+     "grams": 50,
+     "perUnitGrams": 25,
+     "display": "2 buah besar (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "srikaya",
+      "page": 16
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_ER110",
+   "file": "foods-tkpi.json",
+   "name_id": "Sukun tua, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "3 potong sedang",
+     "qty": 3,
+     "grams": 150,
+     "perUnitGrams": 50,
+     "display": "3 potong sedang (±150 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sukun",
+      "page": 9
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FP014",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, daging, dendeng, mentah",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 potong sedang (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "dendeng-sapi",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FP015",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, daging, kornet",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "3 sendok makan",
+     "qty": 3,
+     "grams": 45,
+     "perUnitGrams": 15,
+     "display": "3 sendok makan (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kornet",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR005",
+   "file": "foods-tkpi.json",
+   "name_id": "Ayam, daging, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 40,
+     "perUnitGrams": 40,
+     "display": "1 potong sedang (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "daging-ayam",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR007",
+   "file": "foods-tkpi.json",
+   "name_id": "Ayam, hati, segar",
+   "measures": [
+    {
+     "code": "buah",
+     "label": "1 buah sedang",
+     "qty": 1,
+     "grams": 30,
+     "perUnitGrams": 30,
+     "display": "1 buah sedang (±30 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "hati-ayam",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR012",
+   "file": "foods-tkpi.json",
+   "name_id": "Bebek (itik), daging, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 45,
+     "perUnitGrams": 45,
+     "display": "1 potong sedang (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "bebek",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR019",
+   "file": "foods-tkpi.json",
+   "name_id": "Kambing, daging, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 40,
+     "perUnitGrams": 40,
+     "display": "1 potong sedang (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "daging-kambing",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR021",
+   "file": "foods-tkpi.json",
+   "name_id": "Kerbau, daging, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 35,
+     "perUnitGrams": 35,
+     "display": "1 potong sedang (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "daging-kerbau",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR023",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, babat, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 40,
+     "perUnitGrams": 40,
+     "display": "1 potong sedang (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "babat",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR026",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, daging, lemak sedang, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 35,
+     "perUnitGrams": 35,
+     "display": "1 potong sedang (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "daging-sapi",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR029",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, ginjal, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong besar",
+     "qty": 1,
+     "grams": 45,
+     "perUnitGrams": 45,
+     "display": "1 potong besar (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ginjal-sapi",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR031",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, liver, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 potong sedang (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "hati-sapi",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR032",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, otak, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong besar",
+     "qty": 1,
+     "grams": 65,
+     "perUnitGrams": 65,
+     "display": "1 potong besar (±65 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "otak",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_FR033",
+   "file": "foods-tkpi.json",
+   "name_id": "Sapi, usus, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong besar",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 potong besar (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "usus-sapi",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP004",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan asin, kering",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong kecil",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 potong kecil (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-asin",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP009",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan cakalang asin, mentah",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 20,
+     "perUnitGrams": 20,
+     "display": "1 potong sedang (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-cakalang-asin",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP010",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan calo/ peda, mentah",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1 ekor kecil",
+     "qty": 1,
+     "grams": 35,
+     "perUnitGrams": 35,
+     "display": "1 ekor kecil (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-peda",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP012",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan gabus, kering",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1 ekor kecil",
+     "qty": 1,
+     "grams": 10,
+     "perUnitGrams": 10,
+     "display": "1 ekor kecil (±10 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "gabus-kering",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP036",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan selar, kering, mentah",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1 ekor",
+     "qty": 1,
+     "grams": 20,
+     "perUnitGrams": 20,
+     "display": "1 ekor (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "selar-kering",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP037",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan sepat, kering, mentah",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 20,
+     "perUnitGrams": 20,
+     "display": "1 potong sedang (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sepat-kering",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP040",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan teri nasi, kering, mentah",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1/3 gelas",
+     "qty": 0.333,
+     "grams": 20,
+     "perUnitGrams": 60,
+     "display": "1/3 gelas (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "teri-nasi",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP042",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan teri, kering, mentah",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 20,
+     "perUnitGrams": 20,
+     "display": "1 sendok makan (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "teri-kering",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GP047",
+   "file": "foods-tkpi.json",
+   "name_id": "Rebon, kering, mentah",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 sendok makan",
+     "qty": 2,
+     "grams": 10,
+     "perUnitGrams": 5,
+     "display": "2 sendok makan (±10 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "rebon-kering",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR001",
+   "file": "foods-tkpi.json",
+   "name_id": "Belut, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "3 ekor",
+     "qty": 3,
+     "grams": 45,
+     "perUnitGrams": 15,
+     "display": "3 ekor (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "belut",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR003",
+   "file": "foods-tkpi.json",
+   "name_id": "Cumi-cumi, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1 ekor kecil",
+     "qty": 1,
+     "grams": 45,
+     "perUnitGrams": 45,
+     "display": "1 ekor kecil (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "cumi",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR030",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan kakap, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1/3 ekor besar",
+     "qty": 0.333,
+     "grams": 35,
+     "perUnitGrams": 105,
+     "display": "1/3 ekor besar (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-kakap",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR042",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan lemuru, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong sedang",
+     "qty": 1,
+     "grams": 35,
+     "perUnitGrams": 35,
+     "display": "1 potong sedang (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-lemuru",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR046",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan mas, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1/3 ekor sedang",
+     "qty": 0.333,
+     "grams": 45,
+     "perUnitGrams": 135,
+     "display": "1/3 ekor sedang (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-mas",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR048",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan mujahir, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1/3 ekor sedang",
+     "qty": 0.333,
+     "grams": 30,
+     "perUnitGrams": 90,
+     "display": "1/3 ekor sedang (±30 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-mujair",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR050",
+   "file": "foods-tkpi.json",
+   "name_id": "Ikan oci, kembung, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "1/3 ekor sedang",
+     "qty": 0.333,
+     "grams": 30,
+     "perUnitGrams": 90,
+     "display": "1/3 ekor sedang (±30 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "ikan-kembung",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR074",
+   "file": "foods-tkpi.json",
+   "name_id": "Kerang, segar",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "½ gelas",
+     "qty": 0.5,
+     "grams": 90,
+     "perUnitGrams": 180,
+     "display": "½ gelas (±90 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kerang",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR080",
+   "file": "foods-tkpi.json",
+   "name_id": "Rebon, udang kecil, segar",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "2 sendok makan",
+     "qty": 2,
+     "grams": 45,
+     "perUnitGrams": 22.5,
+     "display": "2 sendok makan (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "rebon-basah",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_GR084",
+   "file": "foods-tkpi.json",
+   "name_id": "Udang, segar",
+   "measures": [
+    {
+     "code": "ekor",
+     "label": "5 ekor sedang",
+     "qty": 5,
+     "grams": 35,
+     "perUnitGrams": 7,
+     "display": "5 ekor sedang (±35 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "udang-basah",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HP001",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur ayam, dadar, masakan",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "1 butir",
+     "qty": 1,
+     "grams": 60,
+     "perUnitGrams": 60,
+     "display": "1 butir (±60 g)",
+     "source": "estimate",
+     "method": "Telur ayam mentah PMK 1 butir = 55 g (hal. 11) ditambah kira-kira 1 sdt minyak (5 g, hal. 41) yang terserap; serapan minyak tidak diukur. Sama dengan W_TELUR_DADAR (C-04).",
+     "spreadPct": 20,
+     "gramsRangeEst": [
+      48,
+      72
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HP002",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur bebek, asin, mentah",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "1 butir",
+     "qty": 1,
+     "grams": 50,
+     "perUnitGrams": 50,
+     "display": "1 butir (±50 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "telur-bebek-asin",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HR002",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur ayam ras, segar",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "1 butir",
+     "qty": 1,
+     "grams": 55,
+     "perUnitGrams": 55,
+     "display": "1 butir (±55 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "telur-ayam",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HR003",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur ayam ras, bagian kuning, segar",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "4 butir",
+     "qty": 4,
+     "grams": 45,
+     "perUnitGrams": 11.3,
+     "display": "4 butir (±45 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kuning-telur",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HR004",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur ayam ras, bagian putih, segar",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "2 ½ butir",
+     "qty": 2.5,
+     "grams": 65,
+     "perUnitGrams": 26,
+     "display": "2 ½ butir (±65 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "putih-telur",
+      "page": 12
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HR008",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur bebek tambak, segar",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "1 butir",
+     "qty": 1,
+     "grams": 55,
+     "perUnitGrams": 55,
+     "display": "1 butir (±55 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "telur-bebek",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_HR011",
+   "file": "foods-tkpi.json",
+   "name_id": "Telur burung puyuh, segar",
+   "measures": [
+    {
+     "code": "butir",
+     "label": "5 butir",
+     "qty": 5,
+     "grams": 55,
+     "perUnitGrams": 11,
+     "display": "5 butir (±55 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "telur-puyuh",
+      "page": 13
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_JP006",
+   "file": "foods-tkpi.json",
+   "name_id": "Susu bubuk",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "4 sendok makan",
+     "qty": 4,
+     "grams": 20,
+     "perUnitGrams": 5,
+     "display": "4 sendok makan (±20 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "tepung-susu-whole",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_JP011",
+   "file": "foods-tkpi.json",
+   "name_id": "Yoghurt, segar",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 200,
+     "perUnitGrams": 200,
+     "display": "1 gelas (±200 g)",
+     "source": "estimate",
+     "method": "Sama dengan PMK susu sapi 1 gelas = 200 g (hal. 11); yoghurt lebih kental, tidak ditimbang.",
+     "spreadPct": 25,
+     "gramsRangeEst": [
+      150,
+      250
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_JR003",
+   "file": "foods-tkpi.json",
+   "name_id": "Susu kambing, segar",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "¾ gelas",
+     "qty": 0.75,
+     "grams": 185,
+     "perUnitGrams": 246.7,
+     "display": "¾ gelas (±185 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "susu-kambing",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_JR004",
+   "file": "foods-tkpi.json",
+   "name_id": "Susu kerbau, segar",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "½ gelas",
+     "qty": 0.5,
+     "grams": 100,
+     "perUnitGrams": 200,
+     "display": "½ gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "susu-kerbau",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_JR006",
+   "file": "foods-tkpi.json",
+   "name_id": "Susu sapi, segar",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1 gelas",
+     "qty": 1,
+     "grams": 200,
+     "perUnitGrams": 200,
+     "display": "1 gelas (±200 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "susu-sapi",
+      "page": 11
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KP002",
+   "file": "foods-tkpi.json",
+   "name_id": "Mentega",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 sendok makan (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "mentega",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KP004",
+   "file": "foods-tkpi.json",
+   "name_id": "Santan murni",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "1/3 gelas",
+     "qty": 0.333,
+     "grams": 40,
+     "perUnitGrams": 120,
+     "display": "1/3 gelas (±40 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "santan-peras",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KR001",
+   "file": "foods-tkpi.json",
+   "name_id": "Kelapa setengah tua, daging, segar",
+   "measures": [
+    {
+     "code": "potong",
+     "label": "1 potong kecil",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 potong kecil (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "kelapa",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KR009",
+   "file": "foods-tkpi.json",
+   "name_id": "Minyak kacang tanah",
+   "measures": [
+    {
+     "code": "sdt",
+     "label": "1 sendok teh",
+     "qty": 1,
+     "grams": 5,
+     "perUnitGrams": 5,
+     "display": "1 sendok teh (±5 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "minyak-kacang",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KR010",
+   "file": "foods-tkpi.json",
+   "name_id": "Minyak kedelai",
+   "measures": [
+    {
+     "code": "sdt",
+     "label": "1 sendok teh",
+     "qty": 1,
+     "grams": 5,
+     "perUnitGrams": 5,
+     "display": "1 sendok teh (±5 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "minyak-kedelai",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KR011",
+   "file": "foods-tkpi.json",
+   "name_id": "Minyak kelapa",
+   "measures": [
+    {
+     "code": "sdt",
+     "label": "1 sendok teh",
+     "qty": 1,
+     "grams": 5,
+     "perUnitGrams": 5,
+     "display": "1 sendok teh (±5 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "minyak-kelapa",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KR012",
+   "file": "foods-tkpi.json",
+   "name_id": "Minyak kelapa sawit",
+   "measures": [
+    {
+     "code": "sdt",
+     "label": "1 sendok teh",
+     "qty": 1,
+     "grams": 5,
+     "perUnitGrams": 5,
+     "display": "1 sendok teh (±5 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "minyak-sawit",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_KR014",
+   "file": "foods-tkpi.json",
+   "name_id": "Minyak zaitun",
+   "measures": [
+    {
+     "code": "sdt",
+     "label": "1 sendok teh",
+     "qty": 1,
+     "grams": 5,
+     "perUnitGrams": 5,
+     "display": "1 sendok teh (±5 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "minyak-zaitun",
+      "page": 41
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_MP005",
+   "file": "foods-tkpi.json",
+   "name_id": "Gula aren",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 10,
+     "perUnitGrams": 10,
+     "display": "1 sendok makan (±10 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "gula-aren",
+      "page": 37
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_MP006",
+   "file": "foods-tkpi.json",
+   "name_id": "Gula kelapa",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 10,
+     "perUnitGrams": 10,
+     "display": "1 sendok makan (±10 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "gula-kelapa",
+      "page": 37
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_MP007",
+   "file": "foods-tkpi.json",
+   "name_id": "Gula putih",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 10,
+     "perUnitGrams": 10,
+     "display": "1 sendok makan (±10 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "gula-pasir",
+      "page": 37
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_MP008",
+   "file": "foods-tkpi.json",
+   "name_id": "Jam, selai",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 sendok makan (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "selai",
+      "page": 37
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_MP010",
+   "file": "foods-tkpi.json",
+   "name_id": "Madu",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 sendok makan (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "madu",
+      "page": 37
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_MP014",
+   "file": "foods-tkpi.json",
+   "name_id": "Sirup",
+   "measures": [
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 sendok makan (±15 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "sirup",
+      "page": 37
+     },
+     "flag": null
+    }
+   ]
+  },
+  {
+   "foodId": "TKPI_NP005",
+   "file": "foods-tkpi.json",
+   "name_id": "Kecap",
+   "measures": [
+    {
+     "code": "sdt",
+     "label": "1 sendok teh",
+     "qty": 1,
+     "grams": 5,
+     "perUnitGrams": 5,
+     "display": "1 sendok teh (±5 g)",
+     "source": "estimate",
+     "method": "Sama dengan PMK 1 sdt minyak = 5 g (hal. 41); kecap tidak ditimbang.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      4,
+      7
+     ],
+     "flag": "⚠"
+    },
+    {
+     "code": "sdm",
+     "label": "1 sendok makan",
+     "qty": 1,
+     "grams": 15,
+     "perUnitGrams": 15,
+     "display": "1 sendok makan (±15 g)",
+     "source": "estimate",
+     "method": "Sama dengan cairan kental PMK 1 sdm = 15 g (sirup, madu, hal. 37); kecap tidak ditimbang. PMK hal. 38 hanya memberi natrium per sdt, bukan gram.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      11,
+      20
+     ],
+     "flag": "⚠"
+    }
+   ]
+  },
+  {
+   "foodId": "W_NASI_PUTIH",
+   "file": "foods-estimates.json",
+   "name_id": "Nasi putih",
+   "measures": [
+    {
+     "code": "gelas",
+     "label": "¾ gelas",
+     "qty": 0.75,
+     "grams": 100,
+     "perUnitGrams": 133.3,
+     "display": "¾ gelas (±100 g)",
+     "source": "pmk-41-2014",
+     "ref": {
+      "pmkRow": "nasi-putih",
+      "page": 9
+     },
+     "flag": null
+    },
+    {
+     "code": "centong",
+     "label": "1 centong",
+     "qty": 1,
+     "grams": 100,
+     "perUnitGrams": 100,
+     "display": "1 centong (±100 g)",
+     "source": "estimate",
+     "method": "Penilaian: porsi PMK ¾ gelas = 100 g (hal. 9). Belum ditimbang.",
+     "spreadPct": 30,
+     "gramsRangeEst": [
+      70,
+      130
+     ],
+     "flag": "⚠"
+    }
+   ]
+  }
+ ],
+ "pmkRows": [
+  {
+   "id": "nasi-porsi",
+   "page": 8,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Nasi (porsi acuan)",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 133.3,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Teks hal. 8: 1 porsi nasi ±100 g setara ¾ gelas."
+  },
+  {
+   "id": "bihun",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Bihun",
+   "urt": "½ gelas",
+   "qty": 0.5,
+   "unit": "gelas",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP006"
+   ],
+   "note": null
+  },
+  {
+   "id": "biskuit",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Biskuit",
+   "urt": "4 buah besar",
+   "qty": 4,
+   "unit": "buah",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP029"
+   ],
+   "note": null
+  },
+  {
+   "id": "havermut",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Havermut",
+   "urt": "5 ½ sendok besar",
+   "qty": 5.5,
+   "unit": "sdm",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 8.2,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris havermut di TKPI 2020."
+  },
+  {
+   "id": "jagung-segar",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Jagung segar",
+   "urt": "3 buah sedang",
+   "qty": 3,
+   "unit": "buah",
+   "grams": 125,
+   "gramsRange": null,
+   "perUnitGrams": 41.7,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AR015"
+   ],
+   "note": "PMK tidak menyebut berat bersih atau dengan tongkol."
+  },
+  {
+   "id": "kentang",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Kentang",
+   "urt": "2 buah sedang",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 210,
+   "gramsRange": null,
+   "perUnitGrams": 105,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BR013"
+   ],
+   "note": null
+  },
+  {
+   "id": "kentang-hitam",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Kentang hitam",
+   "urt": "12 biji",
+   "qty": 12,
+   "unit": "biji",
+   "grams": 125,
+   "gramsRange": null,
+   "perUnitGrams": 10.4,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BR014"
+   ],
+   "note": null
+  },
+  {
+   "id": "maizena",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Maizena",
+   "urt": "10 sendok makan",
+   "qty": 10,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP019"
+   ],
+   "note": null
+  },
+  {
+   "id": "makaroni",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Makaroni",
+   "urt": "½ gelas",
+   "qty": 0.5,
+   "unit": "gelas",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP020"
+   ],
+   "note": null
+  },
+  {
+   "id": "mie-basah",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Mie basah",
+   "urt": "2 gelas",
+   "qty": 2,
+   "unit": "gelas",
+   "grams": 200,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP021"
+   ],
+   "note": null
+  },
+  {
+   "id": "mie-kering",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Mie kering",
+   "urt": "1 gelas",
+   "qty": 1,
+   "unit": "gelas",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP022"
+   ],
+   "note": null
+  },
+  {
+   "id": "nasi-putih",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Nasi beras giling putih",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 133.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP001",
+    "W_NASI_PUTIH"
+   ],
+   "note": null
+  },
+  {
+   "id": "nasi-merah",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Nasi beras giling merah",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 133.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP005"
+   ],
+   "note": null
+  },
+  {
+   "id": "nasi-hitam",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Nasi beras giling hitam",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 133.3,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris nasi beras hitam di TKPI 2020."
+  },
+  {
+   "id": "nasi-setengah-giling",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Nasi beras ½ giling",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 133.3,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris yang sama di TKPI 2020."
+  },
+  {
+   "id": "nasi-ketan-putih",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Nasi ketan putih",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 133.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP017"
+   ],
+   "note": null
+  },
+  {
+   "id": "roti-putih",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Roti putih",
+   "urt": "3 iris",
+   "qty": 3,
+   "unit": "iris",
+   "grams": 70,
+   "gramsRange": null,
+   "perUnitGrams": 23.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP024"
+   ],
+   "note": null
+  },
+  {
+   "id": "roti-coklat",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Roti warna coklat",
+   "urt": "3 iris",
+   "qty": 3,
+   "unit": "iris",
+   "grams": 70,
+   "gramsRange": null,
+   "perUnitGrams": 23.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP104"
+   ],
+   "note": "Dipetakan ke \"Roti warna sawo matang\"."
+  },
+  {
+   "id": "singkong",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Singkong",
+   "urt": "1 ½ potong",
+   "qty": 1.5,
+   "unit": "potong",
+   "grams": 120,
+   "gramsRange": null,
+   "perUnitGrams": 80,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BR016"
+   ],
+   "note": null
+  },
+  {
+   "id": "sukun",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Sukun",
+   "urt": "3 potong sedang",
+   "qty": 3,
+   "unit": "potong",
+   "grams": 150,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER110"
+   ],
+   "note": "PMK tidak menyebut muda atau tua; dipetakan ke sukun tua."
+  },
+  {
+   "id": "talas",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Talas",
+   "urt": "½ biji sedang",
+   "qty": 0.5,
+   "unit": "biji",
+   "grams": 125,
+   "gramsRange": null,
+   "perUnitGrams": 250,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BR025"
+   ],
+   "note": "PMK tidak menyebut jenis; dipetakan ke talas bogor."
+  },
+  {
+   "id": "tape-ketan",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tape beras ketan",
+   "urt": "5 sendok makan",
+   "qty": 5,
+   "unit": "sdm",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris tape ketan di TKPI 2020."
+  },
+  {
+   "id": "tape-singkong",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tape singkong",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BP063"
+   ],
+   "note": null
+  },
+  {
+   "id": "tepung-tapioka",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tepung tapioca",
+   "urt": "8 sendok makan",
+   "qty": 8,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 6.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BP070"
+   ],
+   "note": null
+  },
+  {
+   "id": "tepung-beras",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tepung beras",
+   "urt": "8 sendok makan",
+   "qty": 8,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 6.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP004"
+   ],
+   "note": null
+  },
+  {
+   "id": "tepung-hunkwe",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tepung hunkwe",
+   "urt": "10 sendok makan",
+   "qty": 10,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CP084"
+   ],
+   "note": null
+  },
+  {
+   "id": "tepung-sagu",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tepung sagu",
+   "urt": "8 sendok makan",
+   "qty": 8,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 6.3,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "TKPI punya beberapa jenis sagu; tidak dipilih."
+  },
+  {
+   "id": "tepung-singkong",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tepung singkong",
+   "urt": "5 sendok makan",
+   "qty": 5,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "TKPI BP070 menggabung singkong/tapioka; PMK memberi 8 sdm (tapioka) dan 5 sdm (singkong). Hanya tapioka dipasang."
+  },
+  {
+   "id": "tepung-terigu",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Tepung terigu",
+   "urt": "5 sendok makan",
+   "qty": 5,
+   "unit": "sdm",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_AP025"
+   ],
+   "note": null
+  },
+  {
+   "id": "ubi-jalar-kuning",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Ubi jalar kuning",
+   "urt": "1 biji sedang",
+   "qty": 1,
+   "unit": "biji",
+   "grams": 135,
+   "gramsRange": null,
+   "perUnitGrams": 135,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BR028"
+   ],
+   "note": null
+  },
+  {
+   "id": "kerupuk",
+   "page": 9,
+   "table": "Penukar 1 porsi nasi (sumber karbohidrat)",
+   "name": "Kerupuk udang/ikan",
+   "urt": "3 biji sedang",
+   "qty": 3,
+   "unit": "biji",
+   "grams": 30,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_BP045"
+   ],
+   "note": "PMK tidak menyebut mentah atau goreng; dipetakan ke kerupuk udang goreng."
+  },
+  {
+   "id": "tempe",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Tempe (porsi acuan)",
+   "urt": "2 potong sedang",
+   "qty": 2,
+   "unit": "potong",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 25,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CP077",
+    "TKPI_CP082"
+   ],
+   "note": "Teks hal. 10: 1 porsi tempe 2 potong sedang atau 50 g."
+  },
+  {
+   "id": "kacang-hijau",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kacang hijau",
+   "urt": "2 ½ sendok makan",
+   "qty": 2.5,
+   "unit": "sdm",
+   "grams": 25,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CR014"
+   ],
+   "note": null
+  },
+  {
+   "id": "kacang-kedelai",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kacang kedelai",
+   "urt": "2 ½ sendok makan",
+   "qty": 2.5,
+   "unit": "sdm",
+   "grams": 25,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CR017"
+   ],
+   "note": null
+  },
+  {
+   "id": "kacang-merah",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kacang merah",
+   "urt": "2 ½ sendok makan",
+   "qty": 2.5,
+   "unit": "sdm",
+   "grams": 25,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CR026"
+   ],
+   "note": null
+  },
+  {
+   "id": "kacang-mete",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kacang mete",
+   "urt": "1 ½ sendok makan",
+   "qty": 1.5,
+   "unit": "sdm",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CR028"
+   ],
+   "note": null
+  },
+  {
+   "id": "kacang-tanah",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kacang tanah kupas",
+   "urt": "2 sendok makan",
+   "qty": 2,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CR032"
+   ],
+   "note": null
+  },
+  {
+   "id": "kacang-tolo",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kacang toto (tolo)",
+   "urt": "2 sendok makan",
+   "qty": 2,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CR033"
+   ],
+   "note": "Dicetak \"Kacang Toto\"; dibaca sebagai kacang tolo."
+  },
+  {
+   "id": "selai-kacang",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Keju kacang tanah",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CP036"
+   ],
+   "note": null
+  },
+  {
+   "id": "kembang-tahu",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Kembang tahu",
+   "urt": "1 lembar",
+   "qty": 1,
+   "unit": "lembar",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CP037"
+   ],
+   "note": null
+  },
+  {
+   "id": "oncom",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Oncom",
+   "urt": "2 potong besar",
+   "qty": 2,
+   "unit": "potong",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 25,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CP051"
+   ],
+   "note": null
+  },
+  {
+   "id": "petai",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Petai segar",
+   "urt": "1 papan/biji besar",
+   "qty": 1,
+   "unit": "papan",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_DR134"
+   ],
+   "note": null
+  },
+  {
+   "id": "tahu",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Tahu",
+   "urt": "2 potong sedang",
+   "qty": 2,
+   "unit": "potong",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_CP061"
+   ],
+   "note": null
+  },
+  {
+   "id": "sari-kedelai",
+   "page": 10,
+   "table": "Penukar 1 porsi tempe (protein nabati)",
+   "name": "Sari kedelai",
+   "urt": "2 ½ gelas",
+   "qty": 2.5,
+   "unit": "gelas",
+   "grams": 185,
+   "gramsRange": null,
+   "perUnitGrams": 74,
+   "suspect": "74 g per gelas; cairan biasanya 150-260 g per gelas",
+   "mappedTo": [],
+   "note": "Tidak dipasang: 74 g per gelas tidak cocok untuk cairan (lihat suspect)."
+  },
+  {
+   "id": "daging-sapi",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Daging sapi",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 35,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR026"
+   ],
+   "note": "PMK tidak menyebut kadar lemak; dipetakan ke daging sapi lemak sedang."
+  },
+  {
+   "id": "daging-ayam",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Daging ayam",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 40,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR005"
+   ],
+   "note": null
+  },
+  {
+   "id": "hati-sapi",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Hati sapi",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR031"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-asin",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Ikan asin",
+   "urt": "1 potong kecil",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP004"
+   ],
+   "note": "Hal. 12 mencetak \"ikan asin kering 1 potong sedang 15 g\"; berat sama."
+  },
+  {
+   "id": "teri-kering",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Ikan teri kering",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP042"
+   ],
+   "note": null
+  },
+  {
+   "id": "telur-ayam",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Telur ayam",
+   "urt": "1 butir",
+   "qty": 1,
+   "unit": "butir",
+   "grams": 55,
+   "gramsRange": null,
+   "perUnitGrams": 55,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_HR002"
+   ],
+   "note": null
+  },
+  {
+   "id": "udang-basah",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Udang basah",
+   "urt": "5 ekor sedang",
+   "qty": 5,
+   "unit": "ekor",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 7,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR084"
+   ],
+   "note": "Hal. 12 mencetak \"udang segar 5 ekor sedang 35 g\"; sama."
+  },
+  {
+   "id": "ikan-segar",
+   "page": 11,
+   "table": "Penukar 1 porsi ikan segar (protein hewani)",
+   "name": "Ikan segar (porsi acuan)",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 40,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Acuan umum, tidak dipasang ke satu jenis ikan. Hal. 89 mencetak \"ikan segar 1/3 ekor = 45 g\" (konflik)."
+  },
+  {
+   "id": "susu-sapi",
+   "page": 11,
+   "table": "Pangan lain penukar 1 porsi ikan segar",
+   "name": "Susu sapi",
+   "urt": "1 gelas",
+   "qty": 1,
+   "unit": "gelas",
+   "grams": 200,
+   "gramsRange": null,
+   "perUnitGrams": 200,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_JR006"
+   ],
+   "note": null
+  },
+  {
+   "id": "susu-kerbau",
+   "page": 11,
+   "table": "Pangan lain penukar 1 porsi ikan segar",
+   "name": "Susu kerbau",
+   "urt": "½ gelas",
+   "qty": 0.5,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 200,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_JR004"
+   ],
+   "note": null
+  },
+  {
+   "id": "susu-kambing",
+   "page": 11,
+   "table": "Pangan lain penukar 1 porsi ikan segar",
+   "name": "Susu kambing",
+   "urt": "¾ gelas",
+   "qty": 0.75,
+   "unit": "gelas",
+   "grams": 185,
+   "gramsRange": null,
+   "perUnitGrams": 246.7,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_JR003"
+   ],
+   "note": "247 g per gelas, lebih berat dari susu sapi 200 g per gelas; dicetak begitu."
+  },
+  {
+   "id": "tepung-sari-kedele",
+   "page": 11,
+   "table": "Pangan lain penukar 1 porsi ikan segar",
+   "name": "Tepung sari kedele",
+   "urt": "3 sendok makan",
+   "qty": 3,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 6.7,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris yang sama di TKPI 2020."
+  },
+  {
+   "id": "tepung-susu-whole",
+   "page": 11,
+   "table": "Pangan lain penukar 1 porsi ikan segar",
+   "name": "Tepung susu whole",
+   "urt": "4 sendok makan",
+   "qty": 4,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_JP006"
+   ],
+   "note": null
+  },
+  {
+   "id": "tepung-susu-krim",
+   "page": 11,
+   "table": "Pangan lain penukar 1 porsi ikan segar",
+   "name": "Tepung susu krim",
+   "urt": "4 sendok makan",
+   "qty": 4,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Arti \"krim\" tidak jelas (skim atau krim); tidak dipasang."
+  },
+  {
+   "id": "babat",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Babat",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 40,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR023"
+   ],
+   "note": null
+  },
+  {
+   "id": "cumi",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Cumi-cumi",
+   "urt": "1 ekor kecil",
+   "qty": 1,
+   "unit": "ekor",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 45,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR003"
+   ],
+   "note": null
+  },
+  {
+   "id": "daging-asap",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Daging asap",
+   "urt": "1 lembar",
+   "qty": 1,
+   "unit": "lembar",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris yang sama di TKPI 2020."
+  },
+  {
+   "id": "daging-kerbau",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Daging kerbau",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 35,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR021"
+   ],
+   "note": null
+  },
+  {
+   "id": "dendeng-sapi",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Dendeng sapi",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FP014"
+   ],
+   "note": null
+  },
+  {
+   "id": "gabus-kering",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Gabus kering",
+   "urt": "1 ekor kecil",
+   "qty": 1,
+   "unit": "ekor",
+   "grams": 10,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP012"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-kakap",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan kakap",
+   "urt": "1/3 ekor besar",
+   "qty": 0.333,
+   "unit": "ekor",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 105,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR030"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-kembung",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan kembung",
+   "urt": "1/3 ekor sedang",
+   "qty": 0.333,
+   "unit": "ekor",
+   "grams": 30,
+   "gramsRange": null,
+   "perUnitGrams": 90,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR050"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-lele",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan lele",
+   "urt": "1/3 ekor sedang",
+   "qty": 0.333,
+   "unit": "ekor",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 120,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris lele segar di TKPI 2020."
+  },
+  {
+   "id": "ikan-mas",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan mas",
+   "urt": "1/3 ekor sedang",
+   "qty": 0.333,
+   "unit": "ekor",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 135,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR046"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-mujair",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan mujair",
+   "urt": "1/3 ekor sedang",
+   "qty": 0.333,
+   "unit": "ekor",
+   "grams": 30,
+   "gramsRange": null,
+   "perUnitGrams": 90,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR048"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-peda",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan peda",
+   "urt": "1 ekor kecil",
+   "qty": 1,
+   "unit": "ekor",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 35,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP010"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-pindang",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan pindang",
+   "urt": "½ ekor sedang",
+   "qty": 0.5,
+   "unit": "ekor",
+   "grams": 25,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "TKPI punya 4 jenis pindang; tidak dipilih."
+  },
+  {
+   "id": "ikan-cakalang-asin",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan cakalang asin",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP009"
+   ],
+   "note": null
+  },
+  {
+   "id": "kerang",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Kerang",
+   "urt": "½ gelas",
+   "qty": 0.5,
+   "unit": "gelas",
+   "grams": 90,
+   "gramsRange": null,
+   "perUnitGrams": 180,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR074"
+   ],
+   "note": null
+  },
+  {
+   "id": "ikan-lemuru",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Ikan lemuru",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 35,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR042"
+   ],
+   "note": null
+  },
+  {
+   "id": "putih-telur",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Putih telur ayam",
+   "urt": "2 ½ butir",
+   "qty": 2.5,
+   "unit": "butir",
+   "grams": 65,
+   "gramsRange": null,
+   "perUnitGrams": 26,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_HR004"
+   ],
+   "note": null
+  },
+  {
+   "id": "rebon-kering",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Rebon kering",
+   "urt": "2 sendok makan",
+   "qty": 2,
+   "unit": "sdm",
+   "grams": 10,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP047"
+   ],
+   "note": null
+  },
+  {
+   "id": "rebon-basah",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Rebon basah",
+   "urt": "2 sendok makan",
+   "qty": 2,
+   "unit": "sdm",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 22.5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR080"
+   ],
+   "note": null
+  },
+  {
+   "id": "selar-kering",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Selar kering",
+   "urt": "1 ekor",
+   "qty": 1,
+   "unit": "ekor",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP036"
+   ],
+   "note": null
+  },
+  {
+   "id": "sepat-kering",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Sepat kering",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP037"
+   ],
+   "note": null
+  },
+  {
+   "id": "teri-nasi",
+   "page": 12,
+   "table": "Protein hewani golongan A (rendah lemak)",
+   "name": "Teri nasi",
+   "urt": "1/3 gelas",
+   "qty": 0.333,
+   "unit": "gelas",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 60,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GP040"
+   ],
+   "note": null
+  },
+  {
+   "id": "bakso",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Bakso",
+   "urt": "10 biji sedang",
+   "qty": 10,
+   "unit": "biji",
+   "grams": 170,
+   "gramsRange": null,
+   "perUnitGrams": 17,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris bakso di TKPI 2020."
+  },
+  {
+   "id": "daging-kambing",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Daging kambing",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 40,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR019"
+   ],
+   "note": null
+  },
+  {
+   "id": "ginjal-sapi",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Ginjal sapi",
+   "urt": "1 potong besar",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 45,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR029"
+   ],
+   "note": null
+  },
+  {
+   "id": "hati-ayam",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Hati ayam",
+   "urt": "1 buah sedang",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 30,
+   "gramsRange": null,
+   "perUnitGrams": 30,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR007"
+   ],
+   "note": null
+  },
+  {
+   "id": "otak",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Otak",
+   "urt": "1 potong besar",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 65,
+   "gramsRange": null,
+   "perUnitGrams": 65,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR032"
+   ],
+   "note": null
+  },
+  {
+   "id": "telur-bebek-asin",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Telur bebek asin",
+   "urt": "1 butir",
+   "qty": 1,
+   "unit": "butir",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_HP002"
+   ],
+   "note": null
+  },
+  {
+   "id": "telur-puyuh",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Telur puyuh",
+   "urt": "5 butir",
+   "qty": 5,
+   "unit": "butir",
+   "grams": 55,
+   "gramsRange": null,
+   "perUnitGrams": 11,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_HR011"
+   ],
+   "note": null
+  },
+  {
+   "id": "usus-sapi",
+   "page": 13,
+   "table": "Protein hewani golongan B (lemak sedang)",
+   "name": "Usus sapi",
+   "urt": "1 potong besar",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR033"
+   ],
+   "note": null
+  },
+  {
+   "id": "bebek",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Bebek",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 45,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FR012"
+   ],
+   "note": null
+  },
+  {
+   "id": "belut",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Belut",
+   "urt": "3 ekor",
+   "qty": 3,
+   "unit": "ekor",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_GR001"
+   ],
+   "note": null
+  },
+  {
+   "id": "kornet",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Kornet daging sapi",
+   "urt": "3 sendok makan",
+   "qty": 3,
+   "unit": "sdm",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_FP015"
+   ],
+   "note": null
+  },
+  {
+   "id": "ayam-kulit",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Ayam dengan kulit",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 40,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "TKPI FR005 tidak menyebut kulit; FR005 memakai baris daging ayam hal. 11 (berat sama)."
+  },
+  {
+   "id": "ham",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Ham",
+   "urt": "1 ½ potong kecil",
+   "qty": 1.5,
+   "unit": "potong",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 26.7,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak dipasang: ham umumnya babi (R_HALAL)."
+  },
+  {
+   "id": "sardencis",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Sardencis",
+   "urt": "½ potong",
+   "qty": 0.5,
+   "unit": "potong",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 70,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Sarden kaleng; TKPI GR057 sarden segar bukan bahan yang sama."
+  },
+  {
+   "id": "sosis",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Sosis",
+   "urt": "½ potong",
+   "qty": 0.5,
+   "unit": "potong",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Jenis sosis tidak disebut; tidak dipasang."
+  },
+  {
+   "id": "kuning-telur",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Kuning telur ayam",
+   "urt": "4 butir",
+   "qty": 4,
+   "unit": "butir",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 11.3,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_HR003"
+   ],
+   "note": null
+  },
+  {
+   "id": "telur-bebek",
+   "page": 13,
+   "table": "Protein hewani golongan C (tinggi lemak)",
+   "name": "Telur bebek",
+   "urt": "1 butir",
+   "qty": 1,
+   "unit": "butir",
+   "grams": 55,
+   "gramsRange": null,
+   "perUnitGrams": 55,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_HR008"
+   ],
+   "note": "Dipetakan ke telur bebek tambak (TKPI tidak punya \"telur bebek\" umum)."
+  },
+  {
+   "id": "alpukat",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Alpokat",
+   "urt": "½ buah besar",
+   "qty": 0.5,
+   "unit": "buah",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER001"
+   ],
+   "note": "Hal. 41 mencetak alpokat ½ buah besar = 60 g (konflik); dipakai 50 g dari tabel buah."
+  },
+  {
+   "id": "anggur",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Anggur",
+   "urt": "20 buah sedang",
+   "qty": 20,
+   "unit": "buah",
+   "grams": 165,
+   "gramsRange": null,
+   "perUnitGrams": 8.3,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "TKPI hanya punya anggur hutan; tidak dipasang."
+  },
+  {
+   "id": "apel-merah",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Apel merah",
+   "urt": "1 buah kecil",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 85,
+   "gramsRange": null,
+   "perUnitGrams": 85,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER004"
+   ],
+   "note": null
+  },
+  {
+   "id": "apel-malang",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Apel malang",
+   "urt": "1 buah sedang",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 75,
+   "gramsRange": null,
+   "perUnitGrams": 75,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER003"
+   ],
+   "note": null
+  },
+  {
+   "id": "belimbing",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Belimbing",
+   "urt": "1 buah besar",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 132.5,
+   "gramsRange": [
+    125,
+    140
+   ],
+   "perUnitGrams": 132.5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER006"
+   ],
+   "note": null
+  },
+  {
+   "id": "blewah",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Blewah",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 70,
+   "gramsRange": null,
+   "perUnitGrams": 70,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris blewah di TKPI 2020."
+  },
+  {
+   "id": "duku",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Duku",
+   "urt": "10-16 buah sedang",
+   "qty": 13,
+   "unit": "buah",
+   "grams": 80,
+   "gramsRange": null,
+   "perUnitGrams": 6.2,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER022"
+   ],
+   "note": "Jumlah dicetak 10-16; qty 13 adalah tengah (turunan)."
+  },
+  {
+   "id": "durian",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Durian",
+   "urt": "2 biji besar",
+   "qty": 2,
+   "unit": "biji",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 17.5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER023"
+   ],
+   "note": null
+  },
+  {
+   "id": "jambu-air",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jambu air",
+   "urt": "2 buah sedang",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER030"
+   ],
+   "note": null
+  },
+  {
+   "id": "jambu-biji",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jambu biji",
+   "urt": "1 buah besar",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER031"
+   ],
+   "note": null
+  },
+  {
+   "id": "jambu-bol",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jambu bol",
+   "urt": "1 buah kecil",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 90,
+   "gramsRange": null,
+   "perUnitGrams": 90,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER033"
+   ],
+   "note": null
+  },
+  {
+   "id": "jeruk-bali",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jeruk bali",
+   "urt": "1 potong",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 105,
+   "gramsRange": null,
+   "perUnitGrams": 105,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER035"
+   ],
+   "note": null
+  },
+  {
+   "id": "jeruk-garut",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jeruk garut",
+   "urt": "1 buah sedang",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 115,
+   "gramsRange": null,
+   "perUnitGrams": 115,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER037"
+   ],
+   "note": null
+  },
+  {
+   "id": "jeruk-manis",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jeruk manis",
+   "urt": "2 buah sedang",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER039"
+   ],
+   "note": null
+  },
+  {
+   "id": "jeruk-nipis",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Jeruk nipis",
+   "urt": "1 ¼ gelas",
+   "qty": 1.25,
+   "unit": "gelas",
+   "grams": 135,
+   "gramsRange": null,
+   "perUnitGrams": 108,
+   "suspect": "108 g per gelas; cairan biasanya 150-260 g per gelas",
+   "mappedTo": [],
+   "note": "Tidak dipasang: 108 g per gelas air jeruk tidak cocok untuk cairan (lihat suspect)."
+  },
+  {
+   "id": "kedondong-sedang",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Kedondong",
+   "urt": "2 buah sedang",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER044"
+   ],
+   "note": "Dicetak \"2 buah sedang/besar 100/120\"."
+  },
+  {
+   "id": "kedondong-besar",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Kedondong",
+   "urt": "2 buah besar",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 120,
+   "gramsRange": null,
+   "perUnitGrams": 60,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER044"
+   ],
+   "note": "Dicetak \"2 buah sedang/besar 100/120\"."
+  },
+  {
+   "id": "kesemek",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Kesemek",
+   "urt": "½ buah",
+   "qty": 0.5,
+   "unit": "buah",
+   "grams": 65,
+   "gramsRange": null,
+   "perUnitGrams": 130,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER048"
+   ],
+   "note": null
+  },
+  {
+   "id": "kurma",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Kurma",
+   "urt": "3 buah",
+   "qty": 3,
+   "unit": "buah",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris kurma di TKPI 2020."
+  },
+  {
+   "id": "leci",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Leci",
+   "urt": "10 buah",
+   "qty": 10,
+   "unit": "buah",
+   "grams": 75,
+   "gramsRange": null,
+   "perUnitGrams": 7.5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris leci di TKPI 2020."
+  },
+  {
+   "id": "mangga",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Mangga",
+   "urt": "¾ buah besar",
+   "qty": 0.75,
+   "unit": "buah",
+   "grams": 90,
+   "gramsRange": null,
+   "perUnitGrams": 120,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER054"
+   ],
+   "note": null
+  },
+  {
+   "id": "manggis",
+   "page": 15,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Manggis",
+   "urt": "2 buah sedang",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 80,
+   "gramsRange": null,
+   "perUnitGrams": 40,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER064"
+   ],
+   "note": null
+  },
+  {
+   "id": "markisa",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Markisa",
+   "urt": "¾ buah sedang",
+   "qty": 0.75,
+   "unit": "buah",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 46.7,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER065"
+   ],
+   "note": null
+  },
+  {
+   "id": "melon",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Melon",
+   "urt": "1 potong",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 90,
+   "gramsRange": null,
+   "perUnitGrams": 90,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER067"
+   ],
+   "note": null
+  },
+  {
+   "id": "nangka",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Nangka masak",
+   "urt": "3 biji sedang",
+   "qty": 3,
+   "unit": "biji",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 16.7,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER071"
+   ],
+   "note": null
+  },
+  {
+   "id": "nanas",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Nenas",
+   "urt": "¼ buah sedang",
+   "qty": 0.25,
+   "unit": "buah",
+   "grams": 85,
+   "gramsRange": null,
+   "perUnitGrams": 340,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER070"
+   ],
+   "note": null
+  },
+  {
+   "id": "pear",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Pear",
+   "urt": "½ buah sedang",
+   "qty": 0.5,
+   "unit": "buah",
+   "grams": 85,
+   "gramsRange": null,
+   "perUnitGrams": 170,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris pir di TKPI 2020."
+  },
+  {
+   "id": "pepaya",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Pepaya",
+   "urt": "1 potong besar",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 145,
+   "gramsRange": [
+    100,
+    190
+   ],
+   "perUnitGrams": 145,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER073"
+   ],
+   "note": null
+  },
+  {
+   "id": "pisang-ambon",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Pisang ambon",
+   "urt": "1 buah sedang",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER074"
+   ],
+   "note": null
+  },
+  {
+   "id": "pisang-kepok",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Pisang kepok",
+   "urt": "1 buah",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 45,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER081"
+   ],
+   "note": null
+  },
+  {
+   "id": "pisang-mas",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Pisang mas",
+   "urt": "2 buah",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER087"
+   ],
+   "note": null
+  },
+  {
+   "id": "pisang-raja",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Pisang raja",
+   "urt": "2 buah kecil",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER089"
+   ],
+   "note": null
+  },
+  {
+   "id": "rambutan",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Rambutan",
+   "urt": "8 buah",
+   "qty": 8,
+   "unit": "buah",
+   "grams": 75,
+   "gramsRange": null,
+   "perUnitGrams": 9.4,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER097"
+   ],
+   "note": null
+  },
+  {
+   "id": "sawo",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Sawo",
+   "urt": "1 buah sedang",
+   "qty": 1,
+   "unit": "buah",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 50,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER104"
+   ],
+   "note": "Dipetakan ke sawo manila."
+  },
+  {
+   "id": "salak",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Salak",
+   "urt": "2 buah sedang",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 65,
+   "gramsRange": null,
+   "perUnitGrams": 32.5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "TKPI punya 4 jenis salak (ER101 masih cek tangan); tidak dipilih."
+  },
+  {
+   "id": "semangka",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Semangka",
+   "urt": "2 potong sedang",
+   "qty": 2,
+   "unit": "potong",
+   "grams": 180,
+   "gramsRange": null,
+   "perUnitGrams": 90,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER105"
+   ],
+   "note": null
+  },
+  {
+   "id": "sirsak",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Sirsak",
+   "urt": "½ gelas",
+   "qty": 0.5,
+   "unit": "gelas",
+   "grams": 60,
+   "gramsRange": null,
+   "perUnitGrams": 120,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER106"
+   ],
+   "note": null
+  },
+  {
+   "id": "srikaya",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Srikaya",
+   "urt": "2 buah besar",
+   "qty": 2,
+   "unit": "buah",
+   "grams": 50,
+   "gramsRange": null,
+   "perUnitGrams": 25,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_ER108"
+   ],
+   "note": null
+  },
+  {
+   "id": "strawberry",
+   "page": 16,
+   "table": "Penukar 1 porsi buah (berat bersih tanpa kulit dan biji)",
+   "name": "Strawberry",
+   "urt": "4 buah besar",
+   "qty": 4,
+   "unit": "buah",
+   "grams": 215,
+   "gramsRange": null,
+   "perUnitGrams": 53.8,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada di TKPI 2020; 54 g per buah juga besar untuk stroberi."
+  },
+  {
+   "id": "gula-pasir",
+   "page": 37,
+   "table": "Penukar 1 porsi gula",
+   "name": "Gula tebu (pasir) (porsi acuan)",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 10,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_MP007"
+   ],
+   "note": "Teks hal. 37. Hal. 89 mencetak \"gula 1 sdm = 20 g\" (konflik); dipakai 10 g dari teks tabel."
+  },
+  {
+   "id": "gula-aren",
+   "page": 37,
+   "table": "Penukar 1 porsi gula",
+   "name": "Gula aren",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 10,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_MP005"
+   ],
+   "note": null
+  },
+  {
+   "id": "gula-kelapa",
+   "page": 37,
+   "table": "Penukar 1 porsi gula",
+   "name": "Gula kelapa",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 10,
+   "gramsRange": null,
+   "perUnitGrams": 10,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_MP006"
+   ],
+   "note": null
+  },
+  {
+   "id": "selai",
+   "page": 37,
+   "table": "Penukar 1 porsi gula",
+   "name": "Selai/jam",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_MP008"
+   ],
+   "note": null
+  },
+  {
+   "id": "madu",
+   "page": 37,
+   "table": "Penukar 1 porsi gula",
+   "name": "Madu",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_MP010"
+   ],
+   "note": null
+  },
+  {
+   "id": "sirup",
+   "page": 37,
+   "table": "Penukar 1 porsi gula",
+   "name": "Sirup",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_MP014"
+   ],
+   "note": null
+  },
+  {
+   "id": "alpukat-lemak",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Alpokat",
+   "urt": "½ buah besar",
+   "qty": 0.5,
+   "unit": "buah",
+   "grams": 60,
+   "gramsRange": null,
+   "perUnitGrams": 120,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Konflik dengan hal. 15 (50 g); tidak dipasang."
+  },
+  {
+   "id": "margarin",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Margarin jagung",
+   "urt": "¼ sendok teh",
+   "qty": 0.25,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": "20 g per sdt; batas wajar 1-8 g",
+   "mappedTo": [],
+   "note": "Tidak dipasang: 20 g per sdt tidak mungkin (lihat suspect)."
+  },
+  {
+   "id": "mayones",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Mayonaise",
+   "urt": "2 sendok makan",
+   "qty": 2,
+   "unit": "sdm",
+   "grams": 25,
+   "gramsRange": null,
+   "perUnitGrams": 12.5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris mayones di TKPI 2020."
+  },
+  {
+   "id": "minyak-kedelai",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Minyak kedelai",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KR010"
+   ],
+   "note": null
+  },
+  {
+   "id": "minyak-kacang",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Minyak kacang tanah",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KR009"
+   ],
+   "note": null
+  },
+  {
+   "id": "minyak-zaitun",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Minyak zaitun",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KR014"
+   ],
+   "note": null
+  },
+  {
+   "id": "minyak-lain",
+   "page": 41,
+   "table": "Penukar 1 porsi minyak (lemak tak jenuh)",
+   "name": "Minyak biji kapas, matahari, jagung, safflower",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris minyak ini di TKPI 2020."
+  },
+  {
+   "id": "mentega",
+   "page": 41,
+   "table": "Penukar lemak jenuh",
+   "name": "Mentega",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KP002"
+   ],
+   "note": null
+  },
+  {
+   "id": "santan-peras",
+   "page": 41,
+   "table": "Penukar lemak jenuh",
+   "name": "Santan (peras)",
+   "urt": "1/3 gelas",
+   "qty": 0.333,
+   "unit": "gelas",
+   "grams": 40,
+   "gramsRange": null,
+   "perUnitGrams": 120,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KP004"
+   ],
+   "note": "Dipetakan ke \"Santan murni\". 120 g per gelas, ringan untuk cairan; dicetak begitu."
+  },
+  {
+   "id": "kelapa",
+   "page": 41,
+   "table": "Penukar lemak jenuh",
+   "name": "Kelapa",
+   "urt": "1 potong kecil",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KR001"
+   ],
+   "note": "Dipetakan ke kelapa setengah tua."
+  },
+  {
+   "id": "keju-krim",
+   "page": 41,
+   "table": "Penukar lemak jenuh",
+   "name": "Keju krim",
+   "urt": "1 potong kecil",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 15,
+   "gramsRange": null,
+   "perUnitGrams": 15,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Tidak ada baris keju krim di TKPI 2020."
+  },
+  {
+   "id": "minyak-kelapa",
+   "page": 41,
+   "table": "Penukar lemak jenuh",
+   "name": "Minyak kelapa",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KR011"
+   ],
+   "note": null
+  },
+  {
+   "id": "minyak-sawit",
+   "page": 41,
+   "table": "Penukar lemak jenuh",
+   "name": "Minyak sawit",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_KR012"
+   ],
+   "note": null
+  },
+  {
+   "id": "sayur-porsi",
+   "page": 89,
+   "table": "Kelompok sayuran golongan B dan C",
+   "name": "Sayuran (golongan B/C), setelah dimasak dan ditiriskan",
+   "urt": "1 gelas",
+   "qty": 1,
+   "unit": "gelas",
+   "grams": 100,
+   "gramsRange": null,
+   "perUnitGrams": 100,
+   "suspect": null,
+   "mappedTo": [
+    "TKPI_DP001",
+    "TKPI_DP002",
+    "TKPI_DP003",
+    "TKPI_DP004",
+    "TKPI_DP005",
+    "TKPI_DP008",
+    "TKPI_DP009",
+    "TKPI_DP011",
+    "TKPI_DP012",
+    "TKPI_DP013",
+    "TKPI_DP014",
+    "TKPI_DP015",
+    "TKPI_DP019",
+    "TKPI_DP020",
+    "TKPI_DP021"
+   ],
+   "note": "Hal. 14: \"1 porsi sayuran kurang lebih 1 gelas sayuran setelah dimasak dan ditiriskan\", 100 g per porsi; hal. 89: \"Sayuran 1 porsi = 1 gelas = 100 gr\". Dipasang hanya ke baris rebus/kukus dari sayuran yang ada di daftar golongan B/C hal. 14-15."
+  },
+  {
+   "id": "daging-porsi-89",
+   "page": 89,
+   "table": "Keterangan porsi (contoh menu kelompok umur)",
+   "name": "Daging (porsi)",
+   "urt": "1 potong sedang",
+   "qty": 1,
+   "unit": "potong",
+   "grams": 35,
+   "gramsRange": null,
+   "perUnitGrams": 35,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Sama dengan hal. 11."
+  },
+  {
+   "id": "ikan-porsi-89",
+   "page": 89,
+   "table": "Keterangan porsi (contoh menu kelompok umur)",
+   "name": "Ikan segar (porsi)",
+   "urt": "1/3 ekor",
+   "qty": 0.333,
+   "unit": "ekor",
+   "grams": 45,
+   "gramsRange": null,
+   "perUnitGrams": 135,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Konflik dengan hal. 11 (1 potong sedang 40 g); acuan saja."
+  },
+  {
+   "id": "susu-rendah-lemak-89",
+   "page": 89,
+   "table": "Keterangan porsi (contoh menu kelompok umur)",
+   "name": "Susu rendah lemak",
+   "urt": "4 sendok makan",
+   "qty": 4,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Bentuk (bubuk) tidak disebut; tidak dipasang."
+  },
+  {
+   "id": "minyak-porsi-89",
+   "page": 89,
+   "table": "Keterangan porsi (contoh menu kelompok umur)",
+   "name": "Minyak (porsi)",
+   "urt": "1 sendok teh",
+   "qty": 1,
+   "unit": "sdt",
+   "grams": 5,
+   "gramsRange": null,
+   "perUnitGrams": 5,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Sama dengan hal. 41."
+  },
+  {
+   "id": "gula-porsi-89",
+   "page": 89,
+   "table": "Keterangan porsi (contoh menu kelompok umur)",
+   "name": "Gula (porsi)",
+   "urt": "1 sendok makan",
+   "qty": 1,
+   "unit": "sdm",
+   "grams": 20,
+   "gramsRange": null,
+   "perUnitGrams": 20,
+   "suspect": null,
+   "mappedTo": [],
+   "note": "Konflik dengan hal. 37 (10 g); tidak dipakai."
+  }
+ ],
+ "conflicts": [
+  {
+   "what": "Gula 1 sdm",
+   "a": "hal. 37: 10 g",
+   "b": "hal. 89: 20 g",
+   "used": "10 g (hal. 37, tabel penukar)"
+  },
+  {
+   "what": "Ikan segar 1 porsi",
+   "a": "hal. 11: 1 potong sedang 40 g",
+   "b": "hal. 89: 1/3 ekor 45 g",
+   "used": "tidak dipasang ke ikan tertentu"
+  },
+  {
+   "what": "Alpokat ½ buah besar",
+   "a": "hal. 15: 50 g",
+   "b": "hal. 41: 60 g",
+   "used": "50 g (hal. 15, tabel buah)"
+  }
+ ]
+}
