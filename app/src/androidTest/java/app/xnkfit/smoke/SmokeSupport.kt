@@ -110,8 +110,9 @@ internal fun ComposeTestRule.clickExact(label: String) {
  * beginner) and waits for the day list, where "Latihan kosong" lives.
  */
 internal fun ComposeTestRule.ensureProgram() {
-    waitDescribed("Latihan questions or day list") { has(str(app.xnkfit.R.string.lat_create)) || has(str(app.xnkfit.R.string.lat_empty_workout)) }
-    if (!has(str(app.xnkfit.R.string.lat_create))) return
+    // The questions come first (the buttons are below the fold, so look for the intro line); a program has the day list.
+    waitDescribed("Latihan questions or day list") { has(str(app.xnkfit.R.string.lat_q_intro)) || has(str(app.xnkfit.R.string.lat_start)) }
+    if (!has(str(app.xnkfit.R.string.lat_q_intro))) return
     clickExact(str(app.xnkfit.R.string.lat_setting_home_bw))
     clickExact("3")
     clickExact(ctx.getString(app.xnkfit.R.string.lat_minutes_value, 30))
