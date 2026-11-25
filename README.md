@@ -35,6 +35,10 @@ tools/check_apk_size.sh app/build/outputs/apk/release/app-release-unsigned.apk  
 tools/check_permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk # Design 14 list
 ```
 
+## Screenshots from an emulator (no phone needed)
+
+`.github/workflows/screenshots.yml` runs on every push to `claude/**` and by hand (Actions → Screenshots → Run workflow). It builds the debug app, starts an API 34 emulator, runs `app.xnkfit.screenshots.ScreenshotTest` and uploads one artifact, `screenshots` (kept 14 days). Download it from the run page, unzip, open `index.html` (or `index.md`): every screen, phone (411×891 dp) next to tablet (800×1280 dp), light and dark, font 1.0 and 1.3. Files are named `<screen>_<hp|tablet>_<terang|gelap>_<scale>.png`. Sample data is made up; no personal data. The PNGs are written to the app's own storage and pulled with `run-as`, so the manifest has no extra permission. Local run with an emulator: `tools/screenshots/run-variants.sh out` after `./gradlew assembleDebug assembleDebugAndroidTest`.
+
 ## Debug APK from CI (test build)
 
 `.github/workflows/apk-debug.yml` builds `./gradlew assembleDebug` on every push to `main` and `claude/**` and on demand (Actions tab, "APK debug", Run workflow). The APK is signed with the stock Android debug keystore (no release key exists in this repo), has no Drive OAuth client id (Drive shows "belum tersedia") and is kept 14 days as the artifact `xnk-fit-debug-<commit>-<date>`. The job summary lists size, version, applicationId, SHA-256 and the manifest permissions.
