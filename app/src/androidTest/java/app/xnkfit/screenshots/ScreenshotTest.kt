@@ -150,7 +150,7 @@ class ScreenshotTest {
         // 2. Sample data (made up), then the app with a saved profile.
         runBlocking {
             db.profileDao().upsert(
-                ProfileEntity(createdAt = 1L, updatedAt = 1L, sex = "laki-laki", birthYear = 1990, heightCm = 170.0, goal = "turun",
+                ProfileEntity(createdAt = 1L, updatedAt = 1L, sex = "laki_laki", birthYear = 1990, heightCm = 170.0, goal = "turun",
                     interest = "otot", nickname = "Contoh", screeningDone = true),
             )
             val progress = ProgressRepository(db)
