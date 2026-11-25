@@ -118,6 +118,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | 2026-11-18 | S-06 done: Content-Update.md. |
 | 2026-11-18 | S-05 proposed (Redmi 9A), owner to confirm. |
 | 2026-11-18 | S-04 done: Play-Health.md. |
+| 2026-11-25 | Screenshot pipeline: `app/src/androidTest/.../screenshots/ScreenshotTest.kt`, `tools/screenshots/`, `.github/workflows/screenshots.yml` (artifact `screenshots`, 14 days). Sandbox has no Android SDK, so first verification is the CI run; result in the next row. |
 | 2026-11-18 | S-03 done: Google-OAuth.md; PRD §14 item 4 corrected. |
 | 2026-11-17 | D-06 approved by the owner; decisions recorded in PRD L-6 and §14, Design §16, Content §5, mockups README. |
 | 2026-11-16 | D-05 mockups in `docs/mockups/` (static HTML, phone and tablet, light and dark); D-06 approval list in its README. Local commit only; push still blocked. |
