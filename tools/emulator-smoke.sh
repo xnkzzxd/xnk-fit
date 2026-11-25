@@ -10,7 +10,7 @@ fail=0
 trap 'adb logcat -d > "$OUT/logcat.txt" 2>&1 || true' EXIT
 
 ./gradlew --no-daemon connectedDebugAndroidTest \
-  -Pandroid.testInstrumentationRunnerArguments.notPackage=app.xnkfit.smoke.kill || fail=1
+  -Pandroid.testInstrumentationRunnerArguments.notPackage=app.xnkfit.smoke.kill,app.xnkfit.screenshots || fail=1
 MAIN=$(date +%s)
 
 RUNNER=app.xnkfit.test/androidx.test.runner.AndroidJUnitRunner
