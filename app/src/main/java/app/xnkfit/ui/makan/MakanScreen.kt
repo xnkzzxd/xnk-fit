@@ -148,6 +148,7 @@ private fun SlotCard(state: MakanState, slot: MealSlot, vm: MakanViewModel) {
     }
 }
 
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
 private fun PrefsCard(state: MakanState, vm: MakanViewModel) {
     Card(Modifier.fillMaxWidth()) {
@@ -155,7 +156,8 @@ private fun PrefsCard(state: MakanState, vm: MakanViewModel) {
             Text(stringResource(R.string.mk_prefs_title), style = MaterialTheme.typography.titleMedium)
             Text(stringResource(R.string.mk_halal_note), style = MaterialTheme.typography.bodySmall)
             Text(stringResource(R.string.mk_allergy), style = MaterialTheme.typography.labelLarge)
-            Row(Modifier.horizontalScroll(rememberScrollState()), Arrangement.spacedBy(8.dp)) {
+            // Wraps instead of scrolling: five chips do not fit a 360 dp row and the last ones were hidden off-screen.
+            androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Allergen.entries.forEach { a ->
                     FilterChip(a in state.prefs.avoid, { vm.toggleAllergen(a) }, { Text(stringResource(a.label())) })
                 }

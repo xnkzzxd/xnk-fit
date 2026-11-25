@@ -24,7 +24,8 @@ for device in hp tablet; do
       adb shell pm clear app.xnkfit >/dev/null
       echo "== $variant"
       adb shell am instrument -w -e class app.xnkfit.screenshots.ScreenshotTest -e variant "$variant" \
-        app.xnkfit.test/androidx.test.runner.AndroidJUnitRunner | tail -n 25 || status=1
+        app.xnkfit.test/androidx.test.runner.AndroidJUnitRunner | tee "$OUT/_instrument_$variant.log" | tail -n 6
+      grep -q "^OK" "$OUT/_instrument_$variant.log" || status=1
       for f in $(adb shell run-as app.xnkfit ls files/screenshots | tr -d '\r'); do
         adb exec-out run-as app.xnkfit cat "files/screenshots/$f" > "$OUT/$f"
       done
