@@ -10,6 +10,7 @@ import org.junit.Rule
 
 /** Launches the real MainActivity; `Rule` is an empty compose rule because the activity is started by hand. */
 abstract class SmokeBase {
+    @get:Rule val timeout: org.junit.rules.Timeout = org.junit.rules.Timeout.seconds(180) // a hung test fails with a stack trace, not a cancelled job
     @get:Rule val rule = createEmptyComposeRule()
     protected var scenario: ActivityScenario<MainActivity>? = null
 

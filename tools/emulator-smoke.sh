@@ -9,16 +9,16 @@ START=$(date +%s)
 fail=0
 trap 'adb logcat -d > "$OUT/logcat.txt" 2>&1 || true' EXIT
 
-./gradlew --no-daemon connectedDebugAndroidTest \
+timeout 900 ./gradlew --no-daemon connectedDebugAndroidTest \
   -Pandroid.testInstrumentationRunnerArguments.notPackage=app.xnkfit.smoke.kill,app.xnkfit.screenshots || fail=1
 MAIN=$(date +%s)
 
 RUNNER=app.xnkfit.test/androidx.test.runner.AndroidJUnitRunner
 ./gradlew --no-daemon installDebug installDebugAndroidTest || fail=1
-adb shell am instrument -w -e class app.xnkfit.smoke.kill.LoggerKillTest#phase1Writes $RUNNER | tee "$OUT/kill1.txt"
+timeout 240 adb shell am instrument -w -e class app.xnkfit.smoke.kill.LoggerKillTest#phase1Writes $RUNNER | tee "$OUT/kill1.txt"
 grep -q "^OK (1 test)" "$OUT/kill1.txt" || fail=1
 adb shell am force-stop app.xnkfit
-adb shell am instrument -w -e class app.xnkfit.smoke.kill.LoggerKillTest#phase2SetSurvives $RUNNER | tee "$OUT/kill2.txt"
+timeout 240 adb shell am instrument -w -e class app.xnkfit.smoke.kill.LoggerKillTest#phase2SetSurvives $RUNNER | tee "$OUT/kill2.txt"
 grep -q "^OK (1 test)" "$OUT/kill2.txt" || fail=1
 END=$(date +%s)
 

@@ -18,7 +18,7 @@ jobs:
   smoke:
     name: ${{ matrix.name }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -49,31 +49,10 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: AVD cache
-        id: avd-cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-${{ matrix.api-level }}-${{ matrix.profile }}-v1
-
-      - name: Create AVD and snapshot (cache miss only)
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2.35.0
-        with:
-          api-level: ${{ matrix.api-level }}
-          target: default
-          arch: x86_64
-          profile: ${{ matrix.profile }}
-          ram-size: ${{ matrix.ram-size }}
-          heap-size: ${{ matrix.heap-size }}
-          force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
-          script: echo "AVD snapshot generated"
-
+      # Cold boot (no AVD cache, no snapshot): run 29 hung 43 minutes after a cached snapshot came up with an offline adb
+      # (`adb ... exit code 137`) and the script never started. A cold boot of the API 26 image takes about 2 minutes.
       - name: Smoke tests
+        timeout-minutes: 20
         uses: reactivecircus/android-emulator-runner@v2.35.0
         with:
           api-level: ${{ matrix.api-level }}
@@ -82,8 +61,9 @@ jobs:
           profile: ${{ matrix.profile }}
           ram-size: ${{ matrix.ram-size }}
           heap-size: ${{ matrix.heap-size }}
-          force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          force-avd-creation: true
+          emulator-boot-timeout: 300
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: tools/emulator-smoke.sh
 
