@@ -1,0 +1,104 @@
+name: Emulator smoke
+
+# B-18: smoke tests on a real Android emulator (app/src/androidTest). Separate from ci.yml on purpose: the emulator
+# is slow and flaky by nature, so it never blocks the main check. Runs on push, and by hand.
+on:
+  push:
+    branches: [main, "claude/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: emulator-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: phone-api26-2gb
+            api-level: 26
+            profile: pixel_2
+            ram-size: 2048M
+            heap-size: 256M
+          - name: tablet-api34
+            api-level: 34
+            profile: pixel_c
+            ram-size: 3072M
+            heap-size: 512M
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: AVD cache
+        id: avd-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.api-level }}-${{ matrix.profile }}-v1
+
+      - name: Create AVD and snapshot (cache miss only)
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2.35.0
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: default
+          arch: x86_64
+          profile: ${{ matrix.profile }}
+          ram-size: ${{ matrix.ram-size }}
+          heap-size: ${{ matrix.heap-size }}
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "AVD snapshot generated"
+
+      - name: Smoke tests
+        uses: reactivecircus/android-emulator-runner@v2.35.0
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: default
+          arch: x86_64
+          profile: ${{ matrix.profile }}
+          ram-size: ${{ matrix.ram-size }}
+          heap-size: ${{ matrix.heap-size }}
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: tools/emulator-smoke.sh
+
+      - name: Summary
+        if: always()
+        run: |
+          { echo "### ${{ matrix.name }}"; cat app/build/emulator-smoke/timing.txt 2>/dev/null || echo "no timing (script did not finish)"; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: emulator-report-${{ matrix.name }}
+          path: |
+            app/build/reports/androidTests
+            app/build/outputs/androidTest-results
+            app/build/emulator-smoke
+          retention-days: 7
