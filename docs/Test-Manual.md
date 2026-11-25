@@ -4,11 +4,13 @@ These need a real phone or emulator, so no automatic test fakes them (B-18, Desi
 
 What the JVM tests already cover (so these steps do not repeat it): every tap is on disk (`LoggerRepositoryTest`), a transaction cut off before commit leaves the old data (`KillMidTransactionTest`: workout sets, restore, content update, meal log), restore and content write failures roll back (`BackupArchiveTest`, `BundledContentLoaderTest`), every main screen draws at 360/430/600/840 dp, light and dark, font 1.0/1.3/2.0 with every clickable element at 48 dp or more (`ScreenWalkTest`, `LoggerScreenTest`). What they cannot see is below.
 
+Automatic on an emulator since 2026-11-25 (`.github/workflows/emulator.yml`, API 26 phone 2 GB and API 34 tablet; `app/src/androidTest`): **K-1 ✅** (set saved, `am force-stop`, new process, "Lanjutkan", set in Room), clean install, onboarding to Hari ini, five destinations, Latihan, Pengaturan, Data, rotation, no ANR dialog. Rows marked ✅ below need no manual run on an emulator; they still need one pass on the Redmi 10. Camera, Health Connect and Drive are skipped there on purpose.
+
 ## Kill and crash (NF-2)
 
 | ID | Steps | Expected |
 | --- | --- | --- |
-| K-1 | Start a workout (Dipandu), tick 3 sets with weights. Swipe the app away from Recents (or `adb shell am force-stop app.xnkfit`). Open the app. | Opens on Latihan with "Lanjutkan"; the 3 sets, weights and times are there; nothing lost. |
+| K-1 ✅ emulator | Start a workout (Dipandu), tick 3 sets with weights. Swipe the app away from Recents (or `adb shell am force-stop app.xnkfit`). Open the app. | Opens on Latihan with "Lanjutkan"; the 3 sets, weights and times are there; nothing lost. |
 | K-2 | Same as K-1 but kill the process during the rest timer (`adb shell am kill app.xnkfit` after backgrounding). | After opening, the rest bar shows the remaining time from the stored end time, or is gone if the time has passed. |
 | K-3 | Start a workout, leave the phone untouched for 2 days (or set the clock forward 2 days), open the app. | The old workout is closed at its last set; no "Lanjutkan" for it; its sets are in history. |
 | K-4 | Start a restore from a backup file. When the progress shows, force-stop the app. Open the app. | Old data is complete and unchanged (no half restore). Run restore again: it works. |
