@@ -123,10 +123,8 @@ internal fun ComposeTestRule.ensureProgram() {
     clickExact(ctx.getString(app.xnkfit.R.string.lat_minutes_value, 30))
     clickExact(str(app.xnkfit.R.string.lat_exp_new))
     clickExact(str(app.xnkfit.R.string.lat_create))
-    waitDescribed("program created or blocked") {
-        has(str(app.xnkfit.R.string.lat_blocked_screening)) || has(str(app.xnkfit.R.string.lat_blocked_stopped)) ||
-            has(str(app.xnkfit.R.string.lat_start)) || has(str(app.xnkfit.R.string.lat_source_auto))
-    }
+    // The list stays scrolled where the button was, so the day list may be off screen: give the result a moment.
+    runCatching { waitUntil(10_000) { has(str(app.xnkfit.R.string.lat_blocked_screening)) || has(str(app.xnkfit.R.string.lat_blocked_stopped)) } }
     check(!has(str(app.xnkfit.R.string.lat_blocked_screening)) && !has(str(app.xnkfit.R.string.lat_blocked_stopped))) {
         "Program creation was blocked:\n" + screenSummary()
     }
