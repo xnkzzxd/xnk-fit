@@ -58,7 +58,7 @@ class SmokeTest : SmokeBase() {
         seedProfile()
         launch()
         awaitToday()
-        openTab(R.string.nav_workout); rule.waitForText(str(R.string.lat_empty_workout))
+        openTab(R.string.nav_workout); rule.ensureProgram(); rule.scrollToText(str(R.string.lat_empty_workout))
         openTab(R.string.nav_food); rule.waitForIdle()
         openTab(R.string.nav_me); rule.scrollToText(str(R.string.set_title))
         // Kartu saya and Pengaturan both say "Buka"; Pengaturan is the last one.
@@ -85,13 +85,14 @@ class SmokeTest : SmokeBase() {
         launch()
         awaitToday()
         openTab(R.string.nav_workout)
-        rule.waitForText(str(R.string.lat_empty_workout))
+        rule.ensureProgram()
+        rule.scrollToText(str(R.string.lat_empty_workout))
         scenario!!.onActivity { it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE }
         rule.waitForIdle()
-        rule.waitForText(str(R.string.lat_empty_workout))
+        rule.scrollToText(str(R.string.lat_empty_workout))
         scenario!!.onActivity { it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT }
         rule.waitForIdle()
-        rule.waitForText(str(R.string.lat_empty_workout))
+        rule.scrollToText(str(R.string.lat_empty_workout))
         scenario!!.onActivity { it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED }
     }
 

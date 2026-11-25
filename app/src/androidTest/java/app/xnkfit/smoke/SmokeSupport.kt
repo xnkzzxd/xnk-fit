@@ -81,3 +81,24 @@ internal fun ComposeTestRule.clickDesc(label: String) {
 }
 
 internal fun anyClickable(rule: ComposeTestRule) = rule.onAllNodes(hasClickAction()).fetchSemanticsNodes().isNotEmpty()
+
+internal fun ComposeTestRule.clickExact(label: String) {
+    scrollToText(label)
+    onAllNodesWithText(label).onFirst().performClick()
+    waitForIdle()
+}
+
+/**
+ * On a fresh profile Latihan first asks three questions; this answers them (home, no equipment, 3 days, 30 minutes,
+ * beginner) and waits for the day list, where "Latihan kosong" lives.
+ */
+internal fun ComposeTestRule.ensureProgram() {
+    waitUntil(30_000) { has(str(app.xnkfit.R.string.lat_create)) || has(str(app.xnkfit.R.string.lat_empty_workout)) }
+    if (!has(str(app.xnkfit.R.string.lat_create))) return
+    clickExact(str(app.xnkfit.R.string.lat_setting_home_bw))
+    clickExact("3")
+    clickExact(ctx.getString(app.xnkfit.R.string.lat_minutes_value, 30))
+    clickExact(str(app.xnkfit.R.string.lat_exp_new))
+    clickExact(str(app.xnkfit.R.string.lat_create))
+    scrollToText(str(app.xnkfit.R.string.lat_empty_workout))
+}
