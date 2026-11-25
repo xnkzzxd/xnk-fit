@@ -98,9 +98,11 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 | Date | Change |
 | --- | --- |
+| 2026-11-25 | `docs/Keputusan-Pemilik.md`: ringkasan keputusan Claude untuk pemilik (perlu diputuskan, menunggu pemilik, belum teruji, lampiran ⚠ dan pemetaan Decisions.md). Dokumen saja; tidak ada keputusan diubah. |
 | 2026-11-18 | B-03 done: Room schema v1, DAOs, FTS4 food search, migration harness, schema JSON committed. |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
 | 2026-11-18 | B-02 done: domain rules, gates, pace check, rule tests and coverage check. |
+| 2026-11-25 | APK debug workflow: `.github/workflows/apk-debug.yml` (push to `main`/`claude/**` + manual, debug keystore, 14-day artifact `xnk-fit-debug-<sha7>-<date>`, summary with size/version/id/SHA-256/permissions, fails if an OAuth client id is in the dex); README section on sideloading. `ci.yml` untouched. Not verified locally: no Android SDK in the sandbox; checked on GitHub instead. |
 | 2026-11-19 | C-08b done: Gerak.md summary, 24 local rigs (44 of 149 rigged), obliques and deltoids split on the map; C-08c added for 105 left. |
 | 2026-11-18 | C-08 done: XNK figures reused, 20 rigs mapped, 129 reasons written, figure checker; C-08b added for the rest. |
 | 2026-11-18 | C-01 done: exercise library draft, checker. |

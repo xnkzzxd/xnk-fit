@@ -33,6 +33,7 @@ android {
         targetSdk = 36 // Design §1 (S-02)
         versionCode = 1
         versionName = "0.1.0"
+        // Emulator smoke tests (src/androidTest, .github/workflows/emulator.yml; B-18).
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // Drive backup (B-16): the owner's OAuth client id, passed at build time (-Pxnkfit.driveClientId=... or the
         // XNKFIT_DRIVE_CLIENT_ID env var). Empty by default: the repo is public and holds no client id
@@ -141,9 +142,9 @@ dependencies {
     debugImplementation(libs.compose.ui.test.manifest)
     testImplementation(libs.room.testing)
 
-    // Screenshot run on an emulator (app.xnkfit.screenshots, .github/workflows/screenshots.yml; Design §12).
+    // Emulator smoke tests (B-18): same libraries as the JVM tests plus the instrumentation runner; none ships in the APK.
     androidTestImplementation(libs.test.ext.junit)
-    androidTestImplementation(libs.test.runner)
+    androidTestImplementation(libs.uiautomator)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
 }
