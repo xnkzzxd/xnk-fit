@@ -1,5 +1,7 @@
 # Decisions taken by Claude while the owner is away
 
+Ringkasan untuk pemilik (Bahasa Indonesia): [Keputusan-Pemilik.md](Keputusan-Pemilik.md).
+
 The owner asked on 2026-11-18 that all sessions keep working without them. When a session needs a decision that is the owner's, it takes the safest option (PR-5, Rules), writes one row here, marks the affected text ⚠ if a number or rule is involved, and continues. The owner can reverse any row; the "Undo" column says how.
 
 Rules for sessions:

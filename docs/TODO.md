@@ -98,6 +98,7 @@ Code tasks. Each one ends with its tests passing (Design §13).
 
 | Date | Change |
 | --- | --- |
+| 2026-11-25 | `docs/Keputusan-Pemilik.md`: ringkasan keputusan Claude untuk pemilik (perlu diputuskan, menunggu pemilik, belum teruji, lampiran ⚠ dan pemetaan Decisions.md). Dokumen saja; tidak ada keputusan diubah. |
 | 2026-11-18 | B-03 done: Room schema v1, DAOs, FTS4 food search, migration harness, schema JSON committed. |
 | 2026-11-16 | First TODO (D-05 onward planned; D-01…D-04 drafted). |
 | 2026-11-18 | B-02 done: domain rules, gates, pace check, rule tests and coverage check. |
