@@ -15,6 +15,7 @@ import androidx.compose.ui.test.onLast
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.printToString
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.test.core.app.ActivityScenario
@@ -86,7 +87,12 @@ class ScreenshotTest {
     }
 
     private fun step(screen: String, body: () -> Unit) {
-        try { body() } catch (e: Throwable) { missing += "$screen: ${e.javaClass.simpleName} ${e.message?.take(160)}" }
+        try { body() } catch (e: Throwable) {
+            missing += "$screen: ${e.javaClass.simpleName} ${e.message?.take(160)}"
+            // What was on screen, to find out why the label was never there.
+            runCatching { File(outDir, "_tree_${screen}_$variant.txt").writeText(rule.onRoot().printToString(40).take(6000)) }
+            runCatching { shot("fail-$screen") }
+        }
     }
 
     private fun launch() {
@@ -141,6 +147,9 @@ class ScreenshotTest {
         step("hari-ini") { waitText(str(R.string.nav_today)); shot("hari-ini") }
         step("latihan") { tab(str(R.string.nav_workout)); shot("latihan") }
         step("latihan-program") {
+            scrollTo(str(R.string.lat_setting_gym)); click(str(R.string.lat_setting_gym))
+            scrollTo(str(R.string.lat_minutes_value).format(45)); click(str(R.string.lat_minutes_value).format(45))
+            scrollTo(str(R.string.lat_exp_new)); click(str(R.string.lat_exp_new))
             scrollTo(str(R.string.lat_create)); click(str(R.string.lat_create))
             Thread.sleep(2_000); shot("latihan-program")
             runCatching { tab(str(R.string.nav_workout)) }
