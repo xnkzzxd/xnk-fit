@@ -10,6 +10,7 @@ import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.printToString
 import androidx.compose.ui.test.onLast
@@ -50,7 +51,7 @@ internal fun seedProfile() {
 /** A timeout says what was on screen instead of only "condition not satisfied". */
 internal fun ComposeTestRule.waitDescribed(what: String, ms: Long = 30_000, cond: () -> Boolean) {
     try { waitUntil(ms, cond) } catch (e: androidx.compose.ui.test.ComposeTimeoutException) {
-        throw AssertionError("Timeout waiting for $what. Screen:\n" + onRoot().printToString(40).take(3000), e)
+        throw AssertionError("Timeout waiting for $what. Screen:\n" + screenSummary(), e)
     }
 }
 
@@ -120,3 +121,19 @@ internal fun ComposeTestRule.ensureProgram() {
     clickExact(str(app.xnkfit.R.string.lat_create))
     scrollToText(str(app.xnkfit.R.string.lat_empty_workout))
 }
+
+/** One line per node that has text: enough to see what is on screen, selected or disabled. */
+internal fun ComposeTestRule.screenSummary(): String = onAllNodes(androidx.compose.ui.test.isRoot()).fetchSemanticsNodes().firstOrNull()?.let { root ->
+    val out = StringBuilder()
+    fun walk(n: androidx.compose.ui.semantics.SemanticsNode) {
+        val t = n.config.getOrNull(androidx.compose.ui.semantics.SemanticsProperties.Text)?.joinToString { it.text }
+        if (t != null) {
+            val sel = n.config.getOrNull(androidx.compose.ui.semantics.SemanticsProperties.Selected) == true
+            val off = n.config.contains(androidx.compose.ui.semantics.SemanticsProperties.Disabled)
+            out.append("- ").append(t).append(if (sel) " [selected]" else "").append(if (off) " [disabled]" else "").append('\n')
+        }
+        n.children.forEach(::walk)
+    }
+    walk(root)
+    out.toString().take(3500)
+} ?: "(no root)"
