@@ -33,6 +33,7 @@ android {
         targetSdk = 36 // Design §1 (S-02)
         versionCode = 1
         versionName = "0.1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // Drive backup (B-16): the owner's OAuth client id, passed at build time (-Pxnkfit.driveClientId=... or the
         // XNKFIT_DRIVE_CLIENT_ID env var). Empty by default: the repo is public and holds no client id
         // (Google-OAuth.md §3); an empty value turns every Drive feature into "belum tersedia".
@@ -139,4 +140,10 @@ dependencies {
     testImplementation(libs.compose.ui.test.junit4)
     debugImplementation(libs.compose.ui.test.manifest)
     testImplementation(libs.room.testing)
+
+    // Screenshot run on an emulator (app.xnkfit.screenshots, .github/workflows/screenshots.yml; Design §12).
+    androidTestImplementation(libs.test.ext.junit)
+    androidTestImplementation(libs.test.runner)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.compose.ui.test.junit4)
 }
