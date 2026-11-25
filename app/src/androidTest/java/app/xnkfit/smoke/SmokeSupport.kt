@@ -42,8 +42,12 @@ internal fun seedProfile() {
     val db = XnkDatabase.open(ctx, "smoke")
     runBlocking {
         db.profileDao().upsert(
-            ProfileEntity(createdAt = 1L, updatedAt = 1L, sex = "laki-laki", birthYear = 1990, heightCm = 170.0, goal = "turun",
+            ProfileEntity(createdAt = 1L, updatedAt = 1L, sex = "laki_laki", birthYear = 1990, heightCm = 170.0, goal = "turun",
                 interest = "otot", nickname = "Uji", screeningDone = true),
+        )
+        // Onboarding also writes the first weight; the generator's gate needs it.
+        db.openHelper.writableDatabase.execSQL(
+            "INSERT OR REPLACE INTO measure (id, createdAt, updatedAt, type, value, unit, takenAt) VALUES ('seed-w', 1, 1, 'weight', 70.0, 'kg', 1)",
         )
     }
 }
