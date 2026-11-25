@@ -166,13 +166,17 @@ class ScreenshotTest {
             clickExact(str(R.string.lat_minutes_value).format(30))
             clickExact(str(R.string.lat_exp_new))
             clickExact(str(R.string.lat_create))
-            waitText(str(R.string.lat_start))
+            scrollTo(str(R.string.lat_empty_workout))
             shot("latihan-program")
         }
         step("logger") {
             scrollTo(str(R.string.lat_empty_workout))
             click(str(R.string.lat_empty_workout))
-            click(str(R.string.lg_mode_bebas))
+            waitText(str(R.string.lg_how))
+            shot("logger-mode")
+            // The choice card's text is "Bebas, Tabel semua set" (title and hint merged).
+            rule.onAllNodes(hasText(str(R.string.lg_mode_bebas), substring = true) and hasClickAction()).onFirst().performClick()
+            rule.waitForIdle()
             waitText(str(R.string.lg_finish))
             shot("logger")
         }
