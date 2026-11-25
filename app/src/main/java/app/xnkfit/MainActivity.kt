@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -289,6 +290,12 @@ class MainActivity : ComponentActivity() {
                     if (database.workoutDao().unfinishedSince(yesterday).isNotEmpty()) startTab = Destination.WORKOUT
                     hasProfile = database.profileDao().get() != null
                 }
+                // One page colour under every screen: the settings, data, help, privacy and card screens had none and
+                // showed the light window colour behind dark cards in dark mode (found in the screenshots).
+                androidx.compose.material3.Surface(
+                    androidx.compose.ui.Modifier.fillMaxSize(),
+                    color = androidx.compose.material3.MaterialTheme.colorScheme.background,
+                ) {
                 when (hasProfile) {
                     null -> Unit
                     false -> OnboardingScreen(onboarding, onDone = { hasProfile = true })
@@ -312,6 +319,7 @@ class MainActivity : ComponentActivity() {
                             null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, steps, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
                         }
                     }
+                }
                 }
             }
         }
