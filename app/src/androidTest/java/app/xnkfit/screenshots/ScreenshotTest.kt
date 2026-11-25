@@ -140,7 +140,13 @@ class ScreenshotTest {
         launch()
         step("hari-ini") { waitText(str(R.string.nav_today)); shot("hari-ini") }
         step("latihan") { tab(str(R.string.nav_workout)); shot("latihan") }
+        step("latihan-program") {
+            scrollTo(str(R.string.lat_create)); click(str(R.string.lat_create))
+            Thread.sleep(2_000); shot("latihan-program")
+            runCatching { tab(str(R.string.nav_workout)) }
+        }
         step("logger") {
+            scrollTo(str(R.string.lat_empty_workout))
             click(str(R.string.lat_empty_workout))
             click(str(R.string.lg_mode_bebas))
             waitText(str(R.string.lg_finish))
@@ -165,7 +171,7 @@ class ScreenshotTest {
             back()
         }
         step("pengaturan") {
-            scrollTo(str(R.string.set_open))
+            scrollTo(str(R.string.set_title))
             rule.onAllNodesWithText(str(R.string.set_open)).onLast().performClick()
             rule.waitForIdle()
             scrollTo(str(R.string.set_data_title))
