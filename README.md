@@ -34,6 +34,19 @@ tools/check_apk_size.sh app/build/outputs/apk/release/app-release-unsigned.apk  
 tools/check_permissions.sh app/build/outputs/apk/release/app-release-unsigned.apk # Design 14 list
 ```
 
+## Debug APK from CI (test build)
+
+`.github/workflows/apk-debug.yml` builds `./gradlew assembleDebug` on every push to `main` and `claude/**` and on demand (Actions tab, "APK debug", Run workflow). The APK is signed with the stock Android debug keystore (no release key exists in this repo), has no Drive OAuth client id (Drive shows "belum tersedia") and is kept 14 days as the artifact `xnk-fit-debug-<commit>-<date>`. The job summary lists size, version, applicationId, SHA-256 and the manifest permissions.
+
+Install on a phone:
+
+1. Open the run in the Actions tab, download the artifact (a zip) from the Artifacts section and unzip it to get the `.apk`. Compare its SHA-256 with the job summary if you like.
+2. Copy the APK to the phone, open it, and allow "install unknown apps" for the app you opened it from (Settings > Apps > Special access > Install unknown apps). Or from a computer with USB debugging on: `adb install -r xnk-fit-debug-<commit>-<date>.apk`.
+
+Warnings: this is a test build. It is debuggable, not minified, signed with a shared debug key that anyone can reproduce, and it will not update over a release build later (different signature, uninstall first). Do not keep real data you cannot lose in it; make a backup from the app's Data screen first (needs a Drive client id, so not in this build; export is not guaranteed). The app id is `app.xnkfit`, so it replaces a previous debug build in place.
+
+Remove it: Settings > Apps > XNK Fit > Uninstall, or `adb uninstall app.xnkfit` (this deletes the app's data). Artifacts disappear from GitHub after 14 days, or delete them by hand on the run page.
+
 Database (B-03): the Room schema JSON is exported to `app/schemas/` on every build and is committed. Never edit or delete a committed version file. To change the schema: change the entities, bump `XnkDatabase.VERSION`, add the `Migration` to `XnkDatabase.MIGRATIONS`, add a test next to `MigrationTest.exampleMigrationPattern`, commit the new `N.json`. The database tests run on the JVM with Robolectric, not on a phone or emulator; see Design §3 and §13.
 
 CI (`.github/workflows/ci.yml`) runs all of the above on every push and pull request. There is no signing key, keystore or client ID in this repo; release signing will come from CI secrets later. UI text lives in `app/src/main/res/values/strings.xml`. Speed benchmarks will live in `benchmark/` (B-19).
