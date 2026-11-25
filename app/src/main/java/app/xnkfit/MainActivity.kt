@@ -58,6 +58,7 @@ import app.xnkfit.data.backup.DeviceId
 import app.xnkfit.data.backup.DriveConfig
 import app.xnkfit.data.backup.PlayDriveAuth
 import app.xnkfit.R
+import app.xnkfit.data.prefs.SharedDataStores
 import app.xnkfit.data.prefs.ThemeMode
 import app.xnkfit.data.prefs.WelcomeTab
 import app.xnkfit.ui.bantuan.HelpScreen
@@ -83,7 +84,7 @@ class MainActivity : ComponentActivity() {
 
     // One DataStore per file: Makan and Hari ini must share this one (what the target was calculated with, M-2).
     private val basisStore by lazy {
-        TargetBasisStore(app.xnkfit.data.prefs.SharedDataStores.get(applicationContext, TARGET_BASIS_FILE))
+        TargetBasisStore(SharedDataStores.get(applicationContext, TARGET_BASIS_FILE))
     }
 
     private val settingsStore by lazy {
@@ -141,7 +142,7 @@ class MainActivity : ComponentActivity() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 val app = applicationContext
-                fun store(name: String) = app.xnkfit.data.prefs.SharedDataStores.get(app, name)
+                fun store(name: String) = SharedDataStores.get(app, name)
                 return MakanViewModel(
                     repo = FoodRepository(database, System::currentTimeMillis) { UUID.randomUUID().toString() },
                     targets = RoomTargetSource(database, basisStore) { Calendar.getInstance().get(Calendar.YEAR) },
@@ -163,7 +164,7 @@ class MainActivity : ComponentActivity() {
             override fun <T : ViewModel> create(modelClass: Class<T>): T = LatihanViewModel(
                 programs = ProgramRepository(database, loggerRepo, System::currentTimeMillis, { UUID.randomUUID().toString() }),
                 logger = loggerRepo,
-                prefs = DataStoreLatihanPrefs(app.xnkfit.data.prefs.SharedDataStores.get(applicationContext, LATIHAN_PREFS_FILE)),
+                prefs = DataStoreLatihanPrefs(SharedDataStores.get(applicationContext, LATIHAN_PREFS_FILE)),
             ) as T
         }
     }
@@ -174,7 +175,7 @@ class MainActivity : ComponentActivity() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T = app.xnkfit.ui.health.StepsViewModel(
                 source = app.xnkfit.data.health.HealthConnectSteps(applicationContext),
-                asked = app.xnkfit.data.health.DataStoreStepsAsked(app.xnkfit.data.prefs.SharedDataStores.get(applicationContext, STEPS_FILE)),
+                asked = app.xnkfit.data.health.DataStoreStepsAsked(SharedDataStores.get(applicationContext, STEPS_FILE)),
             ) as T
         }
     }
@@ -197,7 +198,7 @@ class MainActivity : ComponentActivity() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T = LoggerViewModel(
                 repo = LoggerRepository(database, System::currentTimeMillis, { UUID.randomUUID().toString() }),
-                prefs = DataStoreLoggerPrefs(app.xnkfit.data.prefs.SharedDataStores.get(applicationContext, LOGGER_PREFS_FILE)),
+                prefs = DataStoreLoggerPrefs(SharedDataStores.get(applicationContext, LOGGER_PREFS_FILE)),
                 alarms = restAlarms,
                 now = System::currentTimeMillis,
                 newId = { UUID.randomUUID().toString() },
