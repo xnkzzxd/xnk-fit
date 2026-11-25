@@ -77,7 +77,7 @@ internal fun ComposeTestRule.clickText(label: String) {
 
 /** Lazy lists compose only what is near the window: scroll every list until the label exists. */
 internal fun ComposeTestRule.scrollToText(label: String) = waitDescribed("scroll to \"$label\"") {
-    if (has(label)) return@waitUntil true
+    if (has(label)) return@waitDescribed true
     val lists = onAllNodes(hasScrollAction()).fetchSemanticsNodes().size
     for (i in 0 until lists) runCatching { onAllNodes(hasScrollAction())[i].performScrollToNode(hasText(label, substring = true)) }
     has(label)
