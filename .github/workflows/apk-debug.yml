@@ -1,0 +1,89 @@
+name: APK debug
+
+# Builds an installable debug APK (signed with the stock Android debug keystore that AGP creates on the runner)
+# and keeps it as a workflow artifact for 14 days. A test build only: no release key, secret or OAuth client id.
+on:
+  push:
+    branches: [main, "claude/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Several sessions push to one branch, so one group per commit: a newer push never cancels another push's APK.
+concurrency:
+  group: apk-debug-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # No -Pxnkfit.driveClientId and no XNKFIT_DRIVE_CLIENT_ID: the OAuth client id stays empty (B-16).
+      - name: Build debug APK
+        env:
+          XNKFIT_DRIVE_CLIENT_ID: ""
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Name the APK and summarise
+        id: apk
+        run: |
+          set -euo pipefail
+          src="$(ls app/build/outputs/apk/debug/*.apk | head -1)"
+          short="$(git rev-parse --short=7 HEAD)"
+          day="$(date -u +%Y-%m-%d)"
+          name="xnk-fit-debug-${short}-${day}"
+          mkdir -p dist
+          cp "$src" "dist/${name}.apk"
+          apk="dist/${name}.apk"
+          aapt2="$(command -v aapt2 || ls "${ANDROID_HOME:-/nonexistent}"/build-tools/*/aapt2 | sort -V | tail -1)"
+          badging="$("$aapt2" dump badging "$apk")"
+          appid="$(sed -n "s/^package: name='\([^']*\)'.*/\1/p" <<<"$badging")"
+          vname="$(sed -n "s/.*versionName='\([^']*\)'.*/\1/p" <<<"$badging" | head -1)"
+          vcode="$(sed -n "s/.*versionCode='\([^']*\)'.*/\1/p" <<<"$badging" | head -1)"
+          sha="$(sha256sum "$apk" | cut -d' ' -f1)"
+          size="$(stat -c %s "$apk")"
+          perms="$("$aapt2" dump permissions "$apk" | sed -n "s/^uses-permission: name='\(.*\)'.*/\1/p")"
+          # No client id or key in the APK: the Google OAuth client id suffix must not appear in any dex file.
+          leaks="$(unzip -p "$apk" 'classes*.dex' | grep -ac 'apps\.googleusercontent\.com' || true)"
+          {
+            echo "## APK debug"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Berkas | \`${name}.apk\` |"
+            echo "| Ukuran | ${size} byte ($(( size / 1024 )) KiB) |"
+            echo "| Versi | ${vname} (${vcode}) |"
+            echo "| applicationId | \`${appid}\` |"
+            echo "| SHA-256 | \`${sha}\` |"
+            echo "| Penandatangan | keystore debug bawaan Android (build uji, bukan rilis) |"
+            echo "| ID klien OAuth di dex | $([ "$leaks" = 0 ] && echo 'kosong (0 kecocokan)' || echo "ADA ${leaks} kecocokan") |"
+            echo
+            echo "Izin manifest:"
+            echo
+            sed 's/^/- `/; s/$/`/' <<<"$perms"
+            echo
+            echo "Artefak disimpan 14 hari. Ini build uji: lihat README."
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$leaks" = 0 ] || { echo "OAuth client id found in the debug APK" >&2; exit 1; }
+          echo "name=${name}" >> "$GITHUB_OUTPUT"
+
+      - name: Permission check (Design §14)
+        run: tools/check_permissions.sh dist/${{ steps.apk.outputs.name }}.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.apk.outputs.name }}
+          path: dist/${{ steps.apk.outputs.name }}.apk
+          retention-days: 14
+          if-no-files-found: error

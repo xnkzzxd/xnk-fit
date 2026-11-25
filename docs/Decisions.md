@@ -1,5 +1,7 @@
 # Decisions taken by Claude while the owner is away
 
+Ringkasan untuk pemilik (Bahasa Indonesia): [Keputusan-Pemilik.md](Keputusan-Pemilik.md).
+
 The owner asked on 2026-11-18 that all sessions keep working without them. When a session needs a decision that is the owner's, it takes the safest option (PR-5, Rules), writes one row here, marks the affected text ⚠ if a number or rule is involved, and continues. The owner can reverse any row; the "Undo" column says how.
 
 Rules for sessions:
@@ -131,3 +133,4 @@ Rules for sessions:
 | 2026-11-19 | B-19 | Cold-start benchmark needs onboarding finished once by hand on the device; the app gets no benchmark-only shortcut | No test-only code path in the release-like build | Script onboarding with UiAutomator in `Journeys.kt` |
 | 2026-11-19 | B-19 | Baseline profile file not committed: only the generator. Cloud sandbox has no KVM, and the file is never written by hand | A hand-made profile would be a fake measurement | Run `:app:generateBaselineProfile` on an API 33+ device and commit the file |
 | 2026-11-19 | B-19 | `profileinstaller` added (Design §12 row) | Macrobenchmark `CompilationMode.Partial` and sideloaded installs need it to apply the profile | Remove the dependency and the §12 row |
+| 2026-11-25 | APK debug workflow | Separate `apk-debug.yml`; concurrency group per commit with no cancelling; debug APK is checked for the Google client-id suffix and for the Design §14 permission list; artifact name carries commit and UTC date | Several sessions push to one branch; a test APK must never carry a client id or key (public repo, B-16) | Delete the workflow file |
