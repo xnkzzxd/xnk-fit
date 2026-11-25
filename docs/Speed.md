@@ -87,4 +87,4 @@ git add app/src/main/generated/baselineProfiles/ && git commit -m "Add baseline 
 
 ## Emulator CI run (2026-11-25)
 
-These are the times of the smoke suite in `emulator.yml`, **not** the speed of the app and **not** Redmi 10 numbers (a shared CI runner with software GPU). Per job, cache miss on the first run: AVD creation about 1.3 min; smoke step about 6.3 min on API 26 phone 2 GB (Gradle build and 4 UI tests 311 s, kill test with install 45 s) and about 5 min on API 34 tablet (238 s and 44 s); whole job about 8 min and 6.5 min. No cold-start or frame number was taken; `:benchmark` still needs a device.
+These are the times of the smoke suite in `emulator.yml`, **not** the speed of the app and **not** Redmi 10 numbers (a shared CI runner with software GPU). Per job, cache miss on the first run: AVD creation about 1.3 min; smoke step about 6.3 min on API 26 phone 2 GB (Gradle build and 4 UI tests 311 s, kill test with install 45 s) and about 5 min on API 34 tablet (238 s and 44 s); whole job about 8 min and 6.5 min (with the cold boot of 2026-11-25: 6.9 and 5.8 min, no AVD cache). No cold-start or frame number was taken; `:benchmark` still needs a device.
