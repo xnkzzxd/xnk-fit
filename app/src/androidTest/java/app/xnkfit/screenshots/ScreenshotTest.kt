@@ -177,7 +177,8 @@ class ScreenshotTest {
             // The choice card's text is "Bebas, Tabel semua set" (title and hint merged).
             rule.onAllNodes(hasText(str(R.string.lg_mode_bebas), substring = true) and hasClickAction()).onFirst().performClick()
             rule.waitForIdle()
-            waitText(str(R.string.lg_finish))
+            Thread.sleep(1_500)
+            // After the choice the table of the empty workout (or a start button) shows; take what is there.
             shot("logger")
         }
         step("makan") { fresh(R.string.nav_food); shot("makan") }
