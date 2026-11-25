@@ -8,6 +8,8 @@ import app.xnkfit.smoke.clickDesc
 import app.xnkfit.smoke.clickText
 import app.xnkfit.smoke.ctx
 import app.xnkfit.smoke.has
+import app.xnkfit.smoke.ensureProgram
+import app.xnkfit.smoke.scrollToText
 import app.xnkfit.smoke.hasDesc
 import app.xnkfit.smoke.seedProfile
 import app.xnkfit.smoke.str
@@ -39,6 +41,8 @@ class LoggerKillTest : SmokeBase() {
         launch()
         rule.waitForText(str(R.string.nav_today))
         rule.clickText(str(R.string.nav_workout))
+        rule.ensureProgram()
+        rule.scrollToText(str(R.string.lat_empty_workout))
         rule.clickText(str(R.string.lat_empty_workout))
         // First run: the mode choice appears; later runs go straight to the workout.
         rule.waitUntil(30_000) { rule.has(str(R.string.lg_mode_bebas)) || rule.has(str(R.string.lg_add_exercise)) }
