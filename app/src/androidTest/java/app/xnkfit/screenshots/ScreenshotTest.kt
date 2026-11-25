@@ -60,6 +60,16 @@ class ScreenshotTest {
         rule.waitForIdle()
     }
 
+    /** Scrolls to a clickable element whose whole text is [label] (choice cards, number boxes) and clicks it. */
+    private fun clickExact(label: String) {
+        scrollTo(label)
+        rule.onAllNodes(hasText(label) and hasClickAction()).onFirst().performClick()
+        rule.waitForIdle()
+    }
+
+    /** Fresh activity (overlay state is not kept), then the given tab. */
+    private fun fresh(tabLabel: Int) { launch(); tab(str(tabLabel)) }
+
     /** Bottom bar and rail items are clickable and carry the label; a screen heading with the same text is not clickable. */
     private fun tab(label: String) {
         rule.waitUntil(20_000) { rule.onAllNodes(hasText(label) and hasClickAction()).fetchSemanticsNodes().isNotEmpty() }
@@ -151,13 +161,13 @@ class ScreenshotTest {
         step("hari-ini") { waitText(str(R.string.nav_today)); shot("hari-ini") }
         step("latihan") { tab(str(R.string.nav_workout)); shot("latihan") }
         step("latihan-program") {
-            scrollTo(str(R.string.lat_setting_gym)); click(str(R.string.lat_setting_gym))
-            scrollTo("3"); rule.onAllNodes(hasText("3") and hasClickAction()).onFirst().performClick()
-            scrollTo(str(R.string.lat_minutes_value).format(45)); click(str(R.string.lat_minutes_value).format(45))
-            scrollTo(str(R.string.lat_exp_new)); click(str(R.string.lat_exp_new))
-            scrollTo(str(R.string.lat_create)); click(str(R.string.lat_create))
-            Thread.sleep(2_000); shot("latihan-program")
-            runCatching { tab(str(R.string.nav_workout)) }
+            clickExact(str(R.string.lat_setting_home_bw))
+            clickExact("3")
+            clickExact(str(R.string.lat_minutes_value).format(30))
+            clickExact(str(R.string.lat_exp_new))
+            clickExact(str(R.string.lat_create))
+            waitText(str(R.string.lat_start))
+            shot("latihan-program")
         }
         step("logger") {
             scrollTo(str(R.string.lat_empty_workout))
@@ -165,10 +175,8 @@ class ScreenshotTest {
             click(str(R.string.lg_mode_bebas))
             waitText(str(R.string.lg_finish))
             shot("logger")
-            back()
-            runCatching { click(str(R.string.lg_resume_finish)) }
         }
-        step("makan") { tab(str(R.string.nav_food)); shot("makan") }
+        step("makan") { fresh(R.string.nav_food); shot("makan") }
         step("planner") {
             click(str(R.string.mk_plan_week))
             Thread.sleep(2_500)
@@ -177,23 +185,24 @@ class ScreenshotTest {
         }
         step("saya") { tab(str(R.string.nav_me)); shot("saya") }
         step("kartu") {
+            fresh(R.string.nav_me)
             scrollTo(str(R.string.me_cards_title))
             rule.onAllNodesWithText(str(R.string.set_open)).onFirst().performClick()
             rule.waitForIdle()
             Thread.sleep(1_500)
             shot("kartu")
-            back()
         }
-        step("pengaturan") {
+        fun settings() {
+            fresh(R.string.nav_me)
             scrollTo(str(R.string.set_title))
             rule.onAllNodesWithText(str(R.string.set_open)).onLast().performClick()
             rule.waitForIdle()
             scrollTo(str(R.string.set_data_title))
-            shot("pengaturan")
         }
-        step("data") { click(str(R.string.set_data_title)); shot("data"); back() }
-        step("bantuan") { scrollTo(str(R.string.set_help_title)); click(str(R.string.set_help_title)); shot("bantuan"); back() }
-        step("privasi") { scrollTo(str(R.string.set_privacy_title)); click(str(R.string.set_privacy_title)); shot("privasi"); back() }
+        step("pengaturan") { settings(); shot("pengaturan") }
+        step("data") { settings(); click(str(R.string.set_data_title)); shot("data") }
+        step("bantuan") { settings(); scrollTo(str(R.string.set_help_title)); click(str(R.string.set_help_title)); shot("bantuan") }
+        step("privasi") { settings(); scrollTo(str(R.string.set_privacy_title)); click(str(R.string.set_privacy_title)); shot("privasi") }
         scenario?.close()
 
         File(outDir, "_missing_$variant.txt").writeText(missing.joinToString("\n"))
