@@ -19,6 +19,11 @@ import app.xnkfit.smoke.waitForText
 import app.xnkfit.smoke.wipeApp
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.onAllNodes
+import app.xnkfit.smoke.waitDescribed
 import androidx.compose.ui.test.performClick
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -54,15 +59,18 @@ class LoggerKillTest : SmokeBase() {
         rule.waitForText(str(R.string.lg_add_exercise))
         rule.clickText(str(R.string.lg_add_exercise))
         rule.typeInto(str(R.string.lg_search), "Back Squat")
-        rule.clickText("Back Squat")
-        rule.waitUntil(30_000) { rule.hasDesc(str(R.string.lg_tick)) }
+        // The search field now also contains "Back Squat": click the list row, not the field.
+        val row = hasText("Back Squat", substring = true) and !hasSetTextAction() and hasClickAction()
+        rule.waitDescribed("search result Back Squat") { rule.onAllNodes(row).fetchSemanticsNodes().isNotEmpty() }
+        rule.onAllNodes(row).onFirst().performClick()
+        rule.waitDescribed("set table with a tick box") { rule.hasDesc(str(R.string.lg_tick)) }
         // Expand the first row and fill what a tick needs (weight and reps), then tick.
         rule.onAllNodesWithText(str(R.string.lg_prev_none), substring = true).onFirst().performClick()
         rule.waitForIdle()
         repeat(2) { if (rule.hasDesc(str(R.string.lg_weight))) rule.clickDesc("${str(R.string.lg_plus)} ${str(R.string.lg_weight)}") }
         repeat(2) { if (rule.hasDesc(str(R.string.lg_reps))) rule.clickDesc("${str(R.string.lg_plus)} ${str(R.string.lg_reps)}") }
         rule.clickDesc(str(R.string.lg_tick))
-        rule.waitUntil(30_000) { doneSets() >= 1 }
+        rule.waitDescribed("a done set in the database") { doneSets() >= 1 }
         assertTrue(doneSets() >= 1)
     }
 
