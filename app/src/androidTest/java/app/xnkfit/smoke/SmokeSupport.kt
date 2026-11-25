@@ -10,6 +10,9 @@ import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.printToString
+import androidx.compose.ui.test.onLast
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.test.platform.app.InstrumentationRegistry
@@ -44,8 +47,22 @@ internal fun seedProfile() {
     }
 }
 
+/** A timeout says what was on screen instead of only "condition not satisfied". */
+internal fun ComposeTestRule.waitDescribed(what: String, ms: Long = 30_000, cond: () -> Boolean) {
+    try { waitUntil(ms, cond) } catch (e: androidx.compose.ui.test.ComposeTimeoutException) {
+        throw AssertionError("Timeout waiting for $what. Screen:\n" + onRoot().printToString(40).take(3000), e)
+    }
+}
+
 internal fun ComposeTestRule.waitForText(label: String, ms: Long = 30_000) =
-    waitUntil(ms) { onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+    waitDescribed("\"$label\"", ms) { onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+/** Bottom bar or rail item: the clickable node whose text is exactly the label (Today also has cards with the same words). */
+internal fun ComposeTestRule.clickNav(label: String) {
+    waitDescribed("nav \"$label\"") { onAllNodes(hasText(label) and hasClickAction()).fetchSemanticsNodes().isNotEmpty() }
+    onAllNodes(hasText(label) and hasClickAction()).onLast().performClick()
+    waitForIdle()
+}
 
 internal fun ComposeTestRule.waitGone(label: String, ms: Long = 30_000) =
     waitUntil(ms) { onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isEmpty() }
@@ -93,7 +110,7 @@ internal fun ComposeTestRule.clickExact(label: String) {
  * beginner) and waits for the day list, where "Latihan kosong" lives.
  */
 internal fun ComposeTestRule.ensureProgram() {
-    waitUntil(30_000) { has(str(app.xnkfit.R.string.lat_create)) || has(str(app.xnkfit.R.string.lat_empty_workout)) }
+    waitDescribed("Latihan questions or day list") { has(str(app.xnkfit.R.string.lat_create)) || has(str(app.xnkfit.R.string.lat_empty_workout)) }
     if (!has(str(app.xnkfit.R.string.lat_create))) return
     clickExact(str(app.xnkfit.R.string.lat_setting_home_bw))
     clickExact("3")

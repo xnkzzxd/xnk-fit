@@ -5,6 +5,7 @@ import app.xnkfit.R
 import app.xnkfit.data.db.XnkDatabase
 import app.xnkfit.smoke.SmokeBase
 import app.xnkfit.smoke.clickDesc
+import app.xnkfit.smoke.clickNav
 import app.xnkfit.smoke.clickText
 import app.xnkfit.smoke.ctx
 import app.xnkfit.smoke.has
@@ -40,7 +41,7 @@ class LoggerKillTest : SmokeBase() {
         wipeApp(); seedProfile()
         launch()
         rule.waitForText(str(R.string.nav_today))
-        rule.clickText(str(R.string.nav_workout))
+        rule.clickNav(str(R.string.nav_workout))
         rule.ensureProgram()
         rule.scrollToText(str(R.string.lat_empty_workout))
         rule.clickText(str(R.string.lat_empty_workout))

@@ -18,7 +18,7 @@ abstract class SmokeBase {
     /** The app should show the bottom bar or the rail with Hari ini. */
     protected fun awaitToday() { rule.waitForText(str(R.string.nav_today)) }
 
-    protected fun openTab(label: Int) = rule.clickText(str(label))
+    protected fun openTab(label: Int) = rule.clickNav(str(label))
 
     @After fun closeScenario() {
         runCatching { scenario?.close() }
