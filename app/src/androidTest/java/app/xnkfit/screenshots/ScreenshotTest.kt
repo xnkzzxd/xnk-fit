@@ -67,8 +67,12 @@ class ScreenshotTest {
         rule.waitForIdle()
     }
 
+    /** The on-screen "Kembali" when there is one (the system key did not leave Kartu saya on the emulator), else the key. */
     private fun back() {
-        inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK)
+        val label = str(R.string.lat_back)
+        val nodes = rule.onAllNodes(hasText(label) and hasClickAction())
+        if (nodes.fetchSemanticsNodes().isNotEmpty()) nodes.onFirst().performClick()
+        else inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK)
         rule.waitForIdle()
     }
 
@@ -148,6 +152,7 @@ class ScreenshotTest {
         step("latihan") { tab(str(R.string.nav_workout)); shot("latihan") }
         step("latihan-program") {
             scrollTo(str(R.string.lat_setting_gym)); click(str(R.string.lat_setting_gym))
+            scrollTo("3"); rule.onAllNodes(hasText("3") and hasClickAction()).onFirst().performClick()
             scrollTo(str(R.string.lat_minutes_value).format(45)); click(str(R.string.lat_minutes_value).format(45))
             scrollTo(str(R.string.lat_exp_new)); click(str(R.string.lat_exp_new))
             scrollTo(str(R.string.lat_create)); click(str(R.string.lat_create))
