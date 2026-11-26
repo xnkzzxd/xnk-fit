@@ -205,9 +205,20 @@ class ScreenshotTest {
             scrollTo(str(R.string.set_data_title))
         }
         step("pengaturan") { settings(); shot("pengaturan") }
-        step("data") { settings(); click(str(R.string.set_data_title)); shot("data") }
-        step("bantuan") { settings(); scrollTo(str(R.string.set_help_title)); click(str(R.string.set_help_title)); shot("bantuan") }
-        step("privasi") { settings(); scrollTo(str(R.string.set_privacy_title)); click(str(R.string.set_privacy_title)); shot("privasi") }
+        // The cards in Pengaturan are not clickable themselves: the "Buka" button is. Data, Bantuan and Privasi are the last three.
+        fun openFromSettings(fromEnd: Int, marker: Int) {
+            settings()
+            val buttons = rule.onAllNodes(hasText(str(R.string.set_open)) and hasClickAction())
+            val n = buttons.fetchSemanticsNodes().size
+            check(n >= 3) { "Buka buttons in Pengaturan: $n" }
+            buttons[n - 1 - fromEnd].performClick()
+            rule.waitForIdle()
+            // Fail (not save a wrong screen) when this screen's own text never shows.
+            waitText(str(marker))
+        }
+        step("data") { openFromSettings(2, R.string.data_file_title); shot("data") }
+        step("bantuan") { openFromSettings(1, R.string.help_disclaimer_title); shot("bantuan") }
+        step("privasi") { openFromSettings(0, R.string.privacy_review_note); shot("privasi") }
         scenario?.close()
 
         File(outDir, "_missing_$variant.txt").writeText(missing.joinToString("\n"))
