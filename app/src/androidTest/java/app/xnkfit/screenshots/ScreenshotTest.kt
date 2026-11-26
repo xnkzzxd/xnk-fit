@@ -5,7 +5,8 @@ import android.graphics.Bitmap
 import android.view.KeyEvent
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.hasClickAction
-import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.onAllNodesWithContentDescription
+import app.xnkfit.smoke.screenSummary
 import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
@@ -55,12 +56,22 @@ class ScreenshotTest {
 
     private fun str(id: Int) = ctx.getString(id)
 
-    private fun waitText(label: String, ms: Long = 30_000) =
+    private fun waitText(label: String, ms: Long = 30_000) = try {
         rule.waitUntil(ms) { rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+    } catch (e: androidx.compose.ui.test.ComposeTimeoutException) {
+        throw AssertionError("no text \"$label\". Screen:\n" + rule.screenSummary(), e)
+    }
 
     /** A loading placeholder must be gone before a shot: the shot waits for the screen's own text, never a fixed pause. */
     private fun waitGone(label: String, ms: Long = 60_000) =
         rule.waitUntil(ms) { rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isEmpty() }
+
+    /** Waits for a content description; on time out the failure carries the texts on screen, never a bare timeout. */
+    private fun waitDesc(label: String, ms: Long = 30_000) = try {
+        rule.waitUntil(ms) { rule.onAllNodesWithContentDescription(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+    } catch (e: androidx.compose.ui.test.ComposeTimeoutException) {
+        throw AssertionError("no description \"$label\". Screen:\n" + rule.screenSummary(), e)
+    }
 
     private fun click(label: String) {
         waitText(label)
@@ -110,7 +121,7 @@ class ScreenshotTest {
 
     private fun step(screen: String, body: () -> Unit) {
         try { body() } catch (e: Throwable) {
-            missing += "$screen: ${e.javaClass.simpleName} ${e.message?.take(160)}"
+            missing += "$screen: ${e.javaClass.simpleName} ${e.message?.take(1500)}"
             // What was on screen, to find out why the label was never there.
             runCatching { File(outDir, "_tree_${screen}_$variant.txt").writeText(rule.onRoot().printToString(40).take(6000)) }
             runCatching { shot("fail-$screen") }
@@ -205,29 +216,33 @@ class ScreenshotTest {
             // After the choice the table of the empty workout (or a start button) shows; take what is there.
             shot("logger")
         }
-        extra("logger-berjalan") {
-            // A running workout: one exercise, one set typed and ticked, so the SET/KG/REP table and the rest timer show.
-            // The start pane (mode chosen) still shows: "Mulai latihan" opens the running logger.
+        step("logger-berjalan") {
+            // A running workout, same steps as the smoke test: start, one exercise from the search, a set filled and ticked.
+            fun anyText(l: String) = rule.onAllNodesWithText(l, substring = true).fetchSemanticsNodes().isNotEmpty()
+            fun anyDesc(l: String) = rule.onAllNodesWithContentDescription(l, substring = true).fetchSemanticsNodes().isNotEmpty()
+            fun clickDesc(l: String) {
+                waitDesc(l)
+                rule.onAllNodesWithContentDescription(l, substring = true).onFirst().performClick()
+                rule.waitForIdle()
+            }
             click(str(R.string.lg_start))
-            waitText(str(R.string.lg_finish))
-            click("+ " + str(R.string.lg_add_exercise))
-            waitText(str(R.string.lg_add_title))
-            typeInto(str(R.string.lg_search), "Push-Up (Bodyweight)")
+            waitText(str(R.string.lg_add_exercise))
+            click(str(R.string.lg_add_exercise))
+            typeInto(str(R.string.lg_search), "Back Squat")
+            // The search field now also holds "Back Squat": click the list row, not the field.
+            val row = hasText("Back Squat", substring = true) and !hasSetTextAction() and hasClickAction()
+            rule.waitUntil(30_000) { rule.onAllNodes(row).fetchSemanticsNodes().isNotEmpty() }
+            rule.onAllNodes(row).onFirst().performClick()
             rule.waitForIdle()
-            rule.onAllNodes(hasText("Push-Up (Bodyweight)") and hasClickAction()).onFirst().performClick()
-            rule.waitForIdle()
-            waitText("+ " + str(R.string.lg_add_set))
+            waitDesc(str(R.string.lg_tick))
             shot("logger-berjalan-gerakan")
-            // Best effort from here: the set row is opened, reps raised once, ticked. A miss is noted, the shot is taken anyway.
-            runCatching {
-                rule.onAllNodes(hasText("\u2014", substring = true) and hasClickAction()).onFirst().performClick()
-                rule.waitForIdle()
-                rule.onAllNodes(hasContentDescription(str(R.string.lg_plus))).onFirst().performClick()
-                rule.waitForIdle()
-                rule.onAllNodes(hasContentDescription(str(R.string.lg_tick))).onFirst().performClick()
-                rule.waitForIdle()
-                waitText(str(R.string.lg_rest))
-            }.onFailure { File(outDir, "_note_logger-berjalan_$variant.txt").writeText("tick not done: ${it.message?.take(200)}") }
+            rule.onAllNodesWithText(str(R.string.lg_prev_none), substring = true).onFirst().performClick()
+            rule.waitForIdle()
+            repeat(2) { if (anyDesc(str(R.string.lg_weight))) clickDesc("${str(R.string.lg_plus)} ${str(R.string.lg_weight)}") }
+            repeat(2) { if (anyDesc(str(R.string.lg_reps))) clickDesc("${str(R.string.lg_plus)} ${str(R.string.lg_reps)}") }
+            clickDesc(str(R.string.lg_tick))
+            waitText(str(R.string.lg_rest)) // the rest timer shows after a ticked set
+            check(anyText(str(R.string.lg_finish))) { "no finish button" }
             shot("logger-berjalan")
         }
         step("hari-ini") {
