@@ -26,4 +26,10 @@ class TwoColumnsRuleTest {
     @Test fun phonesNeverSplit() {
         for (w in listOf(360, 411, 430)) for (f in listOf(1.0f, 1.3f, 2.0f)) assertEquals("$w @ $f", false, useTwoColumns(w, f))
     }
+
+    @Test fun flowScreensStayPhoneWidthOnPhonesAndCapOnTablets() {
+        org.junit.Assert.assertEquals(360, flowWidthDp(360))
+        org.junit.Assert.assertEquals(600, flowWidthDp(600))
+        org.junit.Assert.assertEquals(FLOW_MAX_DP, flowWidthDp(1280))
+    }
 }

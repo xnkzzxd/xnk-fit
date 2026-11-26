@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.view.KeyEvent
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
@@ -24,6 +25,8 @@ import app.xnkfit.MainActivity
 import app.xnkfit.R
 import app.xnkfit.data.db.ProfileEntity
 import app.xnkfit.data.db.XnkDatabase
+import app.xnkfit.data.prefs.SettingsGraph
+import app.xnkfit.data.prefs.WelcomeTab
 import app.xnkfit.data.progress.ProgressRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
@@ -53,6 +56,10 @@ class ScreenshotTest {
 
     private fun waitText(label: String, ms: Long = 30_000) =
         rule.waitUntil(ms) { rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    /** A loading placeholder must be gone before a shot: the shot waits for the screen's own text, never a fixed pause. */
+    private fun waitGone(label: String, ms: Long = 60_000) =
+        rule.waitUntil(ms) { rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isEmpty() }
 
     private fun click(label: String) {
         waitText(label)
@@ -158,7 +165,16 @@ class ScreenshotTest {
             progress.addMeasure("shot-c1", "waist", 88.0, "cm") // text-ok: stored codes
         }
         launch()
-        step("hari-ini") { waitText(str(R.string.nav_today)); shot("hari-ini") }
+        // First visit to each tab shows the welcome card ("Mengerti"): one series with it, then all marked seen for the rest.
+        step("sambutan") {
+            waitText(str(R.string.td_tasks_title))
+            shot("sambutan-hari-ini")
+            tab(str(R.string.nav_workout)); shot("sambutan-latihan")
+            tab(str(R.string.nav_food)); shot("sambutan-makan")
+            tab(str(R.string.nav_me)); waitGone(str(R.string.me_loading)); shot("sambutan-saya")
+        }
+        runBlocking { WelcomeTab.entries.forEach { SettingsGraph.store(ctx).markCardSeen(it) } }
+        launch()
         step("latihan") { tab(str(R.string.nav_workout)); shot("latihan") }
         step("latihan-program") {
             clickExact(str(R.string.lat_setting_home_bw))
@@ -168,6 +184,12 @@ class ScreenshotTest {
             clickExact(str(R.string.lat_create))
             scrollTo(str(R.string.lat_empty_workout))
             shot("latihan-program")
+        }
+        step("hari-ini") {
+            fresh(R.string.nav_today)
+            // Loaded: the task card is there only after the first read, so the shot never shows the bare header.
+            waitText(str(R.string.td_tasks_title))
+            shot("hari-ini")
         }
         step("logger") {
             scrollTo(str(R.string.lat_empty_workout))
@@ -181,6 +203,28 @@ class ScreenshotTest {
             // After the choice the table of the empty workout (or a start button) shows; take what is there.
             shot("logger")
         }
+        step("logger-berjalan") {
+            // A running workout: one exercise, one set typed and ticked, so the SET/KG/REP table and the rest timer show.
+            click("+ " + str(R.string.lg_add_exercise))
+            waitText(str(R.string.lg_add_title))
+            typeInto(str(R.string.lg_search), "Push-Up (Bodyweight)")
+            rule.waitForIdle()
+            rule.onAllNodes(hasText("Push-Up (Bodyweight)") and hasClickAction()).onFirst().performClick()
+            rule.waitForIdle()
+            waitText("+ " + str(R.string.lg_add_set))
+            shot("logger-berjalan-gerakan")
+            // Best effort from here: the set row is opened, reps raised once, ticked. A miss is noted, the shot is taken anyway.
+            runCatching {
+                rule.onAllNodes(hasText("\u2014", substring = true) and hasClickAction()).onFirst().performClick()
+                rule.waitForIdle()
+                rule.onAllNodes(hasContentDescription(str(R.string.lg_plus))).onFirst().performClick()
+                rule.waitForIdle()
+                rule.onAllNodes(hasContentDescription(str(R.string.lg_tick))).onFirst().performClick()
+                rule.waitForIdle()
+                waitText(str(R.string.lg_rest))
+            }.onFailure { File(outDir, "_note_logger-berjalan_$variant.txt").writeText("tick not done: ${it.message?.take(200)}") }
+            shot("logger-berjalan")
+        }
         step("makan") { fresh(R.string.nav_food); shot("makan") }
         step("planner") {
             click(str(R.string.mk_plan_week))
@@ -188,7 +232,7 @@ class ScreenshotTest {
             shot("planner")
             back()
         }
-        step("saya") { tab(str(R.string.nav_me)); shot("saya") }
+        step("saya") { tab(str(R.string.nav_me)); waitGone(str(R.string.me_loading)); waitText("Contoh"); shot("saya") }
         step("kartu") {
             fresh(R.string.nav_me)
             scrollTo(str(R.string.me_cards_title))

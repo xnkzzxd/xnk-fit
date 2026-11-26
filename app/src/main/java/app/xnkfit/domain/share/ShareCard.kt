@@ -7,7 +7,7 @@ import java.time.LocalDate
 
 // R_SHARE_NOKG, R_SHARE_BRAND, R_SHARE_FACE: the defaults of the three switches (PRD P-6).
 const val R_SHARE_NOKG_DEFAULT = true
-const val R_SHARE_BRAND_DEFAULT = true
+const val R_SHARE_BRAND_DEFAULT = false // off until the download page exists (Decisions.md, 2026-11-26)
 const val R_SHARE_FACE_DEFAULT = true
 
 // R_SHARE_PX: pixel sizes.

@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
@@ -38,6 +39,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import app.xnkfit.R
+import app.xnkfit.ui.adaptive.FlowWidth
 import app.xnkfit.domain.rules.InputProblem
 import app.xnkfit.domain.rules.Sex
 import app.xnkfit.ui.common.ChoiceCard
@@ -68,6 +70,7 @@ fun OnboardingScreen(vm: OnboardingViewModel, onDone: () -> Unit, modifier: Modi
     LaunchedEffect(s.finished) { if (s.finished) onDone() }
 
     Surface(modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        FlowWidth {
         Column(Modifier.fillMaxSize()) {
             stepNumber(s.step)?.let {
                 Text(
@@ -95,6 +98,7 @@ fun OnboardingScreen(vm: OnboardingViewModel, onDone: () -> Unit, modifier: Modi
                 )
                 OnboardingStep.UNDER_13 -> Under13Step(onChangeYear = { vm.back() })
             }
+        }
         }
     }
 }
@@ -125,7 +129,11 @@ private fun WelcomeStep(onStart: () -> Unit) {
             Text(stringResource(R.string.ob_start))
         }
         // Restore arrives with backup (B-16); shown so the layout matches the mockup, but not usable yet.
-        OutlinedButton(onClick = {}, enabled = false, modifier = Modifier.fillMaxWidth().heightIn(min = MinTouch)) {
+        // Disabled, but the text is meaningful: keep it at a readable contrast (the default 38 % fade failed 4.5:1 in dark mode).
+        OutlinedButton(
+            onClick = {}, enabled = false, modifier = Modifier.fillMaxWidth().heightIn(min = MinTouch),
+            colors = ButtonDefaults.outlinedButtonColors(disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant),
+        ) {
             Text(stringResource(R.string.ob_restore))
         }
     }

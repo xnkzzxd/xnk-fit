@@ -59,10 +59,10 @@ class ShareCardTest {
     }
 
     @Test
-    fun R_SHARE_BRAND_onByDefaultAndOffWhenAsked() {
-        assertTrue(ShareOptions().brand)
-        assertTrue(card(ShareOptions()).brand)
-        assertFalse(card(ShareOptions(brand = false)).brand)
+    fun R_SHARE_BRAND_offByDefaultUntilDownloadPageExistsAndOnWhenAsked() {
+        assertFalse(ShareOptions().brand)
+        assertFalse(card(ShareOptions()).brand)
+        assertTrue(card(ShareOptions(brand = true)).brand)
     }
 
     @Test

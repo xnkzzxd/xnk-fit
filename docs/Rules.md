@@ -206,7 +206,7 @@ Summarised from PRD §9; these are checks, not numbers.
 | R_PRIV_BACKUP_DEFAULT | Backup off until the user turns it on; automatic backup runs on open/resume on Wi-Fi when older than 24 h (B-2) |
 | R_PRIV_KEEP | Last three Drive backups kept (B-1) |
 | R_SHARE_NOKG | Share cards hide every kg value (body weight change and lifted load) by default; the switch is per card; when Saya hides weight, kg stays hidden on cards too. A card never shows an absolute body weight (PRD P-6, PR-5) |
-| R_SHARE_BRAND | App name and QR are on by default and can be turned off (PRD P-6, D-06) |
+| R_SHARE_BRAND | App name and QR are OFF by default and can be turned on (PRD P-6, D-06). While `SHARE_URL_IS_PLACEHOLDER` is true the QR is never drawn, even when on (Decisions 2026-11-26) |
 | R_SHARE_FACE | Face mosaic is on by default when a card includes a progress photo (PRD P-6, PV-3) |
 | R_SHARE_PX | Card size in pixels: 1,080 wide; story 1,920 tall, square 1,080 tall. Cards are drawn on the phone and shared through the system share sheet; nothing is uploaded (PV-1, PR-3). Tuning default |
 | R_SHARE_DATA | A card is offered only when the phone holds the data for it; no card states a health claim; a record count of 0 is not printed (R_TONE). Food card window: the last 7 days |

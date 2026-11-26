@@ -1,6 +1,12 @@
 package app.xnkfit.ui.adaptive
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalWindowInfo
@@ -44,3 +50,17 @@ private fun windowWidthDp(): Int = with(LocalDensity.current) { LocalWindowInfo.
 /** Whether a screen body splits in two now; false on phones and on a very large font. */
 @Composable
 fun currentTwoColumns(): Boolean = useTwoColumns(windowWidthDp(), LocalDensity.current.fontScale)
+
+/** Widest a single-column flow screen (onboarding, screening, forms) grows, in dp; wider windows centre it. */
+const val FLOW_MAX_DP = 600
+
+/** Width such a screen takes in a window [windowDp] wide: the whole window on phones, [FLOW_MAX_DP] at most on tablets. */
+fun flowWidthDp(windowDp: Int): Int = minOf(windowDp, FLOW_MAX_DP)
+
+/** Centres [content] at most [FLOW_MAX_DP] wide; below that it fills the window, so phones look as before. */
+@Composable
+fun FlowWidth(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+    Box(modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+        Box(Modifier.widthIn(max = FLOW_MAX_DP.dp).fillMaxSize()) { content() }
+    }
+}

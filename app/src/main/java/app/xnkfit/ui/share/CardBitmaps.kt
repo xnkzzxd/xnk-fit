@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import app.xnkfit.data.share.QrCode
 import app.xnkfit.data.share.SHARE_URL
+import app.xnkfit.data.share.SHARE_URL_IS_PLACEHOLDER
 import app.xnkfit.domain.share.CardSpec
 import java.io.File
 
@@ -15,7 +16,7 @@ class CardBitmaps(private val res: Resources) {
 
     /** Heavy work (decode, face search, drawing): call off the main thread. */
     fun make(spec: CardSpec, widthPx: Int): Bitmap =
-        CardRenderer.render(spec, cardTexts(res, spec), if (spec.brand) qr else null, photoFor(spec), widthPx)
+        CardRenderer.render(spec, cardTexts(res, spec), if (spec.brand && !SHARE_URL_IS_PLACEHOLDER) qr else null, photoFor(spec), widthPx)
 
     @Synchronized
     private fun photoFor(spec: CardSpec): Bitmap? {
