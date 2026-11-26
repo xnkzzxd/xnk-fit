@@ -47,12 +47,12 @@ class ShareViewModelTest {
     }
 
     @Test
-    fun defaultsAreNoKgAndBrandOnAndTheSwitchesEditTheCard() {
+    fun defaultsAreNoKgAndBrandOffAndTheSwitchesEditTheCard() {
         val m = vm()
         m.refresh(); advanceUntilIdle()
         m.selectKind(CardKind.PROGRESS)
         val s = m.state.value
-        assertTrue(s.options.hideKg && s.options.brand && s.options.blurFaces)
+        assertTrue(s.options.hideKg && !s.options.brand && s.options.blurFaces)
         assertFalse(s.spec!!.fields.any { it.id.name == "WEIGHT_DELTA" })
         m.setHideKg(false); m.setStyle(CardStyle.LIGHT)
         assertTrue(m.state.value.spec!!.fields.any { it.id.name == "WEIGHT_DELTA" })
