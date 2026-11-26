@@ -17,6 +17,7 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.printToString
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.test.core.app.ActivityScenario
@@ -185,12 +186,6 @@ class ScreenshotTest {
             scrollTo(str(R.string.lat_empty_workout))
             shot("latihan-program")
         }
-        step("hari-ini") {
-            fresh(R.string.nav_today)
-            // Loaded: the task card is there only after the first read, so the shot never shows the bare header.
-            waitText(str(R.string.td_tasks_title))
-            shot("hari-ini")
-        }
         step("logger") {
             scrollTo(str(R.string.lat_empty_workout))
             click(str(R.string.lat_empty_workout))
@@ -225,6 +220,12 @@ class ScreenshotTest {
             }.onFailure { File(outDir, "_note_logger-berjalan_$variant.txt").writeText("tick not done: ${it.message?.take(200)}") }
             shot("logger-berjalan")
         }
+        step("hari-ini") {
+            fresh(R.string.nav_today)
+            // Loaded: the task card is there only after the first read, so the shot never shows the bare header.
+            waitText(str(R.string.td_tasks_title))
+            shot("hari-ini")
+        }
         step("makan") { fresh(R.string.nav_food); shot("makan") }
         step("planner") {
             click(str(R.string.mk_plan_week))
@@ -255,7 +256,7 @@ class ScreenshotTest {
             val buttons = rule.onAllNodes(hasText(str(R.string.set_open)) and hasClickAction())
             val n = buttons.fetchSemanticsNodes().size
             check(n >= 3) { "Buka buttons in Pengaturan: $n" }
-            buttons[n - 1 - fromEnd].performClick()
+            buttons[n - 1 - fromEnd].performScrollTo().performClick() // off-screen in the scrolling column until scrolled to
             rule.waitForIdle()
             // Fail (not save a wrong screen) when this screen's own text never shows.
             waitText(str(marker))
