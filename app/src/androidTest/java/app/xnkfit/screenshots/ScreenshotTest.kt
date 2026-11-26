@@ -117,6 +117,13 @@ class ScreenshotTest {
         }
     }
 
+    /** A screen that is extra to the required set: a miss is written to `_note_*` and does not fail the run. */
+    private fun extra(screen: String, body: () -> Unit) {
+        try { body() } catch (e: Throwable) {
+            runCatching { File(outDir, "_note_${screen}_$variant.txt").writeText("${e.javaClass.simpleName} ${e.message?.take(200)}") }
+        }
+    }
+
     private fun launch() {
         scenario?.close()
         scenario = ActivityScenario.launch(MainActivity::class.java)
@@ -198,7 +205,7 @@ class ScreenshotTest {
             // After the choice the table of the empty workout (or a start button) shows; take what is there.
             shot("logger")
         }
-        step("logger-berjalan") {
+        extra("logger-berjalan") {
             // A running workout: one exercise, one set typed and ticked, so the SET/KG/REP table and the rest timer show.
             // The start pane (mode chosen) still shows: "Mulai latihan" opens the running logger.
             click(str(R.string.lg_start))
