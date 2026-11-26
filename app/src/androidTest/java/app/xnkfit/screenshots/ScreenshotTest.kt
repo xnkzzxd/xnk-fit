@@ -200,6 +200,9 @@ class ScreenshotTest {
         }
         step("logger-berjalan") {
             // A running workout: one exercise, one set typed and ticked, so the SET/KG/REP table and the rest timer show.
+            // The start pane (mode chosen) still shows: "Mulai latihan" opens the running logger.
+            click(str(R.string.lg_start))
+            waitText(str(R.string.lg_finish))
             click("+ " + str(R.string.lg_add_exercise))
             waitText(str(R.string.lg_add_title))
             typeInto(str(R.string.lg_search), "Push-Up (Bodyweight)")
