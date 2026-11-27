@@ -330,7 +330,6 @@
     <string name="badge_icon_lock">🔒</string>
 
     <!-- Hari ini (B-11, PRD H-1…H-3, M-2). Netral, tanpa "kamu", tanpa merah (R_TONE). -->
-    <string name="td_title">Hari ini</string>
     <string name="td_level_streak">Level %1$d · %2$d minggu beruntun</string>
     <string name="td_failed">Data belum bisa dibaca. Coba buka lagi.</string>
     <string name="td_workout_title">Latihan hari ini</string>
@@ -367,8 +366,6 @@
     <string name="td_ring_ticks">%1$d/%2$d</string>
     <string name="td_food_title">Makan</string>
     <string name="td_food_open">Buka</string>
-    <string name="td_food_remaining">%1$d kkal lagi</string>
-    <string name="td_food_over">Sudah %1$d kkal di atas target hari ini</string>
     <string name="td_food_eaten_only">%1$d kkal tercatat</string>
     <string name="td_food_of">%1$d dari %2$d kkal</string>
     <string name="td_food_macro">%1$s %2$d/%3$d g</string>
