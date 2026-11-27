@@ -113,6 +113,8 @@ class ScreenshotTest {
         rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty()
     }
 
+    private fun mark(what: String) { File(outDir, "_progress_$variant.txt").appendText("$what\n") }
+
     private fun shot(screen: String) {
         rule.waitForIdle()
         val bmp: Bitmap = rule.onRoot().captureToImage().asAndroidBitmap()
@@ -125,6 +127,11 @@ class ScreenshotTest {
             // What was on screen, to find out why the label was never there.
             runCatching { File(outDir, "_tree_${screen}_$variant.txt").writeText(rule.onRoot().printToString(40).take(6000)) }
             runCatching { shot("fail-$screen") }
+            // A crash shows as "No compose hierarchies": the app's own error log tells it from a test problem.
+            runCatching {
+                val pfd = inst.uiAutomation.executeShellCommand("logcat -d -t 400 AndroidRuntime:E ActivityManager:W *:S")
+                File(outDir, "_logcat_${screen}_$variant.txt").writeText(java.io.FileInputStream(pfd.fileDescriptor).bufferedReader().readText().takeLast(6000))
+            }
         }
     }
 
@@ -243,11 +250,15 @@ class ScreenshotTest {
             rule.waitForIdle()
             waitDesc(str(R.string.lg_tick))
             shot("logger-berjalan-gerakan")
+            mark("expand row")
             rule.onAllNodesWithText(str(R.string.lg_prev_none), substring = true).onFirst().performClick()
             rule.waitForIdle()
+            mark("row expanded")
             repeat(2) { if (anyDesc(str(R.string.lg_weight))) clickDesc("${str(R.string.lg_plus)} ${str(R.string.lg_weight)}") }
             repeat(2) { if (anyDesc(str(R.string.lg_reps))) clickDesc("${str(R.string.lg_plus)} ${str(R.string.lg_reps)}") }
+            mark("filled")
             clickDesc(str(R.string.lg_tick))
+            mark("ticked")
             waitText(str(R.string.lg_rest)) // the rest timer shows after a ticked set
             check(anyText(str(R.string.lg_finish))) { "no finish button" }
             shot("logger-berjalan")
