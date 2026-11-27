@@ -87,7 +87,7 @@ Owner, 2026-11-27: "app nya jelek, ga sama kaya app ku" — the screens must mat
 
 | ID | Task | Depends | Model | Status |
 | --- | --- | --- | --- | --- |
-| T-01 | Design system (`ui/design/`: tokens, Inter, components, previews) + frame (TopBand, PillBottomBar, rail) + Hari ini rebuilt. Side-by-side check with `screens/portal-hari-ini.png` in the changes log | — | Sonnet 5.5 | [x] side-by-side check done 2026-11-27; owner approval pending |
+| T-01 | Design system (`ui/design/`: tokens, Inter, components, previews) + frame (TopBand, PillBottomBar, rail) + Hari ini rebuilt. Side-by-side check with `screens/portal-hari-ini.png` in the changes log | — | Sonnet 5.5 | [x] side-by-side check done 2026-11-27; owner approval pending; poles 2026-11-27: logo X + lonceng + avatar, dumbbell Lucide, tinggi baris/hero/tab; hari-ini HP terang 17 sama/4 berbeda, gelap 19/2 (lihat Design-Visual); tablet belum dipoles |
 | T-02 | Latihan + logger (KgRepCell, CheckButton, set table as `screens/portal-logger.png`) | T-01 approved | Opus 5.5 | [ ] |
 | T-03 | Makan + planner + pilih makanan + belanja (also drop the duplicate "Makan" heading under the band) | T-01 approved | Sonnet 5.5 | [ ] |
 | T-04 | Saya + Kartu saya | T-01 approved | Sonnet 5.5 | [ ] |
