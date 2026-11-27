@@ -191,7 +191,7 @@ fun HeroCard(
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         CompositionLocalProvider(LocalContentColor provides c.onBand) {
-            if (eyebrow != null) Box(Modifier.heightIn(min = 24.dp), contentAlignment = Alignment.CenterStart) { Text(eyebrow.uppercase(), style = XnkType.eyebrow, color = c.onBandMuted) }
+            if (eyebrow != null) Box(Modifier.padding(vertical = 5.dp)) { Text(eyebrow.uppercase(), style = XnkType.eyebrow, color = c.onBandMuted) }
             content()
         }
     }
