@@ -53,6 +53,7 @@ import app.xnkfit.ui.design.BandHang
 import app.xnkfit.ui.design.CheckRow
 import app.xnkfit.ui.design.DayDot
 import app.xnkfit.ui.design.HeroCard
+import app.xnkfit.ui.design.HomeTopBand
 import app.xnkfit.ui.design.MeterBar
 import app.xnkfit.ui.design.PrimaryButton
 import app.xnkfit.ui.design.ProgressRing
@@ -128,6 +129,10 @@ fun TodayScreen(
     onOpenWorkout: () -> Unit,
     onOpenFood: () -> Unit,
     modifier: Modifier = Modifier,
+    /** Bell: the reminders live in Pengaturan. */
+    onOpenSettings: () -> Unit = {},
+    /** Avatar: the Saya tab. */
+    onOpenMe: () -> Unit = {},
 ) {
     val s by vm.state.collectAsState()
     // Design §10: "cold start to a usable Hari ini" ends here; Macrobenchmark reads it as timeToFullDisplay (B-19).
@@ -135,7 +140,7 @@ fun TodayScreen(
     val split = currentTwoColumns()
     val pad = Modifier.padding(horizontal = if (split) 0.dp else XnkSpace.page)
     Column(modifier) {
-    if (split) BandTop(s, split = true)
+    if (split) BandTop(s, onOpenSettings, onOpenMe)
     TwoColumns(
         Modifier.weight(1f),
         split = split,
@@ -145,13 +150,13 @@ fun TodayScreen(
             // One item from the band to the hero, so no page-coloured gap opens between them.
             item {
                 Column {
-                    if (!split) BandTop(s, split = false)
+                    if (!split) BandTop(s, onOpenSettings, onOpenMe)
                     s.recalc?.let { p ->
                         Box(Modifier.background(if (split) Xnk.colors.bg else Xnk.colors.band).padding(bottom = 12.dp)) {
                             RecalcCard(p, vm::acceptRecalc, vm::keepTarget, pad)
                         }
                     }
-                    if (s.loaded) BandHang(Modifier.padding(top = if (split) XnkSpace.gap else 0.dp), bandBelow = if (split) 0.dp else 40.dp, sidePadding = !split) {
+                    if (s.loaded) BandHang(Modifier.padding(top = if (split) XnkSpace.gap else 0.dp), bandBelow = if (split) 0.dp else 36.dp, sidePadding = !split) {
                         val w = s.workout
                         if (w == null) ActivityHero(s.activity, onOpenWorkout) else WorkoutHero(w, onOpenWorkout)
                     }
@@ -177,22 +182,24 @@ fun TodayScreen(
 /** Date in the band ("Jumat, 27 November"), as on the XNK portal. */
 private val BandDate: DateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, d MMMM", Locale("id", "ID")) // text-ok: date pattern
 
-/** The band at the top of the page (phone: inside the list, so it scrolls away as on the portal): brand, date, level and streak. */
+/** The band at the top of the page (phone: inside the list, so it scrolls away as on the portal): logo, bell, avatar, date and level. */
 @Composable
-private fun BandTop(s: TodayState, split: Boolean) {
-    val c = Xnk.colors
-    Column(Modifier.fillMaxWidth().background(c.band)) {
-        TopBand(brand = stringResource(R.string.ob_brand), subtitle = s.day?.format(BandDate))
-        if (s.loaded) {
-            Text(
-                stringResource(R.string.td_level_streak, s.level, s.streakWeeks),
-                style = XnkType.sm,
-                color = c.onBandMuted,
-                modifier = Modifier.padding(start = XnkSpace.page, end = XnkSpace.page, bottom = if (split) 12.dp else 8.dp),
-            )
-        }
-    }
+private fun BandTop(s: TodayState, onBell: () -> Unit, onAvatar: () -> Unit) {
+    val level = if (s.loaded) stringResource(R.string.td_level_streak, s.level, s.streakWeeks) else null
+    HomeTopBand(
+        date = s.day?.format(BandDate),
+        initials = initialsOf(s.nickname) ?: stringResource(R.string.td_avatar_neutral),
+        bellLabel = stringResource(R.string.td_bell),
+        avatarLabel = stringResource(R.string.td_avatar),
+        onBell = onBell,
+        onAvatar = onAvatar,
+        trailing = level,
+    )
 }
+
+/** Up to two initials from the nickname's first two words; null when there is no nickname. */
+private fun initialsOf(nickname: String?): String? =
+    nickname?.trim()?.split(Regex("\\s+"))?.filter { it.isNotEmpty() }?.take(2)?.map { it.first().uppercaseChar() }?.joinToString("")?.ifEmpty { null } // text-ok: regex
 
 @Composable
 private fun RecalcCard(p: RecalcPrompt, onAccept: () -> Unit, onKeep: () -> Unit, modifier: Modifier) {
@@ -220,7 +227,7 @@ private fun kgText(kg: Double?): String {
 
 @Composable
 private fun EvenRow(content: @Composable RowScope.() -> Unit) =
-    Row(Modifier.fillMaxWidth().padding(top = 12.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), content = content)
+    Row(Modifier.fillMaxWidth().padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), content = content)
 
 /** Hero buttons sit at the bottom of the card, under the rings (`.nx-actions`). */
 @Composable
@@ -233,6 +240,15 @@ private fun ColumnScope.HeroButtons(content: @Composable RowScope.() -> Unit) {
 private fun HeroTitle(text: String) =
     Text(text, style = XnkType.heroTitle, color = Xnk.colors.onBand, modifier = Modifier.padding(end = 72.dp))
 
+/** `.nx-when`: the line above the big number (16 sp bold). */
+@Composable
+private fun HeroWhen(text: String) =
+    Text(text, style = XnkType.lg.copy(fontWeight = FontWeight.Bold), color = Xnk.colors.onBand, modifier = Modifier.padding(top = 6.dp, end = 72.dp))
+
+/** `.nx-count`: the big number (4xl, 800); it may wrap on large fonts. */
+@Composable
+private fun HeroBig(text: String) = Text(text, style = XnkType.bigNumber, color = Xnk.colors.onBand, modifier = Modifier.padding(end = 72.dp))
+
 @Composable
 private fun HeroMeta(text: String) = Text(text, style = XnkType.sm, color = Xnk.colors.onBandMuted, modifier = Modifier.padding(end = 72.dp))
 
@@ -242,28 +258,28 @@ private fun WorkoutHero(card: WorkoutCard, onOpen: () -> Unit) {
         WorkoutCard.NoProgram -> HeroCard(eyebrow = stringResource(R.string.td_noprogram_title)) {
             HeroTitle(stringResource(R.string.td_noprogram_body))
             HeroButtons {
-                PrimaryButton(stringResource(R.string.td_noprogram_make), onOpen, Modifier.weight(1f), onInk = true)
                 TonalButton(stringResource(R.string.td_noprogram_food), onOpen, Modifier.weight(1f), onInk = true)
+                PrimaryButton(stringResource(R.string.td_noprogram_make), onOpen, Modifier.weight(1f), onInk = true)
             }
         }
         is WorkoutCard.Next -> HeroCard(eyebrow = stringResource(R.string.td_workout_title)) {
-            HeroTitle(card.day.name)
-            HeroMeta(stringResource(R.string.td_workout_meta, card.day.exercises, card.day.minutes))
+            HeroWhen(stringResource(R.string.td_hero_when, card.day.name, card.day.exercises))
+            HeroBig(stringResource(R.string.td_hero_minutes, card.day.minutes))
             HeroButtons {
-                PrimaryButton(stringResource(R.string.td_workout_start), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play))
                 TonalButton(stringResource(R.string.td_workout_view), onOpen, Modifier.weight(1f), onInk = true)
+                PrimaryButton(stringResource(R.string.td_workout_start), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play))
             }
         }
         is WorkoutCard.Resume -> HeroCard(eyebrow = stringResource(R.string.td_workout_resume_title)) {
-            card.day?.let { HeroTitle(it.name) }
+            HeroBig(card.day?.name ?: stringResource(R.string.td_workout_resume))
             HeroButtons { PrimaryButton(stringResource(R.string.td_workout_resume), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play)) }
         }
         is WorkoutCard.Rest -> HeroCard(eyebrow = stringResource(R.string.td_rest_title)) {
-            HeroTitle(stringResource(R.string.td_rest_body))
-            HeroMeta(stringResource(R.string.td_rest_next, card.next.name))
+            HeroWhen(stringResource(R.string.td_rest_next, card.next.name))
+            HeroBig(stringResource(R.string.td_rest_body))
             HeroButtons {
-                PrimaryButton(stringResource(R.string.td_rest_log_walk), onOpen, Modifier.weight(1f), onInk = true)
                 TonalButton(stringResource(R.string.td_rest_program), onOpen, Modifier.weight(1f), onInk = true)
+                PrimaryButton(stringResource(R.string.td_rest_log_walk), onOpen, Modifier.weight(1f), onInk = true)
             }
         }
     }
@@ -277,8 +293,8 @@ private fun ActivityHero(a: ActivityWeek, onOpen: () -> Unit) {
         MeterBar(a.fraction, Modifier.padding(top = 8.dp, end = 72.dp), onInk = true)
         if (a.minutes == 0) HeroMeta(stringResource(R.string.td_activity_empty))
         HeroButtons {
-            PrimaryButton(stringResource(R.string.td_activity_log), onOpen, Modifier.weight(1f), onInk = true)
             TonalButton(stringResource(R.string.td_activity_history), onOpen, Modifier.weight(1f), onInk = true)
+            PrimaryButton(stringResource(R.string.td_activity_log), onOpen, Modifier.weight(1f), onInk = true)
         }
     }
 }

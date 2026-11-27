@@ -316,7 +316,7 @@ class MainActivity : ComponentActivity() {
                 onShowWelcomeAgain = { lifecycleScope.launch { settingsStore.resetCards() } },
             )
                             Overlay.PRIVACY -> PrivacyScreen(onBack = back)
-                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, steps, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } })
+                            null -> XnkApp(today, makan, me = { SayaScreen(saya, it, onOpenCards = { open(Overlay.CARDS) }, onOpenSettings = { open(Overlay.SETTINGS) }) }, workout = { LatihanHost(latihan, insights, logger, restAlarms, steps, it) }, start = startTab, seenCards = appSettings?.seenCards, onDismissCard = { tab -> lifecycleScope.launch { settingsStore.markCardSeen(tab) } }, onOpenSettings = { open(Overlay.SETTINGS) })
                         }
                     }
                 }

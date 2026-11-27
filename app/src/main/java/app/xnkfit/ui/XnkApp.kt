@@ -43,6 +43,8 @@ fun XnkApp(
     /** Tabs whose welcome card was dismissed; null while the settings are still loading (no card flashes). */
     seenCards: Set<WelcomeTab>? = null,
     onDismissCard: (WelcomeTab) -> Unit = {},
+    /** Bell on Hari ini: opens Pengaturan, where the reminders are. */
+    onOpenSettings: () -> Unit = {},
 ) {
     var selected by rememberSaveable { mutableStateOf(start) }
     // Hari ini reads what the other screens wrote, so it reloads each time it is opened.
@@ -78,6 +80,8 @@ fun XnkApp(
                 today,
                 onOpenWorkout = { selected = Destination.WORKOUT },
                 onOpenFood = { selected = Destination.FOOD },
+                onOpenSettings = onOpenSettings,
+                onOpenMe = { selected = Destination.ME },
                 modifier = modifier,
             )
             Destination.FOOD -> MakanHost(makan, modifier)

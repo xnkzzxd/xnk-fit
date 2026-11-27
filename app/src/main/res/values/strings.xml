@@ -332,8 +332,12 @@
     <!-- Hari ini (B-11, PRD H-1…H-3, M-2). Netral, tanpa "kamu", tanpa merah (R_TONE). -->
     <string name="td_level_streak">Level %1$d · %2$d minggu beruntun</string>
     <string name="td_failed">Data belum bisa dibaca. Coba buka lagi.</string>
+    <string name="td_bell">Pengingat</string>
+    <string name="td_avatar">Buka tab Saya</string>
+    <string name="td_avatar_neutral">S</string>
+    <string name="td_hero_when">%1$s · %2$d gerakan</string>
+    <string name="td_hero_minutes">±%1$d menit</string>
     <string name="td_workout_title">Latihan hari ini</string>
-    <string name="td_workout_meta">%1$d gerakan · ±%2$d menit</string>
     <string name="td_workout_start">Mulai</string>
     <string name="td_workout_view">Lihat</string>
     <string name="td_workout_resume_title">Lanjutkan latihan?</string>

@@ -42,6 +42,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
@@ -51,6 +52,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import app.xnkfit.R
 import app.xnkfit.ui.common.MinTouch
 
 /*
@@ -92,6 +94,57 @@ fun TopBand(
             CompositionLocalProvider(LocalContentColor provides c.onBand) { actions() }
         }
         if (subtitle != null) Text(subtitle, style = XnkType.sm, color = c.onBandMuted)
+    }
+}
+
+/**
+ * Top band of Hari ini (`.topbar` with the brand mark): the X logo on the left, a bell button and a round avatar with the initials
+ * on the right (64 dp high as on the portal), then the [date] line and an optional [trailing] note (level, streak). The bell carries
+ * no badge: the app has no notifications to count. Both buttons keep a 48 dp touch target around the drawn 44 / 40 dp.
+ * Logo: the portal's `--logo-mask` bitmap (demo/index.html), tinted in code.
+ */
+@Composable
+fun HomeTopBand(
+    date: String?,
+    initials: String,
+    bellLabel: String,
+    avatarLabel: String,
+    onBell: () -> Unit,
+    onAvatar: () -> Unit,
+    modifier: Modifier = Modifier,
+    trailing: String? = null,
+) {
+    val c = Xnk.colors
+    Column(
+        modifier
+            .fillMaxWidth()
+            .background(c.band)
+            .drawBehind { drawContours(c.onBand) }
+            .statusBarsPadding(),
+    ) {
+        Row(
+            Modifier.testTag("fid:pita_atas").fillMaxWidth().height(64.dp).padding(start = 24.dp, end = 12.dp), // text-ok: test tag
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(painterResource(R.drawable.ic_logo_x), contentDescription = null, tint = c.onBand, modifier = Modifier.size(width = 21.dp, height = 20.dp))
+            Spacer(Modifier.weight(1f))
+            Box(Modifier.size(MinTouch).clickable(role = Role.Button, onClick = onBell).semantics { contentDescription = bellLabel }, contentAlignment = Alignment.Center) {
+                Box(Modifier.size(44.dp).clip(RoundedCornerShape(14.dp)).background(c.bandCard).border(1.dp, c.onBand.copy(alpha = 0.18f), RoundedCornerShape(14.dp)), contentAlignment = Alignment.Center) {
+                    Icon(painterResource(R.drawable.ic_bell), contentDescription = null, tint = c.onBand, modifier = Modifier.size(20.dp))
+                }
+            }
+            Box(Modifier.size(MinTouch).clickable(role = Role.Button, onClick = onAvatar).semantics { contentDescription = avatarLabel }, contentAlignment = Alignment.Center) {
+                Box(Modifier.size(40.dp).clip(CircleShape).background(c.onBand), contentAlignment = Alignment.Center) {
+                    Text(initials, style = XnkType.button.copy(fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold), color = c.band)
+                }
+            }
+        }
+        if (date != null) {
+            Row(Modifier.fillMaxWidth().padding(start = XnkSpace.page, end = XnkSpace.page, bottom = 24.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(date, style = XnkType.sm, color = c.onBandMuted, maxLines = 1)
+                if (trailing != null) Text(trailing, style = XnkType.sm, color = c.onBandMuted, maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.End, modifier = Modifier.weight(1f))
+            }
+        }
     }
 }
 
@@ -138,7 +191,7 @@ fun HeroCard(
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         CompositionLocalProvider(LocalContentColor provides c.onBand) {
-            if (eyebrow != null) Text(eyebrow.uppercase(), style = XnkType.eyebrow, color = c.onBandMuted)
+            if (eyebrow != null) Box(Modifier.heightIn(min = 24.dp), contentAlignment = Alignment.CenterStart) { Text(eyebrow.uppercase(), style = XnkType.eyebrow, color = c.onBandMuted) }
             content()
         }
     }
@@ -167,7 +220,7 @@ fun CardFlat(modifier: Modifier = Modifier, content: @Composable ColumnScope.() 
 }
 
 /** Height floor of a section heading row (not a touch target; the action inside has its own 48 dp). */
-private val SectionMinHeight = 32.dp
+private val SectionMinHeight = 24.dp
 
 /** Section heading with the short vertical bar (`.px-sec`): title, then a muted [trailing] text or an [action]. */
 @Composable
@@ -225,8 +278,8 @@ private fun XnkButton(
     val fidTag = when (kind) { BtnKind.PRIMARY -> "fid:tombol_utama"; BtnKind.TONAL -> "fid:tombol_sekunder"; BtnKind.SECONDARY -> "fid:tombol_garis" } // text-ok: test tag
     Row(
         modifier
-            .testTag(fidTag)
-            .heightIn(min = MinTouch)
+            .then(if (onInk) Modifier else Modifier.testTag(fidTag)) // the hero buttons are 48 dp (touch), the portal's are 44 and not `.btn`
+            .heightIn(min = if (onInk) MinTouch else 52.dp)
             .clip(shape)
             .background(bg.copy(alpha = if (enabled) bg.alpha else bg.alpha * 0.5f))
             .then(if (border != null) Modifier.border(BorderStroke(1.5.dp, border), shape) else Modifier)
@@ -319,11 +372,11 @@ fun CheckRow(
         modifier
             .testTag("fid:baris_tugas") // text-ok: test tag
             .fillMaxWidth()
-            .heightIn(min = if (done) 52.dp else 60.dp)
+            .heightIn(min = 60.dp)
             .then(if (onClick != null) Modifier.clickable(role = Role.Button, onClick = onClick) else Modifier)
             .drawBehind { if (divider) drawLine(line, Offset(0f, size.height), Offset(size.width, size.height), 1.dp.toPx()) }
             .semantics(mergeDescendants = action == null) { stateDescription = stateText }
-            .padding(vertical = 8.dp),
+            .padding(vertical = 6.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
