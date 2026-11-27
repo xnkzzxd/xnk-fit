@@ -116,3 +116,9 @@ Acuan tampilan = app XNK yang hidup. Compose tidak akan pernah sama piksel; yang
 4. **Peta selisih struktur** `compare/<layar>_<hp|tablet>_<terang|gelap>_diff.png` + metrik di `summary.md` (kedua gambar dikaburkan 8 px, lebar 390): angka petunjuk, bukan lulus/gagal.
 
 Tahap ini hanya melapor (tidak menggagalkan build). Keputusan akhir tetap melihat gambar berdampingan. Batasan: baru Hari ini (hp, font 1.0) dibandingkan per komponen; tablet menunggu T-06; komponen di luar layar tidak terukur; sampel warna satu piksel; bobot font 500/600/900 acuan tidak ada di app.
+
+### Hasil pertama (Hari ini, hp, font 1.0; commit 4b5ead4, run Screenshots 58)
+
+Gelap: sama 13, berbeda 9, belum ada padanan 6. Terang: sama 11, berbeda 11, belum ada padanan 6 (28 pasangan). Sama dalam toleransi: ukuran/bobot/warna judul bagian, garis vertikal judul 4×17,9 vs 4×17,6, lingkaran centang 25,9 vs 26, subteks 12 sp, bilah bawah (lebar, warna, radius 24), tombol ＋ 54, radius dan warna hero. Berbeda: tinggi hero 196,2 vs 212,8 (-16,6), tinggi tab 56,4 vs 68 (-11,6), tinggi tombol utama 48 vs 51,6 (-3,6), tinggi baris tugas 52,2 dan 64 vs 60, tinggi baris judul bagian 32 vs 23,2. Peta selisih struktur (kabur 8 px): hp terang rata-rata 16,9%, area >15% 29,4%, terburuk di bilah bawah dan tepi hero.
+
+Batasan pengukuran: pasangan komponen menurut urutan (px_sec#2 dan tugas_judul#1 dapat memasangkan elemen berbeda, mis. baris selesai vs belum); radius kartu putih di atas latar putih tak terdeteksi (terbaca 0, bukan selisih nyata); tinggi 48 dp area sentuh (Decisions B-05) sengaja lebih besar dari 44 px acuan; tablet dan komponen di luar layar tidak diukur; warna dari satu piksel.

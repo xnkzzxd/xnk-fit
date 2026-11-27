@@ -18,3 +18,4 @@ To add a screen: add it to `SCREENS` in the capture script, rerun it, and add th
 - `build-compare.js` now also writes `<screen>_<dev>_<theme>_diff.png` (blurred difference heat map) and a metrics table in `summary.md`.
 - CI: artifact `compare` (14 days) holds all of it (`compare/fidelity/report.md`). Report only; a missing counterpart never fails the run.
 - Reading: ✓/✗ per field; "belum ada padanan" = not visible in the app screen or absent in the reference; dy (vertical offset) is information only.
+- Limits of the fidelity report: reference and app items are paired by order (`px_sec#2`, `tugas_judul#1` can pair different elements); white card on a white page shows radius 0 (not detectable by pixel); sizes are unscaled dp (1 dp = 1 px) and full-width parts are compared by margins; tablet not measured.
