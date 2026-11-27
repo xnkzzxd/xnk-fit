@@ -6,6 +6,11 @@ import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.captureToImage
+import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onFirst
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.printToString
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onAllNodesWithText
@@ -59,8 +64,18 @@ class FidelityTest {
             WelcomeTab.entries.forEach { SettingsGraph.store(ctx).markCardSeen(it) }
         }
         val scenario = ActivityScenario.launch(MainActivity::class.java)
+        // Same route as ScreenshotTest.fresh(): open the Hari ini tab (a clickable node with the tab label), then wait for the task card.
+        val tabLabel = ctx.getString(R.string.nav_today)
+        rule.waitUntil(30_000) { rule.onAllNodes(hasText(tabLabel) and hasClickAction()).fetchSemanticsNodes().isNotEmpty() }
+        rule.onAllNodes(hasText(tabLabel) and hasClickAction()).onFirst().performClick()
+        rule.waitForIdle()
         val label = ctx.getString(R.string.td_tasks_title)
-        rule.waitUntil(60_000) { rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+        try {
+            rule.waitUntil(60_000) { rule.onAllNodesWithText(label, substring = true).fetchSemanticsNodes().isNotEmpty() }
+        } catch (e: Throwable) {
+            runCatching { File(outDir, "_tree_$variant.txt").writeText(rule.onRoot().printToString(40).take(6000)) }
+            throw e
+        }
         rule.waitForIdle()
         val bmp: Bitmap = rule.onRoot().captureToImage().asAndroidBitmap()
         val density = ctx.resources.displayMetrics.density
