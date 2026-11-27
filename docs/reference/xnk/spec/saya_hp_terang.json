@@ -1,0 +1,408 @@
+{
+ "screen": "saya",
+ "device": "hp",
+ "theme": "terang",
+ "viewport": {
+  "w": 390,
+  "h": 844
+ },
+ "components": {
+  "pita_atas": [
+   {
+    "selector": "header.topbar",
+    "text": "Saya\n        6SW",
+    "box": {
+     "x": 0,
+     "y": 0,
+     "w": 390,
+     "h": 64
+    },
+    "style": {
+     "backgroundColor": "rgb(11, 11, 11)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "0px",
+     "padding": "0px 16px",
+     "gap": "12px",
+     "boxShadow": "none",
+     "border": "0px none rgb(255, 255, 255)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "judul_pita": [
+   {
+    "selector": "h1.topbar-title",
+    "text": "Saya",
+    "box": {
+     "x": 64,
+     "y": 25,
+     "w": 42.2,
+     "h": 26.1
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "18px",
+     "fontWeight": "800",
+     "lineHeight": "26.1px",
+     "letterSpacing": "-0.36px",
+     "borderRadius": "0px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(255, 255, 255)",
+     "opacity": "0"
+    }
+   }
+  ],
+  "band": [
+   {
+    "selector": ".px-band",
+    "text": "",
+    "box": {
+     "x": 0,
+     "y": 64,
+     "w": 390,
+     "h": 60
+    },
+    "style": {
+     "backgroundColor": "rgb(11, 11, 11)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "0px",
+     "padding": "0px 16px 60px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(255, 255, 255)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "kartu_hero_hitam": [
+   {
+    "selector": "section.card-ink",
+    "text": "Mulai RutinSWSariIntensif 12Level 2 · Mu",
+    "box": {
+     "x": 16,
+     "y": 88,
+     "w": 358,
+     "h": 388.1
+    },
+    "style": {
+     "backgroundColor": "rgb(26, 26, 25)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "28px",
+     "padding": "22px",
+     "gap": "16px",
+     "boxShadow": "rgba(0, 0, 0, 0.18) 0px 10px 30px -12px",
+     "border": "1px solid color(srgb 1 1 1 / 0.1)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "tombol_utama": [
+   {
+    "selector": ".btn-primary",
+    "text": "Lanjut",
+    "box": {
+     "x": 304.6,
+     "y": 696,
+     "w": 65.4,
+     "h": 44
+    },
+    "style": {
+     "backgroundColor": "rgb(255, 255, 255)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13px",
+     "fontWeight": "700",
+     "lineHeight": "15.6px",
+     "letterSpacing": "normal",
+     "borderRadius": "10px",
+     "padding": "0px 12px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(255, 255, 255)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "tombol_ghost": [
+   {
+    "selector": ".btn-ghost",
+    "text": "Keluar",
+    "box": {
+     "x": 16,
+     "y": 1138,
+     "w": 358,
+     "h": 44
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(59, 59, 57)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "700",
+     "lineHeight": "16.8px",
+     "letterSpacing": "normal",
+     "borderRadius": "12px",
+     "padding": "8px 18px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "bilah_bawah": [
+   {
+    "selector": "nav.tabbar",
+    "text": "Hari iniLatihanMakanSaya",
+    "box": {
+     "x": 14,
+     "y": 762,
+     "w": 362,
+     "h": 68
+    },
+    "style": {
+     "backgroundColor": "rgb(11, 11, 11)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "24px",
+     "padding": "0px 8px",
+     "gap": "normal",
+     "boxShadow": "rgba(0, 0, 0, 0.38) 0px 30px 80px -24px",
+     "border": "0px none rgb(255, 255, 255)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "tab": [
+   {
+    "selector": "button.tab",
+    "text": "Hari ini",
+    "box": {
+     "x": 22,
+     "y": 762,
+     "w": 69.2,
+     "h": 68
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(167, 167, 164)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10px",
+     "fontWeight": "700",
+     "lineHeight": "14.5px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "6px 2px",
+     "gap": "3px",
+     "boxShadow": "none",
+     "border": "0px none rgb(167, 167, 164)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": "button.tab",
+    "text": "Latihan",
+    "box": {
+     "x": 91.2,
+     "y": 762,
+     "w": 69.2,
+     "h": 68
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(167, 167, 164)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10px",
+     "fontWeight": "700",
+     "lineHeight": "14.5px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "6px 2px",
+     "gap": "3px",
+     "boxShadow": "none",
+     "border": "0px none rgb(167, 167, 164)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": "button.tab",
+    "text": "Makan",
+    "box": {
+     "x": 229.6,
+     "y": 762,
+     "w": 69.2,
+     "h": 68
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(167, 167, 164)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10px",
+     "fontWeight": "700",
+     "lineHeight": "14.5px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "6px 2px",
+     "gap": "3px",
+     "boxShadow": "none",
+     "border": "0px none rgb(167, 167, 164)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "tombol_plus_tengah": [
+   {
+    "selector": "button.tab-fab",
+    "text": "",
+    "box": {
+     "x": 168,
+     "y": 769,
+     "w": 54,
+     "h": 54
+    },
+    "style": {
+     "backgroundColor": "rgb(255, 255, 255)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "18px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "rgba(0, 0, 0, 0.5) 0px 8px 24px -8px",
+     "border": "0px none rgb(11, 11, 11)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "stat_tile": [
+   {
+    "selector": ".px-tile, .mtile, .wl-st, .ih-stat",
+    "text": "Progres74,4 kg",
+    "box": {
+     "x": 16,
+     "y": 508.1,
+     "w": 173,
+     "h": 109.7
+    },
+    "style": {
+     "backgroundColor": "rgb(255, 255, 255)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "22px",
+     "padding": "16px",
+     "gap": "6px",
+     "boxShadow": "rgba(0, 0, 0, 0.06) 0px 1px 2px 0px, rgba(0, 0, 0, 0.07) 0px 3px 10px -3px",
+     "border": "1px solid rgb(231, 229, 228)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".px-tile, .mtile, .wl-st, .ih-stat",
+    "text": "Paket sayaSisa 5 dari 12 sesi",
+    "box": {
+     "x": 201,
+     "y": 508.1,
+     "w": 173,
+     "h": 109.7
+    },
+    "style": {
+     "backgroundColor": "rgb(255, 255, 255)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "22px",
+     "padding": "16px",
+     "gap": "6px",
+     "boxShadow": "rgba(0, 0, 0, 0.06) 0px 1px 2px 0px, rgba(0, 0, 0, 0.07) 0px 3px 10px -3px",
+     "border": "1px solid rgb(231, 229, 228)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".px-tile, .mtile, .wl-st, .ih-stat",
+    "text": "JadwalJum, 27 Nov · 10.00",
+    "box": {
+     "x": 16,
+     "y": 629.8,
+     "w": 173,
+     "h": 109.7
+    },
+    "style": {
+     "backgroundColor": "rgb(255, 255, 255)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "14px",
+     "fontWeight": "400",
+     "lineHeight": "20.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "22px",
+     "padding": "16px",
+     "gap": "6px",
+     "boxShadow": "rgba(0, 0, 0, 0.06) 0px 1px 2px 0px, rgba(0, 0, 0, 0.07) 0px 3px 10px -3px",
+     "border": "1px solid rgb(231, 229, 228)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "ath_nama": [
+   {
+    "selector": ".ath-name",
+    "text": "Sari",
+    "box": {
+     "x": 125,
+     "y": 120.2,
+     "w": 62.6,
+     "h": 30.8
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "28px",
+     "fontWeight": "800",
+     "lineHeight": "30.8px",
+     "letterSpacing": "-0.84px",
+     "borderRadius": "0px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(255, 255, 255)",
+     "opacity": "1"
+    }
+   }
+  ]
+ }
+}

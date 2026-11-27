@@ -1,0 +1,687 @@
+{
+ "screen": "planner",
+ "device": "tablet",
+ "theme": "gelap",
+ "viewport": {
+  "w": 1024,
+  "h": 1366
+ },
+ "components": {
+  "pita_atas": [
+   {
+    "selector": "header.topbar",
+    "text": "Rencana makan\n        6SW",
+    "box": {
+     "x": 232,
+     "y": 0,
+     "w": 792,
+     "h": 52
+    },
+    "style": {
+     "backgroundColor": "color(srgb 0.0392157 0.0392157 0.0392157 / 0.88)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "0px",
+     "padding": "0px 16px 0px 24px",
+     "gap": "10px",
+     "boxShadow": "none",
+     "border": "",
+     "opacity": "1"
+    }
+   }
+  ],
+  "judul_pita": [
+   {
+    "selector": "h1.topbar-title",
+    "text": "Rencana makan",
+    "box": {
+     "x": 290,
+     "y": 13.5,
+     "w": 125.9,
+     "h": 23.9
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "16.5px",
+     "fontWeight": "650",
+     "lineHeight": "23.925px",
+     "letterSpacing": "-0.165px",
+     "borderRadius": "0px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(244, 244, 242)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "kartu_hero_hitam": [
+   {
+    "selector": "section.card-ink",
+    "text": "Target harianUbah data1441 kkalTurun lem",
+    "box": {
+     "x": 280,
+     "y": 76,
+     "w": 696,
+     "h": 144.5
+    },
+    "style": {
+     "backgroundColor": "rgb(42, 42, 42)",
+     "color": "rgb(255, 255, 255)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "14px",
+     "padding": "22px",
+     "gap": "normal",
+     "boxShadow": "rgba(0, 0, 0, 0.7) 0px 12px 32px -12px",
+     "border": "1px solid color(srgb 1 1 1 / 0.1)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "hero_eyebrow": [
+   {
+    "selector": ".ih-eyebrow",
+    "text": "Target harian",
+    "box": {
+     "x": 303,
+     "y": 114.8,
+     "w": 95,
+     "h": 12
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(167, 167, 164)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10.3125px",
+     "fontWeight": "700",
+     "lineHeight": "14.9531px",
+     "letterSpacing": "0.825px",
+     "borderRadius": "0px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(167, 167, 164)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "judul_bagian": [
+   {
+    "selector": "h3.section-title",
+    "text": "Menu hari ini",
+    "box": {
+     "x": 299,
+     "y": 266.7,
+     "w": 105.8,
+     "h": 21.8
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "15px",
+     "fontWeight": "800",
+     "lineHeight": "21.75px",
+     "letterSpacing": "-0.15px",
+     "borderRadius": "0px",
+     "padding": "0px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "0px none rgb(244, 244, 242)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": "h3.section-title",
+    "text": "Angka tubuh",
+    "box": {
+     "x": 299,
+     "y": 1381.5,
+     "w": 105.9,
+     "h": 21.8
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "15px",
+     "fontWeight": "800",
+     "lineHeight": "21.75px",
+     "letterSpacing": "-0.15px",
+     "borderRadius": "0px",
+     "padding": "0px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "0px none rgb(244, 244, 242)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "judul_bagian_garis": [
+   {
+    "selector": ".section-title::before",
+    "text": "",
+    "box": {
+     "x": 299,
+     "y": 266.7,
+     "w": 4,
+     "h": 16.5
+    },
+    "style": {
+     "backgroundColor": "rgb(244, 244, 242)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "15px",
+     "fontWeight": "800",
+     "lineHeight": "21.75px",
+     "letterSpacing": "-0.15px",
+     "borderRadius": "2px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(244, 244, 242)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".section-title::before",
+    "text": "",
+    "box": {
+     "x": 299,
+     "y": 1381.5,
+     "w": 4,
+     "h": 16.5
+    },
+    "style": {
+     "backgroundColor": "rgb(244, 244, 242)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "15px",
+     "fontWeight": "800",
+     "lineHeight": "21.75px",
+     "letterSpacing": "-0.15px",
+     "borderRadius": "2px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgb(244, 244, 242)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "tombol_utama": [
+   {
+    "selector": ".btn-primary",
+    "text": "Lanjut",
+    "box": {
+     "x": 931.1,
+     "y": 1290,
+     "w": 62.9,
+     "h": 44
+    },
+    "style": {
+     "backgroundColor": "rgb(11, 11, 11)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "12.1875px",
+     "fontWeight": "700",
+     "lineHeight": "14.625px",
+     "letterSpacing": "normal",
+     "borderRadius": "10px",
+     "padding": "0px 12px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(11, 11, 11)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "tombol_sekunder": [
+   {
+    "selector": ".btn-secondary",
+    "text": "Belanja",
+    "box": {
+     "x": 859.3,
+     "y": 262.5,
+     "w": 97.7,
+     "h": 30
+    },
+    "style": {
+     "backgroundColor": "rgb(36, 36, 36)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "12.75px",
+     "fontWeight": "700",
+     "lineHeight": "15.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "8px",
+     "padding": "0px 12px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".btn-secondary",
+    "text": "Ganti menu",
+    "box": {
+     "x": 833.8,
+     "y": 406.9,
+     "w": 123.2,
+     "h": 30
+    },
+    "style": {
+     "backgroundColor": "rgb(36, 36, 36)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "12.75px",
+     "fontWeight": "700",
+     "lineHeight": "15.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "8px",
+     "padding": "0px 12px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".btn-secondary",
+    "text": "Ganti menu",
+    "box": {
+     "x": 833.8,
+     "y": 715,
+     "w": 123.2,
+     "h": 30
+    },
+    "style": {
+     "backgroundColor": "rgb(36, 36, 36)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "12.75px",
+     "fontWeight": "700",
+     "lineHeight": "15.3px",
+     "letterSpacing": "normal",
+     "borderRadius": "8px",
+     "padding": "0px 12px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "stat_tile": [
+   {
+    "selector": ".px-tile, .mtile, .wl-st, .ih-stat",
+    "text": "BMI28,3",
+    "box": {
+     "x": 299,
+     "y": 1431.4,
+     "w": 324,
+     "h": 63.2
+    },
+    "style": {
+     "backgroundColor": "rgb(26, 26, 26)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "12px 14px",
+     "gap": "2px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".px-tile, .mtile, .wl-st, .ih-stat",
+    "text": "Pinggang / tinggi0,52",
+    "box": {
+     "x": 633,
+     "y": 1431.4,
+     "w": 324,
+     "h": 63.2
+    },
+    "style": {
+     "backgroundColor": "rgb(26, 26, 26)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "12px 14px",
+     "gap": "2px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".px-tile, .mtile, .wl-st, .ih-stat",
+    "text": "BMR1441kkal istirahat",
+    "box": {
+     "x": 299,
+     "y": 1504.6,
+     "w": 324,
+     "h": 81.5
+    },
+    "style": {
+     "backgroundColor": "rgb(26, 26, 26)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "12px 14px",
+     "gap": "2px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "chip": [
+   {
+    "selector": ".pill",
+    "text": "resep",
+    "box": {
+     "x": 387.1,
+     "y": 523.9,
+     "w": 49.9,
+     "h": 24
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(155, 155, 151)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10.3125px",
+     "fontWeight": "800",
+     "lineHeight": "14.9531px",
+     "letterSpacing": "0.20625px",
+     "borderRadius": "999px",
+     "padding": "0px 9px",
+     "gap": "5px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(58, 58, 58)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".pill",
+    "text": "asin",
+    "box": {
+     "x": 472.6,
+     "y": 718,
+     "w": 42.3,
+     "h": 24
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(155, 155, 151)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10.3125px",
+     "fontWeight": "800",
+     "lineHeight": "13.9219px",
+     "letterSpacing": "0.20625px",
+     "borderRadius": "999px",
+     "padding": "0px 9px",
+     "gap": "5px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(58, 58, 58)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".pill",
+    "text": "resep",
+    "box": {
+     "x": 437.1,
+     "y": 1135.3,
+     "w": 49.9,
+     "h": 24
+    },
+    "style": {
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "color": "rgb(155, 155, 151)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "10.3125px",
+     "fontWeight": "800",
+     "lineHeight": "14.9531px",
+     "letterSpacing": "0.20625px",
+     "borderRadius": "999px",
+     "padding": "0px 9px",
+     "gap": "5px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(58, 58, 58)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "kartu_putih": [
+   {
+    "selector": "div.card",
+    "text": "Menu hari iniBelanjaMenu rekomendasi unt",
+    "box": {
+     "x": 280,
+     "y": 236.5,
+     "w": 696,
+     "h": 1105.9
+    },
+    "style": {
+     "backgroundColor": "rgb(20, 20, 20)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "12px",
+     "padding": "18px",
+     "gap": "10px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": "div.card",
+    "text": "Angka tubuhUbah dataBMI28,3Pinggang / ti",
+    "box": {
+     "x": 280,
+     "y": 1358.4,
+     "w": 696,
+     "h": 302.7
+    },
+    "style": {
+     "backgroundColor": "rgb(20, 20, 20)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "12px",
+     "padding": "18px",
+     "gap": "12px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "daftar_item": [
+   {
+    "selector": "button.list-item",
+    "text": "Nasi merah0,5 centong · 62 g · 93 kkal",
+    "box": {
+     "x": 299,
+     "y": 444.9,
+     "w": 610,
+     "h": 64.1
+    },
+    "style": {
+     "backgroundColor": "rgb(20, 20, 20)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "12px 14px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": "button.list-item",
+    "text": "Pepes tahu resep2 bungkus · 257 g · 245 ",
+    "box": {
+     "x": 299,
+     "y": 510.9,
+     "w": 610,
+     "h": 69
+    },
+    "style": {
+     "backgroundColor": "rgb(20, 20, 20)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "12px 14px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": "button.list-item",
+    "text": "Kol rebus1 mangkuk · 80 g · 23 kkal",
+    "box": {
+     "x": 299,
+     "y": 582,
+     "w": 610,
+     "h": 64.1
+    },
+    "style": {
+     "backgroundColor": "rgb(20, 20, 20)",
+     "color": "rgb(244, 244, 242)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "16px",
+     "padding": "12px 14px",
+     "gap": "8px",
+     "boxShadow": "none",
+     "border": "1px solid rgb(39, 39, 39)",
+     "opacity": "1"
+    }
+   }
+  ],
+  "ikon_chip": [
+   {
+    "selector": ".icon-chip",
+    "text": "",
+    "box": {
+     "x": 299,
+     "y": 364.9,
+     "w": 32,
+     "h": 32
+    },
+    "style": {
+     "backgroundColor": "rgb(244, 244, 242)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "12px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".icon-chip",
+    "text": "",
+    "box": {
+     "x": 299,
+     "y": 673,
+     "w": 32,
+     "h": 32
+    },
+    "style": {
+     "backgroundColor": "rgb(244, 244, 242)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "12px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   },
+   {
+    "selector": ".icon-chip",
+    "text": "",
+    "box": {
+     "x": 299,
+     "y": 976.2,
+     "w": 32,
+     "h": 32
+    },
+    "style": {
+     "backgroundColor": "rgb(244, 244, 242)",
+     "color": "rgb(11, 11, 11)",
+     "fontFamily": "Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+     "fontSize": "13.125px",
+     "fontWeight": "400",
+     "lineHeight": "19.0312px",
+     "letterSpacing": "normal",
+     "borderRadius": "12px",
+     "padding": "0px",
+     "gap": "normal",
+     "boxShadow": "none",
+     "border": "0px none rgba(0, 0, 0, 0)",
+     "opacity": "1"
+    }
+   }
+  ]
+ }
+}
