@@ -151,7 +151,7 @@ fun TodayScreen(
                             RecalcCard(p, vm::acceptRecalc, vm::keepTarget, pad)
                         }
                     }
-                    if (s.loaded) BandHang(bandBelow = if (split) 0.dp else 40.dp, sidePadding = !split) {
+                    if (s.loaded) BandHang(Modifier.padding(top = if (split) XnkSpace.gap else 0.dp), bandBelow = if (split) 0.dp else 40.dp, sidePadding = !split) {
                         val w = s.workout
                         if (w == null) ActivityHero(s.activity, onOpenWorkout) else WorkoutHero(w, onOpenWorkout)
                     }
