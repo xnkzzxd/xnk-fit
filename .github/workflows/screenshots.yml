@@ -60,3 +60,24 @@ jobs:
           path: screenshots/
           retention-days: 14
           if-no-files-found: warn
+
+      # Side-by-side "reference XNK vs app" (tools/compare/README.md). Uses the committed reference PNGs; never fails the run.
+      - name: Build comparison
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 8
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" playwright@1.49.1
+          export NODE_PATH="$RUNNER_TEMP/pw/node_modules"
+          "$RUNNER_TEMP/pw/node_modules/.bin/playwright" install --with-deps chromium
+          node tools/compare/build-compare.js screenshots compare
+          cat compare/summary.md | head -n 40 >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: compare
+          path: compare/
+          retention-days: 14
+          if-no-files-found: warn
