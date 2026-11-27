@@ -90,7 +90,7 @@ private fun PillTab(label: String, d: Destination, active: Boolean, modifier: Mo
     Column(
         modifier
             .testTag("fid:tab") // text-ok: test tag
-            .heightIn(min = 56.dp)
+            .heightIn(min = 68.dp)
             .clip(RoundedCornerShape(16.dp))
             .selectable(selected = active, role = Role.Tab, onClick = onClick)
             .padding(horizontal = 2.dp, vertical = 6.dp),

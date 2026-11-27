@@ -172,7 +172,7 @@ fun HeroCard(
     eyebrow: String? = null,
     rings: Boolean = true,
     /** The reference hero is about 210 px tall; a floor keeps the rings clear of the buttons. Text can still make it taller. */
-    minHeight: Dp = 196.dp,
+    minHeight: Dp = 212.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val c = Xnk.colors

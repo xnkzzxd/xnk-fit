@@ -271,7 +271,8 @@ private fun WorkoutHero(card: WorkoutCard, onOpen: () -> Unit) {
             }
         }
         is WorkoutCard.Resume -> HeroCard(eyebrow = stringResource(R.string.td_workout_resume_title)) {
-            HeroBig(card.day?.name ?: stringResource(R.string.td_workout_resume))
+            card.day?.let { HeroWhen(it.name) }
+            HeroBig(stringResource(R.string.td_workout_resume))
             HeroButtons { PrimaryButton(stringResource(R.string.td_workout_resume), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play)) }
         }
         is WorkoutCard.Rest -> HeroCard(eyebrow = stringResource(R.string.td_rest_title)) {
