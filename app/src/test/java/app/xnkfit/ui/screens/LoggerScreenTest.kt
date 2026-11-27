@@ -7,7 +7,6 @@ import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.onAllNodes
 import app.xnkfit.data.db.ExerciseEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
