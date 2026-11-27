@@ -1,7 +1,17 @@
 package app.xnkfit.ui.screens
 
 import android.content.Context
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.getUnclippedBoundsInRoot
+import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onAllNodes
+import app.xnkfit.data.db.ExerciseEntity
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.performClick
@@ -49,6 +59,38 @@ abstract class LoggerScreenBase(private val fontScale: Float, private val dark: 
         override fun access() = AlarmAccess.READY
         override fun schedule(atMs: Long) = Unit
         override fun cancel() = Unit
+    }
+
+    /** B-07: the set table has column titles SET | SEBELUMNYA | KG | REP | ✓ lined up with the cells, KG and REP labelled at every size. */
+    @Test fun setTableHasAlignedColumnTitles() {
+        RuntimeEnvironment.setFontScale(fontScale)
+        runBlocking {
+            db.programDao().upsertExercises(listOf(ExerciseEntity("SQUAT_GOB", 0, 0, "Goblet Squat", "Goblet Squat", "SQUAT",
+                """{"main":["QUADS"],"helper":[]}""", "1", settingsJson = """["gym"]""", equipmentJson = """["dumbbell"]""")))
+        }
+        val repo = LoggerRepository(db, { 1_763_510_400_000L }, { UUID.randomUUID().toString() }) { ZoneOffset.UTC }
+        val vm = LoggerViewModel(repo, Prefs(), Alarms, { 1_763_510_400_000L }, { UUID.randomUUID().toString() }, tickClock = false)
+        rule.setContent { XnkTheme(if (dark) ThemeMode.DARK else ThemeMode.LIGHT) { LoggerScreen(vm) } }
+        rule.waitUntil(10_000) { rule.onAllNodesWithText(ctx.getString(R.string.lg_mode_bebas), substring = true).fetchSemanticsNodes().isNotEmpty() }
+        rule.onAllNodesWithText(ctx.getString(R.string.lg_mode_bebas), substring = true).onFirst().performClick()
+        rule.onAllNodesWithText(ctx.getString(R.string.lg_start), substring = true).onFirst().performClick()
+        rule.waitUntil(10_000) { rule.onAllNodesWithText(ctx.getString(R.string.lg_mode_bebas), substring = true).fetchSemanticsNodes().isEmpty() }
+        vm.addExercise("SQUAT_GOB")
+        val kg = ctx.getString(R.string.lg_col_kg)
+        rule.waitUntil(10_000) { rule.onAllNodesWithText(kg).fetchSemanticsNodes().isNotEmpty() }
+        val reps = ctx.getString(R.string.lg_col_reps)
+        val cellKg = ctx.getString(R.string.lg_cell_kg, "").trim()
+        val cellReps = ctx.getString(R.string.lg_cell_reps, "").trim()
+        listOf(ctx.getString(R.string.lg_col_set), kg, reps).forEach { rule.onNodeWithText(it).assertIsDisplayed() }
+        val big = fontScale >= 1.8f
+        if (!big) rule.onNodeWithText(ctx.getString(if (fontScale >= 1.15f) R.string.lg_col_prev_short else R.string.lg_col_prev)).assertIsDisplayed()
+        // Order left to right and the same left edge as the cells below.
+        val x = { n: String -> rule.onNodeWithText(n).getUnclippedBoundsInRoot().left }
+        assertTrue(x(ctx.getString(R.string.lg_col_set)) < x(kg) && x(kg) < x(reps))
+        val cx = { d: String -> rule.onAllNodes(hasContentDescription(d, substring = true) and hasText(ctx.getString(R.string.lg_prev_none))).onFirst().getUnclippedBoundsInRoot().left }
+        assertEquals(x(kg).value, cx(cellKg).value, 1f)
+        assertEquals(x(reps).value, cx(cellReps).value, 1f)
+
     }
 
     @Test fun modeChoiceAndEmptyWorkoutHaveBigTouchTargets() {

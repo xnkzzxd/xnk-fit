@@ -10,7 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.style.TextAlign
+import app.xnkfit.ui.adaptive.FlowWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
@@ -113,8 +118,8 @@ private fun StartPane(ui: LoggerUi, vm: LoggerViewModel, modifier: Modifier) {
 }
 
 @Composable
-private fun ActivePane(ui: LoggerUi, vm: LoggerViewModel, modifier: Modifier) {
-    Column(modifier.fillMaxSize()) {
+private fun ActivePane(ui: LoggerUi, vm: LoggerViewModel, modifier: Modifier) = FlowWidth(modifier) {
+    Column(Modifier.fillMaxSize()) {
         Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
@@ -318,7 +323,7 @@ private fun TablePane(ui: LoggerUi, vm: LoggerViewModel) {
                             Text(stringResource(R.string.lg_ex_menu))
                         }
                     }
-                    Text(stringResource(R.string.lg_prev), style = MaterialTheme.typography.labelSmall)
+                    TableHeader(block.measure)
                     block.sets.forEachIndexed { i, set -> TableRow(i, set, block, vm) }
                     TextButton({ vm.addSet(block.slot, block.exerciseId) }, Modifier.heightIn(min = MinTouch)) { Text("+ " + stringResource(R.string.lg_add_set)) } // text-ok: symbol
                 }
@@ -331,21 +336,80 @@ private fun TablePane(ui: LoggerUi, vm: LoggerViewModel) {
     }
 }
 
+/** One value column of the set table: header label, spoken label of its cells, and the cell text of a set. */
+private class ValueCol(val label: Int, val spoken: Int, val value: (LoggerSet) -> String?)
+
+private val kgCol = ValueCol(R.string.lg_col_kg, R.string.lg_cell_kg) { it.weightKg?.let(::formatKg) }
+private val repsCol = ValueCol(R.string.lg_col_reps, R.string.lg_cell_reps) { it.reps?.toString() }
+private val bandCol = ValueCol(R.string.lg_col_band, R.string.lg_cell_band) { it.bandLevel?.toString() }
+private val holdCol = ValueCol(R.string.lg_col_hold, R.string.lg_cell_hold) { it.holdSec?.toString() }
+
+private fun valueCols(m: SetMeasure): List<ValueCol> = when (m) {
+    SetMeasure.KG_REPS -> listOf(kgCol, repsCol)
+    SetMeasure.REPS -> listOf(repsCol)
+    SetMeasure.BAND_REPS -> listOf(bandCol, repsCol)
+    SetMeasure.HOLD_SECONDS -> listOf(holdCol)
+}
+
+/** Font scale from which the SEBELUMNYA column goes (mockup html.big-text); KG and REP always stay, always labelled. */
+private const val BIG_TEXT_SCALE = 1.8f
+/** Font scale from which the SEBELUMNYA header uses its short form so it is not cut. */
+private const val SHORT_HEAD_SCALE = 1.15f
+private const val PREV_WEIGHT = 1.5f
+
+@Composable
+private fun showPrevious(): Boolean = LocalDensity.current.fontScale < BIG_TEXT_SCALE
+
+/** Column titles above the sets (mockup logger.html: SET | SEBELUMNYA | KG | REP | ✓). Not interactive. */
+@Composable
+private fun TableHeader(measure: SetMeasure) {
+    val tickHead = stringResource(R.string.lg_col_tick_desc)
+    val short = LocalDensity.current.fontScale >= SHORT_HEAD_SCALE
+    Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(CELL_GAP), Alignment.CenterVertically) {
+        HeadText(stringResource(R.string.lg_col_set), Modifier.width(MinTouch))
+        if (showPrevious()) {
+            HeadText(stringResource(if (short) R.string.lg_col_prev_short else R.string.lg_col_prev), Modifier.weight(PREV_WEIGHT), stringResource(R.string.lg_prev))
+        }
+        valueCols(measure).forEach { c ->
+            HeadText(stringResource(c.label), Modifier.weight(1f), stringResource(c.spoken, ""))
+        }
+        HeadText(stringResource(R.string.lg_col_tick), Modifier.width(MinTouch), tickHead, center = true)
+    }
+}
+
+@Composable
+private fun HeadText(text: String, modifier: Modifier, spoken: String? = null, center: Boolean = false) = Text(
+    text, modifier.semantics { spoken?.let { contentDescription = it.trim() } },
+    style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1,
+    textAlign = if (center) TextAlign.Center else TextAlign.Start,
+)
+
+private val CELL_GAP = 4.dp
+
 @Composable
 private fun TableRow(i: Int, set: LoggerSet, block: ExerciseBlock, vm: LoggerViewModel) {
     var expanded by remember { mutableStateOf(false) }
     val tickLabel = stringResource(R.string.lg_tick)
+    val none = stringResource(R.string.lg_prev_none)
     Column {
-        Row(Modifier.fillMaxWidth().heightIn(min = MinTouch).clickable { expanded = !expanded }, Arrangement.spacedBy(8.dp), Alignment.CenterVertically) {
-            TextButton({ vm.openSheet(LoggerSheet.Kind(set.id)) }, Modifier.widthIn(min = MinTouch).heightIn(min = MinTouch)) {
+        Row(Modifier.fillMaxWidth().heightIn(min = MinTouch).clickable { expanded = !expanded }, Arrangement.spacedBy(CELL_GAP), Alignment.CenterVertically) {
+            TextButton({ vm.openSheet(LoggerSheet.Kind(set.id)) }, Modifier.width(MinTouch).heightIn(min = MinTouch), contentPadding = PaddingValues(0.dp)) {
                 Text(when (set.kind) {
                     SetKind.NORMAL -> (i + 1).toString()
                     SetKind.DROP -> stringResource(R.string.lg_kind_short_drop)
                     SetKind.FAILURE -> stringResource(R.string.lg_kind_short_failure)
                 })
             }
-            Text(previousText(block.previous.getOrNull(i), block.measure), Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
-            Text(currentText(set, block.measure), Modifier.weight(1f), fontWeight = FontWeight.Bold)
+            if (showPrevious()) {
+                val prev = previousText(block.previous.getOrNull(i), block.measure)
+                val prevSpoken = stringResource(R.string.lg_cell_prev, prev)
+                Text(prev, Modifier.weight(PREV_WEIGHT).semantics { contentDescription = prevSpoken }, style = MaterialTheme.typography.bodySmall)
+            }
+            valueCols(block.measure).forEach { c ->
+                val v = c.value(set) ?: none
+                val spoken = stringResource(c.spoken, v)
+                Text(v, Modifier.weight(1f).semantics { contentDescription = spoken }, fontWeight = FontWeight.Bold)
+            }
             Checkbox(set.done, { vm.toggleDone(set.id) }, Modifier.size(MinTouch).semantics { contentDescription = tickLabel })
         }
         if (expanded && !set.done) {
