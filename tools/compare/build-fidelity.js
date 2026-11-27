@@ -58,7 +58,7 @@ const num = (v) => (typeof v === 'number' ? Math.round(v * 10) / 10 : v);
 const files = fs.existsSync(IN) ? fs.readdirSync(IN).filter((f) => /^fid_.*\.json$/.test(f)) : [];
 const report = { tolerances: TOL, variants: {} };
 const md = ['# Gerbang kesetiaan: acuan XNK vs app', '',
-  'Acuan = `docs/reference/xnk/spec` (demo hidup, px CSS). App = `FidelityTest` (dp, dinormalkan ke lebar 390). Toleransi: kotak ±2, radius ±2, teks ±1 sp, warna ΔE76 ≤ 5 (isian) / ≤ 10 (warna teks). y hanya info. Hanya laporan; angka bukan lulus/gagal tunggal.', ''];
+  'Acuan = `docs/reference/xnk/spec` (demo hidup, px CSS). App = `FidelityTest` (dp; 1 dp = 1 px CSS, tidak diskalakan; komponen selebar layar dibandingkan lewat margin karena HP uji 411 dp, acuan 390). Toleransi: kotak ±2, radius ±2, teks ±1 sp, warna ΔE76 ≤ 5 (isian) / ≤ 10 (warna teks). y hanya info. Hanya laporan; angka bukan lulus/gagal tunggal.', ''];
 if (!files.length) md.push('Tidak ada berkas `fidelity/fid_*.json` dari app (tes tidak berjalan atau gagal): tidak ada yang diukur.');
 for (const file of files.sort()) {
   const app = JSON.parse(fs.readFileSync(path.join(IN, file), 'utf8'));
@@ -67,7 +67,9 @@ for (const file of files.sort()) {
   const specFile = path.join(SPEC, `${app.screen}_${dev}_${theme}.json`);
   if (!fs.existsSync(specFile)) { md.push(`## ${app.variant}`, `Spesifikasi acuan tidak ada: ${path.basename(specFile)}`, ''); continue; }
   const ref = JSON.parse(fs.readFileSync(specFile, 'utf8')).components;
-  const k = 390 / (app.widthPx / app.density) / app.density; // px -> dp normalised to 390 dp wide
+  // px -> dp, NOT rescaled: 1 dp = 1 CSS px (a fixed 54 dp button should be compared with a 54 px one). The phone is wider than 390, so
+  // full-width parts are compared by their margins (left margin and total side space), never by their raw width.
+  const k = 1 / app.density, widthDp = app.widthPx / app.density;
   const rows = [];
   for (const [tag, m] of Object.entries(MAP)) {
     const items = app.items.filter((i) => i.tag === tag);
@@ -87,8 +89,11 @@ for (const file of files.sort()) {
         if (!ok) bad++;
         row.fields.push({ name, ref: num(refV), app: num(appV), diff: d === null ? null : num(d), ok, unit });
       };
+      const wide = R.w >= 300; // full-width in the reference
       for (const f of m.f) {
-        if (f === 'x' || f === 'w' || f === 'h') add(f, R[f], A[f], TOL.box, 'dp');
+        if (wide && f === 'x') add('margem kiri', R.x, A.x, TOL.box, 'dp');
+        else if (wide && f === 'w') add('sisa lebar (layar - w)', 390 - R.w, widthDp - A.w, TOL.box, 'dp');
+        else if (f === 'x' || f === 'w' || f === 'h') add(f, R[f], A[f], TOL.box, 'dp');
         else if (f === 'radius') {
           const rr = radiusOf(r.style.borderRadius, R.w, R.h);
           if (a.inset >= 0) { const d = 1.5, i = a.inset; const rpx = i < 1 ? 0 : (i + d) + Math.sqrt(2 * i * d); add('radius', rr, rpx * k, TOL.radius, 'dp'); }

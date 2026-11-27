@@ -90,7 +90,7 @@ class FidelityTest {
                 n.config.getOrNull(SemanticsActions.GetTextLayoutResult)?.action?.invoke(layouts)
                 val style = layouts.firstOrNull()?.layoutInput?.style
                 val isText = style != null
-                val bg = if (isText) px(x + 1, y + 1) else px(x + w / 2, y + 2)
+                val bg = if (isText) px(x + 1, y + 1) else px(x + w / 2, y + minOf((4 * density).toInt(), h / 2)) // 4 dp in: below a 1 dp border, still inside any fill
                 // ink: the pixel in the box farthest from bg (text colour, or the check/ring of an icon)
                 var ink = bg
                 if (w > 0 && h > 0) for (yy in y until minOf(y + h, bmp.height) step 1) for (xx in x until minOf(x + w, bmp.width) step 2) {
