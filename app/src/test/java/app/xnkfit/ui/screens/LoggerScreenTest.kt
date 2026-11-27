@@ -86,7 +86,7 @@ abstract class LoggerScreenBase(private val fontScale: Float, private val dark: 
         // Order left to right and the same left edge as the cells below.
         val x = { n: String -> rule.onNodeWithText(n).getUnclippedBoundsInRoot().left }
         assertTrue(x(ctx.getString(R.string.lg_col_set)) < x(kg) && x(kg) < x(reps))
-        val cx = { d: String -> rule.onAllNodes(hasContentDescription(d, substring = true) and hasText(ctx.getString(R.string.lg_prev_none))).onFirst().getUnclippedBoundsInRoot().left }
+        val cx = { d: String -> rule.onAllNodes(hasContentDescription(d, substring = true) and hasText(ctx.getString(R.string.lg_prev_none)), useUnmergedTree = true).onFirst().getUnclippedBoundsInRoot().left }
         assertEquals(x(kg).value, cx(cellKg).value, 1f)
         assertEquals(x(reps).value, cx(cellReps).value, 1f)
 
