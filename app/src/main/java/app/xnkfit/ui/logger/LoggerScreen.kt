@@ -366,7 +366,7 @@ private fun TableHeader(measure: SetMeasure) {
     val tickHead = stringResource(R.string.lg_col_tick_desc)
     val short = LocalDensity.current.fontScale >= SHORT_HEAD_SCALE
     Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(CELL_GAP), Alignment.CenterVertically) {
-        HeadText(stringResource(R.string.lg_col_set), Modifier.width(MinTouch))
+        HeadText(stringResource(R.string.lg_col_set), Modifier.width(MinTouch), center = true)
         if (showPrevious()) {
             HeadText(stringResource(if (short) R.string.lg_col_prev_short else R.string.lg_col_prev), Modifier.weight(PREV_WEIGHT), stringResource(R.string.lg_prev))
         }
