@@ -6,6 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -135,16 +137,23 @@ fun TodayScreen(
         spacing = Gap,
         padding = PaddingValues(horizontal = if (split) XnkSpace.pageWide else 0.dp),
         left = {
-            item { BandTop(s, split) }
-            if (s.failed) item { Text(stringResource(R.string.td_failed), style = XnkType.md, color = Xnk.colors.fgMuted, modifier = pad) }
-            s.recalc?.let { p -> item { RecalcCard(p, vm::acceptRecalc, vm::keepTarget, pad) } }
-            if (s.loaded) {
-                item {
-                    BandHang(bandBelow = if (split) 0.dp else 40.dp, sidePadding = !split) {
+            // One item from the band to the hero, so no page-coloured gap opens between them.
+            item {
+                Column {
+                    BandTop(s, split)
+                    s.recalc?.let { p ->
+                        Box(Modifier.background(if (split) Xnk.colors.bg else Xnk.colors.band).padding(bottom = 12.dp)) {
+                            RecalcCard(p, vm::acceptRecalc, vm::keepTarget, pad)
+                        }
+                    }
+                    if (s.loaded) BandHang(bandBelow = if (split) 0.dp else 40.dp, sidePadding = !split) {
                         val w = s.workout
                         if (w == null) ActivityHero(s.activity, onOpenWorkout) else WorkoutHero(w, onOpenWorkout)
                     }
                 }
+            }
+            if (s.failed) item { Text(stringResource(R.string.td_failed), style = XnkType.md, color = Xnk.colors.fgMuted, modifier = pad) }
+            if (s.loaded) {
                 item { TasksSection(s.tasks, s.food, onOpenWorkout, onOpenFood, pad) }
             }
         },
@@ -199,6 +208,13 @@ private fun kgText(kg: Double?): String {
 private fun EvenRow(content: @Composable RowScope.() -> Unit) =
     Row(Modifier.fillMaxWidth().padding(top = 12.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), content = content)
 
+/** Hero buttons sit at the bottom of the card, under the rings (`.nx-actions`). */
+@Composable
+private fun ColumnScope.HeroButtons(content: @Composable RowScope.() -> Unit) {
+    Spacer(Modifier.weight(1f))
+    EvenRow(content)
+}
+
 @Composable
 private fun HeroTitle(text: String) =
     Text(text, style = XnkType.heroTitle, color = Xnk.colors.onBand, modifier = Modifier.padding(end = 72.dp))
@@ -211,7 +227,7 @@ private fun WorkoutHero(card: WorkoutCard, onOpen: () -> Unit) {
     when (card) {
         WorkoutCard.NoProgram -> HeroCard(eyebrow = stringResource(R.string.td_noprogram_title)) {
             HeroTitle(stringResource(R.string.td_noprogram_body))
-            EvenRow {
+            HeroButtons {
                 PrimaryButton(stringResource(R.string.td_noprogram_make), onOpen, Modifier.weight(1f), onInk = true)
                 TonalButton(stringResource(R.string.td_noprogram_food), onOpen, Modifier.weight(1f), onInk = true)
             }
@@ -219,19 +235,19 @@ private fun WorkoutHero(card: WorkoutCard, onOpen: () -> Unit) {
         is WorkoutCard.Next -> HeroCard(eyebrow = stringResource(R.string.td_workout_title)) {
             HeroTitle(card.day.name)
             HeroMeta(stringResource(R.string.td_workout_meta, card.day.exercises, card.day.minutes))
-            EvenRow {
+            HeroButtons {
                 PrimaryButton(stringResource(R.string.td_workout_start), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play))
                 TonalButton(stringResource(R.string.td_workout_view), onOpen, Modifier.weight(1f), onInk = true)
             }
         }
         is WorkoutCard.Resume -> HeroCard(eyebrow = stringResource(R.string.td_workout_resume_title)) {
             card.day?.let { HeroTitle(it.name) }
-            EvenRow { PrimaryButton(stringResource(R.string.td_workout_resume), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play)) }
+            HeroButtons { PrimaryButton(stringResource(R.string.td_workout_resume), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play)) }
         }
         is WorkoutCard.Rest -> HeroCard(eyebrow = stringResource(R.string.td_rest_title)) {
             HeroTitle(stringResource(R.string.td_rest_body))
             HeroMeta(stringResource(R.string.td_rest_next, card.next.name))
-            EvenRow {
+            HeroButtons {
                 PrimaryButton(stringResource(R.string.td_rest_log_walk), onOpen, Modifier.weight(1f), onInk = true)
                 TonalButton(stringResource(R.string.td_rest_program), onOpen, Modifier.weight(1f), onInk = true)
             }
@@ -246,7 +262,7 @@ private fun ActivityHero(a: ActivityWeek, onOpen: () -> Unit) {
         HeroTitle(stringResource(R.string.td_activity_minutes, a.minutes, a.targetMinutes))
         MeterBar(a.fraction, Modifier.padding(top = 8.dp, end = 72.dp), onInk = true)
         if (a.minutes == 0) HeroMeta(stringResource(R.string.td_activity_empty))
-        EvenRow {
+        HeroButtons {
             PrimaryButton(stringResource(R.string.td_activity_log), onOpen, Modifier.weight(1f), onInk = true)
             TonalButton(stringResource(R.string.td_activity_history), onOpen, Modifier.weight(1f), onInk = true)
         }

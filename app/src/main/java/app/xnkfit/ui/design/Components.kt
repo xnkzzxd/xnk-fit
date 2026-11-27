@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -113,6 +114,8 @@ fun HeroCard(
     modifier: Modifier = Modifier,
     eyebrow: String? = null,
     rings: Boolean = true,
+    /** The reference hero is about 210 px tall; a floor keeps the rings clear of the buttons. Text can still make it taller. */
+    minHeight: Dp = 196.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val c = Xnk.colors
@@ -121,6 +124,7 @@ fun HeroCard(
     Column(
         modifier
             .fillMaxWidth()
+            .heightIn(min = minHeight)
             .clip(shape)
             .background(c.bandCard)
             .border(1.dp, c.onBand.copy(alpha = 0.12f), shape)
@@ -181,7 +185,7 @@ fun MeterBar(fraction: Float, modifier: Modifier = Modifier, onInk: Boolean = fa
     val c = Xnk.colors
     val track = if (onInk) c.onBand.copy(alpha = 0.18f) else c.surface3
     val fill = if (onInk) c.accentOnInk else c.accent
-    Canvas(modifier.fillMaxWidth().heightIn(min = 6.dp)) {
+    Canvas(modifier.fillMaxWidth().height(6.dp)) {
         val h = size.height
         drawLine(track, Offset(h / 2, h / 2), Offset(size.width - h / 2, h / 2), h, StrokeCap.Round)
         val f = fraction.coerceIn(0f, 1f)

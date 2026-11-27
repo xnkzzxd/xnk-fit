@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Placeholder icon; Material Symbols outlined replace it in the visual pass (Design §11). -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
-    <path
-        android:fillColor="#000000"
-        android:pathData="M3,10h2v4h-2zM6,8h2v8h-2zM9,11h6v2h-6zM16,8h2v8h-2zM19,10h2v4h-2z" />
+<!-- Dumbbell (Latihan). Outline, 2 px stroke, drawn after Lucide (ISC licence), as the XNK portal tab bar. Tinted in code. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M6.5,6.5l11,11" />
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M21,21l-1,-1" />
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M3,3l1,1" />
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M18,22l4,-4" />
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M2,6l4,-4" />
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M3,10l7,-7" />
+    <path android:fillColor="#00000000" android:strokeColor="#000000" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M14,21l7,-7" />
 </vector>
