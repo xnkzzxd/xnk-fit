@@ -92,6 +92,7 @@ Owner, 2026-11-27: "app nya jelek, ga sama kaya app ku" — the screens must mat
 | T-03 | Makan + planner + pilih makanan + belanja (also drop the duplicate "Makan" heading under the band) | T-01 approved | Sonnet 5.5 | [ ] |
 | T-04 | Saya + Kartu saya | T-01 approved | Sonnet 5.5 | [ ] |
 | T-05 | Onboarding, skrining, Pengaturan, Bantuan, Privasi, Data | T-01 approved | Sonnet 5.5 | [ ] |
+| T-07 | Measured fidelity vs the live XNK app (spec extraction, FidelityTest, report, diff maps; docs/Design-Visual.md "Gerbang kesetiaan") | none | Sonnet 5.5 | [~] report only; first numbers: see Screenshots artifact `compare` |
 | T-06 | Tablet layouts and dark mode polish across all screens | T-02…T-05 | Sonnet 5.5 | [ ] |
 
 ## Phase R — Release

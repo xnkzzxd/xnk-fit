@@ -105,3 +105,14 @@ Test contract kept: each tab is one clickable node carrying its visible label (s
 4. Check dark and font 1.3 variants for clipped text.
 
 The T-01 comparison is in docs/TODO.md (T-01) and the changes log.
+
+## Gerbang kesetiaan (T-07)
+
+Acuan tampilan = app XNK yang hidup. Compose tidak akan pernah sama piksel; yang dijanjikan adalah kemiripan yang **terukur dan jujur**.
+
+1. **Spesifikasi acuan** (`docs/reference/xnk/spec/`): kotak, gaya terhitung, dan token tiap komponen penting, diekstrak dari demo oleh `tools/compare/extract-spec.js` (statis).
+2. **Ukuran sisi app** (`app/src/androidTest/.../fidelity/FidelityTest`): komponen diberi `testTag("fid:<komponen>")` di `ui/design`; tes membaca kotak (dp, dinormalkan ke lebar 390), warna dari tangkapan, radius dari tepi sudut, dan ukuran/bobot teks. Hanya berjalan di workflow Screenshots.
+3. **Laporan** `compare/fidelity/report.md|json` (`tools/compare/build-fidelity.js`): per komponen nilai acuan | nilai app | selisih | status (sama / berbeda / belum ada padanan). Toleransi: kotak ±2, radius ±2, teks ±1 sp, warna ΔE76 ≤ 5 (isian) / ≤ 10 (warna teks); y hanya info.
+4. **Peta selisih struktur** `compare/<layar>_<hp|tablet>_<terang|gelap>_diff.png` + metrik di `summary.md` (kedua gambar dikaburkan 8 px, lebar 390): angka petunjuk, bukan lulus/gagal.
+
+Tahap ini hanya melapor (tidak menggagalkan build). Keputusan akhir tetap melihat gambar berdampingan. Batasan: baru Hari ini (hp, font 1.0) dibandingkan per komponen; tablet menunggu T-06; komponen di luar layar tidak terukur; sampel warna satu piksel; bobot font 500/600/900 acuan tidak ada di app.
