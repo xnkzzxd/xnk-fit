@@ -2,25 +2,17 @@ package app.xnkfit.ui.today
 
 import androidx.annotation.StringRes
 import androidx.activity.compose.ReportDrawnWhen
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import app.xnkfit.ui.adaptive.TwoColumns
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.background
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -31,9 +23,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.xnkfit.R
 import app.xnkfit.domain.food.DaySummary
@@ -49,11 +44,26 @@ import app.xnkfit.domain.today.TaskKind
 import app.xnkfit.domain.today.TodayTask
 import app.xnkfit.domain.today.WorkoutCard
 import app.xnkfit.domain.today.sourcesFor
+import app.xnkfit.ui.adaptive.TwoColumns
+import app.xnkfit.ui.adaptive.currentTwoColumns
 import app.xnkfit.ui.common.MinTouch
-import java.time.format.DateTimeFormatter
-import java.util.Locale
+import app.xnkfit.ui.design.BandHang
+import app.xnkfit.ui.design.CheckRow
+import app.xnkfit.ui.design.DayDot
+import app.xnkfit.ui.design.HeroCard
+import app.xnkfit.ui.design.MeterBar
+import app.xnkfit.ui.design.PrimaryButton
+import app.xnkfit.ui.design.ProgressRing
+import app.xnkfit.ui.design.RowAction
+import app.xnkfit.ui.design.SecondaryButton
+import app.xnkfit.ui.design.SectionHeader
+import app.xnkfit.ui.design.TonalButton
+import app.xnkfit.ui.design.Xnk
+import app.xnkfit.ui.design.XnkCard
+import app.xnkfit.ui.design.XnkSpace
+import app.xnkfit.ui.design.XnkType
 
-private val Gap = 12.dp
+private val Gap = 16.dp
 
 /** Text for each source behind "(i)" (strings.xml, `src_*`). */
 @StringRes
@@ -103,8 +113,9 @@ private fun TaskKind.label(): Int = when (this) {
 }
 
 /**
- * Hari ini (PRD H-1…H-3, M-2). Order (H-1): prompt, workout or activity card, tasks, food, target, week.
- * Navigation is passed in: the Latihan and Makan screens own what happens after the tap.
+ * Hari ini (PRD H-1…H-3, M-2), in the XNK look (docs/Design-Visual.md): the band continues from the top bar and the hero card
+ * (next workout, rest day, activity or first steps) hangs over its edge; then the to-do list, food ring, target and week.
+ * Order (H-1): prompt, workout or activity card, tasks, food, target, week. Navigation is passed in.
  */
 @Composable
 fun TodayScreen(
@@ -116,41 +127,52 @@ fun TodayScreen(
     val s by vm.state.collectAsState()
     // Design §10: "cold start to a usable Hari ini" ends here; Macrobenchmark reads it as timeToFullDisplay (B-19).
     ReportDrawnWhen { s.loaded }
-    TwoColumns(modifier, spacing = Gap, left = {
-        item { Header(s) }
-        if (s.failed) item { Text(stringResource(R.string.td_failed), style = MaterialTheme.typography.bodyMedium) }
-        s.recalc?.let { p -> item { RecalcCard(p, vm::acceptRecalc, vm::keepTarget) } }
-        if (s.loaded) {
-            item {
-                val w = s.workout
-                if (w == null) ActivityCard(s.activity, onOpenWorkout) else WorkoutCardView(w, onOpenWorkout)
+    val split = currentTwoColumns()
+    val pad = Modifier.padding(horizontal = if (split) 0.dp else XnkSpace.page)
+    TwoColumns(
+        modifier,
+        split = split,
+        spacing = Gap,
+        padding = PaddingValues(horizontal = if (split) XnkSpace.pageWide else 0.dp),
+        left = {
+            item { BandTop(s, split) }
+            if (s.failed) item { Text(stringResource(R.string.td_failed), style = XnkType.md, color = Xnk.colors.fgMuted, modifier = pad) }
+            s.recalc?.let { p -> item { RecalcCard(p, vm::acceptRecalc, vm::keepTarget, pad) } }
+            if (s.loaded) {
+                item {
+                    BandHang(bandBelow = if (split) 0.dp else 40.dp, sidePadding = !split) {
+                        val w = s.workout
+                        if (w == null) ActivityHero(s.activity, onOpenWorkout) else WorkoutHero(w, onOpenWorkout)
+                    }
+                }
+                item { TasksSection(s.tasks, s.food, onOpenWorkout, onOpenFood, pad) }
             }
-            item { TasksCard(s.tasks) }
-        }
-    }, right = {
-        if (s.loaded) {
-            item { FoodCard(s.food, onOpenFood) }
-            item { TargetCardView(s.target) }
-            item { WeekCard(s.week) }
-            item { Box(Modifier.padding(bottom = 16.dp)) }
-        }
-    })
+        },
+        right = {
+            if (s.loaded) {
+                item { FoodSection(s.food, onOpenFood, pad.padding(top = if (split) XnkSpace.gap else 0.dp)) }
+                item { TargetCardView(s.target, pad) }
+                item { WeekCard(s.week, s.day?.dayOfWeek?.value, pad) }
+                item { Box(Modifier.padding(bottom = XnkSpace.gap)) }
+            }
+        },
+    )
 }
 
+/** Level and streak on the band, under the date the top bar shows. */
 @Composable
-private fun Header(s: TodayState) {
-    Column(Modifier.padding(top = 16.dp)) {
-        Text(stringResource(R.string.td_title), style = MaterialTheme.typography.headlineSmall)
-        s.day?.let {
-            val fmt = DateTimeFormatter.ofPattern("EEEE, d MMMM", Locale("id", "ID")) // text-ok: date pattern
-            Text(it.format(fmt), style = MaterialTheme.typography.bodyMedium)
-        }
-        if (s.loaded) Text(stringResource(R.string.td_level_streak, s.level, s.streakWeeks), style = MaterialTheme.typography.bodySmall)
+private fun BandTop(s: TodayState, split: Boolean) {
+    val c = Xnk.colors
+    Box(
+        Modifier.fillMaxWidth().background(if (split) c.bg else c.band)
+            .padding(start = if (split) 0.dp else XnkSpace.page, end = XnkSpace.page, bottom = 8.dp),
+    ) {
+        if (s.loaded) Text(stringResource(R.string.td_level_streak, s.level, s.streakWeeks), style = XnkType.sm, color = if (split) c.fgMuted else c.onBandMuted)
     }
 }
 
 @Composable
-private fun RecalcCard(p: RecalcPrompt, onAccept: () -> Unit, onKeep: () -> Unit) {
+private fun RecalcCard(p: RecalcPrompt, onAccept: () -> Unit, onKeep: () -> Unit, modifier: Modifier) {
     val text = when (p.reason) {
         RecalcReason.WEIGHT_DOWN -> stringResource(R.string.td_recalc_weight_down, kgText(p.deltaKg))
         RecalcReason.WEIGHT_UP -> stringResource(R.string.td_recalc_weight_up, kgText(p.deltaKg))
@@ -158,13 +180,11 @@ private fun RecalcCard(p: RecalcPrompt, onAccept: () -> Unit, onKeep: () -> Unit
         RecalcReason.PACE -> stringResource(R.string.td_recalc_pace, p.raiseKcal ?: 0)
     }
     val accept = if (p.reason == RecalcReason.PACE) R.string.td_recalc_accept_pace else R.string.td_recalc_accept
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(Gap)) {
-            Text(text, style = MaterialTheme.typography.bodyLarge)
-            EvenRow {
-                Button(onAccept, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(accept)) }
-                OutlinedButton(onKeep, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_recalc_keep)) }
-            }
+    XnkCard(modifier) {
+        Text(text, style = XnkType.lg)
+        EvenRow {
+            PrimaryButton(stringResource(accept), onAccept, Modifier.weight(1f))
+            SecondaryButton(stringResource(R.string.td_recalc_keep), onKeep, Modifier.weight(1f))
         }
     }
 }
@@ -176,45 +196,44 @@ private fun kgText(kg: Double?): String {
 }
 
 @Composable
-private fun EvenRow(content: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit) =
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp), content = content)
+private fun EvenRow(content: @Composable RowScope.() -> Unit) =
+    Row(Modifier.fillMaxWidth().padding(top = 12.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), content = content)
 
 @Composable
-private fun WorkoutCardView(card: WorkoutCard, onOpen: () -> Unit) {
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            when (card) {
-                WorkoutCard.NoProgram -> {
-                    Text(stringResource(R.string.td_noprogram_title), style = MaterialTheme.typography.titleMedium)
-                    Text(stringResource(R.string.td_noprogram_body), style = MaterialTheme.typography.bodyMedium)
-                    EvenRow {
-                        Button(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_noprogram_make)) }
-                        OutlinedButton(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_noprogram_food)) }
-                    }
-                }
-                is WorkoutCard.Next -> {
-                    Text(stringResource(R.string.td_workout_title), style = MaterialTheme.typography.labelLarge)
-                    Text(card.day.name, style = MaterialTheme.typography.titleLarge)
-                    Text(stringResource(R.string.td_workout_meta, card.day.exercises, card.day.minutes), style = MaterialTheme.typography.bodyMedium)
-                    EvenRow {
-                        Button(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_workout_start)) }
-                        OutlinedButton(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_workout_view)) }
-                    }
-                }
-                is WorkoutCard.Resume -> {
-                    Text(stringResource(R.string.td_workout_resume_title), style = MaterialTheme.typography.titleMedium)
-                    card.day?.let { Text(it.name, style = MaterialTheme.typography.titleLarge) }
-                    Button(onOpen, Modifier.fillMaxWidth().heightIn(min = MinTouch)) { Text(stringResource(R.string.td_workout_resume)) }
-                }
-                is WorkoutCard.Rest -> {
-                    Text(stringResource(R.string.td_rest_title), style = MaterialTheme.typography.titleMedium)
-                    Text(stringResource(R.string.td_rest_body), style = MaterialTheme.typography.bodyMedium)
-                    Text(stringResource(R.string.td_rest_next, card.next.name), style = MaterialTheme.typography.bodyMedium)
-                    EvenRow {
-                        OutlinedButton(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_rest_log_walk)) }
-                        OutlinedButton(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_rest_program)) }
-                    }
-                }
+private fun HeroTitle(text: String) =
+    Text(text, style = XnkType.heroTitle, color = Xnk.colors.onBand, modifier = Modifier.padding(end = 72.dp))
+
+@Composable
+private fun HeroMeta(text: String) = Text(text, style = XnkType.sm, color = Xnk.colors.onBandMuted, modifier = Modifier.padding(end = 72.dp))
+
+@Composable
+private fun WorkoutHero(card: WorkoutCard, onOpen: () -> Unit) {
+    when (card) {
+        WorkoutCard.NoProgram -> HeroCard(eyebrow = stringResource(R.string.td_noprogram_title)) {
+            HeroTitle(stringResource(R.string.td_noprogram_body))
+            EvenRow {
+                PrimaryButton(stringResource(R.string.td_noprogram_make), onOpen, Modifier.weight(1f), onInk = true)
+                TonalButton(stringResource(R.string.td_noprogram_food), onOpen, Modifier.weight(1f), onInk = true)
+            }
+        }
+        is WorkoutCard.Next -> HeroCard(eyebrow = stringResource(R.string.td_workout_title)) {
+            HeroTitle(card.day.name)
+            HeroMeta(stringResource(R.string.td_workout_meta, card.day.exercises, card.day.minutes))
+            EvenRow {
+                PrimaryButton(stringResource(R.string.td_workout_start), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play))
+                TonalButton(stringResource(R.string.td_workout_view), onOpen, Modifier.weight(1f), onInk = true)
+            }
+        }
+        is WorkoutCard.Resume -> HeroCard(eyebrow = stringResource(R.string.td_workout_resume_title)) {
+            card.day?.let { HeroTitle(it.name) }
+            EvenRow { PrimaryButton(stringResource(R.string.td_workout_resume), onOpen, Modifier.weight(1f), onInk = true, icon = painterResource(R.drawable.ic_play)) }
+        }
+        is WorkoutCard.Rest -> HeroCard(eyebrow = stringResource(R.string.td_rest_title)) {
+            HeroTitle(stringResource(R.string.td_rest_body))
+            HeroMeta(stringResource(R.string.td_rest_next, card.next.name))
+            EvenRow {
+                PrimaryButton(stringResource(R.string.td_rest_log_walk), onOpen, Modifier.weight(1f), onInk = true)
+                TonalButton(stringResource(R.string.td_rest_program), onOpen, Modifier.weight(1f), onInk = true)
             }
         }
     }
@@ -222,71 +241,93 @@ private fun WorkoutCardView(card: WorkoutCard, onOpen: () -> Unit) {
 
 /** H-2: people who do not lift get the weekly target instead of the workout card. */
 @Composable
-private fun ActivityCard(a: ActivityWeek, onOpen: () -> Unit) {
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(stringResource(R.string.td_activity_title), style = MaterialTheme.typography.titleMedium)
-            Text(stringResource(R.string.td_activity_minutes, a.minutes, a.targetMinutes), style = MaterialTheme.typography.headlineSmall)
-            LinearProgressIndicator(progress = { a.fraction }, Modifier.fillMaxWidth())
-            if (a.minutes == 0) Text(stringResource(R.string.td_activity_empty), style = MaterialTheme.typography.bodyMedium)
-            EvenRow {
-                Button(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_activity_log)) }
-                OutlinedButton(onOpen, Modifier.weight(1f).heightIn(min = MinTouch)) { Text(stringResource(R.string.td_activity_history)) }
+private fun ActivityHero(a: ActivityWeek, onOpen: () -> Unit) {
+    HeroCard(eyebrow = stringResource(R.string.td_activity_title)) {
+        HeroTitle(stringResource(R.string.td_activity_minutes, a.minutes, a.targetMinutes))
+        MeterBar(a.fraction, Modifier.padding(top = 8.dp, end = 72.dp), onInk = true)
+        if (a.minutes == 0) HeroMeta(stringResource(R.string.td_activity_empty))
+        EvenRow {
+            PrimaryButton(stringResource(R.string.td_activity_log), onOpen, Modifier.weight(1f), onInk = true)
+            TonalButton(stringResource(R.string.td_activity_history), onOpen, Modifier.weight(1f), onInk = true)
+        }
+    }
+}
+
+/** "Tugas hari ini" (`.todo`): header with count and bar, then one check row per task; Latihan and Makan rows have a shortcut. */
+@Composable
+private fun TasksSection(tasks: List<TodayTask>, food: DaySummary?, onOpenWorkout: () -> Unit, onOpenFood: () -> Unit, modifier: Modifier) {
+    val done = tasks.count { it.done }
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        SectionHeader(stringResource(R.string.td_tasks_title), trailing = stringResource(R.string.td_tasks_count, done, tasks.size))
+        MeterBar(if (tasks.isEmpty()) 0f else done.toFloat() / tasks.size)
+        XnkCard(padding = 16.dp) {
+            if (tasks.isEmpty()) Text(stringResource(R.string.td_tasks_empty), style = XnkType.sm, color = Xnk.colors.fgMuted)
+            tasks.forEachIndexed { i, t ->
+                val sub = if (t.kind == TaskKind.FOOD) foodLine(food) else null
+                CheckRow(
+                    title = stringResource(t.kind.label()),
+                    done = t.done,
+                    stateText = stringResource(if (t.done) R.string.td_task_done else R.string.td_task_open),
+                    sub = sub,
+                    divider = i < tasks.lastIndex,
+                    action = when {
+                        t.done -> null
+                        t.kind == TaskKind.WORKOUT -> { { RowAction(stringResource(R.string.td_workout_start), onOpenWorkout, strong = true) } }
+                        t.kind == TaskKind.FOOD -> { { RowAction(stringResource(R.string.td_activity_log), onOpenFood) } }
+                        else -> null
+                    },
+                )
             }
         }
     }
 }
 
+/** Sub-line of the food task: the same text the food card shows (no number in ticks mode or without a target). */
 @Composable
-private fun TasksCard(tasks: List<TodayTask>) {
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(stringResource(R.string.td_tasks_title), style = MaterialTheme.typography.titleMedium)
-                Text(stringResource(R.string.td_tasks_count, tasks.count { it.done }, tasks.size), style = MaterialTheme.typography.bodyMedium)
-            }
-            tasks.forEach { t ->
-                Row(Modifier.fillMaxWidth().heightIn(min = MinTouch), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    Text(stringResource(t.kind.label()), style = MaterialTheme.typography.bodyLarge)
-                    Text(stringResource(if (t.done) R.string.td_task_done else R.string.td_task_open), style = MaterialTheme.typography.bodyMedium)
-                }
-            }
-        }
-    }
+private fun foodLine(food: DaySummary?): String? = when (food) {
+    is DaySummary.Numbers -> food.targets?.let { stringResource(R.string.td_food_of, food.eatenKcal, it.kcal) }
+    is DaySummary.Ticks -> stringResource(R.string.td_food_ticks, food.mealsLogged, food.mealsTotal)
+    null -> null
 }
 
 @Composable
-private fun FoodCard(summary: DaySummary?, onOpen: () -> Unit) {
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Text(stringResource(R.string.td_food_title), style = MaterialTheme.typography.titleMedium)
-                TextButton(onOpen, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.td_food_open)) }
-            }
+private fun FoodSection(summary: DaySummary?, onOpen: () -> Unit, modifier: Modifier) {
+    val c = Xnk.colors
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        SectionHeader(stringResource(R.string.td_food_title), action = {
+            TextButton(onOpen, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.td_food_open), style = XnkType.sm, color = c.fg) }
+        })
+        XnkCard {
+            val ringSize = 112.dp * LocalDensity.current.fontScale.coerceIn(1f, 1.5f)
             when (summary) {
-                null -> Unit
-                is DaySummary.Ticks -> Text(stringResource(R.string.td_food_ticks, summary.mealsLogged, summary.mealsTotal), style = MaterialTheme.typography.headlineSmall)
+                null -> Text(stringResource(R.string.td_food_empty), style = XnkType.md, color = c.fgMuted)
+                is DaySummary.Ticks -> Row(horizontalArrangement = Arrangement.spacedBy(18.dp), verticalAlignment = Alignment.CenterVertically) {
+                    val f = if (summary.mealsTotal == 0) 0f else summary.mealsLogged.toFloat() / summary.mealsTotal
+                    ProgressRing(f, size = ringSize) { Text(stringResource(R.string.td_ring_ticks, summary.mealsLogged, summary.mealsTotal), style = XnkType.kpi, color = c.fg) }
+                    Text(stringResource(R.string.td_food_ticks, summary.mealsLogged, summary.mealsTotal), style = XnkType.md, modifier = Modifier.weight(1f))
+                }
                 is DaySummary.Numbers -> {
                     val t = summary.targets
                     if (t == null) {
-                        Text(stringResource(R.string.td_food_eaten_only, summary.eatenKcal), style = MaterialTheme.typography.headlineSmall)
+                        Text(stringResource(R.string.td_food_eaten_only, summary.eatenKcal), style = XnkType.heroTitle, color = c.fg)
                     } else {
-                        Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(18.dp), verticalAlignment = Alignment.CenterVertically) {
                             val fraction = (summary.eatenKcal.toFloat() / t.kcal).coerceIn(0f, 1f)
-                            CircularProgressIndicator(progress = { fraction }, Modifier.size(64.dp))
-                            Column {
-                                val main = summary.remainingKcal?.let { stringResource(R.string.td_food_remaining, it) }
-                                    ?: summary.overKcal?.let { stringResource(R.string.td_food_over, it) }
-                                    ?: stringResource(R.string.td_food_of, summary.eatenKcal, t.kcal)
-                                Text(main, style = MaterialTheme.typography.titleLarge)
-                                Text(stringResource(R.string.td_food_of, summary.eatenKcal, t.kcal), style = MaterialTheme.typography.bodySmall)
+                            ProgressRing(fraction, size = ringSize) {
+                                val left = summary.remainingKcal
+                                val over = summary.overKcal
+                                Text((left ?: over ?: summary.eatenKcal).toString(), style = XnkType.kpi, color = c.fg)
+                                Text(stringResource(if (left != null) R.string.td_ring_left else if (over != null) R.string.td_ring_over else R.string.td_ring_eaten), style = XnkType.xs, color = c.fgMuted)
+                            }
+                            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                Macro(R.string.td_macro_protein, summary.protein, t.proteinG)
+                                Macro(R.string.td_macro_carb, summary.carb, t.carbG)
+                                Macro(R.string.td_macro_fat, summary.fat, t.fatG)
                             }
                         }
-                        Text(stringResource(R.string.td_food_macro, stringResource(R.string.td_macro_protein), summary.protein, t.proteinG))
-                        Text(stringResource(R.string.td_food_macro, stringResource(R.string.td_macro_carb), summary.carb, t.carbG))
-                        Text(stringResource(R.string.td_food_macro, stringResource(R.string.td_macro_fat), summary.fat, t.fatG))
+                        Text(stringResource(R.string.td_food_of, summary.eatenKcal, t.kcal), style = XnkType.xs, color = c.fgMuted)
                     }
-                    if (summary.eatenKcal == 0) Text(stringResource(R.string.td_food_empty), style = MaterialTheme.typography.bodyMedium)
+                    if (summary.eatenKcal == 0) Text(stringResource(R.string.td_food_empty), style = XnkType.md, color = c.fgMuted)
                 }
             }
         }
@@ -294,33 +335,40 @@ private fun FoodCard(summary: DaySummary?, onOpen: () -> Unit) {
 }
 
 @Composable
-private fun TargetCardView(card: TargetCard) {
+private fun Macro(@StringRes name: Int, eaten: Int, target: Int) {
+    Text(stringResource(R.string.td_food_macro, stringResource(name), eaten, target), style = XnkType.sm.copy(fontWeight = FontWeight.Bold), color = Xnk.colors.fg)
+    MeterBar(if (target <= 0) 0f else eaten.toFloat() / target)
+}
+
+@Composable
+private fun TargetCardView(card: TargetCard, modifier: Modifier) {
     var source by remember { mutableStateOf<TargetNumber?>(null) }
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(stringResource(R.string.td_target_title), style = MaterialTheme.typography.titleMedium)
+    val c = Xnk.colors
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        SectionHeader(stringResource(R.string.td_target_title))
+        XnkCard {
             when (card) {
-                TargetCard.NeedsScreening -> Text(stringResource(R.string.td_target_needs_screening), style = MaterialTheme.typography.bodyMedium)
-                TargetCard.Unavailable -> Text(stringResource(R.string.td_target_unavailable), style = MaterialTheme.typography.bodyMedium)
+                TargetCard.NeedsScreening -> Text(stringResource(R.string.td_target_needs_screening), style = XnkType.md)
+                TargetCard.Unavailable -> Text(stringResource(R.string.td_target_unavailable), style = XnkType.md)
                 is TargetCard.NoNumbers -> {
-                    Text(stringResource(R.string.td_target_no_numbers_title), style = MaterialTheme.typography.titleLarge)
-                    Text(stringResource(R.string.td_target_no_numbers_body), style = MaterialTheme.typography.bodyMedium)
-                    card.notes.forEach { Text(stringResource(it.text()), style = MaterialTheme.typography.bodyMedium) }
+                    Text(stringResource(R.string.td_target_no_numbers_title), style = XnkType.heroTitle, color = c.fg)
+                    Text(stringResource(R.string.td_target_no_numbers_body), style = XnkType.md)
+                    card.notes.forEach { Text(stringResource(it.text()), style = XnkType.md) }
                 }
                 is TargetCard.Numbers -> {
-                    Text(stringResource(card.goal.label()), style = MaterialTheme.typography.bodyMedium)
+                    Text(stringResource(card.goal.label()), style = XnkType.md, color = c.fgMuted)
                     NumberRow(TargetNumber.KCAL, stringResource(R.string.td_target_kcal_value, card.kcal)) { source = it }
                     NumberRow(TargetNumber.PROTEIN, stringResource(R.string.td_target_g_value, card.proteinG)) { source = it }
                     NumberRow(TargetNumber.CARB, stringResource(R.string.td_target_g_value, card.carbG)) { source = it }
                     NumberRow(TargetNumber.FAT, stringResource(R.string.td_target_g_value, card.fatG)) { source = it }
                     NumberRow(TargetNumber.FIBRE, stringResource(R.string.td_target_g_value, card.fibreG)) { source = it }
-                    if (card.raisedByPace) Text(stringResource(R.string.td_target_raised), style = MaterialTheme.typography.bodySmall)
-                    Text(stringResource(R.string.td_target_estimate), style = MaterialTheme.typography.bodySmall)
-                    card.notes.forEach { Text(stringResource(it.text()), style = MaterialTheme.typography.bodyMedium) }
+                    if (card.raisedByPace) Text(stringResource(R.string.td_target_raised), style = XnkType.xs, color = c.fgMuted)
+                    Text(stringResource(R.string.td_target_estimate), style = XnkType.xs, color = c.fgMuted)
+                    card.notes.forEach { Text(stringResource(it.text()), style = XnkType.md) }
                 }
             }
             // R_DISCLAIMER: always on the target card, whatever the state.
-            Text(stringResource(R.string.td_disclaimer), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 8.dp))
+            Text(stringResource(R.string.td_disclaimer), style = XnkType.xs, color = c.fgMuted, modifier = Modifier.padding(top = 8.dp))
         }
     }
     val n = source
@@ -332,7 +380,7 @@ private fun TargetCardView(card: TargetCard) {
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     if (sources.isEmpty()) Text(stringResource(R.string.src_none))
-                    sources.forEach { Text(stringResource(it.text()), style = MaterialTheme.typography.bodyMedium) }
+                    sources.forEach { Text(stringResource(it.text()), style = XnkType.md) }
                 }
             },
             confirmButton = { TextButton({ source = null }, Modifier.heightIn(min = MinTouch)) { Text(stringResource(R.string.td_target_source_close)) } },
@@ -344,39 +392,33 @@ private fun TargetCardView(card: TargetCard) {
 private fun NumberRow(number: TargetNumber, value: String, onSource: (TargetNumber) -> Unit) {
     val label = stringResource(number.label())
     val sourceLabel = stringResource(R.string.td_target_source_button, label)
+    val c = Xnk.colors
     Row(Modifier.fillMaxWidth().heightIn(min = MinTouch), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-        Text(label, style = MaterialTheme.typography.bodyLarge)
+        Text(label, style = XnkType.lg, color = c.fg2, modifier = Modifier.weight(1f))
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(value, style = MaterialTheme.typography.titleMedium)
+            Text(value, style = XnkType.lg.copy(fontWeight = FontWeight.ExtraBold), color = c.fg)
             TextButton(
                 { onSource(number) },
                 Modifier.heightIn(min = MinTouch).semantics { contentDescription = sourceLabel },
-            ) { Text(stringResource(R.string.td_target_source_i)) }
+            ) { Text(stringResource(R.string.td_target_source_i), color = c.fgMuted) }
         }
     }
 }
 
+/** "Minggu ini": seven dots, Monday first; [todayIso] (1 = Monday) gets a ring. */
 @Composable
-private fun WeekCard(week: List<Boolean>) {
+private fun WeekCard(week: List<Boolean>, todayIso: Int?, modifier: Modifier) {
     val names = listOf(R.string.td_day_1, R.string.td_day_2, R.string.td_day_3, R.string.td_day_4, R.string.td_day_5, R.string.td_day_6, R.string.td_day_7)
-    Card(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(stringResource(R.string.td_week_title), style = MaterialTheme.typography.titleMedium)
-                Text(stringResource(R.string.td_week_active, week.count { it }), style = MaterialTheme.typography.bodyMedium)
-            }
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        SectionHeader(stringResource(R.string.td_week_title), trailing = stringResource(R.string.td_week_active, week.count { it }))
+        XnkCard {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 week.forEachIndexed { i, on ->
                     val name = stringResource(names[i])
                     val desc = stringResource(if (on) R.string.td_day_active else R.string.td_day_idle, name)
-                    Column(Modifier.semantics { contentDescription = desc }, horizontalAlignment = Alignment.CenterHorizontally) {
-                        Box(
-                            Modifier.size(24.dp).background(
-                                if (on) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
-                                RoundedCornerShape(12.dp),
-                            ),
-                        )
-                        Text(name, style = MaterialTheme.typography.labelSmall)
+                    Column(Modifier.semantics(mergeDescendants = true) { contentDescription = desc }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        DayDot(active = on, today = todayIso == i + 1)
+                        Text(name, style = XnkType.xs2.copy(fontWeight = FontWeight.Bold), color = Xnk.colors.fgMuted)
                     }
                 }
             }

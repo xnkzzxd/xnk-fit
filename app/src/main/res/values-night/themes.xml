@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark window theme: band and page colours of the dark XNK tokens (ui/design/Tokens.kt). -->
+<resources>
+    <style name="Theme.XnkFit" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#161616</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>

@@ -360,6 +360,11 @@
     <string name="td_task_food">Catat makan</string>
     <string name="td_task_done">Selesai</string>
     <string name="td_task_open">Belum</string>
+    <string name="td_tasks_empty">Tugas muncul setelah program dibuat.</string>
+    <string name="td_ring_left">kkal lagi</string>
+    <string name="td_ring_over">kkal di atas</string>
+    <string name="td_ring_eaten">kkal</string>
+    <string name="td_ring_ticks">%1$d/%2$d</string>
     <string name="td_food_title">Makan</string>
     <string name="td_food_open">Buka</string>
     <string name="td_food_remaining">%1$d kkal lagi</string>

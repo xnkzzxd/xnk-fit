@@ -261,14 +261,14 @@ Rules:
 
 ## 11. Visual system (summary for D-05)
 
-Full mockups come in D-05. The rules here are the ones the code relies on:
+Phase T (owner, 2026-11-27): the target is the **live XNK look** (xnk.my.id, xnk.web.id), reference files in `docs/reference/xnk/`. Tokens, components and rules are in [Design-Visual.md](Design-Visual.md); code in `ui/design/`. Status per screen group: TODO Phase T.
 
-- **Theme:** Material 3 color roles mapped from seven accents (D-1). Light and dark both supported. Colors are tokens, never literals in screens.
+- **Theme:** XNK tokens copied from the XNK theme (light and dark), seven accents as tokens (default ink), Material 3 roles mapped from them. Colours are tokens, never literals in screens (only `ui/design/Tokens.kt` holds them).
 - **Red** is used for nothing except errors (PR-4). No red for calories over target or for weight gain.
-- **Type:** Inter (bundled with the app, same as the XNK coaching app; owner decision in the D-05 review, 2026-11-16), weights 400–900, headings tight (−0.02 to −0.03 em). Sizes scale with the user's font setting (D-1 big text). Layout must stay usable at 200 % font scale.
-- **Look:** the XNK app's Phase X portal (owner, D-05 review 2): its colour tokens, black band with contour lines, black hero cards with rings, bar-marked section titles, floating black tab dock, black segmented bars and sheet heads. Little text: one short line per item. Two buttons side by side always share the row evenly.
+- **Type:** Inter (bundled, OFL, three weights subset to Latin, 156 KB), rem × 16 = sp, headings 800 with tight tracking. Sizes scale with the user's font setting; no fixed heights on text. Layout must stay usable at 200 % font scale.
+- **Look:** black top band with contour lines; hero card on the band with concentric rings and a dot; section titles with a short vertical bar; white cards radius 22; black primary buttons; floating ink pill bottom bar with a light ＋ square in the middle; grey KG/REP cells and square check buttons in the logger.
 - **Shapes:** buttons and choice chips are rounded rectangles (12 dp), not pills. Choice rows and lone buttons fill the full width; no half-empty rows (owner, D-05 review).
-- **Touch:** 44 dp minimum (D-2). Logger inputs use the numeric keyboard; steppers ＋ / − beside each number field.
+- **Touch:** 48 dp minimum (D-2, raised in B-05). Logger inputs use the numeric keyboard; steppers ＋ / − beside each number field.
 - **Layout:** 360–430 dp phones, tablets ≥ 600 dp with the rail. No horizontal scrolling except the week planner swipe (M-10) and the food-list carousel.
 - **Motion:** respects the system "remove animations" setting; the rest timer and charts are the only animated parts.
 - **Icons:** Material Symbols, outlined.
@@ -286,6 +286,7 @@ Full mockups come in D-05. The rules here are the ones the code relies on:
 | `androidx.health.connect:connect-client` 1.1.0 | Steps (L-15): `READ_STEPS` only, `aggregateGroupByPeriod` of `StepsRecord.COUNT_TOTAL`. Added in B-09 | Small; the card hides itself where Health Connect is missing |
 | `com.google.android.gms:play-services-auth` (AuthorizationClient, scope `drive.appdata` only) + Drive REST over the platform `HttpURLConnection` | Backup (B-1). Added in B-16. **Deviation:** no Ktor/OkHttp: the content update (B-04) already uses `HttpURLConnection`, so that is the one HTTP client | play-services-auth pulls play-services-base/basement/tasks; R8 shrinks; APK checked against the 20 MB budget |
 | kotlinx.serialization | Backup JSON | Small |
+| Inter font files (not a library), `res/font/inter_*.ttf` | XNK typeface (T-01, Design §11) | 156 KB: three static weights cut to Latin |
 | JUnit, Robolectric, Compose UI test (`ui-test-junit4`; `ui-test-manifest` for `createComposeRule` in debug), Macrobenchmark | Tests (NF-5). Added in B-18. No screenshot library (Roborazzi, Paparazzi): it would add a large test dependency and golden images for little the semantic tests do not catch; pixels are checked by hand (`Test-Manual.md` S-1…S-6) | Test only |
 | `androidx.benchmark:benchmark-macro-junit4` 1.5.0 + Gradle plugin `androidx.baselineprofile` 1.5.0, `androidx.test.ext:junit` 1.3.0, `androidx.test.uiautomator:uiautomator` 2.4.1 | Macrobenchmark and baseline profile generator in `:benchmark` (B-19) | Test module only, not in the APK |
 | `androidx.profileinstaller:profileinstaller` 1.4.1 | Applies the baseline profile on sideloaded installs and API 26–27, and lets Macrobenchmark compile with it (B-19) | Small (one receiver, no permission) |

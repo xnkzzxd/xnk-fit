@@ -81,6 +81,19 @@ Code tasks. Each one ends with its tests passing (Design §13).
 | B-19 | Speed budget: Macrobenchmark, baseline profiles, CI gate (NF-1) | B-17 | Opus 5.5 | [x] (2026-11-19) Automatic, every push: `SpeedBudgetTest` (set tick median 2.1 ms, search keystroke median 1.6 ms on 1,143 TKPI + 174 estimate rows, JVM numbers, budget on median, p95 ≤ 2× budget), APK size, budget-script tests, `:benchmark` compiles. Needs a device (owner or a session with KVM): `:benchmark` Macrobenchmark cold start / tab switch on Redmi 10 and API 26 2 GB emulator with CPU quota 25 %, then `tools/benchmark-budget.mjs`; baseline profile generation (`:app:generateBaselineProfile`, API 33+) and commit; installed size on the phone. Steps and number table: docs/Speed.md. 2026-11-25: the emulator workflow runs the smoke suite but measures no Macrobenchmark; cold-start numbers still need `:benchmark` on a device. Start path read: content load, figures, muscle map already off the main thread; no change made without a device number |
 | B-20 | Play closed test prep: data safety form, privacy policy text, store listing (PV-4, S-08) | B-18 | Sonnet 5.5 | [ ] |
 
+## Phase T — Visual (XNK look)
+
+Owner, 2026-11-27: "app nya jelek, ga sama kaya app ku" — the screens must match the live XNK apps (xnk.my.id, xnk.web.id). Reference: `docs/reference/xnk/`; system: [Design-Visual.md](Design-Visual.md). One group at a time, each **diperiksa berdampingan dengan acuan dan disetujui pemilik** before the next starts.
+
+| ID | Task | Depends | Model | Status |
+| --- | --- | --- | --- | --- |
+| T-01 | Design system (`ui/design/`: tokens, Inter, components, previews) + frame (TopBand, PillBottomBar, rail) + Hari ini rebuilt. Side-by-side check with `screens/portal-hari-ini.png` in the changes log | — | Sonnet 5.5 | [ ] |
+| T-02 | Latihan + logger (KgRepCell, CheckButton, set table as `screens/portal-logger.png`) | T-01 approved | Opus 5.5 | [ ] |
+| T-03 | Makan + planner + pilih makanan + belanja (also drop the duplicate "Makan" heading under the band) | T-01 approved | Sonnet 5.5 | [ ] |
+| T-04 | Saya + Kartu saya | T-01 approved | Sonnet 5.5 | [ ] |
+| T-05 | Onboarding, skrining, Pengaturan, Bantuan, Privasi, Data | T-01 approved | Sonnet 5.5 | [ ] |
+| T-06 | Tablet layouts and dark mode polish across all screens | T-02…T-05 | Sonnet 5.5 | [ ] |
+
 ## Phase R — Release
 
 | ID | Task | Depends | Model | Status |
