@@ -1,0 +1,10 @@
+{
+ "tolerances": {
+  "box": 2,
+  "radius": 2,
+  "sp": 1,
+  "dE": 5,
+  "dEInk": 10
+ },
+ "variants": {}
+}

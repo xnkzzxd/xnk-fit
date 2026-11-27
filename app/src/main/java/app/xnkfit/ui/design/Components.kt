@@ -1,5 +1,6 @@
 package app.xnkfit.ui.design
 
+import androidx.compose.ui.platform.testTag
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -79,6 +80,7 @@ fun TopBand(
             .background(c.band)
             .drawBehind { drawContours(c.onBand) }
             .statusBarsPadding()
+            .testTag("fid:pita_atas") // text-ok: test tag
             .padding(start = XnkSpace.page, end = XnkSpace.page, top = 4.dp, bottom = if (subtitle != null) 10.dp else 4.dp),
     ) {
         Row(Modifier.fillMaxWidth().heightIn(min = MinTouch), verticalAlignment = Alignment.CenterVertically) {
@@ -125,6 +127,7 @@ fun HeroCard(
     val shape = RoundedCornerShape(XnkRadius.xl)
     Column(
         modifier
+            .testTag("fid:kartu_hero_hitam") // text-ok: test tag
             .fillMaxWidth()
             .heightIn(min = minHeight)
             .clip(shape)
@@ -147,7 +150,7 @@ fun XnkCard(modifier: Modifier = Modifier, padding: Dp = XnkSpace.card, content:
     val c = Xnk.colors
     val shape = RoundedCornerShape(XnkRadius.lg)
     Column(
-        modifier.fillMaxWidth().clip(shape).background(c.surface).border(1.dp, c.border, shape).padding(padding),
+        modifier.testTag("fid:kartu_putih").fillMaxWidth().clip(shape).background(c.surface).border(1.dp, c.border, shape).padding(padding), // text-ok: test tag
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) { CompositionLocalProvider(LocalContentColor provides c.fg) { content() } }
 }
@@ -175,10 +178,10 @@ fun SectionHeader(
     action: (@Composable () -> Unit)? = null,
 ) {
     val c = Xnk.colors
-    Row(modifier.fillMaxWidth().heightIn(min = SectionMinHeight), verticalAlignment = Alignment.CenterVertically) {
-        Box(Modifier.width(4.dp).height(18.dp).background(c.fg, RoundedCornerShape(2.dp)))
+    Row(modifier.testTag("fid:px_sec").fillMaxWidth().heightIn(min = SectionMinHeight), verticalAlignment = Alignment.CenterVertically) { // text-ok: test tag
+        Box(Modifier.testTag("fid:judul_bagian_garis").width(4.dp).height(18.dp).background(c.fg, RoundedCornerShape(2.dp))) // text-ok: test tag
         Spacer(Modifier.width(10.dp))
-        Text(title, style = XnkType.section, color = c.fg, modifier = Modifier.weight(1f).semantics { heading() })
+        Text(title, style = XnkType.section, color = c.fg, modifier = Modifier.weight(1f).testTag("fid:judul_bagian").semantics { heading() }) // text-ok: test tag
         if (trailing != null) Text(trailing, style = XnkType.sm, color = c.fgMuted, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
         action?.invoke()
     }
@@ -219,8 +222,10 @@ private fun XnkButton(
         BtnKind.TONAL -> if (onInk) Triple(c.onBand.copy(alpha = 0.12f), c.onBand, null) else Triple(c.surface3, c.fg, null)
         BtnKind.SECONDARY -> if (onInk) Triple(Color.Transparent, c.onBand, c.onBand.copy(alpha = 0.4f)) else Triple(Color.Transparent, c.fg, c.borderStrong)
     }
+    val fidTag = when (kind) { BtnKind.PRIMARY -> "fid:tombol_utama"; BtnKind.TONAL -> "fid:tombol_sekunder"; BtnKind.SECONDARY -> "fid:tombol_garis" } // text-ok: test tag
     Row(
         modifier
+            .testTag(fidTag)
             .heightIn(min = MinTouch)
             .clip(shape)
             .background(bg.copy(alpha = if (enabled) bg.alpha else bg.alpha * 0.5f))
@@ -261,7 +266,7 @@ fun StatTile(value: String, label: String, modifier: Modifier = Modifier, emphas
     val bg = if (emphasis) c.accent else c.surface
     val fg = if (emphasis) c.onAccent else c.fg
     Column(
-        modifier.clip(shape).background(bg).border(1.dp, if (emphasis) bg else c.border, shape).heightIn(min = 88.dp).padding(12.dp),
+        modifier.testTag("fid:stat_tile").clip(shape).background(bg).border(1.dp, if (emphasis) bg else c.border, shape).heightIn(min = 88.dp).padding(12.dp), // text-ok: test tag
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -312,6 +317,7 @@ fun CheckRow(
     val line = c.border
     Row(
         modifier
+            .testTag("fid:baris_tugas") // text-ok: test tag
             .fillMaxWidth()
             .heightIn(min = if (done) 52.dp else 60.dp)
             .then(if (onClick != null) Modifier.clickable(role = Role.Button, onClick = onClick) else Modifier)
@@ -321,7 +327,7 @@ fun CheckRow(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Canvas(Modifier.size(26.dp)) {
+        Canvas(Modifier.testTag("fid:lingkaran_centang").size(26.dp)) { // text-ok: test tag
             val s = this.size.width
             if (done) {
                 drawCircle(c.accent)
@@ -333,11 +339,12 @@ fun CheckRow(
         Column(Modifier.weight(1f)) {
             Text(
                 title,
+                modifier = Modifier.testTag("fid:tugas_judul"), // text-ok: test tag
                 style = XnkType.rowTitle,
                 color = if (done) c.fgMuted else c.fg,
                 textDecoration = if (done) androidx.compose.ui.text.style.TextDecoration.LineThrough else null,
             )
-            if (sub != null) Text(sub, style = XnkType.xs, color = c.fgMuted)
+            if (sub != null) Text(sub, style = XnkType.xs, color = c.fgMuted, modifier = Modifier.testTag("fid:tugas_sub")) // text-ok: test tag
         }
         action?.invoke()
     }
@@ -374,6 +381,7 @@ fun Chip(text: String, selected: Boolean, onClick: () -> Unit, modifier: Modifie
             style = XnkType.sm.copy(fontWeight = androidx.compose.ui.text.font.FontWeight.Bold),
             color = if (selected) c.onAccent else c.fg,
             modifier = Modifier
+                .testTag("fid:chip") // text-ok: test tag
                 .clip(shape)
                 .background(if (selected) c.accent else c.surface)
                 .border(1.dp, if (selected) c.accent else c.border, shape)
@@ -389,6 +397,7 @@ fun KgRepCell(value: String, label: String, modifier: Modifier = Modifier, onCli
     val shape = RoundedCornerShape(XnkRadius.sm)
     Box(
         modifier
+            .testTag("fid:sel_input") // text-ok: test tag
             .heightIn(min = MinTouch)
             .widthIn(min = 56.dp)
             .clip(shape)
@@ -407,6 +416,7 @@ fun CheckButton(checked: Boolean, label: String, onCheckedChange: (Boolean) -> U
     val shape = RoundedCornerShape(XnkRadius.sm)
     Box(
         modifier
+            .testTag("fid:tombol_centang") // text-ok: test tag
             .size(MinTouch)
             .clip(shape)
             .background(if (checked) c.accent else c.surface3)

@@ -1,5 +1,6 @@
 package app.xnkfit.ui.design
 
+import androidx.compose.ui.platform.testTag
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -48,6 +49,7 @@ fun PillBottomBar(selected: Destination, onSelect: (Destination) -> Unit, modifi
     Box(modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, top = 4.dp, bottom = 8.dp), contentAlignment = Alignment.Center) {
         Row(
             Modifier
+                .testTag("fid:bilah_bawah") // text-ok: test tag
                 .widthIn(max = 420.dp)
                 .fillMaxWidth()
                 .heightIn(min = 68.dp)
@@ -66,6 +68,7 @@ fun PillBottomBar(selected: Destination, onSelect: (Destination) -> Unit, modifi
                     Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
                         Box(
                             Modifier
+                                .testTag("fid:tombol_plus_tengah") // text-ok: test tag
                                 .size(54.dp)
                                 .clip(RoundedCornerShape(XnkRadius.fab))
                                 .background(c.onInk)
@@ -86,6 +89,7 @@ private fun PillTab(label: String, d: Destination, active: Boolean, modifier: Mo
     val color = if (active) c.onInk else c.onInkMuted
     Column(
         modifier
+            .testTag("fid:tab") // text-ok: test tag
             .heightIn(min = 56.dp)
             .clip(RoundedCornerShape(16.dp))
             .selectable(selected = active, role = Role.Tab, onClick = onClick)

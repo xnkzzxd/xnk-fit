@@ -71,6 +71,9 @@ jobs:
           export NODE_PATH="$RUNNER_TEMP/pw/node_modules"
           "$RUNNER_TEMP/pw/node_modules/.bin/playwright" install --with-deps chromium
           node tools/compare/build-compare.js screenshots compare
+          # Fidelity report (reference spec vs FidelityTest measurements): report only, never fails the run.
+          node tools/compare/build-fidelity.js screenshots compare/fidelity || true
+          head -n 30 compare/fidelity/report.md >> "$GITHUB_STEP_SUMMARY" || true
           cat compare/summary.md | head -n 40 >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v4

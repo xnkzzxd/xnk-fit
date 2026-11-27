@@ -26,6 +26,13 @@ for device in hp tablet; do
       adb shell am instrument -w -e class app.xnkfit.screenshots.ScreenshotTest -e variant "$variant" \
         app.xnkfit.test/androidx.test.runner.AndroidJUnitRunner | tee "$OUT/_instrument_$variant.log" | tail -n 6
       grep -q "^OK" "$OUT/_instrument_$variant.log" || status=1
+      # Fidelity measurement (tools/compare): same variant, same database, report only; never changes the exit status.
+      adb shell am instrument -w -e class app.xnkfit.fidelity.FidelityTest -e variant "$variant" \
+        app.xnkfit.test/androidx.test.runner.AndroidJUnitRunner > "$OUT/_instrument_fidelity_$variant.log" 2>&1 || true
+      mkdir -p "$OUT/fidelity"
+      for f in $(adb shell run-as app.xnkfit ls files/fidelity 2>/dev/null | tr -d '\r'); do
+        adb exec-out run-as app.xnkfit cat "files/fidelity/$f" > "$OUT/fidelity/$f" || true
+      done
       for f in $(adb shell run-as app.xnkfit ls files/screenshots | tr -d '\r'); do
         adb exec-out run-as app.xnkfit cat "files/screenshots/$f" > "$OUT/$f"
       done
