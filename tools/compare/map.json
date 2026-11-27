@@ -1,0 +1,28 @@
+{
+  "_doc": "app screen (ScreenshotTest file name prefix) -> reference screen (docs/reference/xnk/screens/<ref>_<hp|tablet>_<terang|gelap>.png). null = no counterpart, with the reason.",
+  "tabletRefs": ["hari-ini", "latihan", "logger", "makan", "saya", "pengaturan"],
+  "screens": {
+    "hari-ini": { "ref": "hari-ini" },
+    "sambutan-hari-ini": { "ref": null, "reason": "first-run welcome card has no counterpart in the XNK demo" },
+    "latihan": { "ref": "latihan" },
+    "sambutan-latihan": { "ref": null, "reason": "first-run welcome state, not in the demo" },
+    "latihan-program": { "ref": null, "reason": "program picker/detail has no demo screen (demo shows coach routines only)" },
+    "logger-mode": { "ref": null, "reason": "mode choice before the logger; demo starts the logger directly" },
+    "logger": { "ref": "logger" },
+    "logger-berjalan": { "ref": "logger" },
+    "logger-berjalan-gerakan": { "ref": "logger" },
+    "makan": { "ref": "makan" },
+    "sambutan-makan": { "ref": null, "reason": "first-run welcome state, not in the demo" },
+    "planner": { "ref": "planner" },
+    "saya": { "ref": "saya" },
+    "sambutan-saya": { "ref": null, "reason": "first-run welcome state, not in the demo" },
+    "kartu": { "ref": "kartu" },
+    "pengaturan": { "ref": "pengaturan" },
+    "data": { "ref": null, "reason": "data export/import screen: the demo has no equivalent (cloud app)" },
+    "bantuan": { "ref": null, "reason": "help and disclaimer: the demo has only 'Info & Tips' from the coach, a different content" },
+    "privasi": { "ref": null, "reason": "privacy note: not in the demo" },
+    "onboarding": { "ref": null, "reason": "on-device onboarding; the demo signs in with a coach-created account" },
+    "skrining": { "ref": null, "reason": "health screening: not in the demo" }
+  },
+  "extraRefs": ["progres", "paket", "info"]
+}
