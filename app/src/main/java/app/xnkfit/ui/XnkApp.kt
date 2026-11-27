@@ -26,14 +26,10 @@ import app.xnkfit.ui.makan.MakanViewModel
 import app.xnkfit.ui.today.TodayScreen
 import app.xnkfit.ui.today.TodayViewModel
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.foundation.background
 import app.xnkfit.ui.design.PillBottomBar
 import app.xnkfit.ui.design.PillRail
-import app.xnkfit.ui.design.TopBand
 import app.xnkfit.ui.design.Xnk
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 /** App frame: five bottom destinations (PRD N-1). Hari ini, Makan and Saya exist; the rest are empty stubs. */
 @Composable
@@ -54,18 +50,10 @@ fun XnkApp(
     val width = currentWidthClass()
     val wide = width == WidthClass.WIDE
     val c = Xnk.colors
-    val todayState by today.state.collectAsState()
     Scaffold(
         containerColor = c.bg,
-        topBar = {
-            // Phone and tablet: the black band with the brand; Hari ini shows the date there, the other tabs their name.
-            val dateText = if (selected == Destination.TODAY) todayState.day?.format(BandDate) else null
-            TopBand(
-                brand = stringResource(R.string.ob_brand),
-                title = if (selected == Destination.TODAY) null else stringResource(selected.label),
-                subtitle = dateText,
-            )
-        },
+        // No fixed top bar: as on the XNK portal the black band is part of the page and scrolls with it (Hari ini draws it;
+        // the other tabs get it with their own redraw, TODO T-02…T-05). The window theme paints the status bar in the band colour.
         bottomBar = {
             // The add action opens a sheet in a later task; for now it changes nothing.
             if (!wide) PillBottomBar(selected, onSelect = { if (it.isScreen) selected = it })
@@ -104,9 +92,6 @@ fun XnkApp(
     }
     }
 }
-
-/** Date in the band ("Jumat, 27 November"), as on the XNK portal. */
-private val BandDate: DateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, d MMMM", Locale("id", "ID")) // text-ok: date pattern
 
 /** The tab that carries a welcome card; the add action has none. */
 fun welcomeTabOf(d: Destination): WelcomeTab? = when (d) {

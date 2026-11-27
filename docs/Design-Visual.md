@@ -64,7 +64,7 @@ All have previews in `Previews.kt` (light, dark, font 1.3).
 
 | Component | XNK source | Use |
 | --- | --- | --- |
-| `TopBand(brand, title?, subtitle?)` | `.topbar` + `.px-band`, `.gfx-kontur` | Scaffold top bar in `XnkApp`: brand, page name (or the date on Hari ini), contour lines drawn on Canvas |
+| `TopBand(brand, title?, subtitle?)` | `.topbar` + `.px-band`, `.gfx-kontur` | the band at the top of a page, part of its scroll as on the portal: brand (or page name), date, contour lines drawn on Canvas. Hari ini uses it; the other tabs get it in T-02…T-05 |
 | `BandHang(bandBelow)` | `.px-band` + `.px-hang` | first list item: the band continues 40 dp behind the hero so it hangs over the edge |
 | `HeroCard(eyebrow)` | `.card-ink.gfx-geo` | band-card fill, 1 dp light border, radius 28, rings + accent dot on Canvas; buttons inside use `onInk = true` |
 | `XnkCard`, `CardFlat` | `.card`, `.card-flat` | white card radius 22 padding 18; grey flat card radius 16 |

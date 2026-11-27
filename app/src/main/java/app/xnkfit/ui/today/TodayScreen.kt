@@ -60,6 +60,9 @@ import app.xnkfit.ui.design.RowAction
 import app.xnkfit.ui.design.SecondaryButton
 import app.xnkfit.ui.design.SectionHeader
 import app.xnkfit.ui.design.TonalButton
+import app.xnkfit.ui.design.TopBand
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 import app.xnkfit.ui.design.Xnk
 import app.xnkfit.ui.design.XnkCard
 import app.xnkfit.ui.design.XnkSpace
@@ -131,8 +134,10 @@ fun TodayScreen(
     ReportDrawnWhen { s.loaded }
     val split = currentTwoColumns()
     val pad = Modifier.padding(horizontal = if (split) 0.dp else XnkSpace.page)
+    Column(modifier) {
+    if (split) BandTop(s, split = true)
     TwoColumns(
-        modifier,
+        Modifier.weight(1f),
         split = split,
         spacing = Gap,
         padding = PaddingValues(horizontal = if (split) XnkSpace.pageWide else 0.dp),
@@ -140,7 +145,7 @@ fun TodayScreen(
             // One item from the band to the hero, so no page-coloured gap opens between them.
             item {
                 Column {
-                    BandTop(s, split)
+                    if (!split) BandTop(s, split = false)
                     s.recalc?.let { p ->
                         Box(Modifier.background(if (split) Xnk.colors.bg else Xnk.colors.band).padding(bottom = 12.dp)) {
                             RecalcCard(p, vm::acceptRecalc, vm::keepTarget, pad)
@@ -166,17 +171,26 @@ fun TodayScreen(
             }
         },
     )
+    }
 }
 
-/** Level and streak on the band, under the date the top bar shows. */
+/** Date in the band ("Jumat, 27 November"), as on the XNK portal. */
+private val BandDate: DateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, d MMMM", Locale("id", "ID")) // text-ok: date pattern
+
+/** The band at the top of the page (phone: inside the list, so it scrolls away as on the portal): brand, date, level and streak. */
 @Composable
 private fun BandTop(s: TodayState, split: Boolean) {
     val c = Xnk.colors
-    Box(
-        Modifier.fillMaxWidth().background(if (split) c.bg else c.band)
-            .padding(start = if (split) 0.dp else XnkSpace.page, end = XnkSpace.page, bottom = 8.dp),
-    ) {
-        if (s.loaded) Text(stringResource(R.string.td_level_streak, s.level, s.streakWeeks), style = XnkType.sm, color = if (split) c.fgMuted else c.onBandMuted)
+    Column(Modifier.fillMaxWidth().background(c.band)) {
+        TopBand(brand = stringResource(R.string.ob_brand), subtitle = s.day?.format(BandDate))
+        if (s.loaded) {
+            Text(
+                stringResource(R.string.td_level_streak, s.level, s.streakWeeks),
+                style = XnkType.sm,
+                color = c.onBandMuted,
+                modifier = Modifier.padding(start = XnkSpace.page, end = XnkSpace.page, bottom = if (split) 12.dp else 8.dp),
+            )
+        }
     }
 }
 
