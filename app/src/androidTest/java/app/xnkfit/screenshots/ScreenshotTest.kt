@@ -154,6 +154,10 @@ class ScreenshotTest {
     @Test fun everyMainScreen() {
         outDir.listFiles()?.filter { it.name.endsWith("_$variant.png") }?.forEach { it.delete() }
         val db = XnkDatabase.open(ctx, "screenshots")
+        // The first ticked set asks for notification and exact-alarm access (a system dialog covers the app and hides
+        // the compose tree), so both are granted up front; the rest timer then shows without the dialog.
+        runCatching { inst.uiAutomation.grantRuntimePermission(ctx.packageName, "android.permission.POST_NOTIFICATIONS") }
+        runCatching { inst.uiAutomation.executeShellCommand("appops set --uid ${ctx.packageName} SCHEDULE_EXACT_ALARM allow").close() }
 
         // 1. First run: onboarding and the screening form, on an empty database.
         launch()
