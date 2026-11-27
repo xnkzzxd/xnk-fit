@@ -38,14 +38,14 @@ import app.xnkfit.ui.nav.Destination
 
 /**
  * Floating pill bottom bar of the XNK portal (`.tabbar`, `.tab`, `.tab-fab`): ink pill, radius 24, at most 420 dp wide with
- * 14 dp margins; four labelled tabs and the centre ＋ (a 54 dp light square). Tabs keep their visible label and a click action,
+ * 14 dp side margins (8 dp below instead of 14, so the bar takes no more height than the old Material bar); four labelled tabs and the centre ＋ (a 54 dp light square). Tabs keep their visible label and a click action,
  * which is what the smoke and screenshot tests look for (hasText(label) and hasClickAction()).
  */
 @Composable
 fun PillBottomBar(selected: Destination, onSelect: (Destination) -> Unit, modifier: Modifier = Modifier) {
     val c = Xnk.colors
     val shape = RoundedCornerShape(XnkRadius.bar)
-    Box(modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, bottom = 14.dp), contentAlignment = Alignment.Center) {
+    Box(modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, top = 4.dp, bottom = 8.dp), contentAlignment = Alignment.Center) {
         Row(
             Modifier
                 .widthIn(max = 420.dp)

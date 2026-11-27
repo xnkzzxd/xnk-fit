@@ -60,8 +60,9 @@ import app.xnkfit.ui.common.MinTouch
 // ── Bands and cards ───────────────────────────────────────────────────────────────────────────────
 
 /**
- * Black top band (`.topbar` + `.px-band`): the brand mark, an optional [title] (page name) and [subtitle] (date), contour lines
- * at the top right. [extra] adds band height under the text so the first card can hang over the edge (see [BandHang]).
+ * Black top band (`.topbar` + `.px-band`) with contour lines at the top right. One row: [title] when given (page name, as a
+ * heading), otherwise the [brand] mark; then an optional [subtitle] (the date on Hari ini). Kept to one row on the other tabs so
+ * small phones (Pixel 2, 731 dp) lose no more height than the old Material bars did.
  */
 @Composable
 fun TopBand(
@@ -78,14 +79,15 @@ fun TopBand(
             .background(c.band)
             .drawBehind { drawContours(c.onBand) }
             .statusBarsPadding()
-            .padding(start = XnkSpace.page, end = XnkSpace.page, top = 8.dp, bottom = 12.dp),
+            .padding(start = XnkSpace.page, end = XnkSpace.page, top = 4.dp, bottom = if (subtitle != null) 10.dp else 4.dp),
     ) {
         Row(Modifier.fillMaxWidth().heightIn(min = MinTouch), verticalAlignment = Alignment.CenterVertically) {
-            Text(brand, style = XnkType.section, color = c.onBand, modifier = Modifier.weight(1f))
+            if (title != null) {
+                Text(title, style = XnkType.heroTitle, color = c.onBand, modifier = Modifier.weight(1f).semantics { heading() })
+            } else {
+                Text(brand, style = XnkType.section, color = c.onBand, modifier = Modifier.weight(1f))
+            }
             CompositionLocalProvider(LocalContentColor provides c.onBand) { actions() }
-        }
-        if (title != null) {
-            Text(title, style = XnkType.pageTitle, color = c.onBand, modifier = Modifier.semantics { heading() })
         }
         if (subtitle != null) Text(subtitle, style = XnkType.sm, color = c.onBandMuted)
     }
@@ -161,6 +163,9 @@ fun CardFlat(modifier: Modifier = Modifier, content: @Composable ColumnScope.() 
     ) { CompositionLocalProvider(LocalContentColor provides c.fg) { content() } }
 }
 
+/** Height floor of a section heading row (not a touch target; the action inside has its own 48 dp). */
+private val SectionMinHeight = 32.dp
+
 /** Section heading with the short vertical bar (`.px-sec`): title, then a muted [trailing] text or an [action]. */
 @Composable
 fun SectionHeader(
@@ -170,8 +175,8 @@ fun SectionHeader(
     action: (@Composable () -> Unit)? = null,
 ) {
     val c = Xnk.colors
-    Row(modifier.fillMaxWidth().heightIn(min = 32.dp), verticalAlignment = Alignment.CenterVertically) {
-        Box(Modifier.width(4.dp).heightIn(min = 18.dp).background(c.fg, RoundedCornerShape(2.dp)))
+    Row(modifier.fillMaxWidth().heightIn(min = SectionMinHeight), verticalAlignment = Alignment.CenterVertically) {
+        Box(Modifier.width(4.dp).height(18.dp).background(c.fg, RoundedCornerShape(2.dp)))
         Spacer(Modifier.width(10.dp))
         Text(title, style = XnkType.section, color = c.fg, modifier = Modifier.weight(1f).semantics { heading() })
         if (trailing != null) Text(trailing, style = XnkType.sm, color = c.fgMuted, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
