@@ -226,8 +226,15 @@ class ScreenshotTest {
                 rule.waitForIdle()
             }
             click(str(R.string.lg_start))
-            waitText(str(R.string.lg_add_exercise))
-            click(str(R.string.lg_add_exercise))
+            // The pane changes from "start" to "running": wait for the running screen's own button, then click by a retry
+            // because the first match can be recomposed away between the wait and the click.
+            waitText(str(R.string.lg_finish))
+            rule.waitUntil(30_000) {
+                runCatching {
+                    rule.onAllNodes(hasText("+ " + str(R.string.lg_add_exercise), substring = true) and hasClickAction()).onFirst().performClick()
+                }.isSuccess
+            }
+            rule.waitForIdle()
             typeInto(str(R.string.lg_search), "Back Squat")
             // The search field now also holds "Back Squat": click the list row, not the field.
             val row = hasText("Back Squat", substring = true) and !hasSetTextAction() and hasClickAction()
